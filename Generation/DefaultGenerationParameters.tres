@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="GenerationParameters" load_steps=2 format=3 uid="uid://7xjx5klvdbia"]
+
+[ext_resource type="Script" path="res://Generation/GenerationParameters.gd" id="1_pc1b4"]
+
+[resource]
+script = ExtResource("1_pc1b4")
+rows = 7
+columns = 22
+base_position = Vector2(0, 0)
+distance = Vector2(50, 50)
+iterations = 60
+clamp_at = Array[int]([0, -1, 5])
+clamp_at_to = Array[Vector2]([Vector2(9, 3), Vector2(7, 2)])
