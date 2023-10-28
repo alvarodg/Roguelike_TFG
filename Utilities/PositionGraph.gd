@@ -1,11 +1,11 @@
 extends Node
-class_name Graph
+class_name PositionGraph
 
-var graph: MatrixGraph
+var graph: MatrixGraphImplementation
 var data: Array
 
 func _init():
-	graph = MatrixGraph.new(0, true)
+	graph = MatrixGraphImplementation.new(0, true)
 	data = []
 
 func add_edge(v1, v2, weight = 1):

@@ -15,6 +15,10 @@ run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.1", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[editor]
+
+naming/default_signal_callback_name="_on_{NodeName}_{signal_name}"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

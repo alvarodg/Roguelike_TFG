@@ -1,5 +1,5 @@
 extends Resource
-class_name MatrixGraph
+class_name MatrixGraphImplementation
 
 var size: int : get = get_size
 var adj_matrix
@@ -16,13 +16,13 @@ func _init(size = 0, directed = false):
 	self.directed = directed
 	
 func add_edge(v1, v2, weight = 1):
+	if v1 == v2: return
 	self.adj_matrix[v1][v2] = weight
 	if not directed:
 		self.adj_matrix[v2][v1] = weight
 
 func remove_edge(v1,v2):
-	if adj_matrix[v1][v2] == 0:
-		return
+	if adj_matrix[v1][v2] == 0: return
 	adj_matrix[v1][v2] = 0
 	if not directed:
 		adj_matrix[v2][v1] = 0
@@ -38,10 +38,10 @@ func add_vertex() -> int:
 	return size-1
 
 func remove_vertex(vertex):
+	adj_matrix.pop_at(vertex)
+	size -= 1
 	for i in range(size):
 		adj_matrix[i].pop_at(vertex)
-	size -= 1
-	adj_matrix.pop_at(vertex)
 
 func get_neightbors(vertex) -> Array:
 	var neightbors = get_ancestors(vertex) + get_descendants(vertex)
