@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AssignmentParameters" load_steps=6 format=3 uid="uid://0h5qxhfj2a8v"]
+
+[ext_resource type="Resource" uid="uid://c8seuyofduohl" path="res://Events/resources/ExclamationEvent.tres" id="1_6k4j4"]
+[ext_resource type="Script" path="res://Generation/AssignmentParameters.gd" id="1_vvs6d"]
+[ext_resource type="Resource" uid="uid://cnadbxeukau4w" path="res://Events/resources/QuestionEvent.tres" id="2_nsecp"]
+[ext_resource type="Resource" uid="uid://qiy6xndpkvmk" path="res://Events/resources/PlusEvent.tres" id="3_e8fr1"]
+[ext_resource type="Resource" uid="uid://b7dovkjbmh73j" path="res://Events/resources/Exclamationx3Event.tres" id="4_rjikv"]
+
+[resource]
+script = ExtResource("1_vvs6d")
+event_list = Array[Resource("res://Events/Event.gd")]([ExtResource("1_6k4j4"), ExtResource("2_nsecp"), ExtResource("3_e8fr1"), ExtResource("4_rjikv")])
+event_chances = [8.0, 3.0, 1.0, null]
+restrictions = Array[Vector2]([Vector2(9, 3), Vector2(8, 2), Vector2(0, 0)])

@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3wa5nw2k1ruu"]
+
+[ext_resource type="Script" path="res://Events/event_node.gd" id="1_j1jfq"]
+[ext_resource type="Resource" uid="uid://cnadbxeukau4w" path="res://Events/resources/QuestionEvent.tres" id="2_sr7sx"]
+
+[node name="EventNode" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_j1jfq")
+event = ExtResource("2_sr7sx")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureButton" type="TextureButton" parent="CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[connection signal="pressed" from="CenterContainer/TextureButton" to="." method="_on_Button_pressed"]

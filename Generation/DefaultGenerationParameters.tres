@@ -4,10 +4,10 @@
 
 [resource]
 script = ExtResource("1_pc1b4")
-rows = 5
+rows = 4
 columns = 10
-base_position = Vector2(20, 20)
-distance = Vector2(50, 50)
-iterations = 5
+base_position = Vector2(50, 50)
+distance = Vector2(100, 100)
+iterations = 12
 clamp_at = Array[int]([0, -1])
-clamp_at_to = Array[Vector2]([])
+clamp_at_to = Array[Vector2]([Vector2(-2, 3)])

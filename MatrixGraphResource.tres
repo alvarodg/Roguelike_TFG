@@ -1,7 +1,6 @@
-[gd_resource type="Resource" script_class="MatrixGraph" load_steps=2 format=3 uid="uid://c11difhg5ms3f"]
+[gd_resource type="Resource" script_class="MatrixGraphImplementation" load_steps=2 format=3 uid="uid://c11difhg5ms3f"]
 
 [ext_resource type="Script" path="res://Utilities/MatrixGraphImplementation.gd" id="1_vfl8h"]
 
 [resource]
 script = ExtResource("1_vfl8h")
-directed = false

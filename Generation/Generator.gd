@@ -2,7 +2,8 @@ extends Container
 
 @export var on = true
 @export var parameters: GenerationParameters
-var event_node_scene = preload("res://event_node.tscn")
+@export var assignment: AssignmentParameters
+var event_node_scene = preload("res://Events/event_node.tscn")
 
 var graph: EventNodeGraph
 var node_matrix: Array
@@ -10,7 +11,7 @@ var to_draw_from: Array[Vector2]
 var to_draw_to: Array[Vector2]
 
 func _ready():
-	if not on: return	
+	if not on: return
 	randomize()
 	graph = EventNodeGraph.new()
 	node_matrix = new_2d_array(parameters.columns, parameters.rows)
@@ -18,7 +19,7 @@ func _ready():
 	clamp_paths_to()
 	clamp_paths()
 	weld_paths()
-	display_nodes()
+	assign_nodes()
 	store_relationships()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -91,14 +92,16 @@ func weld_neightbors(column, row):
 	node_matrix[column].pop_at(row+1)
 
 ## Añade todos los nodos a la escena
-func display_nodes():
+func assign_nodes():
 	for i in range(node_matrix.size()):
 		for j in range(node_matrix[i].size()):
 			# Añade el nodo a la escena
 			var current_node = node_matrix[i][j]
+			current_node.set_text(str(current_node.index))
+			# Asigna un evento al nodo
+			current_node.event = assignment.get_event(i)
 			add_child(current_node)
-			# TODO: Probablemente asignar el tipo de evento aquí
-			current_node.button.text = str(current_node.index)
+			
 
 ## Guarda los descendientes en los propios nodos, para evitar necesitar todo el grafo localmente
 func store_relationships():

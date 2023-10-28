@@ -1,7 +1,7 @@
 extends Resource
 class_name EventNodeGraph
 
-var event_node_scene = preload("res://event_node.tscn")
+var event_node_scene = preload("res://Events/event_node.tscn")
 var base_graph: MatrixGraphImplementation
 var data: Array[EventNode]
 

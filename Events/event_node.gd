@@ -1,11 +1,15 @@
 extends Control
 class_name EventNode
 
-@onready var button: Button = %Button
+@export var event: Event = load("res://Events/DefaultEvent.tres")
+@onready var texture_button = %TextureButton
 var index: int = 0
 var descendants: Array[EventNode] = []
-var lines: Array[Line2D] = []
-@onready var center_container = $CenterContainer
+#var lines: Array[Line2D] = []
+
+func _ready():
+	texture_button.texture_normal = event.icon_normal
+	texture_button.texture_hover = event.icon_hover
 
 func _draw():
 	var from = global_position - position
@@ -29,7 +33,7 @@ func remove_descendant(descendant: EventNode):
 		descendants.pop_at(descendant_index)
 		
 func set_text(text):
-	button.text = text
+	pass
 
 func _on_Button_pressed():
-	pass
+	print(event.text)
