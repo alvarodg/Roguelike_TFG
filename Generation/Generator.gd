@@ -1,5 +1,7 @@
 extends Container
 
+signal generation_complete(node_matrix)
+
 @export var on = true
 @export var parameters: GenerationParameters
 @export var assignment: AssignmentParameters
@@ -21,6 +23,7 @@ func _ready():
 	weld_paths()
 	assign_nodes()
 	store_relationships()
+	emit_signal("generation_complete",node_matrix)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -99,7 +102,7 @@ func assign_nodes():
 			var current_node = node_matrix[i][j]
 			current_node.set_text(str(current_node.index))
 			# Asigna un evento al nodo
-			current_node.event = assignment.get_event(i)
+			current_node.event = assignment.get_event(graph, node_matrix, current_node, i)
 			add_child(current_node)
 			
 

@@ -9,11 +9,11 @@ func ready():
 	while event_list.size() > event_chances.size():
 		event_chances.append(0.0)
 
-func get_event(row) -> Event:
-	# A mejorar, de momento solo deja indicar una columna en la que todos los eventos
+func get_event(graph :EventNodeGraph, node_matrix :Array, node: EventNode, column: int) -> Event:
+	# A mejorar, de momento solo deja indicar columnas en las que todos los eventos
 	# tienen que ser iguales y después reparte aleatoriamente
 	for restriction in restrictions:
-		if restriction.x == row:
+		if restriction.x == column:
 			return event_list[restriction.y]
 	# Implementado a voleo, pero debería funcionar
 	# Selecciona un evento de acuerdo con sus probabilidades

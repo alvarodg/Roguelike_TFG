@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Event" load_steps=5 format=3 uid="uid://bjlj5y2nif4am"]
+
+[ext_resource type="Script" path="res://Events/Event.gd" id="1_ejdke"]
+[ext_resource type="Texture2D" uid="uid://ca6dgcvlb5jmq" path="res://Events/icons/two_exclamation_hover.png" id="1_fil5v"]
+[ext_resource type="Texture2D" uid="uid://db56wduf4ygxi" path="res://Events/icons/two_exclamation.png" id="2_vavgw"]
+[ext_resource type="Texture2D" uid="uid://c0nut2oyv86hc" path="res://Events/icons/two_exclamation_traveled.png" id="3_8r3oi"]
+
+[resource]
+script = ExtResource("1_ejdke")
+icon_normal = ExtResource("2_vavgw")
+icon_hover = ExtResource("1_fil5v")
+icon_traveled = ExtResource("3_8r3oi")
+text = "!! Event"

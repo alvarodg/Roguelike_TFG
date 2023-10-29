@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="Event" load_steps=4 format=3 uid="uid://qiy6xndpkvmk"]
+[gd_resource type="Resource" script_class="Event" load_steps=5 format=3 uid="uid://qiy6xndpkvmk"]
 
 [ext_resource type="Texture2D" uid="uid://cm0tihr2susy3" path="res://Events/icons/plus_hover.png" id="1_3swba"]
 [ext_resource type="Script" path="res://Events/Event.gd" id="1_lj534"]
 [ext_resource type="Texture2D" uid="uid://d0qilds8e3wsr" path="res://Events/icons/plus.png" id="2_6vhsu"]
+[ext_resource type="Texture2D" uid="uid://dev3t0pp6s8ov" path="res://Events/icons/plus_traveled.png" id="3_32q42"]
 
 [resource]
 script = ExtResource("1_lj534")
 icon_normal = ExtResource("2_6vhsu")
 icon_hover = ExtResource("1_3swba")
+icon_traveled = ExtResource("3_32q42")
 text = "+ Event"

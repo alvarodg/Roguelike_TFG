@@ -1,14 +1,18 @@
 extends Control
 class_name EventNode
 
-@export var event: Event = load("res://Events/DefaultEvent.tres")
+signal node_chosen(node)
+
+enum State {AVAILABLE, TRAVELED, UNAVAILABLE}
+@export var event: Event = load("res://Events/resources/ExclamationEvent.tres")
 @onready var texture_button = %TextureButton
 var index: int = 0
 var descendants: Array[EventNode] = []
+var state: State = State.AVAILABLE : set = set_state
 #var lines: Array[Line2D] = []
 
 func _ready():
-	texture_button.texture_normal = event.icon_normal
+	texture_button.texture_normal = event.icon_hover
 	texture_button.texture_hover = event.icon_hover
 
 func _draw():
@@ -35,5 +39,20 @@ func remove_descendant(descendant: EventNode):
 func set_text(text):
 	pass
 
+func set_state(new_state: State):
+	match new_state:
+		State.AVAILABLE:
+			texture_button.texture_normal = event.icon_normal
+			texture_button.texture_hover = event.icon_hover
+		State.TRAVELED:
+			texture_button.texture_normal = event.icon_traveled
+			texture_button.texture_hover = null
+		State.UNAVAILABLE:
+			texture_button.texture_normal = event.icon_hover
+			texture_button.texture_hover = null
+	state = new_state
+	
 func _on_Button_pressed():
-	print(event.text)
+	if state == State.AVAILABLE:
+		print(event.text)
+		emit_signal("node_chosen", self)

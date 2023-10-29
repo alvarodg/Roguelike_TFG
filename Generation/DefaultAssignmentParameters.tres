@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Generation/AssignmentParameters.gd" id="1_vvs6d"]
 [ext_resource type="Resource" uid="uid://cnadbxeukau4w" path="res://Events/resources/QuestionEvent.tres" id="2_nsecp"]
 [ext_resource type="Resource" uid="uid://qiy6xndpkvmk" path="res://Events/resources/PlusEvent.tres" id="3_e8fr1"]
-[ext_resource type="Resource" uid="uid://b7dovkjbmh73j" path="res://Events/resources/Exclamationx3Event.tres" id="4_rjikv"]
+[ext_resource type="Resource" uid="uid://b7dovkjbmh73j" path="res://Events/resources/ThreeExclamationEvent.tres" id="4_rjikv"]
 
 [resource]
 script = ExtResource("1_vvs6d")
