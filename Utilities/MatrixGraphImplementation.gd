@@ -5,15 +5,15 @@ var size: int : get = get_size
 var adj_matrix
 var directed: bool : get = is_directed
 
-func _init(size = 0, directed = false):
+func _init(p_size = 0, p_directed = false):
 	adj_matrix = []
-	for i in range(size):
+	for i in range(p_size):
 		var v = []
-		v.resize(size)
+		v.resize(p_size)
 		v.fill(0)
 		adj_matrix.append(v)
-	self.size = size
-	self.directed = directed
+	size = p_size
+	directed = p_directed
 	
 func add_edge(v1, v2, weight = 1):
 	if v1 == v2: return

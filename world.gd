@@ -1,50 +1,105 @@
 extends Control
 
+signal game_loaded
+
 var node_matrix = []
 var traveled_nodes: Array[EventNode] = []
+var traveled_coords: Array[Vector2] = []
+
+# Temporal, para probar guardar/cargar en variable
+var saved_coords: Array[Vector2] = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	emit_signal("game_loaded")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
+# Note: This can be called from anywhere inside the tree. This function is
+# path independent.
+# Go through everything in the run_persistent category and ask them to return a
+# dict of relevant variables.
+func save_game():
+	var save_game = FileAccess.open("user://savegame.save", FileAccess.WRITE)
+	var save_nodes = get_tree().get_nodes_in_group("run_persistent")
+	for node in save_nodes:
+		# Check the node is an instanced scene so it can be instanced again during load.
+		if node.scene_file_path.is_empty():
+			print("persistent node '%s' is not an instanced scene, skipped" % node.name)
+			continue
 
-## Al recibir la señal generation_complete de Generator, guarda los nodos generados,
-## marca la primera tanda como disponible y se conecta a sus señales.
-func _on_Generator_generation_complete(node_matrix):
-	self.node_matrix = node_matrix
-	for node in node_matrix[0]:
-		node.state = EventNode.State.AVAILABLE
-	connect_to_node_signals(node_matrix)
+		# Check the node has a save function.
+		if !node.has_method("save"):
+			print("persistent node '%s' is missing a save() function, skipped" % node.name)
+			continue
 
-## Cuando se recibe la señal node_chosen de EventNode deja a todos los nodos sin disponibilidad, 
-## añade el nodo que la mandó a la lista de atravesados y marca a los miembros de esta lista 
-## como tales y finalmente marca a sus descendientes como disponibles.
-func _on_EventNode_chosen(node: EventNode):
-	traveled_nodes.append(node)
-	remove_availability()
-	mark_traveled()
-	make_descendants_available(node)
+		# Call the node's save function.
+		var node_data = node.call("save")
 
-## Conecta las señales que se van a utilizar de todos los nodos en node_matrix
-func connect_to_node_signals(node_matrix):
-	for i in range(node_matrix.size()):
-		for j in range(node_matrix[i].size()):
-			node_matrix[i][j].connect("node_chosen", _on_EventNode_chosen)
+		# JSON provides a static method to serialized JSON string.
+		var json_string = JSON.stringify(node_data)
 
-func mark_traveled():
-	for node in traveled_nodes:
-		node.state = EventNode.State.TRAVELED
+		# Store the save dictionary as a new line in the save file.
+		save_game.store_line(json_string)
 
-func remove_availability():
-	for i in range(node_matrix.size()):
-		for j in range(node_matrix[i].size()):
-			node_matrix[i][j].state = EventNode.State.UNAVAILABLE
+# Note: This can be called from anywhere inside the tree. This function
+# is path independent.
+func load_game():
+	if not FileAccess.file_exists("user://savegame.save"):
+		return # Error! We don't have a save to load.
 
-func make_descendants_available(node):
-	for descendant in node.descendants:
-		descendant.state = EventNode.State.AVAILABLE
+	# We need to revert the game state so we're not cloning objects
+	# during loading. This will vary wildly depending on the needs of a
+	# project, so take care with this step.
+	# For our example, we will accomplish this by deleting saveable objects.
+	var save_nodes = get_tree().get_nodes_in_group("run_persistent")
+	for i in save_nodes:
+		i.queue_free()
+
+	# Load the file line by line and process that dictionary to restore
+	# the object it represents.
+	var save_game = FileAccess.open("user://savegame.save", FileAccess.READ)
+	while save_game.get_position() < save_game.get_length():
+		var json_string = save_game.get_line()
+
+		# Creates the helper class to interact with JSON
+		var json = JSON.new()
+
+		# Check if there is any error while parsing the JSON string, skip in case of failure
+		var parse_result = json.parse(json_string)
+		if not parse_result == OK:
+			print("JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
+			continue
+
+		# Get the data from the JSON object
+		var node_data = json.get_data()
+
+		# Firstly, we need to create the object and add it to the tree and set its position.
+		var new_object = load(node_data["filename"]).instantiate()
+		get_node(node_data["parent"]).add_child(new_object)
+		new_object.position = Vector2(node_data["pos_x"], node_data["pos_y"])
+
+		# Now we set the remaining variables.
+		for i in node_data.keys():
+			if i == "filename" or i == "parent" or i == "pos_x" or i == "pos_y":
+				continue
+			if(new_object.has_method("data_load")):
+				new_object.data_load(i, node_data[i])
+			else:
+				new_object.set(i, node_data[i])
+	emit_signal("game_loaded")
+	
+
+func _on_SaveButton_pressed():
+	save_game()
+#	refresh_map()
+
+func _on_LoadButton_pressed():
+	load_game()
+#	refresh_map()
+
+func _on_DeleteSave_pressed():
+	DirAccess.copy_absolute("user://savegame.save", "user://savegame.backup")
+	DirAccess.remove_absolute("user://savegame.save")

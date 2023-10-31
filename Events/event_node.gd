@@ -7,6 +7,7 @@ enum State {AVAILABLE, TRAVELED, UNAVAILABLE}
 @export var event: Event = load("res://Events/resources/ExclamationEvent.tres")
 @onready var texture_button = %TextureButton
 var index: int = 0
+var coordinates = Vector2.ZERO
 var descendants: Array[EventNode] = []
 var state: State = State.AVAILABLE : set = set_state
 #var lines: Array[Line2D] = []

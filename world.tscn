@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bfdmc5trnp4uk"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_ewi3c"]
-[ext_resource type="PackedScene" uid="uid://ddl28ma3jp8ca" path="res://Generation/generator.tscn" id="2_uk3ff"]
+[ext_resource type="PackedScene" uid="uid://dtatqj2q74q42" path="res://map.tscn" id="2_xn8pr"]
 
 [node name="World" type="Control"]
 layout_mode = 3
@@ -12,17 +12,49 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ewi3c")
 
-[node name="Map" type="Control" parent="."]
-anchors_preset = 0
+[node name="Map" parent="." instance=ExtResource("2_xn8pr")]
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Generator" parent="Map" instance=ExtResource("2_uk3ff")]
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
+[node name="SaveButton" type="Button" parent="Panel/HBoxContainer"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "SAVE GAME"
 
-[connection signal="generation_complete" from="Map/Generator" to="." method="_on_Generator_generation_complete"]
+[node name="LoadButton" type="Button" parent="Panel/HBoxContainer"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "LOAD GAME"
+
+[node name="DeleteSave" type="Button" parent="Panel/HBoxContainer"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "DELETE SAVE"
+
+[node name="RegenerateButton" type="Button" parent="Panel/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "REGENERATE"
+
+[connection signal="pressed" from="Panel/HBoxContainer/SaveButton" to="." method="_on_SaveButton_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/LoadButton" to="." method="_on_LoadButton_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/DeleteSave" to="." method="_on_DeleteSave_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/RegenerateButton" to="Map" method="_on_RegenerateButton_pressed"]
