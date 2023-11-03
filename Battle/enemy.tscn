@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqjqo5c311nia"]
+
+[ext_resource type="Texture2D" uid="uid://djmrox3cqnntc" path="res://icon.svg" id="1_d3puu"]
+[ext_resource type="Script" path="res://Battle/enemy.gd" id="1_yvkhe"]
+
+[node name="Enemy" type="Control"]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+script = ExtResource("1_yvkhe")
+
+[node name="EnemyTexture" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -128.0
+offset_bottom = 128.0
+grow_horizontal = 0
+texture = ExtResource("1_d3puu")
+
+[node name="EnemyHealthBar" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -264.0
+offset_right = -144.0
+offset_bottom = 32.0
+grow_horizontal = 0

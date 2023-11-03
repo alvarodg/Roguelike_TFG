@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bfdmc5trnp4uk"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_ewi3c"]
-[ext_resource type="PackedScene" uid="uid://dtatqj2q74q42" path="res://map.tscn" id="2_xn8pr"]
+[ext_resource type="PackedScene" uid="uid://dtatqj2q74q42" path="res://map.tscn" id="2_tumwh"]
 
 [node name="World" type="Control"]
 layout_mode = 3
@@ -12,9 +12,9 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ewi3c")
 
-[node name="Map" parent="." instance=ExtResource("2_xn8pr")]
+[node name="Map" parent="." instance=ExtResource("2_tumwh")]
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="." groups=["map_screen"]]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 1
 anchors_preset = 12
@@ -57,4 +57,3 @@ text = "REGENERATE"
 [connection signal="pressed" from="Panel/HBoxContainer/SaveButton" to="." method="_on_SaveButton_pressed"]
 [connection signal="pressed" from="Panel/HBoxContainer/LoadButton" to="." method="_on_LoadButton_pressed"]
 [connection signal="pressed" from="Panel/HBoxContainer/DeleteSave" to="." method="_on_DeleteSave_pressed"]
-[connection signal="pressed" from="Panel/HBoxContainer/RegenerateButton" to="Map" method="_on_RegenerateButton_pressed"]

@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="Event" load_steps=5 format=3 uid="uid://c8seuyofduohl"]
+[gd_resource type="Resource" script_class="Event" load_steps=6 format=3 uid="uid://c8seuyofduohl"]
 
 [ext_resource type="Texture2D" uid="uid://bl5ps382ndwf3" path="res://Events/icons/exclamation_hover.png" id="1_dl563"]
 [ext_resource type="Texture2D" uid="uid://cood8nuhjx2kb" path="res://Events/icons/exclamation.png" id="2_55xuo"]
 [ext_resource type="Script" path="res://Events/Event.gd" id="3_dnybv"]
 [ext_resource type="Texture2D" uid="uid://ck3k05m1q2gkt" path="res://Events/icons/exclamation_traveled.png" id="3_egnu4"]
+[ext_resource type="PackedScene" uid="uid://7wggm07bbvjj" path="res://Battle/Battle.tscn" id="4_eh2vm"]
 
 [resource]
 script = ExtResource("3_dnybv")
@@ -11,3 +12,4 @@ icon_normal = ExtResource("2_55xuo")
 icon_hover = ExtResource("1_dl563")
 icon_traveled = ExtResource("3_egnu4")
 text = "! Event"
+scene = ExtResource("4_eh2vm")

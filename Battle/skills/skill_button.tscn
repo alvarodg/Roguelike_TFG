@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1kf3tsi84npu"]
+
+[ext_resource type="Script" path="res://Battle/skills/skill_button.gd" id="1_5hwg2"]
+
+[node name="SkillButton" type="Button"]
+custom_minimum_size = Vector2(300, 100)
+theme_override_font_sizes/font_size = 40
+text = "Skill"
+script = ExtResource("1_5hwg2")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -1,6 +1,7 @@
 extends Control
 
 signal ready_to_load
+signal event_chosen
 
 @onready var generator = %Generator
 
@@ -9,6 +10,7 @@ var traveled_nodes: Array[EventNode] = []
 var traveled_coords: Array[Vector2] = []
 # Temporal, para probar guardar/cargar en variable
 var saved_coords: Array[Vector2] = []
+var current_event: Event
 
 # Called when the node enters the scene tree for the first time.
 # Usando call_deferred para asegurarse de que termine de asignarse sus datos en data_load()
@@ -18,7 +20,9 @@ func _ready():
 #	get_parent().connect("game_loaded", _on_World_game_loaded)
 
 func _start():
-	generator.generate()
+	add_to_group("map_screen")
+	generator.generate(RunData.seed)
+	EventBus.event_finished.connect(_on_Event_finished)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -41,6 +45,16 @@ func _on_EventNode_chosen(node: EventNode):
 	remove_availability()
 	mark_traveled()
 	make_descendants_available(node)
+	# TEMPORAL
+	for map_screen_node in get_tree().get_nodes_in_group("map_screen"):
+		map_screen_node.hide()
+	get_parent().add_child(node.event.scene.instantiate())
+
+
+func _on_Event_finished():
+	# TEMPORAL
+	for map_screen_node in get_tree().get_nodes_in_group("map_screen"):
+		map_screen_node.show()
 
 ## Conecta las señales que se van a utilizar de todos los nodos en node_matrix
 func connect_to_node_signals(node_matrix):
@@ -84,7 +98,7 @@ func refresh_map():
 #	traveled_coords = saved_coords.duplicate()
 
 func _on_RegenerateButton_pressed():
-	generator.generate()
+	generator.generate(RunData.seed)
 
 func _on_World_game_loaded():
 	generator.generate()

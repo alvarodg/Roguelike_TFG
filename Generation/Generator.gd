@@ -13,12 +13,12 @@ var rng: RandomNumberGenerator
 func _ready():
 	pass
 	
-func generate():
+func generate(seed = "godot"):
 	if not on: return
 	for child in get_children():
 		child.queue_free()
 	rng = RandomNumberGenerator.new()
-	rng.seed = hash("godot")
+	rng.seed = hash(seed)
 	node_matrix = map_generator.generate(rng)
 	assign_nodes()
 	emit_signal("generation_complete", node_matrix)

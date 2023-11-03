@@ -1,6 +1,9 @@
 extends MapGenerator
 class_name GenerationParameters
 
+# Generación basada en el método presentado por Basudev Patel en su entrada de blog
+# "Random Paths in Gamedev Beatdown", con implementación y modificaciones propias.
+# https://medium.com/@1basudevpatel/random-paths-in-gamedev-beatdown-a913a1d8c5e6
 
 @export var rows: int = 4
 @export var columns: int = 10
