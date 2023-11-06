@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://tv88ia00qmed"]
+
+[ext_resource type="Script" path="res://Battle/prototypes/skill_box.gd" id="1_4n8df"]
+
+[node name="SkillBox" type="VBoxContainer"]
+script = ExtResource("1_4n8df")
+
+[node name="Description" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "HACE ALGO"
+horizontal_alignment = 1
+
+[node name="SlotBox" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="ExecuteButton" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Execute"
+
+[node name="UndoButton" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 12
+text = "Undo"
+
+[connection signal="pressed" from="HBoxContainer/ExecuteButton" to="." method="_on_ExecuteButton_pressed"]
+[connection signal="pressed" from="HBoxContainer/UndoButton" to="." method="_on_UndoButton_pressed"]
