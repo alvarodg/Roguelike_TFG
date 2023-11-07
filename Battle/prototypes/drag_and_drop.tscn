@@ -40,7 +40,7 @@ theme_override_constants/separation = 32
 
 [node name="SkillBox" parent="VBoxContainer/Panel/SkillContainer" instance=ExtResource("1_q5qrn")]
 layout_mode = 2
-slot_list = Array[int]([0, 0, 0])
+slot_list = Array[int]([5, 1, 0])
 
 [node name="SkillBox2" parent="VBoxContainer/Panel/SkillContainer" instance=ExtResource("1_q5qrn")]
 layout_mode = 2
@@ -52,7 +52,7 @@ slot_list = Array[int]([0, 1, 1])
 
 [node name="SkillBox4" parent="VBoxContainer/Panel/SkillContainer" instance=ExtResource("1_q5qrn")]
 layout_mode = 2
-slot_list = Array[int]([0])
+slot_list = Array[int]([1, 1, 1, 1])
 
 [node name="Panel2" type="Panel" parent="VBoxContainer"]
 custom_minimum_size = Vector2(400, 300)

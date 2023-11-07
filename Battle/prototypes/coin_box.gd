@@ -10,6 +10,7 @@ extends HBoxContainer
 func _ready():
 	for i in range(coin_count):
 		var coin = coin_scene.instantiate()
+		coin.add_to_group("coin")
 		coin.flip()
 		add_child(coin)
 

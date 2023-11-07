@@ -1,19 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://cunn187c8gmy8"]
+[gd_scene load_steps=6 format=3 uid="uid://cunn187c8gmy8"]
 
 [ext_resource type="Script" path="res://Battle/prototypes/Slot.gd" id="1_f8xhp"]
 [ext_resource type="Texture2D" uid="uid://dpgpbk4n0loxk" path="res://Battle/prototypes/sprites/coin_slot_any.png" id="2_0w4v1"]
-[ext_resource type="Texture2D" uid="uid://cpw2y2hxjx2k6" path="res://Battle/prototypes/sprites/coin_slot_heads.png" id="3_pvk2i"]
-[ext_resource type="Texture2D" uid="uid://bdet75vcwcu45" path="res://Battle/prototypes/sprites/coin_slot_tails.png" id="4_5v1ee"]
+[ext_resource type="Texture2D" uid="uid://cpw2y2hxjx2k6" path="res://Battle/prototypes/sprites/coin_slot_heads.png" id="3_38pys"]
+[ext_resource type="Texture2D" uid="uid://bdet75vcwcu45" path="res://Battle/prototypes/sprites/coin_slot_tails.png" id="4_e47eb"]
+[ext_resource type="Script" path="res://Battle/prototypes/CountLabel.gd" id="5_rfkqu"]
 
 [node name="Slot" type="TextureButton"]
 texture_normal = ExtResource("2_0w4v1")
 script = ExtResource("1_f8xhp")
+tails_ok = false
 texture_any = ExtResource("2_0w4v1")
-texture_heads = ExtResource("3_pvk2i")
-texture_tails = ExtResource("4_5v1ee")
+texture_heads = ExtResource("3_38pys")
+texture_tails = ExtResource("4_e47eb")
+coins_needed = 2
 
 [node name="Shadow" type="ColorRect" parent="."]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,3 +25,35 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0562916, 0.0562916, 0.0562916, 0.627451)
+
+[node name="Light" type="ColorRect" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.698039, 0.698039, 0.698039, 0.32549)
+
+[node name="CountLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -26.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "x N"
+horizontal_alignment = 2
+script = ExtResource("5_rfkqu")
+
+[connection signal="coins_changed" from="." to="CountLabel" method="_on_Slot_coins_changed"]

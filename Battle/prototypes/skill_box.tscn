@@ -4,6 +4,7 @@
 
 [node name="SkillBox" type="VBoxContainer"]
 script = ExtResource("1_4n8df")
+slot_list = Array[int]([0, 0, 0])
 
 [node name="Description" type="Label" parent="."]
 unique_name_in_owner = true

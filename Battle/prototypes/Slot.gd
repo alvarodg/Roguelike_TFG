@@ -2,21 +2,29 @@ extends TextureButton
 class_name Slot
 
 signal coin_inserted(coin)
+signal coins_changed(coins_needed, current_coins)
 
 @export var heads_ok: bool = true
 @export var tails_ok: bool = true
 @export var texture_any: Texture2D
 @export var texture_heads: Texture2D
 @export var texture_tails: Texture2D
+@export var coins_needed: int = 1 : set = set_coins_needed
+
 @onready var shadow = %Shadow
-var available = true
-var inserted_coin: Coin
+@onready var light = %Light
+@onready var count_label = $CountLabel
+
+var is_available = true
+var inserted_coins: Array[Coin]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_available()
 	update_texture()
-
+	coins_changed.emit(coins_needed, inserted_coins.size())
+	EventBus.started_dragging.connect(_on_started_dragging)
+	EventBus.stopped_dragging.connect(_on_stopped_dragging)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -29,6 +37,10 @@ func set_heads_ok(value):
 func set_tails_ok(value):
 	tails_ok = value
 	update_texture()
+	
+func set_coins_needed(value):
+	coins_needed = value
+	coins_changed.emit(coins_needed, inserted_coins.size())
 	
 func set_heads_only():
 	heads_ok = true
@@ -49,32 +61,53 @@ func update_texture():
 		texture_normal = texture_tails if tails_ok else texture_any
 		
 
+#func update_count_ui():
+#	if coins_needed == 1 or (coins_needed - inserted_coins.size()) == 0:
+#		count_label.text = ""
+#	else:
+#		count_label.text = "x "+ str(coins_needed - inserted_coins.size())
+
 func _can_drop_data(at_position, data):
-	return available and (data["heads"] and heads_ok) or (not data["heads"] and tails_ok)
+	return is_coin_compatible(data["heads"])
 
 func _drop_data(at_position, data):
-	inserted_coin = data["origin_node"]
-	inserted_coin.set_inserted()
-	set_unavailable()
-	coin_inserted.emit(inserted_coin)
-	print(data["heads"])
+	if data["origin_node"] is Coin:
+		var coin = data["origin_node"]
+		inserted_coins.append(coin)
+		coin.set_inserted()
+#		update_count_ui()
+		coins_changed.emit(coins_needed, inserted_coins.size())
+		if inserted_coins.size() == coins_needed:
+			set_unavailable()
+		coin_inserted.emit(coin)
+		print(data["heads"])
+
+func _on_started_dragging(object):
+	if is_available and object is Coin and is_coin_compatible(object.heads):
+		light.show()
+
+func _on_stopped_dragging(object):
+	if object is Coin:
+		light.hide()
 
 func set_available():
-	available = true
+	is_available = true
 	shadow.hide()
 
+func is_coin_compatible(is_heads: bool):
+	return is_available and (is_heads and heads_ok) or (not is_heads and tails_ok)
+
 func set_unavailable():
-	available = false
+	is_available = false
 	shadow.show()
 
 func set_done():
-	inserted_coin = null
+	inserted_coins = []
 
 func release_coin():
-	if inserted_coin is Coin:
-		inserted_coin.set_available()
-		inserted_coin = null
-		set_available()
-
-
+	for coin in inserted_coins:
+		coin.set_available()
+	inserted_coins = []
+	coins_changed.emit(coins_needed, inserted_coins.size())
+	set_available()
 	
