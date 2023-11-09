@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bfdmc5trnp4uk"]
+[gd_scene load_steps=4 format=3 uid="uid://bfdmc5trnp4uk"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_ewi3c"]
 [ext_resource type="PackedScene" uid="uid://dtatqj2q74q42" path="res://map.tscn" id="2_tumwh"]
+[ext_resource type="PackedScene" uid="uid://b8nvuhpu5i8fs" path="res://Menus/main_menu.tscn" id="3_6bs06"]
 
 [node name="World" type="Control"]
 layout_mode = 3
@@ -14,46 +15,50 @@ script = ExtResource("1_ewi3c")
 
 [node name="Map" parent="." instance=ExtResource("2_tumwh")]
 
-[node name="Panel" type="Panel" parent="." groups=["map_screen"]]
+[node name="DebugPanel" type="Panel" parent="." groups=["map_screen"]]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -100.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="DebugPanel"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="SaveButton" type="Button" parent="Panel/HBoxContainer"]
+[node name="SaveButton" type="Button" parent="DebugPanel/HBoxContainer"]
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "SAVE GAME"
 
-[node name="LoadButton" type="Button" parent="Panel/HBoxContainer"]
+[node name="LoadButton" type="Button" parent="DebugPanel/HBoxContainer"]
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "LOAD GAME"
 
-[node name="DeleteSave" type="Button" parent="Panel/HBoxContainer"]
+[node name="DeleteSave" type="Button" parent="DebugPanel/HBoxContainer"]
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "DELETE SAVE"
 
-[node name="RegenerateButton" type="Button" parent="Panel/HBoxContainer"]
+[node name="RegenerateButton" type="Button" parent="DebugPanel/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "REGENERATE"
 
-[connection signal="pressed" from="Panel/HBoxContainer/SaveButton" to="." method="_on_SaveButton_pressed"]
-[connection signal="pressed" from="Panel/HBoxContainer/LoadButton" to="." method="_on_LoadButton_pressed"]
-[connection signal="pressed" from="Panel/HBoxContainer/DeleteSave" to="." method="_on_DeleteSave_pressed"]
+[node name="MainMenu" parent="." instance=ExtResource("3_6bs06")]
+layout_mode = 1
+
+[connection signal="pressed" from="DebugPanel/HBoxContainer/SaveButton" to="." method="_on_SaveButton_pressed"]
+[connection signal="pressed" from="DebugPanel/HBoxContainer/LoadButton" to="." method="_on_LoadButton_pressed"]
+[connection signal="pressed" from="DebugPanel/HBoxContainer/DeleteSave" to="." method="_on_DeleteSave_pressed"]

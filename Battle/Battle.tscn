@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://7wggm07bbvjj"]
+[gd_scene load_steps=4 format=3 uid="uid://7wggm07bbvjj"]
 
 [ext_resource type="Texture2D" uid="uid://djmrox3cqnntc" path="res://icon.svg" id="1_e4se4"]
 [ext_resource type="Script" path="res://Battle/Battle.gd" id="1_qx2jm"]
 [ext_resource type="PackedScene" uid="uid://c8fsus475b5lt" path="res://Battle/skills/attack_button.tscn" id="4_37ghq"]
-[ext_resource type="PackedScene" uid="uid://b1kf3tsi84npu" path="res://Battle/skills/skill_button.tscn" id="4_x63w7"]
 
 [node name="Battle" type="Control"]
 layout_mode = 3
@@ -26,7 +25,7 @@ offset_right = -48.0
 offset_bottom = 160.0
 grow_horizontal = 0
 
-[node name="UI" type="Control" parent="."]
+[node name="BattleUI" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -34,7 +33,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SkillGrid" type="GridContainer" parent="UI"]
+[node name="SkillGrid" type="GridContainer" parent="BattleUI"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -50,27 +49,44 @@ grow_horizontal = 2
 grow_vertical = 2
 columns = 3
 
-[node name="AttackButton" parent="UI/SkillGrid" instance=ExtResource("4_37ghq")]
+[node name="AttackButton" parent="BattleUI/SkillGrid" instance=ExtResource("4_37ghq")]
 layout_mode = 2
+skill_name = "Balance"
+damage = 12
 
-[node name="SkillButton" parent="UI/SkillGrid" instance=ExtResource("4_x63w7")]
+[node name="AttackButton2" parent="BattleUI/SkillGrid" instance=ExtResource("4_37ghq")]
 layout_mode = 2
+skill_name = "Fair Strike"
+damage = 4
+dark_cost = 0
 
-[node name="SkillButton2" parent="UI/SkillGrid" instance=ExtResource("4_x63w7")]
+[node name="AttackButton3" parent="BattleUI/SkillGrid" instance=ExtResource("4_37ghq")]
 layout_mode = 2
+skill_name = "Trip"
+damage = 3
+light_cost = 0
 
-[node name="SkillButton3" parent="UI/SkillGrid" instance=ExtResource("4_x63w7")]
+[node name="AttackButton4" parent="BattleUI/SkillGrid" instance=ExtResource("4_37ghq")]
 layout_mode = 2
+skill_name = "Jackpot"
+damage = 50
+light_cost = 5
+dark_cost = 0
 
-[node name="SkillButton4" parent="UI/SkillGrid" instance=ExtResource("4_x63w7")]
+[node name="AttackButton5" parent="BattleUI/SkillGrid" instance=ExtResource("4_37ghq")]
 layout_mode = 2
+skill_name = "Consolation"
+damage = 12
+light_cost = 0
+dark_cost = 2
 
-[node name="DebugButton" type="Button" parent="UI/SkillGrid"]
+[node name="DebugButton" type="Button" parent="BattleUI/SkillGrid"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "Replace"
+theme_override_font_sizes/font_size = 30
+text = "Replace Enemy
+(Test Button)"
 
-[node name="PlayerPosition" type="Control" parent="UI"]
+[node name="PlayerPosition" type="Control" parent="BattleUI"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -81,7 +97,7 @@ offset_right = 400.0
 offset_bottom = -56.0
 grow_vertical = 0
 
-[node name="PlayerTexture" type="TextureRect" parent="UI/PlayerPosition"]
+[node name="PlayerTexture" type="TextureRect" parent="BattleUI/PlayerPosition"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -91,7 +107,7 @@ offset_right = 128.0
 grow_vertical = 0
 texture = ExtResource("1_e4se4")
 
-[node name="PlayerStatsPanel" type="Panel" parent="UI/PlayerPosition"]
+[node name="PlayerStatsPanel" type="Panel" parent="BattleUI/PlayerPosition"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 1
 anchors_preset = 2
@@ -103,7 +119,7 @@ offset_right = 256.0
 offset_bottom = -28.0
 grow_vertical = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/PlayerPosition/PlayerStatsPanel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="BattleUI/PlayerPosition/PlayerStatsPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -111,17 +127,23 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PlayerHealthBar" type="ProgressBar" parent="UI/PlayerPosition/PlayerStatsPanel/VBoxContainer"]
+[node name="PlayerHealthBar" type="ProgressBar" parent="BattleUI/PlayerPosition/PlayerStatsPanel/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="EnergyLabel" type="Label" parent="UI/PlayerPosition/PlayerStatsPanel/VBoxContainer"]
+[node name="LightEnergyLabel" type="Label" parent="BattleUI/PlayerPosition/PlayerStatsPanel/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "3 Energy"
 horizontal_alignment = 1
 
-[node name="EndTurnButton" type="Button" parent="UI"]
+[node name="DarkEnergyLabel" type="Label" parent="BattleUI/PlayerPosition/PlayerStatsPanel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "3 Energy"
+horizontal_alignment = 1
+
+[node name="EndTurnButton" type="Button" parent="BattleUI"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 1
@@ -139,5 +161,5 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 40
 text = "End Turn"
 
-[connection signal="pressed" from="UI/SkillGrid/DebugButton" to="." method="_on_DebugButton_pressed"]
-[connection signal="pressed" from="UI/EndTurnButton" to="." method="_on_EndTurnButton_pressed"]
+[connection signal="pressed" from="BattleUI/SkillGrid/DebugButton" to="." method="_on_DebugButton_pressed"]
+[connection signal="pressed" from="BattleUI/EndTurnButton" to="." method="_on_EndTurnButton_pressed"]

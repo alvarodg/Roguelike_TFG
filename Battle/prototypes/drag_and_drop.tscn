@@ -1,7 +1,45 @@
-[gd_scene load_steps=3 format=3 uid="uid://cwcuv1d2tgfbw"]
+[gd_scene load_steps=13 format=3 uid="uid://cwcuv1d2tgfbw"]
 
 [ext_resource type="PackedScene" uid="uid://tv88ia00qmed" path="res://Battle/prototypes/skill_box.tscn" id="1_q5qrn"]
 [ext_resource type="PackedScene" uid="uid://d108eaoiwyxw0" path="res://Battle/prototypes/coin_box.tscn" id="2_63d2i"]
+[ext_resource type="Script" path="res://Battle/skills/Skill.gd" id="2_83n3w"]
+[ext_resource type="Script" path="res://Battle/skills/SkillData.gd" id="2_kn7oc"]
+
+[sub_resource type="Resource" id="Resource_bvv7i"]
+script = ExtResource("2_kn7oc")
+name = ""
+cost = Array[int]([1, 1, 1])
+
+[sub_resource type="Resource" id="Resource_ui6va"]
+script = ExtResource("2_83n3w")
+data = SubResource("Resource_bvv7i")
+
+[sub_resource type="Resource" id="Resource_57m21"]
+script = ExtResource("2_kn7oc")
+name = ""
+cost = Array[int]([0, 5, 0])
+
+[sub_resource type="Resource" id="Resource_s2qe1"]
+script = ExtResource("2_83n3w")
+data = SubResource("Resource_57m21")
+
+[sub_resource type="Resource" id="Resource_1xsi3"]
+script = ExtResource("2_kn7oc")
+name = ""
+cost = Array[int]([2, 0, 1])
+
+[sub_resource type="Resource" id="Resource_f63h7"]
+script = ExtResource("2_83n3w")
+data = SubResource("Resource_1xsi3")
+
+[sub_resource type="Resource" id="Resource_cp5yo"]
+script = ExtResource("2_kn7oc")
+name = ""
+cost = Array[int]([2, 2, 2, 4])
+
+[sub_resource type="Resource" id="Resource_aquvo"]
+script = ExtResource("2_83n3w")
+data = SubResource("Resource_cp5yo")
 
 [node name="DragAndDrop" type="Control"]
 layout_mode = 3
@@ -40,19 +78,19 @@ theme_override_constants/separation = 32
 
 [node name="SkillBox" parent="VBoxContainer/Panel/SkillContainer" instance=ExtResource("1_q5qrn")]
 layout_mode = 2
-slot_list = Array[int]([5, 1, 0])
+skill = SubResource("Resource_ui6va")
 
 [node name="SkillBox2" parent="VBoxContainer/Panel/SkillContainer" instance=ExtResource("1_q5qrn")]
 layout_mode = 2
-slot_list = Array[int]([2, 2, 2])
+skill = SubResource("Resource_s2qe1")
 
 [node name="SkillBox3" parent="VBoxContainer/Panel/SkillContainer" instance=ExtResource("1_q5qrn")]
 layout_mode = 2
-slot_list = Array[int]([0, 1, 1])
+skill = SubResource("Resource_f63h7")
 
 [node name="SkillBox4" parent="VBoxContainer/Panel/SkillContainer" instance=ExtResource("1_q5qrn")]
 layout_mode = 2
-slot_list = Array[int]([1, 1, 1, 1])
+skill = SubResource("Resource_aquvo")
 
 [node name="Panel2" type="Panel" parent="VBoxContainer"]
 custom_minimum_size = Vector2(400, 300)

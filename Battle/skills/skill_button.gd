@@ -2,6 +2,11 @@ extends Button
 class_name SkillButton
 
 @onready var combatants = load("res://Battle/resources/Combatants.tres")
+var _skill: Skill
+
+func setup(skill: Skill):
+	_skill = skill
+	
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.

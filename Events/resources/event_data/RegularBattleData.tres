@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BattleEventData" load_steps=4 format=3 uid="uid://dvgi2ssh6mwbh"]
+
+[ext_resource type="Resource" uid="uid://bcdpt7volc5pm" path="res://Battle/enemies/RegularEnemyStats.tres" id="1_dvas3"]
+[ext_resource type="Script" path="res://Events/BattleEventData.gd" id="1_uown2"]
+[ext_resource type="PackedScene" uid="uid://7wggm07bbvjj" path="res://Battle/Battle.tscn" id="2_ejb0f"]
+
+[resource]
+script = ExtResource("1_uown2")
+enemy_stats = ExtResource("1_dvas3")
+scene = ExtResource("2_ejb0f")

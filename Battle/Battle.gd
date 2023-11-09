@@ -2,21 +2,25 @@ extends Control
 
 signal finished
 
-# TODO: probablemente mover las responsabilidades de UI a otra clase
-
+# TODO: mover las responsabilidades de UI a otra clase, reorganizar para batallas genéricas
 @onready var skill_grid = %SkillGrid
 @onready var turn_manager = preload("res://Battle/resources/TurnManager.tres")
 @onready var combatants: Combatants = load("res://Battle/resources/Combatants.tres")
 @onready var player_health_bar = %PlayerHealthBar
-@onready var energy_label = %EnergyLabel
+@onready var light_energy_label = %LightEnergyLabel
+@onready var dark_energy_label = %DarkEnergyLabel
 @onready var end_turn_button = %EndTurnButton
 @onready var enemy_position = %EnemyPosition
-@onready var enemy_class = preload("res://Battle/enemy.tscn")
+@onready var base_enemy = preload("res://Battle/enemy.tscn")
+@onready var next_event = preload("res://Events/choice.tscn")
+var enemy_stats: EnemyStats
 var enemy: Enemy
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	enemy = enemy_class.instantiate()
+	assert(enemy_stats is EnemyStats)
+	enemy = base_enemy.instantiate()
+	enemy.stats = enemy_stats
 	enemy_position.add_child(enemy)
 	combatants.enemy = enemy
 	combatants.player = RunData.player
@@ -24,16 +28,19 @@ func _ready():
 	turn_manager.connect("enemy_turn_started", _on_enemy_turn_started)
 	connect_player_signals(combatants.player)
 	connect_enemy_signals(combatants.enemy)
-	energy_label.text = str(combatants.player.energy) + " Energy"
+	light_energy_label.text = str(combatants.player.light_energy) + "Light Energy"
+	dark_energy_label.text = str(combatants.player.dark_energy) + "Dark Energy"
 	player_health_bar.max_value = combatants.player.max_health
 	player_health_bar.value = combatants.player.health
 	turn_manager.turn = turn_manager.Turn.PLAYER_TURN
 	
-func set_new_enemy(enemy_class: PackedScene):
+func set_new_enemy(enemy_stats: EnemyStats):
 	if combatants.enemy is Enemy:
 		combatants.enemy.queue_free()
-	enemy = enemy_class.instantiate()
+	enemy = base_enemy.instantiate()
+	enemy.stats = enemy_stats
 	combatants.enemy = enemy
+	connect_enemy_signals(combatants.enemy)
 	enemy_position.add_child(enemy)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -45,7 +52,8 @@ func connect_enemy_signals(p_enemy: Enemy):
 	p_enemy.turn_finished.connect(_on_Enemy_turn_finished)
 	
 func connect_player_signals(player: Player):
-	player.energy_changed.connect(_on_Player_energy_changed)
+	player.light_energy_changed.connect(_on_Player_light_energy_changed)
+	player.dark_energy_changed.connect(_on_Player_dark_energy_changed)
 	player.health_changed.connect(_on_Player_health_changed)
 	
 func _on_Enemy_died():
@@ -55,8 +63,12 @@ func end_battle():
 	skill_grid.hide()
 	end_turn_button.hide()
 	print("You won!")
+	if next_event is PackedScene:
+		var next_scene = next_event.instantiate()
+		get_parent().add_child(next_scene) 
+		await next_scene.finished
+	finished.emit()
 	queue_free()
-	EventBus.event_finished.emit()
 
 func _on_player_turn_started():
 	combatants.player.start_turn()
@@ -77,9 +89,13 @@ func _on_EndTurnButton_pressed():
 func _on_Enemy_turn_finished():
 	turn_manager.set_turn(TurnManager.Turn.PLAYER_TURN)
 
-func _on_Player_energy_changed(value):
-	if energy_label:
-		energy_label.text = str(value) + " Energy"
+func _on_Player_light_energy_changed(value):
+	if light_energy_label:
+		light_energy_label.text = str(value) + " Light"
+		
+func _on_Player_dark_energy_changed(value):
+	if dark_energy_label:
+		dark_energy_label.text = str(value) + " Dark"
 	
 func _on_Player_health_changed(value):
 	if player_health_bar:
@@ -87,4 +103,4 @@ func _on_Player_health_changed(value):
 
 
 func _on_DebugButton_pressed():
-	set_new_enemy(enemy_class)
+	set_new_enemy(EnemyStats.new())

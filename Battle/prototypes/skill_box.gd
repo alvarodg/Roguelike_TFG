@@ -1,8 +1,6 @@
 extends VBoxContainer
 
-# ¿Indices mejor que objetos?
-# Sacar de la propia habilidad en la implementación final.
-@export var slot_list: Array[int]
+@export var skill: Skill
 @onready var slot_scene = preload("res://Battle/prototypes/slot.tscn")
 @onready var description = %Description
 @onready var slot_box = %SlotBox
@@ -15,16 +13,17 @@ var total_coins: int = 0
 func _ready():
 	execute_button.disabled = true
 	undo_button.disabled = true
+	var slot_list = skill.get_coin_cost()
 	# Hacky, mira hasta los tres primeros elementos de la lista y asigna a coints_needed
 	for i in range(min(slot_list.size(),3)):
 		if slot_list[i] > 0:
 			var slot: Slot = slot_scene.instantiate()
 			if i == 0:
-				slot.set_heads_only()
-			elif i == 1:
-				slot.set_tails_only()
-			else:
 				slot.set_any()
+			elif i == 1:
+				slot.set_heads_only()
+			else:
+				slot.set_tails_only()
 			slot.add_to_group("slots")
 			slot_box.add_child(slot)
 			slot.coins_needed = slot_list[i]

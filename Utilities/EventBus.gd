@@ -1,6 +1,8 @@
 extends Node
 
 signal event_finished
+signal new_run_selected
+signal continue_run_selected
 signal started_dragging(object)
 signal stopped_dragging(object)
 

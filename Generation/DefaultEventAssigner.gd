@@ -10,8 +10,8 @@ func ready():
 	while event_list.size() > event_chances.size():
 		event_chances.append(0.0)
 
-func get_event(rng: RandomNumberGenerator, node_matrix :Array = [], node: EventNode = null) -> Event:
-	self.rng = rng
+func get_event(p_rng: RandomNumberGenerator, node_matrix :Array = [], node: EventNode = null) -> Event:
+	rng = p_rng
 	if not node is Node: return Event.new()
 	# A mejorar, de momento solo deja indicar columnas en las que todos los eventos
 	# tienen que ser iguales y después reparte aleatoriamente

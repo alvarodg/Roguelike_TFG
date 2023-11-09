@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="EventData" load_steps=3 format=3 uid="uid://b0s7cxl6wg044"]
+
+[ext_resource type="PackedScene" uid="uid://c0qgtvq02moyw" path="res://Events/choice.tscn" id="1_01igt"]
+[ext_resource type="Script" path="res://Events/EventData.gd" id="1_apgc7"]
+
+[resource]
+script = ExtResource("1_apgc7")
+scene = ExtResource("1_01igt")

@@ -13,12 +13,14 @@ var rng: RandomNumberGenerator
 func _ready():
 	pass
 	
-func generate(seed = "godot"):
+func generate(seed = 0):
+	print(seed)
+	node_matrix = []
 	if not on: return
 	for child in get_children():
 		child.queue_free()
 	rng = RandomNumberGenerator.new()
-	rng.seed = hash(seed)
+	rng.seed = seed
 	node_matrix = map_generator.generate(rng)
 	assign_nodes()
 	emit_signal("generation_complete", node_matrix)
@@ -44,9 +46,9 @@ func new_2d_array(width, height, value=0):
 			array[i].append(value)
 	return array
 
-func print_node_matrix_index():
-	var matrix = node_matrix
+func node_matrix_index():
+	var matrix = node_matrix.duplicate()
 	for i in range(node_matrix.size()):
 		for j in range(node_matrix[i].size()):
 			matrix[i][j] = node_matrix[i][j].index
-	print(matrix)
+	return matrix

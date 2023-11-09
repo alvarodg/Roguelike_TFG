@@ -1,7 +1,8 @@
 extends Node
 # Funciones save_game y load_game de la documentación de Godot, modificadas.
 
-@export var seed = ""
+var version = "0.1"
+@export var run_seed = 0
 var player: Player
 
 # Called when the node enters the scene tree for the first time.
@@ -13,16 +14,17 @@ func _ready():
 # Go through everything in the run_persistent category and ask them to return a
 # dict of relevant variables.
 func save_game():
-	var save_game = FileAccess.open("user://savegame.save", FileAccess.WRITE)
+	var save_file = FileAccess.open("user://savegame.save", FileAccess.WRITE)
 	var save_nodes = get_tree().get_nodes_in_group("run_persistent")
 	
 	# Guarda los datos de la partida
 	var run_data_dict = {
-		"seed" : seed,
-		"player_health" : player.health
+		"version" : version,
+		"run_seed" : run_seed,
 	}
-	save_game.store_line(JSON.stringify(run_data_dict))
-	
+#	run_data_dict.merge(player.to_save_dict())
+	save_file.store_line(JSON.stringify(run_data_dict))
+	save_file.store_line(JSON.stringify(player.to_save_dict()))
 	# Guarda los datos del grupo "run_persistent"
 	for node in save_nodes:
 		# Check the node is an instanced scene so it can be instanced again during load.
@@ -42,7 +44,7 @@ func save_game():
 		var json_string = JSON.stringify(node_data)
 
 		# Store the save dictionary as a new line in the save file.
-		save_game.store_line(json_string)
+		save_file.store_line(json_string)
 
 # Note: This can be called from anywhere inside the tree. This function
 # is path independent.
@@ -60,18 +62,21 @@ func load_game():
 		
 	# Load the file line by line and process that dictionary to restore
 	# the object it represents.
-	var save_game = FileAccess.open("user://savegame.save", FileAccess.READ)
+	var save_file = FileAccess.open("user://savegame.save", FileAccess.READ)
 	
 	# Creates the helper class to interact with JSON
 	var json = JSON.new()
 	# Carga los datos de la partida
-	if json.parse(save_game.get_line()) == OK:
+	if json.parse(save_file.get_line()) == OK:
 		var run_data_dict = json.get_data()
-		seed = run_data_dict["seed"]
-		player.health = run_data_dict["player_health"]
+		version = run_data_dict["version"]
+		run_seed = run_data_dict["run_seed"]
+	if json.parse(save_file.get_line()) == OK:
+		var player_data_dict = json.get_data()
+		player.load_save_dict(player_data_dict)
 	# Carga el resto de los datos del grupo "run_persistent"
-	while save_game.get_position() < save_game.get_length():
-		var json_string = save_game.get_line()
+	while save_file.get_position() < save_file.get_length():
+		var json_string = save_file.get_line()
 		json = JSON.new()
 		# Check if there is any error while parsing the JSON string, skip in case of failure
 		var parse_result = json.parse(json_string)
@@ -96,3 +101,17 @@ func load_game():
 			else:
 				new_object.set(i, node_data[i])
 	
+
+func validate_save() -> bool:
+	var valid = true
+	if FileAccess.file_exists("user://savegame.save"):
+		var save_file = FileAccess.open("user://savegame.save", FileAccess.READ)
+		var json = JSON.new()
+		# Carga los datos de la partida
+		if json.parse(save_file.get_line()) == OK:
+			var run_data_dict = json.get_data()
+			valid = run_data_dict["version"] == version
+	return valid
+
+func save_exists() -> bool:
+	return FileAccess.file_exists("user://savegame.save")

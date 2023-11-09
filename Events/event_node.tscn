@@ -1,13 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3wa5nw2k1ruu"]
+[gd_scene load_steps=2 format=3 uid="uid://c3wa5nw2k1ruu"]
 
 [ext_resource type="Script" path="res://Events/event_node.gd" id="1_j1jfq"]
-[ext_resource type="Resource" uid="uid://cnadbxeukau4w" path="res://Events/resources/QuestionEvent.tres" id="2_sr7sx"]
 
 [node name="EventNode" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_j1jfq")
-event = ExtResource("2_sr7sx")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1

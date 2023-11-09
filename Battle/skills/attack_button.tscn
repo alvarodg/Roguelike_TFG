@@ -4,5 +4,10 @@
 [ext_resource type="Script" path="res://Battle/skills/attack_button.gd" id="2_6ihvi"]
 
 [node name="AttackButton" instance=ExtResource("1_knhjb")]
+theme_override_font_sizes/font_size = 30
 text = "Attack"
 script = ExtResource("2_6ihvi")
+skill_name = "Attack"
+damage = 10
+light_cost = 1
+dark_cost = 1

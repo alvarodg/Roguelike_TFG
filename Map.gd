@@ -3,31 +3,25 @@ extends Control
 signal ready_to_load
 signal event_chosen
 
-@onready var generator = %Generator
+@export var debug_start: bool = false
+@onready var generator = $Generator
 
 var node_matrix = []
 var traveled_nodes: Array[EventNode] = []
 var traveled_coords: Array[Vector2] = []
-# Temporal, para probar guardar/cargar en variable
-var saved_coords: Array[Vector2] = []
 var current_event: Event
 
 # Called when the node enters the scene tree for the first time.
-# Usando call_deferred para asegurarse de que termine de asignarse sus datos en data_load()
+# Usando la señal game_ready para asegurarse de que terminen de asignarse sus datos en data_load()
 # cuando se carga partida.
 func _ready():
-	call_deferred("_start")
-#	get_parent().connect("game_loaded", _on_World_game_loaded)
-
-func _start():
+	if debug_start:
+		print("DEBUG START SET")
+		_on_World_game_ready()
+		return
+	get_parent().connect("game_ready", _on_World_game_ready)
 	add_to_group("map_screen")
-	generator.generate(RunData.seed)
-	EventBus.event_finished.connect(_on_Event_finished)
 	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 
 ## Al recibir la señal generation_complete de Generator, guarda los nodos generados,
 ## marca la primera tanda como disponible y se conecta a sus señales.
@@ -45,16 +39,18 @@ func _on_EventNode_chosen(node: EventNode):
 	remove_availability()
 	mark_traveled()
 	make_descendants_available(node)
-	# TEMPORAL
 	for map_screen_node in get_tree().get_nodes_in_group("map_screen"):
 		map_screen_node.hide()
-	get_parent().add_child(node.event.scene.instantiate())
-
-
-func _on_Event_finished():
-	# TEMPORAL
+	var event_scene = node.instantiate_event_scene()
+	get_parent().add_child(event_scene)
+	await event_scene.finished
 	for map_screen_node in get_tree().get_nodes_in_group("map_screen"):
 		map_screen_node.show()
+
+
+#func _on_Event_finished():
+#	for map_screen_node in get_tree().get_nodes_in_group("map_screen"):
+#		map_screen_node.show()
 
 ## Conecta las señales que se van a utilizar de todos los nodos en node_matrix
 func connect_to_node_signals(node_matrix):
@@ -94,14 +90,11 @@ func refresh_map():
 			node.state = EventNode.State.AVAILABLE
 	
 
-#func load_game():
-#	traveled_coords = saved_coords.duplicate()
-
 func _on_RegenerateButton_pressed():
-	generator.generate(RunData.seed)
+	generator.generate(RunData.run_seed)
 
-func _on_World_game_loaded():
-	generator.generate()
+func _on_World_game_ready():
+	generator.generate(RunData.run_seed)
 
 # Función que trata los parámetros a guardar, devolviéndolos en un diccionario.
 func save():
@@ -118,7 +111,6 @@ func save():
 		"traveled_coords_x" : traveled_coords_x,
 		"traveled_coords_y" : traveled_coords_y
 	}
-	saved_coords = traveled_coords.duplicate()
 	return save_dict
 
 # Función que trata los parámetros guardados y los carga.

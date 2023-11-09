@@ -4,7 +4,7 @@ class_name EventNode
 signal node_chosen(node)
 
 enum State {AVAILABLE, TRAVELED, UNAVAILABLE}
-@export var event: Event = load("res://Events/resources/ExclamationEvent.tres")
+var event: Event = load("res://Events/resources/ExclamationEvent.tres")
 @onready var texture_button = %TextureButton
 var index: int = 0
 var coordinates = Vector2.ZERO
@@ -57,3 +57,6 @@ func _on_Button_pressed():
 	if state == State.AVAILABLE:
 		print(event.text)
 		emit_signal("node_chosen", self)
+
+func instantiate_event_scene():
+	return event.instantiate_scene()

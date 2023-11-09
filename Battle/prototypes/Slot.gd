@@ -26,10 +26,6 @@ func _ready():
 	EventBus.started_dragging.connect(_on_started_dragging)
 	EventBus.stopped_dragging.connect(_on_stopped_dragging)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 func set_heads_ok(value):
 	heads_ok = value
 	update_texture()
@@ -67,20 +63,12 @@ func update_texture():
 #	else:
 #		count_label.text = "x "+ str(coins_needed - inserted_coins.size())
 
-func _can_drop_data(at_position, data):
+func _can_drop_data(_at_position, data):
 	return is_coin_compatible(data["heads"])
 
-func _drop_data(at_position, data):
+func _drop_data(_at_position, data):
 	if data["origin_node"] is Coin:
-		var coin = data["origin_node"]
-		inserted_coins.append(coin)
-		coin.set_inserted()
-#		update_count_ui()
-		coins_changed.emit(coins_needed, inserted_coins.size())
-		if inserted_coins.size() == coins_needed:
-			set_unavailable()
-		coin_inserted.emit(coin)
-		print(data["heads"])
+		insert_coin(data["origin_node"])
 
 func _on_started_dragging(object):
 	if is_available and object is Coin and is_coin_compatible(object.heads):
@@ -103,6 +91,14 @@ func set_unavailable():
 
 func set_done():
 	inserted_coins = []
+
+func insert_coin(coin: Coin):
+	inserted_coins.append(coin)
+	coin.set_inserted()
+	coins_changed.emit(coins_needed, inserted_coins.size())
+	if inserted_coins.size() == coins_needed:
+		set_unavailable()
+	coin_inserted.emit(coin)
 
 func release_coin():
 	for coin in inserted_coins:
