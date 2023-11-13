@@ -17,3 +17,6 @@ func _use():
 
 func get_coin_cost():
 	return data.cost
+
+func get_skill_name():
+	return data.name

@@ -2,7 +2,7 @@ extends Node
 # Funciones save_game y load_game de la documentación de Godot, modificadas.
 
 var version = "0.1"
-@export var run_seed = 0
+var run_seed = 0
 var player: Player
 
 # Called when the node enters the scene tree for the first time.
@@ -100,9 +100,8 @@ func load_game():
 				new_object.data_load(i, node_data[i])
 			else:
 				new_object.set(i, node_data[i])
-	
 
-func validate_save() -> bool:
+func is_save_compatible() -> bool:
 	var valid = true
 	if FileAccess.file_exists("user://savegame.save"):
 		var save_file = FileAccess.open("user://savegame.save", FileAccess.READ)
@@ -115,3 +114,13 @@ func validate_save() -> bool:
 
 func save_exists() -> bool:
 	return FileAccess.file_exists("user://savegame.save")
+
+func stash_save():
+	if FileAccess.file_exists("user://savegame.save"):
+		var save_file = FileAccess.open("user://savegame.save", FileAccess.READ)
+		var json = JSON.new()
+		# Carga los datos de la partida
+		if json.parse(save_file.get_line()) == OK:
+			var run_data_dict = json.get_data()
+			var backup_file_path = "user://savegame"+ str(run_data_dict["version"]) + ".save"
+			DirAccess.copy_absolute("user://savegame.save", backup_file_path)

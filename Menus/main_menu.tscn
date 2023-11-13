@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://b8nvuhpu5i8fs"]
+[gd_scene load_steps=3 format=3 uid="uid://b8nvuhpu5i8fs"]
 
 [ext_resource type="Script" path="res://Menus/main_menu.gd" id="1_pkiib"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y8y8m"]
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.0588235, 0.0588235, 0.0588235, 1)
+border_blend = true
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -11,7 +19,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_pkiib")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="CenterContainer" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -25,11 +33,14 @@ offset_bottom = 250.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="CenterContainer"]
+[node name="MainMenuPanel" type="Panel" parent="CenterContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 500)
 layout_mode = 2
+offset_right = 300.0
+offset_bottom = 500.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MainMenuPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -41,21 +52,79 @@ offset_bottom = -22.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ContinueButton" type="Button" parent="CenterContainer/Panel/VBoxContainer"]
+[node name="ContinueButton" type="Button" parent="CenterContainer/MainMenuPanel/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Continue"
 
-[node name="NewRunButton" type="Button" parent="CenterContainer/Panel/VBoxContainer"]
+[node name="NewRunButton" type="Button" parent="CenterContainer/MainMenuPanel/VBoxContainer"]
 layout_mode = 2
 text = "New Run"
 
-[node name="NewSeededRunButton" type="Button" parent="CenterContainer/Panel/VBoxContainer"]
+[node name="NewSeededRunButton" type="Button" parent="CenterContainer/MainMenuPanel/VBoxContainer"]
 layout_mode = 2
 text = "New Run (seeded)"
 
-[node name="QuitButton" type="Button" parent="CenterContainer/Panel/VBoxContainer"]
+[node name="QuitButton" type="Button" parent="CenterContainer/MainMenuPanel/VBoxContainer"]
 layout_mode = 2
 text = "Exit"
 
-[connection signal="pressed" from="CenterContainer/Panel/VBoxContainer/ContinueButton" to="." method="_on_ContinueButton_pressed"]
-[connection signal="pressed" from="CenterContainer/Panel/VBoxContainer/NewRunButton" to="." method="_on_NewRunButton_pressed"]
+[node name="SeedPanel" type="Panel" parent="CenterContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+offset_left = 54.0
+offset_top = 38.0
+offset_right = 254.0
+offset_bottom = 118.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_y8y8m")
+metadata/_edit_group_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/SeedPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 6.0
+offset_right = -12.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/SeedPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/SeedPanel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Seed:"
+
+[node name="SeedEdit" type="TextEdit" parent="CenterContainer/SeedPanel/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "seed"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/SeedPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="CancelSeededButton" type="Button" parent="CenterContainer/SeedPanel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "Cancel"
+
+[node name="StartSeededButton" type="Button" parent="CenterContainer/SeedPanel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "Start"
+
+[connection signal="pressed" from="CenterContainer/MainMenuPanel/VBoxContainer/ContinueButton" to="." method="_on_ContinueButton_pressed"]
+[connection signal="pressed" from="CenterContainer/MainMenuPanel/VBoxContainer/NewRunButton" to="." method="_on_NewRunButton_pressed"]
+[connection signal="pressed" from="CenterContainer/MainMenuPanel/VBoxContainer/NewSeededRunButton" to="." method="_on_NewSeededRunButton_pressed"]
+[connection signal="pressed" from="CenterContainer/MainMenuPanel/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="text_changed" from="CenterContainer/SeedPanel/VBoxContainer/HBoxContainer2/SeedEdit" to="." method="_on_SeedEdit_text_changed"]
+[connection signal="pressed" from="CenterContainer/SeedPanel/VBoxContainer/HBoxContainer/CancelSeededButton" to="." method="_on_CancelSeededButton_pressed"]
+[connection signal="pressed" from="CenterContainer/SeedPanel/VBoxContainer/HBoxContainer/StartSeededButton" to="." method="_on_StartSeededButton_pressed"]

@@ -76,9 +76,10 @@ dark_cost = 0
 [node name="AttackButton5" parent="BattleUI/SkillGrid" instance=ExtResource("4_37ghq")]
 layout_mode = 2
 skill_name = "Consolation"
-damage = 12
+damage = 6
 light_cost = 0
 dark_cost = 2
+hits = 2
 
 [node name="DebugButton" type="Button" parent="BattleUI/SkillGrid"]
 layout_mode = 2

@@ -5,7 +5,13 @@
 [node name="SkillBox" type="VBoxContainer"]
 script = ExtResource("1_4n8df")
 
-[node name="Description" type="Label" parent="."]
+[node name="NameLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "NOMBRE"
+horizontal_alignment = 1
+
+[node name="DescriptionLabel" type="Label" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
 text = "HACE ALGO"

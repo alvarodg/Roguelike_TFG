@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsuny3pwpola5"]
+
+[ext_resource type="Script" path="res://Battle/enemy_stats_ui.gd" id="1_2w1na"]
+[ext_resource type="PackedScene" uid="uid://cm2iaddemayb2" path="res://Battle/health_bar.tscn" id="1_j8l7g"]
+
+[node name="EnemyStatsUI" type="VBoxContainer"]
+offset_right = 120.0
+offset_bottom = 60.0
+script = ExtResource("1_2w1na")
+
+[node name="HealthBar" parent="." instance=ExtResource("1_j8l7g")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="DamageLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "X Damage"
+horizontal_alignment = 1
+
+[node name="ShieldLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "X Shield"
+horizontal_alignment = 1
+
+[node name="ArmorLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "X Armor"
+horizontal_alignment = 1
+
+[node name="DodgesLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "X Dodges"
+horizontal_alignment = 1
