@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://7wggm07bbvjj"]
 
-[ext_resource type="Texture2D" uid="uid://djmrox3cqnntc" path="res://icon.svg" id="1_e4se4"]
-[ext_resource type="Script" path="res://Battle/Battle.gd" id="1_qx2jm"]
-[ext_resource type="PackedScene" uid="uid://c8fsus475b5lt" path="res://Battle/skills/attack_button.tscn" id="4_37ghq"]
+[ext_resource type="Script" path="res://Battle/OldBattle.gd" id="1_h7vw2"]
+[ext_resource type="PackedScene" uid="uid://c8fsus475b5lt" path="res://Battle/skills/attack_button.tscn" id="2_y3yh6"]
+[ext_resource type="Texture2D" uid="uid://djmrox3cqnntc" path="res://icon.svg" id="3_0s1nx"]
 
 [node name="Battle" type="Control"]
 layout_mode = 3
@@ -11,7 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_qx2jm")
+script = ExtResource("1_h7vw2")
 
 [node name="EnemyPosition" type="Control" parent="."]
 unique_name_in_owner = true
@@ -49,31 +49,31 @@ grow_horizontal = 2
 grow_vertical = 2
 columns = 3
 
-[node name="AttackButton" parent="BattleUI/SkillGrid" instance=ExtResource("4_37ghq")]
+[node name="AttackButton" parent="BattleUI/SkillGrid" instance=ExtResource("2_y3yh6")]
 layout_mode = 2
 skill_name = "Balance"
 damage = 12
 
-[node name="AttackButton2" parent="BattleUI/SkillGrid" instance=ExtResource("4_37ghq")]
+[node name="AttackButton2" parent="BattleUI/SkillGrid" instance=ExtResource("2_y3yh6")]
 layout_mode = 2
 skill_name = "Fair Strike"
 damage = 4
 dark_cost = 0
 
-[node name="AttackButton3" parent="BattleUI/SkillGrid" instance=ExtResource("4_37ghq")]
+[node name="AttackButton3" parent="BattleUI/SkillGrid" instance=ExtResource("2_y3yh6")]
 layout_mode = 2
 skill_name = "Trip"
 damage = 3
 light_cost = 0
 
-[node name="AttackButton4" parent="BattleUI/SkillGrid" instance=ExtResource("4_37ghq")]
+[node name="AttackButton4" parent="BattleUI/SkillGrid" instance=ExtResource("2_y3yh6")]
 layout_mode = 2
 skill_name = "Jackpot"
 damage = 50
 light_cost = 5
 dark_cost = 0
 
-[node name="AttackButton5" parent="BattleUI/SkillGrid" instance=ExtResource("4_37ghq")]
+[node name="AttackButton5" parent="BattleUI/SkillGrid" instance=ExtResource("2_y3yh6")]
 layout_mode = 2
 skill_name = "Consolation"
 damage = 6
@@ -106,7 +106,7 @@ anchor_bottom = 1.0
 offset_top = -128.0
 offset_right = 128.0
 grow_vertical = 0
-texture = ExtResource("1_e4se4")
+texture = ExtResource("3_0s1nx")
 
 [node name="PlayerStatsPanel" type="Panel" parent="BattleUI/PlayerPosition"]
 custom_minimum_size = Vector2(100, 100)

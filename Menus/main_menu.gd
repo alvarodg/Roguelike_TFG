@@ -4,10 +4,12 @@ extends Control
 @onready var main_menu_panel = %MainMenuPanel
 @onready var seed_panel = %SeedPanel
 @onready var seed_edit = %SeedEdit
+@onready var start_seeded_button = %StartSeededButton
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	continue_button.disabled = true
+	start_seeded_button.disabled = true
 	if RunData.save_exists():
 		if RunData.is_save_compatible():
 			continue_button.disabled = false
@@ -31,9 +33,14 @@ func _on_NewSeededRunButton_pressed():
 	seed_panel.show()
 
 
-func _on_SeedEdit_text_changed():
-	RunData.run_seed = seed_edit.text
-
+func _on_SeedEdit_text_changed(new_text):
+	var regex = RegEx.new()
+	regex.compile("^\\d+$")
+	if regex.search(new_text):
+		RunData.run_seed = int(new_text)
+		start_seeded_button.disabled = false
+	else:
+		start_seeded_button.disabled = true
 
 func _on_CancelSeededButton_pressed():
 	seed_panel.hide()

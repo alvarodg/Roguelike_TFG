@@ -6,3 +6,10 @@ class_name AttackSkillData
 
 func _init():
 	pass
+
+func get_description() -> String:
+	var description: String = str(damage)
+	if hits > 1:
+		description += " x "+str(hits)
+	description += " Damage"
+	return description

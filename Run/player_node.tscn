@@ -1,0 +1,31 @@
+[gd_scene load_steps=12 format=3 uid="uid://d32agye4k6oeh"]
+
+[ext_resource type="Script" path="res://Run/Player.gd" id="1_gfhe3"]
+[ext_resource type="Script" path="res://Battle/combatant/PlayerStats.gd" id="2_dmpt5"]
+[ext_resource type="Texture2D" uid="uid://djmrox3cqnntc" path="res://icon.svg" id="3_yah24"]
+[ext_resource type="Script" path="res://Run/PlayerUIData.gd" id="4_vk2th"]
+[ext_resource type="Resource" uid="uid://sx0hhcoevlv0" path="res://Battle/skills/resources/HitAttack.tres" id="5_hnu0r"]
+[ext_resource type="Resource" uid="uid://btu8rw8p7b334" path="res://Battle/skills/resources/BalanceAttack.tres" id="6_odpg3"]
+[ext_resource type="Resource" uid="uid://d4eudcmjei2lr" path="res://Battle/skills/resources/ConsolationAttack.tres" id="7_b617l"]
+[ext_resource type="Resource" uid="uid://b52f2sw4ch6tc" path="res://Battle/skills/resources/JackpotAttack.tres" id="8_3p3bs"]
+[ext_resource type="Resource" uid="uid://blbn73o7dg5pu" path="res://Battle/skills/resources/DiscardAttack.tres" id="9_yda4v"]
+
+[sub_resource type="Resource" id="Resource_w6pkb"]
+script = ExtResource("2_dmpt5")
+coin_count = 5
+base_luck = 1.0
+max_health = 100
+base_shield = 0
+base_armor = 0
+base_dodges = 0
+
+[sub_resource type="Resource" id="Resource_ixm4g"]
+script = ExtResource("4_vk2th")
+icon = ExtResource("3_yah24")
+ui_name = "Player"
+
+[node name="PlayerNode" type="Node" groups=["player", "run_persistent"]]
+script = ExtResource("1_gfhe3")
+stats = SubResource("Resource_w6pkb")
+ui_data = SubResource("Resource_ixm4g")
+skills = Array[Resource("res://Battle/skills/SkillData.gd")]([ExtResource("5_hnu0r"), ExtResource("6_odpg3"), ExtResource("7_b617l"), ExtResource("8_3p3bs"), ExtResource("9_yda4v")])

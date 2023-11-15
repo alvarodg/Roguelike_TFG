@@ -1,5 +1,4 @@
 extends Resource
-class_name Player
 
 signal health_changed(value)
 signal light_energy_changed(value)

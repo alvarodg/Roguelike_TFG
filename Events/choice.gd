@@ -23,19 +23,19 @@ func finish():
 
 # Hardcoding TEMPORAL para el prototipo. ¿Usar patrón Command para decisiones?
 func _on_EnergyButton_pressed():
-	if RunData.player.health <= 10:
+	if RunData.player.stats.health <= 10:
 		print("Not enough health.")
 		return
-	RunData.player.max_energy += 1
-	RunData.player.health -= 10
+	RunData.player.stats.coin_count += 1
+	RunData.player.stats.health -= 10
 	finish()
 
 func _on_HealthButton_pressed():
-	RunData.player.health += 30
+	RunData.player.stats.health += 30
 	finish()
 	
 func _on_LuckButton_pressed():
-	RunData.player.luck_mod += 0.1
+	RunData.player.stats.base_luck += 0.1
 	finish()
 
 func _on_SkipButton_pressed():

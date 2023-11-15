@@ -1,33 +1,28 @@
 extends Node
-
-signal health_changed(value)
-signal light_energy_changed(value)
-signal dark_energy_changed(value)
-signal out_of_ligth_energy
-signal out_of_dark_energy
-signal died
-signal turn_finished
-signal coin_flipped(result)
-
-enum {HEADS, TAILS}
+class_name Player
 
 @export var stats: PlayerStats
-var coins: Array[Coin]
-@export var max_energy = 5
-@export var base_luck = 0.5
-
-var luck_mod: float = 1
+@export var ui_data: PlayerUIData
+@export var skills: Array[SkillData]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	RunData.player = self
+	stats.setup()
+
+func add_skill(skill: SkillData):
+	skills.append(skill)
+
+func start_turn():
+	stats.start_turn()
+
+func start_battle():
+	stats.start_battle()
 
 func save():
 	var save_dict = {
 		"filename" : get_scene_file_path(),
 		"parent" : get_parent().get_path(),
-#		"pos_x" : position.x,
-#		"pos_y" : position.y,
 	}
 	var stats_dict = stats.to_save_dict()
 	save_dict.merge(stats_dict)

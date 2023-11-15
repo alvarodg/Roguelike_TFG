@@ -1,6 +1,8 @@
 extends VBoxContainer
 class_name SkillBox
 
+@onready var combatants: Combatants = preload("res://Battle/resources/Combatants.tres")
+@onready var turn_manager: TurnManager = preload("res://Battle/resources/TurnManager.tres")
 @export var skill_data: SkillData
 @onready var slot_scene = preload("res://Battle/prototypes/slot.tscn")
 @onready var name_label = %NameLabel
@@ -14,9 +16,11 @@ var total_coins: int = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	assert(skill_data is SkillData)
+	turn_manager.player_turn_started.connect(_on_Player_turn_started)
 	execute_button.disabled = true
 	undo_button.disabled = true
 	name_label.text = skill_data.name
+	description_label.text = skill_data.get_description()
 	var slot_list = skill_data.cost
 	# Hacky, mira hasta los tres primeros elementos de la lista y asigna a coints_needed
 	for i in range(min(slot_list.size(),3)):
@@ -64,6 +68,19 @@ func _on_UndoButton_pressed():
 
 
 func _on_ExecuteButton_pressed():
-	description_label.text = "ALGO HECHO"
+	var skill = _create_skill()
+	skill.use()
 	undo_button.disabled = true
 	execute_button.disabled = true
+
+func _on_Player_turn_started():
+	release_coins()
+	undo_button.disabled = true
+	execute_button.disabled = true
+
+func _create_skill() -> Skill:
+	# Posiblemente mejorable
+	if skill_data is AttackSkillData:
+		return AttackSkill.new(skill_data, combatants.player, combatants.enemy)
+	else:
+		return Skill.new(skill_data, combatants.player, combatants.enemy)

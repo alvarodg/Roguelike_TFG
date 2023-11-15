@@ -9,12 +9,15 @@ signal health_changed(value)
 
 @onready var combatants = load("res://Battle/resources/Combatants.tres")
 @export var stats: EnemyStats
+var target
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	assert(stats)
+	target = combatants.player
 	stats = stats.duplicate()
 	stats.setup()
+	stats.start_battle()
 	enemy_stats_ui.setup(stats)
 #	stats.health_changed.connect(_on_health_changed)
 	stats.died.connect(_on_death)
@@ -34,12 +37,17 @@ func connect_to_stat_signals():
 #func _on_health_changed(value):
 #	enemy_health_bar.value = value
 
+func start_battle():
+	stats.start_battle()
+
 func start_turn():
+	target = combatants.player
+	stats.start_turn()
 	act()
 	turn_finished.emit()
 
 func act():
-	combatants.player.health -= stats.damage
+	target.stats.take_damage(stats.damage)
 
 func _on_death():
 	died.emit()

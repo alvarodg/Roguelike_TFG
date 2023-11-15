@@ -34,11 +34,14 @@ func _ready():
 	player_health_bar.value = combatants.player.health
 	turn_manager.turn = turn_manager.Turn.PLAYER_TURN
 	
-func set_new_enemy(enemy_stats: EnemyStats):
+func setup_enemy(p_enemy_stats: EnemyStats):
+	enemy_stats = p_enemy_stats
+
+func set_new_enemy(p_enemy_stats: EnemyStats):
 	if combatants.enemy is Enemy:
 		combatants.enemy.queue_free()
 	enemy = base_enemy.instantiate()
-	enemy.stats = enemy_stats
+	enemy.stats = p_enemy_stats
 	combatants.enemy = enemy
 	connect_enemy_signals(combatants.enemy)
 	enemy_position.add_child(enemy)

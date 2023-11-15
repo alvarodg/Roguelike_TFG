@@ -17,12 +17,6 @@ func setup():
 	armor = base_armor
 	dodges = base_dodges
 
-func set_health(value):
-	health = clamp(value, 0, max_health)
-	health_changed.emit(health)
-	if health <= 0:
-		died.emit()
-
 func set_damage(value):
 	damage = value
 	damage_changed.emit(damage)

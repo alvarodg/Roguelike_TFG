@@ -24,7 +24,7 @@ func save_game():
 	}
 #	run_data_dict.merge(player.to_save_dict())
 	save_file.store_line(JSON.stringify(run_data_dict))
-	save_file.store_line(JSON.stringify(player.to_save_dict()))
+#	save_file.store_line(JSON.stringify(player.to_save_dict()))
 	# Guarda los datos del grupo "run_persistent"
 	for node in save_nodes:
 		# Check the node is an instanced scene so it can be instanced again during load.
@@ -71,9 +71,9 @@ func load_game():
 		var run_data_dict = json.get_data()
 		version = run_data_dict["version"]
 		run_seed = run_data_dict["run_seed"]
-	if json.parse(save_file.get_line()) == OK:
-		var player_data_dict = json.get_data()
-		player.load_save_dict(player_data_dict)
+#	if json.parse(save_file.get_line()) == OK:
+#		var player_data_dict = json.get_data()
+#		player.load_save_dict(player_data_dict)
 	# Carga el resto de los datos del grupo "run_persistent"
 	while save_file.get_position() < save_file.get_length():
 		var json_string = save_file.get_line()
@@ -90,7 +90,8 @@ func load_game():
 		# Firstly, we need to create the object and add it to the tree and set its position.
 		var new_object = load(node_data["filename"]).instantiate()
 		get_node(node_data["parent"]).add_child(new_object)
-		new_object.position = Vector2(node_data["pos_x"], node_data["pos_y"])
+		if "pos.x" in node_data.keys():
+			new_object.position = Vector2(node_data["pos_x"], node_data["pos_y"])
 
 		# Now we set the remaining variables.
 		for i in node_data.keys():

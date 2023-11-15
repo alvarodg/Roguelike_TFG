@@ -1,0 +1,139 @@
+[gd_scene load_steps=10 format=3 uid="uid://ci2osml7lmqcy"]
+
+[ext_resource type="Script" path="res://Battle/CoinBattle.gd" id="1_ygx54"]
+[ext_resource type="PackedScene" uid="uid://tv88ia00qmed" path="res://Battle/prototypes/skill_box.tscn" id="2_34sgh"]
+[ext_resource type="PackedScene" uid="uid://d108eaoiwyxw0" path="res://Battle/prototypes/coin_box.tscn" id="3_2o0qd"]
+[ext_resource type="Resource" uid="uid://btu8rw8p7b334" path="res://Battle/skills/resources/BalanceAttack.tres" id="3_8ufdv"]
+[ext_resource type="Resource" uid="uid://d4eudcmjei2lr" path="res://Battle/skills/resources/ConsolationAttack.tres" id="4_2i0vy"]
+[ext_resource type="Resource" uid="uid://blbn73o7dg5pu" path="res://Battle/skills/resources/DiscardAttack.tres" id="5_oi6oo"]
+[ext_resource type="Resource" uid="uid://sx0hhcoevlv0" path="res://Battle/skills/resources/HitAttack.tres" id="6_837ti"]
+[ext_resource type="Resource" uid="uid://b52f2sw4ch6tc" path="res://Battle/skills/resources/JackpotAttack.tres" id="7_uanx3"]
+[ext_resource type="PackedScene" uid="uid://cgeo8n0mg0x68" path="res://Battle/player/player_stats_ui.tscn" id="9_f77mq"]
+
+[node name="CoinBattle" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ygx54")
+
+[node name="EnemyPosition" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -344.0
+offset_top = 32.0
+offset_right = -48.0
+offset_bottom = 160.0
+grow_horizontal = 0
+
+[node name="BattleUI" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerSkillsArea" type="Control" parent="BattleUI"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.0
+offset_top = -244.0
+offset_right = 192.0
+offset_bottom = 85.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_group_ = true
+
+[node name="SkillGrid" type="GridContainer" parent="BattleUI/PlayerSkillsArea"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
+metadata/_edit_group_ = true
+
+[node name="SkillBox" parent="BattleUI/PlayerSkillsArea/SkillGrid" instance=ExtResource("2_34sgh")]
+layout_mode = 2
+skill_data = ExtResource("3_8ufdv")
+
+[node name="SkillBox2" parent="BattleUI/PlayerSkillsArea/SkillGrid" instance=ExtResource("2_34sgh")]
+layout_mode = 2
+skill_data = ExtResource("4_2i0vy")
+
+[node name="SkillBox3" parent="BattleUI/PlayerSkillsArea/SkillGrid" instance=ExtResource("2_34sgh")]
+layout_mode = 2
+skill_data = ExtResource("5_oi6oo")
+
+[node name="SkillBox4" parent="BattleUI/PlayerSkillsArea/SkillGrid" instance=ExtResource("2_34sgh")]
+layout_mode = 2
+skill_data = ExtResource("6_837ti")
+
+[node name="SkillBox5" parent="BattleUI/PlayerSkillsArea/SkillGrid" instance=ExtResource("2_34sgh")]
+layout_mode = 2
+skill_data = ExtResource("7_uanx3")
+
+[node name="PlayerCoinsArea" type="Control" parent="BattleUI"]
+layout_mode = 1
+anchor_left = 0.263889
+anchor_top = 0.654321
+anchor_right = 0.777778
+anchor_bottom = 0.888889
+offset_top = 3.05176e-05
+grow_horizontal = 2
+grow_vertical = 0
+metadata/_edit_group_ = true
+metadata/_edit_use_anchors_ = true
+
+[node name="CoinBox" parent="BattleUI/PlayerCoinsArea" instance=ExtResource("3_2o0qd")]
+unique_name_in_owner = true
+layout_mode = 1
+columns = 5
+
+[node name="PlayerStatsArea" type="Control" parent="BattleUI"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = -200.0
+offset_right = 320.0
+offset_bottom = -56.0
+grow_vertical = 0
+
+[node name="PlayerStatsUI" parent="BattleUI/PlayerStatsArea" instance=ExtResource("9_f77mq")]
+unique_name_in_owner = true
+layout_mode = 1
+
+[node name="EndTurnButton" type="Button" parent="BattleUI"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -244.0
+offset_top = -160.0
+offset_right = -44.0
+offset_bottom = -60.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "End Turn"
+
+[connection signal="pressed" from="BattleUI/EndTurnButton" to="." method="_on_EndTurnButton_pressed"]

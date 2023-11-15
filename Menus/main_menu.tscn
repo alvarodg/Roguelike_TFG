@@ -19,7 +19,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_pkiib")
 
-[node name="CenterContainer" type="Control" parent="."]
+[node name="Control" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -33,14 +33,14 @@ offset_bottom = 250.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MainMenuPanel" type="Panel" parent="CenterContainer"]
+[node name="MainMenuPanel" type="Panel" parent="Control"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 500)
 layout_mode = 2
 offset_right = 300.0
 offset_bottom = 500.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MainMenuPanel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MainMenuPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -52,36 +52,36 @@ offset_bottom = -22.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ContinueButton" type="Button" parent="CenterContainer/MainMenuPanel/VBoxContainer"]
+[node name="ContinueButton" type="Button" parent="Control/MainMenuPanel/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Continue"
 
-[node name="NewRunButton" type="Button" parent="CenterContainer/MainMenuPanel/VBoxContainer"]
+[node name="NewRunButton" type="Button" parent="Control/MainMenuPanel/VBoxContainer"]
 layout_mode = 2
 text = "New Run"
 
-[node name="NewSeededRunButton" type="Button" parent="CenterContainer/MainMenuPanel/VBoxContainer"]
+[node name="NewSeededRunButton" type="Button" parent="Control/MainMenuPanel/VBoxContainer"]
 layout_mode = 2
 text = "New Run (seeded)"
 
-[node name="QuitButton" type="Button" parent="CenterContainer/MainMenuPanel/VBoxContainer"]
+[node name="QuitButton" type="Button" parent="Control/MainMenuPanel/VBoxContainer"]
 layout_mode = 2
 text = "Exit"
 
-[node name="SeedPanel" type="Panel" parent="CenterContainer"]
+[node name="SeedPanel" type="Panel" parent="Control"]
 unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(200, 80)
 layout_mode = 2
 offset_left = 54.0
-offset_top = 38.0
+offset_top = 30.0
 offset_right = 254.0
 offset_bottom = 118.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_y8y8m")
 metadata/_edit_group_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/SeedPanel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/SeedPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -94,37 +94,38 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/SeedPanel/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/SeedPanel/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CenterContainer/SeedPanel/VBoxContainer/HBoxContainer2"]
+[node name="Label" type="Label" parent="Control/SeedPanel/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 text = "Seed:"
 
-[node name="SeedEdit" type="TextEdit" parent="CenterContainer/SeedPanel/VBoxContainer/HBoxContainer2"]
+[node name="SeedEdit" type="LineEdit" parent="Control/SeedPanel/VBoxContainer/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-placeholder_text = "seed"
+placeholder_text = "Digits 0-9"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/SeedPanel/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/SeedPanel/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="CancelSeededButton" type="Button" parent="CenterContainer/SeedPanel/VBoxContainer/HBoxContainer"]
+[node name="CancelSeededButton" type="Button" parent="Control/SeedPanel/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 text = "Cancel"
 
-[node name="StartSeededButton" type="Button" parent="CenterContainer/SeedPanel/VBoxContainer/HBoxContainer"]
+[node name="StartSeededButton" type="Button" parent="Control/SeedPanel/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 text = "Start"
 
-[connection signal="pressed" from="CenterContainer/MainMenuPanel/VBoxContainer/ContinueButton" to="." method="_on_ContinueButton_pressed"]
-[connection signal="pressed" from="CenterContainer/MainMenuPanel/VBoxContainer/NewRunButton" to="." method="_on_NewRunButton_pressed"]
-[connection signal="pressed" from="CenterContainer/MainMenuPanel/VBoxContainer/NewSeededRunButton" to="." method="_on_NewSeededRunButton_pressed"]
-[connection signal="pressed" from="CenterContainer/MainMenuPanel/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
-[connection signal="text_changed" from="CenterContainer/SeedPanel/VBoxContainer/HBoxContainer2/SeedEdit" to="." method="_on_SeedEdit_text_changed"]
-[connection signal="pressed" from="CenterContainer/SeedPanel/VBoxContainer/HBoxContainer/CancelSeededButton" to="." method="_on_CancelSeededButton_pressed"]
-[connection signal="pressed" from="CenterContainer/SeedPanel/VBoxContainer/HBoxContainer/StartSeededButton" to="." method="_on_StartSeededButton_pressed"]
+[connection signal="pressed" from="Control/MainMenuPanel/VBoxContainer/ContinueButton" to="." method="_on_ContinueButton_pressed"]
+[connection signal="pressed" from="Control/MainMenuPanel/VBoxContainer/NewRunButton" to="." method="_on_NewRunButton_pressed"]
+[connection signal="pressed" from="Control/MainMenuPanel/VBoxContainer/NewSeededRunButton" to="." method="_on_NewSeededRunButton_pressed"]
+[connection signal="pressed" from="Control/MainMenuPanel/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="text_changed" from="Control/SeedPanel/VBoxContainer/HBoxContainer2/SeedEdit" to="." method="_on_SeedEdit_text_changed"]
+[connection signal="pressed" from="Control/SeedPanel/VBoxContainer/HBoxContainer/CancelSeededButton" to="." method="_on_CancelSeededButton_pressed"]
+[connection signal="pressed" from="Control/SeedPanel/VBoxContainer/HBoxContainer/StartSeededButton" to="." method="_on_StartSeededButton_pressed"]

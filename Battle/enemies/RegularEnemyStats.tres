@@ -4,5 +4,8 @@
 
 [resource]
 script = ExtResource("1_lo5ma")
-max_health = 100
 damage = 10
+max_health = 70
+base_shield = 0
+base_armor = 1
+base_dodges = 0

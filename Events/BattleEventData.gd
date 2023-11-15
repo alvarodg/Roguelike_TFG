@@ -2,13 +2,12 @@ extends EventData
 class_name BattleEventData
 
 @export var enemy_stats: EnemyStats
-var battle_scene: PackedScene = preload("res://Battle/Battle.tscn")
 
-#func _init(p_enemy_class):
-#	super(battle_scene)
-#	enemy_class = p_enemy_class
+func _init(p_scene = null, p_enemy_stats = null):
+	super(p_scene)
+	enemy_stats = p_enemy_stats
 
 func instantiate_scene():
-	var event_scene = battle_scene.instantiate()
-	event_scene.enemy_stats = enemy_stats
-	return event_scene
+	var battle_scene = scene.instantiate()
+	battle_scene.setup_enemy(enemy_stats)
+	return battle_scene

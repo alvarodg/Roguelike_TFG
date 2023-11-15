@@ -1,8 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://bfdmc5trnp4uk"]
+[gd_scene load_steps=10 format=3 uid="uid://bfdmc5trnp4uk"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_ewi3c"]
+[ext_resource type="PackedScene" uid="uid://d32agye4k6oeh" path="res://Run/player_node.tscn" id="2_cewfe"]
 [ext_resource type="PackedScene" uid="uid://dtatqj2q74q42" path="res://map.tscn" id="2_tumwh"]
+[ext_resource type="Script" path="res://Battle/combatant/PlayerStats.gd" id="3_4r4ai"]
 [ext_resource type="PackedScene" uid="uid://b8nvuhpu5i8fs" path="res://Menus/main_menu.tscn" id="3_6bs06"]
+[ext_resource type="Texture2D" uid="uid://djmrox3cqnntc" path="res://icon.svg" id="4_o7upx"]
+[ext_resource type="Script" path="res://Run/PlayerUIData.gd" id="5_a8erk"]
+
+[sub_resource type="Resource" id="Resource_rj72s"]
+script = ExtResource("3_4r4ai")
+coin_count = 5
+base_luck = 1.0
+max_health = 90
+base_shield = 0
+base_armor = 0
+base_dodges = 0
+
+[sub_resource type="Resource" id="Resource_tn0xi"]
+script = ExtResource("5_a8erk")
+icon = ExtResource("4_o7upx")
+ui_name = "Player"
 
 [node name="World" type="Control"]
 layout_mode = 3
@@ -12,6 +30,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ewi3c")
+
+[node name="PlayerNode" parent="." instance=ExtResource("2_cewfe")]
+stats = SubResource("Resource_rj72s")
+ui_data = SubResource("Resource_tn0xi")
 
 [node name="Map" parent="." instance=ExtResource("2_tumwh")]
 

@@ -10,6 +10,9 @@ func _init(p_max_health = 100, p_base_shield = 0, p_base_armor = 0, p_base_dodge
 	coin_count = p_coin_count
 	base_luck = p_base_luck
 
+func start_turn():
+	shield = 0
+
 func to_save_dict() -> Dictionary:
 	return {
 		"max_health" : max_health,

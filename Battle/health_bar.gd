@@ -12,8 +12,8 @@ func _process(delta):
 	pass
 
 func setup(combatant: CombatantStats):
-	value = combatant.health
 	max_value = combatant.max_health
+	value = combatant.health
 	_update_label()
 	combatant.health_changed.connect(_on_Combatant_health_changed)
 	combatant.max_health_changed.connect(_on_Combatant_max_health_changed)

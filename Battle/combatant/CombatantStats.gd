@@ -18,7 +18,8 @@ var health: int : set = set_health
 var shield: int : set = set_shield
 var armor: int : set = set_armor
 var dodges: int : set = set_dodges
-
+# Variable is_dead para arreglar habilidades con multiples golpes enviando multiples señales (no lo arregla)
+var is_dead: bool = false
 
 func _init(p_max_health: int = 100, p_base_shield: int = 0, p_base_armor: int = 0, p_base_dodges: int = 0):
 	max_health = p_max_health
@@ -30,12 +31,19 @@ func _init(p_max_health: int = 100, p_base_shield: int = 0, p_base_armor: int = 
 	armor = base_armor
 	dodges = base_dodges
 	
-func start_of_battle():
+	
+func setup():
+	health = max_health
+
+func start_battle():
 	shield = base_shield
 	armor = base_armor
 	dodges = base_dodges
 	
-func end_of_battle():
+func start_turn():
+	pass
+
+func end_battle():
 	shield = 0
 	armor = 0
 	dodges = 0
@@ -47,8 +55,10 @@ func set_max_health(value):
 func set_health(value):
 	health = clamp(value, 0, max_health)
 	health_changed.emit(health)
-	if health == 0:
+	if health == 0 and not is_dead:
+		is_dead = true
 		died.emit()
+
 
 func set_shield(value):
 	shield = max(0,value)
