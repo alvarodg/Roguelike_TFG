@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="PlayerUIData" load_steps=3 format=3 uid="uid://k6ndslc1hrs1"]
+
+[ext_resource type="Script" path="res://Run/PlayerUIData.gd" id="1_ip81o"]
+[ext_resource type="Texture2D" uid="uid://djmrox3cqnntc" path="res://icon.svg" id="1_mu5fi"]
+
+[resource]
+script = ExtResource("1_ip81o")
+icon = ExtResource("1_mu5fi")
+ui_name = "Player"

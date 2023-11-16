@@ -31,3 +31,4 @@ func load_save_dict(dict: Dictionary):
 	base_dodges = dict["base_dodges"]
 	coin_count = dict["coin_count"]
 	base_luck = dict["base_luck"]
+	health = dict["health"]

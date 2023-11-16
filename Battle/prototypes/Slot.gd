@@ -17,6 +17,7 @@ signal coins_changed(coins_needed, current_coins)
 
 var is_available = true
 var inserted_coins: Array[Coin]
+var used_coins: Array[Coin]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -100,10 +101,26 @@ func insert_coin(coin: Coin):
 		set_unavailable()
 	coin_inserted.emit(coin)
 
-func release_coin():
+func release_inserted_coins():
 	for coin in inserted_coins:
 		coin.set_available()
 	inserted_coins = []
 	coins_changed.emit(coins_needed, inserted_coins.size())
 	set_available()
 	
+func use_coins():
+	for coin in inserted_coins:
+		coin.set_spent()
+	used_coins += inserted_coins
+	inserted_coins = []
+	coins_changed.emit(coins_needed, inserted_coins.size())
+	
+func release_all_coins():
+	for coin in inserted_coins:
+		coin.set_available()
+	for coin in used_coins:
+		coin.set_available()
+	inserted_coins = []
+	used_coins = []
+	coins_changed.emit(coins_needed, inserted_coins.size())
+	set_available()

@@ -2,7 +2,6 @@ extends Control
 
 signal finished
 
-@onready var skill_grid = %SkillGrid
 @onready var turn_manager: TurnManager = preload("res://Battle/resources/TurnManager.tres")
 @onready var combatants: Combatants = preload("res://Battle/resources/Combatants.tres")
 @onready var end_turn_button = %EndTurnButton
@@ -13,6 +12,7 @@ var next_event: EventData
 var player: Player
 var enemy_stats: EnemyStats
 var enemy: Enemy
+@onready var player_skill_ui = %PlayerSkillUI
 @onready var player_stats_ui = %PlayerStatsUI
 @onready var coin_box = %CoinBox
 
@@ -30,6 +30,7 @@ func _ready():
 	combatants.enemy = enemy
 	combatants.player = player
 	# Inicializa las interfaces del jugador
+	player_skill_ui.setup(player)
 	player_stats_ui.setup(player)
 	coin_box.setup(player.stats)
 	# Conecta señales
@@ -66,7 +67,7 @@ func _on_Enemy_died():
 	end_battle()
 	
 func end_battle():
-	skill_grid.hide()
+	player_skill_ui.hide()
 	end_turn_button.hide()
 	print("You won!")
 	if next_event is EventData:
@@ -79,14 +80,14 @@ func end_battle():
 
 func _on_player_turn_started():
 	player.start_turn()
-	skill_grid.show()
+	player_skill_ui.show()
 	end_turn_button.show()
 	
 func _on_enemy_turn_started():
 	if not combatants.enemy is Enemy:
 		end_battle()
 	else:
-		skill_grid.hide()
+		player_skill_ui.hide()
 		end_turn_button.hide()
 		combatants.enemy.start_turn()
 

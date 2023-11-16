@@ -19,19 +19,15 @@ func _ready():
 	stats.setup()
 	stats.start_battle()
 	enemy_stats_ui.setup(stats)
-#	stats.health_changed.connect(_on_health_changed)
 	stats.died.connect(_on_death)
 	
 	
 func set_new_stats(new_stats: EnemyStats):
 	stats = new_stats.duplicate()
 	enemy_stats_ui.setup(stats)
-#	enemy_health_bar.max_value = stats.max_health
-#	enemy_health_bar.value = stats.health
 	connect_to_stat_signals()
 	
 func connect_to_stat_signals():
-#	stats.health_changed.connect(_on_health_changed)
 	stats.died.connect(_on_death)
 
 #func _on_health_changed(value):

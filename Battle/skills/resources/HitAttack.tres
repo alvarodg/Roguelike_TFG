@@ -8,3 +8,5 @@ damage = 5
 hits = 1
 name = "Hit"
 cost = Array[int]([0, 1, 0])
+uses_per_turn = -1
+one_shot = false

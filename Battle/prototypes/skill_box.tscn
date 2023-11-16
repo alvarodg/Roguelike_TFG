@@ -17,11 +17,21 @@ layout_mode = 2
 text = "HACE ALGO"
 horizontal_alignment = 1
 
-[node name="SlotBox" type="HBoxContainer" parent="."]
+[node name="HBoxContainer3" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="SlotBox" type="HBoxContainer" parent="HBoxContainer3"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 4
+
+[node name="UsesLabel" type="Label" parent="HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "x 3"
+horizontal_alignment = 2
+vertical_alignment = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -41,6 +51,9 @@ layout_mode = 2
 size_flags_horizontal = 8
 theme_override_font_sizes/font_size = 12
 text = "Undo"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 2
 
 [connection signal="pressed" from="HBoxContainer/ExecuteButton" to="." method="_on_ExecuteButton_pressed"]
 [connection signal="pressed" from="HBoxContainer/UndoButton" to="." method="_on_UndoButton_pressed"]

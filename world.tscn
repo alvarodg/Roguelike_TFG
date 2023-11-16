@@ -1,26 +1,16 @@
-[gd_scene load_steps=10 format=3 uid="uid://bfdmc5trnp4uk"]
+[gd_scene load_steps=12 format=3 uid="uid://bfdmc5trnp4uk"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_ewi3c"]
-[ext_resource type="PackedScene" uid="uid://d32agye4k6oeh" path="res://Run/player_node.tscn" id="2_cewfe"]
 [ext_resource type="PackedScene" uid="uid://dtatqj2q74q42" path="res://map.tscn" id="2_tumwh"]
-[ext_resource type="Script" path="res://Battle/combatant/PlayerStats.gd" id="3_4r4ai"]
+[ext_resource type="PackedScene" uid="uid://dyrxg61yw7bhk" path="res://Run/player.tscn" id="2_yatmi"]
 [ext_resource type="PackedScene" uid="uid://b8nvuhpu5i8fs" path="res://Menus/main_menu.tscn" id="3_6bs06"]
-[ext_resource type="Texture2D" uid="uid://djmrox3cqnntc" path="res://icon.svg" id="4_o7upx"]
-[ext_resource type="Script" path="res://Run/PlayerUIData.gd" id="5_a8erk"]
-
-[sub_resource type="Resource" id="Resource_rj72s"]
-script = ExtResource("3_4r4ai")
-coin_count = 5
-base_luck = 1.0
-max_health = 90
-base_shield = 0
-base_armor = 0
-base_dodges = 0
-
-[sub_resource type="Resource" id="Resource_tn0xi"]
-script = ExtResource("5_a8erk")
-icon = ExtResource("4_o7upx")
-ui_name = "Player"
+[ext_resource type="Resource" uid="uid://dnhbnjwbujp3u" path="res://Battle/player/resources/default_player_stats.tres" id="3_nvh0g"]
+[ext_resource type="Resource" uid="uid://btu8rw8p7b334" path="res://Battle/skills/resources/BalanceAttack.tres" id="3_vfd4v"]
+[ext_resource type="Resource" uid="uid://d4eudcmjei2lr" path="res://Battle/skills/resources/ConsolationAttack.tres" id="4_h738e"]
+[ext_resource type="Resource" uid="uid://k6ndslc1hrs1" path="res://Battle/player/resources/default_player_ui_data.tres" id="4_ryo5a"]
+[ext_resource type="Resource" uid="uid://blbn73o7dg5pu" path="res://Battle/skills/resources/DiscardAttack.tres" id="5_4pn5n"]
+[ext_resource type="Resource" uid="uid://b52f2sw4ch6tc" path="res://Battle/skills/resources/JackpotAttack.tres" id="6_0rblt"]
+[ext_resource type="Resource" uid="uid://sx0hhcoevlv0" path="res://Battle/skills/resources/HitAttack.tres" id="8_c10fw"]
 
 [node name="World" type="Control"]
 layout_mode = 3
@@ -31,9 +21,10 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ewi3c")
 
-[node name="PlayerNode" parent="." instance=ExtResource("2_cewfe")]
-stats = SubResource("Resource_rj72s")
-ui_data = SubResource("Resource_tn0xi")
+[node name="Player" parent="." instance=ExtResource("2_yatmi")]
+stats = ExtResource("3_nvh0g")
+ui_data = ExtResource("4_ryo5a")
+skill_list = Array[Resource("res://Battle/skills/SkillData.gd")]([ExtResource("3_vfd4v"), ExtResource("4_h738e"), ExtResource("5_4pn5n"), ExtResource("8_c10fw"), ExtResource("6_0rblt")])
 
 [node name="Map" parent="." instance=ExtResource("2_tumwh")]
 

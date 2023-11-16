@@ -3,8 +3,8 @@ class_name BattleEventData
 
 @export var enemy_stats: EnemyStats
 
-func _init(p_scene = null, p_next_scene = null, p_enemy_stats = null):
-	super(p_scene, p_next_scene)
+func _init(p_scene = null, p_next_event = null, p_enemy_stats = null):
+	super(p_scene, p_next_event)
 	enemy_stats = p_enemy_stats
 
 func instantiate_scene():

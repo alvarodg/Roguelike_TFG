@@ -8,3 +8,5 @@ damage = 3
 hits = 1
 name = "Discard"
 cost = Array[int]([1, 0, 0])
+uses_per_turn = 2
+one_shot = false
