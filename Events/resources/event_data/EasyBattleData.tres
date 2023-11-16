@@ -1,10 +1,12 @@
-[gd_resource type="Resource" script_class="BattleEventData" load_steps=4 format=3 uid="uid://b8r88vwyrnqt6"]
+[gd_resource type="Resource" script_class="BattleEventData" load_steps=5 format=3 uid="uid://b8r88vwyrnqt6"]
 
 [ext_resource type="Resource" uid="uid://vf6g1fh16jyk" path="res://Battle/enemies/WeakEnemyStats.tres" id="1_v77ia"]
 [ext_resource type="Script" path="res://Events/BattleEventData.gd" id="1_ycow6"]
+[ext_resource type="Resource" uid="uid://b0s7cxl6wg044" path="res://Events/resources/event_data/ChoiceData.tres" id="2_levjt"]
 [ext_resource type="PackedScene" uid="uid://ci2osml7lmqcy" path="res://Battle/CoinBattle.tscn" id="2_ptm1h"]
 
 [resource]
 script = ExtResource("1_ycow6")
 enemy_stats = ExtResource("1_v77ia")
 scene = ExtResource("2_ptm1h")
+next_event = ExtResource("2_levjt")

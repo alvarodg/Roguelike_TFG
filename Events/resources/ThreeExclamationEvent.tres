@@ -2,16 +2,16 @@
 
 [ext_resource type="Resource" uid="uid://conurbftd672o" path="res://Battle/enemies/StrongEnemyStats.tres" id="1_6p0fm"]
 [ext_resource type="Texture2D" uid="uid://dlmtjqjnnsb03" path="res://Events/icons/big_exclamation_hover.png" id="1_l6fas"]
+[ext_resource type="PackedScene" uid="uid://ci2osml7lmqcy" path="res://Battle/CoinBattle.tscn" id="2_ckyib"]
 [ext_resource type="Texture2D" uid="uid://b8r43fb7tdisi" path="res://Events/icons/big_exclamation.png" id="2_kcjdu"]
 [ext_resource type="Script" path="res://Events/BattleEventData.gd" id="2_v6wg6"]
 [ext_resource type="Script" path="res://Events/Event.gd" id="3_72dqn"]
 [ext_resource type="Texture2D" uid="uid://byogoorcu2v5" path="res://Events/icons/big_exclamation_traveled.png" id="3_dth7a"]
-[ext_resource type="PackedScene" uid="uid://7wggm07bbvjj" path="res://Battle/OldBattle.tscn" id="4_c8s1p"]
 
 [sub_resource type="Resource" id="Resource_reuje"]
 script = ExtResource("2_v6wg6")
 enemy_stats = ExtResource("1_6p0fm")
-scene = ExtResource("4_c8s1p")
+scene = ExtResource("2_ckyib")
 
 [resource]
 script = ExtResource("3_72dqn")

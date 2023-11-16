@@ -53,10 +53,10 @@ func _on_EventNode_chosen(node: EventNode):
 #		map_screen_node.show()
 
 ## Conecta las señales que se van a utilizar de todos los nodos en node_matrix
-func connect_to_node_signals(node_matrix):
-	for i in range(node_matrix.size()):
-		for j in range(node_matrix[i].size()):
-			node_matrix[i][j].connect("node_chosen", _on_EventNode_chosen)
+func connect_to_node_signals(p_node_matrix):
+	for i in range(p_node_matrix.size()):
+		for j in range(p_node_matrix[i].size()):
+			p_node_matrix[i][j].connect("node_chosen", _on_EventNode_chosen)
 
 ## Actualiza el estado de navegación de los nodos visitados.
 func mark_traveled():

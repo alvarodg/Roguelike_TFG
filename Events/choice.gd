@@ -4,20 +4,21 @@ signal finished
 
 @onready var choice_container = %ChoiceContainer
 var choices: Array
+var next_event: EventData
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 func add_choice(choice):
 	choices.append(choice)
 
 func finish():
+	if next_event is EventData:
+		var next_scene = next_event.instantiate_scene()
+		get_parent().add_child(next_scene) 
+		hide()
+		await next_scene.finished
 	finished.emit()
 	queue_free()
 

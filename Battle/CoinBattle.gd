@@ -8,7 +8,8 @@ signal finished
 @onready var end_turn_button = %EndTurnButton
 @onready var enemy_position = %EnemyPosition
 @onready var base_enemy = preload("res://Battle/enemy.tscn")
-@onready var next_event = preload("res://Events/choice.tscn")
+#@onready var next_event = preload("res://Events/choice.tscn")
+var next_event: EventData
 var player: Player
 var enemy_stats: EnemyStats
 var enemy: Enemy
@@ -52,16 +53,12 @@ func set_new_enemy(p_enemy_stats: EnemyStats):
 	combatants.enemy = enemy
 	connect_enemy_signals(combatants.enemy)
 	enemy_position.add_child(enemy)
-	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 func connect_enemy_signals(p_enemy: Enemy):
 	p_enemy.died.connect(_on_Enemy_died)
 	p_enemy.turn_finished.connect(_on_Enemy_turn_finished)
 	
-func connect_player_signals(player: Player):
+func connect_player_signals(_player: Player):
 	pass
 	
 func _on_Enemy_died():
@@ -72,9 +69,10 @@ func end_battle():
 	skill_grid.hide()
 	end_turn_button.hide()
 	print("You won!")
-	if next_event is PackedScene:
-		var next_scene = next_event.instantiate()
+	if next_event is EventData:
+		var next_scene = next_event.instantiate_scene()
 		get_parent().add_child(next_scene) 
+		hide()
 		await next_scene.finished
 	finished.emit()
 	queue_free()

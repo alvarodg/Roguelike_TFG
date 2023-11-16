@@ -14,9 +14,6 @@ func _ready():
 	EventBus.new_run_selected.connect(_on_new_run)
 	EventBus.continue_run_selected.connect(_on_continue_run)
 	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 func _on_new_run():
 	game_ready.emit()

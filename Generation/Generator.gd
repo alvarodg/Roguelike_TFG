@@ -13,14 +13,14 @@ var rng: RandomNumberGenerator
 func _ready():
 	pass
 	
-func generate(seed = 0):
-	print(seed)
+func generate(rng_seed = 0):
+	print(rng_seed)
 	node_matrix = []
 	if not on: return
 	for child in get_children():
 		child.queue_free()
 	rng = RandomNumberGenerator.new()
-	rng.seed = seed
+	rng.seed = rng_seed
 	node_matrix = map_generator.generate(rng)
 	assign_nodes()
 	emit_signal("generation_complete", node_matrix)

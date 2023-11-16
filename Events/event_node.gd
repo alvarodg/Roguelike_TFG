@@ -37,7 +37,7 @@ func remove_descendant(descendant: EventNode):
 	if descendant_index >= 0:
 		descendants.pop_at(descendant_index)
 		
-func set_text(text):
+func set_text(_text):
 	pass
 
 func set_state(new_state: State):

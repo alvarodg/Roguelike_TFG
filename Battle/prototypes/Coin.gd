@@ -15,11 +15,6 @@ var status: Status
 func _ready():
 	set_available()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 func _input(event):
 	if event.is_action_released("click") and is_dragging:
 		EventBus.stopped_dragging.emit(self)
@@ -37,7 +32,7 @@ func set_heads(value):
 func set_facing_texture():
 	texture_normal = heads_texture if heads else tails_texture
 
-func _get_drag_data(at_position):
+func _get_drag_data(_at_position):
 	if status != Status.AVAILABLE:
 		return null
 	var data = {}
