@@ -74,7 +74,7 @@ func _on_Slot_coin_inserted(coin):
 
 
 func _on_UndoButton_pressed():
-	print("Funciona")
+	print("Undone")
 	release_inserted_coins()
 	undo_button.disabled = true
 	execute_button.disabled = true
@@ -83,7 +83,7 @@ func _on_UndoButton_pressed():
 func _on_ExecuteButton_pressed():
 	if skill_uses != 0:
 		skill_uses -= 1
-		var skill = _create_skill()
+		var skill = skill_data.create_skill(combatants.player, combatants.enemy)
 		skill.use()
 		for slot in slot_box.get_children():
 			if slot is Slot:
@@ -102,15 +102,7 @@ func _on_Player_turn_started():
 	undo_button.disabled = true
 	execute_button.disabled = true
 
-func _create_skill() -> Skill:
-	# Posiblemente mejorable
-	if skill_data is AttackSkillData:
-		return AttackSkill.new(skill_data, combatants.player, combatants.enemy)
-	else:
-		return Skill.new(skill_data, combatants.player, combatants.enemy)
-
 func set_skill_uses(value):
-	print("Set"+str(value))
 	skill_uses = value
 	_update_uses_ui()
 

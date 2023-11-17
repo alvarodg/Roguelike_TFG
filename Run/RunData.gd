@@ -4,10 +4,10 @@ extends Node
 var version = "0.1"
 var run_seed = 0
 var player: Player
-
+var equipment_node: EquipmentNode
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	player = Player.new()
+	pass
 
 # Note: This can be called from anywhere inside the tree. This function is
 # path independent.

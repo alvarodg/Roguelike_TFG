@@ -16,3 +16,7 @@ func set_cost(value):
 
 func get_description() -> String:
 	return "This skill has no effect."
+
+# Patrón Factory Method
+func create_skill(user, target) -> Skill:
+	return Skill.new(self, user, target)

@@ -57,6 +57,7 @@ size_flags_horizontal = 4
 theme_override_constants/separation = 30
 
 [node name="EnergyButton" type="Button" parent="CenterContainer/Panel/CenterContainer/VBoxContainer/ChoiceContainer"]
+visible = false
 custom_minimum_size = Vector2(150, 120)
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
@@ -64,12 +65,14 @@ text = "+1 Coin
 -10 Health"
 
 [node name="HealthButton" type="Button" parent="CenterContainer/Panel/CenterContainer/VBoxContainer/ChoiceContainer"]
+visible = false
 custom_minimum_size = Vector2(150, 120)
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "+30 Health"
 
 [node name="LuckButton" type="Button" parent="CenterContainer/Panel/CenterContainer/VBoxContainer/ChoiceContainer"]
+visible = false
 custom_minimum_size = Vector2(150, 120)
 layout_mode = 2
 theme_override_font_sizes/font_size = 20

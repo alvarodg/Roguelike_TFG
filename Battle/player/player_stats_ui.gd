@@ -47,6 +47,8 @@ func _update_armor(armor):
 func _update_dodges(dodges):
 	if dodges > 0:
 		dodges_label.show()
-		dodges_label.text = str(dodges) + " Dodges"
+		dodges_label.text = str(dodges) + " Dodge"
+		if dodges > 1:
+			dodges_label.text += "s"
 	else:
 		dodges_label.hide()

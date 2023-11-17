@@ -8,3 +8,5 @@ damage = 12
 hits = 1
 name = "Balance"
 cost = Array[int]([0, 1, 1])
+uses_per_turn = 1
+one_shot = false

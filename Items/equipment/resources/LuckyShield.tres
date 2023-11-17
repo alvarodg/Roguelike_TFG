@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="PlayerEquipment" load_steps=4 format=3 uid="uid://ttp41waer3c5"]
+
+[ext_resource type="Script" path="res://Items/equipment/player_equipment.gd" id="1_f4xdl"]
+[ext_resource type="Script" path="res://Items/equipment/equipment_ui_data.gd" id="2_5y7bq"]
+
+[sub_resource type="Resource" id="Resource_pvbxi"]
+script = ExtResource("2_5y7bq")
+ui_name = "Lucky Shield"
+
+[resource]
+script = ExtResource("1_f4xdl")
+coin_count = 0
+base_luck = 0.1
+ui_data = SubResource("Resource_pvbxi")
+description = ""
+rarity = 2
+max_health = 0
+health = 0
+base_shield = 20
+base_armor = 0
+base_dodges = 0

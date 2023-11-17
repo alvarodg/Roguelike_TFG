@@ -13,3 +13,6 @@ func get_description() -> String:
 		description += " x "+str(hits)
 	description += " Damage"
 	return description
+
+func create_skill(user, target) -> Skill:
+	return AttackSkill.new(self, user, target)

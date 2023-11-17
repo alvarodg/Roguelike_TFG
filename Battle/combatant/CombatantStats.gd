@@ -18,7 +18,7 @@ var health: int : set = set_health
 var shield: int : set = set_shield
 var armor: int : set = set_armor
 var dodges: int : set = set_dodges
-# Variable is_dead para arreglar habilidades con multiples golpes enviando multiples señales (no lo arregla)
+# Variable is_dead para arreglar habilidades con multiples golpes enviando multiples señales
 var is_dead: bool = false
 
 func _init(p_max_health: int = 100, p_base_shield: int = 0, p_base_armor: int = 0, p_base_dodges: int = 0):
@@ -77,9 +77,13 @@ func take_damage(amount):
 	if dodges > 0:
 		dodges -= 1
 		dodged.emit()
-	else:
-		var remainder = amount - shield
-		shield -= amount
-		if remainder > 0:
+	elif shield > 0:
+		var damage_remainder = amount - armor - shield
+		var armor_remainder = max(0, armor - shield)
+		shield -= max(0, amount - armor)
+		if shield == 0:
 			shield_broke.emit()
-			health -= max(0, remainder - armor)
+		if damage_remainder > 0:
+			health -= max(0, damage_remainder - armor_remainder)
+	else:
+		health -= max(0, amount - armor)

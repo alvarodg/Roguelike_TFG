@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnkl2f5rxvdty"]
+
+[ext_resource type="Script" path="res://Events/equipment_button.gd" id="1_oeyqg"]
+
+[node name="EquipmentButton" type="Button"]
+custom_minimum_size = Vector2(150, 120)
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Description"
+script = ExtResource("1_oeyqg")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
