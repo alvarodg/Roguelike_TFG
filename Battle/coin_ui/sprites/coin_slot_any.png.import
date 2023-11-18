@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpw2y2hxjx2k6"
-path="res://.godot/imported/coin_slot_heads.png-15dd9ae5e61d1dd5eb3566607b48c8d9.ctex"
+uid="uid://dpgpbk4n0loxk"
+path="res://.godot/imported/coin_slot_any.png-2b7c64af89dcf524d1df45126a12f6ff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Battle/prototypes/sprites/coin_slot_heads.png"
-dest_files=["res://.godot/imported/coin_slot_heads.png-15dd9ae5e61d1dd5eb3566607b48c8d9.ctex"]
+source_file="res://Battle/coin_ui/sprites/coin_slot_any.png"
+dest_files=["res://.godot/imported/coin_slot_any.png-2b7c64af89dcf524d1df45126a12f6ff.ctex"]
 
 [params]
 

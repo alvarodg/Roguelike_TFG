@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AttackSkillData" load_steps=2 format=3 uid="uid://dwh575t6jfgdw"]
+
+[ext_resource type="Script" path="res://Battle/skills/AttackSkillData.gd" id="1_8htyq"]
+
+[resource]
+script = ExtResource("1_8htyq")
+damage = 500
+hits = 1
+name = "Win (Debug)"
+cost = Array[int]([1, 0, 0])
+uses_per_turn = -1
+one_shot = false

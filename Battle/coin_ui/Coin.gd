@@ -5,7 +5,7 @@ class_name Coin
 @export var heads_texture: Texture2D
 @export var tails_texture: Texture2D
 @export var heads_chance = 0.5
-var drag_preview_scene: PackedScene = preload("res://Battle/prototypes/drag_preview.tscn")
+var drag_preview_scene: PackedScene = preload("res://Battle/coin_ui/drag_preview.tscn")
 var is_dragging: bool = false
 
 enum Status {AVAILABLE, INSERTED, SPENT}

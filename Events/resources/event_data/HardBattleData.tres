@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://Events/BattleEventData.gd" id="1_evwa7"]
 [ext_resource type="Resource" uid="uid://conurbftd672o" path="res://Battle/enemies/StrongEnemyStats.tres" id="1_sambu"]
+[ext_resource type="Resource" uid="uid://kmogyjaldbnb" path="res://Events/resources/event_data/SkillChoiceData.tres" id="2_3wju8"]
 [ext_resource type="PackedScene" uid="uid://ci2osml7lmqcy" path="res://Battle/CoinBattle.tscn" id="2_suvps"]
-[ext_resource type="Resource" uid="uid://b0s7cxl6wg044" path="res://Events/resources/event_data/ChoiceData.tres" id="2_vgcfo"]
 
 [resource]
 script = ExtResource("1_evwa7")
 enemy_stats = ExtResource("1_sambu")
 scene = ExtResource("2_suvps")
-next_event = ExtResource("2_vgcfo")
+next_event = ExtResource("2_3wju8")

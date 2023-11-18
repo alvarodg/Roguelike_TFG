@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bdet75vcwcu45"
-path="res://.godot/imported/coin_slot_tails.png-f829958f6e48f229de73a87f6467fd97.ctex"
+path="res://.godot/imported/coin_slot_tails.png-a050724e20c525d9dab4559bc6939c5c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Battle/prototypes/sprites/coin_slot_tails.png"
-dest_files=["res://.godot/imported/coin_slot_tails.png-f829958f6e48f229de73a87f6467fd97.ctex"]
+source_file="res://Battle/coin_ui/sprites/coin_slot_tails.png"
+dest_files=["res://.godot/imported/coin_slot_tails.png-a050724e20c525d9dab4559bc6939c5c.ctex"]
 
 [params]
 

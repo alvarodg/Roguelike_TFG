@@ -8,6 +8,7 @@ class_name Player
 var equipment_list: Array[Equipment]
 var load_dict: Dictionary = {}
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	RunData.player = self
@@ -16,6 +17,9 @@ func _ready():
 	if equipment_list.size() == 0:
 		for equipment in default_equipment:
 			equip(equipment)
+			# Necesita que equipment node se inicialice antes que Player, TEMPORAL?
+			if equipment in RunData.equipment_node.collection.equipment_list:
+				RunData.equipment_node.remove_equipment(equipment)
 	default_equipment = []
 
 func set_stats(new_stats):
@@ -53,17 +57,18 @@ func save() -> Dictionary:
 func data_load(parameter, data):
 	# TEMPORAL, cambiar la función de cargado o la forma de obtener el diccionario
 	var empty_stats = PlayerStats.new()
+	var saved_stats_keys = empty_stats.to_save_dict().keys()
 	var skill_regex: RegEx = RegEx.new()
 	var equip_regex: RegEx = RegEx.new()
 	skill_regex.compile("skill\\d+")
 	equip_regex.compile("equipment\\d+")
 	# Si el parámetro forma parte de PlayerStats
-	if parameter in empty_stats.to_save_dict().keys():
+	if parameter in saved_stats_keys:
 		# Lo guarda para cargarlo luego
 		load_dict[parameter] = data
 		# Si load_dict tiene todos los parámetros de PlayerStats, los carga.
 		# (Comprueba por tamaño porque las listas no tienen el mismo orden)
-		if load_dict.keys().size() == empty_stats.to_save_dict().keys().size():
+		if load_dict.keys().size() == saved_stats_keys.size():
 			stats.load_save_dict(load_dict)
 			load_dict = {}
 	# Si el parámetro coincide con el regex para habilidades o equipamiento, carga la habilidad

@@ -1,7 +1,7 @@
 extends GridContainer
 
 @onready var turn_manager: TurnManager = preload("res://Battle/resources/TurnManager.tres")
-@onready var coin_scene = preload("res://Battle/prototypes/coin.tscn")
+@onready var coin_scene = preload("res://Battle/coin_ui/coin.tscn")
 # Sacar del jugador en la implementación final
 @export var coin_count: int  = 6
 @export var luck: float = 1.0

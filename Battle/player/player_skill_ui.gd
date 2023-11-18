@@ -1,7 +1,7 @@
 extends Control
 
 @onready var skill_grid = %SkillGrid
-@onready var skill_box_scene = preload("res://Battle/prototypes/skill_box.tscn")
+@onready var skill_box_scene = preload("res://Battle/coin_ui/skill_box.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.

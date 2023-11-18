@@ -9,6 +9,8 @@ func _ready():
 
 # Saca un equipamiento de equip_list, modifica la lista.
 func _get_random_equipment(equip_list: Array[Equipment], rarity: int = -1):
+	if equip_list.size() == 0:
+		return null
 	var pickable_list: Array[Equipment] = []
 	if rarity > 0:
 		for equipment in equip_list:
@@ -25,9 +27,12 @@ func _get_random_equipment(equip_list: Array[Equipment], rarity: int = -1):
 
 func get_random_equipment_list(size: int = 1, rarity: int = -1) -> Array[Equipment]:
 	var list: Array[Equipment] = collection.equipment_list.duplicate()
+	var picks: int = min(size, list.size())
 	var chosen_list: Array[Equipment] = []
-	for i in range(size):
-		chosen_list.append(_get_random_equipment(list, rarity))
+	for i in range(picks):
+		var chosen_equipment = _get_random_equipment(list, rarity)
+		if chosen_equipment != null:
+			chosen_list.append(chosen_equipment)
 	return chosen_list
 
 

@@ -1,0 +1,70 @@
+[gd_scene load_steps=5 format=3 uid="uid://sm2dgitxom6p"]
+
+[ext_resource type="Script" path="res://Events/skill_choice.gd" id="1_s1n6t"]
+[ext_resource type="Resource" uid="uid://c4bj6lpyq88a2" path="res://Battle/skills/resources/MultistrikeAttack.tres" id="2_v411v"]
+[ext_resource type="Resource" uid="uid://br8iiky4f8i5m" path="res://Battle/skills/resources/RainbowAttack.tres" id="3_68d12"]
+[ext_resource type="Resource" uid="uid://m7jumc6unw5f" path="res://Battle/skills/resources/QuickStrikeAttack.tres" id="4_wkimy"]
+
+[node name="SkillChoice" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s1n6t")
+skill_list = Array[Resource("res://Battle/skills/SkillData.gd")]([ExtResource("2_v411v"), ExtResource("3_68d12"), ExtResource("4_wkimy")])
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.352941)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CenterContainer"]
+custom_minimum_size = Vector2(700, 500)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 100
+
+[node name="Label" type="Label" parent="CenterContainer/Panel/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "SKILL CHOICE"
+horizontal_alignment = 1
+
+[node name="ChoiceContainer" type="HBoxContainer" parent="CenterContainer/Panel/CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 30
+
+[node name="SkipButton" type="Button" parent="CenterContainer/Panel/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 25
+text = "SKIP ->"
+
+[connection signal="pressed" from="CenterContainer/Panel/CenterContainer/VBoxContainer/SkipButton" to="." method="_on_SkipButton_pressed"]

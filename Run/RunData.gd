@@ -71,9 +71,6 @@ func load_game():
 		var run_data_dict = json.get_data()
 		version = run_data_dict["version"]
 		run_seed = run_data_dict["run_seed"]
-#	if json.parse(save_file.get_line()) == OK:
-#		var player_data_dict = json.get_data()
-#		player.load_save_dict(player_data_dict)
 	# Carga el resto de los datos del grupo "run_persistent"
 	while save_file.get_position() < save_file.get_length():
 		var json_string = save_file.get_line()
@@ -90,6 +87,7 @@ func load_game():
 		# Firstly, we need to create the object and add it to the tree and set its position.
 		var new_object = load(node_data["filename"]).instantiate()
 		get_node(node_data["parent"]).add_child(new_object)
+		# Comprueba si el nodo tiene una posición guardada, si no se salta esta asignación.
 		if "pos.x" in node_data.keys():
 			new_object.position = Vector2(node_data["pos_x"], node_data["pos_y"])
 
@@ -102,6 +100,9 @@ func load_game():
 			else:
 				new_object.set(i, node_data[i])
 
+## Comprueba la validez de la partida guardada. 
+## Esta implementación asume que se actualizará la versión cuando se realicen cambios que 
+## puedan afectar a partidas previas.
 func is_save_compatible() -> bool:
 	var valid = true
 	if FileAccess.file_exists("user://savegame.save"):
@@ -115,6 +116,7 @@ func is_save_compatible() -> bool:
 
 func save_exists() -> bool:
 	return FileAccess.file_exists("user://savegame.save")
+
 
 func stash_save():
 	if FileAccess.file_exists("user://savegame.save"):

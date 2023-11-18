@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://tv88ia00qmed"]
 
-[ext_resource type="Script" path="res://Battle/prototypes/skill_box.gd" id="1_4n8df"]
+[ext_resource type="Script" path="res://Battle/coin_ui/skill_box.gd" id="1_cau6c"]
 
 [node name="SkillBox" type="VBoxContainer"]
-script = ExtResource("1_4n8df")
+script = ExtResource("1_cau6c")
 
 [node name="NameLabel" type="Label" parent="."]
 unique_name_in_owner = true

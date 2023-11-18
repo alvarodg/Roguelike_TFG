@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="Event" load_steps=6 format=3 uid="uid://cnadbxeukau4w"]
 
-[ext_resource type="Resource" uid="uid://b0s7cxl6wg044" path="res://Events/resources/event_data/ChoiceData.tres" id="1_02pnl"]
 [ext_resource type="Texture2D" uid="uid://dkfud1qpdc62h" path="res://Events/icons/question_hover.png" id="1_54hij"]
 [ext_resource type="Script" path="res://Events/Event.gd" id="1_mx36j"]
+[ext_resource type="Resource" uid="uid://6mj55fih0kl8" path="res://Events/resources/event_data/EquipmentChoiceData.tres" id="1_s6xm3"]
 [ext_resource type="Texture2D" uid="uid://d0xigpann4p4n" path="res://Events/icons/question.png" id="2_3dx4o"]
 [ext_resource type="Texture2D" uid="uid://cag02722t8dic" path="res://Events/icons/question_traveled.png" id="3_nmtr7"]
 
@@ -13,4 +13,4 @@ icon_hover = ExtResource("1_54hij")
 icon_traveled = ExtResource("3_nmtr7")
 text = "? Event"
 id = 4
-event_data = ExtResource("1_02pnl")
+event_data = ExtResource("1_s6xm3")

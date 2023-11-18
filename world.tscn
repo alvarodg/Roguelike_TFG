@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bfdmc5trnp4uk"]
+[gd_scene load_steps=13 format=3 uid="uid://bfdmc5trnp4uk"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_ewi3c"]
 [ext_resource type="PackedScene" uid="uid://dtatqj2q74q42" path="res://map.tscn" id="2_tumwh"]
@@ -6,14 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://b8nvuhpu5i8fs" path="res://Menus/main_menu.tscn" id="3_6bs06"]
 [ext_resource type="Resource" uid="uid://dnhbnjwbujp3u" path="res://Battle/player/resources/default_player_stats.tres" id="3_nvh0g"]
 [ext_resource type="Resource" uid="uid://btu8rw8p7b334" path="res://Battle/skills/resources/BalanceAttack.tres" id="3_vfd4v"]
-[ext_resource type="Resource" uid="uid://d4eudcmjei2lr" path="res://Battle/skills/resources/ConsolationAttack.tres" id="4_h738e"]
 [ext_resource type="Resource" uid="uid://k6ndslc1hrs1" path="res://Battle/player/resources/default_player_ui_data.tres" id="4_ryo5a"]
-[ext_resource type="Resource" uid="uid://blbn73o7dg5pu" path="res://Battle/skills/resources/DiscardAttack.tres" id="5_4pn5n"]
-[ext_resource type="Resource" uid="uid://b52f2sw4ch6tc" path="res://Battle/skills/resources/JackpotAttack.tres" id="6_0rblt"]
 [ext_resource type="Resource" uid="uid://sx0hhcoevlv0" path="res://Battle/skills/resources/HitAttack.tres" id="8_c10fw"]
-[ext_resource type="Resource" uid="uid://da3sb74ektma7" path="res://Items/equipment/resources/SmallShield.tres" id="10_1f4i2"]
-[ext_resource type="Resource" uid="uid://dxduqhg1h3hxx" path="res://Items/equipment/resources/ShadowClone.tres" id="11_78j0l"]
-[ext_resource type="Resource" uid="uid://domx052sdweke" path="res://Items/equipment/resources/PoisonedCoin.tres" id="12_o8nna"]
+[ext_resource type="Resource" uid="uid://dwh575t6jfgdw" path="res://Battle/skills/resources/WinAttack.tres" id="12_j6oxs"]
 [ext_resource type="Resource" uid="uid://dd31l847vkwrl" path="res://Items/equipment/resources/WeakArmor.tres" id="13_71tyo"]
 [ext_resource type="Script" path="res://Items/equipment/EquipmentNode.gd" id="14_qvs3q"]
 [ext_resource type="Resource" uid="uid://5871ejwt2whd" path="res://Items/equipment/collections/default_collection.tres" id="15_xvtcd"]
@@ -27,15 +22,15 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ewi3c")
 
-[node name="Player" parent="." instance=ExtResource("2_yatmi")]
-stats = ExtResource("3_nvh0g")
-ui_data = ExtResource("4_ryo5a")
-skill_list = Array[Resource("res://Battle/skills/SkillData.gd")]([ExtResource("3_vfd4v"), ExtResource("4_h738e"), ExtResource("5_4pn5n"), ExtResource("8_c10fw"), ExtResource("6_0rblt")])
-default_equipment = Array[Resource("res://Items/equipment/equipment.gd")]([ExtResource("10_1f4i2"), ExtResource("11_78j0l"), ExtResource("12_o8nna"), ExtResource("13_71tyo")])
-
 [node name="EquipmentNode" type="Node" parent="." groups=["equipment_list", "run_persistent"]]
 script = ExtResource("14_qvs3q")
 collection = ExtResource("15_xvtcd")
+
+[node name="Player" parent="." instance=ExtResource("2_yatmi")]
+stats = ExtResource("3_nvh0g")
+ui_data = ExtResource("4_ryo5a")
+skill_list = Array[Resource("res://Battle/skills/SkillData.gd")]([ExtResource("3_vfd4v"), ExtResource("8_c10fw"), ExtResource("12_j6oxs")])
+default_equipment = Array[Resource("res://Items/equipment/equipment.gd")]([ExtResource("13_71tyo")])
 
 [node name="Map" parent="." instance=ExtResource("2_tumwh")]
 

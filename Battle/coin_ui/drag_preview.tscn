@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dg7mrg2siefx3"]
 
-[ext_resource type="Script" path="res://Battle/prototypes/drag_preview.gd" id="1_2lryq"]
+[ext_resource type="Script" path="res://Battle/coin_ui/drag_preview.gd" id="1_2lryq"]
 
 [node name="DragPreview" type="Sprite2D"]
 script = ExtResource("1_2lryq")

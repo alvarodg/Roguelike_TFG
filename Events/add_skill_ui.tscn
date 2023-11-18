@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1qenfnrgvgbd"]
+
+[ext_resource type="Script" path="res://Events/add_skill_ui.gd" id="1_7bslk"]
+[ext_resource type="Resource" uid="uid://btu8rw8p7b334" path="res://Battle/skills/resources/BalanceAttack.tres" id="2_xa42r"]
+
+[node name="AddSkillUI" type="Control"]
+custom_minimum_size = Vector2(240, 200)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("1_7bslk")
+skill = ExtResource("2_xa42r")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SkillVBoxContainer" type="VBoxContainer" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="PickButton" type="Button" parent="Panel/SkillVBoxContainer"]
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Pick"
+
+[connection signal="pressed" from="Panel/SkillVBoxContainer/PickButton" to="." method="_on_PickButton_pressed"]

@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://cunn187c8gmy8"]
 
-[ext_resource type="Script" path="res://Battle/prototypes/Slot.gd" id="1_f8xhp"]
-[ext_resource type="Texture2D" uid="uid://dpgpbk4n0loxk" path="res://Battle/prototypes/sprites/coin_slot_any.png" id="2_0w4v1"]
-[ext_resource type="Texture2D" uid="uid://cpw2y2hxjx2k6" path="res://Battle/prototypes/sprites/coin_slot_heads.png" id="3_38pys"]
-[ext_resource type="Texture2D" uid="uid://bdet75vcwcu45" path="res://Battle/prototypes/sprites/coin_slot_tails.png" id="4_e47eb"]
-[ext_resource type="Script" path="res://Battle/prototypes/CountLabel.gd" id="5_rfkqu"]
+[ext_resource type="Script" path="res://Battle/coin_ui/Slot.gd" id="1_f8xhp"]
+[ext_resource type="Texture2D" uid="uid://dpgpbk4n0loxk" path="res://Battle/coin_ui/sprites/coin_slot_any.png" id="2_0w4v1"]
+[ext_resource type="Texture2D" uid="uid://cpw2y2hxjx2k6" path="res://Battle/coin_ui/sprites/coin_slot_heads.png" id="3_38pys"]
+[ext_resource type="Texture2D" uid="uid://bdet75vcwcu45" path="res://Battle/coin_ui/sprites/coin_slot_tails.png" id="4_e47eb"]
+[ext_resource type="Script" path="res://Battle/coin_ui/CountLabel.gd" id="5_rfkqu"]
 
 [node name="Slot" type="TextureButton"]
 texture_normal = ExtResource("2_0w4v1")

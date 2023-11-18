@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://d108eaoiwyxw0"]
 
-[ext_resource type="Script" path="res://Battle/prototypes/coin_box.gd" id="1_3h5s1"]
+[ext_resource type="Script" path="res://Battle/coin_ui/coin_box.gd" id="1_yrlql"]
 
 [node name="CoinBox" type="GridContainer"]
 anchors_preset = 8
@@ -17,4 +17,4 @@ grow_vertical = 2
 theme_override_constants/h_separation = 16
 theme_override_constants/v_separation = 10
 columns = 6
-script = ExtResource("1_3h5s1")
+script = ExtResource("1_yrlql")

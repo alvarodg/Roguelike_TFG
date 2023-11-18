@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqhqje42t07hx"]
+
+[ext_resource type="Script" path="res://Events/add_skill_ui.gd" id="1_73xj2"]
+[ext_resource type="PackedScene" uid="uid://tv88ia00qmed" path="res://Battle/coin_ui/skill_box.tscn" id="2_0vmyd"]
+[ext_resource type="Resource" uid="uid://btu8rw8p7b334" path="res://Battle/skills/resources/BalanceAttack.tres" id="3_biwpb"]
+
+[node name="AddSkillButton" type="Button"]
+custom_minimum_size = Vector2(200, 200)
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("1_73xj2")
+skill = ExtResource("3_biwpb")
+
+[node name="SkillBox" parent="." instance=ExtResource("2_0vmyd")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+skill_data = ExtResource("3_biwpb")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Battle/CoinBattle.gd" id="1_ygx54"]
 [ext_resource type="PackedScene" uid="uid://d2ay6knlrtvwb" path="res://Battle/player/player_skill_ui.tscn" id="2_a737o"]
-[ext_resource type="PackedScene" uid="uid://d108eaoiwyxw0" path="res://Battle/prototypes/coin_box.tscn" id="3_2o0qd"]
+[ext_resource type="PackedScene" uid="uid://d108eaoiwyxw0" path="res://Battle/coin_ui/coin_box.tscn" id="3_2o0qd"]
 [ext_resource type="PackedScene" uid="uid://cgeo8n0mg0x68" path="res://Battle/player/player_stats_ui.tscn" id="9_f77mq"]
 
 [node name="CoinBattle" type="Control"]
@@ -42,10 +42,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -192.0
-offset_top = -244.0
-offset_right = 192.0
-offset_bottom = 85.0
+offset_left = -472.0
+offset_top = -228.0
+offset_right = 272.0
+offset_bottom = 101.0
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_group_ = true

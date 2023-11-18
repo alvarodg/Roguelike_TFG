@@ -4,7 +4,7 @@ class_name SkillBox
 @onready var combatants: Combatants = preload("res://Battle/resources/Combatants.tres")
 @onready var turn_manager: TurnManager = preload("res://Battle/resources/TurnManager.tres")
 @export var skill_data: SkillData
-@onready var slot_scene = preload("res://Battle/prototypes/slot.tscn")
+@onready var slot_scene = preload("res://Battle/coin_ui/slot.tscn")
 @onready var name_label = %NameLabel
 @onready var description_label = %DescriptionLabel
 @onready var slot_box = %SlotBox
@@ -105,6 +105,10 @@ func _on_Player_turn_started():
 func set_skill_uses(value):
 	skill_uses = value
 	_update_uses_ui()
+
+func hide_buttons():
+	undo_button.hide()
+	execute_button.hide()
 
 func _update_uses_ui():
 	if skill_data.uses_per_turn < 0:

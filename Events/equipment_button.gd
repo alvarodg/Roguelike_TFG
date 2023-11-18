@@ -1,5 +1,7 @@
 extends Button
 
+signal equipment_chosen(equipment)
+
 @export var equipment: Equipment
 @export var player: Player
 
@@ -12,10 +14,8 @@ func setup(p_player: Player, p_equipment: Equipment):
 	player = p_player
 	equipment = p_equipment
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 
 func _on_pressed():
 	player.equip(equipment)
+	RunData.equipment_node.remove_equipment(equipment)
+#	equipment_chosen.emit(equipment)
