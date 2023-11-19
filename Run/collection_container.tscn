@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://buwxy0toti3j8"]
+
+[ext_resource type="Script" path="res://Run/collection_container.gd" id="1_71v05"]
+
+[node name="CollectionContainer" type="Node" groups=["equipment_list", "run_persistent"]]
+script = ExtResource("1_71v05")

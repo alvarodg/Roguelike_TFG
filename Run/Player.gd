@@ -17,9 +17,9 @@ func _ready():
 	if equipment_list.size() == 0:
 		for equipment in default_equipment:
 			equip(equipment)
-			# Necesita que equipment node se inicialice antes que Player, TEMPORAL?
-			if equipment in RunData.equipment_node.collection.equipment_list:
-				RunData.equipment_node.remove_equipment(equipment)
+			# Necesita que CollectionContainer se inicialice antes que Player, TEMPORAL?
+			if equipment in RunData.collections.equipments.list:
+				RunData.collections.remove_equipment(equipment)
 	default_equipment = []
 
 func set_stats(new_stats):
@@ -42,14 +42,15 @@ func save() -> Dictionary:
 	}
 	var stats_dict = stats.to_save_dict()
 	save_dict.merge(stats_dict)
+	# Podría simplificarse el guardado/cargado de habilidades y equipo, pero esto conserva el orden.
 	var skill_dict = {}
 	for i in range(skill_list.size()):
-		skill_dict["skill"+str(i)] = skill_list[i].resource_path
+		skill_dict["skill%02d" % i] = skill_list[i].resource_path
 		print(skill_list[i].resource_path)
 	save_dict.merge(skill_dict)
 	var equip_dict = {}
 	for i in range(equipment_list.size()):
-		equip_dict["equipment"+str(i)] = equipment_list[i].resource_path
+		equip_dict["equipment%02d" % i] = equipment_list[i].resource_path
 		print(equipment_list[i].resource_path)
 	save_dict.merge(equip_dict)
 	return save_dict
@@ -71,7 +72,7 @@ func data_load(parameter, data):
 		if load_dict.keys().size() == saved_stats_keys.size():
 			stats.load_save_dict(load_dict)
 			load_dict = {}
-	# Si el parámetro coincide con el regex para habilidades o equipamiento, carga la habilidad
+	# Si el parámetro coincide con el regex para habilidades o equipo, los añade a su respectiva lista
 	elif skill_regex.search(parameter):
 		skill_list.append(load(data))
 	elif equip_regex.search(parameter):

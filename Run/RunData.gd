@@ -4,7 +4,7 @@ extends Node
 var version = "0.1"
 var run_seed = 0
 var player: Player
-var equipment_node: EquipmentNode
+var collections: CollectionContainer
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dqhqje42t07hx"]
+[gd_scene load_steps=4 format=3 uid="uid://d3l2rw5hvotg0"]
 
 [ext_resource type="Script" path="res://Events/add_skill_ui.gd" id="1_73xj2"]
 [ext_resource type="PackedScene" uid="uid://tv88ia00qmed" path="res://Battle/coin_ui/skill_box.tscn" id="2_0vmyd"]

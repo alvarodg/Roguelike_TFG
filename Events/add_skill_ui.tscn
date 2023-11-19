@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://b1qenfnrgvgbd"]
+[gd_scene load_steps=6 format=3 uid="uid://b1qenfnrgvgbd"]
 
 [ext_resource type="Script" path="res://Events/add_skill_ui.gd" id="1_7bslk"]
 [ext_resource type="Resource" uid="uid://btu8rw8p7b334" path="res://Battle/skills/resources/BalanceAttack.tres" id="2_xa42r"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2r2ji"]
+bg_color = Color(0.533333, 0.533333, 0.533333, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0a3ka"]
+bg_color = Color(0.352941, 0.352941, 0.352941, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_856qm"]
+bg_color = Color(0.721569, 0.721569, 0.721569, 1)
 
 [node name="AddSkillUI" type="Control"]
 custom_minimum_size = Vector2(240, 200)
@@ -35,6 +44,9 @@ custom_minimum_size = Vector2(140, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_2r2ji")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0a3ka")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_856qm")
 text = "Pick"
 
 [connection signal="pressed" from="Panel/SkillVBoxContainer/PickButton" to="." method="_on_PickButton_pressed"]

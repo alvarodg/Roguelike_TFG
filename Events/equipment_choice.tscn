@@ -47,7 +47,7 @@ theme_override_constants/separation = 100
 [node name="Label" type="Label" parent="CenterContainer/Panel/CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
-text = "CHOICE EVENT"
+text = "EQUIPMENT CHOICE"
 horizontal_alignment = 1
 
 [node name="ChoiceContainer" type="HBoxContainer" parent="CenterContainer/Panel/CenterContainer/VBoxContainer"]

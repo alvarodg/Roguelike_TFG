@@ -11,7 +11,7 @@ var next_event: EventData
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if equip_list.size() == 0:
-		equip_list = RunData.equipment_node.get_random_equipment_list(choices)
+		equip_list = RunData.collections.get_random_equipment_list(choices)
 	for equipment in equip_list:
 		var equip_button = equipment_button_scene.instantiate()
 		equip_button.setup(RunData.player, equipment)

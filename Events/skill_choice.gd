@@ -11,8 +11,7 @@ var next_event: EventData
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if skill_list.size() == 0:
-#		skill_list = RunData.equipment_node.get_random_equipment_list(choices)
-		pass
+		skill_list = RunData.collections.get_random_skill_list(choices)
 	for skill in skill_list:
 		var add_skill_ui = add_skill_ui_scene.instantiate()
 		add_skill_ui.setup(RunData.player, skill)
@@ -35,7 +34,8 @@ func finish():
 	queue_free()
 
 
-func _on_Skill_chosen(_skill):
+func _on_Skill_chosen(skill):
+	RunData.collections.remove(skill)
 	finish()
 
 func _on_SkipButton_pressed():
