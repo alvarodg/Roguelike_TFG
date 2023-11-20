@@ -6,6 +6,9 @@
 script = ExtResource("1_1stia")
 damage = 9
 hits = 5
+reroll = false
+ephimeral_coins = 0
+facing = 0
 name = "Multistrike"
 cost = Array[int]([0, 0, 4])
 uses_per_turn = 1

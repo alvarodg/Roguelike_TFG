@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CoinData" load_steps=4 format=3 uid="uid://3rw1h1eslq66"]
+
+[ext_resource type="Script" path="res://Battle/coin_ui/coin_data.gd" id="1_87dit"]
+[ext_resource type="Texture2D" uid="uid://gyqv3c4g4llp" path="res://Battle/coin_ui/sprites/coin_heads.png" id="1_f25wn"]
+[ext_resource type="Texture2D" uid="uid://da54b5ae0l3k" path="res://Battle/coin_ui/sprites/coin_tails.png" id="3_1ic7d"]
+
+[resource]
+script = ExtResource("1_87dit")
+heads_texture = ExtResource("1_f25wn")
+tails_texture = ExtResource("3_1ic7d")
+heads_chance = 0.5

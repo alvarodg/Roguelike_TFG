@@ -6,6 +6,9 @@
 script = ExtResource("1_o30og")
 damage = 2
 hits = 3
+reroll = false
+ephimeral_coins = 0
+facing = 0
 name = "Quick Strike"
 cost = Array[int]([0, 0, 1])
 uses_per_turn = 1

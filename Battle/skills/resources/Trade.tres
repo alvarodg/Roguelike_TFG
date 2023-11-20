@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AttackSkillData" load_steps=2 format=3 uid="uid://hhc4rj6cmpxn"]
+
+[ext_resource type="Script" path="res://Battle/skills/AttackSkillData.gd" id="1_v43un"]
+
+[resource]
+script = ExtResource("1_v43un")
+damage = 0
+hits = 0
+rerolls = 0
+ephemeral_coins = 2
+facing = 2
+name = "Trade"
+cost = Array[int]([0, 1, 0])
+uses_per_turn = 3
+one_shot = false

@@ -32,7 +32,7 @@ func _ready():
 	# Inicializa las interfaces del jugador
 	player_skill_ui.setup(player)
 	player_stats_ui.setup(player)
-	coin_box.setup(player.stats)
+	coin_box.setup(player)
 	# Conecta señales
 	turn_manager.player_turn_started.connect(_on_player_turn_started)
 	turn_manager.enemy_turn_started.connect(_on_enemy_turn_started)
@@ -69,6 +69,7 @@ func _on_Enemy_died():
 func end_battle():
 	player_skill_ui.hide()
 	end_turn_button.hide()
+	player.end_battle()
 	print("You won!")
 	if next_event is EventData:
 		var next_scene = next_event.instantiate_scene()

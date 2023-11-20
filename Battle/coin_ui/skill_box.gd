@@ -1,10 +1,11 @@
-extends VBoxContainer
+extends Control
 class_name SkillBox
 
 @onready var combatants: Combatants = preload("res://Battle/resources/Combatants.tres")
 @onready var turn_manager: TurnManager = preload("res://Battle/resources/TurnManager.tres")
 @export var skill_data: SkillData
 @onready var slot_scene = preload("res://Battle/coin_ui/slot.tscn")
+@onready var skill_box_container = %SkillBoxContainer
 @onready var name_label = %NameLabel
 @onready var description_label = %DescriptionLabel
 @onready var slot_box = %SlotBox
@@ -83,11 +84,12 @@ func _on_UndoButton_pressed():
 func _on_ExecuteButton_pressed():
 	if skill_uses != 0:
 		skill_uses -= 1
-		var skill = skill_data.create_skill(combatants.player, combatants.enemy)
-		skill.use()
+		var skill = skill_data.create_skill(combatants.player, combatants.enemy, coin_list)
+		# Marca las monedas como usadas antes de usar la habilidad, importante para poder cambiar su estado en esta.
 		for slot in slot_box.get_children():
 			if slot is Slot:
 				slot.use_coins()
+		skill.use()
 		undo_button.disabled = true
 		execute_button.disabled = true
 		if skill_uses != 0:

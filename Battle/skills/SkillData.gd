@@ -18,5 +18,5 @@ func get_description() -> String:
 	return "This skill has no effect."
 
 # Patrón Factory Method
-func create_skill(user, target) -> Skill:
-	return Skill.new(self, user, target)
+func create_skill(user, target, coins) -> Skill:
+	return Skill.new(self, user, target, coins)

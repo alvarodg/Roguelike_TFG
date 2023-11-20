@@ -6,6 +6,9 @@
 script = ExtResource("1_8vnn0")
 damage = 5
 hits = 1
+rerolls = 0
+ephemeral_coins = 0
+facing = 0
 name = "Hit"
 cost = Array[int]([0, 1, 0])
 uses_per_turn = -1

@@ -111,7 +111,8 @@ func release_inserted_coins():
 func use_coins():
 	for coin in inserted_coins:
 		coin.set_spent()
-	used_coins += inserted_coins
+	# Añade a used_coins las monedas que no van a eliminarse.
+	used_coins += inserted_coins.filter(func(element): return not element.is_queued_for_deletion())
 	inserted_coins = []
 	coins_changed.emit(coins_needed, inserted_coins.size())
 	

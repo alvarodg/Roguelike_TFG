@@ -11,7 +11,7 @@
 [ext_resource type="Resource" uid="uid://b3t3hv7n1dbyh" path="res://Run/collections/default_skill_collection.tres" id="4_lc4a6"]
 [ext_resource type="Resource" uid="uid://k6ndslc1hrs1" path="res://Battle/player/resources/default_player_ui_data.tres" id="4_ryo5a"]
 [ext_resource type="Resource" uid="uid://sx0hhcoevlv0" path="res://Battle/skills/resources/HitAttack.tres" id="8_c10fw"]
-[ext_resource type="Resource" uid="uid://dwh575t6jfgdw" path="res://Battle/skills/resources/WinAttack.tres" id="12_j6oxs"]
+[ext_resource type="Resource" uid="uid://da2c1vqcwwxv5" path="res://Battle/skills/resources/Reroll.tres" id="11_8dn06"]
 [ext_resource type="Resource" uid="uid://dd31l847vkwrl" path="res://Items/equipment/resources/WeakArmor.tres" id="13_71tyo"]
 
 [node name="World" type="Control"]
@@ -30,7 +30,7 @@ skills = ExtResource("4_lc4a6")
 [node name="Player" parent="." instance=ExtResource("2_yatmi")]
 stats = ExtResource("3_nvh0g")
 ui_data = ExtResource("4_ryo5a")
-skill_list = Array[Resource("res://Battle/skills/SkillData.gd")]([ExtResource("3_vfd4v"), ExtResource("8_c10fw"), ExtResource("12_j6oxs")])
+skill_list = Array[Resource("res://Battle/skills/SkillData.gd")]([ExtResource("3_vfd4v"), ExtResource("8_c10fw"), ExtResource("11_8dn06")])
 default_equipment = Array[Resource("res://Items/equipment/equipment.gd")]([ExtResource("13_71tyo")])
 
 [node name="Map" parent="." instance=ExtResource("2_tumwh")]

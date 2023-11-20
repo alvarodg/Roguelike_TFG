@@ -1,18 +1,25 @@
 extends Node
 class_name Player
 
+signal coins_changed
+
 @export var stats: PlayerStats : set = set_stats
 @export var ui_data: PlayerUIData
 @export var skill_list: Array[SkillData]
 @export var default_equipment: Array[Equipment]
 var equipment_list: Array[Equipment]
 var load_dict: Dictionary = {}
-
+var coins: Array[Coin] : set = set_coins
+var coin_data: Array[CoinData]
+# Implementación para un único tipo de moneda.
+var default_coin = preload("res://Battle/coin_ui/resources/default_coin.tres")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	RunData.player = self
 	stats.setup()
+	stats.coin_count_changed.connect(_on_Stats_coin_count_changed)
+	reset_coins()
 	# Para no volver a incluir el equipo por defecto si está cargando partida
 	if equipment_list.size() == 0:
 		for equipment in default_equipment:
@@ -26,6 +33,14 @@ func set_stats(new_stats):
 	stats = new_stats
 	stats.setup()
 
+func add_coin(coin: Coin):
+	coins.append(coin)
+	coins_changed.emit(coins)
+
+func set_coins(new_coins):
+	coins = new_coins
+	coins_changed.emit(coins)
+
 func add_skill(skill: SkillData):
 	skill_list.append(skill)
 
@@ -34,6 +49,30 @@ func start_turn():
 
 func start_battle():
 	stats.start_battle()
+	reset_coins()
+
+func end_battle():
+	stats.end_battle()
+	for coin in coins:
+		if coin != null:
+			coin.queue_free()
+	coins = []
+
+func reset_coins():
+	coins = []
+	for coin in coin_data:
+		coins.append(coin.create_coin_instance())
+	coins_changed.emit(coins)
+
+func equip(equipment: Equipment):
+	equipment.attach_to(stats)
+	equipment_list.append(equipment)
+
+# Guarda coin_count datos de monedas. No se considera poder perder monedas en esta implementación.
+func _on_Stats_coin_count_changed(value):
+	if coin_data.size() < value:
+		for i in range(value - coin_data.size()):
+			coin_data.append(default_coin)
 
 func save() -> Dictionary:
 	var save_dict = {
@@ -79,7 +118,3 @@ func data_load(parameter, data):
 		equipment_list.append(load(data))
 	else:
 		set(parameter, data)
-
-func equip(equipment: Equipment):
-	equipment.attach_to(stats)
-	equipment_list.append(equipment)

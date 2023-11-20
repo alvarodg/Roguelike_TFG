@@ -63,4 +63,7 @@ size_flags_horizontal = 8
 theme_override_font_sizes/font_size = 25
 text = "SKIP ->"
 
+[node name="Panel" type="Panel" parent="CenterContainer/Panel/CenterContainer"]
+layout_mode = 2
+
 [connection signal="pressed" from="CenterContainer/Panel/CenterContainer/VBoxContainer/SkipButton" to="." method="_on_SkipButton_pressed"]
