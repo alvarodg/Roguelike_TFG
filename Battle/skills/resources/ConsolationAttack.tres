@@ -6,8 +6,8 @@
 script = ExtResource("1_g3hbi")
 damage = 6
 hits = 2
-reroll = false
-ephimeral_coins = 0
+rerolls = 0
+ephemeral_coins = 0
 facing = 0
 name = "Consolation"
 cost = Array[int]([0, 0, 2])

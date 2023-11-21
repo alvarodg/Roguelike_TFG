@@ -69,7 +69,6 @@ metadata/_edit_use_anchors_ = true
 [node name="CoinBox" parent="BattleUI/PlayerCoinsArea" instance=ExtResource("3_2o0qd")]
 unique_name_in_owner = true
 layout_mode = 1
-columns = 5
 
 [node name="PlayerStatsArea" type="Control" parent="BattleUI"]
 layout_mode = 1

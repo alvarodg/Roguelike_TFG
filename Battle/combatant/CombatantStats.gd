@@ -43,6 +43,9 @@ func start_battle():
 func start_turn():
 	pass
 
+func end_turn():
+	pass
+
 func end_battle():
 	shield = 0
 	armor = 0

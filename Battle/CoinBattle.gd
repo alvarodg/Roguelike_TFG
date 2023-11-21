@@ -22,7 +22,7 @@ func _ready():
 	player = RunData.player
 	if not enemy_stats is EnemyStats:
 		enemy_stats = preload("res://Battle/enemies/WeakEnemyStats.tres")
-	# Crea el nuevo enemigo y asigna sus datos
+	# Crea el nuevo enemigo y asigna sus datos (TEMPORAL, pasar a factory method)
 	enemy = base_enemy.instantiate()
 	enemy.stats = enemy_stats
 	enemy_position.add_child(enemy)
@@ -32,14 +32,17 @@ func _ready():
 	# Inicializa las interfaces del jugador
 	player_skill_ui.setup(player)
 	player_stats_ui.setup(player)
+	# Ejecuta las funciones de inicio de batalla de los combatientes
+	player.start_battle()
+	enemy.start_battle()
+	# Inicializa la interfaz de monedas del jugador después de iniciar batalla
+	# (Orden importante para asegurarse de que no queden monedas no deseadas en el jugador)
 	coin_box.setup(player)
 	# Conecta señales
 	turn_manager.player_turn_started.connect(_on_player_turn_started)
 	turn_manager.enemy_turn_started.connect(_on_enemy_turn_started)
 	connect_player_signals(player)
 	connect_enemy_signals(enemy)
-	player.start_battle()
-	enemy.start_battle()
 	# Asigna el turno al jugador
 	turn_manager.turn = turn_manager.Turn.PLAYER_TURN
 	
@@ -85,6 +88,7 @@ func _on_player_turn_started():
 	end_turn_button.show()
 	
 func _on_enemy_turn_started():
+	player.end_turn()
 	if not combatants.enemy is Enemy:
 		end_battle()
 	else:

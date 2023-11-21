@@ -35,10 +35,11 @@ func set_stats(new_stats):
 
 func add_coin(coin: Coin):
 	coins.append(coin)
+	coins.filter(func(element): return element != null)
 	coins_changed.emit(coins)
 
 func set_coins(new_coins):
-	coins = new_coins
+	coins = new_coins.filter(func(element): return element != null)
 	coins_changed.emit(coins)
 
 func add_skill(skill: SkillData):
@@ -46,23 +47,48 @@ func add_skill(skill: SkillData):
 
 func start_turn():
 	stats.start_turn()
+	flip_all_coins()
 
+func end_turn():
+	stats.end_turn()
+	clear_ephemeral_coins()
+	
 func start_battle():
 	stats.start_battle()
 	reset_coins()
 
 func end_battle():
 	stats.end_battle()
+	clear_coins()
+
+func flip(coin: Coin):
+	var result = coin.flip(stats.base_luck)
+	if coin in coins:
+		coins_changed.emit(coins)
+	return result
+
+func flip_all_coins():
+	for coin in coins:
+		coin.flip(stats.base_luck)
+	coins_changed.emit(coins)
+
+func reset_coins():
+	clear_coins()
+	for coin in coin_data:
+		coins.append(coin.create_coin_instance())
+	coins_changed.emit(coins)
+
+func clear_ephemeral_coins():
+	for coin in coins:
+		if coin.is_ephemeral:
+			coins.erase(coin)
+			coin.queue_free()
+
+func clear_coins():
 	for coin in coins:
 		if coin != null:
 			coin.queue_free()
 	coins = []
-
-func reset_coins():
-	coins = []
-	for coin in coin_data:
-		coins.append(coin.create_coin_instance())
-	coins_changed.emit(coins)
 
 func equip(equipment: Equipment):
 	equipment.attach_to(stats)

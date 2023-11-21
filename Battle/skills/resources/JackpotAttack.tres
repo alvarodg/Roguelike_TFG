@@ -6,8 +6,8 @@
 script = ExtResource("1_8l4jp")
 damage = 50
 hits = 1
-reroll = false
-ephimeral_coins = 0
+rerolls = 0
+ephemeral_coins = 0
 facing = 0
 name = "Jackpot"
 cost = Array[int]([0, 5, 0])
