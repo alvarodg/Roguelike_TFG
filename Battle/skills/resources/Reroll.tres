@@ -1,11 +1,9 @@
-[gd_resource type="Resource" script_class="AttackSkillData" load_steps=2 format=3 uid="uid://da2c1vqcwwxv5"]
+[gd_resource type="Resource" script_class="CoinSkillData" load_steps=2 format=3 uid="uid://dxn127wpgsj10"]
 
-[ext_resource type="Script" path="res://Battle/skills/AttackSkillData.gd" id="1_laxt4"]
+[ext_resource type="Script" path="res://Battle/skills/coin_skill_data.gd" id="1_4hhi7"]
 
 [resource]
-script = ExtResource("1_laxt4")
-damage = 0
-hits = 0
+script = ExtResource("1_4hhi7")
 rerolls = 1
 ephemeral_coins = 0
 facing = 0

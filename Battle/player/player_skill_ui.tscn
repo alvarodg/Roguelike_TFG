@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://d2ay6knlrtvwb"]
+[gd_scene load_steps=3 format=3 uid="uid://d2ay6knlrtvwb"]
 
 [ext_resource type="Script" path="res://Battle/player/player_skill_ui.gd" id="1_0k7n8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tjy3n"]
+bg_color = Color(0.262745, 0.623529, 0.937255, 1)
 
 [node name="PlayerSkillUI" type="Control"]
 layout_mode = 3
@@ -13,12 +16,24 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_0k7n8")
 
-[node name="SkillGrid" type="GridContainer" parent="."]
-unique_name_in_owner = true
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(0, 400)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tjy3n")
+
+[node name="SkillGrid" type="GridContainer" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 columns = 3

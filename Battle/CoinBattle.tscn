@@ -57,9 +57,9 @@ layout_mode = 1
 [node name="PlayerCoinsArea" type="Control" parent="BattleUI"]
 layout_mode = 1
 anchor_left = 0.263889
-anchor_top = 0.654321
+anchor_top = 0.691358
 anchor_right = 0.777778
-anchor_bottom = 0.888889
+anchor_bottom = 0.925926
 offset_top = 3.05176e-05
 grow_horizontal = 2
 grow_vertical = 0
@@ -69,6 +69,8 @@ metadata/_edit_use_anchors_ = true
 [node name="CoinBox" parent="BattleUI/PlayerCoinsArea" instance=ExtResource("3_2o0qd")]
 unique_name_in_owner = true
 layout_mode = 1
+offset_right = -0.00012207
+offset_bottom = 8.0
 
 [node name="PlayerStatsArea" type="Control" parent="BattleUI"]
 layout_mode = 1

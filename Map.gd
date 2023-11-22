@@ -46,6 +46,7 @@ func _on_EventNode_chosen(node: EventNode):
 	await event_scene.finished
 	for map_screen_node in get_tree().get_nodes_in_group("map_screen"):
 		map_screen_node.show()
+	RunData.save_game()
 
 
 #func _on_Event_finished():

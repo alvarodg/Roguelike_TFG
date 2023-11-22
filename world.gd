@@ -32,5 +32,4 @@ func _on_LoadButton_pressed():
 #	refresh_map()
 
 func _on_DeleteSave_pressed():
-	DirAccess.copy_absolute("user://savegame.save", "user://savegame.backup")
-	DirAccess.remove_absolute("user://savegame.save")
+	RunData.delete_save(true)

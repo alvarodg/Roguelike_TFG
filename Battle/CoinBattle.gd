@@ -2,6 +2,7 @@ extends Control
 
 signal finished
 
+var loss_screen = "res://Menus/loss_screen.tscn"
 @onready var turn_manager: TurnManager = preload("res://Battle/resources/TurnManager.tres")
 @onready var combatants: Combatants = preload("res://Battle/resources/Combatants.tres")
 @onready var end_turn_button = %EndTurnButton
@@ -62,13 +63,19 @@ func connect_enemy_signals(p_enemy: Enemy):
 	p_enemy.died.connect(_on_Enemy_died)
 	p_enemy.turn_finished.connect(_on_Enemy_turn_finished)
 	
-func connect_player_signals(_player: Player):
-	pass
+func connect_player_signals(p_player: Player):
+	p_player.died.connect(_on_Player_died)
 	
 func _on_Enemy_died():
 	print("Died")
 	end_battle()
-	
+
+# Esta implementación considera que solo se puede perder en combate, ¿mover a Player?
+func _on_Player_died():
+	print("You lost!")
+	RunData.delete_save(true)
+	get_tree().change_scene_to_file(loss_screen)
+
 func end_battle():
 	player_skill_ui.hide()
 	end_turn_button.hide()

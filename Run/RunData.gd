@@ -127,3 +127,9 @@ func stash_save():
 			var run_data_dict = json.get_data()
 			var backup_file_path = "user://savegame"+ str(run_data_dict["version"]) + ".save"
 			DirAccess.copy_absolute("user://savegame.save", backup_file_path)
+
+func delete_save(backup: bool = false):
+	if FileAccess.file_exists("user://savegame.save"):
+		if backup:
+			DirAccess.copy_absolute("user://savegame.save", "user://savegame.backup")
+		DirAccess.remove_absolute("user://savegame.save")

@@ -1,6 +1,7 @@
 extends Node
 class_name Player
 
+signal died
 signal coins_changed
 
 @export var stats: PlayerStats : set = set_stats
@@ -19,6 +20,7 @@ func _ready():
 	RunData.player = self
 	stats.setup()
 	stats.coin_count_changed.connect(_on_Stats_coin_count_changed)
+	stats.died.connect(_on_Stats_died)
 	reset_coins()
 	# Para no volver a incluir el equipo por defecto si está cargando partida
 	if equipment_list.size() == 0:
@@ -99,6 +101,10 @@ func _on_Stats_coin_count_changed(value):
 	if coin_data.size() < value:
 		for i in range(value - coin_data.size()):
 			coin_data.append(default_coin)
+
+# Emite la señal died cuando la recibe de stats.
+func _on_Stats_died():
+	died.emit()
 
 func save() -> Dictionary:
 	var save_dict = {

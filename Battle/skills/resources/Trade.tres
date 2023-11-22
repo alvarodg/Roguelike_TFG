@@ -1,15 +1,13 @@
-[gd_resource type="Resource" script_class="AttackSkillData" load_steps=2 format=3 uid="uid://hhc4rj6cmpxn"]
+[gd_resource type="Resource" script_class="CoinSkillData" load_steps=2 format=3 uid="uid://bb4pwg5iniq07"]
 
-[ext_resource type="Script" path="res://Battle/skills/AttackSkillData.gd" id="1_v43un"]
+[ext_resource type="Script" path="res://Battle/skills/coin_skill_data.gd" id="1_21hxo"]
 
 [resource]
-script = ExtResource("1_v43un")
-damage = 0
-hits = 0
+script = ExtResource("1_21hxo")
 rerolls = 0
 ephemeral_coins = 2
 facing = 2
 name = "Trade"
 cost = Array[int]([0, 1, 0])
-uses_per_turn = 3
+uses_per_turn = 1
 one_shot = false

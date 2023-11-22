@@ -6,8 +6,8 @@
 script = ExtResource("1_8htyq")
 damage = 500
 hits = 1
-reroll = false
-ephimeral_coins = 0
+rerolls = 0
+ephemeral_coins = 0
 facing = 0
 name = "Win (Debug)"
 cost = Array[int]([1, 0, 0])

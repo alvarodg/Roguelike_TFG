@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SkillCollection" load_steps=9 format=3 uid="uid://b3t3hv7n1dbyh"]
+[gd_resource type="Resource" script_class="SkillCollection" load_steps=11 format=3 uid="uid://b3t3hv7n1dbyh"]
 
 [ext_resource type="Resource" uid="uid://br8iiky4f8i5m" path="res://Battle/skills/resources/RainbowAttack.tres" id="1_fhino"]
 [ext_resource type="Script" path="res://Run/skill_collection.gd" id="1_prump"]
@@ -7,8 +7,21 @@
 [ext_resource type="Resource" uid="uid://b52f2sw4ch6tc" path="res://Battle/skills/resources/JackpotAttack.tres" id="4_xtgxw"]
 [ext_resource type="Resource" uid="uid://d4eudcmjei2lr" path="res://Battle/skills/resources/ConsolationAttack.tres" id="5_4klbj"]
 [ext_resource type="Resource" uid="uid://dxuqv08l4h1dx" path="res://Battle/skills/resources/StrikeAttack.tres" id="6_g6tri"]
-[ext_resource type="Resource" uid="uid://hhc4rj6cmpxn" path="res://Battle/skills/resources/Trade.tres" id="7_w4t68"]
+[ext_resource type="Script" path="res://Battle/skills/AttackSkillData.gd" id="7_5r5gp"]
+[ext_resource type="Resource" uid="uid://bb4pwg5iniq07" path="res://Battle/skills/resources/Trade.tres" id="7_w4t68"]
+
+[sub_resource type="Resource" id="Resource_ijsin"]
+script = ExtResource("7_5r5gp")
+damage = 0
+hits = 0
+rerolls = 0
+ephemeral_coins = 2
+facing = 2
+name = "Trade"
+cost = Array[int]([0, 1, 0])
+uses_per_turn = 3
+one_shot = false
 
 [resource]
 script = ExtResource("1_prump")
-list = Array[Resource("res://Battle/skills/SkillData.gd")]([ExtResource("1_fhino"), ExtResource("2_xs3h7"), ExtResource("3_vi7vu"), ExtResource("4_xtgxw"), ExtResource("5_4klbj"), ExtResource("6_g6tri"), ExtResource("7_w4t68")])
+list = Array[Resource("res://Battle/skills/SkillData.gd")]([ExtResource("1_fhino"), ExtResource("2_xs3h7"), ExtResource("3_vi7vu"), ExtResource("4_xtgxw"), ExtResource("5_4klbj"), ExtResource("6_g6tri"), SubResource("Resource_ijsin"), ExtResource("7_w4t68")])
