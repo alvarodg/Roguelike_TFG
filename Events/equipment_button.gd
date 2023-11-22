@@ -9,6 +9,7 @@ signal equipment_chosen(equipment)
 func _ready():
 	player = RunData.player
 	text = equipment.ui_data.ui_name + ":\n" + equipment.get_description()
+	icon = equipment.ui_data.icon
 
 func setup(p_player: Player, p_equipment: Equipment):
 	player = p_player

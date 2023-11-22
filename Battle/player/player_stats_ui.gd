@@ -1,6 +1,7 @@
 extends Control
 
 @onready var player_icon = %PlayerIcon
+@onready var equipment_ui = %EquipmentUI
 @onready var health_bar = %HealthBar
 @onready var shield_label = %ShieldLabel
 @onready var armor_label = %ArmorLabel
@@ -12,6 +13,7 @@ func _ready():
 	
 func setup(player: Player):
 	player_icon = player.ui_data.icon
+	equipment_ui.setup(player.equipment_list)
 	health_bar.setup(player.stats)
 	_update_shield(player.stats.shield)
 	_update_armor(player.stats.armor)
@@ -19,7 +21,7 @@ func setup(player: Player):
 	player.stats.shield_changed.connect(_on_Player_shield_changed)
 	player.stats.armor_changed.connect(_on_Player_armor_changed)
 	player.stats.dodges_changed.connect(_on_Player_dodges_changed)
-
+	
 
 func _on_Player_shield_changed(shield):
 	_update_shield(shield)

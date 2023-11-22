@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cgeo8n0mg0x68"]
+[gd_scene load_steps=5 format=3 uid="uid://cgeo8n0mg0x68"]
 
 [ext_resource type="Script" path="res://Battle/player/player_stats_ui.gd" id="1_t78et"]
 [ext_resource type="Texture2D" uid="uid://djmrox3cqnntc" path="res://icon.svg" id="1_v03cj"]
 [ext_resource type="PackedScene" uid="uid://cm2iaddemayb2" path="res://Battle/health_bar.tscn" id="3_rf0j1"]
+[ext_resource type="PackedScene" uid="uid://20lggu6h8kmx" path="res://Items/equipment/equipment_ui.tscn" id="4_jt7va"]
 
 [node name="PlayerStatsUI" type="Control"]
 layout_mode = 3
@@ -65,3 +66,17 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "3 Dodges"
 horizontal_alignment = 1
+
+[node name="EquipmentUI" parent="." instance=ExtResource("4_jt7va")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(18, 18)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+offset_left = 16.0
+offset_top = -152.0
+offset_right = 34.0
+offset_bottom = -134.0
+grow_horizontal = 1
+grow_vertical = 0

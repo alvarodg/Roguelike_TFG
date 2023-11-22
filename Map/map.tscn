@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtatqj2q74q42"]
+
+[ext_resource type="Script" path="res://Map/Map.gd" id="1_0vxys"]
+[ext_resource type="PackedScene" uid="uid://ddl28ma3jp8ca" path="res://Generation/generator.tscn" id="2_fbxs6"]
+
+[node name="Map" type="Control" groups=["run_persistent"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0vxys")
+
+[node name="Generator" parent="." instance=ExtResource("2_fbxs6")]
+unique_name_in_owner = true
+layout_mode = 1
+
+[connection signal="generation_complete" from="Generator" to="." method="_on_Generator_generation_complete"]

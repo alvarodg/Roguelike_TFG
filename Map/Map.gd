@@ -23,6 +23,9 @@ func _ready():
 	add_to_group("map_screen")
 	
 
+func start_game(player: Player):
+	pass
+
 ## Al recibir la señal generation_complete de Generator, guarda los nodos generados,
 ## marca la primera tanda como disponible y se conecta a sus señales.
 func _on_Generator_generation_complete(p_node_matrix):

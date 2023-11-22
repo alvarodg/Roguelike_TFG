@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://world.gd" id="1_ewi3c"]
 [ext_resource type="PackedScene" uid="uid://buwxy0toti3j8" path="res://Run/collection_container.tscn" id="2_h6gmy"]
-[ext_resource type="PackedScene" uid="uid://dtatqj2q74q42" path="res://map.tscn" id="2_tumwh"]
+[ext_resource type="PackedScene" uid="uid://dtatqj2q74q42" path="res://Map/map.tscn" id="2_tumwh"]
 [ext_resource type="PackedScene" uid="uid://dyrxg61yw7bhk" path="res://Run/player.tscn" id="2_yatmi"]
 [ext_resource type="PackedScene" uid="uid://b8nvuhpu5i8fs" path="res://Menus/main_menu.tscn" id="3_6bs06"]
 [ext_resource type="Resource" uid="uid://5871ejwt2whd" path="res://Run/collections/default_equipment_collection.tres" id="3_f3yvy"]
@@ -35,13 +35,6 @@ default_equipment = Array[Resource("res://Items/equipment/equipment.gd")]([ExtRe
 
 [node name="Map" parent="." instance=ExtResource("2_tumwh")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 0.0
-offset_bottom = 0.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="DebugPanel" type="Panel" parent="." groups=["map_screen"]]
 custom_minimum_size = Vector2(0, 100)

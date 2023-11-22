@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://hiqvn3fknbyn"]
+
+[ext_resource type="Script" path="res://Items/equipment/equipment_icon.gd" id="1_xo1p7"]
+[ext_resource type="Resource" uid="uid://dgpv5yfa2nero" path="res://Items/equipment/resources/LuckyCoin.tres" id="2_huuou"]
+
+[node name="EquipmentIcon" type="Control"]
+custom_minimum_size = Vector2(18, 18)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_xo1p7")
+equipment = ExtResource("2_huuou")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(9, 9)
+scale = Vector2(2, 2)
+
+[node name="InfoLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 14.0
+offset_top = 13.0
+offset_right = 15.0
+offset_bottom = 58.0
+theme_override_font_sizes/font_size = 16
+metadata/_edit_group_ = true
+
+[node name="InfoPanel" type="Panel" parent="InfoLabel"]
+unique_name_in_owner = true
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -1,10 +1,12 @@
-[gd_resource type="Resource" script_class="PlayerEquipment" load_steps=4 format=3 uid="uid://da3sb74ektma7"]
+[gd_resource type="Resource" script_class="PlayerEquipment" load_steps=5 format=3 uid="uid://da3sb74ektma7"]
 
 [ext_resource type="Script" path="res://Items/equipment/player_equipment.gd" id="1_qmljp"]
 [ext_resource type="Script" path="res://Items/equipment/equipment_ui_data.gd" id="2_greuc"]
+[ext_resource type="Texture2D" uid="uid://71q8aleg5ile" path="res://Items/equipment/sprites/weak_shield_item.png" id="2_lhit3"]
 
 [sub_resource type="Resource" id="Resource_rgyvs"]
 script = ExtResource("2_greuc")
+icon = ExtResource("2_lhit3")
 ui_name = "Small Shield"
 
 [resource]

@@ -6,7 +6,11 @@
 custom_minimum_size = Vector2(150, 120)
 offset_right = 8.0
 offset_bottom = 8.0
+theme_override_constants/icon_max_width = 18
 text = "Description"
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
 script = ExtResource("1_oeyqg")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

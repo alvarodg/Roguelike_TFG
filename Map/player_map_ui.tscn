@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://brpwyhqattcih"]
+
+[ext_resource type="Script" path="res://Map/player_map_ui.gd" id="1_w0wwa"]
+[ext_resource type="PackedScene" uid="uid://cm2iaddemayb2" path="res://Battle/health_bar.tscn" id="2_qluys"]
+[ext_resource type="Texture2D" uid="uid://djmrox3cqnntc" path="res://icon.svg" id="3_2t51g"]
+
+[node name="PlayerMapUI" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w0wwa")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -158.0
+offset_right = 64.0
+grow_horizontal = 2
+grow_vertical = 0
+metadata/_edit_group_ = true
+
+[node name="HealthBar" parent="VBoxContainer" instance=ExtResource("2_qluys")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="PlayerIcon" type="TextureRect" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("3_2t51g")

@@ -1,4 +1,4 @@
-extends Container
+extends Control
 
 signal generation_complete(node_matrix)
 
