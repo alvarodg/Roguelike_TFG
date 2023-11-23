@@ -5,6 +5,7 @@ signal event_chosen
 
 @export var debug_start: bool = false
 @onready var generator = $Generator
+@onready var player_map_ui = %PlayerMapUI
 
 var node_matrix = []
 var traveled_nodes: Array[EventNode] = []
@@ -15,6 +16,7 @@ var current_event: Event
 # Usando la señal game_ready para asegurarse de que terminen de asignarse sus datos en data_load()
 # cuando se carga partida.
 func _ready():
+	player_map_ui.hide()
 	if debug_start:
 		print("DEBUG START SET")
 		_on_World_game_ready()
@@ -23,8 +25,10 @@ func _ready():
 	add_to_group("map_screen")
 	
 
-func start_game(player: Player):
-	pass
+func start_game(player: Player, run_seed: int):
+	generator.generate(run_seed)
+	player_map_ui.setup(player)
+	player_map_ui.show()
 
 ## Al recibir la señal generation_complete de Generator, guarda los nodos generados,
 ## marca la primera tanda como disponible y se conecta a sus señales.
@@ -32,6 +36,7 @@ func _on_Generator_generation_complete(p_node_matrix):
 	node_matrix = p_node_matrix
 	refresh_map()
 	connect_to_node_signals(node_matrix)
+	RunData.save_game()
 
 ## Cuando se recibe la señal node_chosen de EventNode deja a todos los nodos sin disponibilidad, 
 ## añade el nodo que la mandó a la lista de atravesados y marca a los miembros de esta lista 
@@ -98,8 +103,9 @@ func _on_RegenerateButton_pressed():
 	generator.generate(RunData.run_seed)
 
 func _on_World_game_ready():
-	generator.generate(RunData.run_seed)
-
+#	generator.generate(RunData.run_seed)
+	start_game(RunData.player, RunData.run_seed)
+	
 # Función que trata los parámetros a guardar, devolviéndolos en un diccionario.
 func save():
 	var traveled_coords_x = []

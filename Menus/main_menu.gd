@@ -21,11 +21,11 @@ func _on_NewRunButton_pressed():
 	RunData.run_seed = randi_range(0,1000000)
 	print(RunData.run_seed)
 	EventBus.new_run_selected.emit()
-	hide()
+	queue_free()
 
 func _on_ContinueButton_pressed():
 	EventBus.continue_run_selected.emit()
-	hide()
+	queue_free()
 
 
 
@@ -48,7 +48,7 @@ func _on_CancelSeededButton_pressed():
 
 func _on_StartSeededButton_pressed():
 	EventBus.new_run_selected.emit()
-	hide()
+	queue_free()
 
 
 func _on_QuitButton_pressed():

@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://brpwyhqattcih"]
+[gd_scene load_steps=5 format=3 uid="uid://brpwyhqattcih"]
 
 [ext_resource type="Script" path="res://Map/player_map_ui.gd" id="1_w0wwa"]
+[ext_resource type="PackedScene" uid="uid://20lggu6h8kmx" path="res://Items/equipment/equipment_ui.tscn" id="2_j088a"]
 [ext_resource type="PackedScene" uid="uid://cm2iaddemayb2" path="res://Battle/health_bar.tscn" id="2_qluys"]
 [ext_resource type="Texture2D" uid="uid://djmrox3cqnntc" path="res://icon.svg" id="3_2t51g"]
 
@@ -28,6 +29,11 @@ offset_right = 64.0
 grow_horizontal = 2
 grow_vertical = 0
 metadata/_edit_group_ = true
+
+[node name="EquipmentUI" parent="VBoxContainer" instance=ExtResource("2_j088a")]
+unique_name_in_owner = true
+z_index = 1
+layout_mode = 2
 
 [node name="HealthBar" parent="VBoxContainer" instance=ExtResource("2_qluys")]
 unique_name_in_owner = true

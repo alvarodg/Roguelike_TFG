@@ -9,11 +9,13 @@ signal coins_changed
 @export var skill_list: Array[SkillData]
 @export var default_equipment: Array[Equipment]
 var equipment_list: Array[Equipment]
-var load_dict: Dictionary = {}
 var coins: Array[Coin] : set = set_coins
 var coin_data: Array[CoinData]
 # Implementación para un único tipo de moneda.
 var default_coin = preload("res://Battle/coin_ui/resources/default_coin.tres")
+# Para cargar partida
+var stats_load_dict: Dictionary = {}
+var ui_load_dict: Dictionary = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -111,6 +113,8 @@ func save() -> Dictionary:
 		"filename" : get_scene_file_path(),
 		"parent" : get_parent().get_path(),
 	}
+	var ui_dict = ui_data.to_save_dict()
+	save_dict.merge(ui_dict)
 	var stats_dict = stats.to_save_dict()
 	save_dict.merge(stats_dict)
 	# Podría simplificarse el guardado/cargado de habilidades y equipo, pero esto conserva el orden.
@@ -129,20 +133,27 @@ func save() -> Dictionary:
 func data_load(parameter, data):
 	# TEMPORAL, cambiar la función de cargado o la forma de obtener el diccionario
 	var empty_stats = PlayerStats.new()
+	var saved_ui_keys = PlayerUIData.save_keys()
 	var saved_stats_keys = empty_stats.to_save_dict().keys()
+	
 	var skill_regex: RegEx = RegEx.new()
 	var equip_regex: RegEx = RegEx.new()
 	skill_regex.compile("skill\\d+")
 	equip_regex.compile("equipment\\d+")
+	if parameter in saved_ui_keys:
+		ui_load_dict[parameter] = data
+		if ui_load_dict.keys().size() == saved_ui_keys.size():
+			ui_data.load_dict(ui_load_dict)
+			ui_load_dict = {}
 	# Si el parámetro forma parte de PlayerStats
 	if parameter in saved_stats_keys:
 		# Lo guarda para cargarlo luego
-		load_dict[parameter] = data
+		stats_load_dict[parameter] = data
 		# Si load_dict tiene todos los parámetros de PlayerStats, los carga.
 		# (Comprueba por tamaño porque las listas no tienen el mismo orden)
-		if load_dict.keys().size() == saved_stats_keys.size():
-			stats.load_save_dict(load_dict)
-			load_dict = {}
+		if stats_load_dict.keys().size() == saved_stats_keys.size():
+			stats.load_save_dict(stats_load_dict)
+			stats_load_dict = {}
 	# Si el parámetro coincide con el regex para habilidades o equipo, los añade a su respectiva lista
 	elif skill_regex.search(parameter):
 		skill_list.append(load(data))
