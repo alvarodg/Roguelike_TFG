@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="SkillData" load_steps=5 format=3 uid="uid://ckfdvex3cn3hf"]
+
+[ext_resource type="Script" path="res://Battle/skills/behaviors/damage_skill_behavior.gd" id="1_uiksr"]
+[ext_resource type="Script" path="res://Battle/skills/SkillData.gd" id="2_85qoq"]
+
+[sub_resource type="Resource" id="Resource_l622n"]
+script = ExtResource("1_uiksr")
+damage = 5
+to_self = true
+
+[sub_resource type="Resource" id="Resource_2sdwf"]
+script = ExtResource("1_uiksr")
+damage = 25
+to_self = false
+
+[resource]
+script = ExtResource("2_85qoq")
+name = "Sacrifice"
+cost = Array[int]([0, 0, 3])
+uses_per_turn = 2
+one_shot = false
+behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_l622n"), SubResource("Resource_2sdwf")])

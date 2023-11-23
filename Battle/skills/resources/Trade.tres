@@ -1,13 +1,17 @@
-[gd_resource type="Resource" script_class="CoinSkillData" load_steps=2 format=3 uid="uid://bb4pwg5iniq07"]
+[gd_resource type="Resource" script_class="SkillData" load_steps=4 format=3 uid="uid://c5e7dv3l85ib1"]
 
-[ext_resource type="Script" path="res://Battle/skills/coin_skill_data.gd" id="1_21hxo"]
+[ext_resource type="Script" path="res://Battle/skills/behaviors/extra_coin_skill_behavior.gd" id="1_p0461"]
+[ext_resource type="Script" path="res://Battle/skills/SkillData.gd" id="2_0rha7"]
 
-[resource]
-script = ExtResource("1_21hxo")
-rerolls = 0
+[sub_resource type="Resource" id="Resource_bymr8"]
+script = ExtResource("1_p0461")
 ephemeral_coins = 2
 facing = 2
+
+[resource]
+script = ExtResource("2_0rha7")
 name = "Trade"
 cost = Array[int]([0, 1, 0])
-uses_per_turn = 1
+uses_per_turn = 3
 one_shot = false
+behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_bymr8")])

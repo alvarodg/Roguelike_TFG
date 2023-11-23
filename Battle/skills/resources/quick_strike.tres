@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="SkillData" load_steps=5 format=3 uid="uid://ddyjbbgwcacjj"]
+
+[ext_resource type="Script" path="res://Battle/skills/behaviors/damage_skill_behavior.gd" id="1_odj05"]
+[ext_resource type="Script" path="res://Battle/skills/SkillData.gd" id="2_eyi1c"]
+
+[sub_resource type="Resource" id="Resource_l622n"]
+script = ExtResource("1_odj05")
+damage = 3
+to_self = false
+
+[sub_resource type="Resource" id="Resource_w1ynj"]
+script = ExtResource("1_odj05")
+damage = 3
+to_self = false
+
+[resource]
+script = ExtResource("2_eyi1c")
+name = "Quick Strike"
+cost = Array[int]([0, 0, 1])
+uses_per_turn = 1
+one_shot = false
+behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_l622n"), SubResource("Resource_w1ynj")])

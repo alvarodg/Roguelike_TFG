@@ -15,14 +15,20 @@ func _init(p_data: SkillData = null, p_user = null, p_target = null, p_coins = n
 	coins = p_coins
 
 # Definir use en SkillData?
-func _use():
-	pass
+func use():
+	for behavior in data.behaviors:
+		behavior.use(user, target, coins)
+#	pass
 
 func get_coin_cost():
 	return data.cost
 
 func get_skill_name():
 	return data.name
-
-func get_description():
-	return "This is an empty skill"
+#
+#func get_description() -> String:
+#	var description: String = ""
+#	for behavior in data.behaviors:
+#		if description != "": description += "\n"
+#		description += behavior.get_description()
+#	return description

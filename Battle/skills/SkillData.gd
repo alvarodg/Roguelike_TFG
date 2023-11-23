@@ -6,8 +6,8 @@ class_name SkillData
 @export var cost: Array[int] : set = set_cost
 @export var uses_per_turn: int = 1
 @export var one_shot: bool = false
+@export var behaviors: Array[SkillBehavior]
 const COST_TYPES = 3
-
 
 func set_cost(value):
 	cost = value
@@ -15,7 +15,11 @@ func set_cost(value):
 		cost.resize(COST_TYPES)
 
 func get_description() -> String:
-	return "This skill has no effect."
+	var description: String = ""
+	for behavior in behaviors:
+		if description != "": description += "\n"
+		description += behavior.get_description()
+	return description
 
 # Patrón Factory Method
 func create_skill(user, target, coins) -> Skill:
