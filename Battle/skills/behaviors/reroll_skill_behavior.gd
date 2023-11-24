@@ -5,7 +5,7 @@ class_name RerollSkillBehavior
 # ¿Usar lista para poder dar un facing a cada moneda?
 @export var facing: int = 0
 
-func use(user, target, coins):
+func use(user, _target, coins):
 	var iter = 0
 	while iter < rerolls and iter < coins.size():
 		var coin = coins[iter]

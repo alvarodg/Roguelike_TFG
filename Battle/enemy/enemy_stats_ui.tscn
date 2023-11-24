@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dsuny3pwpola5"]
 
-[ext_resource type="Script" path="res://Battle/enemy_stats_ui.gd" id="1_2w1na"]
+[ext_resource type="Script" path="res://Battle/enemy/enemy_stats_ui.gd" id="1_2w1na"]
 [ext_resource type="PackedScene" uid="uid://cm2iaddemayb2" path="res://Battle/health_bar.tscn" id="1_j8l7g"]
 
 [node name="EnemyStatsUI" type="VBoxContainer"]

@@ -5,7 +5,7 @@ class_name ExtraCoinSkillBehavior
 # TEMPORAL, usar lista para poder dar un facing a cada moneda
 @export var facing: int = 0
 
-func use(user, target, coins):
+func use(user, _target, coins):
 	for i in range(ephemeral_coins):
 		var eph_coin = coins.front().get_ephemeral_copy()
 		if facing == 0:

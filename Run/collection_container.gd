@@ -23,7 +23,7 @@ func _get_random_equipment(equip_list: Array[Equipment], rarity: int = -1) -> Eq
 		equip_list.erase(chosen)
 		return chosen
 	else:
-		#TEMPORAL
+		#TEMPORAL, ignora rarity
 		var chosen = equip_list.pick_random()
 		equip_list.erase(chosen)
 		return chosen

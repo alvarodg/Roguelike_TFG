@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=6 format=3 uid="uid://4msvwnp5eq7u"]
+
+[ext_resource type="Script" path="res://Battle/enemy/enemy_data.gd" id="1_4dvcu"]
+[ext_resource type="Resource" uid="uid://bcdpt7volc5pm" path="res://Battle/enemy/resources/stats/RegularEnemyStats.tres" id="1_khlk1"]
+[ext_resource type="Script" path="res://Battle/enemy/enemy_ui_data.gd" id="2_aqagc"]
+[ext_resource type="Texture2D" uid="uid://bn0mo6isgbwi" path="res://Battle/enemy/sprites/elite_icon.svg" id="3_iuod8"]
+
+[sub_resource type="Resource" id="Resource_rsjro"]
+script = ExtResource("2_aqagc")
+sprite = ExtResource("3_iuod8")
+ui_name = "Elite"
+
+[resource]
+script = ExtResource("1_4dvcu")
+enemy_ui_data = SubResource("Resource_rsjro")
+enemy_stats = ExtResource("1_khlk1")

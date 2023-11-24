@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=6 format=3 uid="uid://cu76q5bdnp6jt"]
+
+[ext_resource type="Script" path="res://Battle/enemy/enemy_data.gd" id="1_lfenk"]
+[ext_resource type="Resource" uid="uid://vf6g1fh16jyk" path="res://Battle/enemy/resources/stats/WeakEnemyStats.tres" id="1_sf6f5"]
+[ext_resource type="Script" path="res://Battle/enemy/enemy_ui_data.gd" id="2_kigmu"]
+[ext_resource type="Texture2D" uid="uid://bhad1ns75ri2n" path="res://Battle/enemy/sprites/enemy_icon.svg" id="3_tk1g6"]
+
+[sub_resource type="Resource" id="Resource_pbouv"]
+script = ExtResource("2_kigmu")
+sprite = ExtResource("3_tk1g6")
+ui_name = "Enemy"
+
+[resource]
+script = ExtResource("1_lfenk")
+enemy_ui_data = SubResource("Resource_pbouv")
+enemy_stats = ExtResource("1_sf6f5")

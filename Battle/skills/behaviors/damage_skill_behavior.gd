@@ -5,7 +5,7 @@ class_name DamageSkillBehavior
 @export var damage = 0
 @export var to_self: bool = false
 
-func use(user, target, coins):
+func use(user, target, _coins):
 	if to_self:
 		user.stats.take_damage(damage)
 	else:

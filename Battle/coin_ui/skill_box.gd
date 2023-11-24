@@ -15,6 +15,7 @@ class_name SkillBox
 var coin_list: Array[Coin]
 var total_coins: int = 0
 var skill_uses: int : set = set_skill_uses
+var spent: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -70,7 +71,7 @@ func connect_to_slot_signals(slot: Slot):
 func _on_Slot_coin_inserted(coin):
 	undo_button.disabled = false
 	coin_list.append(coin)
-	if coin_list.size() == total_coins:
+	if coin_list.size() == total_coins or not skill_data.cost_is_mandatory:
 		execute_button.disabled = false
 
 
@@ -97,12 +98,15 @@ func _on_ExecuteButton_pressed():
 				if slot is Slot:
 					slot.set_available()
 			coin_list = []
+		# Si la habilidad es de un único uso, guarda que se ha usado.
+		spent = skill_data.one_shot
 
 func _on_Player_turn_started():
 	release_all_coins()
-	skill_uses = skill_data.uses_per_turn
-	undo_button.disabled = true
-	execute_button.disabled = true
+	if not spent:
+		skill_uses = skill_data.uses_per_turn
+		undo_button.disabled = true
+		execute_button.disabled = true
 
 func set_skill_uses(value):
 	skill_uses = value

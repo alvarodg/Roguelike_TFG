@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="SkillData" load_steps=8 format=3 uid="uid://cnyuen0pyldwr"]
+
+[ext_resource type="Script" path="res://Battle/skills/behaviors/damage_skill_behavior.gd" id="1_a08pa"]
+[ext_resource type="Script" path="res://Battle/skills/SkillData.gd" id="1_kb187"]
+[ext_resource type="Script" path="res://Battle/skills/behaviors/split_skill_behavior.gd" id="2_cyhh0"]
+[ext_resource type="Script" path="res://Battle/skills/behaviors/shield_skill_behavior.gd" id="3_ob2cj"]
+
+[sub_resource type="Resource" id="Resource_xykir"]
+script = ExtResource("1_a08pa")
+damage = 4
+to_self = false
+
+[sub_resource type="Resource" id="Resource_wtj7a"]
+script = ExtResource("3_ob2cj")
+shield = 3
+
+[sub_resource type="Resource" id="Resource_rdwqt"]
+script = ExtResource("2_cyhh0")
+heads_behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_xykir")])
+tails_behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_wtj7a")])
+
+[resource]
+script = ExtResource("1_kb187")
+name = "Modulate"
+cost = Array[int]([1, 0, 0])
+uses_per_turn = -1
+one_shot = false
+behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_rdwqt")])

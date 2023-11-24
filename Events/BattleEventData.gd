@@ -1,14 +1,14 @@
 extends EventData
 class_name BattleEventData
 
-@export var enemy_stats: EnemyStats
+@export var enemy_data: EnemyData
 
-func _init(p_scene = null, p_next_event = null, p_enemy_stats = null):
+func _init(p_scene = null, p_next_event = null, p_enemy_data = null):
 	super(p_scene, p_next_event)
-	enemy_stats = p_enemy_stats
+	enemy_data = p_enemy_data
 
 func instantiate_scene():
 	var battle_scene = scene.instantiate()
-	battle_scene.setup_enemy(enemy_stats)
-	battle_scene.next_event = next_event
+	# Acceso al singleton de jugador
+	battle_scene.setup(RunData.player, enemy_data, next_event)
 	return battle_scene

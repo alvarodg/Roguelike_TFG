@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bfdmc5trnp4uk"]
+[gd_scene load_steps=16 format=3 uid="uid://bfdmc5trnp4uk"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_ewi3c"]
 [ext_resource type="PackedScene" uid="uid://buwxy0toti3j8" path="res://Run/collection_container.tscn" id="2_h6gmy"]
@@ -12,6 +12,8 @@
 [ext_resource type="Resource" uid="uid://dohuwbuerwh8r" path="res://Battle/skills/resources/balanced_strike.tres" id="8_3hjda"]
 [ext_resource type="Resource" uid="uid://bsioc5j8lwg1x" path="res://Battle/skills/resources/hit_attack.tres" id="9_imgkd"]
 [ext_resource type="Resource" uid="uid://disqwyhl7b6xd" path="res://Battle/skills/resources/reroll.tres" id="10_pvof1"]
+[ext_resource type="Resource" uid="uid://1f1t8s1ew7uy" path="res://Battle/skills/resources/win.tres" id="11_nulia"]
+[ext_resource type="Resource" uid="uid://cnyuen0pyldwr" path="res://Battle/skills/resources/modulate.tres" id="11_vjc2b"]
 [ext_resource type="Resource" uid="uid://dd31l847vkwrl" path="res://Items/equipment/resources/WeakArmor.tres" id="13_71tyo"]
 
 [node name="World" type="Control"]
@@ -30,7 +32,7 @@ skills = ExtResource("4_lc4a6")
 [node name="Player" parent="." instance=ExtResource("2_yatmi")]
 stats = ExtResource("3_nvh0g")
 ui_data = ExtResource("4_ryo5a")
-skill_list = Array[Resource("res://Battle/skills/SkillData.gd")]([ExtResource("8_3hjda"), ExtResource("9_imgkd"), ExtResource("10_pvof1")])
+skill_list = Array[Resource("res://Battle/skills/SkillData.gd")]([ExtResource("8_3hjda"), ExtResource("9_imgkd"), ExtResource("10_pvof1"), ExtResource("11_vjc2b"), ExtResource("11_nulia")])
 default_equipment = Array[Resource("res://Items/equipment/equipment.gd")]([ExtResource("13_71tyo")])
 
 [node name="Map" parent="." instance=ExtResource("2_tumwh")]

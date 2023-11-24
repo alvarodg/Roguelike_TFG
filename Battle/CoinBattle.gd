@@ -3,29 +3,25 @@ extends Control
 signal finished
 
 var loss_screen = "res://Menus/loss_screen.tscn"
+
 @onready var turn_manager: TurnManager = preload("res://Battle/resources/TurnManager.tres")
 @onready var combatants: Combatants = preload("res://Battle/resources/Combatants.tres")
+
 @onready var end_turn_button = %EndTurnButton
 @onready var enemy_position = %EnemyPosition
-@onready var base_enemy = preload("res://Battle/enemy.tscn")
-#@onready var next_event = preload("res://Events/choice.tscn")
-var next_event: EventData
-var player: Player
-var enemy_stats: EnemyStats
-var enemy: Enemy
 @onready var player_skill_ui = %PlayerSkillUI
 @onready var player_stats_ui = %PlayerStatsUI
 @onready var coin_box = %CoinBox
 
+var next_event: EventData
+var player: Player
+var enemy_data: EnemyData
+var enemy: Enemy
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	# Posiblemente cambiar el acceso al singleton por una función de setup
-	player = RunData.player
-	if not enemy_stats is EnemyStats:
-		enemy_stats = preload("res://Battle/enemies/WeakEnemyStats.tres")
-	# Crea el nuevo enemigo y asigna sus datos (TEMPORAL, pasar a factory method)
-	enemy = base_enemy.instantiate()
-	enemy.stats = enemy_stats
+	# Crea el nuevo enemigo a partir de sus datos
+	enemy = enemy_data.create_enemy_instance()
 	enemy_position.add_child(enemy)
 	# Asigna los combatientes al recurso
 	combatants.enemy = enemy
@@ -47,17 +43,19 @@ func _ready():
 	# Asigna el turno al jugador
 	turn_manager.turn = turn_manager.Turn.PLAYER_TURN
 	
-func setup_enemy(p_enemy_stats: EnemyStats):
-	enemy_stats = p_enemy_stats
-
-func set_new_enemy(p_enemy_stats: EnemyStats):
-	if combatants.enemy is Enemy:
-		combatants.enemy.queue_free()
-	enemy = base_enemy.instantiate()
-	enemy.stats = p_enemy_stats
-	combatants.enemy = enemy
-	connect_enemy_signals(combatants.enemy)
-	enemy_position.add_child(enemy)
+func setup(p_player: Player, p_enemy_data: EnemyData, p_next_event: EventData = null):
+	player = p_player
+	enemy_data = p_enemy_data
+	next_event = p_next_event
+	
+#func set_new_enemy(p_enemy_stats: EnemyStats):
+#	if combatants.enemy is Enemy:
+#		combatants.enemy.queue_free()
+#	enemy = base_enemy.instantiate()
+#	enemy.stats = p_enemy_stats
+#	combatants.enemy = enemy
+#	connect_enemy_signals(combatants.enemy)
+#	enemy_position.add_child(enemy)
 
 func connect_enemy_signals(p_enemy: Enemy):
 	p_enemy.died.connect(_on_Enemy_died)
@@ -109,6 +107,3 @@ func _on_EndTurnButton_pressed():
 func _on_Enemy_turn_finished():
 	turn_manager.set_turn(TurnManager.Turn.PLAYER_TURN)
 
-
-func _on_DebugButton_pressed():
-	set_new_enemy(EnemyStats.new())
