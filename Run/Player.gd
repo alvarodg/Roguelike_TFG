@@ -3,11 +3,13 @@ class_name Player
 
 signal died
 signal coins_changed
+signal equipment_changed
 
 @export var stats: PlayerStats : set = set_stats
 @export var ui_data: PlayerUIData
 @export var skill_list: Array[SkillData]
 @export var default_equipment: Array[Equipment]
+@export var max_skills: int = 6
 var equipment_list: Array[Equipment]
 var coins: Array[Coin] : set = set_coins
 var coin_data: Array[CoinData]
@@ -48,6 +50,9 @@ func set_coins(new_coins):
 
 func add_skill(skill: SkillData):
 	skill_list.append(skill)
+
+func remove_skill(skill: SkillData):
+	skill_list.erase(skill)
 
 func start_turn():
 	stats.start_turn()
@@ -97,6 +102,7 @@ func clear_coins():
 func equip(equipment: Equipment):
 	equipment.attach_to(stats)
 	equipment_list.append(equipment)
+	equipment_changed.emit(equipment_list)
 
 # Guarda coin_count datos de monedas. No se considera poder perder monedas en esta implementación.
 func _on_Stats_coin_count_changed(value):

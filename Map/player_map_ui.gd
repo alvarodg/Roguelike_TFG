@@ -9,6 +9,6 @@ func _ready():
 	pass # Replace with function body.
 
 func setup(player: Player):
-	equipment_ui.setup(player.equipment_list)
+	equipment_ui.setup(player)
 	player_icon.texture = player.ui_data.icon
 	health_bar.setup(player.stats)

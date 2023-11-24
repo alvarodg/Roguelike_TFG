@@ -13,7 +13,7 @@ func _ready():
 	
 func setup(player: Player):
 	player_icon = player.ui_data.icon
-	equipment_ui.setup(player.equipment_list)
+	equipment_ui.setup(player)
 	health_bar.setup(player.stats)
 	_update_shield(player.stats.shield)
 	_update_armor(player.stats.armor)

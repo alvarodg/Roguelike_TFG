@@ -112,6 +112,10 @@ func hide_buttons():
 	undo_button.hide()
 	execute_button.hide()
 
+func remove_buttons():
+	undo_button.queue_free()
+	execute_button.queue_free()
+
 func _update_uses_ui():
 	if skill_data.uses_per_turn < 0:
 		uses_label.text = "x ∞"

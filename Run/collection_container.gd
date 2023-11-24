@@ -51,7 +51,19 @@ func get_random_skill_list(size: int = 1) -> Array[SkillData]:
 			list.erase(chosen_skill)
 	return chosen_list
 	
-	
+# Probablemente sustituir por herencia.
+func add(element):
+	if element is SkillData:
+		add_skill(element)
+	elif element is Equipment:
+		add_equipment(element)
+		
+func add_skill(skill: SkillData):
+	skills.list.append(skill)
+
+func add_equipment(equipment: Equipment):
+	equipments.list.append(equipment)
+
 func remove_equipment(equipment: Equipment):
 	equipments.list.erase(equipment)
 
