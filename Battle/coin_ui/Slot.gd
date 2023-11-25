@@ -3,6 +3,7 @@ class_name Slot
 
 signal coin_inserted(coin)
 signal coins_changed(coins_needed, current_coins)
+signal was_pressed(slot)
 
 @export var heads_ok: bool = true
 @export var tails_ok: bool = true
@@ -18,6 +19,7 @@ signal coins_changed(coins_needed, current_coins)
 var is_available = true
 var inserted_coins: Array[Coin]
 var used_coins: Array[Coin]
+var current_coin: Coin
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,6 +28,10 @@ func _ready():
 	coins_changed.emit(coins_needed, inserted_coins.size())
 	EventBus.started_dragging.connect(_on_started_dragging)
 	EventBus.stopped_dragging.connect(_on_stopped_dragging)
+#	# Señales para marcar disponibilidad cuando se selecciona una moneda, faltan
+#	# por arreglar bugs y no me gusta como queda.
+#	EventBus.was_selected.connect(_on_started_dragging)
+#	EventBus.released_selected.connect(_on_stopped_dragging)
 
 func set_heads_ok(value):
 	heads_ok = value
@@ -79,6 +85,10 @@ func _on_stopped_dragging(object):
 	if object is Coin:
 		light.hide()
 
+func _on_focus_changed(focus):
+	if focus is Coin:
+		current_coin = focus
+
 func set_available():
 	is_available = true
 	shadow.hide()
@@ -93,13 +103,17 @@ func set_unavailable():
 func set_done():
 	inserted_coins = []
 
-func insert_coin(coin: Coin):
-	inserted_coins.append(coin)
-	coin.set_inserted()
-	coins_changed.emit(coins_needed, inserted_coins.size())
-	if inserted_coins.size() == coins_needed:
-		set_unavailable()
-	coin_inserted.emit(coin)
+func insert_coin(coin: Coin) -> bool:
+	if coin != null and is_coin_compatible(coin.heads):
+		inserted_coins.append(coin)
+		coin.set_inserted()
+		coins_changed.emit(coins_needed, inserted_coins.size())
+		if inserted_coins.size() == coins_needed:
+			set_unavailable()
+		coin_inserted.emit(coin)
+		return true
+	else:
+		return false
 
 func release_inserted_coins():
 	for coin in inserted_coins:
@@ -125,3 +139,8 @@ func release_all_coins():
 	used_coins = []
 	coins_changed.emit(coins_needed, inserted_coins.size())
 	set_available()
+
+# Reenvía una señal con referencia al propio nodo cuando se le hace click.
+func _on_pressed():
+	was_pressed.emit(self)
+

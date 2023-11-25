@@ -9,6 +9,9 @@
 script = ExtResource("1_a08pa")
 damage = 4
 to_self = false
+ignore_shield = true
+ignore_armor = true
+ignore_dodges = false
 
 [sub_resource type="Resource" id="Resource_wtj7a"]
 script = ExtResource("3_ob2cj")
@@ -25,4 +28,6 @@ name = "Modulate"
 cost = Array[int]([1, 0, 0])
 uses_per_turn = -1
 one_shot = false
+cost_is_mandatory = true
+rarity = 0
 behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_rdwqt")])

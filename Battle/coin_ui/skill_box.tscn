@@ -1,6 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://tv88ia00qmed"]
+[gd_scene load_steps=3 format=3 uid="uid://tv88ia00qmed"]
 
 [ext_resource type="Script" path="res://Battle/coin_ui/skill_box.gd" id="1_cau6c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wp4h5"]
+content_margin_left = 5.0
+content_margin_top = 1.0
+content_margin_right = 5.0
+content_margin_bottom = 1.0
+bg_color = Color(0.305882, 0.305882, 0.305882, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
 
 [node name="SkillBox" type="Control"]
 custom_minimum_size = Vector2(240, 190)
@@ -13,6 +24,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -24,27 +36,32 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -62.0
-offset_top = -88.0
-offset_right = 62.0
-offset_bottom = 88.0
+offset_left = -110.0
+offset_top = -91.0
+offset_right = 110.0
+offset_bottom = 91.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 1
 
 [node name="NameLabel" type="Label" parent="Panel/SkillBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 15
 text = "NOMBRE"
 horizontal_alignment = 1
+uppercase = true
 
 [node name="DescriptionLabel" type="Label" parent="Panel/SkillBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 50)
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
-theme_override_font_sizes/font_size = 15
+theme_override_constants/line_spacing = -1
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_wp4h5")
 text = "HACE ALGO
 CON DOS LINEAS"
-horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Panel/SkillBoxContainer"]
 layout_mode = 2
@@ -65,18 +82,19 @@ text = "x 3"
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/SkillBoxContainer"]
+[node name="ButtonContainer" type="HBoxContainer" parent="Panel/SkillBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="ExecuteButton" type="Button" parent="Panel/SkillBoxContainer/HBoxContainer"]
+[node name="ExecuteButton" type="Button" parent="Panel/SkillBoxContainer/ButtonContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
 text = "Execute"
 
-[node name="UndoButton" type="Button" parent="Panel/SkillBoxContainer/HBoxContainer"]
+[node name="UndoButton" type="Button" parent="Panel/SkillBoxContainer/ButtonContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
@@ -84,5 +102,5 @@ size_flags_horizontal = 8
 theme_override_font_sizes/font_size = 12
 text = "Undo"
 
-[connection signal="pressed" from="Panel/SkillBoxContainer/HBoxContainer/ExecuteButton" to="." method="_on_ExecuteButton_pressed"]
-[connection signal="pressed" from="Panel/SkillBoxContainer/HBoxContainer/UndoButton" to="." method="_on_UndoButton_pressed"]
+[connection signal="pressed" from="Panel/SkillBoxContainer/ButtonContainer/ExecuteButton" to="." method="_on_ExecuteButton_pressed"]
+[connection signal="pressed" from="Panel/SkillBoxContainer/ButtonContainer/UndoButton" to="." method="_on_UndoButton_pressed"]

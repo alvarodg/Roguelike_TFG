@@ -14,4 +14,6 @@ name = "Quick Strike"
 cost = Array[int]([0, 0, 1])
 uses_per_turn = 1
 one_shot = false
+cost_is_mandatory = true
+rarity = 0
 behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_tohu1")])

@@ -57,3 +57,4 @@ horizontal_alignment = 2
 script = ExtResource("5_rfkqu")
 
 [connection signal="coins_changed" from="." to="CountLabel" method="_on_Slot_coins_changed"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

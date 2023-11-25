@@ -1,12 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://bhu2jjmj7mlxo"]
+[gd_scene load_steps=5 format=3 uid="uid://bhu2jjmj7mlxo"]
 
 [ext_resource type="Texture2D" uid="uid://gyqv3c4g4llp" path="res://Battle/coin_ui/sprites/coin_heads.png" id="1_w47n0"]
 [ext_resource type="Script" path="res://Battle/coin_ui/Coin.gd" id="2_gdc2v"]
+[ext_resource type="Texture2D" uid="uid://dfvbp50ovnwj2" path="res://Battle/coin_ui/sprites/coin_focus.png" id="2_iollm"]
 [ext_resource type="Texture2D" uid="uid://da54b5ae0l3k" path="res://Battle/coin_ui/sprites/coin_tails.png" id="3_lts44"]
 
 [node name="Coin" type="TextureButton"]
 custom_minimum_size = Vector2(64, 64)
 texture_normal = ExtResource("1_w47n0")
+texture_focused = ExtResource("2_iollm")
 script = ExtResource("2_gdc2v")
 heads_texture = ExtResource("1_w47n0")
 tails_texture = ExtResource("3_lts44")
+
+[node name="Selected" type="TextureRect" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_iollm")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

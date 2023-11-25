@@ -75,18 +75,21 @@ func set_dodges(value):
 	dodges = value
 	dodges_changed.emit(dodges)
 
-func take_damage(amount):
+func take_damage(amount, ignore_shield = false, ignore_armor = false, ignore_dodges = false):
 	# Se podría dividir más para poder ignorar partes de la fórmula selectivamente
-	if dodges > 0:
+	var eff_shield = 0 if ignore_shield else shield
+	var eff_armor = 0 if ignore_armor else armor
+	var eff_dodges = 0 if ignore_dodges else dodges
+	if eff_dodges > 0:
 		dodges -= 1
 		dodged.emit()
-	elif shield > 0:
-		var damage_remainder = amount - armor - shield
-		var armor_remainder = max(0, armor - shield)
-		shield -= max(0, amount - armor)
+	elif eff_shield > 0:
+		var damage_remainder = amount - eff_armor - eff_shield
+		var armor_remainder = max(0, eff_armor - eff_shield)
+		shield -= max(0, amount - eff_armor)
 		if shield == 0:
 			shield_broke.emit()
 		if damage_remainder > 0:
 			health -= max(0, damage_remainder - armor_remainder)
 	else:
-		health -= max(0, amount - armor)
+		health -= max(0, amount - eff_armor)

@@ -7,6 +7,9 @@
 script = ExtResource("1_2yixn")
 damage = 5
 to_self = false
+ignore_shield = false
+ignore_armor = false
+ignore_dodges = true
 
 [resource]
 script = ExtResource("2_h6i3m")
@@ -14,4 +17,6 @@ name = "Hit"
 cost = Array[int]([0, 1, 0])
 uses_per_turn = -1
 one_shot = false
+cost_is_mandatory = true
+rarity = 0
 behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_l622n")])

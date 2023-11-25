@@ -9,9 +9,12 @@ class_name Coin
 @export var is_ephemeral: bool = false
 var drag_preview_scene: PackedScene = preload("res://Battle/coin_ui/drag_preview.tscn")
 var is_dragging: bool = false
+var is_selected: bool = false : set = set_is_selected
 
 enum Status {AVAILABLE, INSERTED, SPENT}
 var status: Status = Status.AVAILABLE
+
+@onready var selected = %Selected
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -43,6 +46,7 @@ func set_facing_texture():
 	
 
 func _get_drag_data(_at_position):
+	release_focus()
 	if status != Status.AVAILABLE:
 		return null
 	var drag_data = {}
@@ -61,17 +65,32 @@ func make_invisible():
 
 func set_available():
 	status = Status.AVAILABLE
+	focus_mode = Control.FOCUS_ALL
 	set_facing_texture()
 	
 func set_inserted():
 	status = Status.INSERTED
+	focus_mode = Control.FOCUS_NONE
 	make_invisible()
 	
 func set_spent():
 	status = Status.SPENT
+	focus_mode = Control.FOCUS_NONE
 	make_invisible()
+
+func set_is_selected(value):
+	is_selected = value
 
 func get_ephemeral_copy() -> Coin:
 	var e_coin = self.duplicate()
 	e_coin.is_ephemeral = true
+	e_coin.set_available()
 	return e_coin
+
+
+func _on_pressed():
+	if status == Status.AVAILABLE:
+		is_selected = true
+		print(is_selected)
+		grab_focus()
+#	EventBus.was_selected.emit(self)
