@@ -10,14 +10,16 @@ class_name Equipment
 @export var base_armor: int
 @export var base_dodges: int
 
-func attach_to(stats):
+func attach_to(user):
+	var stats = user.stats
 	stats.max_health += max_health
 	stats.health += health
 	stats.base_armor += base_armor
 	stats.base_shield += base_shield
 	stats.base_dodges += base_dodges
 	
-func release_from(stats):
+func release_from(user):
+	var stats = user.stats
 	stats.max_health -= max_health
 	stats.health -= health
 	stats.base_armor -= base_armor

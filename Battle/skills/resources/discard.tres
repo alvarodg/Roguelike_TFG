@@ -7,6 +7,9 @@
 script = ExtResource("1_tjinb")
 damage = 4
 to_self = false
+ignore_shield = false
+ignore_armor = false
+ignore_dodges = false
 
 [resource]
 script = ExtResource("2_sagx5")

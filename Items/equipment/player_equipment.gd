@@ -5,7 +5,8 @@ class_name PlayerEquipment
 @export var base_luck: float
 
 # Solo puede sumar o restar números planos a las estadísticas
-func attach_to(stats: PlayerStats):
+func attach_to(player: Player):
+	var stats: PlayerStats = player.stats
 	stats.coin_count += coin_count
 	stats.base_luck += base_luck
 	stats.max_health += max_health
@@ -14,7 +15,8 @@ func attach_to(stats: PlayerStats):
 	stats.base_shield += base_shield
 	stats.base_dodges += base_dodges
 	
-func release_from(stats: PlayerStats):
+func release_from(player: Player):
+	var stats: PlayerStats = player.stats
 	stats.coin_count -= coin_count
 	stats.base_luck -= base_luck
 	stats.max_health -= max_health

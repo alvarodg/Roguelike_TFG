@@ -28,10 +28,10 @@ func _ready():
 	coins_changed.emit(coins_needed, inserted_coins.size())
 	EventBus.started_dragging.connect(_on_started_dragging)
 	EventBus.stopped_dragging.connect(_on_stopped_dragging)
-#	# Señales para marcar disponibilidad cuando se selecciona una moneda, faltan
-#	# por arreglar bugs y no me gusta como queda.
-#	EventBus.was_selected.connect(_on_started_dragging)
-#	EventBus.released_selected.connect(_on_stopped_dragging)
+	# Señales para marcar disponibilidad cuando se selecciona una moneda, posiblemente
+	# crear una función distinta con una animación.
+	EventBus.was_selected.connect(_on_started_dragging)
+	EventBus.released_selected.connect(_on_stopped_dragging)
 
 func set_heads_ok(value):
 	heads_ok = value

@@ -20,9 +20,13 @@ func setup(player: Player):
 # Cuando se hace click en una ranura, si se tiene una moneda seleccionada, la inserta.
 func _on_SkillBox_slot_was_pressed(slot):
 	if slot.insert_coin(current_coin):
+		EventBus.released_selected.emit(current_coin)
 		current_coin = null
+
 
 # Si focus cambia a una moneda, guarda una referencia.
 func _on_focus_changed(current_focus):
 	if current_focus is Coin:
+		EventBus.released_selected.emit(current_coin)
 		current_coin = current_focus
+		EventBus.was_selected.emit(current_coin)

@@ -91,6 +91,5 @@ func get_ephemeral_copy() -> Coin:
 func _on_pressed():
 	if status == Status.AVAILABLE:
 		is_selected = true
-		print(is_selected)
 		grab_focus()
 #	EventBus.was_selected.emit(self)

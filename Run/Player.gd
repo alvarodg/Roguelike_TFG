@@ -100,7 +100,7 @@ func clear_coins():
 	coins = []
 
 func equip(equipment: Equipment):
-	equipment.attach_to(stats)
+	equipment.attach_to(self)
 	equipment_list.append(equipment)
 	equipment_changed.emit(equipment_list)
 
