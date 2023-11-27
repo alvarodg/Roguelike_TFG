@@ -31,15 +31,15 @@ func get_description() -> String:
 		# Tiene que haber una forma mejor de hacer esto, TEMPORAL
 		var desc: String = ""
 		if max_health != 0:
-			desc += "%s Max Health.\n" % max_health
+			desc += "%+d Max Health.\n" % max_health
 		if health != 0:
-			desc += "%s Health.\n" % health
+			desc += "%+d Health.\n" % health
 		if base_shield != 0:
-			desc += "%s Base Shield.\n" % base_shield
+			desc += "%+d Base Shield.\n" % base_shield
 		if base_armor != 0:
-			desc += "%s Base Armor.\n" % base_armor
+			desc += "%+d Base Armor.\n" % base_armor
 		if base_dodges != 0:
-			desc += "%s Base Dodges." % base_dodges
+			desc += "%+d Base Dodges." % base_dodges
 		return desc
 	else:
 		return description

@@ -29,9 +29,9 @@ func get_description():
 	if description == "":
 		var desc: String = ""
 		if coin_count != 0:
-			desc += "%s Coin Count.\n" % coin_count
+			desc += "%+d Coin Count.\n" % coin_count
 		if base_luck != 0:
-			desc += "%s Base Luck.\n" % base_luck
+			desc += "%+.2f Base Luck.\n" % base_luck
 		desc += super.get_description()
 		return desc
 	else:

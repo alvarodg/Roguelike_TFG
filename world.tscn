@@ -38,7 +38,8 @@ default_equipment = Array[Resource("res://Items/equipment/equipment.gd")]([ExtRe
 [node name="Map" parent="." instance=ExtResource("2_tumwh")]
 layout_mode = 1
 
-[node name="DebugPanel" type="Panel" parent="." groups=["map_screen"]]
+[node name="DebugPanel" type="Panel" parent="."]
+visible = false
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 1
 anchors_preset = 12
