@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="ComponentEquipment" load_steps=9 format=3 uid="uid://xmmec8fist7u"]
+[gd_resource type="Resource" script_class="Equipment" load_steps=9 format=3 uid="uid://xmmec8fist7u"]
 
-[ext_resource type="Script" path="res://Items/modifiers/component_equipment_test.gd" id="1_g0sky"]
+[ext_resource type="Script" path="res://Items/equipment/equipment.gd" id="1_g0sky"]
 [ext_resource type="Script" path="res://Items/modifiers/components/health_modifier_component.gd" id="1_oyy4g"]
 [ext_resource type="Script" path="res://Items/equipment/equipment_ui_data.gd" id="2_j840r"]
 [ext_resource type="Script" path="res://Items/modifiers/components/shield_modifier_component.gd" id="2_q5xso"]
@@ -8,12 +8,10 @@
 
 [sub_resource type="Resource" id="Resource_4o8ju"]
 script = ExtResource("1_oyy4g")
-max_health = 10
 health = 10
 
 [sub_resource type="Resource" id="Resource_bk3gm"]
 script = ExtResource("2_q5xso")
-base_shield = 10
 shield = 0
 
 [sub_resource type="Resource" id="Resource_ccn7c"]
@@ -23,12 +21,6 @@ ui_name = "Component(TEST)"
 
 [resource]
 script = ExtResource("1_g0sky")
-modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_4o8ju"), SubResource("Resource_bk3gm")])
 ui_data = SubResource("Resource_ccn7c")
 description = ""
-rarity = 0
-max_health = 0
-health = 0
-base_shield = 0
-base_armor = 0
-base_dodges = 0
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_4o8ju"), SubResource("Resource_bk3gm")])

@@ -1,17 +1,17 @@
 [gd_resource type="Resource" script_class="EquipmentCollection" load_steps=12 format=3 uid="uid://5871ejwt2whd"]
 
+[ext_resource type="Resource" uid="uid://dux2lw2o3v0dr" path="res://Items/equipment/resources/cursed_coin.tres" id="1_2o3xi"]
 [ext_resource type="Script" path="res://Run/equipment_collection.gd" id="1_8ig7o"]
-[ext_resource type="Resource" uid="uid://ebk62r8t0nud" path="res://Items/equipment/resources/CursedCoin.tres" id="1_khhjv"]
-[ext_resource type="Resource" uid="uid://dgpv5yfa2nero" path="res://Items/equipment/resources/LuckyCoin.tres" id="2_axogq"]
-[ext_resource type="Resource" uid="uid://ttp41waer3c5" path="res://Items/equipment/resources/LuckyShield.tres" id="3_l31nr"]
-[ext_resource type="Resource" uid="uid://domx052sdweke" path="res://Items/equipment/resources/PoisonedCoin.tres" id="4_gxcus"]
-[ext_resource type="Resource" uid="uid://p4mtrtf7wkrt" path="res://Items/equipment/resources/RegularArmor.tres" id="5_6eowe"]
-[ext_resource type="Resource" uid="uid://c286cvf0u0uho" path="res://Items/equipment/resources/RegularCoin.tres" id="6_xqs6w"]
-[ext_resource type="Resource" uid="uid://dxduqhg1h3hxx" path="res://Items/equipment/resources/ShadowClone.tres" id="7_xbk5g"]
-[ext_resource type="Resource" uid="uid://da3sb74ektma7" path="res://Items/equipment/resources/SmallShield.tres" id="8_ru8bb"]
-[ext_resource type="Resource" uid="uid://chknl3mwjntwv" path="res://Items/equipment/resources/StrongArmor.tres" id="9_f7cy6"]
-[ext_resource type="Resource" uid="uid://dd31l847vkwrl" path="res://Items/equipment/resources/WeakArmor.tres" id="10_nax7e"]
+[ext_resource type="Resource" uid="uid://bxwuaeekjaus4" path="res://Items/equipment/resources/lucky_coin.tres" id="2_8t63a"]
+[ext_resource type="Resource" uid="uid://c8107weri3cbe" path="res://Items/equipment/resources/lucky_shield.tres" id="3_c86u6"]
+[ext_resource type="Resource" uid="uid://ck15mnqlrvupd" path="res://Items/equipment/resources/poisoned_coin.tres" id="4_t0sya"]
+[ext_resource type="Resource" uid="uid://cibppkhryq7pl" path="res://Items/equipment/resources/regular_armor.tres" id="5_0b6kq"]
+[ext_resource type="Resource" uid="uid://d78buw8sx4i6" path="res://Items/equipment/resources/regular_coin.tres" id="6_6bbla"]
+[ext_resource type="Resource" uid="uid://dn8xb4i3yfuch" path="res://Items/equipment/resources/shadow_clone.tres" id="7_o1jjb"]
+[ext_resource type="Resource" uid="uid://o7m0rikjobyx" path="res://Items/equipment/resources/strong_armor.tres" id="8_0dmrt"]
+[ext_resource type="Resource" uid="uid://xmue4sfum232" path="res://Items/equipment/resources/weak_armor.tres" id="9_vuart"]
+[ext_resource type="Resource" uid="uid://dosyj8s807tej" path="res://Items/equipment/resources/weak_shield.tres" id="10_pykwq"]
 
 [resource]
 script = ExtResource("1_8ig7o")
-list = Array[Resource("res://Items/equipment/equipment.gd")]([ExtResource("1_khhjv"), ExtResource("2_axogq"), ExtResource("3_l31nr"), ExtResource("4_gxcus"), ExtResource("5_6eowe"), ExtResource("6_xqs6w"), ExtResource("7_xbk5g"), ExtResource("8_ru8bb"), ExtResource("9_f7cy6"), ExtResource("10_nax7e")])
+list = Array[Resource("res://Items/equipment/equipment.gd")]([ExtResource("1_2o3xi"), ExtResource("2_8t63a"), ExtResource("3_c86u6"), ExtResource("4_t0sya"), ExtResource("5_0b6kq"), ExtResource("6_6bbla"), ExtResource("7_o1jjb"), ExtResource("8_0dmrt"), ExtResource("9_vuart"), ExtResource("10_pykwq")])

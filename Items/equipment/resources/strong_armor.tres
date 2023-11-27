@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Equipment" load_steps=7 format=3 uid="uid://o7m0rikjobyx"]
+
+[ext_resource type="Script" path="res://Items/modifiers/components/armor_modifier_component.gd" id="1_pm3cc"]
+[ext_resource type="Script" path="res://Items/equipment/equipment.gd" id="2_n1kr1"]
+[ext_resource type="Texture2D" uid="uid://dvaqrwhwbiwqb" path="res://Items/equipment/sprites/strong_armor_item.png" id="3_el01q"]
+[ext_resource type="Script" path="res://Items/equipment/equipment_ui_data.gd" id="4_yrpum"]
+
+[sub_resource type="Resource" id="Resource_cu2ni"]
+script = ExtResource("1_pm3cc")
+armor = 3
+
+[sub_resource type="Resource" id="Resource_hkceh"]
+script = ExtResource("4_yrpum")
+icon = ExtResource("3_el01q")
+ui_name = "Strong Armor"
+
+[resource]
+script = ExtResource("2_n1kr1")
+ui_data = SubResource("Resource_hkceh")
+description = ""
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_cu2ni")])

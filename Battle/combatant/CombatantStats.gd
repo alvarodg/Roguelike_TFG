@@ -75,7 +75,7 @@ func set_dodges(value):
 	dodges = value
 	dodges_changed.emit(dodges)
 
-func take_damage(amount, ignore_shield = false, ignore_armor = false, ignore_dodges = false):
+func take_damage(amount: int, ignore_shield = false, ignore_armor = false, ignore_dodges = false):
 	# Se podría dividir más para poder ignorar partes de la fórmula selectivamente
 	var eff_shield = 0 if ignore_shield else shield
 	var eff_armor = 0 if ignore_armor else armor
@@ -93,3 +93,7 @@ func take_damage(amount, ignore_shield = false, ignore_armor = false, ignore_dod
 			health -= max(0, damage_remainder - armor_remainder)
 	else:
 		health -= max(0, amount - eff_armor)
+
+func take_percent_damage(percent: float, ignore_shield = false, ignore_armor = false, ignore_dodges = false):
+	var amount: int = floori(percent * health)
+	take_damage(amount, ignore_shield, ignore_armor, ignore_dodges)

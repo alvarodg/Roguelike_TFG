@@ -25,6 +25,7 @@ func _ready():
 	stats.setup()
 	stats.coin_count_changed.connect(_on_Stats_coin_count_changed)
 	stats.died.connect(_on_Stats_died)
+	create_coin_data(stats.coin_count)
 	reset_coins()
 	# Para no volver a incluir el equipo por defecto si está cargando partida
 	if equipment_list.size() == 0:
@@ -86,6 +87,11 @@ func reset_coins():
 	for coin in coin_data:
 		coins.append(coin.create_coin_instance())
 	coins_changed.emit(coins)
+
+func create_coin_data(amount: int):
+	coin_data = []
+	for i in range(amount):
+		coin_data.append(default_coin)
 
 func clear_ephemeral_coins():
 	for coin in coins:

@@ -1,7 +1,7 @@
 extends Control
 class_name EquipmentIcon
 
-@export var equipment: Equipment
+var equipment: Equipment
 @onready var sprite = %Sprite
 @onready var info_panel = %InfoPanel
 @onready var info_label = %InfoLabel

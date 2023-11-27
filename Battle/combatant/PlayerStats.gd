@@ -14,7 +14,11 @@ func _init(p_max_health = 100, p_base_shield = 0, p_base_armor = 0, p_base_dodge
 
 func set_coin_count(value):
 	coin_count = value
-	coin_count_changed.emit(value)
+	coin_count_changed.emit(coin_count)
+	
+func setup():
+	health = max_health
+	
 
 func to_save_dict() -> Dictionary:
 	return {

@@ -1,20 +1,20 @@
 [gd_scene load_steps=3 format=3 uid="uid://hiqvn3fknbyn"]
 
 [ext_resource type="Script" path="res://Items/equipment/equipment_icon.gd" id="1_xo1p7"]
-[ext_resource type="Resource" uid="uid://dgpv5yfa2nero" path="res://Items/equipment/resources/LuckyCoin.tres" id="2_huuou"]
+[ext_resource type="Texture2D" uid="uid://cvicbvj581vju" path="res://Items/equipment/sprites/regularcoin_item.png" id="2_0wxf8"]
 
 [node name="EquipmentIcon" type="Control"]
 custom_minimum_size = Vector2(18, 18)
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_xo1p7")
-equipment = ExtResource("2_huuou")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 texture_filter = 1
 position = Vector2(9, 9)
 scale = Vector2(2, 2)
+texture = ExtResource("2_0wxf8")
 
 [node name="InfoLabel" type="Label" parent="."]
 unique_name_in_owner = true
