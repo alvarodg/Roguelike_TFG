@@ -19,3 +19,4 @@ script = ExtResource("2_n1kr1")
 ui_data = SubResource("Resource_hkceh")
 description = ""
 modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_cu2ni")])
+triggers = Array[Resource("res://Items/modifiers/triggers/trigger.gd")]([])

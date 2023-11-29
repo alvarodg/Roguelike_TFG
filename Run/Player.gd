@@ -3,7 +3,9 @@ class_name Player
 
 signal died
 signal coins_changed
+signal coin_flipped(coin)
 signal equipment_changed
+signal started_battle
 
 @export var stats: PlayerStats : set = set_stats
 @export var ui_data: PlayerUIData
@@ -22,19 +24,26 @@ var ui_load_dict: Dictionary = {}
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	RunData.player = self
-	stats.setup()
 	stats.coin_count_changed.connect(_on_Stats_coin_count_changed)
 	stats.died.connect(_on_Stats_died)
+	stats.setup()
 	create_coin_data(stats.coin_count)
-	reset_coins()
 	# Para no volver a incluir el equipo por defecto si está cargando partida
 	if equipment_list.size() == 0:
 		for equipment in default_equipment:
+			equipment.setup()
 			equip(equipment)
 			# Necesita que CollectionContainer se inicialice antes que Player, TEMPORAL?
 			if equipment in RunData.collections.equipments.list:
 				RunData.collections.remove_equipment(equipment)
 	default_equipment = []
+	reset_coins()
+	
+
+func _set_up_parameters():
+	stats.setup()
+	for equipment in equipment_list:
+		equipment.setup()
 
 func set_stats(new_stats):
 	stats = new_stats
@@ -66,6 +75,7 @@ func end_turn():
 func start_battle():
 	stats.start_battle()
 	reset_coins()
+	started_battle.emit()
 
 func end_battle():
 	stats.end_battle()
@@ -85,7 +95,9 @@ func flip_all_coins():
 func reset_coins():
 	clear_coins()
 	for coin in coin_data:
-		coins.append(coin.create_coin_instance())
+		var coin_instance = coin.create_coin_instance()
+		coin_instance.flipped.connect(_on_Coin_flipped)
+		coins.append(coin_instance)
 	coins_changed.emit(coins)
 
 func create_coin_data(amount: int):
@@ -119,6 +131,9 @@ func _on_Stats_coin_count_changed(value):
 # Emite la señal died cuando la recibe de stats.
 func _on_Stats_died():
 	died.emit()
+
+func _on_Coin_flipped(coin):
+	coin_flipped.emit(coin)
 
 func save() -> Dictionary:
 	var save_dict = {

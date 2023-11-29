@@ -8,7 +8,7 @@ func _init(p_armor: int = 0):
 	
 func apply_to(user):
 	assert(user.stats is CombatantStats)
-	user.stats.base_armor += armor
+	user.stats.armor += armor
 
 func get_description() -> String:
 	return "%+d Armor" % armor

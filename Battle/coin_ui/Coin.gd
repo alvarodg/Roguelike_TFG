@@ -1,6 +1,8 @@
 extends TextureButton
 class_name Coin
 
+signal flipped(coin)
+
 @export var data: CoinData
 @export var heads: bool = true : set = set_heads
 @export var heads_texture: Texture2D
@@ -33,6 +35,7 @@ func _input(event):
 
 func flip(mod: float = 1.0) -> bool:
 	heads = data.heads_chance * mod > randf()
+	flipped.emit(self)
 	return heads
 
 func set_heads(value):

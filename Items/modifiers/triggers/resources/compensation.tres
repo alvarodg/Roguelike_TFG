@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="PercentHealthTrigger" load_steps=5 format=3 uid="uid://d4g7v147aef3q"]
+
+[ext_resource type="Script" path="res://Items/modifiers/components/extra_coin_modifier_component.gd" id="1_4ybu7"]
+[ext_resource type="Resource" uid="uid://3rw1h1eslq66" path="res://Battle/coin_ui/resources/default_coin.tres" id="1_ciyle"]
+[ext_resource type="Script" path="res://Items/modifiers/triggers/percent_health_trigger.gd" id="1_xstty"]
+
+[sub_resource type="Resource" id="Resource_twfab"]
+script = ExtResource("1_4ybu7")
+coin_data_list = Array[Resource("res://Battle/coin_ui/coin_data.gd")]([ExtResource("1_ciyle"), ExtResource("1_ciyle")])
+ephemeral = false
+facing = 1
+
+[resource]
+script = ExtResource("1_xstty")
+percent = 0.5
+amount = 1
+reset_per_turn = false
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_twfab")])

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="FlipTrigger" load_steps=4 format=3 uid="uid://cphrwj64e65b0"]
+
+[ext_resource type="Script" path="res://Items/modifiers/components/shield_modifier_component.gd" id="1_7r2e1"]
+[ext_resource type="Script" path="res://Items/modifiers/triggers/flip_trigger.gd" id="1_t5odw"]
+
+[sub_resource type="Resource" id="Resource_1qf4c"]
+script = ExtResource("1_7r2e1")
+shield = 1
+
+[resource]
+script = ExtResource("1_t5odw")
+heads_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+tails_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+amount = -1
+reset_per_turn = true
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_1qf4c")])

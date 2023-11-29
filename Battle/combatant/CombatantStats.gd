@@ -6,6 +6,7 @@ signal health_changed(value)
 signal shield_changed(value)
 signal armor_changed(value)
 signal dodges_changed(value)
+signal hit
 signal dodged
 signal shield_broke
 signal died
@@ -91,8 +92,10 @@ func take_damage(amount: int, ignore_shield = false, ignore_armor = false, ignor
 			shield_broke.emit()
 		if damage_remainder > 0:
 			health -= max(0, damage_remainder - armor_remainder)
+			hit.emit()
 	else:
 		health -= max(0, amount - eff_armor)
+		hit.emit()
 
 func take_percent_damage(percent: float, ignore_shield = false, ignore_armor = false, ignore_dodges = false):
 	var amount: int = floori(percent * health)
