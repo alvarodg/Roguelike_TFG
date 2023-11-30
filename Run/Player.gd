@@ -185,6 +185,8 @@ func data_load(parameter, data):
 	elif skill_regex.search(parameter):
 		skill_list.append(load(data))
 	elif equip_regex.search(parameter):
-		equipment_list.append(load(data))
+		var equipment = load(data)
+		equipment_list.append(equipment)
+		equipment.connect_to(self)
 	else:
 		set(parameter, data)

@@ -6,6 +6,7 @@ signal event_chosen
 @export var debug_start: bool = false
 @onready var generator = $Generator
 @onready var player_map_ui = %PlayerMapUI
+@onready var reset_button = %ResetButton
 
 var node_matrix = []
 var traveled_nodes: Array[EventNode] = []
@@ -17,6 +18,7 @@ var current_event: Event
 # cuando se carga partida.
 func _ready():
 	player_map_ui.hide()
+	reset_button.hide()
 	if debug_start:
 		print("DEBUG START SET")
 		_on_World_game_ready()
@@ -29,6 +31,7 @@ func start_game(player: Player, run_seed: int):
 	generator.generate(run_seed)
 	player_map_ui.setup(player)
 	player_map_ui.show()
+	reset_button.show()
 
 ## Al recibir la señal generation_complete de Generator, guarda los nodos generados,
 ## marca la primera tanda como disponible y se conecta a sus señales.
@@ -139,3 +142,8 @@ func data_load(parameter, data):
 				traveled_coords.append(Vector2(0, data[i]))
 	else:
 		set(parameter, data)
+
+
+func _on_ResetButton_pressed():
+	RunData.delete_save(true)
+	get_tree().change_scene_to_file("res://Menus/loss_screen.tscn")

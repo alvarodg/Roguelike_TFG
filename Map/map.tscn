@@ -32,4 +32,19 @@ offset_bottom = -51.0
 grow_horizontal = 0
 grow_vertical = 0
 
+[node name="ResetButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 86.0
+offset_top = -106.0
+offset_right = 140.0
+offset_bottom = -75.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "ABANDON RUN"
+
 [connection signal="generation_complete" from="Generator" to="." method="_on_Generator_generation_complete"]
+[connection signal="pressed" from="ResetButton" to="." method="_on_ResetButton_pressed"]

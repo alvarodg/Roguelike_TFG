@@ -32,7 +32,7 @@ func _can_trigger():
 	return triggers_remaining != 0
 
 func _connect_signals(p_player: Player):
-	if reset_per_turn:
+	if reset_per_turn and not turn_manager.player_turn_started.is_connected(_on_player_turn_started):
 		turn_manager.player_turn_started.connect(_on_player_turn_started)
 	if amount > 0:
 		p_player.started_battle.connect(_on_player_battle_started)

@@ -13,7 +13,11 @@ func attach_to(user):
 		mod.apply_to(user)
 	for trigger in triggers:
 		trigger.apply_to(user)
-	
+
+func connect_to(user):
+	for trigger in triggers:
+		trigger.apply_to(user)
+
 func setup():
 	for trigger in triggers:
 		trigger.setup()
