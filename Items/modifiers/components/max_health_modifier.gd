@@ -11,6 +11,7 @@ func _init(p_max_health: int = 0):
 
 func apply_to(user):
 	assert(user.stats is CombatantStats)
+	user.stats.max_health += max_health
 	if fill:
 		health_mod.apply_to(user)
 

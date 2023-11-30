@@ -25,6 +25,7 @@ func _on_Combatant_health_changed(health):
 	
 func _on_Combatant_max_health_changed(max_health):
 	max_value = max_health
+	_update_label()
 
 	
 func _update_label():
