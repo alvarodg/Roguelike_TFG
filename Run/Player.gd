@@ -31,11 +31,12 @@ func _ready():
 	# Para no volver a incluir el equipo por defecto si está cargando partida
 	if equipment_list.size() == 0:
 		for equipment in default_equipment:
-			equipment.setup()
-			equip(equipment)
-			# Necesita que CollectionContainer se inicialice antes que Player, TEMPORAL?
-			if equipment in RunData.collections.equipments.list:
-				RunData.collections.remove_equipment(equipment)
+			if equipment != null:
+				equipment.setup()
+				equip(equipment)
+				# Necesita que CollectionContainer se inicialice antes que Player, TEMPORAL?
+				if equipment in RunData.collections.equipments.list:
+					RunData.collections.remove_equipment(equipment)
 	default_equipment = []
 	reset_coins()
 	

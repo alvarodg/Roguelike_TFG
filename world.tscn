@@ -32,7 +32,6 @@ skills = ExtResource("4_lc4a6")
 stats = ExtResource("3_nvh0g")
 ui_data = ExtResource("4_ryo5a")
 skill_list = Array[Resource("res://Battle/skills/SkillData.gd")]([ExtResource("8_3hjda"), ExtResource("9_imgkd"), ExtResource("10_pvof1"), ExtResource("11_vjc2b"), ExtResource("11_nulia")])
-default_equipment = Array[Resource("res://Items/equipment/equipment.gd")]([null])
 
 [node name="Map" parent="." instance=ExtResource("2_tumwh")]
 layout_mode = 1
