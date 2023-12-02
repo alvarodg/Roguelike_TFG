@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="ConditionTrigger" load_steps=8 format=3 uid="uid://dsusfcr34n8ff"]
+
+[ext_resource type="Script" path="res://Items/modifiers/conditions/condition_trigger.gd" id="1_40p1o"]
+[ext_resource type="Script" path="res://Items/modifiers/conditions/flip_condition.gd" id="1_u2k21"]
+[ext_resource type="Script" path="res://Items/modifiers/components/shield_modifier_component.gd" id="2_akj7k"]
+[ext_resource type="Script" path="res://Items/modifiers/conditions/percent_health_condition.gd" id="4_g76hp"]
+
+[sub_resource type="Resource" id="Resource_d7re5"]
+script = ExtResource("1_u2k21")
+facing = 1
+
+[sub_resource type="Resource" id="Resource_1qeqe"]
+script = ExtResource("2_akj7k")
+shield = 1
+
+[sub_resource type="Resource" id="Resource_e2osf"]
+script = ExtResource("4_g76hp")
+percent = 0.5
+operator = 0
+
+[resource]
+script = ExtResource("1_40p1o")
+state_conditions = Array[Resource("res://Items/modifiers/conditions/state_condition.gd")]([SubResource("Resource_e2osf")])
+event_condition = SubResource("Resource_d7re5")
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_1qeqe")])
+amount = 4
+reset_per_turn = true

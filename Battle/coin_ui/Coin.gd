@@ -13,6 +13,7 @@ var drag_preview_scene: PackedScene = preload("res://Battle/coin_ui/drag_preview
 var is_dragging: bool = false
 var is_selected: bool = false : set = set_is_selected
 
+enum Facing {ANY, HEADS, TAILS}
 enum Status {AVAILABLE, INSERTED, SPENT}
 var status: Status = Status.AVAILABLE
 

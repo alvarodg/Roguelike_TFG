@@ -77,7 +77,6 @@ func set_dodges(value):
 	dodges_changed.emit(dodges)
 
 func take_damage(amount: int, ignore_shield = false, ignore_armor = false, ignore_dodges = false):
-	# Se podría dividir más para poder ignorar partes de la fórmula selectivamente
 	var eff_shield = 0 if ignore_shield else shield
 	var eff_armor = 0 if ignore_armor else armor
 	var eff_dodges = 0 if ignore_dodges else dodges

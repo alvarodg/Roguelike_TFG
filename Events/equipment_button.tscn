@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Events/equipment_button.gd" id="1_oeyqg"]
 
 [node name="EquipmentButton" type="Button"]
+texture_filter = 1
 custom_minimum_size = Vector2(150, 120)
 offset_right = 8.0
 offset_bottom = 8.0
