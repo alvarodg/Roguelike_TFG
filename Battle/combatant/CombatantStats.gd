@@ -11,10 +11,10 @@ signal dodged
 signal shield_broke
 signal died
 
-@export var max_health: int : set = set_max_health
-@export var base_shield: int
-@export var base_armor: int
-@export var base_dodges: int
+@export var max_health: int = 90 : set = set_max_health
+@export var base_shield: int = 0
+@export var base_armor: int = 0
+@export var base_dodges: int = 0
 var health: int : set = set_health
 var shield: int : set = set_shield
 var armor: int : set = set_armor

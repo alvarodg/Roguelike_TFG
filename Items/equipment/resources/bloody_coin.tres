@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="Equipment" load_steps=6 format=3 uid="uid://3h7lvkqh0mac"]
+[gd_resource type="Resource" script_class="Equipment" load_steps=7 format=3 uid="uid://3h7lvkqh0mac"]
 
 [ext_resource type="Script" path="res://Items/equipment/equipment.gd" id="1_r0j4a"]
+[ext_resource type="Resource" uid="uid://dsail3wrvb5c1" path="res://Items/modifiers/conditions/resources/compensation.tres" id="1_x8omi"]
 [ext_resource type="Resource" uid="uid://d4g7v147aef3q" path="res://Items/modifiers/triggers/resources/compensation.tres" id="2_8oc0s"]
 [ext_resource type="Texture2D" uid="uid://dwwcylocjqg7g" path="res://Items/equipment/sprites/bloody_coin_item.png" id="3_3wjd3"]
 [ext_resource type="Script" path="res://Items/equipment/equipment_ui_data.gd" id="4_cmwk0"]
@@ -14,5 +15,7 @@ ui_name = "Bloody Coin"
 script = ExtResource("1_r0j4a")
 ui_data = SubResource("Resource_n3frq")
 description = ""
+rarity = 0
 modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 triggers = Array[Resource("res://Items/modifiers/triggers/trigger.gd")]([ExtResource("2_8oc0s")])
+condition_triggers = Array[Resource("res://Items/modifiers/conditions/condition_trigger.gd")]([ExtResource("1_x8omi")])

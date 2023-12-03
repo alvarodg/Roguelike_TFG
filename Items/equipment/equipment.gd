@@ -3,9 +3,9 @@ class_name Equipment
 
 @export var ui_data: EquipmentUIData = EquipmentUIData.new()
 @export var description: String = ""
+@export var rarity: int = 0
 @export var modifiers: Array[Modifier]
 # Probablemente crear un padre común a modifier y trigger
-@export var triggers: Array[Trigger]
 @export var condition_triggers: Array[ConditionTrigger]
 # Called when the node enters the scene tree for the first time.
 func attach_to(user):

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ConditionTrigger" load_steps=6 format=3 uid="uid://bmr1ulrhx61e8"]
+
+[ext_resource type="Script" path="res://Items/modifiers/conditions/events/start_of_battle_condition.gd" id="1_1oq3a"]
+[ext_resource type="Script" path="res://Items/modifiers/conditions/condition_trigger.gd" id="1_xfolx"]
+[ext_resource type="Script" path="res://Items/modifiers/components/health_modifier_component.gd" id="2_7kccf"]
+
+[sub_resource type="Resource" id="Resource_4xuom"]
+script = ExtResource("1_1oq3a")
+
+[sub_resource type="Resource" id="Resource_t37qt"]
+script = ExtResource("2_7kccf")
+health = -10
+
+[resource]
+script = ExtResource("1_xfolx")
+state_conditions = Array[Resource("res://Items/modifiers/conditions/state_condition.gd")]([])
+event_condition = SubResource("Resource_4xuom")
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_t37qt")])
+amount = -1
+reset_per_turn = true

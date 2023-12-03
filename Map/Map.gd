@@ -4,6 +4,7 @@ signal ready_to_load
 signal event_chosen
 
 @export var debug_start: bool = false
+@export var generation_data_list: Array[GenerationData]
 @onready var generator = $Generator
 @onready var player_map_ui = %PlayerMapUI
 @onready var reset_button = %ResetButton

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="GenerationData" load_steps=4 format=3 uid="uid://drcomhfygmcdw"]
+
+[ext_resource type="Resource" uid="uid://bvjehwcnc4vny" path="res://Generation/resources/DefaultEventAssigner.tres" id="1_7u2a8"]
+[ext_resource type="Script" path="res://Generation/generation_data.gd" id="1_olh0u"]
+[ext_resource type="Resource" uid="uid://7xjx5klvdbia" path="res://Generation/resources/WeldGeneratorParameters.tres" id="2_ukksc"]
+
+[resource]
+script = ExtResource("1_olh0u")
+map_generator = ExtResource("2_ukksc")
+event_assigner = ExtResource("1_7u2a8")

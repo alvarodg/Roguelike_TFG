@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="ConditionTrigger" load_steps=9 format=3 uid="uid://dsail3wrvb5c1"]
+
+[ext_resource type="Resource" uid="uid://3rw1h1eslq66" path="res://Battle/coin_ui/resources/default_coin.tres" id="1_g481t"]
+[ext_resource type="Script" path="res://Items/modifiers/conditions/events/start_of_turn_condition.gd" id="1_kmwgo"]
+[ext_resource type="Script" path="res://Items/modifiers/components/extra_coin_modifier_component.gd" id="1_nhcbw"]
+[ext_resource type="Script" path="res://Items/modifiers/conditions/condition_trigger.gd" id="1_qcodb"]
+[ext_resource type="Script" path="res://Items/modifiers/conditions/states/percent_health_condition.gd" id="3_qsyhv"]
+
+[sub_resource type="Resource" id="Resource_o6qc0"]
+script = ExtResource("1_kmwgo")
+at_beginning = false
+
+[sub_resource type="Resource" id="Resource_243ow"]
+script = ExtResource("1_nhcbw")
+coin_data_list = Array[Resource("res://Battle/coin_ui/coin_data.gd")]([ExtResource("1_g481t"), ExtResource("1_g481t")])
+ephemeral = true
+facing = 1
+
+[sub_resource type="Resource" id="Resource_luqgd"]
+script = ExtResource("3_qsyhv")
+percent = 0.3
+operator = 1
+
+[resource]
+script = ExtResource("1_qcodb")
+state_conditions = Array[Resource("res://Items/modifiers/conditions/state_condition.gd")]([SubResource("Resource_luqgd")])
+event_condition = SubResource("Resource_o6qc0")
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_243ow")])
+amount = 1
+reset_per_turn = true

@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="ConditionTrigger" load_steps=6 format=3 uid="uid://sa8eo8jkp1na"]
+
+[ext_resource type="Script" path="res://Items/modifiers/conditions/events/flip_condition.gd" id="1_sguug"]
+[ext_resource type="Script" path="res://Items/modifiers/components/shield_modifier_component.gd" id="2_pcw5m"]
+[ext_resource type="Script" path="res://Items/modifiers/conditions/condition_trigger.gd" id="3_cugyh"]
+
+[sub_resource type="Resource" id="Resource_p3fdl"]
+script = ExtResource("1_sguug")
+facing = 1
+
+[sub_resource type="Resource" id="Resource_umsnd"]
+script = ExtResource("2_pcw5m")
+shield = 2
+
+[resource]
+script = ExtResource("3_cugyh")
+state_conditions = Array[Resource("res://Items/modifiers/conditions/state_condition.gd")]([])
+event_condition = SubResource("Resource_p3fdl")
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_umsnd")])
+amount = -1
+reset_per_turn = true

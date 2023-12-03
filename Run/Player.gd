@@ -6,6 +6,8 @@ signal coins_changed
 signal coin_flipped(coin)
 signal equipment_changed
 signal started_battle
+signal started_turn
+signal ended_battle
 
 @export var stats: PlayerStats : set = set_stats
 @export var ui_data: PlayerUIData
@@ -68,6 +70,7 @@ func remove_skill(skill: SkillData):
 func start_turn():
 	stats.start_turn()
 	flip_all_coins()
+	started_turn.emit()
 
 func end_turn():
 	stats.end_turn()
@@ -81,6 +84,7 @@ func start_battle():
 func end_battle():
 	stats.end_battle()
 	clear_coins()
+	ended_battle.emit()
 
 func flip(coin: Coin):
 	var result = coin.flip(stats.base_luck)
@@ -107,10 +111,11 @@ func create_coin_data(amount: int):
 		coin_data.append(default_coin)
 
 func clear_ephemeral_coins():
-	for coin in coins:
-		if coin.is_ephemeral:
-			coins.erase(coin)
-			coin.queue_free()
+	var to_delete: Array[Coin] = []
+	to_delete = coins.filter(func(x: Coin): return x.is_ephemeral)
+	for coin in to_delete:
+		coins.erase(coin)
+		coin.queue_free()
 
 func clear_coins():
 	for coin in coins:

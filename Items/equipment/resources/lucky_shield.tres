@@ -25,3 +25,4 @@ ui_data = SubResource("Resource_q6b0b")
 description = ""
 modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_1ggsq"), SubResource("Resource_8gl7k")])
 triggers = Array[Resource("res://Items/modifiers/triggers/trigger.gd")]([])
+condition_triggers = Array[Resource("res://Items/modifiers/conditions/condition_trigger.gd")]([])

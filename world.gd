@@ -6,9 +6,6 @@ var node_matrix = []
 var traveled_nodes: Array[EventNode] = []
 var traveled_coords: Array[Vector2] = []
 
-# Temporal, para probar guardar/cargar en variable
-var saved_coords: Array[Vector2] = []
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	EventBus.new_run_selected.connect(_on_new_run)

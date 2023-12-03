@@ -100,7 +100,6 @@ func _on_enemy_turn_started():
 		player_skill_ui.hide()
 		end_turn_button.hide()
 		combatants.enemy.start_turn()
-		await get_tree().create_timer(0.2).timeout
 
 func _on_EndTurnButton_pressed():
 	turn_manager.set_turn(TurnManager.Turn.ENEMY_TURN)

@@ -11,7 +11,7 @@ func _ready():
 	RunData.collections = self
 
 # Saca un equipamiento de equip_list, modifica la lista. ¿Mover a su propia clase?
-func _get_random_equipment(equip_list: Array[Equipment], rarity: int = -1) -> Equipment:
+func _get_random_equipment(equip_list: Array[Equipment], rarity: int = -1, rarity_factor: float = 0.0) -> Equipment:
 	if equip_list.size() == 0:
 		return null
 	var pickable_list: Array[Equipment] = []
@@ -24,7 +24,17 @@ func _get_random_equipment(equip_list: Array[Equipment], rarity: int = -1) -> Eq
 		return chosen
 	else:
 		#TEMPORAL, ignora rarity
-		var chosen = equip_list.pick_random()
+		var chosen: Equipment
+		var total_chance = 0.0
+		for equipment in equip_list:
+			total_chance += 1/(1 + equipment.rarity * rarity_factor)
+		var current_chance = 0.0
+		var roll = randf_range(0,total_chance)
+		for i in range(equip_list.size()):
+			current_chance += 1/(1 + equip_list[i].rarity * rarity_factor)
+			if current_chance >= roll:
+				chosen = equip_list[i]
+				break
 		equip_list.erase(chosen)
 		return chosen
 

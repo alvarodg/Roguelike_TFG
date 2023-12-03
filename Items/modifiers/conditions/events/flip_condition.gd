@@ -15,3 +15,8 @@ func _check_met(coin = null):
 	elif facing == Coin.Facing.TAILS and not coin.heads:
 		_on_met()
 	
+func get_description():
+	match facing:
+		Coin.Facing.ANY: return "Coin is flipped"
+		Coin.Facing.HEADS: return "Coin flips Heads"
+		Coin.Facing.TAILS: return "Coin flips Tails"

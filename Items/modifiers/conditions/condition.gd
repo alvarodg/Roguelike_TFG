@@ -2,13 +2,10 @@
 extends Resource
 class_name Condition
 
-signal met
-
+var turn_manager = preload("res://Battle/resources/TurnManager.tres")
+var combatants = preload("res://Battle/resources/Combatants.tres")
 var active: bool = true
 var user
 
 func connect_to(p_user):
 	user = p_user
-
-func _on_met(_param = null):
-	met.emit()

@@ -30,8 +30,6 @@ func setup():
 	temp.resize(state_conditions.size())
 	temp.fill(false)
 	current_state = temp
-	print(current_state)
-	print(triggers_remaining)
 	
 	
 func apply_to(p_player: Player):
@@ -63,9 +61,7 @@ func _connect_signals(p_player: Player):
 		
 
 func _on_state_changed(state_ref, value):
-	print("state changed")
 	current_state[state_conditions.find(state_ref)] = value
-	print(current_state)
 	if current_state.all(func(x): return x==true):
 		state_ok.emit(true)
 
@@ -77,11 +73,25 @@ func _on_player_battle_started():
 
 func get_description():
 	var desc: String = ""
+	var cond_text: String = ""
+	var mod_text: String = ""
+#	var start: String = "If:" if event_condition is EventCondition else "When:"
+	for state in state_conditions:
+		if cond_text == "": cond_text += "If:" if event_condition is EventCondition else "When:"
+#		if cond_text != "": cond_text += "\n\t"
+		cond_text += "\n* " + state.get_description()
+	if event_condition is EventCondition:
+		cond_text += "\nWhen " + event_condition.get_description() + ":"
+	else:
+		cond_text += "\nDo:"
+	desc += cond_text
 	for mod in modifiers:
-		if desc != "": desc += "\n"
-		desc += mod.get_description()
+#		if mod_text == "": mod_text += "Do:"
+		if mod_text != "": mod_text += "\n"
+		mod_text += "* " + mod.get_description()
+	desc += "\n" + mod_text
 	if amount != -1:
 		var plural: String = "" if amount==1 else "s"
 		var frequency: String = "turn" if reset_per_turn else "battle"
 		desc += "\n(%d time%s per %s)" % [amount, plural, frequency]
-	return desc
+	return desc.strip_edges()

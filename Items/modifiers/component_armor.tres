@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Items/modifiers/components/health_modifier_component.gd" id="1_oyy4g"]
 [ext_resource type="Script" path="res://Items/equipment/equipment_ui_data.gd" id="2_j840r"]
 [ext_resource type="Script" path="res://Items/modifiers/components/shield_modifier_component.gd" id="2_q5xso"]
-[ext_resource type="Texture2D" uid="uid://dvaqrwhwbiwqb" path="res://Items/equipment/sprites/strong_armor_item.png" id="4_cbtqv"]
+[ext_resource type="Texture2D" uid="uid://67vxmnlk8br1" path="res://Items/equipment/sprites/test_item.png" id="4_e2esi"]
 
 [sub_resource type="Resource" id="Resource_4o8ju"]
 script = ExtResource("1_oyy4g")
@@ -16,11 +16,13 @@ shield = 0
 
 [sub_resource type="Resource" id="Resource_ccn7c"]
 script = ExtResource("2_j840r")
-icon = ExtResource("4_cbtqv")
-ui_name = "Component(TEST)"
+icon = ExtResource("4_e2esi")
+ui_name = "TEST"
 
 [resource]
 script = ExtResource("1_g0sky")
 ui_data = SubResource("Resource_ccn7c")
 description = ""
 modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_4o8ju"), SubResource("Resource_bk3gm")])
+triggers = Array[Resource("res://Items/modifiers/triggers/trigger.gd")]([])
+condition_triggers = Array[Resource("res://Items/modifiers/conditions/condition_trigger.gd")]([])
