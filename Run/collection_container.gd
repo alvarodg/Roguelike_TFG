@@ -9,6 +9,7 @@ class_name CollectionContainer
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	RunData.collections = self
+	EventBus.equipment_equipped.connect(_on_equipment_equipped)
 
 # Saca un equipamiento de equip_list, modifica la lista. ¿Mover a su propia clase?
 func _get_random_equipment(equip_list: Array[Equipment], rarity: int = -1, rarity_factor: float = 0.0) -> Equipment:
@@ -86,6 +87,9 @@ func remove(element):
 	elif element is Equipment:
 		remove_equipment(element)
 		
+
+func _on_equipment_equipped(equipment: Equipment):
+	remove(equipment)
 
 func save():
 	var save_dict = {

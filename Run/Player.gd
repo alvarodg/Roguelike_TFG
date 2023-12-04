@@ -34,20 +34,14 @@ func _ready():
 	if equipment_list.size() == 0:
 		for equipment in default_equipment:
 			if equipment != null:
-				equipment.setup()
 				equip(equipment)
-				# Necesita que CollectionContainer se inicialice antes que Player, TEMPORAL?
-				if equipment in RunData.collections.equipments.list:
-					RunData.collections.remove_equipment(equipment)
+				# Necesita que CollectionContainer se inicialice antes que Player, TEMPORAL
+				# Sustituir por señal
+#				if equipment in RunData.collections.equipments.list:
+#					RunData.collections.remove_equipment(equipment)
 	default_equipment = []
 	reset_coins()
 	
-
-func _set_up_parameters():
-	stats.setup()
-	for equipment in equipment_list:
-		equipment.setup()
-
 func set_stats(new_stats):
 	stats = new_stats
 	stats.setup()
@@ -126,7 +120,9 @@ func clear_coins():
 func equip(equipment: Equipment):
 	equipment.attach_to(self)
 	equipment_list.append(equipment)
+	equipment.setup()
 	equipment_changed.emit(equipment_list)
+	EventBus.equipment_equipped.emit(equipment)
 
 # Guarda coin_count datos de monedas. No se considera poder perder monedas en esta implementación.
 func _on_Stats_coin_count_changed(value):

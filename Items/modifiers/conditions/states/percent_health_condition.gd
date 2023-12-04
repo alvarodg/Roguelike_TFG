@@ -10,7 +10,8 @@ func connect_to(p_user):
 	p_user.stats.health_changed.connect(_check_status)
 
 func _check_status(_health = null):
-	var result = _use_comparison_operator(operator, user.stats.health, user.stats.max_health * percent)
+	var result = _use_comparison_operator(operator, user.stats.health, int(user.stats.max_health * percent))
+	print(result)
 	state_changed.emit(self, result)
 
 func get_description():

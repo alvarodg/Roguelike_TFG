@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dip7b67w54m78"]
+[gd_scene load_steps=18 format=3 uid="uid://dip7b67w54m78"]
 
 [ext_resource type="Script" path="res://Battle/battle_test.gd" id="1_uru6x"]
 [ext_resource type="PackedScene" uid="uid://dyrxg61yw7bhk" path="res://Run/player.tscn" id="2_futme"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bhad1ns75ri2n" path="res://Battle/enemy/sprites/enemy_icon.svg" id="4_meeuo"]
 [ext_resource type="Script" path="res://Run/PlayerUIData.gd" id="4_ok4oa"]
 [ext_resource type="Script" path="res://Battle/enemy/enemy_data.gd" id="5_7n7qx"]
+[ext_resource type="Script" path="res://Battle/combatant/PlayerStats.gd" id="7_7qef3"]
 [ext_resource type="Resource" uid="uid://bsioc5j8lwg1x" path="res://Battle/skills/resources/hit_attack.tres" id="9_f0pw3"]
 [ext_resource type="Resource" uid="uid://dohuwbuerwh8r" path="res://Battle/skills/resources/balanced_strike.tres" id="10_oilkv"]
 [ext_resource type="Resource" uid="uid://ck15mnqlrvupd" path="res://Items/equipment/resources/poisoned_coin.tres" id="11_7yhgu"]
@@ -30,6 +31,15 @@ script = ExtResource("5_7n7qx")
 enemy_ui_data = SubResource("Resource_y2cv2")
 enemy_stats = SubResource("Resource_ej0hq")
 
+[sub_resource type="Resource" id="Resource_ln2xl"]
+script = ExtResource("7_7qef3")
+coin_count = 5
+base_luck = 1.0
+max_health = 90
+base_shield = 0
+base_armor = 0
+base_dodges = 0
+
 [sub_resource type="Resource" id="Resource_bvfks"]
 script = ExtResource("4_ok4oa")
 icon = ExtResource("3_x6lap")
@@ -46,6 +56,7 @@ script = ExtResource("1_uru6x")
 enemy_data = SubResource("Resource_dqt1x")
 
 [node name="Player" parent="." instance=ExtResource("2_futme")]
+stats = SubResource("Resource_ln2xl")
 ui_data = SubResource("Resource_bvfks")
 skill_list = Array[Resource("res://Battle/skills/SkillData.gd")]([ExtResource("9_f0pw3"), ExtResource("10_oilkv")])
 default_equipment = Array[Resource("res://Items/equipment/equipment.gd")]([ExtResource("11_7yhgu")])
