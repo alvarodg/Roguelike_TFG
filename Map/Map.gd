@@ -9,6 +9,8 @@ signal event_chosen
 @onready var player_map_ui = %PlayerMapUI
 @onready var reset_button = %ResetButton
 
+var current_level: int = 0
+var level_list = []
 var node_matrix = []
 var traveled_nodes: Array[EventNode] = []
 var traveled_coords: Array[Vector2] = []
@@ -29,10 +31,33 @@ func _ready():
 	
 
 func start_game(player: Player, run_seed: int):
-	generator.generate(run_seed)
+	for i in range(generation_data_list.size()):
+		var level = generator.generate(generation_data_list[i], run_seed)
+		level_list.append(level)
+#	generator.generate(run_seed)
 	player_map_ui.setup(player)
 	player_map_ui.show()
 	reset_button.show()
+	set_level(current_level)
+
+
+func set_level(level_id: int):
+	node_matrix = level_list[level_id]
+	# De momento no guarda los nodos visitados en previos niveles, modificar si se quiere hacer algo con ellos.
+	for child in generator.get_children():
+		generator.remove_child(child)
+	for i in range(node_matrix.size()):
+		for j in range(node_matrix[i].size()):
+			generator.add_child(node_matrix[i][j])
+	refresh_map()
+	connect_to_node_signals(node_matrix)
+	RunData.save_game()
+	
+
+func change_level(level_id: int):
+	traveled_nodes = []
+	traveled_coords = []
+	set_level(level_id)
 
 ## Al recibir la señal generation_complete de Generator, guarda los nodos generados,
 ## marca la primera tanda como disponible y se conecta a sus señales.
@@ -69,7 +94,9 @@ func _on_EventNode_chosen(node: EventNode):
 func connect_to_node_signals(p_node_matrix):
 	for i in range(p_node_matrix.size()):
 		for j in range(p_node_matrix[i].size()):
-			p_node_matrix[i][j].connect("node_chosen", _on_EventNode_chosen)
+			# Asegurase de no reconectar, solo útil si se planean reutilizar niveles en la misma partida.
+			if not p_node_matrix[i][j].node_chosen.is_connected(_on_EventNode_chosen):
+				p_node_matrix[i][j].connect("node_chosen", _on_EventNode_chosen)
 
 ## Actualiza el estado de navegación de los nodos visitados.
 func mark_traveled():
@@ -117,13 +144,20 @@ func save():
 	for i in range(traveled_coords.size()):
 		traveled_coords_x.append(traveled_coords[i].x)
 		traveled_coords_y.append(traveled_coords[i].y)
+	var gen_data_path = []
+	# Guarda GenerationData a partir de su localización en disco, por lo que se deben utilizar recursos
+	# explícitamente creados (facilita mayormente el guardado/cargado)
+	for gen_data in generation_data_list:
+		gen_data_path.append(gen_data.resource_path)
 	var save_dict = {
 		"filename" : get_scene_file_path(),
 		"parent" : get_parent().get_path(),
 		"pos_x" : position.x,
 		"pos_y" : position.y,
 		"traveled_coords_x" : traveled_coords_x,
-		"traveled_coords_y" : traveled_coords_y
+		"traveled_coords_y" : traveled_coords_y,
+		"current_level" : current_level,
+		"generation_data_list" : gen_data_path
 	}
 	return save_dict
 
@@ -141,6 +175,9 @@ func data_load(parameter, data):
 				traveled_coords[i].y = data[i]
 			else:
 				traveled_coords.append(Vector2(0, data[i]))
+	elif parameter == "generation_data_list":
+		for path in data:
+			generation_data_list.append(load(path))
 	else:
 		set(parameter, data)
 
@@ -148,3 +185,8 @@ func data_load(parameter, data):
 func _on_ResetButton_pressed():
 	RunData.delete_save(true)
 	get_tree().change_scene_to_file("res://Menus/loss_screen.tscn")
+
+
+func _on_ChangeLevelButton_pressed():
+	current_level = current_level+1 if current_level+1 < generation_data_list.size() else 0
+	change_level(current_level)

@@ -23,6 +23,6 @@ ui_name = "Lucky Coin"
 script = ExtResource("3_b2g7s")
 ui_data = SubResource("Resource_q6b0b")
 description = ""
+rarity = 0
 modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_68nxf"), SubResource("Resource_8gl7k")])
-triggers = Array[Resource("res://Items/modifiers/triggers/trigger.gd")]([])
 condition_triggers = Array[Resource("res://Items/modifiers/conditions/condition_trigger.gd")]([])

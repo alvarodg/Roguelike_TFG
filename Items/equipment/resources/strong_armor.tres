@@ -18,6 +18,6 @@ ui_name = "Strong Armor"
 script = ExtResource("2_n1kr1")
 ui_data = SubResource("Resource_hkceh")
 description = ""
+rarity = 0
 modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_cu2ni")])
-triggers = Array[Resource("res://Items/modifiers/triggers/trigger.gd")]([])
 condition_triggers = Array[Resource("res://Items/modifiers/conditions/condition_trigger.gd")]([])

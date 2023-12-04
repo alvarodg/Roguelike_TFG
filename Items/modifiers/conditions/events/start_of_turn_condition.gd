@@ -8,7 +8,8 @@ class_name StartOfTurnCondition
 func connect_to(p_user: Player):
 	super.connect_to(p_user)
 	if at_beginning:
-		turn_manager.player_turn_started.connect(_on_met)
+		if not turn_manager.player_turn_started.is_connected(_on_met):
+			turn_manager.player_turn_started.connect(_on_met)
 	else:
 		p_user.started_turn.connect(_on_met)
 

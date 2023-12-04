@@ -46,5 +46,15 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 30
 text = "ABANDON RUN"
 
+[node name="ChangeLevelButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 87.0
+offset_top = 586.0
+offset_right = 313.0
+offset_bottom = 636.0
+theme_override_font_sizes/font_size = 30
+text = "CHANGE LEVEL"
+
 [connection signal="generation_complete" from="Generator" to="." method="_on_Generator_generation_complete"]
 [connection signal="pressed" from="ResetButton" to="." method="_on_ResetButton_pressed"]
+[connection signal="pressed" from="ChangeLevelButton" to="." method="_on_ChangeLevelButton_pressed"]

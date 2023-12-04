@@ -2,6 +2,8 @@ extends Control
 
 signal game_ready
 
+@onready var map = %Map
+
 var node_matrix = []
 var traveled_nodes: Array[EventNode] = []
 var traveled_coords: Array[Vector2] = []

@@ -7,8 +7,8 @@ class_name GenerationParameters
 
 @export var rows: int = 4
 @export var columns: int = 10
-@export var base_position = Vector2.ZERO
-@export var distance = Vector2(10,10)
+@export var base_position = Vector2(50,50)
+@export var distance = Vector2(100,100)
 @export var position_noise = Vector2.ZERO
 @export var iterations = 10
 @export var clamp_at: Array[int] = [0, -1]
@@ -114,3 +114,36 @@ func new_2d_array(width, height, value=0):
 		for j in range(height):
 			array[i].append(value)
 	return array
+
+
+func to_save_dict() -> Dictionary:
+	var str_clamp_at_to = []
+	for value in clamp_at_to:
+		str_clamp_at_to.append(var_to_str(value))
+	var dict = {
+		"rows" : rows,
+		"columns" : columns,
+		"base_position" : var_to_str(base_position),
+		"distance" : var_to_str(distance),
+		"position_noise" : var_to_str(position_noise),
+		"iterations" : iterations,
+		"clamp_at" : clamp_at,
+		"clamp_at_to" : str_clamp_at_to,
+	}
+	
+	return dict
+
+func load_dict(dict: Dictionary):
+	rows = dict["rows"]
+	columns = dict["columns"]
+	base_position = str_to_var(dict["base_position"])
+	distance = str_to_var(dict["distance"])
+	position_noise = str_to_var(dict["position_noise"])
+	iterations = dict["iterations"]
+	clamp_at = dict["clamp_at"]
+	for value in dict["clamp_at_to"]:
+		clamp_at_to.append(str_to_var(value))
+
+func save_keys():
+	return ["rows", "colums", "base_position", "distance", 
+			"position_noise", "iterations", "clamp_at", "clamp_at_to"]

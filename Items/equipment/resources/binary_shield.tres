@@ -17,5 +17,4 @@ ui_data = SubResource("Resource_pex4l")
 description = ""
 rarity = 0
 modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
-triggers = Array[Resource("res://Items/modifiers/triggers/trigger.gd")]([])
 condition_triggers = Array[Resource("res://Items/modifiers/conditions/condition_trigger.gd")]([ExtResource("1_urwo2"), ExtResource("2_ayqpj")])

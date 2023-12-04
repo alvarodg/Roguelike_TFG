@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bfdmc5trnp4uk"]
+[gd_scene load_steps=31 format=3 uid="uid://bfdmc5trnp4uk"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_ewi3c"]
 [ext_resource type="PackedScene" uid="uid://buwxy0toti3j8" path="res://Run/collection_container.tscn" id="2_h6gmy"]
@@ -23,6 +23,8 @@
 [ext_resource type="Script" path="res://Items/equipment/equipment_ui_data.gd" id="16_c0ap0"]
 [ext_resource type="Script" path="res://Items/modifiers/conditions/condition_trigger.gd" id="17_jmvwe"]
 [ext_resource type="Resource" uid="uid://drcomhfygmcdw" path="res://Generation/resources/default_generation_data.tres" id="22_klbix"]
+[ext_resource type="Resource" uid="uid://blbgpkie0ea8o" path="res://Generation/resources/level2_weld_generation.tres" id="23_yqjro"]
+[ext_resource type="Resource" uid="uid://cqw2ej3w1b85p" path="res://Generation/resources/level3_weld_generation.tres" id="24_ltjpa"]
 
 [sub_resource type="Resource" id="Resource_1d3g5"]
 script = ExtResource("14_es2p2")
@@ -75,8 +77,9 @@ skill_list = Array[Resource("res://Battle/skills/SkillData.gd")]([ExtResource("8
 default_equipment = Array[ExtResource("13_l68tb")]([SubResource("Resource_cqn26")])
 
 [node name="Map" parent="." instance=ExtResource("2_tumwh")]
+unique_name_in_owner = true
 layout_mode = 1
-generation_data_list = Array[Resource("res://Generation/generation_data.gd")]([ExtResource("22_klbix")])
+generation_data_list = Array[Resource("res://Generation/generation_data.gd")]([ExtResource("22_klbix"), ExtResource("23_yqjro"), ExtResource("24_ltjpa")])
 
 [node name="DebugPanel" type="Panel" parent="."]
 visible = false

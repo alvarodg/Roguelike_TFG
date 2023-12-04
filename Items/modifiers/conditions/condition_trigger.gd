@@ -39,7 +39,8 @@ func apply_to(p_player: Player):
 		state.state_changed.connect(_on_state_changed)
 	if event_condition is EventCondition:
 		event_condition.connect_to(p_player)
-		event_condition.met.connect(_on_triggered)
+		if not event_condition.met.is_connected(_on_triggered):
+			event_condition.met.connect(_on_triggered)
 	else:
 		state_ok.connect(_on_triggered)
 	_connect_signals(player)
@@ -61,7 +62,8 @@ func _connect_signals(p_player: Player):
 		
 
 func _on_state_changed(state_ref, value):
-	current_state[state_conditions.find(state_ref)] = value
+	if current_state.size() > 0:
+		current_state[state_conditions.find(state_ref)] = value
 	if current_state.all(func(x): return x==true):
 		state_ok.emit(true)
 
