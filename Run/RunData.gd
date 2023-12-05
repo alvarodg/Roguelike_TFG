@@ -1,8 +1,11 @@
 extends Node
 # Funciones save_game y load_game de la documentación de Godot, modificadas.
 
+signal finished_loading
+
 var version = "0.1"
 var run_seed = 0
+var current_level = 0
 var player: Player
 var collections: CollectionContainer
 # Called when the node enters the scene tree for the first time.
@@ -99,6 +102,8 @@ func load_game():
 				new_object.data_load(i, node_data[i])
 			else:
 				new_object.set(i, node_data[i])
+	print("Finished")
+	finished_loading.emit()
 
 ## Comprueba la validez de la partida guardada. 
 ## Esta implementación asume que se actualizará la versión cuando se realicen cambios que 

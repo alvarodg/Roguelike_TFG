@@ -10,5 +10,6 @@ func _init(p_scene: PackedScene = null, p_next_event: EventData = null):
 
 func instantiate_scene():
 	var scene_instance = scene.instantiate()
+	assert(scene_instance is EventScene)
 	scene_instance.next_event = next_event
 	return scene_instance

@@ -1,4 +1,5 @@
 extends Control
+class_name Map
 
 signal ready_to_load
 signal event_chosen
@@ -8,6 +9,7 @@ signal event_chosen
 @onready var generator = $Generator
 @onready var player_map_ui = %PlayerMapUI
 @onready var reset_button = %ResetButton
+@onready var change_level_button = %ChangeLevelButton
 
 var current_level: int = 0
 var level_list = []
@@ -22,12 +24,16 @@ var current_event: Event
 func _ready():
 	player_map_ui.hide()
 	reset_button.hide()
-	if debug_start:
-		print("DEBUG START SET")
-		_on_World_game_ready()
-		return
-	get_parent().connect("game_ready", _on_World_game_ready)
+	change_level_button.hide()
+#	if debug_start:
+#		print("DEBUG START SET")
+#		_on_World_game_ready()
+#		return
+	# Acopla Map a World, arregla errores de generación múltiple. ¿Guardar en RunData?
+	get_parent().assign_map(self)
+	EventBus.level_finished.connect(_on_level_finished)
 	add_to_group("map_screen")
+	add_to_group("run_persistent")
 	
 
 func start_game(player: Player, run_seed: int):
@@ -38,11 +44,18 @@ func start_game(player: Player, run_seed: int):
 	player_map_ui.setup(player)
 	player_map_ui.show()
 	reset_button.show()
+	change_level_button.show()
 	set_level(current_level)
 
+func _on_level_finished():
+	if current_level+1 < level_list.size():
+		change_level(current_level+1)
+		
 
 func set_level(level_id: int):
+	print("Setting level " + str(level_id))
 	node_matrix = level_list[level_id]
+	current_level = level_id
 	# De momento no guarda los nodos visitados en previos niveles, modificar si se quiere hacer algo con ellos.
 	for child in generator.get_children():
 		generator.remove_child(child)
@@ -61,11 +74,11 @@ func change_level(level_id: int):
 
 ## Al recibir la señal generation_complete de Generator, guarda los nodos generados,
 ## marca la primera tanda como disponible y se conecta a sus señales.
-func _on_Generator_generation_complete(p_node_matrix):
-	node_matrix = p_node_matrix
-	refresh_map()
-	connect_to_node_signals(node_matrix)
-	RunData.save_game()
+#func _on_Generator_generation_complete(p_node_matrix):
+#	node_matrix = p_node_matrix
+#	refresh_map()
+#	connect_to_node_signals(node_matrix)
+#	RunData.save_game()
 
 ## Cuando se recibe la señal node_chosen de EventNode deja a todos los nodos sin disponibilidad, 
 ## añade el nodo que la mandó a la lista de atravesados y marca a los miembros de esta lista 
@@ -82,6 +95,7 @@ func _on_EventNode_chosen(node: EventNode):
 	get_parent().add_child(event_scene)
 	await event_scene.finished
 	for map_screen_node in get_tree().get_nodes_in_group("map_screen"):
+		print("doing")
 		map_screen_node.show()
 	RunData.save_game()
 
@@ -94,7 +108,7 @@ func _on_EventNode_chosen(node: EventNode):
 func connect_to_node_signals(p_node_matrix):
 	for i in range(p_node_matrix.size()):
 		for j in range(p_node_matrix[i].size()):
-			# Asegurase de no reconectar, solo útil si se planean reutilizar niveles en la misma partida.
+			# Se asegura de no reconectar, solo útil si se planean reutilizar niveles en la misma partida.
 			if not p_node_matrix[i][j].node_chosen.is_connected(_on_EventNode_chosen):
 				p_node_matrix[i][j].connect("node_chosen", _on_EventNode_chosen)
 

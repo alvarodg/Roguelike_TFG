@@ -47,6 +47,7 @@ theme_override_font_sizes/font_size = 30
 text = "ABANDON RUN"
 
 [node name="ChangeLevelButton" type="Button" parent="."]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 87.0
 offset_top = 586.0

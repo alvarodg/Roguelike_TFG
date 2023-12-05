@@ -22,7 +22,7 @@
 [ext_resource type="Script" path="res://Items/modifiers/components/extra_coin_modifier_component.gd" id="16_4mv68"]
 [ext_resource type="Script" path="res://Items/equipment/equipment_ui_data.gd" id="16_c0ap0"]
 [ext_resource type="Script" path="res://Items/modifiers/conditions/condition_trigger.gd" id="17_jmvwe"]
-[ext_resource type="Resource" uid="uid://drcomhfygmcdw" path="res://Generation/resources/default_generation_data.tres" id="22_klbix"]
+[ext_resource type="Resource" uid="uid://clyjfvymwgamd" path="res://Generation/resources/level1_weld_generation.tres" id="22_6uehh"]
 [ext_resource type="Resource" uid="uid://blbgpkie0ea8o" path="res://Generation/resources/level2_weld_generation.tres" id="23_yqjro"]
 [ext_resource type="Resource" uid="uid://cqw2ej3w1b85p" path="res://Generation/resources/level3_weld_generation.tres" id="24_ltjpa"]
 
@@ -79,7 +79,7 @@ default_equipment = Array[ExtResource("13_l68tb")]([SubResource("Resource_cqn26"
 [node name="Map" parent="." instance=ExtResource("2_tumwh")]
 unique_name_in_owner = true
 layout_mode = 1
-generation_data_list = Array[Resource("res://Generation/generation_data.gd")]([ExtResource("22_klbix"), ExtResource("23_yqjro"), ExtResource("24_ltjpa")])
+generation_data_list = Array[Resource("res://Generation/generation_data.gd")]([ExtResource("22_6uehh"), ExtResource("23_yqjro"), ExtResource("24_ltjpa")])
 
 [node name="DebugPanel" type="Panel" parent="."]
 visible = false

@@ -1,6 +1,4 @@
-extends Control
-
-signal finished
+extends EventScene
 
 var loss_screen = "res://Menus/loss_screen.tscn"
 
@@ -13,7 +11,6 @@ var loss_screen = "res://Menus/loss_screen.tscn"
 @onready var player_stats_ui = %PlayerStatsUI
 @onready var coin_box = %CoinBox
 
-var next_event: EventData
 var player: Player
 var enemy_data: EnemyData
 var enemy: Enemy
@@ -79,13 +76,7 @@ func end_battle():
 	end_turn_button.hide()
 	player.end_battle()
 	print("You won!")
-	if next_event is EventData:
-		var next_scene = next_event.instantiate_scene()
-		get_parent().add_child(next_scene) 
-		hide()
-		await next_scene.finished
-	finished.emit()
-	queue_free()
+	finish()
 
 func _on_player_turn_started():
 	player.start_turn()
