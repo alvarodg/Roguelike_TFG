@@ -15,18 +15,18 @@ event_list = Array[Resource("res://Events/Event.gd")]([ExtResource("1_wtdk5"), E
 event_chances = Array[float]([7.0, 3.0, 1.0, 3.0, 0.0])
 restrictions = Array[Vector2]([Vector2(9, 4), Vector2(8, 2), Vector2(0, 0), Vector2(4, 3)])
 
-[sub_resource type="Resource" id="Resource_hn0wa"]
+[sub_resource type="Resource" id="Resource_fk832"]
 script = ExtResource("2_ylym3")
-rows = 5
+rows = 4
 columns = 10
 base_position = Vector2(50, 50)
 distance = Vector2(100, 100)
 position_noise = Vector2(0, 0)
-iterations = 18
-clamp_at = Array[int]([0, -1])
-clamp_at_to = Array[Vector2]([Vector2(-2, 3), Vector2(4, 3)])
+iterations = 12
+clamp_at = Array[int]([-1])
+clamp_at_to = Array[Vector2]([Vector2(-2, 3), Vector2(4, 3), Vector2(0, 3)])
 
 [resource]
 script = ExtResource("3_g0ysh")
-map_generator = SubResource("Resource_hn0wa")
+map_generator = SubResource("Resource_fk832")
 event_assigner = SubResource("Resource_rbfd1")

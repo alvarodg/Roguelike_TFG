@@ -54,6 +54,8 @@ func end_battle():
 	
 func set_max_health(value):
 	max_health = max(1, value)
+	# Bug misterioso al descomentar esta línea, no emite died. Investigar.
+#	health = min(health, max_health)
 	max_health_changed.emit(max_health)
 
 func set_health(value):

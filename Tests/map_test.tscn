@@ -1,0 +1,52 @@
+[gd_scene load_steps=17 format=3 uid="uid://ca3dp2rtmi53d"]
+
+[ext_resource type="Script" path="res://Tests/map_test.gd" id="1_fhbqu"]
+[ext_resource type="PackedScene" uid="uid://dtatqj2q74q42" path="res://Map/map.tscn" id="1_qq8ne"]
+[ext_resource type="PackedScene" uid="uid://dyrxg61yw7bhk" path="res://Run/player.tscn" id="2_k4g5a"]
+[ext_resource type="Resource" uid="uid://clyjfvymwgamd" path="res://Generation/resources/level1_weld_generation.tres" id="3_0e3o7"]
+[ext_resource type="Script" path="res://Battle/combatant/PlayerStats.gd" id="3_dmijw"]
+[ext_resource type="Texture2D" uid="uid://djmrox3cqnntc" path="res://icon.svg" id="4_58lrw"]
+[ext_resource type="Script" path="res://Run/PlayerUIData.gd" id="5_5cldc"]
+[ext_resource type="Resource" uid="uid://dohuwbuerwh8r" path="res://Battle/skills/resources/balanced_strike.tres" id="6_k51wj"]
+[ext_resource type="Resource" uid="uid://bsioc5j8lwg1x" path="res://Battle/skills/resources/hit_attack.tres" id="7_5qawh"]
+[ext_resource type="Resource" uid="uid://disqwyhl7b6xd" path="res://Battle/skills/resources/reroll.tres" id="8_ebmb0"]
+[ext_resource type="Resource" uid="uid://1f1t8s1ew7uy" path="res://Battle/skills/resources/win.tres" id="11_p3xff"]
+[ext_resource type="PackedScene" uid="uid://buwxy0toti3j8" path="res://Run/collection_container.tscn" id="12_ehc8b"]
+[ext_resource type="Resource" uid="uid://5871ejwt2whd" path="res://Run/collections/default_equipment_collection.tres" id="13_fg0k2"]
+[ext_resource type="Resource" uid="uid://b3t3hv7n1dbyh" path="res://Run/collections/default_skill_collection.tres" id="14_8qm0e"]
+
+[sub_resource type="Resource" id="Resource_hv6mw"]
+script = ExtResource("3_dmijw")
+coin_count = 5
+base_luck = 1.0
+max_health = 90
+base_shield = 0
+base_armor = 0
+base_dodges = 0
+
+[sub_resource type="Resource" id="Resource_drvon"]
+script = ExtResource("5_5cldc")
+icon = ExtResource("4_58lrw")
+ui_name = "TEST PLAYER"
+
+[node name="MapTest" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fhbqu")
+
+[node name="Map" parent="." instance=ExtResource("1_qq8ne")]
+layout_mode = 1
+generation_data_list = Array[Resource("res://Generation/generation_data.gd")]([ExtResource("3_0e3o7")])
+
+[node name="Player" parent="." instance=ExtResource("2_k4g5a")]
+stats = SubResource("Resource_hv6mw")
+ui_data = SubResource("Resource_drvon")
+skill_list = Array[Resource("res://Battle/skills/SkillData.gd")]([ExtResource("6_k51wj"), ExtResource("7_5qawh"), ExtResource("8_ebmb0"), ExtResource("11_p3xff")])
+
+[node name="CollectionContainer" parent="." instance=ExtResource("12_ehc8b")]
+equipments = ExtResource("13_fg0k2")
+skills = ExtResource("14_8qm0e")

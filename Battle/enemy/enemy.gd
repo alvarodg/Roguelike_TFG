@@ -4,29 +4,45 @@ class_name Enemy
 signal turn_finished
 signal died
 signal health_changed(value)
+signal upcoming_skills_changed(value)
 
 @onready var combatants = load("res://Battle/resources/Combatants.tres")
 
 @onready var sprite = %Sprite
 @onready var enemy_stats_ui = %EnemyStatsUI
+@onready var enemy_skill_ui = %EnemySkillUI
+
+const UPCOMING_AMOUNT: int = 4
 
 var ui_data: EnemyUIData
 var stats: EnemyStats
+var skills: Array[EnemySkillData]
+var available_skills: Array[EnemySkillData]
+var strategy
+
 var target
+var upcoming_skills: Array[EnemySkillData]
+
+# Usando enum para estrategias simples, cambiar por clase si se quisieran implementar más complejas.
+enum Strategy {PURE_RANDOM, POP_RANDOM, SEQUENCE}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	assert(stats)
+	assert(stats is EnemyStats)
 	target = combatants.player
 	sprite.texture = ui_data.sprite
 	stats.setup()
 	stats.start_battle()
 	enemy_stats_ui.setup(stats)
+	enemy_skill_ui.setup(self)
 	
-func setup(p_ui_data: EnemyUIData, p_stats: EnemyStats):
+func setup(p_ui_data: EnemyUIData, p_stats: EnemyStats, p_skills: Array[EnemySkillData], p_strategy: Strategy):
 	ui_data = p_ui_data
 	# Duplica stats para que se puedan reutilizar.
 	stats = p_stats.duplicate()
+	skills = p_skills
+	strategy = p_strategy
+	available_skills = skills.duplicate()
 	connect_to_stat_signals(stats)
 	
 func set_new_stats(new_stats: EnemyStats):
@@ -34,22 +50,55 @@ func set_new_stats(new_stats: EnemyStats):
 	enemy_stats_ui.setup(stats)
 	connect_to_stat_signals(stats)
 	
+func add_upcoming_skill(skill: EnemySkillData):
+	upcoming_skills.append(skill)
+	upcoming_skills_changed.emit(upcoming_skills)
+	
+func remove_upcoming_skill(skill: EnemySkillData):
+	upcoming_skills.erase(skill)
+	upcoming_skills_changed.emit(upcoming_skills)
+	
 func connect_to_stat_signals(p_stats):
 	p_stats.died.connect(_on_death)
 
+func remove_available_skill(skill: EnemySkillData):
+	if not skill is EnemySkillData: return
+	available_skills.erase(skill)
+	if available_skills == []:
+		available_skills = skills.duplicate()
 
 func start_battle():
+	print("Battle started")
 	stats.start_battle()
+	for i in range(UPCOMING_AMOUNT):
+		add_upcoming_skill(pick_skill(strategy))
 
 func start_turn():
+	print("Turn started")
 	target = combatants.player
 	stats.start_turn()
 	act()
 	turn_finished.emit()
 
 func act():
-	# Implementación mínima, a mejorar. TEMPORAL.
-	target.stats.take_damage(stats.damage)
+	var action = upcoming_skills.front().create_skill(self, target)
+	action.use()
+	remove_upcoming_skill(upcoming_skills.front())
+	add_upcoming_skill(pick_skill(strategy))
 
 func _on_death():
+	print("Died")
 	died.emit()
+
+func pick_skill(strat: Strategy) -> EnemySkillData:
+	var pick: EnemySkillData
+	match strat:
+		Strategy.PURE_RANDOM:
+			pick = available_skills.pick_random()
+		Strategy.POP_RANDOM:
+			pick = available_skills.pick_random()
+			remove_available_skill(pick)
+		Strategy.SEQUENCE:
+			pick = available_skills.front()
+			remove_available_skill(pick)
+	return pick

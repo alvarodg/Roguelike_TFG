@@ -4,7 +4,7 @@ class_name Map
 signal ready_to_load
 signal event_chosen
 
-@export var debug_start: bool = false
+@export var debug: bool = false
 @export var generation_data_list: Array[GenerationData]
 @onready var generator = $Generator
 @onready var player_map_ui = %PlayerMapUI
@@ -19,18 +19,12 @@ var traveled_coords: Array[Vector2] = []
 var current_event: Event
 
 # Called when the node enters the scene tree for the first time.
-# Usando la señal game_ready para asegurarse de que terminen de asignarse sus datos en data_load()
-# cuando se carga partida.
 func _ready():
+	# Acceso al singleton
+	RunData.map = self
 	player_map_ui.hide()
 	reset_button.hide()
 	change_level_button.hide()
-#	if debug_start:
-#		print("DEBUG START SET")
-#		_on_World_game_ready()
-#		return
-	# Acopla Map a World, arregla errores de generación múltiple. ¿Guardar en RunData?
-	get_parent().assign_map(self)
 	EventBus.level_finished.connect(_on_level_finished)
 	add_to_group("map_screen")
 	add_to_group("run_persistent")
@@ -40,7 +34,6 @@ func start_game(player: Player, run_seed: int):
 	for i in range(generation_data_list.size()):
 		var level = generator.generate(generation_data_list[i], run_seed)
 		level_list.append(level)
-#	generator.generate(run_seed)
 	player_map_ui.setup(player)
 	player_map_ui.show()
 	reset_button.show()
@@ -50,8 +43,11 @@ func start_game(player: Player, run_seed: int):
 func _on_level_finished():
 	if current_level+1 < level_list.size():
 		change_level(current_level+1)
+	else:
+		finish_run()
 		
-
+## Quita los nodos actuales si existen, añade los nodos del nivel indicado, 
+## marca la primera tanda como disponible y se conecta a sus señales.
 func set_level(level_id: int):
 	print("Setting level " + str(level_id))
 	node_matrix = level_list[level_id]
@@ -67,18 +63,15 @@ func set_level(level_id: int):
 	RunData.save_game()
 	
 
+## Para cambiar de nivel, primero vacía las listas de nodos por los que se ha viajado.
 func change_level(level_id: int):
 	traveled_nodes = []
 	traveled_coords = []
 	set_level(level_id)
 
-## Al recibir la señal generation_complete de Generator, guarda los nodos generados,
-## marca la primera tanda como disponible y se conecta a sus señales.
-#func _on_Generator_generation_complete(p_node_matrix):
-#	node_matrix = p_node_matrix
-#	refresh_map()
-#	connect_to_node_signals(node_matrix)
-#	RunData.save_game()
+func finish_run():
+	# TEMPORAL, crear escena
+	print("You won!")
 
 ## Cuando se recibe la señal node_chosen de EventNode deja a todos los nodos sin disponibilidad, 
 ## añade el nodo que la mandó a la lista de atravesados y marca a los miembros de esta lista 
@@ -123,7 +116,7 @@ func remove_availability():
 		for j in range(node_matrix[i].size()):
 			node_matrix[i][j].state = EventNode.State.UNAVAILABLE
 
-## Marca los nodos descientes de nodo como disponibles.
+## Marca los nodos descientes del nodo seleccionado como disponibles.
 func make_descendants_available(node):
 	for descendant in node.descendants:
 		descendant.state = EventNode.State.AVAILABLE
@@ -147,10 +140,6 @@ func refresh_map():
 func _on_RegenerateButton_pressed():
 	generator.generate(RunData.run_seed)
 
-func _on_World_game_ready():
-#	generator.generate(RunData.run_seed)
-	start_game(RunData.player, RunData.run_seed)
-	
 # Función que trata los parámetros a guardar, devolviéndolos en un diccionario.
 func save():
 	var traveled_coords_x = []

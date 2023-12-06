@@ -8,6 +8,7 @@ var run_seed = 0
 var current_level = 0
 var player: Player
 var collections: CollectionContainer
+var map: Map
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass

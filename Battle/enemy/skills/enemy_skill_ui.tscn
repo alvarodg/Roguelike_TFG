@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0h4qokw7131j"]
+
+[ext_resource type="Script" path="res://Battle/enemy/skills/enemy_skill_ui.gd" id="1_8m8e3"]
+
+[node name="EnemySkillUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8m8e3")
+
+[node name="IconHBox" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_direction = 3
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

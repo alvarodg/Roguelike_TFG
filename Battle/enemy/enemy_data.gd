@@ -2,10 +2,12 @@ extends Resource
 class_name EnemyData
 
 var enemy_scene = preload("res://Battle/enemy/enemy.tscn")
-@export var enemy_ui_data: EnemyUIData
-@export var enemy_stats: EnemyStats
+@export var ui_data: EnemyUIData
+@export var stats: EnemyStats
+@export var skills: Array[EnemySkillData]
+@export var strategy: Enemy.Strategy
 
 func create_enemy_instance():
 	var enemy = enemy_scene.instantiate()
-	enemy.setup(enemy_ui_data, enemy_stats)
+	enemy.setup(ui_data, stats, skills, strategy)
 	return enemy

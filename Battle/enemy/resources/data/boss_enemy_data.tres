@@ -1,16 +1,103 @@
-[gd_resource type="Resource" script_class="EnemyData" load_steps=6 format=3 uid="uid://jlcky6cxyuuq"]
+[gd_resource type="Resource" script_class="EnemyData" load_steps=28 format=3 uid="uid://jlcky6cxyuuq"]
 
 [ext_resource type="Script" path="res://Battle/enemy/enemy_data.gd" id="1_mc3os"]
 [ext_resource type="Resource" uid="uid://conurbftd672o" path="res://Battle/enemy/resources/stats/StrongEnemyStats.tres" id="1_xvxi5"]
+[ext_resource type="Script" path="res://Battle/skills/behaviors/multihit_skill_behavior.gd" id="2_ka5fa"]
 [ext_resource type="Script" path="res://Battle/enemy/enemy_ui_data.gd" id="2_tx7gf"]
 [ext_resource type="Texture2D" uid="uid://pd1wiq6octud" path="res://Battle/enemy/sprites/boss_icon.svg" id="3_e68vd"]
+[ext_resource type="Script" path="res://Battle/enemy/skills/enemy_skill_data.gd" id="3_v6w7x"]
+[ext_resource type="Texture2D" uid="uid://cpaes4c4pnmxw" path="res://Battle/skills/icons/attack_skill.png" id="4_6ebn8"]
+[ext_resource type="Script" path="res://Battle/enemy/skills/enemy_skill_ui_data.gd" id="5_ys1g6"]
+[ext_resource type="Script" path="res://Battle/skills/behaviors/damage_skill_behavior.gd" id="6_svor4"]
+[ext_resource type="Script" path="res://Battle/skills/behaviors/shield_skill_behavior.gd" id="7_s6ngv"]
+[ext_resource type="Texture2D" uid="uid://l8diabvbslw6" path="res://Battle/skills/icons/attack_shield_skill.png" id="8_7md7r"]
+[ext_resource type="Texture2D" uid="uid://dtcgxg8bujhwf" path="res://Battle/skills/icons/shield_skill.png" id="9_37jwq"]
 
-[sub_resource type="Resource" id="Resource_7ptvl"]
+[sub_resource type="Resource" id="Resource_pb62o"]
+script = ExtResource("2_ka5fa")
+damage = 7
+hits = 6
+
+[sub_resource type="Resource" id="Resource_jcw5k"]
+script = ExtResource("5_ys1g6")
+icon = ExtResource("4_6ebn8")
+ui_name = "Six Strikes"
+
+[sub_resource type="Resource" id="Resource_tun4i"]
+script = ExtResource("3_v6w7x")
+ui_data = SubResource("Resource_jcw5k")
+behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_pb62o")])
+
+[sub_resource type="Resource" id="Resource_iywwl"]
+script = ExtResource("6_svor4")
+damage = 20
+to_self = false
+ignore_shield = false
+ignore_armor = false
+ignore_dodges = false
+
+[sub_resource type="Resource" id="Resource_8y352"]
+script = ExtResource("7_s6ngv")
+shield = 15
+
+[sub_resource type="Resource" id="Resource_qyu4f"]
+script = ExtResource("5_ys1g6")
+icon = ExtResource("8_7md7r")
+ui_name = "Shielding Strike"
+
+[sub_resource type="Resource" id="Resource_sjp1b"]
+script = ExtResource("3_v6w7x")
+ui_data = SubResource("Resource_qyu4f")
+behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_iywwl"), SubResource("Resource_8y352")])
+
+[sub_resource type="Resource" id="Resource_yil3e"]
+script = ExtResource("6_svor4")
+damage = 10
+to_self = true
+ignore_shield = true
+ignore_armor = true
+ignore_dodges = true
+
+[sub_resource type="Resource" id="Resource_k06og"]
+script = ExtResource("6_svor4")
+damage = 40
+to_self = false
+ignore_shield = false
+ignore_armor = false
+ignore_dodges = false
+
+[sub_resource type="Resource" id="Resource_dvl5w"]
+script = ExtResource("5_ys1g6")
+icon = ExtResource("4_6ebn8")
+ui_name = "Burnout"
+
+[sub_resource type="Resource" id="Resource_3dnvx"]
+script = ExtResource("3_v6w7x")
+ui_data = SubResource("Resource_dvl5w")
+behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_yil3e"), SubResource("Resource_k06og")])
+
+[sub_resource type="Resource" id="Resource_kkmi0"]
+script = ExtResource("7_s6ngv")
+shield = 5
+
+[sub_resource type="Resource" id="Resource_mtugt"]
+script = ExtResource("5_ys1g6")
+icon = ExtResource("9_37jwq")
+ui_name = "Break"
+
+[sub_resource type="Resource" id="Resource_tprxf"]
+script = ExtResource("3_v6w7x")
+ui_data = SubResource("Resource_mtugt")
+behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_kkmi0")])
+
+[sub_resource type="Resource" id="Resource_im6d5"]
 script = ExtResource("2_tx7gf")
 sprite = ExtResource("3_e68vd")
 ui_name = "Boss"
 
 [resource]
 script = ExtResource("1_mc3os")
-enemy_ui_data = SubResource("Resource_7ptvl")
-enemy_stats = ExtResource("1_xvxi5")
+ui_data = SubResource("Resource_im6d5")
+stats = ExtResource("1_xvxi5")
+skills = Array[ExtResource("3_v6w7x")]([SubResource("Resource_tun4i"), SubResource("Resource_sjp1b"), SubResource("Resource_3dnvx"), SubResource("Resource_tprxf")])
+strategy = 2

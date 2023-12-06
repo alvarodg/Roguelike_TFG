@@ -1,7 +1,5 @@
 extends Control
 
-# Pendiente de cambios en Player para reducir dependencias.
-
 @onready var battle_scene: PackedScene = preload("res://Battle/CoinBattle.tscn")
 @onready var player = $Player
 @export var enemy_data: EnemyData

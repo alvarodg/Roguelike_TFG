@@ -1,0 +1,81 @@
+[gd_scene load_steps=10 format=3 uid="uid://cx2hpub5avdyh"]
+
+[ext_resource type="Texture2D" uid="uid://cpaes4c4pnmxw" path="res://Battle/skills/icons/attack_skill.png" id="1_05r34"]
+[ext_resource type="Script" path="res://Battle/enemy/skills/enemy_skill_icon.gd" id="1_826io"]
+[ext_resource type="Texture2D" uid="uid://cvwsif7utojiu" path="res://Battle/skills/icons/unknown_skill.png" id="1_jlm53"]
+[ext_resource type="Script" path="res://Battle/enemy/skills/enemy_skill_data.gd" id="2_8uik3"]
+[ext_resource type="Script" path="res://Battle/skills/behaviors/damage_skill_behavior.gd" id="2_k8f5b"]
+[ext_resource type="Script" path="res://Battle/enemy/skills/enemy_skill_ui_data.gd" id="4_m3170"]
+
+[sub_resource type="Resource" id="Resource_t47uu"]
+script = ExtResource("2_k8f5b")
+damage = 5
+to_self = false
+ignore_shield = false
+ignore_armor = false
+ignore_dodges = false
+
+[sub_resource type="Resource" id="Resource_ihjg8"]
+script = ExtResource("4_m3170")
+icon = ExtResource("1_05r34")
+ui_name = "TEST"
+
+[sub_resource type="Resource" id="Resource_vkpaf"]
+script = ExtResource("2_8uik3")
+ui_data = SubResource("Resource_ihjg8")
+behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_t47uu")])
+
+[node name="EnemySkillIcon" type="Control"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_bottom = 32.0
+grow_horizontal = 0
+script = ExtResource("1_826io")
+skill = SubResource("Resource_vkpaf")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("1_jlm53")
+centered = false
+metadata/_edit_group_ = true
+
+[node name="Shadow" type="ColorRect" parent="Sprite"]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.12549, 0.12549, 0.12549, 0.768627)
+
+[node name="InfoLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_direction = 3
+offset_left = -1.0
+offset_top = 31.0
+offset_bottom = 76.0
+theme_override_font_sizes/font_size = 16
+text = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+horizontal_alignment = 1
+metadata/_edit_group_ = true
+
+[node name="InfoPanel" type="Panel" parent="InfoLabel"]
+unique_name_in_owner = true
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

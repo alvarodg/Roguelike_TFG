@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_etw5a")
-damage = 20
+damage = 5
 max_health = 150
 base_shield = 0
 base_armor = 2

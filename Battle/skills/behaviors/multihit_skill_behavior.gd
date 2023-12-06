@@ -6,7 +6,7 @@ class_name MultihitSkillBehavior
 
 func use(_user, target, _coins):
 	for i in range(hits):
-		target.take_damage(damage)
+		target.stats.take_damage(damage)
 
 func get_description() -> String:
 	var description: String = ""
