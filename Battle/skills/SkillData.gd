@@ -1,7 +1,7 @@
 extends Resource
 class_name SkillData
 
-@export var icon: Texture2D
+@export var ui_data: SkillUIData
 @export var name: String
 @export var cost: Array[int] : set = set_cost
 @export var uses_per_turn: int = 1
@@ -23,6 +23,5 @@ func get_description() -> String:
 		description += behavior.get_description()
 	return description
 
-# Patrón Factory Method
-func create_skill(user, target, coins) -> Skill:
+func create_skill(user, target, coins = []) -> Skill:
 	return Skill.new(self, user, target, coins)

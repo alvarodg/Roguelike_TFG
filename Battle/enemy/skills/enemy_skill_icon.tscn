@@ -58,6 +58,7 @@ color = Color(0.12549, 0.12549, 0.12549, 0.768627)
 [node name="InfoLabel" type="Label" parent="."]
 unique_name_in_owner = true
 layout_direction = 3
+layout_mode = 0
 offset_left = -1.0
 offset_top = 31.0
 offset_bottom = 76.0

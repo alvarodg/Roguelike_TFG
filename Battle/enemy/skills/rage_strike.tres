@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="SkillData" load_steps=7 format=3 uid="uid://b3ml56xm4cody"]
+
+[ext_resource type="Script" path="res://Battle/skills/behaviors/damage_skill_behavior.gd" id="1_8sp4p"]
+[ext_resource type="Script" path="res://Battle/skills/SkillData.gd" id="1_bey5y"]
+[ext_resource type="Texture2D" uid="uid://c4mdodsry7ncw" path="res://Battle/skills/icons/strong_attack_skill.png" id="3_4h0om"]
+[ext_resource type="Script" path="res://Battle/skills/skill_ui_data.gd" id="4_52r7r"]
+
+[sub_resource type="Resource" id="Resource_62bp0"]
+script = ExtResource("1_8sp4p")
+damage = 40
+to_self = false
+ignore_shield = true
+ignore_armor = true
+ignore_dodges = false
+
+[sub_resource type="Resource" id="Resource_vurcr"]
+script = ExtResource("4_52r7r")
+icon = ExtResource("3_4h0om")
+ui_name = "Rage Strike"
+
+[resource]
+script = ExtResource("1_bey5y")
+ui_data = SubResource("Resource_vurcr")
+name = ""
+cost = Array[int]([])
+uses_per_turn = 1
+one_shot = false
+cost_is_mandatory = true
+rarity = 0
+behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_62bp0")])

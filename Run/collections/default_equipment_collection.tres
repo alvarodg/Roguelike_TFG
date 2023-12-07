@@ -10,10 +10,10 @@
 [ext_resource type="Resource" uid="uid://dn8xb4i3yfuch" path="res://Items/equipment/resources/shadow_clone.tres" id="7_o1jjb"]
 [ext_resource type="Resource" uid="uid://o7m0rikjobyx" path="res://Items/equipment/resources/strong_armor.tres" id="8_0dmrt"]
 [ext_resource type="Resource" uid="uid://xmue4sfum232" path="res://Items/equipment/resources/weak_armor.tres" id="9_vuart"]
-[ext_resource type="Resource" uid="uid://3h7lvkqh0mac" path="res://Items/equipment/resources/bloody_coin.tres" id="11_tsy8l"]
-[ext_resource type="Resource" uid="uid://cviounhsrpbnt" path="res://Items/equipment/resources/late_shield.tres" id="12_kfxim"]
-[ext_resource type="Resource" uid="uid://000ce1xcp83o" path="res://Items/equipment/resources/flip_shield.tres" id="13_ct4rd"]
-[ext_resource type="Resource" uid="uid://ca8go4wc80cdi" path="res://Items/equipment/resources/binary_shield.tres" id="13_efiff"]
+[ext_resource type="Resource" uid="uid://3h7lvkqh0mac" path="res://Items/equipment/resources/conditional/bloody_coin.tres" id="11_tsy8l"]
+[ext_resource type="Resource" uid="uid://cviounhsrpbnt" path="res://Items/equipment/resources/conditional/late_shield.tres" id="12_kfxim"]
+[ext_resource type="Resource" uid="uid://000ce1xcp83o" path="res://Items/equipment/resources/conditional/flip_shield.tres" id="13_ct4rd"]
+[ext_resource type="Resource" uid="uid://ca8go4wc80cdi" path="res://Items/equipment/resources/conditional/binary_shield.tres" id="13_efiff"]
 
 [resource]
 script = ExtResource("1_8ig7o")

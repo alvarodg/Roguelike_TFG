@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="Equipment" load_steps=12 format=3 uid="uid://df6ubpp7evjvw"]
+
+[ext_resource type="Script" path="res://Items/modifiers/conditions/events/hit_condition.gd" id="1_0bscs"]
+[ext_resource type="Script" path="res://Items/equipment/equipment.gd" id="1_ua88c"]
+[ext_resource type="Script" path="res://Items/modifiers/components/enemy_next_skill_change.gd" id="2_4vmna"]
+[ext_resource type="Resource" uid="uid://b3ml56xm4cody" path="res://Battle/enemy/skills/rage_strike.tres" id="3_ds7v5"]
+[ext_resource type="Script" path="res://Items/modifiers/conditions/condition_trigger.gd" id="4_knit5"]
+[ext_resource type="Texture2D" uid="uid://dk4njxdma1t7m" path="res://Items/equipment/sprites/enrage_item.png" id="6_6ftb5"]
+[ext_resource type="Script" path="res://Items/equipment/equipment_ui_data.gd" id="7_m0k4o"]
+
+[sub_resource type="Resource" id="Resource_d2gi0"]
+script = ExtResource("1_0bscs")
+amount = 3
+restart_per_turn = true
+
+[sub_resource type="Resource" id="Resource_3iw7m"]
+script = ExtResource("2_4vmna")
+skill = ExtResource("3_ds7v5")
+
+[sub_resource type="Resource" id="Resource_avcpi"]
+script = ExtResource("4_knit5")
+state_conditions = Array[Resource("res://Items/modifiers/conditions/state_condition.gd")]([])
+event_condition = SubResource("Resource_d2gi0")
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_3iw7m")])
+amount = -1
+reset_per_turn = true
+
+[sub_resource type="Resource" id="Resource_b63dg"]
+script = ExtResource("7_m0k4o")
+icon = ExtResource("6_6ftb5")
+ui_name = "Enrage"
+
+[resource]
+script = ExtResource("1_ua88c")
+ui_data = SubResource("Resource_b63dg")
+description = ""
+rarity = 0
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+condition_triggers = Array[ExtResource("4_knit5")]([SubResource("Resource_avcpi")])

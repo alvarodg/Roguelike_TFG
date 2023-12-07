@@ -1,7 +1,7 @@
 extends Control
 class_name EnemySkillIcon
 
-@export var skill: EnemySkillData
+@export var skill: SkillData
 
 @onready var hidden_icon = preload("res://Battle/skills/icons/unknown_skill.png")
 
@@ -20,7 +20,7 @@ func _ready():
 	info_label.text = skill.ui_data.ui_name + ":\n" + skill.get_description()
 	state = State.ACTIVE
 
-func setup(p_skill: EnemySkillData):
+func setup(p_skill: SkillData):
 	skill = p_skill
 
 func set_state(value: State):

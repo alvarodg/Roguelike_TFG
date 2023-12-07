@@ -14,7 +14,7 @@ func setup(enemy: Enemy):
 	enemy.upcoming_skills_changed.connect(_on_Enemy_upcoming_changed)
 	create_icons(enemy.upcoming_skills)
 	
-func create_icons(skill_list: Array[EnemySkillData]):
+func create_icons(skill_list: Array[SkillData]):
 	for i in range(min(skill_list.size(),skill_amount)):
 		var icon = skill_icon_scene.instantiate()
 		icon.setup(skill_list[i])
@@ -27,7 +27,7 @@ func clear_icons():
 		if icon is EnemySkillIcon: icon.queue_free()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _on_Enemy_upcoming_changed(value: Array[EnemySkillData]):
+func _on_Enemy_upcoming_changed(value: Array[SkillData]):
 	clear_icons()
 	create_icons(value)
 	
