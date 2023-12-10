@@ -4,14 +4,19 @@ extends Node
 signal finished_loading
 
 var version = "0.1"
-var run_seed = 0
+var run_seed = 0 : set = set_run_seed
 var current_level = 0
 var player: Player
 var collections: CollectionContainer
 var map: Map
+var rng: RandomNumberGenerator
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	rng = RandomNumberGenerator.new()
+
+func set_run_seed(value):
+	run_seed = value
+	rng.seed = run_seed
 
 # Note: This can be called from anywhere inside the tree. This function is
 # path independent.

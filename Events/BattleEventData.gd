@@ -12,3 +12,4 @@ func instantiate_scene():
 	# Acceso al singleton de jugador
 	battle_scene.setup(RunData.player, enemy_data, next_event)
 	return battle_scene
+

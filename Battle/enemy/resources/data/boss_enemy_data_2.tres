@@ -1,0 +1,84 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=22 format=3 uid="uid://cq5ebehsqd2ae"]
+
+[ext_resource type="Resource" uid="uid://dut8n1qoteefk" path="res://Items/equipment/enemy_passives/well_coordinated_armor.tres" id="1_h3hwy"]
+[ext_resource type="Script" path="res://Battle/enemy/enemy_data.gd" id="1_slu67"]
+[ext_resource type="Resource" uid="uid://230qla35hl5c" path="res://Items/equipment/enemy_passives/weak_point.tres" id="2_lr45p"]
+[ext_resource type="Script" path="res://Battle/skills/behaviors/damage_skill_behavior.gd" id="3_441jd"]
+[ext_resource type="Script" path="res://Battle/enemy/enemy_ui_data.gd" id="3_mwt0y"]
+[ext_resource type="Texture2D" uid="uid://dvl5pgod3b550" path="res://Battle/enemy/sprites/boss_icon_2.svg" id="4_5kclp"]
+[ext_resource type="Script" path="res://Battle/skills/behaviors/shield_skill_behavior.gd" id="4_13ii1"]
+[ext_resource type="Script" path="res://Battle/skills/SkillData.gd" id="5_cmxw4"]
+[ext_resource type="Texture2D" uid="uid://l8diabvbslw6" path="res://Battle/skills/icons/attack_shield_skill.png" id="6_7hkmv"]
+[ext_resource type="Script" path="res://Battle/skills/skill_ui_data.gd" id="7_cec7k"]
+[ext_resource type="Texture2D" uid="uid://dtcgxg8bujhwf" path="res://Battle/skills/icons/shield_skill.png" id="8_smeye"]
+[ext_resource type="Script" path="res://Battle/enemy/EnemyStats.gd" id="9_13jrb"]
+
+[sub_resource type="Resource" id="Resource_ruqdp"]
+script = ExtResource("3_441jd")
+damage = 15
+to_self = false
+ignore_shield = false
+ignore_armor = false
+ignore_dodges = false
+
+[sub_resource type="Resource" id="Resource_qvoav"]
+script = ExtResource("4_13ii1")
+shield = 30
+
+[sub_resource type="Resource" id="Resource_cps5e"]
+script = ExtResource("7_cec7k")
+icon = ExtResource("6_7hkmv")
+ui_name = "En garde"
+
+[sub_resource type="Resource" id="Resource_ihkjm"]
+script = ExtResource("5_cmxw4")
+ui_data = SubResource("Resource_cps5e")
+name = ""
+cost = Array[int]([])
+uses_per_turn = 1
+one_shot = false
+cost_is_mandatory = true
+rarity = 0
+behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_ruqdp"), SubResource("Resource_qvoav")])
+
+[sub_resource type="Resource" id="Resource_6x84j"]
+script = ExtResource("4_13ii1")
+shield = 30
+
+[sub_resource type="Resource" id="Resource_mdvyc"]
+script = ExtResource("7_cec7k")
+icon = ExtResource("8_smeye")
+ui_name = "Riposte"
+
+[sub_resource type="Resource" id="Resource_km0ad"]
+script = ExtResource("5_cmxw4")
+ui_data = SubResource("Resource_mdvyc")
+name = ""
+cost = Array[int]([])
+uses_per_turn = 1
+one_shot = false
+cost_is_mandatory = true
+rarity = 0
+behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_6x84j")])
+
+[sub_resource type="Resource" id="Resource_6a4x2"]
+script = ExtResource("9_13jrb")
+damage = 0
+max_health = 75
+base_strength = 0
+base_shield = 75
+base_armor = 0
+base_dodges = 0
+
+[sub_resource type="Resource" id="Resource_pvdoq"]
+script = ExtResource("3_mwt0y")
+sprite = ExtResource("4_5kclp")
+ui_name = "The Knight"
+
+[resource]
+script = ExtResource("1_slu67")
+ui_data = SubResource("Resource_pvdoq")
+stats = SubResource("Resource_6a4x2")
+skills = Array[ExtResource("5_cmxw4")]([SubResource("Resource_ihkjm"), SubResource("Resource_km0ad")])
+equipment_list = Array[Resource("res://Items/equipment/equipment.gd")]([ExtResource("1_h3hwy"), ExtResource("2_lr45p")])
+strategy = 0

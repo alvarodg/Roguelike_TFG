@@ -97,3 +97,11 @@ func _on_pressed():
 		is_selected = true
 		grab_focus()
 #	EventBus.was_selected.emit(self)
+
+static func get_facing_text(facing: Facing) -> String:
+	var text = ""
+	match facing:
+		Facing.ANY: text = "Flip"
+		Facing.HEADS: text = "Heads"
+		Facing.TAILS: text = "Tails"
+	return text

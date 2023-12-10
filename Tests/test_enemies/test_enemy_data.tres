@@ -38,6 +38,7 @@ behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([
 script = ExtResource("9_eajv0")
 damage = 0
 max_health = 50
+base_strength = 0
 base_shield = 0
 base_armor = 0
 base_dodges = 0

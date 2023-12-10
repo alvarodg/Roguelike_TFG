@@ -30,9 +30,9 @@ func _ready():
 	add_to_group("run_persistent")
 	
 
-func start_game(player: Player, run_seed: int):
+func start_game(player: Player, rng: RandomNumberGenerator):
 	for i in range(generation_data_list.size()):
-		var level = generator.generate(generation_data_list[i], run_seed)
+		var level = generator.generate(generation_data_list[i], rng)
 		level_list.append(level)
 	player_map_ui.setup(player)
 	player_map_ui.show()

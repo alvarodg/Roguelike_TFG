@@ -13,7 +13,7 @@ func use(user, target, _coins):
 	if to_self:
 		user.stats.take_damage(damage, ignore_shield, ignore_armor, ignore_dodges)
 	else:
-		target.stats.take_damage(damage, ignore_shield, ignore_armor, ignore_dodges)
+		target.stats.take_damage(user.stats.strength + damage, ignore_shield, ignore_armor, ignore_dodges)
 
 func get_description() -> String:
 	var description: String = ""

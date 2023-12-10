@@ -1,0 +1,136 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=27 format=3 uid="uid://cc5by3gwd6ycq"]
+
+[ext_resource type="Script" path="res://Battle/enemy/enemy_data.gd" id="1_kglle"]
+[ext_resource type="Script" path="res://Battle/skills/behaviors/damage_skill_behavior.gd" id="2_qtqat"]
+[ext_resource type="Script" path="res://Battle/skills/behaviors/shield_skill_behavior.gd" id="3_3xxrl"]
+[ext_resource type="Script" path="res://Battle/skills/SkillData.gd" id="4_qscq4"]
+[ext_resource type="Script" path="res://Battle/skills/skill_ui_data.gd" id="5_papd5"]
+[ext_resource type="Texture2D" uid="uid://cpaes4c4pnmxw" path="res://Battle/skills/icons/attack_skill.png" id="6_eknrp"]
+[ext_resource type="Texture2D" uid="uid://l8diabvbslw6" path="res://Battle/skills/icons/attack_shield_skill.png" id="7_ldxnm"]
+[ext_resource type="Script" path="res://Battle/enemy/EnemyStats.gd" id="8_x383l"]
+[ext_resource type="Script" path="res://Battle/enemy/enemy_ui_data.gd" id="9_v1osf"]
+[ext_resource type="Texture2D" uid="uid://bf2irt3gwugkq" path="res://Battle/enemy/sprites/enemy_icon_3.svg" id="10_meusk"]
+
+[sub_resource type="Resource" id="Resource_531vi"]
+script = ExtResource("2_qtqat")
+damage = 5
+to_self = false
+ignore_shield = false
+ignore_armor = false
+ignore_dodges = false
+
+[sub_resource type="Resource" id="Resource_keeb5"]
+script = ExtResource("3_3xxrl")
+shield = 5
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_j7fvp"]
+load_path = "res://.godot/imported/attack_shield_skill.png-d88dd7e038b69f0fee571764b8115ff0.ctex"
+
+[sub_resource type="Resource" id="Resource_treoi"]
+script = ExtResource("5_papd5")
+icon = SubResource("CompressedTexture2D_j7fvp")
+ui_name = "Attack & Defend"
+
+[sub_resource type="Resource" id="Resource_k6p1o"]
+script = ExtResource("4_qscq4")
+ui_data = SubResource("Resource_treoi")
+name = ""
+cost = Array[int]([])
+uses_per_turn = 1
+one_shot = false
+cost_is_mandatory = true
+rarity = 0
+behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_531vi"), SubResource("Resource_keeb5")])
+
+[sub_resource type="Resource" id="Resource_4ibun"]
+script = ExtResource("2_qtqat")
+damage = 6
+to_self = false
+ignore_shield = false
+ignore_armor = false
+ignore_dodges = false
+
+[sub_resource type="Resource" id="Resource_yqh78"]
+script = ExtResource("5_papd5")
+icon = ExtResource("6_eknrp")
+ui_name = "Attack"
+
+[sub_resource type="Resource" id="Resource_nk7oy"]
+script = ExtResource("4_qscq4")
+ui_data = SubResource("Resource_yqh78")
+name = "Attack"
+cost = Array[int]([])
+uses_per_turn = 1
+one_shot = false
+cost_is_mandatory = true
+rarity = 0
+behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_4ibun")])
+
+[sub_resource type="Resource" id="Resource_40uy1"]
+script = ExtResource("2_qtqat")
+damage = 9
+to_self = false
+ignore_shield = false
+ignore_armor = false
+ignore_dodges = false
+
+[sub_resource type="Resource" id="Resource_jbcd0"]
+script = ExtResource("4_qscq4")
+ui_data = SubResource("Resource_yqh78")
+name = "Attack"
+cost = Array[int]([])
+uses_per_turn = 1
+one_shot = false
+cost_is_mandatory = true
+rarity = 0
+behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_40uy1")])
+
+[sub_resource type="Resource" id="Resource_vi11v"]
+script = ExtResource("2_qtqat")
+damage = 3
+to_self = false
+ignore_shield = false
+ignore_armor = false
+ignore_dodges = false
+
+[sub_resource type="Resource" id="Resource_5s5tl"]
+script = ExtResource("3_3xxrl")
+shield = 10
+
+[sub_resource type="Resource" id="Resource_qa0rn"]
+script = ExtResource("5_papd5")
+icon = ExtResource("7_ldxnm")
+ui_name = "Attack & Defend"
+
+[sub_resource type="Resource" id="Resource_nsbsk"]
+script = ExtResource("4_qscq4")
+ui_data = SubResource("Resource_qa0rn")
+name = ""
+cost = Array[int]([])
+uses_per_turn = 1
+one_shot = false
+cost_is_mandatory = true
+rarity = 0
+behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_vi11v"), SubResource("Resource_5s5tl")])
+
+[sub_resource type="Resource" id="Resource_y3by2"]
+script = ExtResource("8_x383l")
+damage = 0
+max_health = 60
+base_strength = 0
+base_shield = 0
+base_armor = 0
+base_dodges = 0
+
+[sub_resource type="Resource" id="Resource_67g3e"]
+script = ExtResource("9_v1osf")
+sprite = ExtResource("10_meusk")
+ui_name = "Enemy 3"
+
+[resource]
+script = ExtResource("1_kglle")
+ui_data = SubResource("Resource_67g3e")
+stats = SubResource("Resource_y3by2")
+skills = Array[ExtResource("4_qscq4")]([SubResource("Resource_k6p1o"), SubResource("Resource_nk7oy"), SubResource("Resource_jbcd0"), SubResource("Resource_nsbsk")])
+equipment_list = Array[Resource("res://Items/equipment/equipment.gd")]([])
+strategy = 1

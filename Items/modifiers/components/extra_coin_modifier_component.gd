@@ -21,9 +21,5 @@ func apply_to(user: Player):
 func get_description() -> String:
 	var coin_type = "Ephemeral" if ephemeral else "Persistent"
 	var plural = "" if coin_data_list.size() == 1 else "s"
-	var facing_text = ""
-	match facing:
-		Coin.Facing.ANY: facing_text = "Flip"
-		Coin.Facing.HEADS: facing_text = "Heads"
-		Coin.Facing.TAILS: facing_text = "Tails"
+	var facing_text = Coin.get_facing_text(facing)
 	return "%+d %s Coin%s (%s)." % [coin_data_list.size(), coin_type, plural, facing_text]

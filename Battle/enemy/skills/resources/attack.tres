@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="SkillData" load_steps=7 format=3 uid="uid://ba0115ccwpd87"]
+
+[ext_resource type="Script" path="res://Battle/skills/SkillData.gd" id="1_adtbv"]
+[ext_resource type="Script" path="res://Battle/skills/behaviors/damage_skill_behavior.gd" id="1_awii3"]
+[ext_resource type="Texture2D" uid="uid://cpaes4c4pnmxw" path="res://Battle/skills/icons/attack_skill.png" id="3_4qrst"]
+[ext_resource type="Script" path="res://Battle/skills/skill_ui_data.gd" id="4_fjkf2"]
+
+[sub_resource type="Resource" id="Resource_e2tcd"]
+script = ExtResource("1_awii3")
+damage = 5
+to_self = false
+ignore_shield = false
+ignore_armor = false
+ignore_dodges = false
+
+[sub_resource type="Resource" id="Resource_yqh78"]
+script = ExtResource("4_fjkf2")
+icon = ExtResource("3_4qrst")
+ui_name = "Attack"
+
+[resource]
+script = ExtResource("1_adtbv")
+ui_data = SubResource("Resource_yqh78")
+name = "Attack"
+cost = Array[int]([])
+uses_per_turn = 1
+one_shot = false
+cost_is_mandatory = true
+rarity = 0
+behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_e2tcd")])

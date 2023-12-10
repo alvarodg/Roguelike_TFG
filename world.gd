@@ -2,8 +2,6 @@ extends Control
 
 signal game_ready
 
-#var map: Map
-
 var node_matrix = []
 var traveled_nodes: Array[EventNode] = []
 var traveled_coords: Array[Vector2] = []
@@ -12,19 +10,14 @@ var traveled_coords: Array[Vector2] = []
 func _ready():
 	EventBus.new_run_selected.connect(_on_new_run)
 	EventBus.continue_run_selected.connect(_on_continue_run)
-	
-# Se llama a esta función desde Map para arreglar la doble generación
-#func assign_map(p_map: Map):
-#	map = p_map
-#	print(map)
 
 func _on_new_run():
+	RunData.map.start_game(RunData.player, RunData.rng)
 	game_ready.emit()
-	RunData.map.start_game(RunData.player, RunData.run_seed)
 
 func _on_continue_run():
 	RunData.load_game()
-	RunData.map.start_game(RunData.player, RunData.run_seed)
+	RunData.map.start_game(RunData.player, RunData.rng)
 	game_ready.emit()
 
 func _on_SaveButton_pressed():

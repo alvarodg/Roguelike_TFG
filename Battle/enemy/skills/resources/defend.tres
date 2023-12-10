@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="SkillData" load_steps=7 format=3 uid="uid://y0x7d5n4qf2q"]
+
+[ext_resource type="Script" path="res://Battle/skills/behaviors/shield_skill_behavior.gd" id="1_yv8f5"]
+[ext_resource type="Script" path="res://Battle/skills/SkillData.gd" id="2_68aiv"]
+[ext_resource type="Texture2D" uid="uid://dtcgxg8bujhwf" path="res://Battle/skills/icons/shield_skill.png" id="3_xeg3k"]
+[ext_resource type="Script" path="res://Battle/skills/skill_ui_data.gd" id="4_cpv6i"]
+
+[sub_resource type="Resource" id="Resource_1aikp"]
+script = ExtResource("1_yv8f5")
+shield = 5
+
+[sub_resource type="Resource" id="Resource_dgxkh"]
+script = ExtResource("4_cpv6i")
+icon = ExtResource("3_xeg3k")
+ui_name = "Defend"
+
+[resource]
+script = ExtResource("2_68aiv")
+ui_data = SubResource("Resource_dgxkh")
+name = "Defend"
+cost = Array[int]([])
+uses_per_turn = 1
+one_shot = false
+cost_is_mandatory = true
+rarity = 0
+behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_1aikp")])

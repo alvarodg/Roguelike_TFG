@@ -9,10 +9,11 @@ func connect_to(p_user):
 	p_user.stats.shield_changed.connect(_check_status)
 	
 func _check_status(shield):
-	return shield > target
+	state_changed.emit(self, shield > target)
 
 func get_description():
+	var user_text = "User" if user == null else user.ui_data.ui_name
 	if target == 0:
-		return "User has Shield."
+		return "%s has a Shield." % user_text
 	else:
-		return "User has over %d Shield." % [target]
+		return "%s has over %d Shield." % [user_text, target]

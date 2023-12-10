@@ -5,6 +5,10 @@ class_name SplitSkillBehavior
 @export var tails_behaviors: Array[SkillBehavior]
 
 func use(user, target, coins):
+#	var heads_count = 0
+#	for coin in coins:
+#		if coin.heads: heads_count += 1
+#	if heads_count > (coins.size() / 2.0):
 	# Solo comprueba la primera moneda, indicar o no utilizar con ranura de múltiples monedas.
 	if coins.front().heads:
 		for behavior in heads_behaviors:

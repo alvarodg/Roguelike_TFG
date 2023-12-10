@@ -1,0 +1,112 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=22 format=3 uid="uid://cdhknndbhlv6c"]
+
+[ext_resource type="Script" path="res://Battle/enemy/enemy_data.gd" id="1_arri5"]
+[ext_resource type="Script" path="res://Battle/enemy/EnemyStats.gd" id="2_dd4hs"]
+[ext_resource type="Script" path="res://Battle/skills/behaviors/damage_skill_behavior.gd" id="2_yoxqb"]
+[ext_resource type="Script" path="res://Battle/enemy/enemy_ui_data.gd" id="3_6rgrk"]
+[ext_resource type="Script" path="res://Battle/skills/SkillData.gd" id="3_yitei"]
+[ext_resource type="Script" path="res://Battle/skills/skill_ui_data.gd" id="4_enm6c"]
+[ext_resource type="Texture2D" uid="uid://dclqoag81q6n2" path="res://Battle/enemy/sprites/enemy_icon_2.svg" id="4_p4f5y"]
+
+[sub_resource type="Resource" id="Resource_gi1uw"]
+script = ExtResource("2_yoxqb")
+damage = 3
+to_self = false
+ignore_shield = false
+ignore_armor = false
+ignore_dodges = false
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_plapn"]
+load_path = "res://.godot/imported/attack_skill.png-4b5aa7c9f86daabc9d1b24f73f67a1e4.ctex"
+
+[sub_resource type="Resource" id="Resource_nlsii"]
+script = ExtResource("4_enm6c")
+icon = SubResource("CompressedTexture2D_plapn")
+ui_name = "Attack"
+
+[sub_resource type="Resource" id="Resource_kk0nm"]
+script = ExtResource("3_yitei")
+ui_data = SubResource("Resource_nlsii")
+name = "Attack"
+cost = Array[int]([])
+uses_per_turn = 1
+one_shot = false
+cost_is_mandatory = true
+rarity = 0
+behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_gi1uw")])
+
+[sub_resource type="Resource" id="Resource_6h0sy"]
+script = ExtResource("2_yoxqb")
+damage = 5
+to_self = false
+ignore_shield = false
+ignore_armor = false
+ignore_dodges = false
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2i7gb"]
+load_path = "res://.godot/imported/attack_skill.png-4b5aa7c9f86daabc9d1b24f73f67a1e4.ctex"
+
+[sub_resource type="Resource" id="Resource_gmbwe"]
+script = ExtResource("4_enm6c")
+icon = SubResource("CompressedTexture2D_2i7gb")
+ui_name = "Attack"
+
+[sub_resource type="Resource" id="Resource_o5wbl"]
+script = ExtResource("3_yitei")
+ui_data = SubResource("Resource_gmbwe")
+name = "Attack"
+cost = Array[int]([])
+uses_per_turn = 1
+one_shot = false
+cost_is_mandatory = true
+rarity = 0
+behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_6h0sy")])
+
+[sub_resource type="Resource" id="Resource_rq2ee"]
+script = ExtResource("2_yoxqb")
+damage = 10
+to_self = false
+ignore_shield = false
+ignore_armor = false
+ignore_dodges = false
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hlv84"]
+load_path = "res://.godot/imported/attack_skill.png-4b5aa7c9f86daabc9d1b24f73f67a1e4.ctex"
+
+[sub_resource type="Resource" id="Resource_mkg4v"]
+script = ExtResource("4_enm6c")
+icon = SubResource("CompressedTexture2D_hlv84")
+ui_name = "Attack"
+
+[sub_resource type="Resource" id="Resource_i1p3m"]
+script = ExtResource("3_yitei")
+ui_data = SubResource("Resource_mkg4v")
+name = "Attack"
+cost = Array[int]([])
+uses_per_turn = 1
+one_shot = false
+cost_is_mandatory = true
+rarity = 0
+behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_rq2ee")])
+
+[sub_resource type="Resource" id="Resource_fesbq"]
+script = ExtResource("2_dd4hs")
+damage = 0
+max_health = 40
+base_strength = 0
+base_shield = 0
+base_armor = 0
+base_dodges = 0
+
+[sub_resource type="Resource" id="Resource_4cbn4"]
+script = ExtResource("3_6rgrk")
+sprite = ExtResource("4_p4f5y")
+ui_name = "Enemy 2"
+
+[resource]
+script = ExtResource("1_arri5")
+ui_data = SubResource("Resource_4cbn4")
+stats = SubResource("Resource_fesbq")
+skills = Array[ExtResource("3_yitei")]([SubResource("Resource_kk0nm"), SubResource("Resource_o5wbl"), SubResource("Resource_i1p3m")])
+equipment_list = Array[Resource("res://Items/equipment/equipment.gd")]([])
+strategy = 2

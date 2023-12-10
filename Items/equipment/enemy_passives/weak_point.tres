@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="Equipment" load_steps=11 format=3 uid="uid://230qla35hl5c"]
+
+[ext_resource type="Script" path="res://Items/equipment/equipment.gd" id="1_11i7a"]
+[ext_resource type="Script" path="res://Items/modifiers/conditions/condition_trigger.gd" id="1_km3rv"]
+[ext_resource type="Script" path="res://Items/modifiers/conditions/events/shield_break_condition.gd" id="1_riy2y"]
+[ext_resource type="Script" path="res://Items/modifiers/components/armor_modifier_component.gd" id="2_wq2ih"]
+[ext_resource type="Texture2D" uid="uid://bw5stnyam85pa" path="res://Items/equipment/sprites/target_item.png" id="3_r6uin"]
+[ext_resource type="Script" path="res://Items/equipment/equipment_ui_data.gd" id="4_f6gba"]
+
+[sub_resource type="Resource" id="Resource_rnta7"]
+script = ExtResource("1_riy2y")
+amount = 1
+restart_per_turn = true
+
+[sub_resource type="Resource" id="Resource_w7xb1"]
+script = ExtResource("2_wq2ih")
+armor = -999
+
+[sub_resource type="Resource" id="Resource_mssfq"]
+script = ExtResource("1_km3rv")
+state_conditions = Array[Resource("res://Items/modifiers/conditions/state_condition.gd")]([])
+event_condition = SubResource("Resource_rnta7")
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_w7xb1")])
+amount = -1
+reset_per_turn = true
+
+[sub_resource type="Resource" id="Resource_s6dnh"]
+script = ExtResource("4_f6gba")
+icon = ExtResource("3_r6uin")
+ui_name = "Weak Point"
+
+[resource]
+script = ExtResource("1_11i7a")
+ui_data = SubResource("Resource_s6dnh")
+description = ""
+rarity = 0
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+condition_triggers = Array[ExtResource("1_km3rv")]([SubResource("Resource_mssfq")])

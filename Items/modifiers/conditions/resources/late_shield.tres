@@ -6,6 +6,8 @@
 
 [sub_resource type="Resource" id="Resource_gxrkr"]
 script = ExtResource("1_ludhg")
+amount = 1
+restart_per_turn = true
 
 [sub_resource type="Resource" id="Resource_idrmq"]
 script = ExtResource("2_iynpe")

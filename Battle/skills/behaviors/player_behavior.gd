@@ -1,3 +1,0 @@
-extends SkillBehavior
-class_name PlayerSkillBehavior
-
