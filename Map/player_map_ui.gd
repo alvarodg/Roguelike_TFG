@@ -10,5 +10,5 @@ func _ready():
 
 func setup(player: Player):
 	equipment_ui.setup(player)
-	player_icon.texture = player.ui_data.icon
+	player_icon.texture = player.ui_data.sprite
 	health_bar.setup(player.stats)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bfdmc5trnp4uk"]
+[gd_scene load_steps=18 format=3 uid="uid://bfdmc5trnp4uk"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_ewi3c"]
 [ext_resource type="PackedScene" uid="uid://buwxy0toti3j8" path="res://Run/collection_container.tscn" id="2_h6gmy"]
@@ -12,51 +12,11 @@
 [ext_resource type="Resource" uid="uid://dohuwbuerwh8r" path="res://Battle/skills/resources/balanced_strike.tres" id="8_3hjda"]
 [ext_resource type="Resource" uid="uid://bsioc5j8lwg1x" path="res://Battle/skills/resources/hit_attack.tres" id="9_imgkd"]
 [ext_resource type="Resource" uid="uid://disqwyhl7b6xd" path="res://Battle/skills/resources/reroll.tres" id="10_pvof1"]
+[ext_resource type="Resource" uid="uid://bxpfepcjv524q" path="res://Battle/skills/resources/consolation.tres" id="11_bl2ys"]
 [ext_resource type="Resource" uid="uid://1f1t8s1ew7uy" path="res://Battle/skills/resources/win.tres" id="11_nulia"]
-[ext_resource type="Resource" uid="uid://cnyuen0pyldwr" path="res://Battle/skills/resources/modulate.tres" id="11_vjc2b"]
-[ext_resource type="Resource" uid="uid://bmr1ulrhx61e8" path="res://Items/modifiers/conditions/resources/sacrifice.tres" id="13_8ygo6"]
-[ext_resource type="Script" path="res://Items/equipment/equipment.gd" id="13_l68tb"]
-[ext_resource type="Script" path="res://Items/modifiers/conditions/events/start_of_turn_condition.gd" id="14_es2p2"]
-[ext_resource type="Texture2D" uid="uid://67vxmnlk8br1" path="res://Items/equipment/sprites/test_item.png" id="15_452j0"]
-[ext_resource type="Resource" uid="uid://3rw1h1eslq66" path="res://Battle/coin_ui/resources/default_coin.tres" id="15_e1ngv"]
-[ext_resource type="Script" path="res://Items/modifiers/components/extra_coin_modifier_component.gd" id="16_4mv68"]
-[ext_resource type="Script" path="res://Items/equipment/equipment_ui_data.gd" id="16_c0ap0"]
-[ext_resource type="Script" path="res://Items/modifiers/conditions/condition_trigger.gd" id="17_jmvwe"]
-[ext_resource type="Resource" uid="uid://clyjfvymwgamd" path="res://Generation/resources/level1_weld_generation.tres" id="22_6uehh"]
-[ext_resource type="Resource" uid="uid://blbgpkie0ea8o" path="res://Generation/resources/level2_weld_generation.tres" id="23_yqjro"]
-[ext_resource type="Resource" uid="uid://cqw2ej3w1b85p" path="res://Generation/resources/level3_weld_generation.tres" id="24_ltjpa"]
-
-[sub_resource type="Resource" id="Resource_1d3g5"]
-script = ExtResource("14_es2p2")
-amount = 1
-restart_per_turn = true
-
-[sub_resource type="Resource" id="Resource_n1odi"]
-script = ExtResource("16_4mv68")
-coin_data_list = Array[Resource("res://Battle/coin_ui/coin_data.gd")]([ExtResource("15_e1ngv"), ExtResource("15_e1ngv")])
-ephemeral = true
-facing = 0
-
-[sub_resource type="Resource" id="Resource_hi8wk"]
-script = ExtResource("17_jmvwe")
-state_conditions = Array[Resource("res://Items/modifiers/conditions/state_condition.gd")]([])
-event_condition = SubResource("Resource_1d3g5")
-modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_n1odi")])
-amount = -1
-reset_per_turn = true
-
-[sub_resource type="Resource" id="Resource_f28cs"]
-script = ExtResource("16_c0ap0")
-icon = ExtResource("15_452j0")
-ui_name = "TEST"
-
-[sub_resource type="Resource" id="Resource_cqn26"]
-script = ExtResource("13_l68tb")
-ui_data = SubResource("Resource_f28cs")
-description = ""
-rarity = 0
-modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
-condition_triggers = Array[ExtResource("17_jmvwe")]([ExtResource("13_8ygo6"), SubResource("Resource_hi8wk")])
+[ext_resource type="Resource" uid="uid://clyjfvymwgamd" path="res://Generation/resources/level1_weld_generation.tres" id="14_7ktdm"]
+[ext_resource type="Resource" uid="uid://blbgpkie0ea8o" path="res://Generation/resources/level2_weld_generation.tres" id="15_0c4h4"]
+[ext_resource type="Resource" uid="uid://cqw2ej3w1b85p" path="res://Generation/resources/node_generation/l3_weld_generation.tres" id="16_fubwe"]
 
 [node name="World" type="Control"]
 layout_mode = 3
@@ -74,13 +34,12 @@ skills = ExtResource("4_lc4a6")
 [node name="Player" parent="." instance=ExtResource("2_yatmi")]
 stats = ExtResource("3_nvh0g")
 ui_data = ExtResource("4_ryo5a")
-skill_list = Array[Resource("res://Battle/skills/SkillData.gd")]([ExtResource("8_3hjda"), ExtResource("9_imgkd"), ExtResource("10_pvof1"), ExtResource("11_vjc2b"), ExtResource("11_nulia")])
-default_equipment = Array[ExtResource("13_l68tb")]([SubResource("Resource_cqn26")])
+skill_list = Array[Resource("res://Battle/skills/SkillData.gd")]([ExtResource("8_3hjda"), ExtResource("9_imgkd"), ExtResource("10_pvof1"), ExtResource("11_bl2ys"), ExtResource("11_nulia")])
 
 [node name="Map" parent="." instance=ExtResource("2_tumwh")]
 unique_name_in_owner = true
 layout_mode = 1
-generation_data_list = Array[Resource("res://Generation/generation_data.gd")]([ExtResource("22_6uehh"), ExtResource("23_yqjro"), ExtResource("24_ltjpa")])
+generation_data_list = Array[Resource("res://Generation/generation_data.gd")]([ExtResource("14_7ktdm"), ExtResource("15_0c4h4"), ExtResource("16_fubwe")])
 
 [node name="DebugPanel" type="Panel" parent="."]
 visible = false

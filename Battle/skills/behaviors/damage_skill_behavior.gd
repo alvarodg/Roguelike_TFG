@@ -31,7 +31,8 @@ func get_description() -> String:
 		var armor_text = "Armor" if ignore_armor else ""
 		var dodges_text = "Dodges" if ignore_dodges else ""
 		var shield_text = "Shield" if ignore_shield else ""
-		damage_description = " (Ignores %s %s %s)" % [shield_text, armor_text, dodges_text]
+		damage_description = "Ignores %s %s %s" % [shield_text, armor_text, dodges_text]
+		damage_description = " (%)" % damage_description.strip_edges()
 	if to_self:
 		description = "%s%s Damage%s to self." % [damage, damage_type, damage_description]
 	else:

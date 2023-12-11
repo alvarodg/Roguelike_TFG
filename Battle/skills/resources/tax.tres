@@ -26,3 +26,5 @@ one_shot = false
 cost_is_mandatory = true
 rarity = 0
 behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_v3mda"), SubResource("Resource_61adq")])
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+modifiers_first = true

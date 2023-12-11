@@ -1,8 +1,8 @@
 extends VBoxContainer
 
 @onready var health_bar = %HealthBar
+@onready var strength_label = %StrengthLabel
 @onready var shield_label = %ShieldLabel
-@onready var damage_label = %DamageLabel
 @onready var armor_label = %ArmorLabel
 @onready var dodges_label = %DodgesLabel
 
@@ -13,19 +13,19 @@ func _ready():
 func setup(enemy: EnemyStats):
 	health_bar.setup(enemy)
 	_update_shield(enemy.shield)
-	_update_damage(enemy.damage)
+	_update_strength(enemy.strength)
 	_update_armor(enemy.armor)
 	_update_dodges(enemy.dodges)
 	enemy.shield_changed.connect(_on_Enemy_shield_changed)
-	enemy.damage_changed.connect(_on_Enemy_damage_changed)
+	enemy.strength_changed.connect(_on_Enemy_strength_changed)
 	enemy.armor_changed.connect(_on_Enemy_armor_changed)
 	enemy.dodges_changed.connect(_on_Enemy_dodges_changed)
 
 func _on_Enemy_shield_changed(shield):
 	_update_shield(shield)
 	
-func _on_Enemy_damage_changed(damage):
-	_update_damage(damage)
+func _on_Enemy_strength_changed(strength):
+	_update_strength(strength)
 	
 func _on_Enemy_armor_changed(armor):
 	_update_armor(armor)
@@ -40,8 +40,12 @@ func _update_shield(shield):
 	else:
 		shield_label.hide()
 
-func _update_damage(damage):
-	damage_label.text = str(damage) + " Damage"
+func _update_strength(strength):
+	if strength > 0:
+		strength_label.show()
+		strength_label.text = str(strength) + " Strength"
+	else:
+		strength_label.hide()
 
 func _update_armor(armor):
 	if armor > 0:

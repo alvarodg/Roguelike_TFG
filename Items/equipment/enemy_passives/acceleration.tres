@@ -1,8 +1,28 @@
-[gd_resource type="Resource" script_class="Equipment" load_steps=5 format=3 uid="uid://c48nvl2cv5da"]
+[gd_resource type="Resource" script_class="Equipment" load_steps=11 format=3 uid="uid://c48nvl2cv5da"]
 
 [ext_resource type="Script" path="res://Items/equipment/equipment.gd" id="1_2ie5g"]
+[ext_resource type="Script" path="res://Items/modifiers/conditions/events/start_of_turn_condition.gd" id="1_brox2"]
+[ext_resource type="Script" path="res://Items/modifiers/conditions/condition_trigger.gd" id="1_of5gd"]
+[ext_resource type="Script" path="res://Items/modifiers/components/strength_modifier_component.gd" id="2_4bfd3"]
 [ext_resource type="Texture2D" uid="uid://doxm3xm8dqvke" path="res://Items/equipment/sprites/timer_item.png" id="2_ebrhg"]
 [ext_resource type="Script" path="res://Items/equipment/equipment_ui_data.gd" id="3_8bxn7"]
+
+[sub_resource type="Resource" id="Resource_rox64"]
+script = ExtResource("1_brox2")
+amount = 1
+restart_per_turn = true
+
+[sub_resource type="Resource" id="Resource_8ilai"]
+script = ExtResource("2_4bfd3")
+strength = 1
+
+[sub_resource type="Resource" id="Resource_mdvfu"]
+script = ExtResource("1_of5gd")
+state_conditions = Array[Resource("res://Items/modifiers/conditions/state_condition.gd")]([])
+event_condition = SubResource("Resource_rox64")
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_8ilai")])
+amount = -1
+reset_per_turn = true
 
 [sub_resource type="Resource" id="Resource_bkt0l"]
 script = ExtResource("3_8bxn7")
@@ -15,4 +35,4 @@ ui_data = SubResource("Resource_bkt0l")
 description = ""
 rarity = 0
 modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
-condition_triggers = Array[Resource("res://Items/modifiers/conditions/condition_trigger.gd")]([])
+condition_triggers = Array[ExtResource("1_of5gd")]([SubResource("Resource_mdvfu")])

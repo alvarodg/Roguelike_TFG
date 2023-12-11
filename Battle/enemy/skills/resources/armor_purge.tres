@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="SkillData" load_steps=7 format=3 uid="uid://cs7r4crhuafvr"]
+
+[ext_resource type="Script" path="res://Battle/skills/SkillData.gd" id="1_0vaut"]
+[ext_resource type="Script" path="res://Battle/skills/behaviors/multihit_skill_behavior.gd" id="1_uw0qu"]
+[ext_resource type="Texture2D" uid="uid://ley5scgpsay5" path="res://Battle/skills/icons/blue_strong_attack_skill.png" id="3_lu6mp"]
+[ext_resource type="Script" path="res://Battle/skills/skill_ui_data.gd" id="4_fd0ih"]
+
+[sub_resource type="Resource" id="Resource_cgn5o"]
+script = ExtResource("1_uw0qu")
+damage = 20
+hits = 6
+
+[sub_resource type="Resource" id="Resource_b17ve"]
+script = ExtResource("4_fd0ih")
+icon = ExtResource("3_lu6mp")
+ui_name = "Purge Strike"
+
+[resource]
+script = ExtResource("1_0vaut")
+ui_data = SubResource("Resource_b17ve")
+name = ""
+cost = Array[int]([])
+uses_per_turn = 1
+one_shot = false
+cost_is_mandatory = true
+rarity = 0
+behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_cgn5o")])

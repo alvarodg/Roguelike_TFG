@@ -1,11 +1,10 @@
-[gd_resource type="Resource" script_class="EquipmentCollection" load_steps=15 format=3 uid="uid://5871ejwt2whd"]
+[gd_resource type="Resource" script_class="EquipmentCollection" load_steps=14 format=3 uid="uid://5871ejwt2whd"]
 
 [ext_resource type="Resource" uid="uid://dux2lw2o3v0dr" path="res://Items/equipment/resources/cursed_coin.tres" id="1_2o3xi"]
 [ext_resource type="Script" path="res://Run/equipment_collection.gd" id="1_8ig7o"]
 [ext_resource type="Resource" uid="uid://bxwuaeekjaus4" path="res://Items/equipment/resources/lucky_coin.tres" id="2_8t63a"]
 [ext_resource type="Resource" uid="uid://c8107weri3cbe" path="res://Items/equipment/resources/lucky_shield.tres" id="3_c86u6"]
 [ext_resource type="Resource" uid="uid://ck15mnqlrvupd" path="res://Items/equipment/resources/poisoned_coin.tres" id="4_t0sya"]
-[ext_resource type="Resource" uid="uid://cibppkhryq7pl" path="res://Items/equipment/resources/regular_armor.tres" id="5_0b6kq"]
 [ext_resource type="Resource" uid="uid://d78buw8sx4i6" path="res://Items/equipment/resources/regular_coin.tres" id="6_6bbla"]
 [ext_resource type="Resource" uid="uid://dn8xb4i3yfuch" path="res://Items/equipment/resources/shadow_clone.tres" id="7_o1jjb"]
 [ext_resource type="Resource" uid="uid://o7m0rikjobyx" path="res://Items/equipment/resources/strong_armor.tres" id="8_0dmrt"]
@@ -17,4 +16,4 @@
 
 [resource]
 script = ExtResource("1_8ig7o")
-list = Array[Resource("res://Items/equipment/equipment.gd")]([ExtResource("1_2o3xi"), ExtResource("2_8t63a"), ExtResource("3_c86u6"), ExtResource("4_t0sya"), ExtResource("5_0b6kq"), ExtResource("6_6bbla"), ExtResource("7_o1jjb"), ExtResource("8_0dmrt"), ExtResource("9_vuart"), ExtResource("11_tsy8l"), ExtResource("12_kfxim"), ExtResource("13_ct4rd"), ExtResource("13_efiff")])
+list = Array[Resource("res://Items/equipment/equipment.gd")]([ExtResource("1_2o3xi"), ExtResource("2_8t63a"), ExtResource("3_c86u6"), ExtResource("4_t0sya"), ExtResource("6_6bbla"), ExtResource("7_o1jjb"), ExtResource("8_0dmrt"), ExtResource("9_vuart"), ExtResource("11_tsy8l"), ExtResource("12_kfxim"), ExtResource("13_ct4rd"), ExtResource("13_efiff")])

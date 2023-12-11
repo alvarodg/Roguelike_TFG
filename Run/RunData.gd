@@ -10,13 +10,25 @@ var player: Player
 var collections: CollectionContainer
 var map: Map
 var rng: RandomNumberGenerator
+var rng_state
+var loading: bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	rng = RandomNumberGenerator.new()
-
+	print(rng.state)
+	EventBus.level_generation_completed.connect(_on_generation_completed)
+	
 func set_run_seed(value):
 	run_seed = value
 	rng.seed = run_seed
+
+func _on_generation_completed():
+	# Método anti save scum, se asegura de que el RNG genere los mismos resultados al cargar partida.
+	# (Acceder al parámetro rng de esta clase cada vez que se quiera hacer algo aleatorio determinista)
+	if not loading: rng_state = rng.state
+	rng.state = rng_state
+	save_game()
 
 # Note: This can be called from anywhere inside the tree. This function is
 # path independent.
@@ -30,6 +42,7 @@ func save_game():
 	var run_data_dict = {
 		"version" : version,
 		"run_seed" : run_seed,
+		"rng_state" : rng.state,
 	}
 #	run_data_dict.merge(player.to_save_dict())
 	save_file.store_line(JSON.stringify(run_data_dict))
@@ -80,6 +93,9 @@ func load_game():
 		var run_data_dict = json.get_data()
 		version = run_data_dict["version"]
 		run_seed = run_data_dict["run_seed"]
+		rng_state = run_data_dict["rng_state"]
+		loading = true
+		print(rng_state)
 	# Carga el resto de los datos del grupo "run_persistent"
 	while save_file.get_position() < save_file.get_length():
 		var json_string = save_file.get_line()

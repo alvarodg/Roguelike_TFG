@@ -39,11 +39,11 @@ func _ready():
 			# Asigna las monedas que acepta a la ranura.
 			var slot: Slot = slot_scene.instantiate()
 			if i == 0:
-				slot.set_any()
+				slot.facing = Coin.Facing.ANY
 			elif i == 1:
-				slot.set_heads_only()
+				slot.facing = Coin.Facing.HEADS
 			else:
-				slot.set_tails_only()
+				slot.facing = Coin.Facing.TAILS
 			slot.add_to_group("slots")
 			slot_box.add_child(slot)
 			slot.coins_needed = slot_list[i]

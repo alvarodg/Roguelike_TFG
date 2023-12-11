@@ -1,13 +1,12 @@
-extends Node
+extends Combatant
 class_name Enemy
 
-signal started_battle
-signal started_turn
-signal turn_finished
-signal died
-signal health_changed(value)
+#signal started_battle
+#signal started_turn
+#signal turn_finished
+#signal died
 signal upcoming_skills_changed(value)
-signal equipment_changed(value)
+#signal equipment_changed(value)
 
 @onready var combatants = load("res://Battle/resources/Combatants.tres")
 
@@ -58,6 +57,12 @@ func set_new_stats(new_stats: EnemyStats):
 	stats = new_stats.duplicate()
 	enemy_stats_ui.setup(stats)
 	connect_to_stat_signals(stats)
+	
+func get_stats() -> EnemyStats:
+	return stats
+	
+func get_ui_data() -> EnemyUIData:
+	return ui_data
 	
 func add_upcoming_skill(skill: SkillData, back: bool = true):
 	if back:

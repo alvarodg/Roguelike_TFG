@@ -5,5 +5,5 @@
 
 [resource]
 script = ExtResource("1_ip81o")
-icon = ExtResource("1_mu5fi")
+sprite = ExtResource("1_mu5fi")
 ui_name = "Player"

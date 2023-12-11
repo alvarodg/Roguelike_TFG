@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="GenerationData" load_steps=5 format=3 uid="uid://blbgpkie0ea8o"]
+
+[ext_resource type="Resource" uid="uid://uqql5frl5gpj" path="res://Generation/resources/event_assigner/l2_events.tres" id="1_ngoul"]
+[ext_resource type="Script" path="res://Generation/WeldMapGenerator.gd" id="2_1mojr"]
+[ext_resource type="Script" path="res://Generation/generation_data.gd" id="3_i7jgy"]
+
+[sub_resource type="Resource" id="Resource_fk832"]
+script = ExtResource("2_1mojr")
+rows = 4
+columns = 10
+base_position = Vector2(50, 50)
+distance = Vector2(100, 100)
+position_noise = Vector2(0, 0)
+iterations = 12
+clamp_at = Array[int]([-1])
+clamp_at_to = Array[Vector2]([Vector2(-2, 3), Vector2(4, 3), Vector2(0, 3)])
+
+[resource]
+script = ExtResource("3_i7jgy")
+map_generator = SubResource("Resource_fk832")
+event_assigner = ExtResource("1_ngoul")

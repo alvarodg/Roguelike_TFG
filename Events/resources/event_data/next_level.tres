@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="EventData" load_steps=3 format=3 uid="uid://crm4hx88wd0rk"]
 
-[ext_resource type="PackedScene" uid="uid://rdbbb4qaextf" path="res://Events/next_level.tscn" id="1_266bq"]
+[ext_resource type="PackedScene" uid="uid://rdbbb4qaextf" path="res://Menus/next_level.tscn" id="1_266bq"]
 [ext_resource type="Script" path="res://Events/EventData.gd" id="1_josvh"]
 
 [resource]

@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://hiqvn3fknbyn"]
+[gd_scene load_steps=4 format=3 uid="uid://hiqvn3fknbyn"]
 
 [ext_resource type="Script" path="res://Items/equipment/equipment_icon.gd" id="1_xo1p7"]
 [ext_resource type="Texture2D" uid="uid://cvicbvj581vju" path="res://Items/equipment/sprites/regularcoin_item.png" id="2_0wxf8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bdyrp"]
+font_size = 14
 
 [node name="EquipmentIcon" type="Control"]
 custom_minimum_size = Vector2(18, 18)
@@ -18,12 +21,13 @@ centered = false
 
 [node name="InfoLabel" type="Label" parent="."]
 unique_name_in_owner = true
+z_index = 1
 layout_mode = 1
 offset_left = 14.0
-offset_top = 13.0
+offset_top = 17.0
 offset_right = 15.0
-offset_bottom = 58.0
-theme_override_font_sizes/font_size = 16
+offset_bottom = 62.0
+label_settings = SubResource("LabelSettings_bdyrp")
 metadata/_edit_group_ = true
 
 [node name="InfoPanel" type="Panel" parent="InfoLabel"]

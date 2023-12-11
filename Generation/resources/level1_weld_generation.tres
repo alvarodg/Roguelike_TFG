@@ -1,19 +1,8 @@
-[gd_resource type="Resource" script_class="GenerationData" load_steps=11 format=3 uid="uid://clyjfvymwgamd"]
+[gd_resource type="Resource" script_class="GenerationData" load_steps=5 format=3 uid="uid://clyjfvymwgamd"]
 
-[ext_resource type="Resource" uid="uid://c8seuyofduohl" path="res://Events/resources/ExclamationEvent.tres" id="1_7ywk1"]
 [ext_resource type="Script" path="res://Generation/generation_data.gd" id="1_a7mq8"]
+[ext_resource type="Resource" uid="uid://db626jo3rlwwk" path="res://Generation/resources/event_assigner/l1_events.tres" id="1_hgl5c"]
 [ext_resource type="Script" path="res://Generation/WeldMapGenerator.gd" id="1_u15kj"]
-[ext_resource type="Resource" uid="uid://cnadbxeukau4w" path="res://Events/resources/QuestionEvent.tres" id="2_yah7n"]
-[ext_resource type="Resource" uid="uid://qiy6xndpkvmk" path="res://Events/resources/PlusEvent.tres" id="3_kub2l"]
-[ext_resource type="Resource" uid="uid://bjlj5y2nif4am" path="res://Events/resources/TwoExclamationEvent.tres" id="4_ordxw"]
-[ext_resource type="Resource" uid="uid://b7dovkjbmh73j" path="res://Events/resources/ThreeExclamationEvent.tres" id="5_m3356"]
-[ext_resource type="Script" path="res://Generation/DefaultEventAssigner.gd" id="6_en70m"]
-
-[sub_resource type="Resource" id="Resource_njwxr"]
-script = ExtResource("6_en70m")
-event_list = Array[Resource("res://Events/Event.gd")]([ExtResource("1_7ywk1"), ExtResource("2_yah7n"), ExtResource("3_kub2l"), ExtResource("4_ordxw"), ExtResource("5_m3356")])
-event_chances = Array[float]([7.0, 5.0, 1.0, 1.0, 0.0])
-restrictions = Array[Vector2]([Vector2(4, 4), Vector2(0, 0)])
 
 [sub_resource type="Resource" id="Resource_n6m2n"]
 script = ExtResource("1_u15kj")
@@ -29,4 +18,4 @@ clamp_at_to = Array[Vector2]([Vector2(0, 3)])
 [resource]
 script = ExtResource("1_a7mq8")
 map_generator = SubResource("Resource_n6m2n")
-event_assigner = SubResource("Resource_njwxr")
+event_assigner = ExtResource("1_hgl5c")

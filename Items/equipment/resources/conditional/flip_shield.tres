@@ -10,6 +10,8 @@
 [sub_resource type="Resource" id="Resource_m704w"]
 script = ExtResource("1_pcene")
 facing = 0
+amount = 1
+restart_per_turn = true
 
 [sub_resource type="Resource" id="Resource_6ps1d"]
 script = ExtResource("2_qlnsn")

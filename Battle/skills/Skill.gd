@@ -8,7 +8,7 @@ var user
 var target
 var coins
 
-func _init(p_data: SkillData = null, p_user = null, p_target = null, p_coins = null):
+func _init(p_data: SkillData = null, p_user = null, p_target = null, p_coins = []):
 	data = p_data
 	user = p_user
 	target = p_target
@@ -16,9 +16,20 @@ func _init(p_data: SkillData = null, p_user = null, p_target = null, p_coins = n
 
 # Definir use en SkillData?
 func use():
+	if data.modifiers_first:
+		_use_modifiers()
+		_use_behaviors()
+	else:
+		_use_behaviors()
+		_use_modifiers()
+
+func _use_behaviors():
 	for behavior in data.behaviors:
 		behavior.use(user, target, coins)
-#	pass
+	
+func _use_modifiers():
+	for modifier in data.modifiers:
+		modifier.apply_to(user)
 
 func get_coin_cost():
 	return data.cost

@@ -1,12 +1,9 @@
-extends Node
+extends Combatant
 class_name Player
 
-signal died
+
 signal coins_changed
 signal coin_flipped(coin)
-signal equipment_changed
-signal started_battle
-signal started_turn
 signal ended_battle
 
 @export var stats: PlayerStats : set = set_stats
@@ -150,12 +147,12 @@ func save() -> Dictionary:
 	var skill_dict = {}
 	for i in range(skill_list.size()):
 		skill_dict["skill%02d" % i] = skill_list[i].resource_path
-		print(skill_list[i].resource_path)
+#		print(skill_list[i].resource_path)
 	save_dict.merge(skill_dict)
 	var equip_dict = {}
 	for i in range(equipment_list.size()):
 		equip_dict["equipment%02d" % i] = equipment_list[i].resource_path
-		print(equipment_list[i].resource_path)
+#		print(equipment_list[i].resource_path)
 	save_dict.merge(equip_dict)
 	return save_dict
 	

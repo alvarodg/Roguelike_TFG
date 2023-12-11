@@ -14,7 +14,8 @@ restart_per_turn = true
 
 [sub_resource type="Resource" id="Resource_w7xb1"]
 script = ExtResource("2_wq2ih")
-armor = -999
+armor = 0
+action = 1
 
 [sub_resource type="Resource" id="Resource_mssfq"]
 script = ExtResource("1_km3rv")

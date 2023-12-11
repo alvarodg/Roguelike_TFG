@@ -9,7 +9,7 @@ damage = 5
 to_self = false
 ignore_shield = false
 ignore_armor = false
-ignore_dodges = true
+ignore_dodges = false
 
 [resource]
 script = ExtResource("2_h6i3m")
@@ -20,3 +20,5 @@ one_shot = false
 cost_is_mandatory = true
 rarity = 0
 behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_l622n")])
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+modifiers_first = true

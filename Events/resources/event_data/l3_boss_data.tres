@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="BattleEventData" load_steps=5 format=3 uid="uid://8x6iblts1gf4"]
+
+[ext_resource type="Resource" uid="uid://jlcky6cxyuuq" path="res://Battle/enemy/resources/data/berserker_boss_data.tres" id="1_lopki"]
+[ext_resource type="Resource" uid="uid://xrcdv1vda8mx" path="res://Events/resources/event_data/win_event.tres" id="2_5c2gb"]
+[ext_resource type="PackedScene" uid="uid://ci2osml7lmqcy" path="res://Battle/CoinBattle.tscn" id="5_yffpe"]
+[ext_resource type="Script" path="res://Events/BattleEventData.gd" id="6_vuqif"]
+
+[resource]
+script = ExtResource("6_vuqif")
+enemy_data = ExtResource("1_lopki")
+scene = ExtResource("5_yffpe")
+next_event = ExtResource("2_5c2gb")

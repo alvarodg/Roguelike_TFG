@@ -4,7 +4,7 @@ class_name EventNode
 signal node_chosen(node)
 
 enum State {AVAILABLE, TRAVELED, UNAVAILABLE}
-var event: Event = load("res://Events/resources/ExclamationEvent.tres")
+var event: Event = load("res://Events/resources/l1_easy_rdm_battle.tres")
 @onready var texture_button = %TextureButton
 var index: int = 0
 var coordinates = Vector2.ZERO

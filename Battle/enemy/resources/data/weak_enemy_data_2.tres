@@ -34,6 +34,8 @@ one_shot = false
 cost_is_mandatory = true
 rarity = 0
 behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_gi1uw")])
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+modifiers_first = true
 
 [sub_resource type="Resource" id="Resource_6h0sy"]
 script = ExtResource("2_yoxqb")
@@ -61,6 +63,8 @@ one_shot = false
 cost_is_mandatory = true
 rarity = 0
 behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_6h0sy")])
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+modifiers_first = true
 
 [sub_resource type="Resource" id="Resource_rq2ee"]
 script = ExtResource("2_yoxqb")
@@ -88,10 +92,11 @@ one_shot = false
 cost_is_mandatory = true
 rarity = 0
 behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_rq2ee")])
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+modifiers_first = true
 
 [sub_resource type="Resource" id="Resource_fesbq"]
 script = ExtResource("2_dd4hs")
-damage = 0
 max_health = 40
 base_strength = 0
 base_shield = 0

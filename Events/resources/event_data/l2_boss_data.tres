@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BattleEventData" load_steps=8 format=3 uid="uid://hefxpk7cbo07"]
+
+[ext_resource type="Resource" uid="uid://crm4hx88wd0rk" path="res://Events/resources/event_data/next_level.tres" id="1_jcm27"]
+[ext_resource type="Resource" uid="uid://cq5ebehsqd2ae" path="res://Battle/enemy/resources/data/knight_boss_data.tres" id="1_r8gds"]
+[ext_resource type="Script" path="res://Events/EventData.gd" id="1_u2ngt"]
+[ext_resource type="PackedScene" uid="uid://ci2osml7lmqcy" path="res://Battle/CoinBattle.tscn" id="2_4hwg2"]
+[ext_resource type="PackedScene" uid="uid://sm2dgitxom6p" path="res://Events/skill_choice.tscn" id="3_kyy8r"]
+[ext_resource type="Script" path="res://Events/BattleEventData.gd" id="6_cwvve"]
+
+[sub_resource type="Resource" id="Resource_h5ix8"]
+script = ExtResource("1_u2ngt")
+scene = ExtResource("3_kyy8r")
+next_event = ExtResource("1_jcm27")
+
+[resource]
+script = ExtResource("6_cwvve")
+enemy_data = ExtResource("1_r8gds")
+scene = ExtResource("2_4hwg2")
+next_event = SubResource("Resource_h5ix8")

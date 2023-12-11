@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="BattleEventData" load_steps=8 format=3 uid="uid://dmw44iph5bueq"]
 
-[ext_resource type="Resource" uid="uid://jlcky6cxyuuq" path="res://Battle/enemy/resources/data/boss_enemy_data.tres" id="1_2dwfm"]
+[ext_resource type="Resource" uid="uid://0tb5ir6mx8dp" path="res://Battle/enemy/resources/data/boss_enemy_data_3.tres" id="1_emmrp"]
 [ext_resource type="Script" path="res://Events/BattleEventData.gd" id="1_evwa7"]
 [ext_resource type="Resource" uid="uid://crm4hx88wd0rk" path="res://Events/resources/event_data/next_level.tres" id="2_oo4o1"]
 [ext_resource type="PackedScene" uid="uid://ci2osml7lmqcy" path="res://Battle/CoinBattle.tscn" id="2_suvps"]
@@ -14,6 +14,6 @@ next_event = ExtResource("2_oo4o1")
 
 [resource]
 script = ExtResource("1_evwa7")
-enemy_data = ExtResource("1_2dwfm")
+enemy_data = ExtResource("1_emmrp")
 scene = ExtResource("2_suvps")
 next_event = SubResource("Resource_h5ix8")

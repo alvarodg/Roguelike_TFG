@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://rdbbb4qaextf"]
 
-[ext_resource type="Script" path="res://Events/next_level.gd" id="1_gg2tj"]
+[ext_resource type="Script" path="res://Menus/next_level.gd" id="1_gg2tj"]
 
 [node name="NextLevel" type="Control"]
 layout_mode = 3

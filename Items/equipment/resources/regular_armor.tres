@@ -8,6 +8,7 @@
 [sub_resource type="Resource" id="Resource_cu2ni"]
 script = ExtResource("1_qgcyk")
 armor = 1
+action = 0
 
 [sub_resource type="Resource" id="Resource_hkceh"]
 script = ExtResource("4_6pem1")

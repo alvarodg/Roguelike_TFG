@@ -4,6 +4,7 @@ class_name NextSkillModifier
 @export var skill: SkillData
 
 func apply_to(enemy: Enemy):
+	assert(skill is SkillData)
 	enemy.add_upcoming_skill(skill, false)
 	
 

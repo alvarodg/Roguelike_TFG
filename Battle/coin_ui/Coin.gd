@@ -98,6 +98,14 @@ func _on_pressed():
 		grab_focus()
 #	EventBus.was_selected.emit(self)
 
+func check_facing(facing: Facing) -> bool:
+	if facing == Facing.ANY:
+		return true
+	elif facing == Facing.HEADS:
+		return heads
+	else:
+		return not heads
+
 static func get_facing_text(facing: Facing) -> String:
 	var text = ""
 	match facing:

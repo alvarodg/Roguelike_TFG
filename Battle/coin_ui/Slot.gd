@@ -5,6 +5,7 @@ signal coin_inserted(coin)
 signal coins_changed(coins_needed, current_coins)
 signal was_pressed(slot)
 
+@export var facing: Coin.Facing : set = set_facing
 @export var heads_ok: bool = true
 @export var tails_ok: bool = true
 @export var texture_any: Texture2D
@@ -24,7 +25,7 @@ var current_coin: Coin
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_available()
-	update_texture()
+#	update_texture()
 	coins_changed.emit(coins_needed, inserted_coins.size())
 	EventBus.started_dragging.connect(_on_started_dragging)
 	EventBus.stopped_dragging.connect(_on_stopped_dragging)
@@ -33,29 +34,26 @@ func _ready():
 	EventBus.was_selected.connect(_on_started_dragging)
 	EventBus.released_selected.connect(_on_stopped_dragging)
 
-func set_heads_ok(value):
-	heads_ok = value
-	update_texture()
-
-func set_tails_ok(value):
-	tails_ok = value
-	update_texture()
+func set_facing(value: Coin.Facing):
+	facing = value
+	match facing:
+		Coin.Facing.ANY:
+			heads_ok = true
+			tails_ok = true
+			texture_normal = texture_any
+		Coin.Facing.HEADS:
+			heads_ok = true
+			tails_ok = false
+			texture_normal = texture_heads
+		Coin.Facing.TAILS:
+			heads_ok = false
+			tails_ok = true
+			texture_normal = texture_tails
 	
 func set_coins_needed(value):
 	coins_needed = value
 	coins_changed.emit(coins_needed, inserted_coins.size())
 	
-func set_heads_only():
-	heads_ok = true
-	tails_ok = false
-	
-func set_tails_only():
-	heads_ok = false
-	tails_ok = true
-	
-func set_any():
-	heads_ok = true
-	tails_ok = true
 
 func update_texture():
 	if heads_ok:
@@ -111,6 +109,7 @@ func insert_coin(coin: Coin) -> bool:
 		if inserted_coins.size() == coins_needed:
 			set_unavailable()
 		coin_inserted.emit(coin)
+		EventBus.coin_inserted.emit(self, coin)
 		return true
 	else:
 		return false

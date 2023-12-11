@@ -12,7 +12,7 @@ func _ready():
 	pass # Replace with function body.
 	
 func setup(player: Player):
-	player_icon = player.ui_data.icon
+	player_icon = player.ui_data.sprite
 	equipment_ui.setup(player)
 	health_bar.setup(player.stats)
 	_update_shield(player.stats.shield)

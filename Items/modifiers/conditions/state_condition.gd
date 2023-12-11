@@ -6,7 +6,7 @@ signal state_changed(state_ref, value)
 
 enum Operator {LOWER_THAN, LOWER_OR_EQUAL, EQUAL, GREATER_OR_EQUAL, GREATER_THAN}
 
-func _comparison_description(operator: Operator):
+func _operator_description(operator: Operator):
 	match operator:
 		Operator.LOWER_THAN:
 			return "under"
@@ -31,3 +31,12 @@ func _use_comparison_operator(operator: Operator, param1, param2):
 			return param1 >= param2
 		Operator.GREATER_THAN:
 			return param1 > param2
+
+func _get_comparison_description(operator: Operator, param_text: String, target):
+	var user_text = "User" if user == null else user.ui_data.ui_name
+	if target == 0 and (operator == Operator.LOWER_OR_EQUAL or operator == Operator.EQUAL):
+		return "%s has no %s" % [user_text, param_text]
+	elif target == 0 and operator == Operator.GREATER_THAN:
+		return "%s has %s" % [user_text. param_text]
+	else:
+		return "%s's %s %s %s" % [user_text, param_text, _operator_description(operator), target]

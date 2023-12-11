@@ -39,6 +39,8 @@ func start_game(player: Player, rng: RandomNumberGenerator):
 	reset_button.show()
 	change_level_button.show()
 	set_level(current_level)
+	print("started")
+	EventBus.level_generation_completed.emit()
 
 func _on_level_finished():
 	if current_level+1 < level_list.size():
@@ -88,7 +90,6 @@ func _on_EventNode_chosen(node: EventNode):
 	get_parent().add_child(event_scene)
 	await event_scene.finished
 	for map_screen_node in get_tree().get_nodes_in_group("map_screen"):
-		print("doing")
 		map_screen_node.show()
 	RunData.save_game()
 

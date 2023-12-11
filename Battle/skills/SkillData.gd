@@ -9,6 +9,8 @@ class_name SkillData
 @export var cost_is_mandatory: bool = true
 @export var rarity: int = 0
 @export var behaviors: Array[SkillBehavior]
+@export var modifiers: Array[Modifier]
+@export var modifiers_first: bool = true
 const COST_TYPES = 3
 
 func set_cost(value):
@@ -18,10 +20,19 @@ func set_cost(value):
 
 func get_description() -> String:
 	var description: String = ""
+	var modifier_description: String = ""
+	var behavior_description: String = ""
+	for modifier in modifiers:
+		if modifier_description != "": modifier_description += "\n"
+		modifier_description += modifier.get_description()
 	for behavior in behaviors:
-		if description != "": description += "\n"
-		description += behavior.get_description()
-	return description
+		if behavior_description != "": behavior_description += "\n"
+		behavior_description += behavior.get_description()
+	if modifiers_first:
+		description = modifier_description + "\n" + behavior_description
+	else:
+		description = behavior_description + "\n" + modifier_description
+	return description.strip_edges()
 
 func create_skill(user, target, coins = []) -> Skill:
 	return Skill.new(self, user, target, coins)

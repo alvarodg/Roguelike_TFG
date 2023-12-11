@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cx2hpub5avdyh"]
+[gd_scene load_steps=11 format=3 uid="uid://cx2hpub5avdyh"]
 
 [ext_resource type="Texture2D" uid="uid://cpaes4c4pnmxw" path="res://Battle/skills/icons/attack_skill.png" id="1_05r34"]
 [ext_resource type="Script" path="res://Battle/enemy/skills/enemy_skill_icon.gd" id="1_826io"]
@@ -24,6 +24,9 @@ ui_name = "TEST"
 script = ExtResource("2_8uik3")
 ui_data = SubResource("Resource_ihjg8")
 behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_t47uu")])
+
+[sub_resource type="LabelSettings" id="LabelSettings_gohks"]
+font_size = 14
 
 [node name="EnemySkillIcon" type="Control"]
 custom_minimum_size = Vector2(32, 32)
@@ -63,7 +66,7 @@ offset_left = -1.0
 offset_top = 31.0
 offset_bottom = 76.0
 theme_override_font_sizes/font_size = 16
-text = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+label_settings = SubResource("LabelSettings_gohks")
 horizontal_alignment = 1
 metadata/_edit_group_ = true
 

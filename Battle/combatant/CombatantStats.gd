@@ -40,8 +40,13 @@ func _init(p_max_health: int = 100, p_base_strength: int = 0, p_base_shield: int
 	
 func setup():
 	health = max_health
+	strength = base_strength
+	shield = base_shield
+	armor = base_armor
+	dodges = base_dodges
 
 func start_battle():
+	strength = base_strength
 	shield = base_shield
 	armor = base_armor
 	dodges = base_dodges

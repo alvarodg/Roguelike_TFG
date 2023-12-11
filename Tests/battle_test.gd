@@ -10,7 +10,3 @@ func _ready():
 	battle.setup(player,enemy_data)
 	add_child(battle)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass

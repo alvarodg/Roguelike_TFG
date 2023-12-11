@@ -14,5 +14,5 @@ func _check_status(_health = null):
 	state_changed.emit(self, result)
 
 func get_description():
-	var operator_text: String = _comparison_description(operator)
+	var operator_text: String = _operator_description(operator)
 	return "User's Health is %s %d%%." % [operator_text, percent*100]

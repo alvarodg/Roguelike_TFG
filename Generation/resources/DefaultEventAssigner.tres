@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="DefaultEventAssigner" load_steps=7 format=3 uid="uid://bvjehwcnc4vny"]
 
-[ext_resource type="Resource" uid="uid://c8seuyofduohl" path="res://Events/resources/ExclamationEvent.tres" id="1_0iqcm"]
-[ext_resource type="Resource" uid="uid://cnadbxeukau4w" path="res://Events/resources/QuestionEvent.tres" id="2_tpt78"]
-[ext_resource type="Resource" uid="uid://qiy6xndpkvmk" path="res://Events/resources/PlusEvent.tres" id="3_11ihj"]
-[ext_resource type="Resource" uid="uid://bjlj5y2nif4am" path="res://Events/resources/TwoExclamationEvent.tres" id="4_aoada"]
-[ext_resource type="Resource" uid="uid://b7dovkjbmh73j" path="res://Events/resources/ThreeExclamationEvent.tres" id="5_tjsxd"]
+[ext_resource type="Resource" uid="uid://c8seuyofduohl" path="res://Events/resources/l1_easy_rdm_battle.tres" id="1_0iqcm"]
+[ext_resource type="Resource" uid="uid://cnadbxeukau4w" path="res://Events/resources/free_equipment.tres" id="2_tpt78"]
+[ext_resource type="Resource" uid="uid://qiy6xndpkvmk" path="res://Events/resources/free_skill.tres" id="3_11ihj"]
+[ext_resource type="Resource" uid="uid://bjlj5y2nif4am" path="res://Events/resources/elite_battle.tres" id="4_aoada"]
+[ext_resource type="Resource" uid="uid://b7dovkjbmh73j" path="res://Events/resources/l1_boss_battle.tres" id="5_tjsxd"]
 [ext_resource type="Script" path="res://Generation/DefaultEventAssigner.gd" id="6_rx8kv"]
 
 [resource]
