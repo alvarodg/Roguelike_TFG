@@ -2,6 +2,7 @@ extends Resource
 class_name ConditionTrigger
 
 signal state_ok(value)
+signal triggers_changed(amount, remaining)
 
 var turn_manager = preload("res://Battle/resources/TurnManager.tres")
 @export var state_conditions: Array[StateCondition]
@@ -10,7 +11,7 @@ var turn_manager = preload("res://Battle/resources/TurnManager.tres")
 @export var amount: int = -1
 @export var reset_per_turn: bool = true
 var user
-var triggers_remaining: int
+var triggers_remaining: int : set = set_triggers_remaining
 var current_state: Array[bool]
 
 
@@ -31,6 +32,9 @@ func setup():
 	temp.fill(false)
 	current_state = temp
 	
+func set_triggers_remaining(value):
+	triggers_remaining = value
+	triggers_changed.emit(amount, triggers_remaining)
 	
 func apply_to(p_user):
 	assert(p_user is Player or p_user is Enemy)

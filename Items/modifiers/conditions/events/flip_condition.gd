@@ -9,11 +9,11 @@ func connect_to(p_user: Player):
 
 func _check_met(coin = null):
 	if facing == Coin.Facing.ANY:
-		_on_met()
+		super._check_met()
 	elif facing == Coin.Facing.HEADS and coin.heads:
-		_on_met()
+		super._check_met()
 	elif facing == Coin.Facing.TAILS and not coin.heads:
-		_on_met()
+		super._check_met()
 	
 func get_description():
 	match facing:

@@ -6,7 +6,11 @@ signal remaining_changed(amount, remaining)
 
 @export var amount: int = 1
 @export var restart_per_turn: bool = true
-var remaining: int
+var remaining: int : set = set_remaining
+
+func set_remaining(value):
+	remaining = value
+	remaining_changed.emit(amount, remaining)
 
 func connect_to(p_user):
 	super.connect_to(p_user)
@@ -19,7 +23,6 @@ func _on_met():
 
 func _check_met():
 	remaining -= 1
-	remaining_changed.emit(amount, remaining)
 	if remaining == 0:
 		_on_met()
 		_reset()

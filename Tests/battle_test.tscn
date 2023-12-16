@@ -1,7 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://dip7b67w54m78"]
+[gd_scene load_steps=28 format=3 uid="uid://dip7b67w54m78"]
 
 [ext_resource type="Script" path="res://Tests/battle_test.gd" id="1_h0e27"]
-[ext_resource type="Resource" uid="uid://0tb5ir6mx8dp" path="res://Battle/enemy/resources/data/boss_enemy_data_3.tres" id="2_bgiis"]
+[ext_resource type="Resource" uid="uid://jlcky6cxyuuq" path="res://Battle/enemy/resources/data/berserker_boss_data.tres" id="2_wvso2"]
 [ext_resource type="PackedScene" uid="uid://dyrxg61yw7bhk" path="res://Run/player.tscn" id="6_ujn4n"]
 [ext_resource type="Script" path="res://Battle/combatant/PlayerStats.gd" id="7_hi817"]
 [ext_resource type="Texture2D" uid="uid://djmrox3cqnntc" path="res://icon.svg" id="8_ngw0y"]
@@ -14,6 +14,12 @@
 [ext_resource type="Resource" uid="uid://dohuwbuerwh8r" path="res://Battle/skills/resources/balanced_strike.tres" id="11_qij5i"]
 [ext_resource type="Resource" uid="uid://d78buw8sx4i6" path="res://Items/equipment/resources/regular_coin.tres" id="12_aic3c"]
 [ext_resource type="Resource" uid="uid://000ce1xcp83o" path="res://Items/equipment/resources/conditional/flip_shield.tres" id="13_eja2v"]
+[ext_resource type="Script" path="res://Items/modifiers/conditions/events/hit_condition.gd" id="15_hhuxl"]
+[ext_resource type="Script" path="res://Items/modifiers/components/armor_modifier_component.gd" id="16_tct52"]
+[ext_resource type="Script" path="res://Items/modifiers/conditions/condition_trigger.gd" id="17_pqtx1"]
+[ext_resource type="Script" path="res://Items/equipment/equipment.gd" id="18_vtphm"]
+[ext_resource type="Texture2D" uid="uid://67vxmnlk8br1" path="res://Items/equipment/sprites/test_item.png" id="19_rnt17"]
+[ext_resource type="Script" path="res://Items/equipment/equipment_ui_data.gd" id="20_h6i87"]
 
 [sub_resource type="Resource" id="Resource_ln2xl"]
 script = ExtResource("7_hi817")
@@ -30,6 +36,37 @@ script = ExtResource("9_bwyuj")
 sprite = ExtResource("8_ngw0y")
 ui_name = "TEST PLAYER"
 
+[sub_resource type="Resource" id="Resource_tjsun"]
+script = ExtResource("15_hhuxl")
+amount = 1
+restart_per_turn = true
+
+[sub_resource type="Resource" id="Resource_vqefv"]
+script = ExtResource("16_tct52")
+armor = 2
+action = 0
+
+[sub_resource type="Resource" id="Resource_bq4so"]
+script = ExtResource("17_pqtx1")
+state_conditions = Array[Resource("res://Items/modifiers/conditions/state_condition.gd")]([])
+event_condition = SubResource("Resource_tjsun")
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_vqefv")])
+amount = 1
+reset_per_turn = false
+
+[sub_resource type="Resource" id="Resource_k6cpq"]
+script = ExtResource("20_h6i87")
+icon = ExtResource("19_rnt17")
+ui_name = "TEST"
+
+[sub_resource type="Resource" id="Resource_aicth"]
+script = ExtResource("18_vtphm")
+ui_data = SubResource("Resource_k6cpq")
+description = ""
+rarity = 0
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+condition_triggers = Array[ExtResource("17_pqtx1")]([SubResource("Resource_bq4so")])
+
 [node name="BattleTest" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -38,10 +75,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_h0e27")
-enemy_data = ExtResource("2_bgiis")
+enemy_data = ExtResource("2_wvso2")
 
 [node name="Player" parent="." instance=ExtResource("6_ujn4n")]
 stats = SubResource("Resource_ln2xl")
 ui_data = SubResource("Resource_bvfks")
 skill_list = Array[Resource("res://Battle/skills/SkillData.gd")]([ExtResource("10_yny00"), ExtResource("11_qij5i"), ExtResource("9_75lu2"), ExtResource("10_bhkht"), ExtResource("11_atv6b")])
-default_equipment = Array[Resource("res://Items/equipment/equipment.gd")]([ExtResource("11_fot7h"), ExtResource("12_aic3c"), ExtResource("13_eja2v")])
+default_equipment = Array[ExtResource("18_vtphm")]([ExtResource("11_fot7h"), ExtResource("12_aic3c"), ExtResource("13_eja2v"), SubResource("Resource_aicth")])

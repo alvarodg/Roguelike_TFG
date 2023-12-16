@@ -78,21 +78,25 @@ func _weld_paths():
 			
 ## Fusiona un nodo concreto con el inmediatamente inferior, heredando sus conexiones
 func _weld_neightbors(column, row):
+	# Selecciona el nodo en la posición indicada y su inmediatamente inferior
 	var node_to_weld = node_matrix[column][row]
 	var node_to_remove = node_matrix[column][row+1]
 	
+	# Coloca el nodo que va a seguir existiendo en la posición media con el que se va a eliminar.
 	var average_position = 0.5 * (node_to_weld.position + node_to_remove.position)
 	node_to_weld.position = average_position
 
+	# Conecta los descendientes y ascendientes del nodo a eliminar al nodo seleccionado.
 	var descendants = graph.get_descendants(node_to_remove.index)
-	var ascestors = graph.get_ancestors(node_to_remove.index)
+	var ancestors = graph.get_ancestors(node_to_remove.index)
 	for d in descendants:
 		graph.remove_edge(node_to_remove.index, d)
 		graph.add_edge(node_to_weld.index, d)
-	for a in ascestors:
+	for a in ancestors:
 		graph.remove_edge(a, node_to_remove.index)
 		graph.add_edge(a, node_to_weld.index)
-		
+			
+	# Elimina el nodo
 	graph.remove_vertex(node_to_remove.index)
 	node_matrix[column].pop_at(row+1)
 

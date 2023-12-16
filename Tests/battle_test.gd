@@ -9,4 +9,3 @@ func _ready():
 	var battle = battle_scene.instantiate()
 	battle.setup(player,enemy_data)
 	add_child(battle)
-

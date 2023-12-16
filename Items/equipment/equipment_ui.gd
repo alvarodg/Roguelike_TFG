@@ -22,5 +22,5 @@ func reset_equipment_icons(equipment_list: Array):
 		if icon is EquipmentIcon: icon.queue_free()
 	for equipment in equipment_list:
 		var equip_icon = equip_icon_scene.instantiate()
-		equip_icon.setup(equipment)
 		equipment_grid.add_child(equip_icon)
+		equip_icon.setup(equipment)

@@ -109,7 +109,6 @@ func insert_coin(coin: Coin) -> bool:
 		if inserted_coins.size() == coins_needed:
 			set_unavailable()
 		coin_inserted.emit(coin)
-		EventBus.coin_inserted.emit(self, coin)
 		return true
 	else:
 		return false

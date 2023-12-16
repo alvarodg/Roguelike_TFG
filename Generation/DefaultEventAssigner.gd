@@ -17,7 +17,7 @@ var rng: RandomNumberGenerator
 func get_event(p_rng: RandomNumberGenerator, _node_matrix :Array = [], node: EventNode = null) -> Event:
 	rng = p_rng
 	if not node is Node: return Event.new()
-	# A mejorar, de momento solo deja indicar columnas en las que todos los eventos
+	# Asignación básica, deja indicar columnas en las que todos los eventos
 	# tienen que ser iguales y después reparte aleatoriamente
 	for restriction in restrictions:
 		if restriction.x == node.coordinates.x:

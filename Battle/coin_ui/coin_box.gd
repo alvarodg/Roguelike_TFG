@@ -6,6 +6,7 @@ extends Control
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	EventBus.coin_inserted.connect(_on_coin_inserted)
+	EventBus.looking_for_coin.connect(_on_coin_requested)
 
 func setup(player: Player):
 	player.coins_changed.connect(_on_Player_coins_changed)
@@ -35,3 +36,11 @@ func _set_focus_coin(facing: Coin.Facing):
 	if chosen_coin != null: 
 		chosen_coin.is_selected = true
 		chosen_coin.grab_focus()
+
+func _on_coin_requested(facing: Coin.Facing = Coin.Facing.ANY):
+	var chosen_coin: Coin = null
+	for coin in coin_box_container.get_children():
+		if coin is Coin and coin.status == Coin.Status.AVAILABLE and coin.check_facing(facing):
+			chosen_coin = coin
+			break
+	EventBus.found_coin.emit(chosen_coin)
