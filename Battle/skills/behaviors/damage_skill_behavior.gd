@@ -8,12 +8,26 @@ class_name DamageSkillBehavior
 @export var ignore_armor: bool = false
 @export var ignore_dodges: bool = false
 
+var wait_time: float = 0.5
+const slash = preload("res://Battle/skills/animations/slash_animation.tscn")
 
 func use(user, target, _coins):
+	var animation = slash.instantiate()
 	if to_self:
 		user.stats.take_damage(damage, ignore_shield, ignore_armor, ignore_dodges)
+		# Probablemente mover a otra clase y llamar con señales
+		user.add_child(animation)
+		animation.global_position = user.battle_position
+		user.wait(wait_time)
+		await target.finished_waiting
 	else:
 		target.stats.take_damage(user.stats.strength + damage, ignore_shield, ignore_armor, ignore_dodges)
+		target.add_child(animation)
+		animation.global_position = target.battle_position
+		target.wait(wait_time)
+		await target.finished_waiting
+
+
 
 func get_description() -> String:
 	var description: String = ""

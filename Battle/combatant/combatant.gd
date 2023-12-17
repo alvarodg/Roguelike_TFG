@@ -7,6 +7,10 @@ signal started_turn
 signal turn_finished
 signal died
 signal equipment_changed(value)
+signal started_waiting
+signal finished_waiting
+
+var battle_position: Vector2
 
 # Subclases deberán tener los siguientes parámetros:
 # stats: CombatantStats o subclase
@@ -18,3 +22,12 @@ signal equipment_changed(value)
 #
 #func get_ui_data():
 #	pass
+
+func wait(time: float):
+	if time > 0:
+		started_waiting.emit()
+		await get_tree().create_timer(time).timeout
+	finished_waiting.emit()
+
+func get_body_position():
+	pass

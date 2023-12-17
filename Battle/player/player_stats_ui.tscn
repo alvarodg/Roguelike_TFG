@@ -1,9 +1,47 @@
-[gd_scene load_steps=5 format=3 uid="uid://cgeo8n0mg0x68"]
+[gd_scene load_steps=8 format=3 uid="uid://cgeo8n0mg0x68"]
 
 [ext_resource type="Script" path="res://Battle/player/player_stats_ui.gd" id="1_t78et"]
 [ext_resource type="Texture2D" uid="uid://djmrox3cqnntc" path="res://icon.svg" id="1_v03cj"]
 [ext_resource type="PackedScene" uid="uid://cm2iaddemayb2" path="res://Battle/health_bar.tscn" id="3_rf0j1"]
 [ext_resource type="PackedScene" uid="uid://20lggu6h8kmx" path="res://Items/equipment/equipment_ui.tscn" id="4_jt7va"]
+
+[sub_resource type="Animation" id="Animation_j0gcq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerIcon:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_swovg"]
+resource_name = "player_hit"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerIcon:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.396078), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qhhnk"]
+_data = {
+"RESET": SubResource("Animation_j0gcq"),
+"player_hit": SubResource("Animation_swovg")
+}
 
 [node name="PlayerStatsUI" type="Control"]
 layout_mode = 3
@@ -80,3 +118,8 @@ offset_right = 34.0
 offset_bottom = -134.0
 grow_horizontal = 1
 grow_vertical = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qhhnk")
+}

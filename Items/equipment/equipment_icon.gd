@@ -37,8 +37,12 @@ func setup(p_equipment: Equipment):
 func _on_triggers_changed(amount: int, remaining: int):
 	if amount > 0 and remaining == 0:
 		shadow.show()
+		event_counter_container.hide()
+#		trigger_counter_container.hide()
 	else:
 		shadow.hide()
+		event_counter_container.show()
+#		trigger_counter_container.show()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

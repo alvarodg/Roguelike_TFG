@@ -7,11 +7,14 @@ extends Control
 @onready var armor_label = %ArmorLabel
 @onready var dodges_label = %DodgesLabel
 
+@onready var animation_player = $AnimationPlayer
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 	
 func setup(player: Player):
+	player.battle_position = player_icon.global_position + player_icon.size/2
 	player_icon = player.ui_data.sprite
 	equipment_ui.setup(player)
 	health_bar.setup(player.stats)
@@ -21,8 +24,8 @@ func setup(player: Player):
 	player.stats.shield_changed.connect(_on_Player_shield_changed)
 	player.stats.armor_changed.connect(_on_Player_armor_changed)
 	player.stats.dodges_changed.connect(_on_Player_dodges_changed)
+	player.stats.hit.connect(_on_Player_hit)
 	
-
 func _on_Player_shield_changed(shield):
 	_update_shield(shield)
 	
@@ -54,3 +57,11 @@ func _update_dodges(dodges):
 			dodges_label.text += "s"
 	else:
 		dodges_label.hide()
+
+func _on_Player_hit():
+	print("hit")
+	var tween: Tween = get_tree().create_tween()
+	tween.tween_property(%PlayerIcon, "modulate", Color(Color.WHITE, 0.3), 0.15).set_trans(Tween.TRANS_BOUNCE)
+	tween.tween_property(%PlayerIcon, "modulate", Color.WHITE, 0.15).set_trans(Tween.TRANS_BOUNCE)
+#	animation_player.play("player_hit")
+#	await animation_player.animation_finished

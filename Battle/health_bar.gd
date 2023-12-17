@@ -14,21 +14,21 @@ func _process(_delta):
 func setup(combatant: CombatantStats):
 	max_value = combatant.max_health
 	value = combatant.health
-	_update_label()
+#	_update_label()
 	combatant.health_changed.connect(_on_Combatant_health_changed)
 	combatant.max_health_changed.connect(_on_Combatant_max_health_changed)
 
 	
 func _on_Combatant_health_changed(health):
-	value = health
-	_update_label()
+	var tween = get_tree().create_tween()
+	var time = 5 * abs(value - health)/max_value
+	tween.tween_property(self, "value", health, time)
+#	value = health
+#	_update_label()
 	
 func _on_Combatant_max_health_changed(max_health):
 	max_value = max_health
-	_update_label()
-
-	
-func _update_label():
-	health_label.text = str(value) + " HP"
 
 
+func _on_value_changed(value):
+	health_label.text = str(int(value)) + " HP"

@@ -6,6 +6,9 @@ signal coins_changed
 signal coin_flipped(coin)
 signal ended_battle
 
+signal started_taking_damage
+signal finished_taking_damage
+
 @export var stats: PlayerStats : set = set_stats
 @export var ui_data: PlayerUIData
 @export var skill_list: Array[SkillData]
@@ -19,6 +22,9 @@ var default_coin = preload("res://Battle/coin_ui/resources/default_coin.tres")
 # Para cargar partida
 var stats_load_dict: Dictionary = {}
 var ui_load_dict: Dictionary = {}
+
+var taking_damage: bool = false : set = set_taking_damage
+var in_damage_queue: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -133,6 +139,26 @@ func _on_Stats_died():
 
 func _on_Coin_flipped(coin):
 	coin_flipped.emit(coin)
+
+func set_taking_damage(value):
+	if taking_damage != value:
+		if value:
+			started_taking_damage.emit()
+		else:
+			finished_taking_damage.emit()
+	taking_damage = value
+	
+
+# TEMPORAL
+func take_damage(amount: int):
+#	if taking_damage:
+#		await get_tree().create_timer(0.6).timeout
+#		taking_damage = false
+##		await finished_taking_damage
+#	taking_damage = true
+	stats.take_damage(amount)
+#	await get_tree().create_timer(0.6).timeout
+#	taking_damage = false
 
 func save() -> Dictionary:
 	var save_dict = {

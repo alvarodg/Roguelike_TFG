@@ -35,6 +35,7 @@ func _ready():
 	assert(stats is EnemyStats)
 	target = combatants.player
 	sprite.texture = ui_data.sprite
+	battle_position = sprite.global_position + sprite.size/2
 	stats.setup()
 	for equipment in equipment_list:
 		equip(equipment)
@@ -77,6 +78,7 @@ func remove_upcoming_skill(skill: SkillData):
 	
 func connect_to_stat_signals(p_stats):
 	p_stats.died.connect(_on_death)
+	p_stats.hit.connect(_on_hit)
 
 func remove_available_skill(skill: SkillData):
 	if not skill is SkillData: return
@@ -126,3 +128,11 @@ func equip(equipment: Equipment):
 	equipment.attach_to(self)
 	equipment.setup()
 	equipment_changed.emit(equipment_list)
+
+func take_damage(amount: int):
+	stats.take_damage(amount)
+
+func _on_hit():
+	var tween: Tween = get_tree().create_tween()
+	tween.tween_property(%Sprite, "modulate", Color(Color.WHITE, 0.3), 0.15).set_trans(Tween.TRANS_BOUNCE)
+	tween.tween_property(%Sprite, "modulate", Color.WHITE, 0.15).set_trans(Tween.TRANS_BOUNCE)
