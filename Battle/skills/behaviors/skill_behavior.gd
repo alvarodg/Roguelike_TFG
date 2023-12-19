@@ -6,5 +6,5 @@ func use(_user, _target, _coins):
 	pass
 
 # Genera una descripción de las funciones de la habilidad a partir de sus parámetros
-func get_description() -> String:
+func get_description(_combatant: Combatant = null) -> String:
 	return "Does nothing"

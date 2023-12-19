@@ -6,10 +6,10 @@ enum Action {ADD, SET}
 func _init():
 	pass
 
-func apply_to(user):
+func apply_to(_user):
 	pass
 
-func get_description() -> String:
+func get_description(_combatant: Combatant = null) -> String:
 	return ""
 
 func apply_action(action: Action, value, mod):

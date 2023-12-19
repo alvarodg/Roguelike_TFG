@@ -10,6 +10,6 @@ func apply_to(user):
 	assert(user.stats is PlayerStats)
 	user.stats.coin_count += coin_count
 
-func get_description() -> String:
+func get_description(combatant: Combatant = null) -> String:
 	var plural = "s" if coin_count > 1 else ""
 	return "%+d Coin%s." % [coin_count, plural]

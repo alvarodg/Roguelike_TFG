@@ -6,5 +6,5 @@ class_name ShieldSkillBehavior
 func use(user, _target, _coins):
 	user.stats.shield += shield
 
-func get_description():
+func get_description(combatant: Combatant = null):
 	return "%s Shield" % [shield]

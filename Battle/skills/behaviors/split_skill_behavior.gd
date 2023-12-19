@@ -17,14 +17,14 @@ func use(user, target, coins):
 		for behavior in tails_behaviors:
 			behavior.use(user,target,coins)
 
-func get_description() -> String:
+func get_description(combatant: Combatant = null) -> String:
 	var heads_description = ""
 	var tails_description = ""
 	for behavior in heads_behaviors:
 		if heads_description != "": heads_description += "\n"
-		heads_description += behavior.get_description()
+		heads_description += behavior.get_description(combatant)
 	for behavior in tails_behaviors:
 		if tails_description != "": tails_description += "\n"
-		tails_description += behavior.get_description()
+		tails_description += behavior.get_description(combatant)
 	var description = "Heads: %s\nTails: %s" % [heads_description, tails_description]
 	return description

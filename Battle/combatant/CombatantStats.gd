@@ -10,6 +10,7 @@ signal dodges_changed(value)
 signal hit
 signal dodged
 signal shield_broke
+signal made_contact
 signal died
 
 @export var max_health: int = 90 : set = set_max_health
@@ -99,6 +100,7 @@ func take_damage(amount: int, ignore_shield = false, ignore_armor = false, ignor
 		dodges -= 1
 		dodged.emit()
 	elif eff_shield > 0:
+		made_contact.emit()
 		var damage_remainder = amount - eff_armor - eff_shield
 		var armor_remainder = max(0, eff_armor - eff_shield)
 		shield -= max(0, amount - eff_armor)
@@ -108,6 +110,7 @@ func take_damage(amount: int, ignore_shield = false, ignore_armor = false, ignor
 			health -= max(0, damage_remainder - armor_remainder)
 			hit.emit()
 	else:
+		made_contact.emit()
 		health -= max(0, amount - eff_armor)
 		hit.emit()
 

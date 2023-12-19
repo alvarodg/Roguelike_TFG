@@ -11,6 +11,7 @@ signal started_waiting
 signal finished_waiting
 
 var battle_position: Vector2
+var last_contact: Combatant
 
 # Subclases deberán tener los siguientes parámetros:
 # stats: CombatantStats o subclase

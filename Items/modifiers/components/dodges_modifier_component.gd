@@ -10,5 +10,5 @@ func apply_to(user):
 	assert(user.stats is CombatantStats)
 	user.stats.dodges += dodges
 
-func get_description() -> String:
+func get_description(combatant: Combatant = null) -> String:
 	return "%+d Dodges." % dodges

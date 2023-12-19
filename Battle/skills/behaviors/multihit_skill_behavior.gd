@@ -18,10 +18,11 @@ func use(user, target, _coins):
 			await target.finished_waiting
 		target.stats.take_damage(user.stats.strength + damage)
 
-func get_description() -> String:
+func get_description(combatant: Combatant = null) -> String:
 	var description: String = ""
+	var string_damage = str(damage) if combatant == null or combatant.stats.strength == 0 else "[color=green]"+str(damage+combatant.stats.strength)+"[/color]"
 	# Descripción de daño
-	description += str(damage)
+	description += string_damage
 	if hits > 1:
 		description += " x "+str(hits)
 	description += " Damage"

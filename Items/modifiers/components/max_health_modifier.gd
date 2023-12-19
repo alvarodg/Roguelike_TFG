@@ -15,5 +15,5 @@ func apply_to(user):
 	if fill:
 		health_mod.apply_to(user)
 
-func get_description() -> String:
+func get_description(combatant: Combatant = null) -> String:
 	return "%+d Max Health." % max_health

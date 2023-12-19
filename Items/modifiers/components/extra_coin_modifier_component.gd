@@ -18,7 +18,7 @@ func apply_to(user: Player):
 			Coin.Facing.HEADS: coin.heads = true
 			Coin.Facing.TAILS: coin.heads = false
 
-func get_description() -> String:
+func get_description(combatant: Combatant = null) -> String:
 	var coin_type = "Ephemeral" if ephemeral else "Persistent"
 	var plural = "" if coin_data_list.size() == 1 else "s"
 	var facing_text = Coin.get_facing_text(facing)

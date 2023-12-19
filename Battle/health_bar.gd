@@ -30,5 +30,5 @@ func _on_Combatant_max_health_changed(max_health):
 	max_value = max_health
 
 
-func _on_value_changed(value):
-	health_label.text = str(int(value)) + " HP"
+func _on_value_changed(new_value):
+	health_label.text = str(int(new_value)) + " HP"

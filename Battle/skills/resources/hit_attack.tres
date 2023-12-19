@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="SkillData" load_steps=4 format=3 uid="uid://bsioc5j8lwg1x"]
+[gd_resource type="Resource" script_class="SkillData" load_steps=6 format=3 uid="uid://bsioc5j8lwg1x"]
 
 [ext_resource type="Script" path="res://Battle/skills/behaviors/damage_skill_behavior.gd" id="1_2yixn"]
 [ext_resource type="Script" path="res://Battle/skills/SkillData.gd" id="2_h6i3m"]
+[ext_resource type="Script" path="res://Battle/skills/skill_ui_data.gd" id="3_wqlmq"]
 
 [sub_resource type="Resource" id="Resource_l622n"]
 script = ExtResource("1_2yixn")
@@ -11,14 +12,19 @@ ignore_shield = false
 ignore_armor = false
 ignore_dodges = false
 
+[sub_resource type="Resource" id="Resource_1bbtm"]
+script = ExtResource("3_wqlmq")
+ui_name = ""
+
 [resource]
 script = ExtResource("2_h6i3m")
+ui_data = SubResource("Resource_1bbtm")
 name = "Hit"
 cost = Array[int]([0, 1, 0])
 uses_per_turn = -1
-one_shot = false
-cost_is_mandatory = true
-rarity = 0
+one_shot = null
+cost_is_mandatory = null
+rarity = null
 behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_l622n")])
-modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
-modifiers_first = true
+modifiers = null
+modifiers_first = null

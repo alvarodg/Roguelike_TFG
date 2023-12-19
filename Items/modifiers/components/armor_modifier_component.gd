@@ -11,5 +11,5 @@ func apply_to(user):
 	assert(user.stats is CombatantStats)
 	user.stats.armor = apply_action(action, user.stats.armor, armor)
 
-func get_description() -> String:
+func get_description(combatant: Combatant = null) -> String:
 	return action_description(action, "Armor", armor)
