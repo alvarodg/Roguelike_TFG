@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Equipment" load_steps=9 format=3 uid="uid://c8107weri3cbe"]
 
-[ext_resource type="Script" path="res://Items/modifiers/components/base_shield_modifier_component.gd" id="1_hkqvr"]
-[ext_resource type="Script" path="res://Items/modifiers/components/luck_modifier_component.gd" id="2_y5ou5"]
+[ext_resource type="Script" path="res://Items/modifiers/components/stats/base_shield_modifier_component.gd" id="1_hkqvr"]
+[ext_resource type="Script" path="res://Items/modifiers/components/stats/luck_modifier_component.gd" id="2_y5ou5"]
 [ext_resource type="Script" path="res://Items/equipment/equipment.gd" id="3_2qm54"]
 [ext_resource type="Texture2D" uid="uid://dette7wju1vll" path="res://Items/equipment/sprites/strong_shield_item.png" id="4_7ud1n"]
 [ext_resource type="Script" path="res://Items/equipment/equipment_ui_data.gd" id="5_13t6j"]
@@ -26,3 +26,4 @@ description = ""
 rarity = 0
 modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_1ggsq"), SubResource("Resource_8gl7k")])
 condition_triggers = Array[Resource("res://Items/modifiers/conditions/condition_trigger.gd")]([])
+fragile = false

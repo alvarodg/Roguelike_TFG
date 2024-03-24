@@ -79,12 +79,25 @@ func remove_upcoming_skill(skill: SkillData):
 func connect_to_stat_signals(p_stats):
 	p_stats.died.connect(_on_death)
 	p_stats.hit.connect(_on_hit)
+	p_stats.armor_changed.connect(_on_Stats_changed)
+	p_stats.dodges_changed.connect(_on_Stats_changed)
+	p_stats.health_changed.connect(_on_Stats_changed)
+	p_stats.shield_changed.connect(_on_Stats_changed)
+	p_stats.strength_changed.connect(_on_Stats_changed)
+	p_stats.max_health_changed.connect(_on_Stats_changed)
+
 
 func remove_available_skill(skill: SkillData):
 	if not skill is SkillData: return
 	available_skills.erase(skill)
 	if available_skills == []:
 		available_skills = skills.duplicate()
+
+func replace_available_skills(skill_list: Array[SkillData]):
+	available_skills = skill_list
+	upcoming_skills = []
+	for i in range(UPCOMING_AMOUNT):
+		add_upcoming_skill(pick_skill(strategy))
 
 func start_battle():
 	print("Battle started")
@@ -94,6 +107,7 @@ func start_battle():
 	started_battle.emit()
 
 func start_turn():
+	pre_started_turn.emit()
 	print("Turn started")
 	target = combatants.player
 	stats.start_turn()
@@ -136,3 +150,6 @@ func _on_hit():
 	var tween: Tween = get_tree().create_tween()
 	tween.tween_property(%Sprite, "modulate", Color(Color.WHITE, 0.3), 0.15).set_trans(Tween.TRANS_BOUNCE)
 	tween.tween_property(%Sprite, "modulate", Color.WHITE, 0.15).set_trans(Tween.TRANS_BOUNCE)
+
+func _on_Stats_changed(_value):
+	stats_changed.emit(stats)

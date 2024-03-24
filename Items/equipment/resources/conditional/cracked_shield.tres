@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="Equipment" load_steps=11 format=3 uid="uid://b7sjt11v6k3q4"]
+
+[ext_resource type="Script" path="res://Items/modifiers/conditions/events/start_of_turn_condition.gd" id="1_eojwn"]
+[ext_resource type="Script" path="res://Items/equipment/equipment.gd" id="1_noocq"]
+[ext_resource type="Script" path="res://Items/modifiers/components/stats/shield_modifier_component.gd" id="2_f8uv4"]
+[ext_resource type="Script" path="res://Items/modifiers/conditions/condition_trigger.gd" id="3_ewfpr"]
+[ext_resource type="Texture2D" uid="uid://dq1qq8ynw10pt" path="res://Items/equipment/sprites/regular_shield_item.png" id="5_4o6tk"]
+[ext_resource type="Script" path="res://Items/equipment/equipment_ui_data.gd" id="6_jq4xn"]
+
+[sub_resource type="Resource" id="Resource_pdkv2"]
+script = ExtResource("1_eojwn")
+at_beginning = false
+amount = 1
+restart_per_turn = true
+
+[sub_resource type="Resource" id="Resource_q2oon"]
+script = ExtResource("2_f8uv4")
+magnitude = 10.0
+action = 0
+
+[sub_resource type="Resource" id="Resource_rwjdr"]
+script = ExtResource("3_ewfpr")
+state_conditions = Array[Resource("res://Items/modifiers/conditions/state_condition.gd")]([])
+event_condition = SubResource("Resource_pdkv2")
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_q2oon")])
+amount = 3
+reset = 2
+
+[sub_resource type="Resource" id="Resource_tqg4k"]
+script = ExtResource("6_jq4xn")
+icon = ExtResource("5_4o6tk")
+ui_name = "Cracked Shield"
+
+[resource]
+script = ExtResource("1_noocq")
+ui_data = SubResource("Resource_tqg4k")
+description = ""
+rarity = 0
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+condition_triggers = Array[ExtResource("3_ewfpr")]([SubResource("Resource_rwjdr")])
+fragile = false

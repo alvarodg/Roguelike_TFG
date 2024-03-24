@@ -11,6 +11,7 @@
 
 [sub_resource type="Resource" id="Resource_1d3g5"]
 script = ExtResource("2_1x6ov")
+at_beginning = false
 amount = 1
 restart_per_turn = true
 
@@ -26,7 +27,7 @@ state_conditions = Array[Resource("res://Items/modifiers/conditions/state_condit
 event_condition = SubResource("Resource_1d3g5")
 modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_n1odi")])
 amount = -1
-reset_per_turn = true
+reset = 1
 
 [sub_resource type="Resource" id="Resource_f28cs"]
 script = ExtResource("8_gl0wq")
@@ -40,3 +41,4 @@ description = ""
 rarity = 0
 modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 condition_triggers = Array[ExtResource("5_7lrrt")]([ExtResource("1_i0q3s"), SubResource("Resource_hi8wk")])
+fragile = false

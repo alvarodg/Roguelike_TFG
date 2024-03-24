@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Items/modifiers/conditions/events/flip_condition.gd" id="1_pcene"]
 [ext_resource type="Script" path="res://Items/equipment/equipment.gd" id="1_w7ntb"]
-[ext_resource type="Script" path="res://Items/modifiers/components/shield_modifier_component.gd" id="2_qlnsn"]
+[ext_resource type="Script" path="res://Items/modifiers/components/stats/shield_modifier_component.gd" id="2_qlnsn"]
 [ext_resource type="Script" path="res://Items/modifiers/conditions/condition_trigger.gd" id="3_r6368"]
 [ext_resource type="Texture2D" uid="uid://wcprls85xk1o" path="res://Items/equipment/sprites/flip_shield_item.png" id="3_rejn3"]
 [ext_resource type="Script" path="res://Items/equipment/equipment_ui_data.gd" id="4_672t5"]
@@ -15,7 +15,8 @@ restart_per_turn = true
 
 [sub_resource type="Resource" id="Resource_6ps1d"]
 script = ExtResource("2_qlnsn")
-shield = 1
+magnitude = 1.0
+action = 0
 
 [sub_resource type="Resource" id="Resource_ro1vk"]
 script = ExtResource("3_r6368")
@@ -23,7 +24,7 @@ state_conditions = Array[Resource("res://Items/modifiers/conditions/state_condit
 event_condition = SubResource("Resource_m704w")
 modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_6ps1d")])
 amount = -1
-reset_per_turn = true
+reset = 1
 
 [sub_resource type="Resource" id="Resource_ifbrn"]
 script = ExtResource("4_672t5")
@@ -37,3 +38,4 @@ description = ""
 rarity = 0
 modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 condition_triggers = Array[ExtResource("3_r6368")]([SubResource("Resource_ro1vk")])
+fragile = false

@@ -1,22 +1,28 @@
 extends Resource
 class_name Equipment
 
+signal broke(equipment)
+
 @export var ui_data: EquipmentUIData = EquipmentUIData.new()
 @export var description: String = ""
 @export var rarity: int = 0
 @export var modifiers: Array[Modifier]
 # Probablemente crear un padre común a modifier y trigger
 @export var condition_triggers: Array[ConditionTrigger]
+@export var fragile: bool = false
+
 # Called when the node enters the scene tree for the first time.
 func attach_to(user):
 	for mod in modifiers:
 		mod.apply_to(user)
 	for trigger in condition_triggers:
 		trigger.apply_to(user)
+	if fragile: user.ended_battle.connect(_on_battle_ended)
 
 func connect_to(user):
 	for trigger in condition_triggers:
 		trigger.apply_to(user)
+	if fragile: user.ended_battle.connect(_on_battle_ended)
 
 func setup():
 	for trigger in condition_triggers:
@@ -34,3 +40,7 @@ func get_description() -> String:
 		return desc
 	else: 
 		return description
+
+func _on_battle_ended():
+	print("ending")
+	if fragile: broke.emit(self)

@@ -18,3 +18,4 @@ description = ""
 rarity = 0
 modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 condition_triggers = Array[Resource("res://Items/modifiers/conditions/condition_trigger.gd")]([ExtResource("1_urwo2"), ExtResource("2_ayqpj")])
+fragile = false

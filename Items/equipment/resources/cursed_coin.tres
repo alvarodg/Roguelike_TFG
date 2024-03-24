@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Equipment" load_steps=9 format=3 uid="uid://dux2lw2o3v0dr"]
 
 [ext_resource type="Script" path="res://Items/modifiers/components/coin_count_modifier_component.gd" id="1_lhtxl"]
-[ext_resource type="Script" path="res://Items/modifiers/components/luck_modifier_component.gd" id="2_e1joe"]
+[ext_resource type="Script" path="res://Items/modifiers/components/stats/luck_modifier_component.gd" id="2_e1joe"]
 [ext_resource type="Script" path="res://Items/equipment/equipment.gd" id="3_wybjq"]
 [ext_resource type="Texture2D" uid="uid://brhaks7gecgdr" path="res://Items/equipment/sprites/cursedcoin_item.png" id="4_fq80y"]
 [ext_resource type="Script" path="res://Items/equipment/equipment_ui_data.gd" id="5_rltl5"]
@@ -26,3 +26,4 @@ description = ""
 rarity = 0
 modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_68nxf"), SubResource("Resource_8gl7k")])
 condition_triggers = Array[Resource("res://Items/modifiers/conditions/condition_trigger.gd")]([])
+fragile = false

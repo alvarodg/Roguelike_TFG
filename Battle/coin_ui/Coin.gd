@@ -34,8 +34,11 @@ func _input(event):
 		is_dragging = false
 		set_facing_texture()
 
-func flip(mod: float = 1.0) -> bool:
-	heads = data.heads_chance * mod > randf()
+func flip(mod: float = 1.0, force: Facing = Facing.ANY) -> bool:
+	if force == Facing.ANY:
+		heads = data.heads_chance * mod > randf()
+	else:
+		heads = true if force == Facing.HEADS else false
 	flipped.emit(self)
 	return heads
 

@@ -4,7 +4,6 @@ class_name Player
 
 signal coins_changed
 signal coin_flipped(coin)
-signal ended_battle
 
 signal started_taking_damage
 signal finished_taking_damage
@@ -23,15 +22,18 @@ var default_coin = preload("res://Battle/coin_ui/resources/default_coin.tres")
 var stats_load_dict: Dictionary = {}
 var ui_load_dict: Dictionary = {}
 
+var bias: Coin.Facing = Coin.Facing.ANY
+
 var taking_damage: bool = false : set = set_taking_damage
 var in_damage_queue: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	RunData.player = self
-	stats.coin_count_changed.connect(_on_Stats_coin_count_changed)
-	stats.died.connect(_on_Stats_died)
+#	stats.coin_count_changed.connect(_on_Stats_coin_count_changed)
+#	stats.died.connect(_on_Stats_died)
 	stats.setup()
+	connect_stat_signals()
 	create_coin_data(stats.coin_count)
 	# Para no volver a incluir el equipo por defecto si está cargando partida
 	if equipment_list.size() == 0:
@@ -45,8 +47,20 @@ func _ready():
 	default_equipment = []
 	reset_coins()
 	
+
+func connect_stat_signals():
+	stats.coin_count_changed.connect(_on_Stats_coin_count_changed)
+	stats.died.connect(_on_Stats_died)
+	stats.armor_changed.connect(_on_Stats_changed)
+	stats.dodges_changed.connect(_on_Stats_changed)
+	stats.health_changed.connect(_on_Stats_changed)
+	stats.shield_changed.connect(_on_Stats_changed)
+	stats.strength_changed.connect(_on_Stats_changed)
+	stats.max_health_changed.connect(_on_Stats_changed)
+	
+
 func set_stats(new_stats):
-	stats = new_stats
+	stats = new_stats	
 	stats.setup()
 
 func add_coin(coin: Coin):
@@ -65,6 +79,7 @@ func remove_skill(skill: SkillData):
 	skill_list.erase(skill)
 
 func start_turn():
+	pre_started_turn.emit()
 	stats.start_turn()
 	flip_all_coins()
 	started_turn.emit()
@@ -79,19 +94,20 @@ func start_battle():
 	started_battle.emit()
 
 func end_battle():
+	print("battle ended")
 	stats.end_battle()
 	clear_coins()
 	ended_battle.emit()
 
 func flip(coin: Coin):
-	var result = coin.flip(stats.base_luck)
+	var result = coin.flip(stats.base_luck, bias)
 	if coin in coins:
 		coins_changed.emit(coins)
 	return result
 
 func flip_all_coins():
 	for coin in coins:
-		coin.flip(stats.base_luck)
+		coin.flip(stats.base_luck, bias)
 	coins_changed.emit(coins)
 
 func reset_coins():
@@ -122,10 +138,15 @@ func clear_coins():
 
 func equip(equipment: Equipment):
 	equipment.attach_to(self)
+	equipment.broke.connect(_on_equipment_broke)
 	equipment_list.append(equipment)
 	equipment.setup()
 	equipment_changed.emit(equipment_list)
 	EventBus.equipment_equipped.emit(equipment)
+
+func unequip(equipment: Equipment):
+	equipment_list.erase(equipment)
+	equipment_changed.emit(equipment_list)
 
 # Guarda coin_count datos de monedas. No se considera poder perder monedas en esta implementación.
 func _on_Stats_coin_count_changed(value):
@@ -137,8 +158,15 @@ func _on_Stats_coin_count_changed(value):
 func _on_Stats_died():
 	died.emit()
 
+func _on_Stats_changed(_value):
+	stats_changed.emit(stats)
+	
 func _on_Coin_flipped(coin):
 	coin_flipped.emit(coin)
+
+func _on_equipment_broke(equipment: Equipment):
+	unequip(equipment)
+
 
 func set_taking_damage(value):
 	if taking_damage != value:

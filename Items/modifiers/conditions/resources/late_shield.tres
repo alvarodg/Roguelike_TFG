@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Items/modifiers/conditions/events/hit_condition.gd" id="1_ludhg"]
 [ext_resource type="Script" path="res://Items/modifiers/conditions/condition_trigger.gd" id="1_wtvd4"]
-[ext_resource type="Script" path="res://Items/modifiers/components/shield_modifier_component.gd" id="2_iynpe"]
+[ext_resource type="Script" path="res://Items/modifiers/components/stats/shield_modifier_component.gd" id="2_iynpe"]
 
 [sub_resource type="Resource" id="Resource_gxrkr"]
 script = ExtResource("1_ludhg")
@@ -11,7 +11,8 @@ restart_per_turn = true
 
 [sub_resource type="Resource" id="Resource_idrmq"]
 script = ExtResource("2_iynpe")
-shield = 20
+magnitude = 10.0
+action = 0
 
 [resource]
 script = ExtResource("1_wtvd4")
@@ -19,4 +20,4 @@ state_conditions = Array[Resource("res://Items/modifiers/conditions/state_condit
 event_condition = SubResource("Resource_gxrkr")
 modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_idrmq")])
 amount = 1
-reset_per_turn = false
+reset = 1

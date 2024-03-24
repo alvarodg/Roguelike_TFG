@@ -8,5 +8,5 @@ func apply_to(enemy: Enemy):
 	enemy.add_upcoming_skill(skill, false)
 	
 
-func get_description(combatant: Combatant = null):
-	return "Creates the following skill:\n " + skill.get_description(combatant)
+func get_description(stats: CombatantStats = null):
+	return "Creates the following skill:\n " + skill.get_description(stats)

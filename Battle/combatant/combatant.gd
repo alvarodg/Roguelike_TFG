@@ -3,12 +3,15 @@ extends Node
 class_name Combatant
 
 signal started_battle
+signal pre_started_turn
 signal started_turn
 signal turn_finished
+signal ended_battle
 signal died
 signal equipment_changed(value)
 signal started_waiting
 signal finished_waiting
+signal stats_changed(value)
 
 var battle_position: Vector2
 var last_contact: Combatant

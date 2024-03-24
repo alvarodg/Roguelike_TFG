@@ -23,7 +23,7 @@ state_conditions = Array[Resource("res://Items/modifiers/conditions/state_condit
 event_condition = SubResource("Resource_d2gi0")
 modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_3iw7m")])
 amount = 1
-reset_per_turn = true
+reset = 1
 
 [sub_resource type="Resource" id="Resource_b63dg"]
 script = ExtResource("7_m0k4o")
@@ -37,3 +37,4 @@ description = ""
 rarity = 0
 modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 condition_triggers = Array[ExtResource("4_knit5")]([SubResource("Resource_avcpi")])
+fragile = false

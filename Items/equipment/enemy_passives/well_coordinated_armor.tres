@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Equipment" load_steps=13 format=3 uid="uid://dut8n1qoteefk"]
 
 [ext_resource type="Script" path="res://Items/modifiers/conditions/events/start_of_turn_condition.gd" id="1_g3pjq"]
-[ext_resource type="Script" path="res://Items/modifiers/components/armor_modifier_component.gd" id="1_o7d6o"]
+[ext_resource type="Script" path="res://Items/modifiers/components/stats/armor_modifier_component.gd" id="1_o7d6o"]
 [ext_resource type="Script" path="res://Items/equipment/equipment.gd" id="1_otn0t"]
 [ext_resource type="Script" path="res://Items/modifiers/conditions/condition_trigger.gd" id="2_hg12g"]
 [ext_resource type="Script" path="res://Items/modifiers/conditions/states/has_shield_condition.gd" id="4_vkycr"]
@@ -10,12 +10,13 @@
 
 [sub_resource type="Resource" id="Resource_7vk5t"]
 script = ExtResource("1_g3pjq")
+at_beginning = false
 amount = 1
 restart_per_turn = true
 
 [sub_resource type="Resource" id="Resource_1p0eb"]
 script = ExtResource("1_o7d6o")
-armor = 1
+magnitude = 1.0
 action = 0
 
 [sub_resource type="Resource" id="Resource_rdfmg"]
@@ -28,7 +29,7 @@ state_conditions = Array[Resource("res://Items/modifiers/conditions/state_condit
 event_condition = SubResource("Resource_7vk5t")
 modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_1p0eb")])
 amount = -1
-reset_per_turn = true
+reset = 1
 
 [sub_resource type="Resource" id="Resource_bxcvr"]
 script = ExtResource("6_q1ct4")
@@ -42,3 +43,4 @@ description = ""
 rarity = 0
 modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 condition_triggers = Array[ExtResource("2_hg12g")]([SubResource("Resource_h28ey")])
+fragile = false

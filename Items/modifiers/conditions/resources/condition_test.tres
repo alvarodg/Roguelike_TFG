@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Items/modifiers/conditions/events/flip_condition.gd" id="1_5p2ts"]
 [ext_resource type="Script" path="res://Items/modifiers/conditions/condition_trigger.gd" id="1_40p1o"]
-[ext_resource type="Script" path="res://Items/modifiers/components/shield_modifier_component.gd" id="2_akj7k"]
+[ext_resource type="Script" path="res://Items/modifiers/components/stats/shield_modifier_component.gd" id="2_akj7k"]
 [ext_resource type="Script" path="res://Items/modifiers/conditions/states/percent_health_condition.gd" id="3_3i74d"]
 [ext_resource type="Script" path="res://Items/modifiers/conditions/states/in_battle_condition.gd" id="4_p5njj"]
 

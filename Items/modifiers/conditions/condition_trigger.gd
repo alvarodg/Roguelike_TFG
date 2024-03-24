@@ -4,12 +4,15 @@ class_name ConditionTrigger
 signal state_ok(value)
 signal triggers_changed(amount, remaining)
 
+enum Reset {PER_TURN, PER_BATTLE, PERMANENT}
+
 var turn_manager = preload("res://Battle/resources/TurnManager.tres")
 @export var state_conditions: Array[StateCondition]
 @export var event_condition: EventCondition
 @export var modifiers: Array[Modifier]
 @export var amount: int = -1
-@export var reset_per_turn: bool = true
+#@export var reset_per_turn: bool = true
+@export var reset: Reset = Reset.PER_BATTLE
 var user
 var triggers_remaining: int : set = set_triggers_remaining
 var current_state: Array[bool]
@@ -17,12 +20,13 @@ var current_state: Array[bool]
 
 func _init(p_state_conditions: Array[StateCondition] = [], 
 			p_event_condition: EventCondition = null, p_modifiers: Array[Modifier] = [], 
-			p_amount: int = -1, p_reset_per_turn: bool = true):
+			p_amount: int = -1, p_reset_per_turn: bool = true, p_reset: Reset = Reset.PER_BATTLE):
 	state_conditions = p_state_conditions
 	event_condition = p_event_condition
 	modifiers = p_modifiers
 	amount = p_amount
-	reset_per_turn = p_reset_per_turn
+#	reset_per_turn = p_reset_per_turn
+	reset = p_reset
 	triggers_remaining = amount
 	
 func setup():
@@ -62,12 +66,12 @@ func _can_trigger():
 # Posiblemente debería crear una clase base para Player y Enemy.
 func _connect_signals(p_user):
 	if p_user is Player:
-		if reset_per_turn and not turn_manager.player_turn_started.is_connected(_on_user_turn_started):
+		if reset == Reset.PER_TURN and not turn_manager.player_turn_started.is_connected(_on_user_turn_started):
 			turn_manager.player_turn_started.connect(_on_user_turn_started)
 	if p_user is Enemy:
-		if reset_per_turn and not turn_manager.enemy_turn_started.is_connected(_on_user_turn_started):
+		if reset == Reset.PER_TURN and not turn_manager.enemy_turn_started.is_connected(_on_user_turn_started):
 			turn_manager.enemy_turn_started.connect(_on_user_turn_started)
-	if amount > 0:
+	if amount > 0 and reset == Reset.PER_BATTLE:
 		p_user.started_battle.connect(_on_user_battle_started)
 
 
@@ -104,6 +108,14 @@ func get_description():
 	desc += "\n" + mod_text
 	if amount != -1:
 		var plural: String = "" if amount==1 else "s"
-		var frequency: String = "turn" if reset_per_turn else "battle"
-		desc += "\n(%d time%s per %s)" % [amount, plural, frequency]
+		var frequency: String
+		match reset:
+			Reset.PER_TURN:
+				frequency = " per turn"
+			Reset.PER_BATTLE:
+				frequency = " per battle"
+			Reset.PERMANENT:
+				frequency = ""
+		
+		desc += "\n(%d time%s%s)" % [amount, plural, frequency]
 	return desc.strip_edges()

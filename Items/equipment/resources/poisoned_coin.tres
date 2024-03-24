@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Equipment" load_steps=9 format=3 uid="uid://ck15mnqlrvupd"]
 
 [ext_resource type="Script" path="res://Items/modifiers/components/coin_count_modifier_component.gd" id="1_l2klv"]
-[ext_resource type="Script" path="res://Items/modifiers/components/max_health_modifier.gd" id="2_fplp3"]
+[ext_resource type="Script" path="res://Items/modifiers/components/stats/max_health_modifier.gd" id="2_fplp3"]
 [ext_resource type="Script" path="res://Items/equipment/equipment.gd" id="3_d8oqx"]
 [ext_resource type="Texture2D" uid="uid://ooeoqg42o03e" path="res://Items/equipment/sprites/poisonedcoin_item.png" id="4_cc7w3"]
 [ext_resource type="Script" path="res://Items/equipment/equipment_ui_data.gd" id="5_n5t6t"]
@@ -27,3 +27,4 @@ description = ""
 rarity = 0
 modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_68nxf"), SubResource("Resource_exydv")])
 condition_triggers = Array[Resource("res://Items/modifiers/conditions/condition_trigger.gd")]([])
+fragile = false
