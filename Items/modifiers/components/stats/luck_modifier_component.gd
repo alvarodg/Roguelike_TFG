@@ -3,7 +3,7 @@ class_name LuckModifier
 
 func apply_to(user):
 	assert(user.stats is CombatantStats)
-	var result = apply_action(action, user.stats.base_luck)
+	var result = apply_action(user.stats.base_luck)
 	user.stats.base_luck = result
 
 func get_description(_stats: CombatantStats = null) -> String:

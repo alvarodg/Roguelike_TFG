@@ -21,7 +21,7 @@ func _on_Player_coins_changed(new_coins):
 	for coin in new_coins:
 		coin_box_container.add_child(coin)
 
-func _on_coin_inserted(slot: Slot, coin: Coin):
+func _on_coin_inserted(slot: Slot, _coin: Coin):
 	if slot.coins_needed != slot.inserted_coins.size():
 		_set_focus_coin(slot.facing)
 	else:

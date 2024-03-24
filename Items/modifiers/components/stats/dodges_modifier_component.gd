@@ -3,7 +3,7 @@ class_name DodgesModifier
 
 func apply_to(user):
 	assert(user.stats is CombatantStats)
-	var result = apply_action(action, user.stats.dodges)
+	var result = apply_action(user.stats.dodges)
 	user.stats.dodges = int(result)
 	diff = int(diff)
 

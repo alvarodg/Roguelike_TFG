@@ -3,7 +3,7 @@ class_name StrengthModifier
 
 func apply_to(user):
 	assert(user.stats is CombatantStats)
-	var result = apply_action(action, user.stats.strength)
+	var result = apply_action(user.stats.strength)
 	user.stats.strength = int(result)
 	diff = int(diff)
 

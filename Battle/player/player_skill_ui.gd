@@ -4,21 +4,19 @@ extends Control
 @onready var skill_box_scene = preload("res://Battle/coin_ui/skill_box.tscn")
 
 var current_coin: Coin = null
-var player: Player
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	get_viewport().gui_focus_changed.connect(_on_focus_changed)
 	EventBus.found_coin.connect(_on_coin_found)
-#	pass # Replace with function body.
 
-func setup(p_player: Player):
-	player = p_player
-	player.stats.strength_changed.connect(_on_Player_stats_changed)
+func setup(player: Player):
+	player.stats_changed.connect(_on_Player_stats_changed)
 	for skill_data in player.skill_list:
 		var skill_box = skill_box_scene.instantiate()
 		skill_box.setup(skill_data)
 		skill_grid.add_child(skill_box)
-		skill_box.apply_stats(player)
+		skill_box.apply_stats(player.stats)
 		skill_box.slot_was_pressed.connect(_on_SkillBox_slot_was_pressed)
 
 # Cuando se hace click en una ranura, si se tiene una moneda seleccionada, la inserta.
@@ -51,6 +49,6 @@ func _on_coin_found(coin):
 	if coin is Coin:
 		coin.grab_focus()
 
-func _on_Player_stats_changed(_value):
+func _on_Player_stats_changed(value):
 	for skill in skill_grid.get_children():
-		if skill is SkillBox: skill.apply_stats(player)
+		if skill is SkillBox: skill.apply_stats(value)

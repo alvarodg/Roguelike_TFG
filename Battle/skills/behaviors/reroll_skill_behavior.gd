@@ -18,7 +18,7 @@ func use(user, _target, coins):
 			coin.heads = true if facing == Coin.Facing.HEADS else false
 		iter += 1
 
-func get_description(combatant: Combatant = null) -> String:
+func get_description(_stats: CombatantStats = null) -> String:
 	var description: String = ""
 	var facing_text: String = "(%s)" % Coin.get_facing_text(facing)
 	if rerolls > 0:

@@ -18,16 +18,16 @@ func set_cost(value):
 	if cost.size() > COST_TYPES:
 		cost.resize(COST_TYPES)
 
-func get_description(combatant: Combatant = null) -> String:
+func get_description(stats: CombatantStats = null) -> String:
 	var description: String = ""
 	var modifier_description: String = ""
 	var behavior_description: String = ""
 	for modifier in modifiers:
 		if modifier_description != "": modifier_description += "\n"
-		modifier_description += modifier.get_description(combatant)
+		modifier_description += modifier.get_description(stats)
 	for behavior in behaviors:
 		if behavior_description != "": behavior_description += "\n"
-		behavior_description += behavior.get_description(combatant)
+		behavior_description += behavior.get_description(stats)
 	if modifiers_first:
 		description = modifier_description + "\n" + behavior_description
 	else:

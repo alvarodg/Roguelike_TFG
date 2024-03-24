@@ -17,7 +17,7 @@ func use(user, target, coins):
 		for behavior in tails_behaviors:
 			behavior.use(user,target,coins)
 
-func get_description(combatant: Combatant = null) -> String:
+func get_description(stats: CombatantStats = null) -> String:
 	var heads_description = ""
 	var tails_description = ""
 	for behavior in heads_behaviors:

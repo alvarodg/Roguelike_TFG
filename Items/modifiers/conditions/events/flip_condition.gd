@@ -17,7 +17,6 @@ func _check_met(coin = null):
 	
 func get_description():
 	var desc: String = ""
-	var plural: String = ""
 	match facing:
 		Coin.Facing.ANY: desc = "a coin is flipped" if amount <= 1 else "coins are flipped"
 		Coin.Facing.HEADS: desc = "a coin flips Heads" if amount <=1 else "coins flip Heads"

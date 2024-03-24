@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://Battle/skills/skill_ui_data.gd" id="6_rr6ba"]
 [ext_resource type="Texture2D" uid="uid://cpaes4c4pnmxw" path="res://Battle/skills/icons/attack_skill.png" id="7_vpn1n"]
 [ext_resource type="Script" path="res://Battle/skills/behaviors/multihit_skill_behavior.gd" id="8_kcljw"]
-[ext_resource type="Script" path="res://Items/modifiers/components/strength_modifier_component.gd" id="9_jfiyw"]
+[ext_resource type="Script" path="res://Items/modifiers/components/stats/strength_modifier_component.gd" id="9_jfiyw"]
 [ext_resource type="Texture2D" uid="uid://bnro8dr0dfl0t" path="res://Battle/skills/icons/strength_boost.png" id="10_121s2"]
 [ext_resource type="Script" path="res://Battle/enemy/EnemyStats.gd" id="11_ospkg"]
 [ext_resource type="Script" path="res://Battle/enemy/enemy_ui_data.gd" id="12_xkmdk"]

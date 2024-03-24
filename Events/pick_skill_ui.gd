@@ -3,6 +3,7 @@ extends Control
 signal skill_chosen(skill)
 
 @export var skill: SkillData
+@export var player: Player
 @onready var skill_v_box_container = %SkillVBoxContainer
 @onready var skill_box_scene: PackedScene = preload("res://Battle/coin_ui/skill_box.tscn")
 
@@ -15,7 +16,8 @@ func _ready():
 	skill_box.remove_buttons()
 	skill_v_box_container.move_child(skill_box, 0)
 	
-func setup(p_skill: SkillData):
+func setup(p_player: Player, p_skill: SkillData):
+	player = p_player
 	skill = p_skill
 
 

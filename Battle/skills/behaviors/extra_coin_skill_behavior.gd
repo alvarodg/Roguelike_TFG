@@ -15,7 +15,7 @@ func use(user, _target, coins):
 			eph_coin.heads = true if facing == Coin.Facing.HEADS else false
 		user.add_coin(eph_coin)
 
-func get_description(combatant: Combatant = null) -> String:
+func get_description(_stats: CombatantStats = null) -> String:
 	var description: String = ""
 	var facing_text: String = "(%s)" % [Coin.get_facing_text(facing)]
 	if ephemeral_coins > 0:

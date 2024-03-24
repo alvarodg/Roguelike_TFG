@@ -53,8 +53,8 @@ func _ready():
 func setup(p_skill_data: SkillData):
 	skill_data = p_skill_data
 	
-func apply_stats(combatant: Combatant):
-	description_label.text = skill_data.get_description(combatant)
+func apply_stats(stats: CombatantStats):
+	description_label.text = skill_data.get_description(stats)
 	
 
 func release_inserted_coins():

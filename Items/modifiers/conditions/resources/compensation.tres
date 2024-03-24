@@ -8,7 +8,7 @@
 
 [sub_resource type="Resource" id="Resource_o6qc0"]
 script = ExtResource("1_kmwgo")
-at_beginning = false
+at_beginning = true
 amount = 1
 restart_per_turn = true
 
@@ -28,5 +28,5 @@ script = ExtResource("1_qcodb")
 state_conditions = Array[Resource("res://Items/modifiers/conditions/state_condition.gd")]([SubResource("Resource_hpw7b")])
 event_condition = SubResource("Resource_o6qc0")
 modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_243ow")])
-amount = 1
+amount = -1
 reset = 1

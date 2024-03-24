@@ -3,7 +3,7 @@ class_name ShieldModifier
 
 func apply_to(user):
 	assert(user.stats is CombatantStats)
-	var result = apply_action(action, user.stats.shield)
+	var result = apply_action(user.stats.shield)
 	user.stats.shield = int(result)
 	diff = int(diff)
 

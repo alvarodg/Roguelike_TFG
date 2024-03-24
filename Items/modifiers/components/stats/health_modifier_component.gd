@@ -3,7 +3,7 @@ class_name HealthModifier
 
 func apply_to(user):
 	assert(user.stats is CombatantStats)
-	var result = apply_action(action, user.stats.health)
+	var result = apply_action(user.stats.health)
 	user.stats.health = int(result)
 	diff = int(diff)
 

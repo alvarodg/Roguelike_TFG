@@ -11,7 +11,6 @@ var turn_manager = preload("res://Battle/resources/TurnManager.tres")
 @export var event_condition: EventCondition
 @export var modifiers: Array[Modifier]
 @export var amount: int = -1
-#@export var reset_per_turn: bool = true
 @export var reset: Reset = Reset.PER_BATTLE
 var user
 var triggers_remaining: int : set = set_triggers_remaining
@@ -20,12 +19,11 @@ var current_state: Array[bool]
 
 func _init(p_state_conditions: Array[StateCondition] = [], 
 			p_event_condition: EventCondition = null, p_modifiers: Array[Modifier] = [], 
-			p_amount: int = -1, p_reset_per_turn: bool = true, p_reset: Reset = Reset.PER_BATTLE):
+			p_amount: int = -1, p_reset: Reset = Reset.PER_BATTLE):
 	state_conditions = p_state_conditions
 	event_condition = p_event_condition
 	modifiers = p_modifiers
 	amount = p_amount
-#	reset_per_turn = p_reset_per_turn
 	reset = p_reset
 	triggers_remaining = amount
 	

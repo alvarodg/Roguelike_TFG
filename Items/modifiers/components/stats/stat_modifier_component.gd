@@ -18,7 +18,7 @@ func apply_to(_user):
 func get_description(_stats: CombatantStats = null) -> String:
 	return ""
 
-func apply_action(action: Action, value):
+func apply_action(value):
 	var result: float
 	if action == Action.ADD:
 		result = value + magnitude
@@ -30,7 +30,7 @@ func apply_action(action: Action, value):
 	return result
 	
 
-func undo_action(action: Action, value):
+func undo_action(value):
 	if action == Action.ADD:
 		return value - magnitude
 	elif action == Action.MULT:
@@ -42,6 +42,11 @@ func action_description(param_name: String):
 	if action == Action.ADD:
 		return "%+d %s" % [magnitude, param_name]
 	elif action == Action.MULT:
-		return "x %f.2 %s" % [magnitude, param_name]
+		if magnitude < 1 and magnitude > 0:
+			return "Lose %s%% of %s" % [(1-magnitude)*100, param_name]
+		elif magnitude > 1:
+			return "Increase %s by %s%%" % [param_name, (magnitude-1)*100]
+		else:
+			return "Multiply %s by %s" % [param_name, magnitude]
 	else:
 		return "Set %s to %d" % [param_name, magnitude]

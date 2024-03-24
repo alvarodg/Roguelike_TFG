@@ -3,7 +3,7 @@ class_name BaseArmorModifier
 
 func apply_to(user):
 	assert(user.stats is CombatantStats)
-	var result = apply_action(action, user.stats.base_armor)
+	var result = apply_action(user.stats.base_armor)
 	user.stats.base_armor = int(result)
 	diff = int(diff)
 

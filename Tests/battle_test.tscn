@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dip7b67w54m78"]
+[gd_scene load_steps=28 format=3 uid="uid://dip7b67w54m78"]
 
 [ext_resource type="Script" path="res://Tests/battle_test.gd" id="1_h0e27"]
 [ext_resource type="Resource" uid="uid://jlcky6cxyuuq" path="res://Battle/enemy/resources/data/berserker_boss_data.tres" id="2_wvso2"]
@@ -14,14 +14,17 @@
 [ext_resource type="Script" path="res://Items/modifiers/conditions/events/flip_condition.gd" id="12_7u418"]
 [ext_resource type="Script" path="res://Items/modifiers/components/stats/armor_modifier_component.gd" id="13_yjqp3"]
 [ext_resource type="Script" path="res://Items/modifiers/conditions/condition_trigger.gd" id="17_pqtx1"]
+[ext_resource type="Resource" uid="uid://ca8go4wc80cdi" path="res://Items/equipment/resources/conditional/binary_shield.tres" id="18_n5o8t"]
 [ext_resource type="Script" path="res://Items/equipment/equipment.gd" id="18_vtphm"]
+[ext_resource type="Resource" uid="uid://7esos6x2wgoa" path="res://Items/equipment/resources/conditional/burning_timer.tres" id="19_osuv0"]
 [ext_resource type="Texture2D" uid="uid://67vxmnlk8br1" path="res://Items/equipment/sprites/test_item.png" id="19_rnt17"]
 [ext_resource type="Script" path="res://Items/equipment/equipment_ui_data.gd" id="20_h6i87"]
+[ext_resource type="Resource" uid="uid://3h7lvkqh0mac" path="res://Items/equipment/resources/conditional/bloody_coin.tres" id="20_hquc6"]
 
 [sub_resource type="Resource" id="Resource_ln2xl"]
 script = ExtResource("7_hi817")
 coin_count = 5
-base_luck = 200.0
+base_luck = 1.0
 max_health = 90
 base_strength = 0
 base_shield = 0
@@ -80,5 +83,5 @@ enemy_data = ExtResource("2_wvso2")
 stats = SubResource("Resource_ln2xl")
 ui_data = SubResource("Resource_bvfks")
 skill_list = Array[Resource("res://Battle/skills/SkillData.gd")]([ExtResource("10_yny00"), ExtResource("11_qij5i"), ExtResource("9_75lu2"), ExtResource("10_bhkht"), ExtResource("11_atv6b")])
-default_equipment = Array[ExtResource("18_vtphm")]([SubResource("Resource_2xeyg")])
+default_equipment = Array[ExtResource("18_vtphm")]([SubResource("Resource_2xeyg"), ExtResource("18_n5o8t"), ExtResource("19_osuv0"), ExtResource("20_hquc6")])
 max_skills = null

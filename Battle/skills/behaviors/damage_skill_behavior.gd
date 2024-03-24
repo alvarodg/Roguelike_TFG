@@ -28,11 +28,11 @@ func use(user, target, _coins):
 		await target.finished_waiting
 
 
-func get_description(combatant: Combatant = null) -> String:
+func get_description(stats: CombatantStats = null) -> String:
 	var description: String = ""
 	var damage_type: String = ""
 	var damage_description: String = ""
-	var string_damage = str(damage) if combatant == null or combatant.stats.strength == 0 else "[color=green]"+str(damage+combatant.stats.strength)+"[/color]"
+	var string_damage = str(damage) if stats == null or stats.strength == 0 else "[color=green]"+str(damage+stats.strength)+"[/color]"
 	# Describe con un tipo al daño si existe uno de acuerdo con sus características.
 	if ignore_armor and ignore_dodges and ignore_shield:
 		damage_type = " True"

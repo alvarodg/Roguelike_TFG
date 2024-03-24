@@ -23,11 +23,8 @@ func _ready():
 func setup(p_skill: SkillData):
 	skill = p_skill
 
-func apply_stats(combatant: Combatant):
-	print(combatant)
-	print(skill.get_description(combatant))
-	info_label.text = skill.ui_data.ui_name + ":\n" + skill.get_description(combatant)
-	print(info_label.text)
+func apply_stats(stats: CombatantStats):
+	info_label.text = skill.ui_data.ui_name + ":\n" + skill.get_description(stats)
 	
 func set_state(value: State):
 	state = value
