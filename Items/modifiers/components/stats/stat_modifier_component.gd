@@ -40,7 +40,12 @@ func undo_action(value):
 
 func action_description(param_name: String):
 	if action == Action.ADD:
-		return "%+d %s" % [magnitude, param_name]
+		# Comprobación de formato para int o float
+		var test_int = int(magnitude)
+		if magnitude == test_int:
+			return "%+d %s" % [magnitude, param_name]
+		else:
+			return "%+.2f %s" % [magnitude, param_name]
 	elif action == Action.MULT:
 		if magnitude < 1 and magnitude > 0:
 			return "Lose %s%% of %s" % [(1-magnitude)*100, param_name]

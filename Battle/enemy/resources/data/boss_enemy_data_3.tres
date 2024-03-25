@@ -30,7 +30,8 @@ restart_per_turn = true
 
 [sub_resource type="Resource" id="Resource_oda8s"]
 script = ExtResource("2_ci1wy")
-dodges = 1
+magnitude = 0.0
+action = 0
 
 [sub_resource type="Resource" id="Resource_h5u22"]
 script = ExtResource("3_mam66")
@@ -61,7 +62,8 @@ restart_per_turn = true
 
 [sub_resource type="Resource" id="Resource_ntt4y"]
 script = ExtResource("8_qd1sk")
-health = -10
+magnitude = 0.0
+action = 0
 
 [sub_resource type="Resource" id="Resource_av0k0"]
 script = ExtResource("3_mam66")
@@ -121,7 +123,8 @@ ignore_dodges = false
 
 [sub_resource type="Resource" id="Resource_n1ipe"]
 script = ExtResource("2_ci1wy")
-dodges = 1
+magnitude = 0.0
+action = 0
 
 [sub_resource type="Resource" id="Resource_q3s7c"]
 script = ExtResource("14_af8kw")
@@ -166,7 +169,8 @@ modifiers_first = true
 
 [sub_resource type="Resource" id="Resource_rvnhm"]
 script = ExtResource("2_ci1wy")
-dodges = 7
+magnitude = 0.0
+action = 0
 
 [sub_resource type="Resource" id="Resource_ngghu"]
 script = ExtResource("14_af8kw")

@@ -7,7 +7,7 @@
 
 [sub_resource type="Resource" id="Resource_cu2ni"]
 script = ExtResource("1_qgcyk")
-armor = 1
+magnitude = 2.0
 action = 0
 
 [sub_resource type="Resource" id="Resource_hkceh"]
@@ -22,3 +22,4 @@ description = ""
 rarity = 0
 modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_cu2ni")])
 condition_triggers = Array[Resource("res://Items/modifiers/conditions/condition_trigger.gd")]([])
+fragile = false

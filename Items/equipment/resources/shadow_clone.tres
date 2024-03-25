@@ -7,7 +7,8 @@
 
 [sub_resource type="Resource" id="Resource_xh2yi"]
 script = ExtResource("1_okdgu")
-base_dodges = 1
+magnitude = 1.0
+action = 0
 
 [sub_resource type="Resource" id="Resource_0u3ry"]
 script = ExtResource("4_1a72m")

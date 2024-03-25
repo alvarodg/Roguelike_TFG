@@ -12,7 +12,8 @@ coin_count = 1
 
 [sub_resource type="Resource" id="Resource_8gl7k"]
 script = ExtResource("2_e1joe")
-luck = -0.1
+magnitude = -0.1
+action = 0
 
 [sub_resource type="Resource" id="Resource_q6b0b"]
 script = ExtResource("5_rltl5")

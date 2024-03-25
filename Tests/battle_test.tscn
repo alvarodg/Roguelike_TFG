@@ -84,4 +84,3 @@ stats = SubResource("Resource_ln2xl")
 ui_data = SubResource("Resource_bvfks")
 skill_list = Array[Resource("res://Battle/skills/SkillData.gd")]([ExtResource("10_yny00"), ExtResource("11_qij5i"), ExtResource("9_75lu2"), ExtResource("10_bhkht"), ExtResource("11_atv6b")])
 default_equipment = Array[ExtResource("18_vtphm")]([SubResource("Resource_2xeyg"), ExtResource("18_n5o8t"), ExtResource("19_osuv0"), ExtResource("20_hquc6")])
-max_skills = null

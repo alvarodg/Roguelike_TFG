@@ -9,11 +9,12 @@ class_name ExtraCoinSkillBehavior
 func use(user, _target, coins):
 	for i in range(ephemeral_coins):
 		var eph_coin = coins.front().get_ephemeral_copy()
+		user.add_coin(eph_coin)
 		if facing == Coin.Facing.ANY:
 			user.flip(eph_coin)
 		else:
 			eph_coin.heads = true if facing == Coin.Facing.HEADS else false
-		user.add_coin(eph_coin)
+
 
 func get_description(_stats: CombatantStats = null) -> String:
 	var description: String = ""

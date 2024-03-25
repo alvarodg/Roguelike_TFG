@@ -66,6 +66,7 @@ func set_stats(new_stats):
 func add_coin(coin: Coin):
 	coins.append(coin)
 	coins.filter(func(element): return element != null)
+	coin.flipped.connect(_on_Coin_flipped)
 	coins_changed.emit(coins)
 
 func set_coins(new_coins):

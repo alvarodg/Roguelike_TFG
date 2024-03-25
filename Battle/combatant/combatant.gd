@@ -16,7 +16,9 @@ signal stats_changed(value)
 var battle_position: Vector2
 var last_contact: Combatant
 
+
 # Subclases deberán tener los siguientes parámetros:
+# A MODIFICAR
 # stats: CombatantStats o subclase
 # ui_data: CombatantUIData o subclase
 
