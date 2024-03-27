@@ -2,20 +2,21 @@ extends TextureButton
 class_name Coin
 
 signal flipped(coin)
+signal dropped(coin)
 
 @export var data: CoinData
 @export var heads: bool = true : set = set_heads
 @export var heads_texture: Texture2D
 @export var tails_texture: Texture2D
 @export var heads_chance = 0.5
-@export var is_ephemeral: bool = false
+@export var is_ephemeral: bool = false : set = set_is_ephemeral
 var drag_preview_scene: PackedScene = preload("res://Battle/coin_ui/drag_preview.tscn")
 var is_dragging: bool = false
 var is_selected: bool = false : set = set_is_selected
 
 enum Facing {ANY, HEADS, TAILS}
-enum Status {AVAILABLE, INSERTED, SPENT}
-var status: Status = Status.AVAILABLE
+enum Status {AVAILABLE, INSERTED, SPENT, DROPPED}
+var status: = Status.AVAILABLE
 
 @onready var selected = %Selected
 
@@ -85,8 +86,19 @@ func set_spent():
 	focus_mode = Control.FOCUS_NONE
 	make_invisible()
 
+func set_dropped():
+	status = Status.DROPPED
+	focus_mode = Control.FOCUS_NONE
+	make_invisible()
+	dropped.emit(self)
+
+
 func set_is_selected(value):
 	is_selected = value
+
+func set_is_ephemeral(value):
+	is_ephemeral = value
+	set_facing_texture()
 
 func get_ephemeral_copy() -> Coin:
 	var e_coin = self.duplicate()

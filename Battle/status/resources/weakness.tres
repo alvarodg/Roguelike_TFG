@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="Status" load_steps=8 format=3 uid="uid://bvijqqv6e4n10"]
+
+[ext_resource type="Script" path="res://Battle/status/causality_trigger.gd" id="1_dktrd"]
+[ext_resource type="Script" path="res://Battle/status/status.gd" id="1_x5dkv"]
+[ext_resource type="Script" path="res://Battle/status/cause_and_effect.gd" id="2_stnv8"]
+[ext_resource type="Script" path="res://Battle/status/status_ui_data.gd" id="4_uhagn"]
+
+[sub_resource type="Resource" id="Resource_edbxm"]
+script = ExtResource("1_dktrd")
+state_conditions = Array[Resource("res://Items/modifiers/conditions/state_condition.gd")]([])
+event_conditions = Array[Resource("res://Items/modifiers/conditions/event_condition.gd")]([null])
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+amount = -1
+reset = 1
+
+[sub_resource type="Resource" id="Resource_bu4ck"]
+script = ExtResource("2_stnv8")
+cause = SubResource("Resource_edbxm")
+effects = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+
+[sub_resource type="Resource" id="Resource_0h10w"]
+script = ExtResource("4_uhagn")
+
+[resource]
+script = ExtResource("1_x5dkv")
+ui_data = SubResource("Resource_0h10w")
+description = ""
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+cause_and_effects = SubResource("Resource_bu4ck")

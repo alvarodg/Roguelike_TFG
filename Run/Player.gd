@@ -4,6 +4,7 @@ class_name Player
 
 signal coins_changed
 signal coin_flipped(coin)
+signal coin_dropped(coin)
 
 signal started_taking_damage
 signal finished_taking_damage
@@ -67,6 +68,7 @@ func add_coin(coin: Coin):
 	coins.append(coin)
 	coins.filter(func(element): return element != null)
 	coin.flipped.connect(_on_Coin_flipped)
+	coin.dropped.connect(_on_Coin_dropped)
 	coins_changed.emit(coins)
 
 func set_coins(new_coins):
@@ -116,6 +118,7 @@ func reset_coins():
 	for coin in coin_data:
 		var coin_instance = coin.create_coin_instance()
 		coin_instance.flipped.connect(_on_Coin_flipped)
+		coin_instance.dropped.connect(_on_Coin_dropped)
 		coins.append(coin_instance)
 	coins_changed.emit(coins)
 
@@ -136,6 +139,18 @@ func clear_coins():
 		if coin != null:
 			coin.queue_free()
 	coins = []
+
+func get_available_coins():
+	var available: Array[Coin] = []
+	for coin in coins:
+		if coin.status == Coin.Status.AVAILABLE:
+			available.append(coin)
+	return available
+
+func recover_inserted_coins():
+	for coin in coins:
+		if coin.status == Coin.Status.INSERTED:
+			pass
 
 func equip(equipment: Equipment):
 	equipment.attach_to(self)
@@ -164,6 +179,9 @@ func _on_Stats_changed(_value):
 	
 func _on_Coin_flipped(coin):
 	coin_flipped.emit(coin)
+
+func _on_Coin_dropped(coin):
+	coin_dropped.emit(coin)
 
 func _on_equipment_broke(equipment: Equipment):
 	unequip(equipment)

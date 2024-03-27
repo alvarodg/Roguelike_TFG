@@ -118,7 +118,7 @@ func release_inserted_coins():
 		coin.set_available()
 	inserted_coins = []
 	coins_changed.emit(coins_needed, inserted_coins.size())
-	set_available()
+#	set_available()
 	
 func use_coins():
 	for coin in inserted_coins:
@@ -136,7 +136,7 @@ func release_all_coins():
 	inserted_coins = []
 	used_coins = []
 	coins_changed.emit(coins_needed, inserted_coins.size())
-	set_available()
+#	set_available()
 
 # Reenvía una señal con referencia al propio nodo cuando se le hace click.
 func _on_pressed():

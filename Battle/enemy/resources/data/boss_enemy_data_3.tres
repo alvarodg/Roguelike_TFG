@@ -53,6 +53,7 @@ description = ""
 rarity = 0
 modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 condition_triggers = Array[ExtResource("3_mam66")]([SubResource("Resource_h5u22")])
+causality_triggers = Array[Resource("res://Battle/status/causality_trigger.gd")]([])
 fragile = false
 
 [sub_resource type="Resource" id="Resource_uieln"]
@@ -85,6 +86,7 @@ description = ""
 rarity = 0
 modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 condition_triggers = Array[ExtResource("3_mam66")]([SubResource("Resource_av0k0")])
+causality_triggers = Array[Resource("res://Battle/status/causality_trigger.gd")]([])
 fragile = false
 
 [sub_resource type="Resource" id="Resource_a2odx"]

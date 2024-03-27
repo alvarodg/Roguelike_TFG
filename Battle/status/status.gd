@@ -5,23 +5,20 @@ class_name Status
 @export var description: String = ""
 
 @export var modifiers: Array[Modifier]
-@export var condition_triggers: Array[ConditionTrigger]
+@export var cause_and_effects: CauseAndEffects
 
 func attach_to(user):
 	for mod in modifiers:
 		mod.apply_to(user)
-	for trigger in condition_triggers:
-		trigger.apply_to(user)
+	cause_and_effects.attach_to(user)
 	user.ended_battle.connect(_on_battle_ended)
 
 func connect_to(user):
-	for trigger in condition_triggers:
-		trigger.apply_to(user)
+	cause_and_effects.attach_to(user)
 	user.ended_battle.connect(_on_battle_ended)
 
 func setup():
-	for trigger in condition_triggers:
-		trigger.setup()
+	cause_and_effects.setup()
 	
 func get_description() -> String:
 	if description == "":
@@ -29,9 +26,7 @@ func get_description() -> String:
 		for mod in modifiers:
 			if desc != "": desc += "\n"
 			desc += mod.get_description()
-		for trigger in condition_triggers:
-			if desc != "": desc += "\n"
-			desc += trigger.get_description()
+		desc += cause_and_effects.get_description()
 		return desc
 	else: 
 		return description

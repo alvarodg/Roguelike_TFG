@@ -9,6 +9,7 @@ signal broke(equipment)
 @export var modifiers: Array[Modifier]
 # Probablemente crear un padre común a modifier y trigger
 @export var condition_triggers: Array[ConditionTrigger]
+@export var causality_triggers: Array[CausalityTrigger]
 @export var fragile: bool = false
 
 # Called when the node enters the scene tree for the first time.
@@ -17,15 +18,21 @@ func attach_to(user):
 		mod.apply_to(user)
 	for trigger in condition_triggers:
 		trigger.apply_to(user)
+	for trigger in causality_triggers:
+		trigger.apply_to(user)
 	if fragile: user.ended_battle.connect(_on_battle_ended)
 
 func connect_to(user):
 	for trigger in condition_triggers:
 		trigger.apply_to(user)
+	for trigger in causality_triggers:
+		trigger.apply_to(user)
 	if fragile: user.ended_battle.connect(_on_battle_ended)
 
 func setup():
 	for trigger in condition_triggers:
+		trigger.setup()
+	for trigger in causality_triggers:
 		trigger.setup()
 	
 func get_description() -> String:
@@ -35,6 +42,9 @@ func get_description() -> String:
 			if desc != "": desc += "\n"
 			desc += mod.get_description()
 		for trigger in condition_triggers:
+			if desc != "": desc += "\n"
+			desc += trigger.get_description()
+		for trigger in causality_triggers:
 			if desc != "": desc += "\n"
 			desc += trigger.get_description()
 		return desc

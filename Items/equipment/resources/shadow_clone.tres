@@ -22,4 +22,5 @@ description = ""
 rarity = 0
 modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_xh2yi")])
 condition_triggers = Array[Resource("res://Items/modifiers/conditions/condition_trigger.gd")]([])
+causality_triggers = Array[Resource("res://Battle/status/causality_trigger.gd")]([])
 fragile = false

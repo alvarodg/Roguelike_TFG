@@ -22,6 +22,8 @@ var spent: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	# Conecta señal para soltar las monedas insertadas cuando se vayan a caer monedas.
+	EventBus.about_to_drop_coins.connect(_on_Coin_drop)
 	assert(skill_data is SkillData)
 	skill_uses = skill_data.uses_per_turn
 	turn_manager.player_turn_started.connect(_on_Player_turn_started)
@@ -65,6 +67,8 @@ func release_inserted_coins():
 			slots.append(node)
 	for slot in slots:
 		slot.release_inserted_coins()
+		if skill_uses > 0:
+			slot.set_available()
 
 func release_all_coins():
 	coin_list = []
@@ -74,6 +78,8 @@ func release_all_coins():
 			slots.append(node)
 	for slot in slots:
 		slot.release_all_coins()
+		slot.set_available()
+	
 
 func connect_to_slot_signals(slot: Slot):
 	slot.coin_inserted.connect(_on_Slot_coin_inserted)
@@ -122,6 +128,12 @@ func _on_Player_turn_started():
 	else:
 		if not skill_data.one_shot:
 			skill_uses = skill_data.uses_per_turn
+		undo_button.disabled = true
+		execute_button.disabled = true
+
+func _on_Coin_drop():
+	if not spent:
+		release_inserted_coins()
 		undo_button.disabled = true
 		execute_button.disabled = true
 
