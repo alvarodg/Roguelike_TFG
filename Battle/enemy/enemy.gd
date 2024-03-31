@@ -14,6 +14,7 @@ signal upcoming_skills_changed(value)
 @onready var enemy_stats_ui = %EnemyStatsUI
 @onready var enemy_skill_ui = %EnemySkillUI
 @onready var equipment_ui = %EquipmentUI
+@onready var animation_player = $AnimationPlayer
 
 const UPCOMING_AMOUNT: int = 4
 
@@ -122,7 +123,12 @@ func act():
 	add_upcoming_skill(pick_skill(strategy))
 
 func _on_death():
-	print("Died")
+#	print("Died")
+	about_to_die.emit()
+	await EventBus.health_animation_finished
+	print("Waited")
+	animation_player.play("death")
+	await animation_player.animation_finished
 	died.emit()
 
 func pick_skill(strat: Strategy) -> SkillData:

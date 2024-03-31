@@ -1,6 +1,8 @@
 extends Resource
 class_name CauseAndEffects
 
+signal triggered
+
 @export var cause: CausalityTrigger
 @export var effects: Array[Modifier]
 var user
@@ -15,6 +17,7 @@ func setup():
 	
 func _on_cause():
 	for effect in effects:
+		triggered.emit()
 		effect.apply_to(user)
 
 func get_description():

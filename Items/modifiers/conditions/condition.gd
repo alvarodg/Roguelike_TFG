@@ -3,7 +3,7 @@ extends Resource
 class_name Condition
 
 var turn_manager = preload("res://Battle/resources/TurnManager.tres")
-var combatants = preload("res://Battle/resources/Combatants.tres")
+var combatants = load("res://Battle/resources/Combatants.tres")
 var active: bool = true
 var user
 

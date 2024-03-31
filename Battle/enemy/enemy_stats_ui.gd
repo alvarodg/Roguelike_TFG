@@ -1,5 +1,7 @@
 extends VBoxContainer
 
+signal health_animation_finished
+
 @onready var health_bar = %HealthBar
 @onready var strength_label = %StrengthLabel
 @onready var shield_label = %ShieldLabel
@@ -16,6 +18,7 @@ func setup(enemy: EnemyStats):
 	_update_strength(enemy.strength)
 	_update_armor(enemy.armor)
 	_update_dodges(enemy.dodges)
+	health_bar.health_animation_finished.connect(_on_health_animation_finished)
 	enemy.shield_changed.connect(_on_Enemy_shield_changed)
 	enemy.strength_changed.connect(_on_Enemy_strength_changed)
 	enemy.armor_changed.connect(_on_Enemy_armor_changed)
@@ -60,3 +63,6 @@ func _update_dodges(dodges):
 		dodges_label.text = str(dodges) + " Dodges"
 	else:
 		dodges_label.hide()
+
+func _on_health_animation_finished():
+	health_animation_finished.emit()

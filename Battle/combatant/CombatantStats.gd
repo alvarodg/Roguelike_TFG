@@ -11,6 +11,7 @@ signal hit
 signal dodged
 signal shield_broke
 signal made_contact
+signal about_to_die
 signal died
 
 @export var max_health: int = 90 : set = set_max_health

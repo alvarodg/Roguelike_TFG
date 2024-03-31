@@ -67,7 +67,7 @@ func release_inserted_coins():
 			slots.append(node)
 	for slot in slots:
 		slot.release_inserted_coins()
-		if skill_uses > 0:
+		if skill_uses != 0:
 			slot.set_available()
 
 func release_all_coins():

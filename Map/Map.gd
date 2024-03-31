@@ -40,6 +40,7 @@ func start_game(player: Player, rng: RandomNumberGenerator):
 	change_level_button.show()
 	set_level(current_level)
 	print("started")
+#	await ScreenTransitions.fade_from_black()
 	EventBus.level_generation_completed.emit()
 
 func _on_level_finished():
@@ -79,6 +80,7 @@ func finish_run():
 ## añade el nodo que la mandó a la lista de atravesados y marca a los miembros de esta lista 
 ## como tales y, finalmente, marca a sus descendientes como disponibles.
 func _on_EventNode_chosen(node: EventNode):
+	await ScreenTransitions.fade_to_black()
 	traveled_nodes.append(node)
 	traveled_coords.append(node.coordinates)
 	remove_availability()
@@ -88,9 +90,12 @@ func _on_EventNode_chosen(node: EventNode):
 		map_screen_node.hide()
 	var event_scene = node.instantiate_event_scene()
 	get_parent().add_child(event_scene)
+	ScreenTransitions.fade_from_black()
 	await event_scene.finished
+	await ScreenTransitions.fade_to_black()
 	for map_screen_node in get_tree().get_nodes_in_group("map_screen"):
 		map_screen_node.show()
+	ScreenTransitions.fade_from_black()
 	RunData.save_game()
 
 

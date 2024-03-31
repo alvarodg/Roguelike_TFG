@@ -22,9 +22,9 @@ func get_description(stats: CombatantStats = null) -> String:
 	var tails_description = ""
 	for behavior in heads_behaviors:
 		if heads_description != "": heads_description += "\n"
-		heads_description += behavior.get_description(combatant)
+		heads_description += behavior.get_description(stats)
 	for behavior in tails_behaviors:
 		if tails_description != "": tails_description += "\n"
-		tails_description += behavior.get_description(combatant)
+		tails_description += behavior.get_description(stats)
 	var description = "Heads: %s\nTails: %s" % [heads_description, tails_description]
 	return description

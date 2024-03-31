@@ -7,6 +7,7 @@ signal pre_started_turn
 signal started_turn
 signal turn_finished
 signal ended_battle
+signal about_to_die
 signal died
 signal equipment_changed(value)
 signal started_waiting
@@ -15,7 +16,7 @@ signal stats_changed(value)
 
 var battle_position: Vector2
 var last_contact: Combatant
-
+var status_list: Array[Status]
 
 # Subclases deberán tener los siguientes parámetros:
 # A MODIFICAR

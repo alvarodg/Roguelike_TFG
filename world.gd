@@ -12,13 +12,17 @@ func _ready():
 	EventBus.continue_run_selected.connect(_on_continue_run)
 
 func _on_new_run():
+	await ScreenTransitions.fade_to_black()
 	RunData.map.start_game(RunData.player, RunData.rng)
 	game_ready.emit()
+	ScreenTransitions.fade_from_black()
 
 func _on_continue_run():
+	await ScreenTransitions.fade_to_black()
 	RunData.load_game()
 	RunData.map.start_game(RunData.player, RunData.rng)
 	game_ready.emit()
+	ScreenTransitions.fade_from_black()
 
 func _on_SaveButton_pressed():
 	RunData.save_game()

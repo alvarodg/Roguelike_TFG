@@ -2,6 +2,7 @@ extends Control
 
 @onready var skill_grid = %SkillGrid
 @onready var skill_box_scene = preload("res://Battle/coin_ui/skill_box.tscn")
+@onready var input_blocker = $InputBlocker
 
 var current_coin: Coin = null
 
@@ -52,3 +53,9 @@ func _on_coin_found(coin):
 func _on_Player_stats_changed(value):
 	for skill in skill_grid.get_children():
 		if skill is SkillBox: skill.apply_stats(value)
+
+func block_input():
+	input_blocker.mouse_filter = MOUSE_FILTER_STOP
+	
+func allow_input():
+	input_blocker.mouse_filter = MOUSE_FILTER_IGNORE

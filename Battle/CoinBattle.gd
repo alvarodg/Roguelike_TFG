@@ -56,6 +56,7 @@ func setup(p_player: Player, p_enemy_data: EnemyData, p_next_event: EventData = 
 #	enemy_position.add_child(enemy)
 
 func connect_enemy_signals(p_enemy: Enemy):
+	p_enemy.about_to_die.connect(_on_Enemy_about_to_die)
 	p_enemy.died.connect(_on_Enemy_died)
 	p_enemy.turn_finished.connect(_on_Enemy_turn_finished)
 	
@@ -64,6 +65,10 @@ func connect_player_signals(p_player: Player):
 	p_player.started_waiting.connect(_on_Player_started_waiting)
 	p_player.finished_waiting.connect(_on_Player_finished_waiting)
 	
+func _on_Enemy_about_to_die():
+	player_skill_ui.block_input()
+	end_turn_button.disabled = true
+
 func _on_Enemy_died():
 	print("Died")
 	end_battle()
@@ -75,11 +80,11 @@ func _on_Player_died():
 	get_tree().change_scene_to_file(loss_screen)
 
 func _on_Player_started_waiting():
-	player_skill_ui.mouse_filter = MOUSE_FILTER_IGNORE
+	player_skill_ui.block_input()
 	end_turn_button.disabled = true
 	
 func _on_Player_finished_waiting():
-	player_skill_ui.mouse_filter = MOUSE_FILTER_STOP
+	player_skill_ui.allow_input()
 	end_turn_button.disabled = false
 
 func end_battle():
