@@ -2,6 +2,7 @@ extends ProgressBar
 
 signal health_animation_finished
 
+@export var anim_speed: float = 1.0
 @onready var health_label = %HealthLabel
 
 # Called when the node enters the scene tree for the first time.
@@ -23,10 +24,11 @@ func setup(combatant: CombatantStats):
 	
 func _on_Combatant_health_changed(health):
 	var tween = get_tree().create_tween()
-	var time = 2 * abs(value - health)/max_value
+	var time = (abs(value - health)/max_value) / anim_speed
 	tween.tween_property(self, "value", health, time)
 	await tween.finished
-	EventBus.health_animation_finished.emit()
+#	print("Tween finished")
+	health_animation_finished.emit()
 #	value = health
 #	_update_label()
 	

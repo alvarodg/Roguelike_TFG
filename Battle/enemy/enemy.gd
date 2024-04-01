@@ -125,7 +125,8 @@ func act():
 func _on_death():
 #	print("Died")
 	about_to_die.emit()
-	await EventBus.health_animation_finished
+	await enemy_stats_ui.health_animation_finished
+#	await EventBus.health_animation_finished
 	print("Waited")
 	animation_player.play("death")
 	await animation_player.animation_finished
