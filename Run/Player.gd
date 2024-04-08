@@ -174,7 +174,7 @@ func _on_Stats_coin_count_changed(value):
 func _on_Stats_died():
 	died.emit()
 
-func _on_Stats_changed(_value):
+func _on_Stats_changed(_old, _value):
 	stats_changed.emit(stats)
 	
 func _on_Coin_flipped(coin):

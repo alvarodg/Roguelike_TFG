@@ -153,10 +153,17 @@ func equip(equipment: Equipment):
 func take_damage(amount: int):
 	stats.take_damage(amount)
 
-func _on_hit():
+func _on_hit(damage):
 	var tween: Tween = get_tree().create_tween()
 	tween.tween_property(%Sprite, "modulate", Color(Color.WHITE, 0.3), 0.15).set_trans(Tween.TRANS_BOUNCE)
 	tween.tween_property(%Sprite, "modulate", Color.WHITE, 0.15).set_trans(Tween.TRANS_BOUNCE)
+	var number = DAMAGE_NUMBER.instantiate()
+	add_child(number)
+	number.setup(battle_position, sprite.size.x, damage)
+	number.display_and_free()
 
-func _on_Stats_changed(_value):
+
+func _on_Stats_changed(_old, _value):
 	stats_changed.emit(stats)
+
+

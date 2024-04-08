@@ -22,7 +22,7 @@ func setup(combatant: CombatantStats):
 	combatant.max_health_changed.connect(_on_Combatant_max_health_changed)
 
 	
-func _on_Combatant_health_changed(health):
+func _on_Combatant_health_changed(_old, health):
 	var tween = get_tree().create_tween()
 	var time = (abs(value - health)/max_value) / anim_speed
 	tween.tween_property(self, "value", health, time)
@@ -32,7 +32,7 @@ func _on_Combatant_health_changed(health):
 #	value = health
 #	_update_label()
 	
-func _on_Combatant_max_health_changed(max_health):
+func _on_Combatant_max_health_changed(old, max_health):
 	max_value = max_health
 
 

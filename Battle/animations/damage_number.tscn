@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfo6b6btwiukk"]
+
+[ext_resource type="Script" path="res://Battle/animations/DamageNumber.gd" id="1_tevsp"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_18m6l"]
+font_size = 18
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 2
+
+[node name="DamageNumber" type="Node2D"]
+script = ExtResource("1_tevsp")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "000"
+label_settings = SubResource("LabelSettings_18m6l")

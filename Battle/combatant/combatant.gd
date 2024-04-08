@@ -2,6 +2,8 @@ extends Node
 ## Clase principalmente para guardar las señales que tanto los enemigos como el jugador emiten.
 class_name Combatant
 
+const DAMAGE_NUMBER = preload("res://Battle/animations/damage_number.tscn")
+
 signal started_battle
 signal pre_started_turn
 signal started_turn

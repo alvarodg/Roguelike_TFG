@@ -24,16 +24,24 @@ func setup(enemy: EnemyStats):
 	enemy.armor_changed.connect(_on_Enemy_armor_changed)
 	enemy.dodges_changed.connect(_on_Enemy_dodges_changed)
 
-func _on_Enemy_shield_changed(shield):
+func _on_Enemy_shield_changed(old, shield):
+	var tween = create_tween()
+	tween.tween_method(_update_shield, old, shield, 0.5)
 	_update_shield(shield)
 	
-func _on_Enemy_strength_changed(strength):
+func _on_Enemy_strength_changed(old, strength):
+	var tween = create_tween()
+	tween.tween_method(_update_strength, old, strength, 0.5)
 	_update_strength(strength)
 	
-func _on_Enemy_armor_changed(armor):
+func _on_Enemy_armor_changed(old, armor):
+	var tween = create_tween()
+	tween.tween_method(_update_armor, old, armor, 0.5)
 	_update_armor(armor)
 	
-func _on_Enemy_dodges_changed(dodges):
+func _on_Enemy_dodges_changed(old, dodges):
+	var tween = create_tween()
+	tween.tween_method(_update_dodges, old, dodges, 0.5)
 	_update_dodges(dodges)
 	
 func _update_shield(shield):

@@ -1,12 +1,12 @@
 extends Resource
 class_name CombatantStats
 
-signal max_health_changed(value)
-signal health_changed(value)
-signal strength_changed(value)
-signal shield_changed(value)
-signal armor_changed(value)
-signal dodges_changed(value)
+signal max_health_changed(old_value, new_value)
+signal health_changed(old_value, new_value)
+signal strength_changed(old_value, new_value)
+signal shield_changed(old_value, new_value)
+signal armor_changed(old_value, new_value)
+signal dodges_changed(old_value, new_value)
 signal hit
 signal dodged
 signal shield_broke
@@ -65,33 +65,39 @@ func end_battle():
 	dodges = 0
 	
 func set_max_health(value):
+	var old = max_health
 	max_health = max(1, value)
 	# Bug misterioso al descomentar esta línea, no emite died. Investigar.
 #	health = min(health, max_health)
-	max_health_changed.emit(max_health)
+	max_health_changed.emit(old, max_health)
 
 func set_health(value):
+	var old = health
 	health = clamp(value, 0, max_health)
-	health_changed.emit(health)
+	health_changed.emit(old, health)
 	if health == 0 and not is_dead:
 		is_dead = true
 		died.emit()
 
 func set_strength(value):
+	var old = strength
 	strength = value
-	strength_changed.emit(strength)
+	strength_changed.emit(old, strength)
 	
 func set_shield(value):
+	var old = shield
 	shield = max(0,value)
-	shield_changed.emit(shield)
+	shield_changed.emit(old, shield)
 
 func set_armor(value):
+	var old = armor
 	armor = value
-	armor_changed.emit(armor)
+	armor_changed.emit(old, armor)
 	
 func set_dodges(value):
+	var old = dodges
 	dodges = value
-	dodges_changed.emit(dodges)
+	dodges_changed.emit(old, dodges)
 
 func take_damage(amount: int, ignore_shield = false, ignore_armor = false, ignore_dodges = false):
 	var eff_shield = 0 if ignore_shield else shield
@@ -109,11 +115,11 @@ func take_damage(amount: int, ignore_shield = false, ignore_armor = false, ignor
 			shield_broke.emit()
 		if damage_remainder > 0:
 			health -= max(0, damage_remainder - armor_remainder)
-			hit.emit()
+			hit.emit(max(0, damage_remainder - armor_remainder))
 	else:
 		made_contact.emit()
 		health -= max(0, amount - eff_armor)
-		hit.emit()
+		hit.emit(max(0, amount - eff_armor))
 
 func take_percent_damage(percent: float, ignore_shield = false, ignore_armor = false, ignore_dodges = false):
 	var amount: int = floori(percent * health)

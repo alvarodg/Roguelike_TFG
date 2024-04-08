@@ -26,14 +26,23 @@ func setup(player: Player):
 	player.stats.dodges_changed.connect(_on_Player_dodges_changed)
 	player.stats.hit.connect(_on_Player_hit)
 	
-func _on_Player_shield_changed(shield):
-	_update_shield(shield)
+func _on_Player_shield_changed(old, shield):
+	var tween = create_tween()
+	tween.tween_method(_update_shield, old, shield, 0.5)
+	await tween.finished
+#	_update_shield(shield)
 	
-func _on_Player_armor_changed(armor):
-	_update_armor(armor)
+func _on_Player_armor_changed(old, armor):
+	var tween = create_tween()
+	tween.tween_method(_update_armor, old, armor, 0.5)
+	await tween.finished
+#	_update_armor(armor)
 	
-func _on_Player_dodges_changed(dodges):
-	_update_dodges(dodges)
+func _on_Player_dodges_changed(old, dodges):
+	var tween = create_tween()
+	tween.tween_method(_update_dodges, old, dodges, 0.5)
+	await tween.finished
+#	_update_dodges(dodges)
 	
 func _update_shield(shield):
 	if shield > 0:
