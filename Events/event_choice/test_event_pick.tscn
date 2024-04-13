@@ -1,0 +1,174 @@
+[gd_scene load_steps=50 format=3 uid="uid://p7bi8ul5sa3d"]
+
+[ext_resource type="Script" path="res://Events/event_choice/test_event_pick.gd" id="1_b641h"]
+[ext_resource type="PackedScene" uid="uid://bwfq2nay1xk3q" path="res://Events/event_choice/event_choice.tscn" id="2_1vsg5"]
+[ext_resource type="Script" path="res://Run/Player.gd" id="3_1vfe3"]
+[ext_resource type="Script" path="res://Items/modifiers/components/stats/health_modifier_component.gd" id="3_j4vdn"]
+[ext_resource type="Script" path="res://Battle/combatant/PlayerStats.gd" id="4_ejgpo"]
+[ext_resource type="Script" path="res://Run/PlayerUIData.gd" id="5_1c0gh"]
+[ext_resource type="Script" path="res://Items/modifiers/components/stats/max_health_modifier.gd" id="5_6xtn6"]
+[ext_resource type="Script" path="res://Events/event_choice/choice_sequence.gd" id="5_bhhfg"]
+[ext_resource type="Texture2D" uid="uid://djmrox3cqnntc" path="res://icon.svg" id="6_hs1nf"]
+[ext_resource type="Resource" uid="uid://kmogyjaldbnb" path="res://Events/resources/event_data/SkillChoiceData.tres" id="7_dxukh"]
+[ext_resource type="Resource" uid="uid://1f1t8s1ew7uy" path="res://Battle/skills/resources/win.tres" id="10_7l1o2"]
+[ext_resource type="Resource" uid="uid://6mj55fih0kl8" path="res://Events/resources/event_data/EquipmentChoiceData.tres" id="11_3kes1"]
+[ext_resource type="PackedScene" uid="uid://cgeo8n0mg0x68" path="res://Battle/player/player_stats_ui.tscn" id="11_msee6"]
+[ext_resource type="PackedScene" uid="uid://buwxy0toti3j8" path="res://Run/collection_container.tscn" id="16_gal2f"]
+[ext_resource type="Resource" uid="uid://dux2lw2o3v0dr" path="res://Items/equipment/resources/cursed_coin.tres" id="17_xtbu0"]
+[ext_resource type="Resource" uid="uid://bxwuaeekjaus4" path="res://Items/equipment/resources/lucky_coin.tres" id="18_swqei"]
+[ext_resource type="Resource" uid="uid://c8107weri3cbe" path="res://Items/equipment/resources/lucky_shield.tres" id="19_ie75e"]
+[ext_resource type="Resource" uid="uid://ck15mnqlrvupd" path="res://Items/equipment/resources/poisoned_coin.tres" id="20_2ypxd"]
+[ext_resource type="Resource" uid="uid://d78buw8sx4i6" path="res://Items/equipment/resources/regular_coin.tres" id="21_pv013"]
+[ext_resource type="Resource" uid="uid://dn8xb4i3yfuch" path="res://Items/equipment/resources/shadow_clone.tres" id="22_v8gh0"]
+[ext_resource type="Resource" uid="uid://o7m0rikjobyx" path="res://Items/equipment/resources/strong_armor.tres" id="23_vd456"]
+[ext_resource type="Resource" uid="uid://xmue4sfum232" path="res://Items/equipment/resources/weak_armor.tres" id="24_mjm2h"]
+[ext_resource type="Resource" uid="uid://3h7lvkqh0mac" path="res://Items/equipment/resources/conditional/bloody_coin.tres" id="25_57a2j"]
+[ext_resource type="Resource" uid="uid://cviounhsrpbnt" path="res://Items/equipment/resources/conditional/late_shield.tres" id="26_qbm1o"]
+[ext_resource type="Resource" uid="uid://000ce1xcp83o" path="res://Items/equipment/resources/conditional/flip_shield.tres" id="27_541rf"]
+[ext_resource type="Resource" uid="uid://ca8go4wc80cdi" path="res://Items/equipment/resources/conditional/binary_shield.tres" id="28_4o5gb"]
+[ext_resource type="Script" path="res://Run/equipment_collection.gd" id="29_ygqf2"]
+[ext_resource type="Resource" uid="uid://bxpfepcjv524q" path="res://Battle/skills/resources/consolation.tres" id="30_ii8tc"]
+[ext_resource type="Resource" uid="uid://b5j1lnqv68ko" path="res://Battle/skills/resources/discard.tres" id="31_or413"]
+[ext_resource type="Resource" uid="uid://d1u5h8ydcu0pl" path="res://Battle/skills/resources/jackpot.tres" id="32_2hhha"]
+[ext_resource type="Resource" uid="uid://ddyjbbgwcacjj" path="res://Battle/skills/resources/quick_strike.tres" id="33_fiu4o"]
+[ext_resource type="Resource" uid="uid://63rmkkvw4qjs" path="res://Battle/skills/resources/rainbow.tres" id="34_2cflc"]
+[ext_resource type="Resource" uid="uid://ckfdvex3cn3hf" path="res://Battle/skills/resources/sacrifice.tres" id="35_72rux"]
+[ext_resource type="Resource" uid="uid://c1ewyurdksemn" path="res://Battle/skills/resources/strike.tres" id="36_e80ts"]
+[ext_resource type="Resource" uid="uid://c6pno1pfqitvg" path="res://Battle/skills/resources/tax.tres" id="37_2w5iq"]
+[ext_resource type="Resource" uid="uid://c5e7dv3l85ib1" path="res://Battle/skills/resources/trade.tres" id="38_7bfes"]
+[ext_resource type="Script" path="res://Run/skill_collection.gd" id="39_b66x2"]
+
+[sub_resource type="Resource" id="Resource_y8eqa"]
+script = ExtResource("3_j4vdn")
+magnitude = -10.0
+action = 0
+
+[sub_resource type="Resource" id="Resource_cjghl"]
+script = ExtResource("5_bhhfg")
+pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_y8eqa")])
+post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+events = Array[Resource("res://Events/EventData.gd")]([])
+
+[sub_resource type="Resource" id="Resource_j5nrw"]
+script = ExtResource("5_6xtn6")
+fill = true
+magnitude = 10.0
+action = 0
+
+[sub_resource type="Resource" id="Resource_cng2k"]
+script = ExtResource("3_j4vdn")
+magnitude = -20.0
+action = 0
+
+[sub_resource type="Resource" id="Resource_cm16d"]
+script = ExtResource("5_bhhfg")
+pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_cng2k")])
+post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_j5nrw")])
+events = Array[Resource("res://Events/EventData.gd")]([ExtResource("11_3kes1")])
+
+[sub_resource type="Resource" id="Resource_ytnsy"]
+script = ExtResource("5_bhhfg")
+pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+events = Array[Resource("res://Events/EventData.gd")]([ExtResource("7_dxukh")])
+
+[sub_resource type="Resource" id="Resource_2jl3e"]
+script = ExtResource("5_6xtn6")
+fill = true
+magnitude = 10.0
+action = 0
+
+[sub_resource type="Resource" id="Resource_kk4op"]
+script = ExtResource("5_bhhfg")
+pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_2jl3e")])
+post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+events = Array[Resource("res://Events/EventData.gd")]([])
+
+[sub_resource type="Resource" id="Resource_bnqu0"]
+script = ExtResource("4_ejgpo")
+coin_count = 5
+base_luck = 1.0
+max_health = 90
+base_strength = 0
+base_shield = 0
+base_armor = 0
+base_dodges = 0
+
+[sub_resource type="Resource" id="Resource_ku3kp"]
+script = ExtResource("5_1c0gh")
+sprite = ExtResource("6_hs1nf")
+ui_name = "Player"
+
+[sub_resource type="Resource" id="Resource_e2afq"]
+script = ExtResource("29_ygqf2")
+list = Array[Resource("res://Items/equipment/equipment.gd")]([ExtResource("17_xtbu0"), ExtResource("18_swqei"), ExtResource("19_ie75e"), ExtResource("20_2ypxd"), ExtResource("21_pv013"), ExtResource("22_v8gh0"), ExtResource("23_vd456"), ExtResource("24_mjm2h"), ExtResource("25_57a2j"), ExtResource("26_qbm1o"), ExtResource("27_541rf"), ExtResource("28_4o5gb")])
+
+[sub_resource type="Resource" id="Resource_0yqu6"]
+script = ExtResource("39_b66x2")
+list = Array[Resource("res://Battle/skills/SkillData.gd")]([ExtResource("30_ii8tc"), ExtResource("31_or413"), ExtResource("32_2hhha"), ExtResource("33_fiu4o"), ExtResource("34_2cflc"), ExtResource("35_72rux"), ExtResource("36_e80ts"), ExtResource("37_2w5iq"), ExtResource("38_7bfes")])
+
+[node name="TestEventPick" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_b641h")
+
+[node name="PlayerStatsUI" parent="." instance=ExtResource("11_msee6")]
+layout_mode = 1
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -503.0
+offset_top = -259.0
+offset_right = 503.0
+offset_bottom = 259.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/CenterContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+alignment = 1
+
+[node name="EventChoice" parent="Panel/CenterContainer/HBoxContainer" node_paths=PackedStringArray("player") instance=ExtResource("2_1vsg5")]
+layout_mode = 2
+sequence = SubResource("Resource_cjghl")
+player = NodePath("../../../../Player")
+
+[node name="EventChoice2" parent="Panel/CenterContainer/HBoxContainer" node_paths=PackedStringArray("player") instance=ExtResource("2_1vsg5")]
+layout_mode = 2
+sequence = SubResource("Resource_cm16d")
+player = NodePath("../../../../Player")
+
+[node name="EventChoice3" parent="Panel/CenterContainer/HBoxContainer" node_paths=PackedStringArray("player") instance=ExtResource("2_1vsg5")]
+layout_mode = 2
+sequence = SubResource("Resource_ytnsy")
+player = NodePath("../../../../Player")
+
+[node name="EventChoice4" parent="Panel/CenterContainer/HBoxContainer" node_paths=PackedStringArray("player") instance=ExtResource("2_1vsg5")]
+layout_mode = 2
+sequence = SubResource("Resource_kk4op")
+player = NodePath("../../../../Player")
+
+[node name="Player" type="Node" parent="."]
+script = ExtResource("3_1vfe3")
+stats = SubResource("Resource_bnqu0")
+ui_data = SubResource("Resource_ku3kp")
+skill_list = Array[Resource("res://Battle/skills/SkillData.gd")]([ExtResource("10_7l1o2")])
+
+[node name="CollectionContainer" parent="." instance=ExtResource("16_gal2f")]
+equipments = SubResource("Resource_e2afq")
+skills = SubResource("Resource_0yqu6")

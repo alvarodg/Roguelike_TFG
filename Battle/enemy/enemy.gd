@@ -159,7 +159,7 @@ func _on_hit(damage):
 	tween.tween_property(%Sprite, "modulate", Color.WHITE, 0.15).set_trans(Tween.TRANS_BOUNCE)
 	var number = DAMAGE_NUMBER.instantiate()
 	add_child(number)
-	number.setup(battle_position, sprite.size.x, damage)
+	number.setup(damage, battle_position, sprite.size.x, stats.max_health)
 	number.display_and_free()
 
 

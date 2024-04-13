@@ -19,3 +19,6 @@ signal finished
 	
 func instantiate_scene():
 	return event_data.instantiate_scene()
+
+#func get_description():
+#	return "Default Event"

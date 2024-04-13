@@ -13,3 +13,6 @@ func instantiate_scene():
 	assert(scene_instance is EventScene)
 	scene_instance.next_event = next_event
 	return scene_instance
+
+func get_description():
+	return "Default Event"
