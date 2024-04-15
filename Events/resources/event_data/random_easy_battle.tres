@@ -10,5 +10,6 @@
 [resource]
 script = ExtResource("1_nmm0j")
 possible_enemies = Array[Resource("res://Battle/enemy/enemy_data.gd")]([ExtResource("2_vo473"), ExtResource("3_fblhv"), ExtResource("4_fat7x")])
+description = ""
 scene = ExtResource("5_tui35")
 next_event = ExtResource("1_fqd5h")

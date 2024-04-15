@@ -9,11 +9,13 @@
 
 [sub_resource type="Resource" id="Resource_h5ix8"]
 script = ExtResource("4_ipa50")
+description = ""
 scene = ExtResource("3_5p5il")
 next_event = ExtResource("2_oo4o1")
 
 [resource]
 script = ExtResource("1_evwa7")
 enemy_data = ExtResource("1_emmrp")
+description = ""
 scene = ExtResource("2_suvps")
 next_event = SubResource("Resource_h5ix8")

@@ -88,7 +88,8 @@ func _on_EventNode_chosen(node: EventNode):
 	make_descendants_available(node)
 	for map_screen_node in get_tree().get_nodes_in_group("map_screen"):
 		map_screen_node.hide()
-	var event_scene = node.instantiate_event_scene()
+	# Acceso al singleton para pasar el jugador al evento.
+	var event_scene = node.instantiate_event_scene(RunData.player)
 	get_parent().add_child(event_scene)
 	ScreenTransitions.fade_from_black()
 	await event_scene.finished

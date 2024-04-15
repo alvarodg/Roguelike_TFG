@@ -7,16 +7,17 @@ signal finished
 @onready var button = $Button
 @onready var label = $Button/Label
 
-@export_multiline var description: String
-@export var explicit: bool = true
-@export var cost: Cost
-@export var sequence: ChoiceSequence
-@export var player: Player
-@export var final: bool = false
+var description: String
+var explicit: bool = true
+var cost: Cost
+var sequence: ChoiceSequence
+var player: Player
+var final: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_update_description()
+	_check_cost()
 	#TEMPORAL
 #	_check_cost()
 #	player.stats_changed.connect(_on_Player_Stats_changed)
@@ -25,12 +26,14 @@ func _ready():
 func _process(delta):
 	pass
 
-func initialize(p_sequence: ChoiceSequence, p_description: String = "", p_explicit: bool = true, p_cost: Cost = null, p_final:bool = true):
-	sequence = p_sequence
-	explicit = p_explicit
-	description = p_description
-	cost = p_cost
-	final = p_final
+func initialize(p_player: Player, data: EventChoiceData):
+	player = p_player
+	player.stats_changed.connect(_on_Player_Stats_changed)
+	sequence = data.sequence
+	explicit = data.explicit
+	description = data.description
+	cost = data.cost
+	final = data.final
 
 func setup(p_player: Player):
 	player = p_player
@@ -50,7 +53,7 @@ func _on_Button_pressed():
 		if sequence.events.size() > 0: 
 			events_about_to_begin.emit()
 			for event in sequence.events:
-				var scene: EventScene = event.instantiate_scene()
+				var scene: EventScene = event.instantiate_scene(player)
 				get_tree().root.add_child(scene)
 				await scene.finished
 		for mod in sequence.post_modifiers:

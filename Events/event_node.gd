@@ -58,5 +58,5 @@ func _on_Button_pressed():
 		print(event.text)
 		emit_signal("node_chosen", self)
 
-func instantiate_event_scene():
-	return event.instantiate_scene()
+func instantiate_event_scene(player: Player):
+	return event.instantiate_scene(player)

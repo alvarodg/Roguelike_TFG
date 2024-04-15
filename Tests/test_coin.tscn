@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://i8nxwh7elqwk"]
+
+[ext_resource type="Script" path="res://Tests/test_coin.gd" id="1_t2mno"]
+[ext_resource type="Resource" uid="uid://3rw1h1eslq66" path="res://Battle/coin_ui/resources/default_coin.tres" id="2_2ejdp"]
+
+[node name="TestCoin" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t2mno")
+coin_data = Array[Resource("res://Battle/coin_ui/coin_data.gd")]([ExtResource("2_2ejdp")])
+
+[node name="CoinContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

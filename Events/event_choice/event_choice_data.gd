@@ -9,7 +9,7 @@ const scene: PackedScene = preload("res://Events/event_choice/event_choice.tscn"
 @export var sequence: ChoiceSequence
 @export var final: bool = true
 
-func initialize_scene():
+func initialize_scene(player: Player):
 	var scene_instance = scene.instantiate()
-	scene_instance.initialize(sequence, description, explicit, cost, final)
+	scene_instance.initialize(player, self)
 	return scene_instance

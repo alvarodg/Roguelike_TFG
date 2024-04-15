@@ -17,8 +17,8 @@ signal finished
 #	text = p_text
 #	event_data = p_event_data
 	
-func instantiate_scene():
-	return event_data.instantiate_scene()
+func instantiate_scene(player: Player):
+	return event_data.instantiate_scene(player)
 
 #func get_description():
 #	return "Default Event"

@@ -8,5 +8,6 @@
 [resource]
 script = ExtResource("1_uown2")
 enemy_data = ExtResource("1_vic8r")
+description = ""
 scene = ExtResource("2_do2un")
 next_event = ExtResource("2_f16ta")

@@ -7,28 +7,28 @@ signal finished
 @export var choices: int = 3
 var choices_list: Array
 var next_event: EventData
+#
+## Called when the node enters the scene tree for the first time.
+#func _ready():
+#	var equip_list = RunData.collections.get_random_equipment_list(choices)
+#	for equipment in equip_list:
+#		var equip_button = equipment_button_scene.instantiate()
+#		equip_button.setup(RunData.player, equipment)
+#		equip_button.pressed.connect(_on_EquipButton_pressed)
+#		choice_container.add_child(equip_button)
+#
+#
+#func add_choice(choice):
+#	choices_list.append(choice)
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	var equip_list = RunData.collections.get_random_equipment_list(choices)
-	for equipment in equip_list:
-		var equip_button = equipment_button_scene.instantiate()
-		equip_button.setup(RunData.player, equipment)
-		equip_button.pressed.connect(_on_EquipButton_pressed)
-		choice_container.add_child(equip_button)
-		
-
-func add_choice(choice):
-	choices_list.append(choice)
-
-func finish():
-	if next_event is EventData:
-		var next_scene = next_event.instantiate_scene()
-		get_parent().add_child(next_scene) 
-		hide()
-		await next_scene.finished
-	finished.emit()
-	queue_free()
+#func finish():
+#	if next_event is EventData:
+#		var next_scene = next_event.instantiate_scene()
+#		get_parent().add_child(next_scene) 
+#		hide()
+#		await next_scene.finished
+#	finished.emit()
+#	queue_free()
 
 
 
@@ -49,10 +49,11 @@ func finish():
 #	RunData.player.stats.base_luck += 0.1
 #	finish()
 
-func _on_EquipButton_pressed():
-	finish()
 
-func _on_SkipButton_pressed():
-	finish()
-
-
+#func _on_EquipButton_pressed():
+#	finish()
+#
+#func _on_SkipButton_pressed():
+#	finish()
+#
+#

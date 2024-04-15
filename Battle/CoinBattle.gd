@@ -1,4 +1,5 @@
 extends EventScene
+class_name CoinBattle
 
 var loss_screen = "res://Menus/loss_screen.tscn"
 
@@ -11,7 +12,7 @@ var loss_screen = "res://Menus/loss_screen.tscn"
 @onready var player_stats_ui = %PlayerStatsUI
 @onready var coin_box = %CoinBox
 
-var player: Player
+#var player: Player
 var enemy_data: EnemyData
 var enemy: Enemy
 

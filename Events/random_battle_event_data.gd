@@ -8,11 +8,11 @@ func _init(p_scene = null, p_next_event = null, p_possible_enemies: Array[EnemyD
 	super(p_scene, p_next_event)
 	possible_enemies = p_possible_enemies
 
-func instantiate_scene():
+func instantiate_scene(player: Player):
 	var battle_scene = scene.instantiate()
 	var enemy_data = pick_enemy()
 	# Acceso al singleton de jugador
-	battle_scene.setup(RunData.player, enemy_data, next_event)
+	battle_scene.setup(player, enemy_data, next_event)
 	return battle_scene
 
 func pick_enemy():

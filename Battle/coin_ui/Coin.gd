@@ -1,6 +1,8 @@
 extends TextureButton
 class_name Coin
 
+@onready var animation_player = $AnimationPlayer
+
 signal flipped(coin)
 signal dropped(coin)
 
@@ -120,6 +122,21 @@ func check_facing(facing: Facing) -> bool:
 		return heads
 	else:
 		return not heads
+
+func start_spinning(time: float = -1):
+	animation_player.play("spin")
+	if time > 0:
+		await get_tree().create_timer(time).timeout
+		animation_player.play("RESET")
+	
+func stop_spinning():
+	animation_player.play("RESET")
+
+func show_heads():
+	texture_normal = data.heads_texture
+
+func show_tails():
+	texture_normal = data.tails_texture
 
 static func get_facing_text(facing: Facing) -> String:
 	var text = ""

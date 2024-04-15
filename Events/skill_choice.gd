@@ -5,7 +5,6 @@ extends EventScene
 @onready var remove_skill_choice_scene = preload("res://Events/remove_skill_choice.tscn")
 @export var choices: int = 3
 @export var skill_list: Array[SkillData]
-@export var player: Player
 
 
 # Called when the node enters the scene tree for the first time.

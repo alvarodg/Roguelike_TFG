@@ -15,9 +15,8 @@ var choices: Array[EventChoiceData]
 func _ready():
 	player_stats_ui.setup(player)
 	for choice in choices:
-		var scene: EventChoice = choice.initialize_scene()
+		var scene: EventChoice = choice.initialize_scene(player)
 		choice_container.add_child(scene)
-		scene.setup(player)
 		scene.finished.connect(_on_choice_finished)
 	narrative_label.text = narrative
 	event_picture.texture = image

@@ -6,6 +6,7 @@ class_name EventScene
 
 signal finished
 
+var player: Player
 var next_event: EventData
 
 # Called when the node enters the scene tree for the first time.
@@ -20,7 +21,7 @@ func _process(delta):
 
 func finish():
 	if next_event is EventData:
-		var next_scene = next_event.instantiate_scene()
+		var next_scene = next_event.instantiate_scene(player)
 		get_parent().add_child(next_scene)
 		hide()
 		await next_scene.finished
