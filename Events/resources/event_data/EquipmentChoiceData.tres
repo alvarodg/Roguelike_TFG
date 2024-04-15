@@ -5,4 +5,5 @@
 
 [resource]
 script = ExtResource("1_766dy")
+description = "Choose a piece of equipment."
 scene = ExtResource("1_lf05o")

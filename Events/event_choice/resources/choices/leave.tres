@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EventChoiceData" load_steps=2 format=3 uid="uid://cwg25rw4e6gdx"]
+
+[ext_resource type="Script" path="res://Events/event_choice/event_choice_data.gd" id="1_h8ski"]
+
+[resource]
+script = ExtResource("1_h8ski")
+description = "Leave quietly."
+explicit = true
+final = true

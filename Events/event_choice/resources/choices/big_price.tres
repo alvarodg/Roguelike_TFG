@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="EventChoiceData" load_steps=9 format=3 uid="uid://cnsigx6scrvnu"]
+
+[ext_resource type="Script" path="res://Items/modifiers/components/stats/health_modifier_component.gd" id="1_nnm0p"]
+[ext_resource type="Script" path="res://Items/modifiers/cost/health_cost.gd" id="2_uwjh2"]
+[ext_resource type="Script" path="res://Events/event_choice/event_choice_data.gd" id="3_dakq6"]
+[ext_resource type="Resource" uid="uid://6mj55fih0kl8" path="res://Events/resources/event_data/EquipmentChoiceData.tres" id="4_8dj46"]
+[ext_resource type="Script" path="res://Events/event_choice/choice_sequence.gd" id="5_yc742"]
+
+[sub_resource type="Resource" id="Resource_vj64a"]
+script = ExtResource("1_nnm0p")
+magnitude = -100.0
+action = 0
+
+[sub_resource type="Resource" id="Resource_psgrm"]
+script = ExtResource("2_uwjh2")
+health_mod = SubResource("Resource_vj64a")
+
+[sub_resource type="Resource" id="Resource_6escc"]
+script = ExtResource("5_yc742")
+pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+events = Array[Resource("res://Events/EventData.gd")]([ExtResource("4_8dj46")])
+
+[resource]
+script = ExtResource("3_dakq6")
+description = "Pay a huge sum."
+explicit = true
+cost = SubResource("Resource_psgrm")
+sequence = SubResource("Resource_6escc")
+final = true

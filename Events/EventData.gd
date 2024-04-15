@@ -1,6 +1,7 @@
 extends Resource
 class_name EventData
 
+@export_multiline var description: String
 @export var scene: PackedScene
 @export var next_event: EventData
 
@@ -15,4 +16,7 @@ func instantiate_scene():
 	return scene_instance
 
 func get_description():
-	return "Default Event"
+	if description == "":
+		return "Default Event"
+	else:
+		return description
