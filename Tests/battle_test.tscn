@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://dip7b67w54m78"]
+[gd_scene load_steps=44 format=3 uid="uid://dip7b67w54m78"]
 
 [ext_resource type="Script" path="res://Tests/battle_test.gd" id="1_h0e27"]
 [ext_resource type="Resource" uid="uid://jlcky6cxyuuq" path="res://Battle/enemy/resources/data/berserker_boss_data.tres" id="2_wvso2"]
@@ -25,6 +25,7 @@
 [ext_resource type="Resource" uid="uid://3rw1h1eslq66" path="res://Battle/coin_ui/resources/default_coin.tres" id="23_cjd0q"]
 [ext_resource type="Script" path="res://Items/modifiers/components/extra_coin_modifier_component.gd" id="24_4gotg"]
 [ext_resource type="Script" path="res://Items/modifiers/conditions/condition_trigger.gd" id="25_2kmnj"]
+[ext_resource type="Resource" uid="uid://000ce1xcp83o" path="res://Items/equipment/resources/conditional/flip_shield.tres" id="26_hdie3"]
 
 [sub_resource type="Resource" id="Resource_ln2xl"]
 script = ExtResource("7_hi817")
@@ -155,4 +156,4 @@ enemy_data = ExtResource("2_wvso2")
 stats = SubResource("Resource_ln2xl")
 ui_data = SubResource("Resource_bvfks")
 skill_list = Array[ExtResource("12_8uvpf")]([ExtResource("10_yny00"), ExtResource("11_qij5i"), ExtResource("9_75lu2"), ExtResource("10_bhkht"), ExtResource("11_atv6b"), SubResource("Resource_oaca2")])
-default_equipment = Array[ExtResource("18_vtphm")]([SubResource("Resource_trcg2"), SubResource("Resource_24kr7")])
+default_equipment = Array[ExtResource("18_vtphm")]([SubResource("Resource_trcg2"), SubResource("Resource_24kr7"), ExtResource("26_hdie3")])

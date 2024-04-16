@@ -67,7 +67,7 @@ func _update_dodges(dodges):
 	else:
 		dodges_label.hide()
 
-func _on_Player_hit():
+func _on_Player_hit(damage):
 	print("hit")
 	var tween: Tween = get_tree().create_tween()
 	tween.tween_property(%PlayerIcon, "modulate", Color(Color.WHITE, 0.3), 0.15).set_trans(Tween.TRANS_BOUNCE)

@@ -128,9 +128,11 @@ func start_spinning(time: float = -1):
 	if time > 0:
 		await get_tree().create_timer(time).timeout
 		animation_player.play("RESET")
+		set_facing_texture()
 	
 func stop_spinning():
 	animation_player.play("RESET")
+	set_facing_texture()
 
 func show_heads():
 	texture_normal = data.heads_texture

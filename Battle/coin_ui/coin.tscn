@@ -5,6 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://dfvbp50ovnwj2" path="res://Battle/coin_ui/sprites/coin_focus.png" id="2_iollm"]
 [ext_resource type="Texture2D" uid="uid://da54b5ae0l3k" path="res://Battle/coin_ui/sprites/coin_tails.png" id="3_lts44"]
 
+[sub_resource type="Animation" id="Animation_718mm"]
+length = 0.001
+
 [sub_resource type="Animation" id="Animation_8wwps"]
 resource_name = "spin"
 length = 0.4
@@ -26,9 +29,6 @@ tracks/0/keys = {
 "method": &"show_tails"
 }]
 }
-
-[sub_resource type="Animation" id="Animation_718mm"]
-length = 0.001
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1qoat"]
 _data = {

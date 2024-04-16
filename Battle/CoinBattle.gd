@@ -39,8 +39,11 @@ func _ready():
 	turn_manager.enemy_turn_started.connect(_on_enemy_turn_started)
 	connect_player_signals(player)
 	connect_enemy_signals(enemy)
+	coin_box.about_to_flip_coins.connect(_on_coins_about_to_flip)
+	coin_box.finished_flipping_coins.connect(_on_coins_finished_flipping)
 	# Asigna el turno al jugador
 	turn_manager.turn = turn_manager.Turn.PLAYER_TURN
+	coin_box.flip_coins()
 	
 func setup(p_player: Player, p_enemy_data: EnemyData, p_next_event: EventData = null):
 	player = p_player
@@ -87,6 +90,7 @@ func _on_Player_started_waiting():
 func _on_Player_finished_waiting():
 	player_skill_ui.allow_input()
 	end_turn_button.disabled = false
+	coin_box.flip_coins()
 
 func end_battle():
 	player_skill_ui.hide()
@@ -115,3 +119,8 @@ func _on_EndTurnButton_pressed():
 func _on_Enemy_turn_finished():
 	turn_manager.set_turn(TurnManager.Turn.PLAYER_TURN)
 
+func _on_coins_about_to_flip():
+	player_skill_ui.block_input()
+	
+func _on_coins_finished_flipping():
+	player_skill_ui.allow_input()

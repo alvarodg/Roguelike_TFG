@@ -6,7 +6,6 @@ class_name EventPick
 @onready var narrative_label = %NarrativeLabel
 @onready var event_picture = %EventPicture
 
-var player
 var narrative: String
 var image: Texture2D
 var choices: Array[EventChoiceData]
