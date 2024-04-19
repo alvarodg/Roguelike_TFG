@@ -17,6 +17,7 @@ func use(user, _target, coins):
 		else:
 			coin.heads = true if facing == Coin.Facing.HEADS else false
 		iter += 1
+	_finish()
 
 func get_description(_stats: CombatantStats = null) -> String:
 	var description: String = ""

@@ -105,6 +105,7 @@ func _on_ExecuteButton_pressed():
 	if skill_uses != 0:
 		skill_uses -= 1
 		var skill = skill_data.create_skill(combatants.player, combatants.enemy, coin_list)
+		add_child(skill)
 		# Marca las monedas como usadas antes de usar la habilidad, importante para poder cambiar su estado en esta.
 		for slot in slot_box.get_children():
 			if slot is Slot:

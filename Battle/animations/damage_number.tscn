@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://Battle/animations/DamageNumber.gd" id="1_tevsp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_18m6l"]
-font_size = 18
-outline_size = 1
+font_size = 20
+outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 2
 

@@ -53,7 +53,7 @@ func _on_coin_requested(facing: Coin.Facing = Coin.Facing.ANY):
 
 func flip_coins():
 	about_to_flip_coins.emit()
-	_block_input()
+	block_input()
 	for coin in coin_box_container.get_children():
 		if coin is Coin:
 			coin.start_spinning()
@@ -62,11 +62,11 @@ func flip_coins():
 		if coin is Coin:
 			coin.stop_spinning()
 			await get_tree().create_timer(0.1).timeout
-	_allow_input()
+	allow_input()
 	finished_flipping_coins.emit()
 	
-func _block_input():
+func block_input():
 	input_blocker.mouse_filter = MOUSE_FILTER_STOP
 	
-func _allow_input():
+func allow_input():
 	input_blocker.mouse_filter = MOUSE_FILTER_IGNORE

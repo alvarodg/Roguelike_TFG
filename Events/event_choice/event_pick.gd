@@ -20,8 +20,7 @@ func _ready():
 	narrative_label.text = narrative
 	event_picture.texture = image
 
-func initialize(p_player: Player, data: EventPickData):
-	player = p_player
+func initialize(data: EventPickData):
 	narrative = data.narrative
 	choices = data.choices
 	image = data.image

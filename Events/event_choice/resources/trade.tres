@@ -14,4 +14,5 @@ narrative = "A shady trader offers you a deal you can't refuse. Or can you?
 (Evento de ejemplo, a diseñar más. Describe una situación en la que hay varias opciones disponibles.)"
 image = ExtResource("5_1saeg")
 choices = Array[Resource("res://Events/event_choice/event_choice_data.gd")]([ExtResource("1_76u6e"), ExtResource("2_hh5g7"), ExtResource("3_xn810"), ExtResource("4_t3irg")])
-description = ""
+description = null
+rarity = null

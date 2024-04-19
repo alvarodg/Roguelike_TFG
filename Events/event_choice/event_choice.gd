@@ -22,9 +22,6 @@ func _ready():
 #	_check_cost()
 #	player.stats_changed.connect(_on_Player_Stats_changed)
 	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 func initialize(p_player: Player, data: EventChoiceData):
 	player = p_player

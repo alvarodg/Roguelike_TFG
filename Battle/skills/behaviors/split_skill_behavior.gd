@@ -16,6 +16,7 @@ func use(user, target, coins):
 	else:
 		for behavior in tails_behaviors:
 			behavior.use(user,target,coins)
+	_finish()
 
 func get_description(stats: CombatantStats = null) -> String:
 	var heads_description = ""

@@ -11,6 +11,7 @@
 script = ExtResource("3_lhper")
 enemy_data = ExtResource("2_h7cxe")
 description = "Fight the trader."
+rarity = 1
 
 [sub_resource type="Resource" id="Resource_cfr11"]
 script = ExtResource("6_vxhy7")

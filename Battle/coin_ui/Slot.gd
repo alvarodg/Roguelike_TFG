@@ -130,9 +130,11 @@ func use_coins():
 	
 func release_all_coins():
 	for coin in inserted_coins:
-		coin.set_available()
+		if coin != null:
+			coin.set_available()
 	for coin in used_coins:
-		coin.set_available()
+		if coin != null:
+			coin.set_available()
 	inserted_coins = []
 	used_coins = []
 	coins_changed.emit(coins_needed, inserted_coins.size())

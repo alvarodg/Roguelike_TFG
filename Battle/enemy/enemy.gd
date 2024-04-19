@@ -101,7 +101,6 @@ func replace_available_skills(skill_list: Array[SkillData]):
 		add_upcoming_skill(pick_skill(strategy))
 
 func start_battle():
-	print("Battle started")
 	stats.start_battle()
 	for i in range(UPCOMING_AMOUNT):
 		add_upcoming_skill(pick_skill(strategy))
@@ -109,25 +108,26 @@ func start_battle():
 
 func start_turn():
 	pre_started_turn.emit()
-	print("Turn started")
 	target = combatants.player
 	stats.start_turn()
 	started_turn.emit()
 	act()
-	turn_finished.emit()
+#	turn_finished.emit()
 
 func act():
-	var action = upcoming_skills.front().create_skill(self, target)
-	action.use()
+	var action: Skill = upcoming_skills.front().create_skill(self, target)
+	action.finished.connect(_on_action_finished)
+	add_child(action)
 	remove_upcoming_skill(upcoming_skills.front())
 	add_upcoming_skill(pick_skill(strategy))
+	action.use()
+
+func _on_action_finished():
+	turn_finished.emit()
 
 func _on_death():
-#	print("Died")
 	about_to_die.emit()
 	await enemy_stats_ui.health_animation_finished
-#	await EventBus.health_animation_finished
-	print("Waited")
 	animation_player.play("death")
 	await animation_player.animation_finished
 	died.emit()

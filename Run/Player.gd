@@ -8,6 +8,9 @@ signal coin_dropped(coin)
 
 signal started_taking_damage
 signal finished_taking_damage
+signal started_flipping_coins
+signal finished_flipping_coins
+signal hit(damage)
 
 @export var stats: PlayerStats : set = set_stats
 @export var ui_data: PlayerUIData
@@ -58,6 +61,7 @@ func connect_stat_signals():
 	stats.shield_changed.connect(_on_Stats_changed)
 	stats.strength_changed.connect(_on_Stats_changed)
 	stats.max_health_changed.connect(_on_Stats_changed)
+	stats.hit.connect(_on_Stats_hit)
 	
 
 func set_stats(new_stats):
@@ -103,15 +107,32 @@ func end_battle():
 	ended_battle.emit()
 
 func flip(coin: Coin):
+	started_flipping_coins.emit()
+	coin.start_spinning()
+	await get_tree().create_timer(0.64).timeout
+	coin.stop_spinning()
 	var result = coin.flip(stats.base_luck, bias)
 	if coin in coins:
 		coins_changed.emit(coins)
+	finished_flipping_coins.emit()
 	return result
 
 func flip_all_coins():
+	# TODO: Reorganizar animación.
+	started_flipping_coins.emit()
 	for coin in coins:
+		coin.hide()
+		coin.start_spinning()
+	for coin in coins:
+		coin.show()
+		await get_tree().create_timer(coin.get_spin_length()*0.5).timeout
+#	await get_tree().create_timer(0.16).timeout
+	for coin in coins:
+		await get_tree().create_timer(coin.get_spin_length()*0.5).timeout
+		coin.stop_spinning()
 		coin.flip(stats.base_luck, bias)
 	coins_changed.emit(coins)
+	finished_flipping_coins.emit()
 
 func reset_coins():
 	clear_coins()
@@ -206,6 +227,13 @@ func take_damage(amount: int):
 	stats.take_damage(amount)
 #	await get_tree().create_timer(0.6).timeout
 #	taking_damage = false
+
+func _on_Stats_hit(damage):
+	hit.emit(damage)
+#	var number = DAMAGE_NUMBER.instantiate()
+#	add_child(number)
+#	number.setup(damage, battle_position, ui_data.sprite.x, stats.max_health)
+#	number.display_and_free()
 
 func save() -> Dictionary:
 	var save_dict = {

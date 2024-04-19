@@ -14,6 +14,7 @@ signal coin_inserted(slot,coin)
 signal looking_for_coin(facing)
 signal found_coin(coin)
 signal about_to_drop_coins
+signal behavior_finished(behavior)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

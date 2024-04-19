@@ -14,9 +14,11 @@ func use(user, target, _coins):
 			var animation = slash.instantiate()
 			target.add_child(animation)
 			animation.global_position = target.battle_position
-			target.wait(wait_time)
-			await target.finished_waiting
+			await animation.finished
+#			target.wait(wait_time)
+#			await target.finished_waiting
 		target.stats.take_damage(user.stats.strength + damage)
+	_finish()
 
 func get_description(stats: CombatantStats = null) -> String:
 	var description: String = ""

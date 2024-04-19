@@ -5,6 +5,7 @@ class_name CollectionContainer
 
 @export var equipments: EquipmentCollection
 @export var skills: SkillCollection
+@export var events: EventCollection
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -61,7 +62,10 @@ func get_random_skill_list(size: int = 1) -> Array[SkillData]:
 			chosen_list.append(chosen_skill)
 			list.erase(chosen_skill)
 	return chosen_list
-	
+
+func get_random_event(rarity_factor = 1) -> EventData:
+	return events.get_random(rarity_factor)
+
 # Probablemente sustituir por herencia.
 func add(element):
 	if element is SkillData:

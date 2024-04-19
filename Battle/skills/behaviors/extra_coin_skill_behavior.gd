@@ -14,7 +14,7 @@ func use(user, _target, coins):
 			user.flip(eph_coin)
 		else:
 			eph_coin.heads = true if facing == Coin.Facing.HEADS else false
-
+	_finish()
 
 func get_description(_stats: CombatantStats = null) -> String:
 	var description: String = ""

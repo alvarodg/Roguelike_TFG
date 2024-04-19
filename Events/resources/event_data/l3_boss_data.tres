@@ -11,3 +11,4 @@ enemy_data = ExtResource("1_lopki")
 description = ""
 scene = ExtResource("5_yffpe")
 next_event = ExtResource("2_5c2gb")
+rarity = 1

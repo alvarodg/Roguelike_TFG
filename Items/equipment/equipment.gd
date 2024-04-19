@@ -5,7 +5,7 @@ signal broke(equipment)
 
 @export var ui_data: EquipmentUIData = EquipmentUIData.new()
 @export var description: String = ""
-@export var rarity: int = 0
+@export var rarity: int = 1
 @export var modifiers: Array[Modifier]
 # Probablemente crear un padre común a modifier y trigger
 @export var condition_triggers: Array[ConditionTrigger]

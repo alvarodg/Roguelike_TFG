@@ -13,3 +13,4 @@ possible_enemies = Array[Resource("res://Battle/enemy/enemy_data.gd")]([ExtResou
 description = ""
 scene = ExtResource("5_tui35")
 next_event = ExtResource("1_fqd5h")
+rarity = 1

@@ -1,7 +1,7 @@
 extends Resource
 class_name EventChoiceData
 
-const scene: PackedScene = preload("res://Events/event_choice/event_choice.tscn")
+var scene: PackedScene = load("res://Events/event_choice/event_choice.tscn")
 
 @export_multiline var description: String
 @export var explicit: bool = true

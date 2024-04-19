@@ -39,11 +39,11 @@ func _ready():
 	turn_manager.enemy_turn_started.connect(_on_enemy_turn_started)
 	connect_player_signals(player)
 	connect_enemy_signals(enemy)
-	coin_box.about_to_flip_coins.connect(_on_coins_about_to_flip)
-	coin_box.finished_flipping_coins.connect(_on_coins_finished_flipping)
+#	coin_box.about_to_flip_coins.connect(_on_coins_about_to_flip)
+#	coin_box.finished_flipping_coins.connect(_on_coins_finished_flipping)
 	# Asigna el turno al jugador
 	turn_manager.turn = turn_manager.Turn.PLAYER_TURN
-	coin_box.flip_coins()
+#	coin_box.flip_coins()
 	
 func setup(p_player: Player, p_enemy_data: EnemyData, p_next_event: EventData = null):
 	player = p_player
@@ -66,8 +66,10 @@ func connect_enemy_signals(p_enemy: Enemy):
 	
 func connect_player_signals(p_player: Player):
 	p_player.died.connect(_on_Player_died)
-	p_player.started_waiting.connect(_on_Player_started_waiting)
-	p_player.finished_waiting.connect(_on_Player_finished_waiting)
+#	p_player.started_waiting.connect(_on_Player_started_waiting)
+#	p_player.finished_waiting.connect(_on_Player_finished_waiting)
+	p_player.started_flipping_coins.connect(_block_input)
+	p_player.finished_flipping_coins.connect(_allow_input)
 	
 func _on_Enemy_about_to_die():
 	player_skill_ui.block_input()
@@ -84,13 +86,13 @@ func _on_Player_died():
 	get_tree().change_scene_to_file(loss_screen)
 
 func _on_Player_started_waiting():
-	player_skill_ui.block_input()
+	_block_input()
 	end_turn_button.disabled = true
 	
 func _on_Player_finished_waiting():
-	player_skill_ui.allow_input()
+#	_allow_input()
 	end_turn_button.disabled = false
-	coin_box.flip_coins()
+#	coin_box.flip_coins()
 
 func end_battle():
 	player_skill_ui.hide()
@@ -109,18 +111,30 @@ func _on_enemy_turn_started():
 	if not combatants.enemy is Enemy:
 		end_battle()
 	else:
-		player_skill_ui.hide()
-		end_turn_button.hide()
+#		player_skill_ui.hide()
+#		end_turn_button.hide()
+		_block_input()
 		combatants.enemy.start_turn()
+
+func _block_input():
+	player_skill_ui.block_input()
+	coin_box.block_input()
+	end_turn_button.disabled = true
+	
+func _allow_input():
+	player_skill_ui.allow_input()
+	coin_box.allow_input()
+	end_turn_button.disabled = false
 
 func _on_EndTurnButton_pressed():
 	turn_manager.set_turn(TurnManager.Turn.ENEMY_TURN)
 
 func _on_Enemy_turn_finished():
+	_allow_input()
 	turn_manager.set_turn(TurnManager.Turn.PLAYER_TURN)
 
-func _on_coins_about_to_flip():
-	player_skill_ui.block_input()
-	
-func _on_coins_finished_flipping():
-	player_skill_ui.allow_input()
+#func _on_coins_about_to_flip():
+#	player_skill_ui.block_input()
+#
+#func _on_coins_finished_flipping():
+#	player_skill_ui.allow_input()
