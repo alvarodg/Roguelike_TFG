@@ -1,10 +1,14 @@
 extends Resource
 class_name EventData
 
+enum Tag {DEFAULT, BATTLE, GAMBLE, TRADE, REWARD}
+
 @export_multiline var description: String
 @export var scene: PackedScene
 @export var next_event: EventData
 @export var rarity: int = 1
+@export var tags: Array[Tag] = [Tag.DEFAULT]
+@export var secret: bool = false
 
 func _init(p_scene: PackedScene = null, p_next_event: EventData = null, p_rarity = 1):
 	scene = p_scene

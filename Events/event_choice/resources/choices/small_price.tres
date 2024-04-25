@@ -20,6 +20,7 @@ script = ExtResource("5_j70sm")
 pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 events = Array[Resource("res://Events/EventData.gd")]([ExtResource("4_74alk")])
+secret = false
 
 [resource]
 script = ExtResource("3_jbfwu")
@@ -28,3 +29,4 @@ explicit = true
 cost = SubResource("Resource_mi6j8")
 sequence = SubResource("Resource_rvjo4")
 final = true
+secret = false

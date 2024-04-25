@@ -14,9 +14,12 @@ var choices: Array[EventChoiceData]
 func _ready():
 	player_stats_ui.setup(player)
 	for choice in choices:
-		var scene: EventChoice = choice.initialize_scene(player)
+		var scene: EventChoice = choice.create_instance(player)
 		choice_container.add_child(scene)
+		scene.events_about_to_begin.connect(_on_choice_begins)
 		scene.finished.connect(_on_choice_finished)
+		scene.returned.connect(_on_choice_returned)
+		scene.selected.connect(_on_choice_selected)
 	narrative_label.text = narrative
 	event_picture.texture = image
 
@@ -25,9 +28,17 @@ func initialize(data: EventPickData):
 	choices = data.choices
 	image = data.image
 
+func _on_choice_begins():
+	hide()
+
 func _on_choice_finished():
 	finish()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _on_choice_returned():
+	show()
+
+func _on_choice_selected(choice: EventChoice):
+	for c in choice_container.get_children():
+		if c is EventChoice and c != choice:
+			c.disable()
+

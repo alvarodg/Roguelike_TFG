@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://d4ak0fy4gsv6v"]
 
-[ext_resource type="Script" path="res://Events/event_choice/event_pick.gd" id="1_cafl5"]
-[ext_resource type="Texture2D" uid="uid://djmrox3cqnntc" path="res://icon.svg" id="2_wl522"]
-[ext_resource type="PackedScene" uid="uid://cgeo8n0mg0x68" path="res://Battle/player/player_stats_ui.tscn" id="3_d8t0u"]
+[ext_resource type="Script" path="res://Events/event_choice/event_pick.gd" id="1_nc80d"]
+[ext_resource type="Texture2D" uid="uid://djmrox3cqnntc" path="res://icon.svg" id="2_p76l4"]
+[ext_resource type="PackedScene" uid="uid://cgeo8n0mg0x68" path="res://Battle/player/player_stats_ui.tscn" id="3_1eapr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i0utn"]
 bg_color = Color(0.2, 0.2, 0.2, 0.858824)
@@ -16,7 +16,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_cafl5")
+script = ExtResource("1_nc80d")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
@@ -39,7 +39,7 @@ grow_vertical = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("2_wl522")
+texture = ExtResource("2_p76l4")
 stretch_mode = 5
 
 [node name="Panel" type="Panel" parent="Background/HBoxContainer/EventPicture"]
@@ -82,5 +82,5 @@ text = "MAKE YOUR CHOICE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PlayerStatsUI" parent="." instance=ExtResource("3_d8t0u")]
+[node name="PlayerStatsUI" parent="." instance=ExtResource("3_1eapr")]
 layout_mode = 1

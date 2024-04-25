@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EventCollection" load_steps=5 format=3 uid="uid://cxjloh7bo4onj"]
+
+[ext_resource type="Script" path="res://Run/event_collection.gd" id="1_co7gk"]
+[ext_resource type="Resource" uid="uid://bea5uw56iw8ie" path="res://Events/resources/event_data/event_pick/trade_event.tres" id="1_jwfnu"]
+[ext_resource type="Resource" uid="uid://kmogyjaldbnb" path="res://Events/resources/event_data/SkillChoiceData.tres" id="2_a12g6"]
+[ext_resource type="Resource" uid="uid://6mj55fih0kl8" path="res://Events/resources/event_data/EquipmentChoiceData.tres" id="3_n5jk3"]
+
+[resource]
+script = ExtResource("1_co7gk")
+list = Array[Resource("res://Events/EventData.gd")]([ExtResource("1_jwfnu"), ExtResource("2_a12g6"), ExtResource("3_n5jk3")])

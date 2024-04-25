@@ -1,11 +1,15 @@
 extends EventData
 class_name RandomEventData
 
-const random_scene = preload("res://Events/random_event.tscn")
+var random_scene = load("res://Events/random_event.tscn")
 
 @export var events: EventCollection
+@export var event_tags: Array[EventData.Tag]
+@export var tag_op: EventCollection.Operator
+@export var rarities: Array[int]
 
 func instantiate_scene(player: Player):
+	scene = random_scene
 	var instance: RandomEvent = super.instantiate_scene(player)
-	instance.setup(events)
+	instance.setup(self)
 	return instance

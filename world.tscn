@@ -42,6 +42,7 @@ modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.
 condition_triggers = Array[Resource("res://Items/modifiers/conditions/condition_trigger.gd")]([])
 causality_triggers = Array[Resource("res://Battle/status/causality_trigger.gd")]([])
 fragile = true
+tags = Array[int]([0])
 
 [node name="World" type="Control"]
 layout_mode = 3

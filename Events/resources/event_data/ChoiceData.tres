@@ -5,4 +5,7 @@
 
 [resource]
 script = ExtResource("1_apgc7")
+description = ""
 scene = ExtResource("1_01igt")
+rarity = 1
+tags = Array[int]([0])

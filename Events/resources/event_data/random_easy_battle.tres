@@ -14,3 +14,5 @@ description = ""
 scene = ExtResource("5_tui35")
 next_event = ExtResource("1_fqd5h")
 rarity = 1
+tags = Array[int]([0])
+secret = false

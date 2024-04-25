@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dc6b3gw07gh4c"]
 
-[ext_resource type="Script" path="res://Events/event_choice/event_choice.gd" id="1_fad4k"]
+[ext_resource type="Script" path="res://Events/event_choice/event_choice.gd" id="1_h5pcf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0r30h"]
 font_size = 14
@@ -15,9 +15,10 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_fad4k")
+script = ExtResource("1_h5pcf")
 
 [node name="Button" type="Button" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,6 +27,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Label" type="Label" parent="Button"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

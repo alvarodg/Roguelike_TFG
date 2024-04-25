@@ -11,15 +11,15 @@ class_name DamageSkillBehavior
 #var wait_time: float = 0.5
 var slash = load("res://Battle/skills/animations/slash_animation.tscn")
 
-func use(user, target, _coins):
+func use(user: Combatant, target: Combatant, _coins):
 	var animation = slash.instantiate()
 	if to_self:
-		user.stats.take_damage(damage, ignore_shield, ignore_armor, ignore_dodges)
+		user.take_damage(damage, ignore_shield, ignore_armor, ignore_dodges)
 		user.add_child(animation)
 		animation.global_position = user.battle_position
 		await animation.finished
 	else:
-		target.stats.take_damage(user.stats.strength + damage, ignore_shield, ignore_armor, ignore_dodges)
+		target.take_damage(user.stats.strength + damage, ignore_shield, ignore_armor, ignore_dodges)
 		target.add_child(animation)
 		animation.global_position = target.battle_position
 		await animation.finished

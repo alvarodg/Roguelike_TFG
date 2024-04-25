@@ -2,7 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://0tb5ir6mx8dp" path="res://Battle/enemy/resources/data/boss_enemy_data_3.tres" id="1_emmrp"]
 [ext_resource type="Script" path="res://Events/BattleEventData.gd" id="1_evwa7"]
-[ext_resource type="Resource" uid="uid://crm4hx88wd0rk" path="res://Events/resources/event_data/next_level.tres" id="2_oo4o1"]
+[ext_resource type="Resource" uid="uid://crm4hx88wd0rk" path="res://Events/resources/event_data/navigation/next_level.tres" id="2_oo4o1"]
 [ext_resource type="PackedScene" uid="uid://ci2osml7lmqcy" path="res://Battle/CoinBattle.tscn" id="2_suvps"]
 [ext_resource type="PackedScene" uid="uid://sm2dgitxom6p" path="res://Events/skill_choice.tscn" id="3_5p5il"]
 [ext_resource type="Script" path="res://Events/EventData.gd" id="4_ipa50"]
@@ -13,6 +13,8 @@ description = ""
 scene = ExtResource("3_5p5il")
 next_event = ExtResource("2_oo4o1")
 rarity = 1
+tags = Array[int]([0])
+secret = false
 
 [resource]
 script = ExtResource("1_evwa7")
@@ -21,3 +23,5 @@ description = ""
 scene = ExtResource("2_suvps")
 next_event = SubResource("Resource_h5ix8")
 rarity = 1
+tags = Array[int]([0])
+secret = false

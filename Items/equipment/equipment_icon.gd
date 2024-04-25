@@ -44,9 +44,6 @@ func _on_triggers_changed(amount: int, remaining: int):
 		event_counter_container.show()
 #		trigger_counter_container.show()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 # Versión básica de mostrar la información cuando se pase el ratón
 func _on_mouse_entered():

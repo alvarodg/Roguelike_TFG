@@ -45,14 +45,14 @@ func _ready():
 	enemy_stats_ui.setup(stats)
 	enemy_skill_ui.setup(self)
 	
-func setup(p_ui_data: EnemyUIData, p_stats: EnemyStats, p_skills: Array[SkillData], p_equipment_list: Array[Equipment], p_strategy: Strategy):
-	ui_data = p_ui_data
+func setup(data: EnemyData):
+	ui_data = data.ui_data
 	# Duplica stats para que se puedan reutilizar.
-	stats = p_stats.duplicate()
-	skills = p_skills
-	strategy = p_strategy
+	stats = data.stats.duplicate()
+	skills = data.skills
+	strategy = data.strategy
 	available_skills = skills.duplicate()
-	equipment_list = p_equipment_list.duplicate()
+	equipment_list = data.equipment_list.duplicate()
 	connect_to_stat_signals(stats)
 	
 func set_new_stats(new_stats: EnemyStats):
@@ -150,8 +150,8 @@ func equip(equipment: Equipment):
 	equipment.setup()
 	equipment_changed.emit(equipment_list)
 
-func take_damage(amount: int):
-	stats.take_damage(amount)
+func take_damage(amount: int, ignore_shield = false, ignore_armor = false, ignore_dodges = false):
+	stats.take_damage(amount, ignore_shield, ignore_armor, ignore_dodges)
 
 func _on_hit(damage):
 	var tween: Tween = get_tree().create_tween()

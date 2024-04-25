@@ -55,6 +55,7 @@ modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.
 condition_triggers = Array[ExtResource("3_mam66")]([SubResource("Resource_h5u22")])
 causality_triggers = Array[Resource("res://Battle/status/causality_trigger.gd")]([])
 fragile = false
+tags = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_uieln"]
 script = ExtResource("7_8c1ye")
@@ -88,6 +89,7 @@ modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.
 condition_triggers = Array[ExtResource("3_mam66")]([SubResource("Resource_av0k0")])
 causality_triggers = Array[Resource("res://Battle/status/causality_trigger.gd")]([])
 fragile = false
+tags = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_a2odx"]
 script = ExtResource("11_87d15")

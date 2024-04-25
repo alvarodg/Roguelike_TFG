@@ -12,12 +12,12 @@ func _init(p_coin_data_list: Array[CoinData] = []):
 func apply_to(user: Player):
 	for coin_data in coin_data_list:
 		var coin: Coin = coin_data.create_coin_instance(ephemeral)
-		user.add_coin(coin.duplicate())
 		match facing:
 			Coin.Facing.ANY: user.flip(coin)
 			Coin.Facing.HEADS: coin.heads = true
 			Coin.Facing.TAILS: coin.heads = false
-
+		user.add_coin(coin.duplicate())
+		
 func get_description(_stats: CombatantStats = null) -> String:
 	var coin_type = "Ephemeral" if ephemeral else "Persistent"
 	var plural = "" if coin_data_list.size() == 1 else "s"

@@ -3,6 +3,8 @@ class_name Equipment
 
 signal broke(equipment)
 
+enum Tag {DEFAULT, LIGHT, DARK, FALLEN}
+
 @export var ui_data: EquipmentUIData = EquipmentUIData.new()
 @export var description: String = ""
 @export var rarity: int = 1
@@ -11,6 +13,7 @@ signal broke(equipment)
 @export var condition_triggers: Array[ConditionTrigger]
 @export var causality_triggers: Array[CausalityTrigger]
 @export var fragile: bool = false
+@export var tags: Array[Tag] = [Tag.DEFAULT]
 
 # Called when the node enters the scene tree for the first time.
 func attach_to(user):

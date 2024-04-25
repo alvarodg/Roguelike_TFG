@@ -1,7 +1,7 @@
 extends EventData
 class_name EventPickData
 
-var event_pick_scene = load("res://Events/event_choice/event_pick_scene.tscn")
+var event_pick_scene = load("res://Events/event_choice/event_pick.tscn")
 
 @export_multiline var narrative: String
 @export var image: Texture2D

@@ -1,0 +1,60 @@
+[gd_resource type="Resource" script_class="EventPickData" load_steps=15 format=3 uid="uid://du5unm6rln13y"]
+
+[ext_resource type="Script" path="res://Events/event_choice/event_pick_data.gd" id="1_gr5jj"]
+[ext_resource type="Script" path="res://Items/modifiers/components/stats/health_modifier_component.gd" id="1_wre55"]
+[ext_resource type="Script" path="res://Items/modifiers/cost/health_cost.gd" id="2_uqe1s"]
+[ext_resource type="Script" path="res://Events/event_choice/event_choice_data.gd" id="3_dsxa4"]
+[ext_resource type="Resource" uid="uid://4msvwnp5eq7u" path="res://Battle/enemy/resources/data/elite_enemy_data.tres" id="4_vgwmy"]
+[ext_resource type="Script" path="res://Events/BattleEventData.gd" id="5_iep3d"]
+[ext_resource type="Script" path="res://Events/event_choice/choice_sequence.gd" id="6_nqp13"]
+[ext_resource type="Texture2D" uid="uid://djmrox3cqnntc" path="res://icon.svg" id="7_7ht80"]
+
+[sub_resource type="Resource" id="Resource_8kpf4"]
+script = ExtResource("1_wre55")
+magnitude = -20.0
+action = 0
+
+[sub_resource type="Resource" id="Resource_ovy4y"]
+script = ExtResource("2_uqe1s")
+health_mod = SubResource("Resource_8kpf4")
+
+[sub_resource type="Resource" id="Resource_wvjfv"]
+script = ExtResource("3_dsxa4")
+description = "Let him."
+explicit = true
+cost = SubResource("Resource_ovy4y")
+final = true
+secret = false
+
+[sub_resource type="Resource" id="Resource_5xyfl"]
+script = ExtResource("5_iep3d")
+enemy_data = ExtResource("4_vgwmy")
+description = "Fight him."
+rarity = 1
+tags = Array[int]([0])
+secret = false
+
+[sub_resource type="Resource" id="Resource_7ynxm"]
+script = ExtResource("6_nqp13")
+pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_5xyfl")])
+secret = false
+
+[sub_resource type="Resource" id="Resource_x7ik3"]
+script = ExtResource("3_dsxa4")
+description = "He'll have to work for it."
+explicit = true
+sequence = SubResource("Resource_7ynxm")
+final = true
+secret = false
+
+[resource]
+script = ExtResource("1_gr5jj")
+narrative = "This guy really wants to hit you."
+image = ExtResource("7_7ht80")
+choices = Array[ExtResource("3_dsxa4")]([SubResource("Resource_wvjfv"), SubResource("Resource_x7ik3")])
+description = ""
+rarity = 1
+tags = Array[int]([0])
+secret = false

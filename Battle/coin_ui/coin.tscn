@@ -40,6 +40,7 @@ _data = {
 [node name="Coin" type="TextureButton"]
 custom_minimum_size = Vector2(64, 64)
 texture_normal = ExtResource("1_w47n0")
+texture_disabled = ExtResource("1_w47n0")
 texture_focused = ExtResource("2_iollm")
 script = ExtResource("2_gdc2v")
 heads_texture = ExtResource("1_w47n0")
@@ -57,5 +58,14 @@ texture = ExtResource("2_iollm")
 libraries = {
 "": SubResource("AnimationLibrary_1qoat")
 }
+
+[node name="InputBlocker" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

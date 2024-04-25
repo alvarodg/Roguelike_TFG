@@ -140,9 +140,33 @@ func get_spin_length() -> float:
 
 func show_heads():
 	texture_normal = data.heads_texture
-
+	texture_disabled = data.heads_texture
+	
 func show_tails():
 	texture_normal = data.tails_texture
+	texture_disabled = data.heads_texture
+
+func fade_out():
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "self_modulate:a", 0, 0.2)
+	await tween.finished
+
+func fade_in():
+	self_modulate.a = 0
+	var tween = get_tree().create_tween()
+	var target = 0.5 if is_ephemeral else 1.0
+	tween.tween_property(self, "self_modulate:a", target, 0.2)
+
+func make_untouchable():
+	mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+func is_compatible(facing: Facing) -> bool:
+	if facing == Facing.ANY:
+		return true
+	elif facing == Facing.HEADS:
+		return heads
+	else:
+		return not heads
 
 static func get_facing_text(facing: Facing) -> String:
 	var text = ""

@@ -32,6 +32,9 @@ var status_list: Array[Status]
 #func get_ui_data():
 #	pass
 
+func take_damage(_amount: int, _ignore_shield = false, _ignore_armor = false, _ignore_dodges = false):
+	pass
+
 func wait(time: float):
 	if time > 0:
 		started_waiting.emit()

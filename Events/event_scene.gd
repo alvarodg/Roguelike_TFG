@@ -14,11 +14,6 @@ func _ready():
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
 func finish():
 	if next_event is EventData:
 		var next_scene = next_event.instantiate_scene(player)

@@ -1,16 +1,23 @@
 extends EventScene
 class_name RandomEvent
 
-@export var events: EventCollection
+var events: EventCollection
+var tags: Array[EventData.Tag]
+var tag_op: EventCollection.Operator
+var rarities: Array[int]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	add_child(events.get_random().instantiate_scene(player))
+	var events = RunData.collections.events
+	add_child(events.get_random(tags, tag_op, rarities).instantiate_scene(player))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
-func setup(event_collection: EventCollection):
-	events = event_collection
+func setup(data: RandomEventData):
+	events = data.events
+	tags = data.event_tags
+	tag_op = data.tag_op
+	rarities = data.rarities

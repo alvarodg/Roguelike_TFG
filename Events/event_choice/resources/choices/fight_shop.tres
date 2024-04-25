@@ -12,12 +12,15 @@ script = ExtResource("3_lhper")
 enemy_data = ExtResource("2_h7cxe")
 description = "Fight the trader."
 rarity = 1
+tags = Array[int]([0])
+secret = false
 
 [sub_resource type="Resource" id="Resource_cfr11"]
 script = ExtResource("6_vxhy7")
 pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_3v0x7"), ExtResource("4_hu7yp"), ExtResource("5_cvo5r")])
+secret = false
 
 [resource]
 script = ExtResource("1_t2lsi")
@@ -25,3 +28,4 @@ description = "Take everything."
 explicit = true
 sequence = SubResource("Resource_cfr11")
 final = true
+secret = false

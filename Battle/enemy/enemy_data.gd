@@ -10,5 +10,6 @@ var enemy_scene = preload("res://Battle/enemy/enemy.tscn")
 
 func create_enemy_instance():
 	var enemy = enemy_scene.instantiate()
-	enemy.setup(ui_data, stats, skills, equipment_list, strategy)
+	enemy.setup(self)
+#	enemy.setup(ui_data, stats, skills, equipment_list, strategy)
 	return enemy

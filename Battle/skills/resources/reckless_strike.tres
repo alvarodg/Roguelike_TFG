@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="SkillData" load_steps=8 format=3 uid="uid://bw2mdamfuot5m"]
+
+[ext_resource type="Script" path="res://Battle/skills/behaviors/damage_skill_behavior.gd" id="1_e568m"]
+[ext_resource type="Script" path="res://Battle/skills/SkillData.gd" id="1_hd2t5"]
+[ext_resource type="Script" path="res://Items/modifiers/components/coin_drop_modifier_component.gd" id="2_7f4kv"]
+[ext_resource type="Script" path="res://Battle/skills/skill_ui_data.gd" id="4_cka2x"]
+
+[sub_resource type="Resource" id="Resource_gfvyy"]
+script = ExtResource("1_e568m")
+damage = 14
+to_self = false
+ignore_shield = false
+ignore_armor = false
+ignore_dodges = false
+
+[sub_resource type="Resource" id="Resource_etmr6"]
+script = ExtResource("2_7f4kv")
+drop_count = 2
+facing = 1
+
+[sub_resource type="Resource" id="Resource_46imt"]
+script = ExtResource("4_cka2x")
+ui_name = ""
+
+[resource]
+script = ExtResource("1_hd2t5")
+ui_data = SubResource("Resource_46imt")
+name = ""
+cost = Array[int]([2, 0, 0])
+uses_per_turn = 1
+one_shot = false
+cost_is_mandatory = true
+rarity = 0
+behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_gfvyy")])
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_etmr6")])
+modifiers_first = false

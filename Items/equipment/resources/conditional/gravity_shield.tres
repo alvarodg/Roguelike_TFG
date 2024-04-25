@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="Equipment" load_steps=11 format=3 uid="uid://dxb0hirym3yg5"]
+
+[ext_resource type="Script" path="res://Items/modifiers/conditions/events/coin_dropped_condition.gd" id="1_fja01"]
+[ext_resource type="Script" path="res://Items/modifiers/components/stats/shield_modifier_component.gd" id="2_gea25"]
+[ext_resource type="Script" path="res://Items/modifiers/conditions/condition_trigger.gd" id="3_rfep4"]
+[ext_resource type="Script" path="res://Items/equipment/equipment.gd" id="4_tra6m"]
+[ext_resource type="Texture2D" uid="uid://67vxmnlk8br1" path="res://Items/equipment/sprites/test_item.png" id="5_as1lk"]
+[ext_resource type="Script" path="res://Items/equipment/equipment_ui_data.gd" id="6_e4xv6"]
+
+[sub_resource type="Resource" id="Resource_afuv0"]
+script = ExtResource("1_fja01")
+facing = 0
+amount = 1
+restart_per_turn = true
+
+[sub_resource type="Resource" id="Resource_ewjna"]
+script = ExtResource("2_gea25")
+magnitude = 3.0
+action = 0
+
+[sub_resource type="Resource" id="Resource_fbynb"]
+script = ExtResource("3_rfep4")
+state_conditions = Array[Resource("res://Items/modifiers/conditions/state_condition.gd")]([])
+event_condition = SubResource("Resource_afuv0")
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_ewjna")])
+amount = -1
+reset = 1
+
+[sub_resource type="Resource" id="Resource_4402m"]
+script = ExtResource("6_e4xv6")
+icon = ExtResource("5_as1lk")
+ui_name = "Gravity Shield"
+
+[resource]
+script = ExtResource("4_tra6m")
+ui_data = SubResource("Resource_4402m")
+description = ""
+rarity = 2
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+condition_triggers = Array[ExtResource("3_rfep4")]([SubResource("Resource_fbynb")])
+causality_triggers = Array[Resource("res://Battle/status/causality_trigger.gd")]([])
+fragile = false

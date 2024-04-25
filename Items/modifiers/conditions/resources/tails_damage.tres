@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="ConditionTrigger" load_steps=6 format=3 uid="uid://bctk1pmawr63u"]
+[gd_resource type="Resource" script_class="ConditionTrigger" load_steps=8 format=3 uid="uid://bctk1pmawr63u"]
 
 [ext_resource type="Script" path="res://Items/modifiers/conditions/condition_trigger.gd" id="1_l2ovu"]
 [ext_resource type="Script" path="res://Items/modifiers/conditions/events/flip_condition.gd" id="1_xmfu5"]
 [ext_resource type="Script" path="res://Items/modifiers/components/stats/health_modifier_component.gd" id="2_t07eb"]
+[ext_resource type="Script" path="res://Items/modifiers/conditions/states/in_battle_condition.gd" id="4_rskh5"]
 
 [sub_resource type="Resource" id="Resource_2wi2a"]
 script = ExtResource("1_xmfu5")
@@ -15,9 +16,12 @@ script = ExtResource("2_t07eb")
 magnitude = -1.0
 action = 0
 
+[sub_resource type="Resource" id="Resource_rfo76"]
+script = ExtResource("4_rskh5")
+
 [resource]
 script = ExtResource("1_l2ovu")
-state_conditions = Array[Resource("res://Items/modifiers/conditions/state_condition.gd")]([])
+state_conditions = Array[Resource("res://Items/modifiers/conditions/state_condition.gd")]([SubResource("Resource_rfo76")])
 event_condition = SubResource("Resource_2wi2a")
 modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_jdggp")])
 amount = -1

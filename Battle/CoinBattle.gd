@@ -19,6 +19,7 @@ var enemy: Enemy
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	assert(enemy_data is EnemyData)
+	print("Starting")
 	# Crea el nuevo enemigo a partir de sus datos
 	enemy = enemy_data.create_enemy_instance()
 	enemy_position.add_child(enemy)
@@ -98,6 +99,7 @@ func end_battle():
 	player_skill_ui.hide()
 	end_turn_button.hide()
 	player.end_battle()
+	print(player.coins)
 	print("You won!")
 	finish()
 

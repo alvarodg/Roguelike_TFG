@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="Equipment" load_steps=12 format=3 uid="uid://dbfg2y1v4w6ig"]
+
+[ext_resource type="Script" path="res://Items/modifiers/conditions/events/coin_dropped_condition.gd" id="1_a1yld"]
+[ext_resource type="Resource" uid="uid://3rw1h1eslq66" path="res://Battle/coin_ui/resources/default_coin.tres" id="2_alkvr"]
+[ext_resource type="Script" path="res://Items/modifiers/components/extra_coin_modifier_component.gd" id="3_rjfe2"]
+[ext_resource type="Script" path="res://Items/modifiers/conditions/condition_trigger.gd" id="5_gfy27"]
+[ext_resource type="Script" path="res://Items/equipment/equipment.gd" id="6_qki2w"]
+[ext_resource type="Texture2D" uid="uid://67vxmnlk8br1" path="res://Items/equipment/sprites/test_item.png" id="7_4dtu1"]
+[ext_resource type="Script" path="res://Items/equipment/equipment_ui_data.gd" id="8_1rb1y"]
+
+[sub_resource type="Resource" id="Resource_jfqi6"]
+script = ExtResource("1_a1yld")
+facing = 1
+amount = 1
+restart_per_turn = true
+
+[sub_resource type="Resource" id="Resource_fnb5t"]
+script = ExtResource("3_rjfe2")
+coin_data_list = Array[Resource("res://Battle/coin_ui/coin_data.gd")]([ExtResource("2_alkvr"), ExtResource("2_alkvr")])
+ephemeral = true
+facing = 2
+
+[sub_resource type="Resource" id="Resource_kcb6y"]
+script = ExtResource("5_gfy27")
+state_conditions = Array[Resource("res://Items/modifiers/conditions/state_condition.gd")]([])
+event_condition = SubResource("Resource_jfqi6")
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_fnb5t")])
+amount = 1
+reset = 0
+
+[sub_resource type="Resource" id="Resource_6n6iw"]
+script = ExtResource("8_1rb1y")
+icon = ExtResource("7_4dtu1")
+ui_name = "Heads Bouncer"
+
+[resource]
+script = ExtResource("6_qki2w")
+ui_data = SubResource("Resource_6n6iw")
+description = ""
+rarity = 1
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+condition_triggers = Array[ExtResource("5_gfy27")]([SubResource("Resource_kcb6y")])
+causality_triggers = Array[Resource("res://Battle/status/causality_trigger.gd")]([])
+fragile = false
+tags = Array[int]([0])

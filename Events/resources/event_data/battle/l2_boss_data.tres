@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="BattleEventData" load_steps=8 format=3 uid="uid://hefxpk7cbo07"]
 
-[ext_resource type="Resource" uid="uid://crm4hx88wd0rk" path="res://Events/resources/event_data/next_level.tres" id="1_jcm27"]
+[ext_resource type="Resource" uid="uid://crm4hx88wd0rk" path="res://Events/resources/event_data/navigation/next_level.tres" id="1_jcm27"]
 [ext_resource type="Resource" uid="uid://cq5ebehsqd2ae" path="res://Battle/enemy/resources/data/knight_boss_data.tres" id="1_r8gds"]
 [ext_resource type="Script" path="res://Events/EventData.gd" id="1_u2ngt"]
 [ext_resource type="PackedScene" uid="uid://ci2osml7lmqcy" path="res://Battle/CoinBattle.tscn" id="2_4hwg2"]

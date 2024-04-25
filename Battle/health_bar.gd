@@ -32,7 +32,7 @@ func _on_Combatant_health_changed(_old, health):
 #	value = health
 #	_update_label()
 	
-func _on_Combatant_max_health_changed(old, max_health):
+func _on_Combatant_max_health_changed(_old, max_health):
 	max_value = max_health
 
 

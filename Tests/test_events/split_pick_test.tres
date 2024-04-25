@@ -1,0 +1,112 @@
+[gd_resource type="Resource" script_class="EventPickData" load_steps=25 format=3 uid="uid://cl2ctrvkv5yu3"]
+
+[ext_resource type="Resource" uid="uid://b8r88vwyrnqt6" path="res://Events/resources/event_data/battle/EasyBattleData.tres" id="1_bdige"]
+[ext_resource type="Script" path="res://Events/event_choice/choice_sequence.gd" id="2_bgpsa"]
+[ext_resource type="Script" path="res://Events/event_choice/choice_coin_box_data.gd" id="3_fs77g"]
+[ext_resource type="Script" path="res://Events/event_choice/split_event_choice_data.gd" id="4_7ll1k"]
+[ext_resource type="Resource" uid="uid://6mj55fih0kl8" path="res://Events/resources/event_data/EquipmentChoiceData.tres" id="5_lhpfq"]
+[ext_resource type="Script" path="res://Events/event_choice/event_choice_data.gd" id="6_fsytl"]
+[ext_resource type="Resource" uid="uid://dvgi2ssh6mwbh" path="res://Events/resources/event_data/RegularBattleData.tres" id="7_hergg"]
+[ext_resource type="Script" path="res://Items/modifiers/components/stats/health_modifier_component.gd" id="8_jsqha"]
+[ext_resource type="Script" path="res://Items/modifiers/cost/health_cost.gd" id="9_olnsn"]
+[ext_resource type="Resource" uid="uid://kmogyjaldbnb" path="res://Events/resources/event_data/SkillChoiceData.tres" id="10_pghfn"]
+[ext_resource type="Script" path="res://Events/event_choice/event_pick_data.gd" id="11_r622m"]
+
+[sub_resource type="Resource" id="Resource_1o50y"]
+script = ExtResource("2_bgpsa")
+pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+events = Array[Resource("res://Events/EventData.gd")]([ExtResource("1_bdige")])
+secret = false
+
+[sub_resource type="Resource" id="Resource_306jc"]
+script = ExtResource("3_fs77g")
+coin_amount = 2
+target_heads = 1
+operator = 1
+
+[sub_resource type="Resource" id="Resource_1r2g7"]
+script = ExtResource("2_bgpsa")
+pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+events = Array[Resource("res://Events/EventData.gd")]([ExtResource("5_lhpfq")])
+secret = false
+
+[sub_resource type="Resource" id="Resource_afbk6"]
+script = ExtResource("4_7ll1k")
+alt_sequence = SubResource("Resource_1o50y")
+coinbox_data = SubResource("Resource_306jc")
+description = "2 Monedas, 1 Cara para pasar."
+explicit = true
+sequence = SubResource("Resource_1r2g7")
+final = true
+secret = false
+
+[sub_resource type="Resource" id="Resource_3gu0k"]
+script = ExtResource("2_bgpsa")
+pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+events = Array[Resource("res://Events/EventData.gd")]([ExtResource("7_hergg")])
+secret = false
+
+[sub_resource type="Resource" id="Resource_p3tvf"]
+script = ExtResource("6_fsytl")
+description = "EventChoice normal."
+explicit = true
+sequence = SubResource("Resource_3gu0k")
+final = true
+secret = false
+
+[sub_resource type="Resource" id="Resource_uups6"]
+script = ExtResource("8_jsqha")
+magnitude = -20.0
+action = 0
+
+[sub_resource type="Resource" id="Resource_435h6"]
+script = ExtResource("2_bgpsa")
+pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_uups6")])
+events = Array[Resource("res://Events/EventData.gd")]([])
+secret = false
+
+[sub_resource type="Resource" id="Resource_oo4b5"]
+script = ExtResource("3_fs77g")
+coin_amount = 3
+target_heads = 2
+operator = 1
+
+[sub_resource type="Resource" id="Resource_iaofd"]
+script = ExtResource("8_jsqha")
+magnitude = -10.0
+action = 0
+
+[sub_resource type="Resource" id="Resource_5r74q"]
+script = ExtResource("9_olnsn")
+health_mod = SubResource("Resource_iaofd")
+
+[sub_resource type="Resource" id="Resource_myjg8"]
+script = ExtResource("2_bgpsa")
+pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+events = Array[Resource("res://Events/EventData.gd")]([ExtResource("10_pghfn")])
+secret = false
+
+[sub_resource type="Resource" id="Resource_6j58m"]
+script = ExtResource("4_7ll1k")
+alt_sequence = SubResource("Resource_435h6")
+coinbox_data = SubResource("Resource_oo4b5")
+description = "3 Monedas. 2 Caras para pasar."
+explicit = true
+cost = SubResource("Resource_5r74q")
+sequence = SubResource("Resource_myjg8")
+final = true
+secret = false
+
+[resource]
+script = ExtResource("11_r622m")
+narrative = "Esta es una prueba de SplitEventChoice."
+choices = Array[ExtResource("6_fsytl")]([SubResource("Resource_afbk6"), SubResource("Resource_p3tvf"), SubResource("Resource_6j58m")])
+description = ""
+rarity = 1
+tags = Array[int]([0])
+secret = false

@@ -74,6 +74,8 @@ func add_coin(coin: Coin):
 	coin.flipped.connect(_on_Coin_flipped)
 	coin.dropped.connect(_on_Coin_dropped)
 	coins_changed.emit(coins)
+	if coin.is_ephemeral:
+		coin.fade_in()
 
 func set_coins(new_coins):
 	coins = new_coins.filter(func(element): return element != null)
@@ -94,6 +96,7 @@ func start_turn():
 func end_turn():
 	stats.end_turn()
 	clear_ephemeral_coins()
+#	recover_dropped_coins()
 	
 func start_battle():
 	stats.start_battle()
@@ -105,6 +108,7 @@ func end_battle():
 	stats.end_battle()
 	clear_coins()
 	ended_battle.emit()
+	print("ended signal")
 
 func flip(coin: Coin):
 	started_flipping_coins.emit()
@@ -117,8 +121,18 @@ func flip(coin: Coin):
 	finished_flipping_coins.emit()
 	return result
 
+# TEMPORAL, reorganizar animación
+func logic_flip(coin: Coin):
+	started_flipping_coins.emit()
+	var result = coin.flip(stats.base_luck, bias)
+	if coin in coins:
+		coins_changed.emit(coins)
+	finished_flipping_coins.emit()
+	return result
+
 func flip_all_coins():
 	# TODO: Reorganizar animación.
+	recover_dropped_coins()
 	started_flipping_coins.emit()
 	for coin in coins:
 		coin.hide()
@@ -146,12 +160,13 @@ func reset_coins():
 func create_coin_data(amount: int):
 	coin_data = []
 	for i in range(amount):
-		coin_data.append(default_coin)
+		coin_data.append(default_coin.duplicate())
 
 func clear_ephemeral_coins():
 	var to_delete: Array[Coin] = []
 	to_delete = coins.filter(func(x: Coin): return x.is_ephemeral)
 	for coin in to_delete:
+		coin.fade_out()
 		coins.erase(coin)
 		coin.queue_free()
 
@@ -172,6 +187,11 @@ func recover_inserted_coins():
 	for coin in coins:
 		if coin.status == Coin.Status.INSERTED:
 			pass
+			
+func recover_dropped_coins():
+	for coin in coins:
+		if coin.status == Coin.Status.DROPPED:
+			coin.set_available()
 
 func equip(equipment: Equipment):
 	equipment.attach_to(self)
@@ -217,16 +237,8 @@ func set_taking_damage(value):
 	taking_damage = value
 	
 
-# TEMPORAL
-func take_damage(amount: int):
-#	if taking_damage:
-#		await get_tree().create_timer(0.6).timeout
-#		taking_damage = false
-##		await finished_taking_damage
-#	taking_damage = true
-	stats.take_damage(amount)
-#	await get_tree().create_timer(0.6).timeout
-#	taking_damage = false
+func take_damage(amount: int, ignore_shield = false, ignore_armor = false, ignore_dodges = false):
+	stats.take_damage(amount, ignore_shield, ignore_armor, ignore_dodges)
 
 func _on_Stats_hit(damage):
 	hit.emit(damage)
