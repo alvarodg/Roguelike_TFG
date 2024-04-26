@@ -43,7 +43,8 @@ func apply_to(p_user):
 	user = p_user
 	for state in state_conditions:
 		state.connect_to(user)
-		state.state_changed.connect(_on_state_changed)
+		if not state.state_changed.is_connected(_on_state_changed):
+			state.state_changed.connect(_on_state_changed)
 	if event_condition is EventCondition:
 		event_condition.connect_to(user)
 		if not event_condition.met.is_connected(_on_triggered):

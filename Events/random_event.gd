@@ -8,8 +8,10 @@ var rarities: Array[int]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var events = RunData.collections.events
-	add_child(events.get_random(tags, tag_op, rarities).instantiate_scene(player))
+#	var events = RunData.collections.events
+	var event = events.get_random(tags, tag_op, rarities).instantiate_scene(player)
+	event.finished.connect(finish)
+	add_child(event)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

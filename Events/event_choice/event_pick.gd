@@ -20,6 +20,7 @@ func _ready():
 		scene.finished.connect(_on_choice_finished)
 		scene.returned.connect(_on_choice_returned)
 		scene.selected.connect(_on_choice_selected)
+		scene.pre_selected.connect(_on_choice_pre_selected)
 	narrative_label.text = narrative
 	event_picture.texture = image
 
@@ -42,3 +43,7 @@ func _on_choice_selected(choice: EventChoice):
 		if c is EventChoice and c != choice:
 			c.disable()
 
+func _on_choice_pre_selected(choice: EventChoice):
+	for c in choice_container.get_children():
+		if c is SplitEventChoice and c != choice:
+			await c.hide_coinbox()

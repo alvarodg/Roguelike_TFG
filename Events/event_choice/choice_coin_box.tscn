@@ -85,4 +85,5 @@ layout_mode = 2
 text = "Stop"
 
 [connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/FlipButton" to="." method="_on_FlipButton_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/CancelButton" to="." method="_on_CancelButton_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/StopButton" to="." method="_on_StopButton_pressed"]

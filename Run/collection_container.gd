@@ -11,7 +11,9 @@ class_name CollectionContainer
 func _ready():
 	RunData.collections = self
 	EventBus.equipment_equipped.connect(_on_equipment_equipped)
-
+	add_to_group("equipment_list")
+	add_to_group("run_persistent")
+	
 # Saca un equipamiento de equip_list, modifica la lista. ¿Mover a su propia clase?
 func _get_random_equipment(equip_list: Array[Equipment], rarity: int = -1, rarity_factor: float = 0.0) -> Equipment:
 	if equip_list.size() == 0:

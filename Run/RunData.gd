@@ -49,6 +49,7 @@ func save_game():
 #	save_file.store_line(JSON.stringify(player.to_save_dict()))
 	# Guarda los datos del grupo "run_persistent"
 	for node in save_nodes:
+		print(node)
 		# Check the node is an instanced scene so it can be instanced again during load.
 		if node.scene_file_path.is_empty():
 			print("persistent node '%s' is not an instanced scene, skipped" % node.name)
@@ -64,7 +65,7 @@ func save_game():
 
 		# JSON provides a static method to serialized JSON string.
 		var json_string = JSON.stringify(node_data)
-
+		
 		# Store the save dictionary as a new line in the save file.
 		save_file.store_line(json_string)
 
@@ -81,7 +82,6 @@ func load_game():
 	var save_nodes = get_tree().get_nodes_in_group("run_persistent")
 	for i in save_nodes:
 		i.queue_free()
-		
 	# Load the file line by line and process that dictionary to restore
 	# the object it represents.
 	var save_file = FileAccess.open("user://savegame.save", FileAccess.READ)
@@ -125,6 +125,9 @@ func load_game():
 			else:
 				new_object.set(i, node_data[i])
 	print("Finished")
+	# TEMPORAL? Espera al siguiente frame para asegurarse de que los nodos se hayan eliminado 
+	# con queue_free antes de enviar la señal.
+	await get_tree().process_frame
 	finished_loading.emit()
 
 ## Comprueba la validez de la partida guardada. 

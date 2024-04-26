@@ -3,6 +3,7 @@ class_name ChoiceCoinBox
 
 signal selected
 signal finished(result)
+signal canceled
 # Para posible futura implementación que deje el tratamiento de los resultados fuera de la clase
 #signal coins_flipped(heads_count, coin_amount)
 
@@ -42,6 +43,16 @@ func initialize(data: ChoiceCoinBoxData):
 
 func setup(p_player: Player):
 	player = p_player
+
+func disable_input():
+	flip_button.disabled = true
+	cancel_button.disabled = true
+	stop_button.disabled = true
+	
+func enable_input():
+	flip_button.disabled = false
+	cancel_button.disabled = false
+	stop_button.disabled = false
 
 func _generate_target_text():
 	target_label.text = "Target: "
@@ -92,3 +103,8 @@ func _on_StopButton_pressed():
 	var result = _use_comparison_operator(operator, heads_count, target_heads)
 	stop_button.disabled = true
 	finished.emit(result)
+
+
+
+func _on_CancelButton_pressed():
+	canceled.emit()

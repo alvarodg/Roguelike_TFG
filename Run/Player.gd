@@ -34,6 +34,8 @@ var in_damage_queue: int = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	RunData.player = self
+#	add_to_group("player")
+#	add_to_group("run_persistent")
 #	stats.coin_count_changed.connect(_on_Stats_coin_count_changed)
 #	stats.died.connect(_on_Stats_died)
 	stats.setup()

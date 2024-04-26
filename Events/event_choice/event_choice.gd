@@ -4,6 +4,7 @@ class_name EventChoice
 signal events_about_to_begin
 signal returned
 signal finished
+signal pre_selected(event_choice)
 signal selected(event_choice)
 
 @onready var button = %Button
