@@ -116,6 +116,7 @@ rarity = 0
 behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_a2odx")])
 modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 modifiers_first = true
+tags = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_y0726"]
 script = ExtResource("11_87d15")
@@ -147,6 +148,7 @@ rarity = 0
 behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_y0726")])
 modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_n1ipe")])
 modifiers_first = true
+tags = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_olk7o"]
 script = ExtResource("16_rrcr2")
@@ -170,6 +172,7 @@ rarity = 0
 behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_olk7o")])
 modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 modifiers_first = true
+tags = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_rvnhm"]
 script = ExtResource("2_ci1wy")
@@ -193,6 +196,7 @@ rarity = 0
 behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([])
 modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_rvnhm")])
 modifiers_first = true
+tags = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_tbi5m"]
 script = ExtResource("2_1m02h")

@@ -5,3 +5,14 @@ class_name ChoiceSequence
 @export var post_modifiers: Array[Modifier]
 @export var events: Array[EventData]
 @export var secret: bool = false
+
+func get_description() -> String:
+	var desc: String = ""
+	for mod in pre_modifiers:
+		desc += mod.get_description() + "\n"
+	for event in events:
+		if not event.secret:
+			desc += event.get_description() + "\n"
+	for mod in post_modifiers:
+		desc += mod.get_description() + "\n"
+	return desc.strip_edges()

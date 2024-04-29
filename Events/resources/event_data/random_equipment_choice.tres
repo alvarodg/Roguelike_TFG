@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EquipmentChoiceData" load_steps=2 format=3 uid="uid://c0sbxboht28e2"]
+
+[ext_resource type="Script" path="res://Events/equipment_choice_data.gd" id="1_65xoo"]
+
+[resource]
+script = ExtResource("1_65xoo")
+choices = 3
+equip_tags = Array[int]([])
+tag_op = 1
+rarities = Array[int]([])
+rarity_factor = 1.0
+description = "Choose a random equipment from the general pool."
+rarity = 1
+tags = Array[int]([0])
+secret = false

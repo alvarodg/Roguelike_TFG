@@ -1,6 +1,8 @@
 extends Resource
 class_name SkillData
 
+enum Tag {DEFAULT, LIGHT, DARK, FALLEN}
+
 @export var ui_data: SkillUIData
 @export var name: String
 @export var cost: Array[int] : set = set_cost
@@ -11,6 +13,7 @@ class_name SkillData
 @export var behaviors: Array[SkillBehavior]
 @export var modifiers: Array[Modifier]
 @export var modifiers_first: bool = true
+@export var tags: Array[Tag] = [Tag.DEFAULT]
 const COST_TYPES = 3
 
 func set_cost(value):

@@ -14,10 +14,11 @@ var coinbox_visible_position: Vector2
 
 
 func _ready():
-# Button y Label estan declarados únicos y tienen el mismo nombre que en la clase base,
-# por lo que no es necesario asignarlos de nuevo en esta clase. (¿Hacerlo de todas formas?)
-#	button = %Button
-#	label = %Label
+# Button, Label y HoverLabel estan declarados únicos y tienen el mismo nombre que en la clase base,
+# por lo que no es técnicamente necesario asignarlos de nuevo en esta clase.
+	button = %Button
+	label = %Label
+	hover_label = %HoverLabel
 	coinbox = coinbox_data.create_instance()
 	coinbox.setup(player)
 #	top_container.add_child(coinbox)
@@ -25,11 +26,15 @@ func _ready():
 	button.add_child(coinbox)
 #	coinbox.show_behind_parent = true
 	coinbox.hide()
+	_update_description(label)
+	_update_hover_description(hover_label)
+	_check_cost()
+	# Conexiones de señales
+	button.mouse_entered.connect(_on_Button_mouse_entered)
+	button.mouse_exited.connect(_on_Button_mouse_exited)
 	coinbox.selected.connect(_on_coinbox_selected)
 	coinbox.finished.connect(_on_coinbox_finished)
 	coinbox.canceled.connect(hide_coinbox)
-	_update_description(label)
-	_check_cost()
 
 func initialize(p_player: Player, data):
 	var split_data = data as SplitEventChoiceData
@@ -79,3 +84,25 @@ func _on_coinbox_finished(result: bool):
 		finished.emit()
 	else:
 		returned.emit()
+
+func _update_description(p_label: Label):
+	var desc: String = ""
+	var cost_desc: String = ""
+	if cost != null:
+		cost_desc = cost.get_description() + "\n"
+	if explicit or description == "":	
+		if sequence is ChoiceSequence:
+			desc += "Success:\n" + sequence.get_description() + "\n"
+		if alt_sequence is ChoiceSequence:
+			desc += "Failure:\n" + alt_sequence.get_description() + "\n"
+		if description == "":
+			p_label.text = cost_desc + desc
+		elif desc == "":
+			p_label.text = cost_desc + description
+		else:		
+			p_label.text = cost_desc + description + "\n(" + desc.strip_edges() + ")" 
+	else:
+		p_label.text = cost_desc + description
+
+func _update_hover_description(p_label: Label):
+	p_label.text = "Success:\n" + sequence.get_description() + "\nFailure:\n" + alt_sequence.get_description()

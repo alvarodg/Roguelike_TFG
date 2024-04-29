@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="SkillChoiceData" load_steps=2 format=3 uid="uid://du3kb0pjh3lom"]
+
+[ext_resource type="Script" path="res://Events/skill_choice_data.gd" id="1_n3r45"]
+
+[resource]
+script = ExtResource("1_n3r45")
+choices = 3
+skill_tags = Array[int]([])
+tag_op = 1
+rarities = Array[int]([])
+rarity_factor = 1.0
+description = "Choose a random skill from the general pool."
+rarity = 1
+tags = Array[int]([0])
+secret = false

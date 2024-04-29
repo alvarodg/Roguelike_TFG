@@ -17,3 +17,4 @@ choices = Array[Resource("res://Events/event_choice/event_choice_data.gd")]([Ext
 description = null
 rarity = null
 tags = Array[int]([0])
+secret = false

@@ -8,5 +8,9 @@
 [resource]
 script = ExtResource("1_ycow6")
 enemy_data = ExtResource("1_5hgw8")
+description = "Fight a weak enemy."
 scene = ExtResource("2_ptm1h")
 next_event = ExtResource("2_r6kxj")
+rarity = 1
+tags = Array[int]([0])
+secret = false

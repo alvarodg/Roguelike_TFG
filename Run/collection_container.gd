@@ -43,55 +43,84 @@ func _get_random_equipment(equip_list: Array[Equipment], rarity: int = -1, rarit
 		return chosen
 
 
-func get_random_equipment_list(size: int = 1, rarity: int = -1) -> Array[Equipment]:
-	var list: Array[Equipment] = equipments.list.duplicate()
-	var picks: int = min(size, list.size())
-	var chosen_list: Array[Equipment] = []
-	for i in range(picks):
-		var chosen_equipment = _get_random_equipment(list, rarity)
-		if chosen_equipment != null:
-			chosen_list.append(chosen_equipment)
-	return chosen_list
+#func get_random_equipment_list(size: int = 1, rarity: int = -1) -> Array[Equipment]:
+#	var list: Array[Equipment] = equipments.list.duplicate()
+#	var picks: int = min(size, list.size())
+#	var chosen_list: Array[Equipment] = []
+#	for i in range(picks):
+#		var chosen_equipment = _get_random_equipment(list, rarity)
+#		if chosen_equipment != null:
+#			chosen_list.append(chosen_equipment)
+#	return chosen_list
 
-# TODO: ¿Modificar con rarity? Comparte mucho con la función de equipment, ¿función genérica?
-func get_random_skill_list(size: int = 1) -> Array[SkillData]:
-	var list: Array[SkillData] = skills.list.duplicate()
-	var picks: int = min(size, list.size())
-	var chosen_list: Array[SkillData] = []
-	for i in range(picks):
-		var chosen_skill = list.pick_random()
-		if chosen_skill != null:
-			chosen_list.append(chosen_skill)
-			list.erase(chosen_skill)
-	return chosen_list
+## TODO: ¿Modificar con rarity? Comparte mucho con la función de equipment, ¿función genérica?
+#func get_random_skill_list(size: int = 1) -> Array[SkillData]:
+#	var list: Array[SkillData] = skills.list.duplicate()
+#	var picks: int = min(size, list.size())
+#	var chosen_list: Array[SkillData] = []
+#	for i in range(picks):
+#		var chosen_skill = list.pick_random()
+#		if chosen_skill != null:
+#			chosen_list.append(chosen_skill)
+#			list.erase(chosen_skill)
+#	return chosen_list
 
+func get_random_equipment_list(size: int = 1, tags: Array[Equipment.Tag] = [],
+ op: Collection.Operator = Collection.Operator.OR, rarity_pick: Array[int] = [], 
+ rarity_factor: float = 1) -> Array:
+	return _get_random_list(equipments, size, tags, op, rarity_pick, rarity_factor)
+	
+func get_random_skill_list(size: int = 1, tags: Array[SkillData.Tag] = [],
+ op: Collection.Operator = Collection.Operator.OR, rarity_pick: Array[int] = [], 
+ rarity_factor: float = 1) -> Array:
+	return _get_random_list(skills, size, tags, op, rarity_pick, rarity_factor)
+	
+func get_random_event_list(size: int = 1, tags: Array[EventData.Tag] = [],
+ op: Collection.Operator = Collection.Operator.OR, rarity_pick: Array[int] = [], 
+ rarity_factor: float = 1) -> Array:
+	return _get_random_list(events, size, tags, op, rarity_pick, rarity_factor)
+
+# Posiblemente mover a Collection	
+func _get_random_list(p_collection: Collection, size: int = 1, tags: Array = [],
+ op: Collection.Operator = Collection.Operator.OR, rarity_pick: Array[int] = [], 
+ rarity_factor: float = 1) -> Array:
+	# Duplica la colección para poder sacar elementos temporalmente.
+	var collection: Collection = p_collection.duplicate()
+	var picks: int = min(size, collection.size())
+	var chosen_list: Array = []
+	for i in range(picks):
+		var chosen = collection.get_random(tags, op, rarity_pick, rarity_factor)
+		if chosen != null:
+			chosen_list.append(chosen)
+			collection.remove(chosen)
+	return chosen_list
+	
+	
 func get_random_event(rarity_factor = 1) -> EventData:
 	return events.get_random(rarity_factor)
 
-# Probablemente sustituir por herencia.
 func add(element):
-	if element is SkillData:
-		add_skill(element)
-	elif element is Equipment:
-		add_equipment(element)
-		
-func add_skill(skill: SkillData):
-	skills.list.append(skill)
+	if element is Equipment:
+		equipments.add(element)
+	elif element is SkillData:
+		skills.add(element)
+	elif element is EventData:
+		events.add(element)
 
-func add_equipment(equipment: Equipment):
-	equipments.list.append(equipment)
 
-func remove_equipment(equipment: Equipment):
-	equipments.list.erase(equipment)
-
-func remove_skill(skill: SkillData):
-	skills.list.erase(skill)
+#func remove_equipment(equipment: Equipment):
+#	equipments.list.erase(equipment)
+#
+#func remove_skill(skill: SkillData):
+#	skills.list.erase(skill)
 
 func remove(element):
-	if element is SkillData:
-		remove_skill(element)
-	elif element is Equipment:
-		remove_equipment(element)
+	if element is Equipment:
+		equipments.remove(element)
+	elif element is SkillData:
+		skills.remove(element)
+	elif element is EventData:
+		events.remove(element)
 		
 
 func _on_equipment_equipped(equipment: Equipment):

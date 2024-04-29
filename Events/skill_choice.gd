@@ -1,17 +1,23 @@
 extends EventScene
+class_name SkillChoice
 
 @onready var choice_container = %ChoiceContainer
 @onready var pick_skill_ui_scene = preload("res://Events/pick_skill_ui.tscn")
 @onready var remove_skill_choice_scene = preload("res://Events/remove_skill_choice.tscn")
-@export var choices: int = 3
-@export var skill_list: Array[SkillData]
-
+var choices: int
+var skill_collection: SkillCollection
+var skill_tags: Array[SkillData.Tag]
+var tag_op: Collection.Operator
+var rarities: Array[int]
+var rarity_factor: float
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	player = RunData.player
-	if skill_list.size() == 0:
-		skill_list = RunData.collections.get_random_skill_list(choices)
+	var skill_list: Array[SkillData] = []
+	if skill_collection == null or skill_collection.size() == 0:
+		skill_list.assign(RunData.collections.get_random_skill_list(choices, skill_tags, tag_op, rarities, rarity_factor))
+	else:
+		skill_list.assign(skill_collection.get_random_list(choices, skill_tags, tag_op, rarities, rarity_factor))
 	for skill in skill_list:
 		var pick_skill_ui = pick_skill_ui_scene.instantiate()
 		pick_skill_ui.setup(player, skill)
@@ -19,18 +25,20 @@ func _ready():
 		choice_container.add_child(pick_skill_ui)
 		
 
-func setup(p_player, p_choices = 3, fixed_skill_list: Array[SkillData] = []):
+func initialize(p_player: Player, data: SkillChoiceData):
 	player = p_player
-	choices = p_choices
-	skill_list = fixed_skill_list
+	choices = data.choices
+	skill_collection = data.skill_collection
+	skill_tags = data.skill_tags
+	tag_op = data.tag_op
+	rarities = data.rarities
+	rarity_factor = data.rarity_factor
 
 
 func _on_Skill_chosen(skill):
-	# ¿Pasar por parámetro en lugar de singleton?
-#	var player: Player = RunData.player
 	if player.skill_list.size() == player.max_skills:
 		var remove_skill_choice = remove_skill_choice_scene.instantiate()
-		remove_skill_choice.setup(player, player.skill_list)
+		remove_skill_choice.setup(player)
 		get_parent().add_child(remove_skill_choice)
 		hide()
 		var chosen_skill = await remove_skill_choice.skill_chosen

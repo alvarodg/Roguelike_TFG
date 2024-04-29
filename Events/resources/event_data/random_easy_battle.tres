@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="RandomBattleEventData" load_steps=7 format=3 uid="uid://b3jponanpeqeb"]
 
-[ext_resource type="Resource" uid="uid://6mj55fih0kl8" path="res://Events/resources/event_data/EquipmentChoiceData.tres" id="1_fqd5h"]
 [ext_resource type="Script" path="res://Events/random_battle_event_data.gd" id="1_nmm0j"]
+[ext_resource type="Resource" uid="uid://c0sbxboht28e2" path="res://Events/resources/event_data/random_equipment_choice.tres" id="1_uqvpx"]
 [ext_resource type="Resource" uid="uid://cu76q5bdnp6jt" path="res://Battle/enemy/resources/data/weak_enemy_data.tres" id="2_vo473"]
 [ext_resource type="Resource" uid="uid://cdhknndbhlv6c" path="res://Battle/enemy/resources/data/weak_enemy_data_2.tres" id="3_fblhv"]
 [ext_resource type="Resource" uid="uid://cc5by3gwd6ycq" path="res://Battle/enemy/resources/data/weak_enemy_data_3.tres" id="4_fat7x"]
@@ -12,7 +12,7 @@ script = ExtResource("1_nmm0j")
 possible_enemies = Array[Resource("res://Battle/enemy/enemy_data.gd")]([ExtResource("2_vo473"), ExtResource("3_fblhv"), ExtResource("4_fat7x")])
 description = ""
 scene = ExtResource("5_tui35")
-next_event = ExtResource("1_fqd5h")
+next_event = ExtResource("1_uqvpx")
 rarity = 1
 tags = Array[int]([0])
 secret = false

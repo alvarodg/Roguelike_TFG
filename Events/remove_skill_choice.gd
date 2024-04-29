@@ -18,8 +18,8 @@ func _ready():
 		choice_container.add_child(pick_skill_ui)
 		
 
-func setup(p_player:Player, p_skill_list: Array):
-	skill_list = p_skill_list
+func setup(p_player: Player):
+	skill_list = p_player.skill_list
 
 func _on_Skill_chosen(skill):
 	skill_chosen.emit(skill)

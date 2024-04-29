@@ -32,9 +32,7 @@ func _ready():
 		coin.make_untouchable()
 		coin_container.add_child(coin)
 	_generate_target_text()
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+
 
 func initialize(data: ChoiceCoinBoxData):
 	coin_amount = data.coin_amount

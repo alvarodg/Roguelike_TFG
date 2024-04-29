@@ -34,3 +34,4 @@ rarity = 0
 behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_gfvyy")])
 modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_etmr6")])
 modifiers_first = false
+tags = Array[int]([0])

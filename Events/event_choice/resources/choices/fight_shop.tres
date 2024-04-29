@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://Events/event_choice/event_choice_data.gd" id="1_t2lsi"]
 [ext_resource type="Resource" uid="uid://4msvwnp5eq7u" path="res://Battle/enemy/resources/data/elite_enemy_data.tres" id="2_h7cxe"]
 [ext_resource type="Script" path="res://Events/BattleEventData.gd" id="3_lhper"]
-[ext_resource type="Resource" uid="uid://6mj55fih0kl8" path="res://Events/resources/event_data/EquipmentChoiceData.tres" id="4_hu7yp"]
-[ext_resource type="Resource" uid="uid://kmogyjaldbnb" path="res://Events/resources/event_data/SkillChoiceData.tres" id="5_cvo5r"]
+[ext_resource type="Resource" uid="uid://c0sbxboht28e2" path="res://Events/resources/event_data/random_equipment_choice.tres" id="4_ihpm3"]
+[ext_resource type="Resource" uid="uid://du3kb0pjh3lom" path="res://Events/resources/event_data/random_skill_choice.tres" id="5_wulev"]
 [ext_resource type="Script" path="res://Events/event_choice/choice_sequence.gd" id="6_vxhy7"]
 
 [sub_resource type="Resource" id="Resource_3v0x7"]
@@ -19,7 +19,7 @@ secret = false
 script = ExtResource("6_vxhy7")
 pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
-events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_3v0x7"), ExtResource("4_hu7yp"), ExtResource("5_cvo5r")])
+events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_3v0x7"), ExtResource("4_ihpm3"), ExtResource("5_wulev")])
 secret = false
 
 [resource]

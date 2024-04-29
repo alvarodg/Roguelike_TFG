@@ -1,0 +1,15 @@
+extends EventData
+class_name SkillChoiceData
+
+@export var choices: int = 3
+@export var skill_collection: SkillCollection
+@export var skill_tags: Array[SkillData.Tag]
+@export var tag_op: Collection.Operator = Collection.Operator.OR
+@export var rarities: Array[int]
+@export var rarity_factor: float = 1.0
+
+func instantiate_scene(player: Player):
+	scene = load("res://Events/skill_choice.tscn")
+	var instance: SkillChoice = scene.instantiate()
+	instance.initialize(player, self)
+	return instance

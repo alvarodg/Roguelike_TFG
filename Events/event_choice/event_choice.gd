@@ -7,11 +7,12 @@ signal finished
 signal pre_selected(event_choice)
 signal selected(event_choice)
 
-@onready var button = %Button
-@onready var label = %Label
+@onready var button: Button = %Button
+@onready var label: Label = %Label
+@onready var hover_label: Label = %HoverLabel
 
 var description: String
-var explicit: bool = true
+var explicit: bool = false
 var cost: Cost
 var sequence: ChoiceSequence
 var player: Player
@@ -21,6 +22,7 @@ var final: bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_update_description(label)
+	_update_hover_description(hover_label)
 	_check_cost()
 	#TEMPORAL
 #	_check_cost()
@@ -84,26 +86,25 @@ func _apply_sequence(seq: ChoiceSequence):
 		mod.apply_to(player)
 	
 func _update_description(p_label: Label):
+	var desc: String = ""
+	var cost_desc: String = ""
+	if cost != null:
+		cost_desc = cost.get_description() + "\n"
 	if explicit or description == "":
-		var desc: String = ""
-		if cost != null:
-			desc += cost.get_description() + "\n"
 		if sequence is ChoiceSequence:
-			for mod in sequence.pre_modifiers:
-				desc += mod.get_description() + "\n"
-			for event in sequence.events:
-				if not event.secret:
-					desc += event.get_description() + "\n"
-			for mod in sequence.post_modifiers:
-				desc += mod.get_description() + "\n"
+			desc += sequence.get_description() + "\n"
 		if description == "":
-			p_label.text = desc
+			p_label.text = cost_desc + desc
 		elif desc == "":
-			p_label.text = description
+			p_label.text = cost_desc + description
 		else:		
-			p_label.text =  description + "\n(" + desc.strip_edges() + ")" 
+			p_label.text =  cost_desc + description + "\n(" + desc.strip_edges() + ")" 
 	else:
-		p_label.text = description
+		p_label.text = cost_desc + description
+
+func _update_hover_description(p_label: Label):
+	if sequence is ChoiceSequence:
+		p_label.text = sequence.get_description()
 
 func _check_cost():
 	if cost != null:
@@ -111,3 +112,20 @@ func _check_cost():
 			button.disabled = false
 		else:
 			button.disabled = true
+
+func _on_Button_mouse_entered():
+	if hover_label.text != "":
+		hover_label.hide()
+		hover_label.global_position = get_viewport().get_mouse_position() - Vector2(hover_label.size.x,0)
+		await get_tree().create_timer(0.1).timeout
+		hover_label.show()
+		hover_label.self_modulate = Color.TRANSPARENT
+		var tween = get_tree().create_tween()
+		tween.tween_property(hover_label, "self_modulate", Color.WHITE, 0.3)
+
+func _on_Button_mouse_exited():
+	if hover_label.text != "":
+		var tween = get_tree().create_tween()
+		tween.tween_property(hover_label, "self_modulate", Color.TRANSPARENT, 0.1)
+		await tween.finished
+		hover_label.hide()

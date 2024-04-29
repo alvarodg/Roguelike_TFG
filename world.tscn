@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bfdmc5trnp4uk"]
+[gd_scene load_steps=32 format=3 uid="uid://bfdmc5trnp4uk"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_ewi3c"]
 [ext_resource type="PackedScene" uid="uid://buwxy0toti3j8" path="res://Run/collection_container.tscn" id="2_h6gmy"]
@@ -9,8 +9,13 @@
 [ext_resource type="Resource" uid="uid://dnhbnjwbujp3u" path="res://Battle/player/resources/default_player_stats.tres" id="3_nvh0g"]
 [ext_resource type="Resource" uid="uid://b3t3hv7n1dbyh" path="res://Run/collections/default_skill_collection.tres" id="4_lc4a6"]
 [ext_resource type="Resource" uid="uid://k6ndslc1hrs1" path="res://Battle/player/resources/default_player_ui_data.tres" id="4_ryo5a"]
+[ext_resource type="Resource" uid="uid://f7eh7cotucrk" path="res://Events/resources/event_data/event_pick/dispute_event.tres" id="5_c16ia"]
+[ext_resource type="Resource" uid="uid://du5unm6rln13y" path="res://Events/resources/event_data/event_pick/hit_event.tres" id="6_rw4kx"]
+[ext_resource type="Resource" uid="uid://cl2ctrvkv5yu3" path="res://Tests/test_events/split_pick_test.tres" id="7_wkrhy"]
 [ext_resource type="Resource" uid="uid://dohuwbuerwh8r" path="res://Battle/skills/resources/balanced_strike.tres" id="8_3hjda"]
+[ext_resource type="Resource" uid="uid://bea5uw56iw8ie" path="res://Events/resources/event_data/event_pick/trade_event.tres" id="8_mj88n"]
 [ext_resource type="Resource" uid="uid://bsioc5j8lwg1x" path="res://Battle/skills/resources/hit_attack.tres" id="9_imgkd"]
+[ext_resource type="Script" path="res://Run/event_collection.gd" id="9_vi3nf"]
 [ext_resource type="Resource" uid="uid://disqwyhl7b6xd" path="res://Battle/skills/resources/reroll.tres" id="10_pvof1"]
 [ext_resource type="Resource" uid="uid://bxpfepcjv524q" path="res://Battle/skills/resources/consolation.tres" id="11_bl2ys"]
 [ext_resource type="Resource" uid="uid://1f1t8s1ew7uy" path="res://Battle/skills/resources/win.tres" id="11_nulia"]
@@ -22,6 +27,10 @@
 [ext_resource type="Resource" uid="uid://cqw2ej3w1b85p" path="res://Generation/resources/node_generation/l3_weld_generation.tres" id="16_fubwe"]
 [ext_resource type="Script" path="res://Items/equipment/equipment_ui_data.gd" id="16_t3mrx"]
 [ext_resource type="Resource" uid="uid://000ce1xcp83o" path="res://Items/equipment/resources/conditional/flip_shield.tres" id="17_vxd7l"]
+
+[sub_resource type="Resource" id="Resource_i44bv"]
+script = ExtResource("9_vi3nf")
+list = Array[Resource("res://Events/EventData.gd")]([ExtResource("5_c16ia"), ExtResource("6_rw4kx"), ExtResource("7_wkrhy"), ExtResource("8_mj88n")])
 
 [sub_resource type="Resource" id="Resource_6xrjb"]
 script = ExtResource("13_2cacm")
@@ -56,6 +65,7 @@ script = ExtResource("1_ewi3c")
 [node name="CollectionContainer" parent="." instance=ExtResource("2_h6gmy")]
 equipments = ExtResource("3_f3yvy")
 skills = ExtResource("4_lc4a6")
+events = SubResource("Resource_i44bv")
 
 [node name="Player" parent="." instance=ExtResource("2_yatmi")]
 stats = ExtResource("3_nvh0g")

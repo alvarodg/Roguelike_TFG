@@ -4,10 +4,10 @@
 [ext_resource type="Script" path="res://Events/event_choice/event_pick_data.gd" id="1_vumw5"]
 [ext_resource type="Resource" uid="uid://cdhknndbhlv6c" path="res://Battle/enemy/resources/data/weak_enemy_data_2.tres" id="2_og23s"]
 [ext_resource type="Script" path="res://Events/BattleEventData.gd" id="3_m7qsm"]
-[ext_resource type="Resource" uid="uid://kmogyjaldbnb" path="res://Events/resources/event_data/SkillChoiceData.tres" id="4_wm0xw"]
+[ext_resource type="Resource" uid="uid://du3kb0pjh3lom" path="res://Events/resources/event_data/random_skill_choice.tres" id="4_0ha6j"]
 [ext_resource type="Script" path="res://Events/event_choice/choice_sequence.gd" id="5_2w1mm"]
 [ext_resource type="Resource" uid="uid://4msvwnp5eq7u" path="res://Battle/enemy/resources/data/elite_enemy_data.tres" id="6_8x37y"]
-[ext_resource type="Resource" uid="uid://6mj55fih0kl8" path="res://Events/resources/event_data/EquipmentChoiceData.tres" id="7_wicr1"]
+[ext_resource type="Resource" uid="uid://c0sbxboht28e2" path="res://Events/resources/event_data/random_equipment_choice.tres" id="7_oyqtw"]
 [ext_resource type="Texture2D" uid="uid://djmrox3cqnntc" path="res://icon.svg" id="8_wqewr"]
 
 [sub_resource type="Resource" id="Resource_tqb1q"]
@@ -22,7 +22,7 @@ secret = false
 script = ExtResource("5_2w1mm")
 pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
-events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_tqb1q"), ExtResource("4_wm0xw")])
+events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_tqb1q"), ExtResource("4_0ha6j")])
 secret = false
 
 [sub_resource type="Resource" id="Resource_u16ih"]
@@ -45,7 +45,7 @@ secret = false
 script = ExtResource("5_2w1mm")
 pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
-events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_8fbsf"), ExtResource("7_wicr1")])
+events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_8fbsf"), ExtResource("7_oyqtw")])
 secret = false
 
 [sub_resource type="Resource" id="Resource_cudkw"]
@@ -76,7 +76,7 @@ secret = false
 script = ExtResource("5_2w1mm")
 pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
-events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_gf2vg"), SubResource("Resource_ug2pa"), ExtResource("7_wicr1"), ExtResource("4_wm0xw")])
+events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_gf2vg"), SubResource("Resource_ug2pa"), ExtResource("7_oyqtw"), ExtResource("4_0ha6j")])
 secret = false
 
 [sub_resource type="Resource" id="Resource_qfwqb"]

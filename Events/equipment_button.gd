@@ -18,5 +18,5 @@ func setup(p_player: Player, p_equipment: Equipment):
 
 func _on_pressed():
 	player.equip(equipment)
-	RunData.collections.remove_equipment(equipment)
+	RunData.collections.remove(equipment)
 #	equipment_chosen.emit(equipment)
