@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="SkillData" load_steps=6 format=3 uid="uid://q8cjuohabuf1"]
+
+[ext_resource type="Script" path="res://Battle/skills/SkillData.gd" id="1_7ohau"]
+[ext_resource type="Script" path="res://Battle/skills/behaviors/damage_skill_behavior.gd" id="1_jftdl"]
+[ext_resource type="Script" path="res://Battle/skills/behaviors/drop_used_coins_skill_behavior.gd" id="2_dt5di"]
+
+[sub_resource type="Resource" id="Resource_18o6d"]
+script = ExtResource("1_jftdl")
+damage = 12
+to_self = false
+ignore_shield = false
+ignore_armor = false
+ignore_dodges = false
+
+[sub_resource type="Resource" id="Resource_obdew"]
+script = ExtResource("2_dt5di")
+
+[resource]
+script = ExtResource("1_7ohau")
+name = "Slippery Strike"
+cost = Array[int]([0, 1, 1])
+uses_per_turn = 1
+one_shot = false
+cost_is_mandatory = true
+rarity = 0
+behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_18o6d"), SubResource("Resource_obdew")])
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+modifiers_first = true
+tags = Array[int]([0, 3])

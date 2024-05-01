@@ -3,7 +3,7 @@ class_name Equipment
 
 signal broke(equipment)
 
-enum Tag {DEFAULT, LIGHT, DARK, FALLEN}
+enum Tag {DEFAULT, LIGHT, DARK, FALLEN, COIN, CURSED, LUCKY}
 
 @export var ui_data: EquipmentUIData = EquipmentUIData.new()
 @export var description: String = ""

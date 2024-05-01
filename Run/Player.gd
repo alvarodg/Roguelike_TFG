@@ -89,6 +89,9 @@ func add_skill(skill: SkillData):
 func remove_skill(skill: SkillData):
 	skill_list.erase(skill)
 
+func get_coin_count():
+	return stats.coin_count
+
 func start_turn():
 	pre_started_turn.emit()
 	stats.start_turn()

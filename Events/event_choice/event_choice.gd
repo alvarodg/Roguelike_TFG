@@ -79,7 +79,7 @@ func _apply_sequence(seq: ChoiceSequence):
 			# Si no espera a la transición y se intentan encadenar eventos 
 			# que comparten recursos pueden darse errores.
 			# Investigar si es posible arreglar esto.
-			if not event.secret:
+			if not event.secret and seq.events.back() != event:
 				await ScreenTransitions.fade_to_black()
 				ScreenTransitions.fade_from_black()
 	for mod in seq.post_modifiers:
@@ -92,7 +92,8 @@ func _update_description(p_label: Label):
 		cost_desc = cost.get_description() + "\n"
 	if explicit or description == "":
 		if sequence is ChoiceSequence:
-			desc += sequence.get_description() + "\n"
+			pass
+#			desc += sequence.get_description() + "\n"
 		if description == "":
 			p_label.text = cost_desc + desc
 		elif desc == "":

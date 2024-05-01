@@ -17,7 +17,10 @@ func _ready():
 func setup(player: Player):
 	player.coins_changed.connect(_on_Player_coins_changed)
 	for coin in player.coins:
-		coin_box_container.add_child(coin)
+		if coin.get_parent() != null:
+			coin.reparent(coin_box_container)
+		else:
+			coin_box_container.add_child(coin)
 #	coin_box_container.get_child(0).grab_focus()
 
 func _on_Player_coins_changed(new_coins):
@@ -25,7 +28,10 @@ func _on_Player_coins_changed(new_coins):
 		if coin is Coin:
 			coin_box_container.remove_child(coin)
 	for coin in new_coins:
-		coin_box_container.add_child(coin)
+		if coin.get_parent() != null:
+			coin.reparent(coin_box_container)
+		else:
+			coin_box_container.add_child(coin)
 
 func _on_coin_inserted(slot: Slot, _coin: Coin):
 	if slot.coins_needed != slot.inserted_coins.size():
@@ -64,7 +70,13 @@ func flip_coins():
 			await get_tree().create_timer(0.1).timeout
 	allow_input()
 	finished_flipping_coins.emit()
-	
+
+func empty():
+	EventBus.coin_inserted.disconnect(_on_coin_inserted)
+	EventBus.looking_for_coin.disconnect(_on_coin_requested)
+	for c in coin_box_container.get_children():
+		coin_box_container.remove_child(c)
+
 func block_input():
 	input_blocker.mouse_filter = MOUSE_FILTER_STOP
 	

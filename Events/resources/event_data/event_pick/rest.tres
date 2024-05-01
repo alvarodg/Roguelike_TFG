@@ -1,0 +1,70 @@
+[gd_resource type="Resource" script_class="EventPickData" load_steps=15 format=3 uid="uid://ultgyeymw3f2"]
+
+[ext_resource type="Script" path="res://Items/modifiers/components/stats/health_modifier_component.gd" id="1_fokjb"]
+[ext_resource type="Script" path="res://Events/event_choice/event_pick_data.gd" id="1_w6xr5"]
+[ext_resource type="Script" path="res://Items/modifiers/cost/health_cost.gd" id="2_7t80m"]
+[ext_resource type="Script" path="res://Events/event_choice/event_choice_data.gd" id="3_c87rl"]
+[ext_resource type="Script" path="res://Items/modifiers/components/stats/max_health_modifier.gd" id="4_nexht"]
+[ext_resource type="Script" path="res://Events/event_choice/choice_sequence.gd" id="5_dc0e0"]
+
+[sub_resource type="Resource" id="Resource_7818c"]
+script = ExtResource("1_fokjb")
+magnitude = -10.0
+action = 0
+
+[sub_resource type="Resource" id="Resource_jbft4"]
+script = ExtResource("2_7t80m")
+health_mod = SubResource("Resource_7818c")
+
+[sub_resource type="Resource" id="Resource_u3a88"]
+script = ExtResource("4_nexht")
+fill = false
+magnitude = 5.0
+action = 0
+
+[sub_resource type="Resource" id="Resource_d5egg"]
+script = ExtResource("5_dc0e0")
+pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_u3a88")])
+events = Array[Resource("res://Events/EventData.gd")]([])
+secret = false
+
+[sub_resource type="Resource" id="Resource_1d87t"]
+script = ExtResource("3_c87rl")
+description = "You don't believe in resting. Let's do some pushups."
+explicit = false
+cost = SubResource("Resource_jbft4")
+sequence = SubResource("Resource_d5egg")
+final = true
+secret = false
+
+[sub_resource type="Resource" id="Resource_jqq3w"]
+script = ExtResource("1_fokjb")
+magnitude = 30.0
+action = 0
+
+[sub_resource type="Resource" id="Resource_l4pvf"]
+script = ExtResource("5_dc0e0")
+pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_jqq3w")])
+events = Array[Resource("res://Events/EventData.gd")]([])
+secret = false
+
+[sub_resource type="Resource" id="Resource_sh620"]
+script = ExtResource("3_c87rl")
+description = "Rest, obviously."
+explicit = false
+sequence = SubResource("Resource_l4pvf")
+final = true
+secret = false
+
+[resource]
+script = ExtResource("1_w6xr5")
+narrative = "This is a good place for a break. What will you do with your time?"
+choices = Array[ExtResource("3_c87rl")]([SubResource("Resource_1d87t"), SubResource("Resource_sh620")])
+description = ""
+rarity = 1
+tags = Array[int]([4])
+secret = false
+goes_to_next_level = false
+is_final_event = false

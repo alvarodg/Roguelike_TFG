@@ -14,3 +14,5 @@ next_event = ExtResource("2_grfnt")
 rarity = 1
 tags = Array[int]([0])
 secret = false
+goes_to_next_level = false
+is_final_event = false

@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Event" load_steps=7 format=3 uid="uid://s2n5pf05rkrp"]
+
+[ext_resource type="Script" path="res://Events/Event.gd" id="1_37fcv"]
+[ext_resource type="Script" path="res://Events/random_event_data.gd" id="1_i002d"]
+[ext_resource type="Texture2D" uid="uid://cm0tihr2susy3" path="res://Events/icons/plus_hover.png" id="2_45afw"]
+[ext_resource type="Texture2D" uid="uid://d0qilds8e3wsr" path="res://Events/icons/plus.png" id="3_4j6gx"]
+[ext_resource type="Texture2D" uid="uid://dev3t0pp6s8ov" path="res://Events/icons/plus_traveled.png" id="4_yutkx"]
+
+[sub_resource type="Resource" id="Resource_b545l"]
+script = ExtResource("1_i002d")
+event_tags = Array[int]([4])
+tag_op = 1
+rarities = Array[int]([])
+description = ""
+rarity = 1
+tags = Array[int]([0])
+secret = false
+goes_to_next_level = false
+is_final_event = false
+
+[resource]
+script = ExtResource("1_37fcv")
+icon_normal = ExtResource("3_4j6gx")
+icon_hover = ExtResource("2_45afw")
+icon_traveled = ExtResource("4_yutkx")
+text = ""
+id = 0
+event_data = SubResource("Resource_b545l")

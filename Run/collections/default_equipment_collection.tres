@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EquipmentCollection" load_steps=14 format=3 uid="uid://5871ejwt2whd"]
+[gd_resource type="Resource" script_class="EquipmentCollection" load_steps=19 format=3 uid="uid://5871ejwt2whd"]
 
 [ext_resource type="Resource" uid="uid://dux2lw2o3v0dr" path="res://Items/equipment/resources/cursed_coin.tres" id="1_2o3xi"]
 [ext_resource type="Script" path="res://Run/equipment_collection.gd" id="1_8ig7o"]
@@ -13,7 +13,12 @@
 [ext_resource type="Resource" uid="uid://cviounhsrpbnt" path="res://Items/equipment/resources/conditional/late_shield.tres" id="12_kfxim"]
 [ext_resource type="Resource" uid="uid://000ce1xcp83o" path="res://Items/equipment/resources/conditional/flip_shield.tres" id="13_ct4rd"]
 [ext_resource type="Resource" uid="uid://ca8go4wc80cdi" path="res://Items/equipment/resources/conditional/binary_shield.tres" id="13_efiff"]
+[ext_resource type="Resource" uid="uid://bnosk2phjxnox" path="res://Items/equipment/resources/conditional/blade_of_the_fallen.tres" id="13_pg74k"]
+[ext_resource type="Resource" uid="uid://dxb0hirym3yg5" path="res://Items/equipment/resources/conditional/gravity_shield.tres" id="14_k8ls0"]
+[ext_resource type="Resource" uid="uid://dbfg2y1v4w6ig" path="res://Items/equipment/resources/conditional/heads_bouncer.tres" id="15_slxmw"]
+[ext_resource type="Resource" uid="uid://btit52mr068qu" path="res://Items/equipment/resources/conditional/tails_bouncer.tres" id="16_qglkg"]
+[ext_resource type="Resource" uid="uid://co5kc0n638jlx" path="res://Items/equipment/resources/conditional/spiky_coin.tres" id="17_c8p3l"]
 
 [resource]
 script = ExtResource("1_8ig7o")
-list = Array[Resource("res://Items/equipment/equipment.gd")]([ExtResource("1_2o3xi"), ExtResource("2_8t63a"), ExtResource("3_c86u6"), ExtResource("4_t0sya"), ExtResource("6_6bbla"), ExtResource("7_o1jjb"), ExtResource("8_0dmrt"), ExtResource("9_vuart"), ExtResource("11_tsy8l"), ExtResource("12_kfxim"), ExtResource("13_ct4rd"), ExtResource("13_efiff")])
+list = Array[Resource("res://Items/equipment/equipment.gd")]([ExtResource("1_2o3xi"), ExtResource("2_8t63a"), ExtResource("3_c86u6"), ExtResource("4_t0sya"), ExtResource("6_6bbla"), ExtResource("7_o1jjb"), ExtResource("8_0dmrt"), ExtResource("9_vuart"), ExtResource("11_tsy8l"), ExtResource("12_kfxim"), ExtResource("13_ct4rd"), ExtResource("13_efiff"), ExtResource("13_pg74k"), ExtResource("14_k8ls0"), ExtResource("15_slxmw"), ExtResource("16_qglkg"), ExtResource("17_c8p3l")])

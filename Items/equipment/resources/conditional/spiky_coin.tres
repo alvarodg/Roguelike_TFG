@@ -1,0 +1,52 @@
+[gd_resource type="Resource" script_class="Equipment" load_steps=15 format=3 uid="uid://co5kc0n638jlx"]
+
+[ext_resource type="Script" path="res://Items/modifiers/conditions/events/flip_condition.gd" id="1_x128g"]
+[ext_resource type="Script" path="res://Items/modifiers/components/stats/health_modifier_component.gd" id="2_bxpwu"]
+[ext_resource type="Script" path="res://Items/modifiers/conditions/condition_trigger.gd" id="3_1cl8r"]
+[ext_resource type="Script" path="res://Items/modifiers/conditions/states/in_battle_condition.gd" id="4_d3xa4"]
+[ext_resource type="Script" path="res://Items/modifiers/components/coin_count_modifier_component.gd" id="5_dx0on"]
+[ext_resource type="Script" path="res://Items/equipment/equipment.gd" id="6_txwcg"]
+[ext_resource type="Texture2D" uid="uid://67vxmnlk8br1" path="res://Items/equipment/sprites/test_item.png" id="7_w7ktj"]
+[ext_resource type="Script" path="res://Items/equipment/equipment_ui_data.gd" id="8_cg2ux"]
+
+[sub_resource type="Resource" id="Resource_awjj7"]
+script = ExtResource("1_x128g")
+facing = 1
+amount = 1
+restart_per_turn = true
+
+[sub_resource type="Resource" id="Resource_4ije7"]
+script = ExtResource("2_bxpwu")
+magnitude = -1.0
+action = 0
+
+[sub_resource type="Resource" id="Resource_12h1g"]
+script = ExtResource("4_d3xa4")
+
+[sub_resource type="Resource" id="Resource_g0f7y"]
+script = ExtResource("3_1cl8r")
+state_conditions = Array[Resource("res://Items/modifiers/conditions/state_condition.gd")]([SubResource("Resource_12h1g")])
+event_condition = SubResource("Resource_awjj7")
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_4ije7")])
+amount = -1
+reset = 1
+
+[sub_resource type="Resource" id="Resource_2fd34"]
+script = ExtResource("5_dx0on")
+coin_count = 1
+
+[sub_resource type="Resource" id="Resource_1qxv3"]
+script = ExtResource("8_cg2ux")
+icon = ExtResource("7_w7ktj")
+ui_name = "Spiky Coin"
+
+[resource]
+script = ExtResource("6_txwcg")
+ui_data = SubResource("Resource_1qxv3")
+description = ""
+rarity = 1
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_2fd34")])
+condition_triggers = Array[ExtResource("3_1cl8r")]([SubResource("Resource_g0f7y")])
+causality_triggers = Array[Resource("res://Battle/status/causality_trigger.gd")]([])
+fragile = false
+tags = Array[int]([0, 4, 5])

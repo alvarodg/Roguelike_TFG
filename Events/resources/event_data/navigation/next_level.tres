@@ -5,4 +5,9 @@
 
 [resource]
 script = ExtResource("1_josvh")
+description = ""
 scene = ExtResource("1_266bq")
+rarity = 1
+tags = Array[int]([0])
+secret = false
+go_to_next_level = false

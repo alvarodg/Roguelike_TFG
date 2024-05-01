@@ -19,12 +19,14 @@ list = Array[Resource("res://Events/EventData.gd")]([ExtResource("1_yi1cx"), Ext
 script = ExtResource("6_7msyl")
 events = SubResource("Resource_e1aoa")
 event_tags = Array[int]([0])
-tag_op = 0
+tag_op = 1
 rarities = Array[int]([])
 description = ""
 rarity = 1
 tags = Array[int]([0])
 secret = false
+goes_to_next_level = false
+is_final_event = false
 
 [resource]
 script = ExtResource("1_4es01")

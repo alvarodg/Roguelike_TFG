@@ -1,0 +1,147 @@
+[gd_resource type="Resource" script_class="EventPickData" load_steps=18 format=3 uid="uid://b35oc0x4cwyvc"]
+
+[ext_resource type="Script" path="res://Events/event_choice/event_choice_data.gd" id="1_e4ix2"]
+[ext_resource type="Script" path="res://Events/event_choice/event_pick_data.gd" id="1_lyt1r"]
+[ext_resource type="Script" path="res://Events/skill_choice_data.gd" id="2_hciqo"]
+[ext_resource type="Script" path="res://Events/equipment_choice_data.gd" id="3_djj4x"]
+[ext_resource type="Script" path="res://Events/event_choice/choice_sequence.gd" id="4_8xelk"]
+
+[sub_resource type="Resource" id="Resource_km1pb"]
+script = ExtResource("2_hciqo")
+choices = 3
+skill_tags = Array[int]([1])
+tag_op = 1
+rarities = Array[int]([])
+rarity_factor = 1.0
+description = "Choose a skill."
+rarity = 1
+tags = Array[int]([0])
+secret = false
+goes_to_next_level = false
+is_final_event = false
+
+[sub_resource type="Resource" id="Resource_wxhdb"]
+script = ExtResource("3_djj4x")
+choices = 3
+equip_tags = Array[int]([1])
+tag_op = 1
+rarities = Array[int]([])
+rarity_factor = 1.0
+description = "Choose a piece of equipment."
+rarity = 1
+tags = Array[int]([0])
+secret = false
+goes_to_next_level = false
+is_final_event = false
+
+[sub_resource type="Resource" id="Resource_5yvji"]
+script = ExtResource("4_8xelk")
+pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_km1pb"), SubResource("Resource_wxhdb")])
+secret = false
+
+[sub_resource type="Resource" id="Resource_ma58h"]
+script = ExtResource("1_e4ix2")
+description = "\"Good things happen to good people.\""
+explicit = false
+sequence = SubResource("Resource_5yvji")
+final = true
+secret = false
+
+[sub_resource type="Resource" id="Resource_08tik"]
+script = ExtResource("2_hciqo")
+choices = 3
+skill_tags = Array[int]([2])
+tag_op = 1
+rarities = Array[int]([])
+rarity_factor = 1.0
+description = "Choose a skill."
+rarity = 1
+tags = Array[int]([0])
+secret = false
+goes_to_next_level = false
+is_final_event = false
+
+[sub_resource type="Resource" id="Resource_vbo51"]
+script = ExtResource("3_djj4x")
+choices = 3
+equip_tags = Array[int]([2])
+tag_op = 1
+rarities = Array[int]([])
+rarity_factor = 1.0
+description = "Choose a piece of equipment."
+rarity = 1
+tags = Array[int]([0])
+secret = false
+goes_to_next_level = false
+is_final_event = false
+
+[sub_resource type="Resource" id="Resource_n3ot6"]
+script = ExtResource("4_8xelk")
+pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_08tik"), SubResource("Resource_vbo51")])
+secret = false
+
+[sub_resource type="Resource" id="Resource_dvkos"]
+script = ExtResource("1_e4ix2")
+description = "\"You can achieve anything if you're willing to work for it.\""
+explicit = false
+sequence = SubResource("Resource_n3ot6")
+final = true
+secret = false
+
+[sub_resource type="Resource" id="Resource_wdcqj"]
+script = ExtResource("2_hciqo")
+choices = 3
+skill_tags = Array[int]([3])
+tag_op = 1
+rarities = Array[int]([])
+rarity_factor = 1.0
+description = "Choose a skill."
+rarity = 1
+tags = Array[int]([0])
+secret = false
+goes_to_next_level = false
+is_final_event = false
+
+[sub_resource type="Resource" id="Resource_lnc3g"]
+script = ExtResource("3_djj4x")
+choices = 3
+equip_tags = Array[int]([3])
+tag_op = 1
+rarities = Array[int]([])
+rarity_factor = 1.0
+description = "Choose a piece of equipment."
+rarity = 1
+tags = Array[int]([0])
+secret = false
+goes_to_next_level = false
+is_final_event = false
+
+[sub_resource type="Resource" id="Resource_ebkdo"]
+script = ExtResource("4_8xelk")
+pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_wdcqj"), SubResource("Resource_lnc3g")])
+secret = false
+
+[sub_resource type="Resource" id="Resource_ndk0i"]
+script = ExtResource("1_e4ix2")
+description = "\"Every misstep is an opportunity.\""
+explicit = false
+sequence = SubResource("Resource_ebkdo")
+final = true
+secret = false
+
+[resource]
+script = ExtResource("1_lyt1r")
+narrative = "You find a room with three doors. There's a sign with some sort of motivational quote above each  of them. Which one will you go through?"
+choices = Array[ExtResource("1_e4ix2")]([SubResource("Resource_ma58h"), SubResource("Resource_dvkos"), SubResource("Resource_ndk0i")])
+description = ""
+rarity = 1
+tags = Array[int]([0])
+secret = false
+goes_to_next_level = false
+is_final_event = false

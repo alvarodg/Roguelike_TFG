@@ -17,6 +17,8 @@ description = "Fight a weak enemy."
 rarity = 1
 tags = Array[int]([0])
 secret = false
+goes_to_next_level = false
+is_final_event = false
 
 [sub_resource type="Resource" id="Resource_pd6oo"]
 script = ExtResource("5_2w1mm")
@@ -28,7 +30,7 @@ secret = false
 [sub_resource type="Resource" id="Resource_u16ih"]
 script = ExtResource("1_e0opt")
 description = "Side with the big guy."
-explicit = true
+explicit = false
 sequence = SubResource("Resource_pd6oo")
 final = true
 secret = false
@@ -40,6 +42,8 @@ description = "Fight a strong enemy."
 rarity = 1
 tags = Array[int]([0])
 secret = false
+goes_to_next_level = false
+is_final_event = false
 
 [sub_resource type="Resource" id="Resource_yyffb"]
 script = ExtResource("5_2w1mm")
@@ -51,7 +55,7 @@ secret = false
 [sub_resource type="Resource" id="Resource_cudkw"]
 script = ExtResource("1_e0opt")
 description = "Side with the small guy."
-explicit = true
+explicit = false
 sequence = SubResource("Resource_yyffb")
 final = true
 secret = false
@@ -63,6 +67,8 @@ description = "Fight a weak enemy."
 rarity = 1
 tags = Array[int]([0])
 secret = false
+goes_to_next_level = false
+is_final_event = false
 
 [sub_resource type="Resource" id="Resource_ug2pa"]
 script = ExtResource("3_m7qsm")
@@ -71,6 +77,8 @@ description = "Fight a strong enemy."
 rarity = 1
 tags = Array[int]([0])
 secret = false
+goes_to_next_level = false
+is_final_event = false
 
 [sub_resource type="Resource" id="Resource_lcvok"]
 script = ExtResource("5_2w1mm")
@@ -82,7 +90,7 @@ secret = false
 [sub_resource type="Resource" id="Resource_qfwqb"]
 script = ExtResource("1_e0opt")
 description = "Take both of them on."
-explicit = true
+explicit = false
 sequence = SubResource("Resource_lcvok")
 final = true
 secret = false
@@ -96,3 +104,5 @@ description = ""
 rarity = 1
 tags = Array[int]([0])
 secret = false
+goes_to_next_level = false
+is_final_event = false

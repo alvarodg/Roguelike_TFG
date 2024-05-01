@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="SkillData" load_steps=6 format=3 uid="uid://dfif1fpb7t7j0"]
+
+[ext_resource type="Script" path="res://Battle/skills/SkillData.gd" id="1_k7dan"]
+[ext_resource type="Script" path="res://Battle/skills/behaviors/multihit_skill_behavior.gd" id="1_mdrdh"]
+[ext_resource type="Script" path="res://Items/modifiers/components/coin_drop_modifier_component.gd" id="2_1ben2"]
+
+[sub_resource type="Resource" id="Resource_117up"]
+script = ExtResource("1_mdrdh")
+damage = 10
+hits = 2
+
+[sub_resource type="Resource" id="Resource_crqrj"]
+script = ExtResource("2_1ben2")
+drop_count = 1
+facing = 1
+
+[resource]
+script = ExtResource("1_k7dan")
+name = ""
+cost = Array[int]([0, 0, 2])
+uses_per_turn = 1
+one_shot = false
+cost_is_mandatory = true
+rarity = 0
+behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_117up")])
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_crqrj")])
+modifiers_first = false
+tags = Array[int]([0, 2, 3])

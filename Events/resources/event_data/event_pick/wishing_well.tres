@@ -1,0 +1,107 @@
+[gd_resource type="Resource" script_class="EventPickData" load_steps=20 format=3 uid="uid://0eie3bw4hhe7"]
+
+[ext_resource type="Script" path="res://Events/event_choice/event_choice_data.gd" id="1_2l0ka"]
+[ext_resource type="Script" path="res://Events/event_choice/event_pick_data.gd" id="1_4gicc"]
+[ext_resource type="Script" path="res://Events/equipment_choice_data.gd" id="2_57qbs"]
+[ext_resource type="Script" path="res://Events/event_choice/choice_sequence.gd" id="3_bl7qb"]
+[ext_resource type="Script" path="res://Events/event_choice/choice_coin_box_data.gd" id="4_dmhnw"]
+[ext_resource type="Script" path="res://Events/event_choice/split_event_choice_data.gd" id="5_f7o18"]
+[ext_resource type="Script" path="res://Items/modifiers/components/coin_count_modifier_component.gd" id="5_wkt41"]
+[ext_resource type="Script" path="res://Items/modifiers/cost/coin_cost.gd" id="6_fo2g8"]
+
+[sub_resource type="Resource" id="Resource_mo3sa"]
+script = ExtResource("2_57qbs")
+choices = 3
+equip_tags = Array[int]([4, 5])
+tag_op = 0
+rarities = Array[int]([])
+rarity_factor = 1.0
+description = "Get a coin."
+rarity = 1
+tags = Array[int]([0])
+secret = false
+goes_to_next_level = false
+is_final_event = false
+
+[sub_resource type="Resource" id="Resource_4kt86"]
+script = ExtResource("3_bl7qb")
+pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_mo3sa")])
+secret = false
+
+[sub_resource type="Resource" id="Resource_nugma"]
+script = ExtResource("1_2l0ka")
+description = "You're a cool intellectual that doesn't believe in superstitions. Reach in and try to fish a coin out."
+explicit = false
+sequence = SubResource("Resource_4kt86")
+final = true
+secret = false
+
+[sub_resource type="Resource" id="Resource_ytfy5"]
+script = ExtResource("3_bl7qb")
+pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+events = Array[Resource("res://Events/EventData.gd")]([])
+secret = false
+
+[sub_resource type="Resource" id="Resource_f7sbd"]
+script = ExtResource("4_dmhnw")
+coin_amount = 3
+target_heads = 2
+operator = 1
+
+[sub_resource type="Resource" id="Resource_ja8ae"]
+script = ExtResource("5_wkt41")
+coin_count = -1
+
+[sub_resource type="Resource" id="Resource_qgsbd"]
+script = ExtResource("6_fo2g8")
+coin_count_mod = SubResource("Resource_ja8ae")
+
+[sub_resource type="Resource" id="Resource_yhbh2"]
+script = ExtResource("2_57qbs")
+choices = 3
+equip_tags = Array[int]([1])
+tag_op = 1
+rarities = Array[int]([])
+rarity_factor = 1.0
+description = ""
+rarity = 1
+tags = Array[int]([0])
+secret = false
+goes_to_next_level = false
+is_final_event = false
+
+[sub_resource type="Resource" id="Resource_at3u7"]
+script = ExtResource("5_wkt41")
+coin_count = 1
+
+[sub_resource type="Resource" id="Resource_hwgt5"]
+script = ExtResource("3_bl7qb")
+pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_at3u7")])
+post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_yhbh2")])
+secret = false
+
+[sub_resource type="Resource" id="Resource_0fv5m"]
+script = ExtResource("5_f7o18")
+alt_sequence = SubResource("Resource_ytfy5")
+coinbox_data = SubResource("Resource_f7sbd")
+description = "You never know what could happen. Throw a coin in and hope it's something good."
+explicit = false
+cost = SubResource("Resource_qgsbd")
+sequence = SubResource("Resource_hwgt5")
+final = true
+secret = false
+
+[resource]
+script = ExtResource("1_4gicc")
+narrative = "You find a fountain filled with a thick, black liquid. The words \"1 coin = make a wish\" have been hastily scribbled on it. What do you do?"
+choices = Array[ExtResource("1_2l0ka")]([SubResource("Resource_nugma"), SubResource("Resource_0fv5m")])
+description = ""
+rarity = 1
+tags = Array[int]([0])
+secret = false
+goes_to_next_level = false
+is_final_event = false

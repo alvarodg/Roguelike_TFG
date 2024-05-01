@@ -18,6 +18,7 @@ var enemy: Enemy
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	await get_tree().process_frame
 	assert(enemy_data is EnemyData)
 	print("Starting")
 	# Crea el nuevo enemigo a partir de sus datos
@@ -46,10 +47,15 @@ func _ready():
 	turn_manager.turn = turn_manager.Turn.PLAYER_TURN
 #	coin_box.flip_coins()
 	
-func setup(p_player: Player, p_enemy_data: EnemyData, p_next_event: EventData = null):
-	player = p_player
-	enemy_data = p_enemy_data
-	next_event = p_next_event
+#func setup(p_player: Player, p_enemy_data: EnemyData, p_next_event: EventData = null):
+#	player = p_player
+#	enemy_data = p_enemy_data
+#	next_event = p_next_event
+	
+func initialize(p_player: Player, data: BattleEventData):
+	super.initialize(p_player, data)
+	print("Next:" + str(goes_to_next_level))
+	enemy_data = data.enemy_data
 	
 #func set_new_enemy(p_enemy_stats: EnemyStats):
 #	if combatants.enemy is Enemy:
@@ -101,6 +107,7 @@ func end_battle():
 	player.end_battle()
 	print(player.coins)
 	print("You won!")
+	coin_box.empty()
 	finish()
 
 func _on_player_turn_started():

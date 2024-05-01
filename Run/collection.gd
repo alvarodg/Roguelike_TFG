@@ -14,7 +14,7 @@ func size() -> int:
 
 func get_random(tags: Array = [], op: Operator = Operator.OR, rarity_pick: Array[int] = [], rarity_factor: float = 1):
 	return null
-
+	
 func get_random_list(amount: int = 1, tags: Array = [],
  op: Collection.Operator = Collection.Operator.OR, rarity_pick: Array[int] = [], 
  rarity_factor: float = 1) -> Array:
@@ -44,7 +44,7 @@ func _choose_random_index_from(rarity_list: Array, rarity_factor: float = 1):
 	return chosen
 
 func _get_random_from_list(list: Array[Variant], tags: Array[Variant] = [], op: Operator = Operator.OR, rarity_pick: Array[int] = [], rarity_factor: float = 1) -> Variant:
-	var pickable: Array[Equipment] = list
+	var pickable: Array = list
 	# Comprueba que la clase de los objetos de la lista tiene una variable "tags"
 	if not "tags" in list.front() or not "rarity" in list.front():
 		return null
@@ -52,15 +52,18 @@ func _get_random_from_list(list: Array[Variant], tags: Array[Variant] = [], op: 
 		if op == Operator.OR:
 			pickable = pickable.filter(
 				func(x): return x.tags.any(
-					func(x): return tags.has(x)))
+					func(y): return tags.has(y)))
 		if op == Operator.AND:
 			pickable = pickable.filter(
-				func(x): return x.tags.all(
-					func(x): return tags.has(x)))
+				func(x): return tags.all(
+					func(y): return y in x.tags))
+#			pickable = pickable.filter(
+#				func(x): return x.tags.all(
+#					func(x): return tags.has(x)))
 	if rarity_pick.size() > 0:
-		pickable = list.filter(func(x): return rarity_pick.has(x.rarity))
+		pickable = pickable.filter(func(x): return rarity_pick.has(x.rarity))
 	var rarity_list: Array[int] = []
 	for item in pickable:
 		rarity_list.append(item.rarity)
 	var chosen: int = _choose_random_index_from(rarity_list, rarity_factor)
-	return pickable[chosen]
+	return pickable[chosen] if pickable.size() > 0 else null

@@ -11,4 +11,4 @@
 script = ExtResource("6_1sqml")
 event_list = Array[Resource("res://Events/Event.gd")]([ExtResource("1_xle3b"), ExtResource("2_djqke"), ExtResource("3_3is20"), ExtResource("4_wtuen"), ExtResource("5_twvi1")])
 event_chances = Array[float]([7.0, 5.0, 1.0, 1.0, 0.0])
-restrictions = Array[Vector2]([Vector2(4, 4), Vector2(0, 0)])
+restrictions = Array[Vector2]([Vector2(-1, 4), Vector2(0, 0)])

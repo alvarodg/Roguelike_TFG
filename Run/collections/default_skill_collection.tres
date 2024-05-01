@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SkillCollection" load_steps=11 format=3 uid="uid://b3t3hv7n1dbyh"]
+[gd_resource type="Resource" script_class="SkillCollection" load_steps=18 format=3 uid="uid://b3t3hv7n1dbyh"]
 
 [ext_resource type="Script" path="res://Run/skill_collection.gd" id="1_prump"]
 [ext_resource type="Resource" uid="uid://bxpfepcjv524q" path="res://Battle/skills/resources/consolation.tres" id="1_wccgw"]
@@ -10,7 +10,14 @@
 [ext_resource type="Resource" uid="uid://c1ewyurdksemn" path="res://Battle/skills/resources/strike.tres" id="7_40gsl"]
 [ext_resource type="Resource" uid="uid://c6pno1pfqitvg" path="res://Battle/skills/resources/tax.tres" id="8_fu12k"]
 [ext_resource type="Resource" uid="uid://c5e7dv3l85ib1" path="res://Battle/skills/resources/trade.tres" id="9_pop5u"]
+[ext_resource type="Resource" uid="uid://bw2mdamfuot5m" path="res://Battle/skills/resources/reckless_strike.tres" id="10_ui6qv"]
+[ext_resource type="Resource" uid="uid://dfif1fpb7t7j0" path="res://Battle/skills/resources/reckless_barrage.tres" id="11_dcj1w"]
+[ext_resource type="Resource" uid="uid://djlx0x2jblj13" path="res://Battle/skills/resources/legitimate_flip.tres" id="12_tj67l"]
+[ext_resource type="Resource" uid="uid://coos4xdskyy7o" path="res://Battle/skills/resources/counterfeit.tres" id="13_4su0w"]
+[ext_resource type="Resource" uid="uid://bysspnphmsr4j" path="res://Battle/skills/resources/slippery_shield.tres" id="14_gnusn"]
+[ext_resource type="Resource" uid="uid://q8cjuohabuf1" path="res://Battle/skills/resources/slippery_strike.tres" id="15_ig1pj"]
+[ext_resource type="Resource" uid="uid://r517h04l207c" path="res://Battle/skills/resources/combo.tres" id="16_2f0jq"]
 
 [resource]
 script = ExtResource("1_prump")
-list = Array[Resource("res://Battle/skills/SkillData.gd")]([ExtResource("1_wccgw"), ExtResource("2_xty4j"), ExtResource("3_3yret"), ExtResource("4_m7w36"), ExtResource("5_ivt1u"), ExtResource("6_dqf2v"), ExtResource("7_40gsl"), ExtResource("8_fu12k"), ExtResource("9_pop5u")])
+list = Array[Resource("res://Battle/skills/SkillData.gd")]([ExtResource("1_wccgw"), ExtResource("2_xty4j"), ExtResource("3_3yret"), ExtResource("4_m7w36"), ExtResource("5_ivt1u"), ExtResource("6_dqf2v"), ExtResource("7_40gsl"), ExtResource("8_fu12k"), ExtResource("9_pop5u"), ExtResource("10_ui6qv"), ExtResource("11_dcj1w"), ExtResource("12_tj67l"), ExtResource("13_4su0w"), ExtResource("14_gnusn"), ExtResource("15_ig1pj"), ExtResource("16_2f0jq")])

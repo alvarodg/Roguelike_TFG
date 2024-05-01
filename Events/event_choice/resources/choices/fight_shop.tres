@@ -14,6 +14,8 @@ description = "Fight the trader."
 rarity = 1
 tags = Array[int]([0])
 secret = false
+goes_to_next_level = false
+is_final_event = false
 
 [sub_resource type="Resource" id="Resource_cfr11"]
 script = ExtResource("6_vxhy7")

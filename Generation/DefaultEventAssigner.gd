@@ -14,12 +14,14 @@ var rng: RandomNumberGenerator
 #	while event_list.size() > event_chances.size():
 #		event_chances.append(0.0)
 
-func get_event(p_rng: RandomNumberGenerator, _node_matrix :Array = [], node: EventNode = null) -> Event:
+func get_event(p_rng: RandomNumberGenerator, node_matrix :Array = [], node: EventNode = null) -> Event:
 	rng = p_rng
 	if not node is Node: return Event.new()
 	# Asignación básica, deja indicar columnas en las que todos los eventos
 	# tienen que ser iguales y después reparte aleatoriamente
 	for restriction in restrictions:
+		if restriction.x < 0 and abs(restriction.x) < node_matrix.size(): 
+			restriction.x = node_matrix.size() + restriction.x
 		if restriction.x == node.coordinates.x:
 			return event_list[restriction.y]
 	# Selecciona un evento de acuerdo con sus probabilidades

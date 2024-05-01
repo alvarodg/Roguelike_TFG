@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="GenerationParameters" load_steps=2 format=3 uid="uid://dclcug8uacbgb"]
+
+[ext_resource type="Script" path="res://Generation/WeldMapGenerator.gd" id="1_1ayod"]
+
+[resource]
+script = ExtResource("1_1ayod")
+rows = 4
+columns = 4
+base_position = Vector2(50, 50)
+distance = Vector2(100, 100)
+position_noise = Vector2(0, 0)
+iterations = 5
+clamp_at = Array[int]([0, -1])
+clamp_at_to = Array[Vector2]([])

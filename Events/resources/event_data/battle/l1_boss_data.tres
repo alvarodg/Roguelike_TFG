@@ -1,30 +1,18 @@
-[gd_resource type="Resource" script_class="BattleEventData" load_steps=7 format=3 uid="uid://dmw44iph5bueq"]
+[gd_resource type="Resource" script_class="BattleEventData" load_steps=5 format=3 uid="uid://dmw44iph5bueq"]
 
 [ext_resource type="Resource" uid="uid://0tb5ir6mx8dp" path="res://Battle/enemy/resources/data/boss_enemy_data_3.tres" id="1_emmrp"]
 [ext_resource type="Script" path="res://Events/BattleEventData.gd" id="1_evwa7"]
-[ext_resource type="Resource" uid="uid://crm4hx88wd0rk" path="res://Events/resources/event_data/navigation/next_level.tres" id="2_oo4o1"]
+[ext_resource type="Resource" uid="uid://b35oc0x4cwyvc" path="res://Events/resources/event_data/event_pick/specialization.tres" id="2_frgq7"]
 [ext_resource type="PackedScene" uid="uid://ci2osml7lmqcy" path="res://Battle/CoinBattle.tscn" id="2_suvps"]
-[ext_resource type="Script" path="res://Events/equipment_choice_data.gd" id="3_8u2sy"]
-
-[sub_resource type="Resource" id="Resource_5fykw"]
-script = ExtResource("3_8u2sy")
-choices = 3
-equip_tags = Array[int]([])
-tag_op = 1
-rarities = Array[int]([])
-rarity_factor = 1.0
-description = "Choose a random equipment from the general pool."
-next_event = ExtResource("2_oo4o1")
-rarity = 1
-tags = Array[int]([0])
-secret = false
 
 [resource]
 script = ExtResource("1_evwa7")
 enemy_data = ExtResource("1_emmrp")
 description = ""
 scene = ExtResource("2_suvps")
-next_event = SubResource("Resource_5fykw")
+next_event = ExtResource("2_frgq7")
 rarity = 1
 tags = Array[int]([0])
 secret = false
+goes_to_next_level = true
+is_final_event = false

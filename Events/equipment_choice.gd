@@ -25,7 +25,7 @@ func _ready():
 		
 
 func initialize(p_player: Player, data: EquipmentChoiceData):
-	player = p_player
+	super.initialize(p_player, data)
 	choices = data.choices
 	equip_collection = data.equip_collection
 	equip_tags = data.equip_tags

@@ -15,7 +15,7 @@ ignore_dodges = true
 [sub_resource type="Resource" id="Resource_61adq"]
 script = ExtResource("1_ythwh")
 ephemeral_coins = 2
-facing = 1
+facing = 2
 
 [resource]
 script = ExtResource("2_veeis")
@@ -28,4 +28,4 @@ rarity = 0
 behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_v3mda"), SubResource("Resource_61adq")])
 modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 modifiers_first = true
-tags = Array[int]([0])
+tags = Array[int]([0, 2])

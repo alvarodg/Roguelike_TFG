@@ -44,6 +44,7 @@ func start_game(player: Player, rng: RandomNumberGenerator):
 	EventBus.level_generation_completed.emit()
 
 func _on_level_finished():
+	get_parent().show()
 	if current_level+1 < level_list.size():
 		change_level(current_level+1)
 	else:
@@ -68,9 +69,14 @@ func set_level(level_id: int):
 
 ## Para cambiar de nivel, primero vacía las listas de nodos por los que se ha viajado.
 func change_level(level_id: int):
+	await ScreenTransitions.fade_to_black()
+	get_parent().hide()
 	traveled_nodes = []
 	traveled_coords = []
 	set_level(level_id)
+	get_parent().show()
+	ScreenTransitions.fade_from_black()
+
 
 func finish_run():
 	# TEMPORAL, crear escena
@@ -199,4 +205,4 @@ func _on_ResetButton_pressed():
 
 func _on_ChangeLevelButton_pressed():
 	current_level = current_level+1 if current_level+1 < generation_data_list.size() else 0
-	change_level(current_level)
+	await change_level(current_level)

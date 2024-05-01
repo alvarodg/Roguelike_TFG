@@ -7,3 +7,8 @@
 script = ExtResource("1_lq0rr")
 description = "Choose a skill to learn."
 scene = ExtResource("1_87hge")
+rarity = 1
+tags = Array[int]([0])
+secret = false
+goes_to_next_level = false
+is_final_event = false

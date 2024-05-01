@@ -5,7 +5,7 @@ enum Tag {DEFAULT, LIGHT, DARK, FALLEN}
 
 @export var ui_data: SkillUIData
 @export var name: String
-@export var cost: Array[int] : set = set_cost
+@export var cost: Array[int] = [0,0,0] : set = set_cost 
 @export var uses_per_turn: int = 1
 @export var one_shot: bool = false
 @export var cost_is_mandatory: bool = true

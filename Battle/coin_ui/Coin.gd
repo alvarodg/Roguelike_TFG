@@ -89,10 +89,11 @@ func set_spent():
 	make_invisible()
 
 func set_dropped():
-	status = Status.DROPPED
-	focus_mode = Control.FOCUS_NONE
-	make_invisible()
-	dropped.emit(self)
+	if status != Status.DROPPED:
+		status = Status.DROPPED
+		focus_mode = Control.FOCUS_NONE
+		make_invisible()
+		dropped.emit(self)
 
 
 func set_is_selected(value):

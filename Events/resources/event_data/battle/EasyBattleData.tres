@@ -2,15 +2,17 @@
 
 [ext_resource type="Resource" uid="uid://cu76q5bdnp6jt" path="res://Battle/enemy/resources/data/weak_enemy_data.tres" id="1_5hgw8"]
 [ext_resource type="Script" path="res://Events/BattleEventData.gd" id="1_ycow6"]
+[ext_resource type="Resource" uid="uid://c0sbxboht28e2" path="res://Events/resources/event_data/random_equipment_choice.tres" id="2_hwcnt"]
 [ext_resource type="PackedScene" uid="uid://ci2osml7lmqcy" path="res://Battle/CoinBattle.tscn" id="2_ptm1h"]
-[ext_resource type="Resource" uid="uid://6mj55fih0kl8" path="res://Events/resources/event_data/EquipmentChoiceData.tres" id="2_r6kxj"]
 
 [resource]
 script = ExtResource("1_ycow6")
 enemy_data = ExtResource("1_5hgw8")
 description = "Fight a weak enemy."
 scene = ExtResource("2_ptm1h")
-next_event = ExtResource("2_r6kxj")
+next_event = ExtResource("2_hwcnt")
 rarity = 1
 tags = Array[int]([0])
 secret = false
+goes_to_next_level = false
+is_final_event = false
