@@ -9,8 +9,11 @@ enum Tag {DEFAULT, BATTLE, GAMBLE, TRADE, REWARD}
 @export var rarity: int = 1
 @export var tags: Array[Tag] = [Tag.DEFAULT]
 @export var secret: bool = false
+@export var unique: bool = false
 @export var goes_to_next_level: bool = false
 @export var is_final_event: bool = false
+@export var event_unlocks: Array[EventData] = []
+
 
 func _init(p_scene: PackedScene = null, p_next_event: EventData = null, p_rarity = 1):
 	scene = p_scene

@@ -5,6 +5,9 @@ class_name ChoiceSequence
 @export var post_modifiers: Array[Modifier]
 @export var events: Array[EventData]
 @export var secret: bool = false
+@export_multiline var pre_narrative: String
+@export_multiline var post_narrative: String
+@export var event_unlocks: Array[EventData]
 
 func get_description() -> String:
 	var desc: String = ""

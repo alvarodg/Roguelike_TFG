@@ -16,7 +16,7 @@ facing = 1
 
 [resource]
 script = ExtResource("1_k7dan")
-name = ""
+name = "Reckless Barrage"
 cost = Array[int]([0, 0, 2])
 uses_per_turn = 1
 one_shot = false

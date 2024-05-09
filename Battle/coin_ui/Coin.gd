@@ -37,9 +37,10 @@ func _input(event):
 		is_dragging = false
 		set_facing_texture()
 
-func flip(mod: float = 1.0, force: Facing = Facing.ANY) -> bool:
+func flip(mod: float = 1.0, force: Facing = Facing.ANY, 
+		  rng: RandomNumberGenerator = RandomNumberGenerator.new()) -> bool:
 	if force == Facing.ANY:
-		heads = data.heads_chance * mod > randf()
+		heads = data.heads_chance * mod > rng.randf()
 	else:
 		heads = true if force == Facing.HEADS else false
 	flipped.emit(self)
@@ -74,6 +75,7 @@ func make_invisible():
 	texture_normal = null
 
 func set_available():
+	show()
 	status = Status.AVAILABLE
 	focus_mode = Control.FOCUS_ALL
 	set_facing_texture()
@@ -87,6 +89,7 @@ func set_spent():
 	status = Status.SPENT
 	focus_mode = Control.FOCUS_NONE
 	make_invisible()
+	hide()
 
 func set_dropped():
 	if status != Status.DROPPED:
@@ -94,6 +97,7 @@ func set_dropped():
 		focus_mode = Control.FOCUS_NONE
 		make_invisible()
 		dropped.emit(self)
+		hide()
 
 
 func set_is_selected(value):

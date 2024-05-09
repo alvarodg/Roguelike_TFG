@@ -1,0 +1,97 @@
+[gd_resource type="Resource" script_class="EventPickData" load_steps=16 format=3 uid="uid://cfvkrghviixmx"]
+
+[ext_resource type="Script" path="res://Events/event_choice/event_pick_data.gd" id="1_5vtbl"]
+[ext_resource type="Script" path="res://Events/event_choice/choice_sequence.gd" id="1_ok345"]
+[ext_resource type="Script" path="res://Events/event_choice/choice_coin_box_data.gd" id="2_atm3f"]
+[ext_resource type="Script" path="res://Events/event_choice/split_event_choice_data.gd" id="3_0sbc8"]
+[ext_resource type="Script" path="res://Items/modifiers/components/coin_count_modifier_component.gd" id="4_oc2hx"]
+[ext_resource type="Script" path="res://Events/event_choice/event_choice_data.gd" id="5_qp6l0"]
+[ext_resource type="Script" path="res://Events/equipment_choice_data.gd" id="6_dlxhx"]
+
+[sub_resource type="Resource" id="Resource_rl2cw"]
+script = ExtResource("1_ok345")
+pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+events = Array[Resource("res://Events/EventData.gd")]([])
+secret = false
+pre_narrative = ""
+post_narrative = ""
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
+[sub_resource type="Resource" id="Resource_rte0u"]
+script = ExtResource("2_atm3f")
+coin_amount = 3
+target_heads = 3
+operator = 2
+
+[sub_resource type="Resource" id="Resource_6n7f5"]
+script = ExtResource("4_oc2hx")
+coin_count = 3
+
+[sub_resource type="Resource" id="Resource_k1faj"]
+script = ExtResource("1_ok345")
+pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_6n7f5")])
+events = Array[Resource("res://Events/EventData.gd")]([])
+secret = false
+pre_narrative = ""
+post_narrative = ""
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
+[sub_resource type="Resource" id="Resource_4kqus"]
+script = ExtResource("3_0sbc8")
+alt_sequence = SubResource("Resource_rl2cw")
+coinbox_data = SubResource("Resource_rte0u")
+deterministic = true
+description = "There's no way you'll lose."
+explicit = false
+sequence = SubResource("Resource_k1faj")
+final = true
+secret = false
+
+[sub_resource type="Resource" id="Resource_sgese"]
+script = ExtResource("6_dlxhx")
+choices = 3
+equip_tags = Array[int]([4])
+tag_op = 1
+rarities = Array[int]([])
+rarity_factor = 1.0
+description = "Get a special coin."
+rarity = 1
+tags = Array[int]([0])
+secret = false
+unique = false
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
+[sub_resource type="Resource" id="Resource_eudgk"]
+script = ExtResource("1_ok345")
+pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_sgese")])
+secret = false
+pre_narrative = ""
+post_narrative = ""
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
+[sub_resource type="Resource" id="Resource_h6ssf"]
+script = ExtResource("5_qp6l0")
+description = "Take the coin and leave."
+explicit = false
+sequence = SubResource("Resource_eudgk")
+final = true
+secret = false
+
+[resource]
+script = ExtResource("1_5vtbl")
+narrative = "You find a slot machine, loudly calling out to you. There's a coin placed on top of it. Only one thing to do, right?"
+choices = Array[ExtResource("5_qp6l0")]([SubResource("Resource_4kqus"), SubResource("Resource_h6ssf")])
+description = ""
+rarity = 2
+tags = Array[int]([0, 2, 4])
+secret = false
+unique = true
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])

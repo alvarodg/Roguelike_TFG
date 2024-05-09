@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://p7bi8ul5sa3d"]
 
 [ext_resource type="Script" path="res://Tests/test_event.gd" id="1_5fra8"]
-[ext_resource type="Resource" uid="uid://0eie3bw4hhe7" path="res://Events/resources/event_data/event_pick/wishing_well.tres" id="2_ax5v8"]
+[ext_resource type="Resource" uid="uid://ccaqy5slnalwh" path="res://Events/resources/event_data/event_pick/holdup.tres" id="2_6jwjw"]
 [ext_resource type="Script" path="res://Run/Player.gd" id="3_c1xat"]
 [ext_resource type="Script" path="res://Battle/combatant/PlayerStats.gd" id="4_rki66"]
 [ext_resource type="Script" path="res://Run/PlayerUIData.gd" id="5_h1yvh"]
@@ -35,13 +35,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5fra8")
-event_data = ExtResource("2_ax5v8")
+event_data = ExtResource("2_6jwjw")
 
 [node name="Player" type="Node" parent="."]
 script = ExtResource("3_c1xat")
 stats = SubResource("Resource_bnqu0")
 ui_data = SubResource("Resource_ku3kp")
 skill_list = Array[Resource("res://Battle/skills/SkillData.gd")]([ExtResource("7_gm1vr")])
+default_equipment = null
+max_skills = null
 
 [node name="CollectionContainer" parent="." instance=ExtResource("8_p4se0")]
 equipments = ExtResource("9_k2nqh")

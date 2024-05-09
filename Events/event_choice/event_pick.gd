@@ -12,6 +12,7 @@ var choices: Array[EventChoiceData]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	super._ready()
 	player_stats_ui.setup(player)
 	for choice in choices:
 		var scene: EventChoice = choice.create_instance(player)

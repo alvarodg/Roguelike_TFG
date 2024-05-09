@@ -42,6 +42,7 @@ autowrap_mode = 3
 [node name="HoverLabel" type="Label" parent="."]
 unique_name_in_owner = true
 visible = false
+z_index = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -56,6 +57,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Panel" type="Panel" parent="HoverLabel"]
+self_modulate = Color(0.596078, 0.596078, 0.596078, 1)
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15

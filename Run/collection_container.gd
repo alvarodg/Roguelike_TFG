@@ -89,7 +89,7 @@ func _get_random_list(p_collection: Collection, size: int = 1, tags: Array = [],
 	var picks: int = min(size, collection.size())
 	var chosen_list: Array = []
 	for i in range(picks):
-		var chosen = collection.get_random(tags, op, rarity_pick, rarity_factor)
+		var chosen = collection.get_random(RunData.rng, tags, op, rarity_pick, rarity_factor)
 		if chosen != null:
 			chosen_list.append(chosen)
 			collection.remove(chosen)
@@ -135,12 +135,16 @@ func save():
 	# TEMPORAL? Necesario cambiarlo para poder aceptar múltiples objetos iguales.
 	var equipment_paths: Array[String] = []
 	var skill_paths: Array[String] = []
+	var event_paths: Array[String] = []
 	for equipment in equipments.list:
 		equipment_paths.append(equipment.resource_path)
 	for skill in skills.list:
 		skill_paths.append(skill.resource_path)
+	for event in events.list:
+		event_paths.append(event.resource_path)
 	save_dict["equipments"] = equipment_paths
 	save_dict["skills"] = skill_paths
+	save_dict["events"] = event_paths
 	return save_dict
 	
 func data_load(parameter, data):
@@ -154,5 +158,10 @@ func data_load(parameter, data):
 		for skill_path in data:
 			skill_list.append(load(skill_path))
 		skills = SkillCollection.new(skill_list)
+	elif parameter == "events":
+		var event_list: Array[EventData] = []
+		for event_path in data:
+			event_list.append(load(event_path))
+		events = EventCollection.new(event_list)
 	else:
 		set(parameter, data)

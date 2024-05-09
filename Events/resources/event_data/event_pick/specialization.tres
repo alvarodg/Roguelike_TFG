@@ -17,8 +17,10 @@ description = "Choose a skill."
 rarity = 1
 tags = Array[int]([0])
 secret = false
+unique = false
 goes_to_next_level = false
 is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 
 [sub_resource type="Resource" id="Resource_wxhdb"]
 script = ExtResource("3_djj4x")
@@ -31,8 +33,10 @@ description = "Choose a piece of equipment."
 rarity = 1
 tags = Array[int]([0])
 secret = false
+unique = false
 goes_to_next_level = false
 is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 
 [sub_resource type="Resource" id="Resource_5yvji"]
 script = ExtResource("4_8xelk")
@@ -40,6 +44,9 @@ pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_compon
 post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_km1pb"), SubResource("Resource_wxhdb")])
 secret = false
+pre_narrative = ""
+post_narrative = ""
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 
 [sub_resource type="Resource" id="Resource_ma58h"]
 script = ExtResource("1_e4ix2")
@@ -60,8 +67,10 @@ description = "Choose a skill."
 rarity = 1
 tags = Array[int]([0])
 secret = false
+unique = false
 goes_to_next_level = false
 is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 
 [sub_resource type="Resource" id="Resource_vbo51"]
 script = ExtResource("3_djj4x")
@@ -74,8 +83,10 @@ description = "Choose a piece of equipment."
 rarity = 1
 tags = Array[int]([0])
 secret = false
+unique = false
 goes_to_next_level = false
 is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 
 [sub_resource type="Resource" id="Resource_n3ot6"]
 script = ExtResource("4_8xelk")
@@ -83,6 +94,9 @@ pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_compon
 post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_08tik"), SubResource("Resource_vbo51")])
 secret = false
+pre_narrative = ""
+post_narrative = ""
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 
 [sub_resource type="Resource" id="Resource_dvkos"]
 script = ExtResource("1_e4ix2")
@@ -103,8 +117,10 @@ description = "Choose a skill."
 rarity = 1
 tags = Array[int]([0])
 secret = false
+unique = false
 goes_to_next_level = false
 is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 
 [sub_resource type="Resource" id="Resource_lnc3g"]
 script = ExtResource("3_djj4x")
@@ -117,8 +133,10 @@ description = "Choose a piece of equipment."
 rarity = 1
 tags = Array[int]([0])
 secret = false
+unique = false
 goes_to_next_level = false
 is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 
 [sub_resource type="Resource" id="Resource_ebkdo"]
 script = ExtResource("4_8xelk")
@@ -126,6 +144,9 @@ pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_compon
 post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_wdcqj"), SubResource("Resource_lnc3g")])
 secret = false
+pre_narrative = ""
+post_narrative = ""
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 
 [sub_resource type="Resource" id="Resource_ndk0i"]
 script = ExtResource("1_e4ix2")
@@ -143,5 +164,7 @@ description = ""
 rarity = 1
 tags = Array[int]([0])
 secret = false
+unique = false
 goes_to_next_level = false
 is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])

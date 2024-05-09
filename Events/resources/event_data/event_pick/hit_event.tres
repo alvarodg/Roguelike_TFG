@@ -33,8 +33,10 @@ description = "Fight him."
 rarity = 1
 tags = Array[int]([0])
 secret = false
+unique = false
 goes_to_next_level = false
 is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 
 [sub_resource type="Resource" id="Resource_7ynxm"]
 script = ExtResource("6_nqp13")
@@ -42,6 +44,9 @@ pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_compon
 post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_5xyfl")])
 secret = false
+pre_narrative = ""
+post_narrative = ""
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 
 [sub_resource type="Resource" id="Resource_x7ik3"]
 script = ExtResource("3_dsxa4")
@@ -60,5 +65,7 @@ description = ""
 rarity = 1
 tags = Array[int]([0])
 secret = false
+unique = false
 goes_to_next_level = false
 is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])

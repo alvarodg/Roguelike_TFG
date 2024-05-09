@@ -1,0 +1,98 @@
+[gd_resource type="Resource" script_class="SplitEventChoiceData" load_steps=16 format=3 uid="uid://c6sjipjhlalhu"]
+
+[ext_resource type="Resource" uid="uid://4msvwnp5eq7u" path="res://Battle/enemy/resources/data/elite_enemy_data.tres" id="1_1whs1"]
+[ext_resource type="Script" path="res://Events/BattleEventData.gd" id="2_vx3nu"]
+[ext_resource type="Script" path="res://Events/equipment_choice_data.gd" id="3_1mw7q"]
+[ext_resource type="Script" path="res://Items/modifiers/components/coin_count_modifier_component.gd" id="4_pdo7u"]
+[ext_resource type="Script" path="res://Events/event_choice/choice_sequence.gd" id="5_q1fsb"]
+[ext_resource type="Script" path="res://Events/event_choice/choice_coin_box_data.gd" id="6_m1stf"]
+[ext_resource type="Script" path="res://Events/event_choice/split_event_choice_data.gd" id="7_ym3jx"]
+
+[sub_resource type="Resource" id="Resource_kwmtw"]
+script = ExtResource("2_vx3nu")
+enemy_data = ExtResource("1_1whs1")
+description = "Enter a battle to finish the job."
+rarity = 1
+tags = Array[int]([0])
+secret = false
+unique = false
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
+[sub_resource type="Resource" id="Resource_pv0ql"]
+script = ExtResource("3_1mw7q")
+choices = 3
+equip_tags = Array[int]([])
+tag_op = 1
+rarities = Array[int]([])
+rarity_factor = 1.0
+description = "Get a piece of equipment."
+rarity = 1
+tags = Array[int]([0])
+secret = false
+unique = false
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
+[sub_resource type="Resource" id="Resource_ty71f"]
+script = ExtResource("4_pdo7u")
+coin_count = 1
+
+[sub_resource type="Resource" id="Resource_ea78g"]
+script = ExtResource("5_q1fsb")
+pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_ty71f")])
+events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_kwmtw"), SubResource("Resource_pv0ql")])
+secret = false
+pre_narrative = ""
+post_narrative = ""
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
+[sub_resource type="Resource" id="Resource_a4so0"]
+script = ExtResource("6_m1stf")
+coin_amount = 3
+target_heads = 1
+operator = 3
+
+[sub_resource type="Resource" id="Resource_cum2y"]
+script = ExtResource("3_1mw7q")
+choices = 3
+equip_tags = Array[int]([])
+tag_op = 1
+rarities = Array[int]([])
+rarity_factor = 1.0
+description = "Get a piece of equipment."
+rarity = 1
+tags = Array[int]([0])
+secret = false
+unique = false
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
+[sub_resource type="Resource" id="Resource_6rlvx"]
+script = ExtResource("4_pdo7u")
+coin_count = 1
+
+[sub_resource type="Resource" id="Resource_yf5ji"]
+script = ExtResource("5_q1fsb")
+pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_6rlvx")])
+post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_cum2y")])
+secret = false
+pre_narrative = ""
+post_narrative = ""
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
+[resource]
+script = ExtResource("7_ym3jx")
+alt_sequence = SubResource("Resource_ea78g")
+coinbox_data = SubResource("Resource_a4so0")
+deterministic = true
+description = "Stay hidden and wait. You'll get your things back."
+explicit = false
+sequence = SubResource("Resource_yf5ji")
+final = true
+secret = false

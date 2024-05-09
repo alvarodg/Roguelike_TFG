@@ -63,18 +63,22 @@ func _on_Button_pressed():
 		
 	
 func _apply_sequence(seq: ChoiceSequence):
+	# TODO: Mostrar pre_narrative aquí de alguna forma
+	if seq.event_unlocks != null:
+		for event in seq.event_unlocks:
+			RunData.current_event_scene.event_unlocks.append(event)
 	for mod in seq.pre_modifiers:
 		mod.apply_to(player)
 	if seq.events.size() > 0: 
 		events_about_to_begin.emit()
-		await ScreenTransitions.fade_to_black()
-		ScreenTransitions.fade_from_black()
+#		await ScreenTransitions.fade_to_black()
+#		ScreenTransitions.fade_from_black()
 		print(seq.events)
 		for event in seq.events:
 			var scene: EventScene = event.instantiate_scene(player)
 			get_tree().root.add_child(scene)
 			await scene.finished
-			# La transición arregla un problema por casualidad al esperar para que
+			# La transición arregla un problema por casualidad al esperar para que"scene"
 			# queue_free() se pueda hacer en la escena después de que esta envíe la señal.
 			# Si no espera a la transición y se intentan encadenar eventos 
 			# que comparten recursos pueden darse errores.
@@ -84,6 +88,7 @@ func _apply_sequence(seq: ChoiceSequence):
 				ScreenTransitions.fade_from_black()
 	for mod in seq.post_modifiers:
 		mod.apply_to(player)
+	# TODO: Mostrar post_narrative aquí de alguna forma
 	
 func _update_description(p_label: Label):
 	var desc: String = ""

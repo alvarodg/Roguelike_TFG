@@ -69,8 +69,8 @@ func set_level(level_id: int):
 
 ## Para cambiar de nivel, primero vacía las listas de nodos por los que se ha viajado.
 func change_level(level_id: int):
-	await ScreenTransitions.fade_to_black()
 	get_parent().hide()
+	await ScreenTransitions.fade_to_black()
 	traveled_nodes = []
 	traveled_coords = []
 	set_level(level_id)

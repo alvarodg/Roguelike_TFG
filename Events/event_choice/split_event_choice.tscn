@@ -1,13 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://yn4s15yxfg8o"]
+[gd_scene load_steps=3 format=3 uid="uid://yn4s15yxfg8o"]
 
 [ext_resource type="Script" path="res://Events/event_choice/split_event_choice.gd" id="1_hgjkq"]
-[ext_resource type="Script" path="res://Events/event_choice/choice_coin_box_data.gd" id="2_8c7mr"]
-
-[sub_resource type="Resource" id="Resource_06b46"]
-script = ExtResource("2_8c7mr")
-coin_amount = 4
-target_heads = 1
-operator = 1
 
 [sub_resource type="LabelSettings" id="LabelSettings_tfead"]
 font_size = 14
@@ -26,7 +19,6 @@ offset_bottom = 50.0
 grow_horizontal = 0
 grow_vertical = 2
 script = ExtResource("1_hgjkq")
-coinbox_data = SubResource("Resource_06b46")
 
 [node name="TopContainer" type="HBoxContainer" parent="."]
 unique_name_in_owner = true
@@ -59,6 +51,7 @@ autowrap_mode = 3
 [node name="HoverLabel" type="Label" parent="."]
 unique_name_in_owner = true
 visible = false
+z_index = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -73,6 +66,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Panel" type="Panel" parent="HoverLabel"]
+self_modulate = Color(0.596078, 0.596078, 0.596078, 1)
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15

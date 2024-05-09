@@ -24,6 +24,7 @@ enum Operator {MORE, MORE_OR_EQUAL, EQUAL, LESS_OR_EQUAL, LESS}
 @export var operator: Operator = Operator.MORE_OR_EQUAL
 
 @export var player: Player
+var rng: RandomNumberGenerator
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -39,8 +40,9 @@ func initialize(data: ChoiceCoinBoxData):
 	target_heads = data.target_heads
 	operator = data.operator
 
-func setup(p_player: Player):
+func setup(p_player: Player, p_rng: RandomNumberGenerator = RandomNumberGenerator.new()):
 	player = p_player
+	rng = p_rng
 
 func disable_input():
 	flip_button.disabled = true
@@ -58,11 +60,11 @@ func _generate_target_text():
 		Operator.MORE:
 			target_label.text += ">" + str(target_heads) + " Heads"
 		Operator.MORE_OR_EQUAL:
-			target_label.text += str(target_heads) + " or more Heads"
+			target_label.text += str(target_heads) + "+ Heads"
 		Operator.EQUAL:
-			target_label.text += "Exactly" + str(target_heads) + " Heads"
+			target_label.text += "Exactly " + str(target_heads) + " Heads"
 		Operator.LESS_OR_EQUAL:
-			target_label.text += str(coin_amount-target_heads) + " or more Tails"
+			target_label.text += str(coin_amount-target_heads) + " + Tails"
 		Operator.LESS:
 			target_label.text += ">" + str(coin_amount-target_heads) + " Tails"
 
@@ -93,7 +95,7 @@ func _on_StopButton_pressed():
 	var heads_count: int = 0
 	for coin in coin_container.get_children():
 		if coin is Coin:
-			if player.logic_flip(coin):
+			if player.logic_flip(coin, rng):
 				heads_count += 1
 			coin.stop_spinning()
 			# TEMPORAL. Probablemente cambiar el temporizador por algo más elegante.

@@ -1,0 +1,88 @@
+[gd_resource type="Resource" script_class="EventPickData" load_steps=11 format=3 uid="uid://rvincngc54hc"]
+
+[ext_resource type="Script" path="res://Events/event_choice/event_choice_data.gd" id="1_a4nfd"]
+[ext_resource type="Script" path="res://Events/skill_choice_data.gd" id="2_lqug8"]
+[ext_resource type="Script" path="res://Events/equipment_choice_data.gd" id="3_ur6yi"]
+[ext_resource type="Script" path="res://Events/event_choice/choice_sequence.gd" id="4_2n6bl"]
+[ext_resource type="Script" path="res://Events/event_choice/event_pick_data.gd" id="5_yjycv"]
+
+[sub_resource type="Resource" id="Resource_svs3p"]
+script = ExtResource("2_lqug8")
+choices = 3
+skill_tags = Array[int]([])
+tag_op = 1
+rarities = Array[int]([])
+rarity_factor = 1.0
+description = "Get a skill."
+rarity = 1
+tags = Array[int]([0])
+secret = false
+unique = false
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
+[sub_resource type="Resource" id="Resource_eofyi"]
+script = ExtResource("3_ur6yi")
+choices = 3
+equip_tags = Array[int]([4])
+tag_op = 1
+rarities = Array[int]([])
+rarity_factor = 1.0
+description = "Get a coin."
+rarity = 1
+tags = Array[int]([0])
+secret = false
+unique = false
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
+[sub_resource type="Resource" id="Resource_vh2cd"]
+script = ExtResource("3_ur6yi")
+choices = 3
+equip_tags = Array[int]([])
+tag_op = 1
+rarities = Array[int]([])
+rarity_factor = 1.0
+description = "Get a piece of equipment."
+rarity = 1
+tags = Array[int]([0])
+secret = false
+unique = false
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
+[sub_resource type="Resource" id="Resource_kyivx"]
+script = ExtResource("4_2n6bl")
+pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_svs3p"), SubResource("Resource_eofyi"), SubResource("Resource_vh2cd")])
+secret = false
+pre_narrative = ""
+post_narrative = ""
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
+[sub_resource type="Resource" id="Resource_nmld3"]
+script = ExtResource("1_a4nfd")
+description = "(Elección)"
+explicit = false
+sequence = SubResource("Resource_kyivx")
+final = true
+secret = false
+
+[resource]
+script = ExtResource("5_yjycv")
+narrative = "(Narrativa)
+
+Este evento solo debería aparecer si has pasado los dos anteriores sin pelear con el ladrón."
+choices = Array[ExtResource("1_a4nfd")]([SubResource("Resource_nmld3")])
+description = ""
+rarity = 1
+tags = Array[int]([0])
+secret = false
+unique = true
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])

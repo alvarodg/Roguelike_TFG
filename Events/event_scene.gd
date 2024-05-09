@@ -11,20 +11,37 @@ var win_scene = load("res://Menus/win_screen.tscn")
 
 var player: Player
 var next_event: EventData
+var unique: bool
 var goes_to_next_level: bool
 var is_final_event: bool
+var event_unlocks: Array[EventData]
+
+var data_backup
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	RunData.current_event_scene = self
+#	pass # Replace with function body.
 
 func initialize(p_player: Player, data):
+	data_backup = data
 	player = p_player
 	next_event = data.next_event
+	unique = data.unique
 	goes_to_next_level = data.goes_to_next_level
 	is_final_event = data.is_final_event
+	event_unlocks = data.event_unlocks
 
 func finish():
+	if RunData.current_event_scene == self:
+		RunData.current_event_scene = null
+	if unique:
+		# Acceso al singleton RunData para que el evento no vuelva a aparecer aleatoriamente.
+		RunData.collections.remove(data_backup)
+	if event_unlocks != null:
+		for event in event_unlocks:
+			# Acceso al singleton RunData para añadir los eventos a la colección.
+			RunData.collections.add(event)
 	if next_event is EventData:
 		var next_scene = next_event.instantiate_scene(player)
 		get_parent().add_child(next_scene)

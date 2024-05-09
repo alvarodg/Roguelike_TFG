@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="EventPickData" load_steps=25 format=3 uid="uid://cl2ctrvkv5yu3"]
+[gd_resource type="Resource" script_class="EventPickData" load_steps=26 format=3 uid="uid://cl2ctrvkv5yu3"]
 
 [ext_resource type="Resource" uid="uid://b8r88vwyrnqt6" path="res://Events/resources/event_data/battle/EasyBattleData.tres" id="1_bdige"]
 [ext_resource type="Script" path="res://Events/event_choice/choice_sequence.gd" id="2_bgpsa"]
 [ext_resource type="Script" path="res://Events/event_choice/choice_coin_box_data.gd" id="3_fs77g"]
 [ext_resource type="Script" path="res://Events/event_choice/split_event_choice_data.gd" id="4_7ll1k"]
-[ext_resource type="Resource" uid="uid://6mj55fih0kl8" path="res://Events/resources/event_data/EquipmentChoiceData.tres" id="5_lhpfq"]
+[ext_resource type="Script" path="res://Events/equipment_choice_data.gd" id="5_ct2b5"]
 [ext_resource type="Script" path="res://Events/event_choice/event_choice_data.gd" id="6_fsytl"]
 [ext_resource type="Resource" uid="uid://dvgi2ssh6mwbh" path="res://Events/resources/event_data/RegularBattleData.tres" id="7_hergg"]
 [ext_resource type="Script" path="res://Items/modifiers/components/stats/health_modifier_component.gd" id="8_jsqha"]
@@ -18,6 +18,9 @@ pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_compon
 post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 events = Array[Resource("res://Events/EventData.gd")]([ExtResource("1_bdige")])
 secret = false
+pre_narrative = ""
+post_narrative = ""
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 
 [sub_resource type="Resource" id="Resource_306jc"]
 script = ExtResource("3_fs77g")
@@ -25,17 +28,37 @@ coin_amount = 2
 target_heads = 1
 operator = 1
 
+[sub_resource type="Resource" id="Resource_hsx86"]
+script = ExtResource("5_ct2b5")
+choices = 3
+equip_tags = Array[int]([])
+tag_op = 1
+rarities = Array[int]([])
+rarity_factor = 1.0
+description = "Choose a random piece of equipment."
+rarity = 1
+tags = Array[int]([0])
+secret = false
+unique = false
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
 [sub_resource type="Resource" id="Resource_1r2g7"]
 script = ExtResource("2_bgpsa")
 pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
-events = Array[Resource("res://Events/EventData.gd")]([ExtResource("5_lhpfq")])
+events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_hsx86")])
 secret = false
+pre_narrative = ""
+post_narrative = ""
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 
 [sub_resource type="Resource" id="Resource_afbk6"]
 script = ExtResource("4_7ll1k")
 alt_sequence = SubResource("Resource_1o50y")
 coinbox_data = SubResource("Resource_306jc")
+deterministic = true
 description = "Tirada de 2 Monedas."
 explicit = false
 sequence = SubResource("Resource_1r2g7")
@@ -48,6 +71,9 @@ pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_compon
 post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 events = Array[Resource("res://Events/EventData.gd")]([ExtResource("7_hergg")])
 secret = false
+pre_narrative = ""
+post_narrative = ""
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 
 [sub_resource type="Resource" id="Resource_p3tvf"]
 script = ExtResource("6_fsytl")
@@ -68,6 +94,9 @@ pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_compon
 post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_uups6")])
 events = Array[Resource("res://Events/EventData.gd")]([])
 secret = false
+pre_narrative = ""
+post_narrative = ""
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 
 [sub_resource type="Resource" id="Resource_oo4b5"]
 script = ExtResource("3_fs77g")
@@ -90,11 +119,15 @@ pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_compon
 post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 events = Array[Resource("res://Events/EventData.gd")]([ExtResource("10_pghfn")])
 secret = false
+pre_narrative = ""
+post_narrative = ""
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 
 [sub_resource type="Resource" id="Resource_6j58m"]
 script = ExtResource("4_7ll1k")
 alt_sequence = SubResource("Resource_435h6")
 coinbox_data = SubResource("Resource_oo4b5")
+deterministic = true
 description = "Tirada de 3 Monedas."
 explicit = false
 cost = SubResource("Resource_5r74q")
@@ -110,5 +143,7 @@ description = ""
 rarity = 1
 tags = Array[int]([0])
 secret = false
+unique = false
 goes_to_next_level = false
 is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])

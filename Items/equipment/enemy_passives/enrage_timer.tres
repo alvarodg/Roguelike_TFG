@@ -23,7 +23,7 @@ state_conditions = Array[Resource("res://Items/modifiers/conditions/state_condit
 event_condition = SubResource("Resource_d2gi0")
 modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_3iw7m")])
 amount = 1
-reset = 1
+reset = 0
 
 [sub_resource type="Resource" id="Resource_b63dg"]
 script = ExtResource("7_m0k4o")

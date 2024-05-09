@@ -33,9 +33,7 @@ func _on_SaveButton_pressed():
 
 func _on_LoadButton_pressed():
 	pass
-#	EventBus.continue_run_selected.emit()
-#	RunData.load_game()
-#	refresh_map()
+
 
 func _on_DeleteSave_pressed():
 	RunData.delete_save(true)

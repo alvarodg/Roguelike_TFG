@@ -12,5 +12,7 @@ scene = ExtResource("3_8s5xh")
 rarity = 1
 tags = Array[int]([0])
 secret = false
+unique = false
 goes_to_next_level = false
 is_final_event = true
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])

@@ -8,7 +8,7 @@ func connect_to(p_user):
 	assert(p_user.stats is CombatantStats)
 	p_user.stats.shield_changed.connect(_check_status)
 	
-func _check_status(shield):
+func _check_status(_old, shield):
 	state_changed.emit(self, shield > target)
 
 func get_description():

@@ -2,13 +2,13 @@
 
 [ext_resource type="Resource" uid="uid://c8seuyofduohl" path="res://Events/resources/l1_easy_rdm_battle.tres" id="1_xle3b"]
 [ext_resource type="Resource" uid="uid://dfs3fwui7stjp" path="res://Events/resources/random_event_pick.tres" id="2_djqke"]
-[ext_resource type="Resource" uid="uid://qiy6xndpkvmk" path="res://Events/resources/free_skill.tres" id="3_3is20"]
+[ext_resource type="Resource" uid="uid://s2n5pf05rkrp" path="res://Events/resources/random_reward_event.tres" id="3_d1nf6"]
 [ext_resource type="Resource" uid="uid://bjlj5y2nif4am" path="res://Events/resources/elite_battle.tres" id="4_wtuen"]
 [ext_resource type="Resource" uid="uid://b7dovkjbmh73j" path="res://Events/resources/l1_boss_battle.tres" id="5_twvi1"]
 [ext_resource type="Script" path="res://Generation/DefaultEventAssigner.gd" id="6_1sqml"]
 
 [resource]
 script = ExtResource("6_1sqml")
-event_list = Array[Resource("res://Events/Event.gd")]([ExtResource("1_xle3b"), ExtResource("2_djqke"), ExtResource("3_3is20"), ExtResource("4_wtuen"), ExtResource("5_twvi1")])
-event_chances = Array[float]([7.0, 5.0, 1.0, 1.0, 0.0])
+event_list = Array[Resource("res://Events/Event.gd")]([ExtResource("1_xle3b"), ExtResource("2_djqke"), ExtResource("3_d1nf6"), ExtResource("4_wtuen"), ExtResource("5_twvi1")])
+event_chances = Array[float]([7.0, 100.0, 1.0, 1.0, 0.0])
 restrictions = Array[Vector2]([Vector2(-1, 4), Vector2(0, 0)])

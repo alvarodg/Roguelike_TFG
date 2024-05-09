@@ -12,7 +12,8 @@ func remove(element):
 func size() -> int:
 	return 0
 
-func get_random(tags: Array = [], op: Operator = Operator.OR, rarity_pick: Array[int] = [], rarity_factor: float = 1):
+func get_random(rng: RandomNumberGenerator = RandomNumberGenerator.new(), tags: Array = [], 
+				op: Operator = Operator.OR, rarity_pick: Array[int] = [], rarity_factor: float = 1.0):
 	return null
 	
 func get_random_list(amount: int = 1, tags: Array = [],
@@ -29,13 +30,14 @@ func get_random_list(amount: int = 1, tags: Array = [],
 			collection.remove(chosen_skill)
 	return chosen_list
 
-func _choose_random_index_from(rarity_list: Array, rarity_factor: float = 1):
+func _choose_random_index_from(rarity_list: Array, rng: RandomNumberGenerator = RandomNumberGenerator.new(), 
+								rarity_factor: float = 1):
 	var chosen: int = 0
 	var total_chance = 0.0
 	for rarity in rarity_list:
 		total_chance += 1.0/(1 + rarity * rarity_factor)
 	var current_chance = 0.0
-	var roll = randf_range(0,total_chance)
+	var roll = rng.randf_range(0,total_chance)
 	for i in range(rarity_list.size()):
 		current_chance += 1.0/(1 + rarity_list[i] * rarity_factor)
 		if current_chance >= roll:
@@ -43,9 +45,14 @@ func _choose_random_index_from(rarity_list: Array, rarity_factor: float = 1):
 			break
 	return chosen
 
-func _get_random_from_list(list: Array[Variant], tags: Array[Variant] = [], op: Operator = Operator.OR, rarity_pick: Array[int] = [], rarity_factor: float = 1) -> Variant:
+func _get_random_from_list(list: Array[Variant], rng: RandomNumberGenerator = RandomNumberGenerator.new(),
+ 						   tags: Array[Variant] = [], op: Operator = Operator.OR, 
+						   rarity_pick: Array[int] = [], rarity_factor: float = 1) -> Variant:
 	var pickable: Array = list
-	# Comprueba que la clase de los objetos de la lista tiene una variable "tags"
+	# Comprueba si la lista está vacía
+	if list.size() == 0:
+		return null
+	# Comprueba si la clase de los objetos de la lista tiene las variables "tags" y "rarity"
 	if not "tags" in list.front() or not "rarity" in list.front():
 		return null
 	if tags.size() > 0:
@@ -62,8 +69,9 @@ func _get_random_from_list(list: Array[Variant], tags: Array[Variant] = [], op: 
 #					func(x): return tags.has(x)))
 	if rarity_pick.size() > 0:
 		pickable = pickable.filter(func(x): return rarity_pick.has(x.rarity))
+		print(pickable)
 	var rarity_list: Array[int] = []
 	for item in pickable:
 		rarity_list.append(item.rarity)
-	var chosen: int = _choose_random_index_from(rarity_list, rarity_factor)
+	var chosen: int = _choose_random_index_from(rarity_list, rng, rarity_factor)
 	return pickable[chosen] if pickable.size() > 0 else null

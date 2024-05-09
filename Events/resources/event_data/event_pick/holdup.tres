@@ -1,0 +1,150 @@
+[gd_resource type="Resource" script_class="EventPickData" load_steps=28 format=3 uid="uid://ccaqy5slnalwh"]
+
+[ext_resource type="Script" path="res://Items/modifiers/components/stats/health_modifier_component.gd" id="1_3gkms"]
+[ext_resource type="Script" path="res://Events/event_choice/event_pick_data.gd" id="1_o2c3f"]
+[ext_resource type="Script" path="res://Items/modifiers/cost/health_cost.gd" id="2_frapg"]
+[ext_resource type="Script" path="res://Events/event_choice/event_choice_data.gd" id="3_608jo"]
+[ext_resource type="Resource" uid="uid://4msvwnp5eq7u" path="res://Battle/enemy/resources/data/elite_enemy_data.tres" id="4_rsd7b"]
+[ext_resource type="Script" path="res://Events/BattleEventData.gd" id="5_bc8ei"]
+[ext_resource type="Script" path="res://Events/event_choice/choice_sequence.gd" id="6_svos6"]
+[ext_resource type="Script" path="res://Items/modifiers/components/coin_count_modifier_component.gd" id="7_ktmaw"]
+[ext_resource type="Script" path="res://Items/modifiers/cost/coin_cost.gd" id="8_ueh3s"]
+[ext_resource type="Resource" uid="uid://cytalqnpi50kb" path="res://Events/resources/event_data/event_pick/sequels/holdup_stole_2.tres" id="9_b3aog"]
+[ext_resource type="Script" path="res://Events/event_choice/choice_coin_box_data.gd" id="9_hut8e"]
+[ext_resource type="Script" path="res://Events/event_choice/split_event_choice_data.gd" id="10_lhaah"]
+
+[sub_resource type="Resource" id="Resource_p68lh"]
+script = ExtResource("1_3gkms")
+magnitude = -10.0
+action = 0
+
+[sub_resource type="Resource" id="Resource_m05vx"]
+script = ExtResource("2_frapg")
+health_mod = SubResource("Resource_p68lh")
+
+[sub_resource type="Resource" id="Resource_tg56x"]
+script = ExtResource("5_bc8ei")
+enemy_data = ExtResource("4_rsd7b")
+description = "End your new friendship."
+rarity = 1
+tags = Array[int]([0])
+secret = false
+unique = false
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
+[sub_resource type="Resource" id="Resource_637cp"]
+script = ExtResource("6_svos6")
+pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_tg56x")])
+secret = false
+pre_narrative = ""
+post_narrative = ""
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
+[sub_resource type="Resource" id="Resource_uusos"]
+script = ExtResource("3_608jo")
+description = "Tank the hit and fight."
+explicit = false
+cost = SubResource("Resource_m05vx")
+sequence = SubResource("Resource_637cp")
+final = true
+secret = false
+
+[sub_resource type="Resource" id="Resource_x74md"]
+script = ExtResource("7_ktmaw")
+coin_count = -1
+
+[sub_resource type="Resource" id="Resource_al1g2"]
+script = ExtResource("8_ueh3s")
+coin_count_mod = SubResource("Resource_x74md")
+
+[sub_resource type="Resource" id="Resource_6l4b0"]
+script = ExtResource("6_svos6")
+pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+events = Array[Resource("res://Events/EventData.gd")]([])
+secret = false
+pre_narrative = ""
+post_narrative = ""
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([ExtResource("9_b3aog")])
+
+[sub_resource type="Resource" id="Resource_06gj2"]
+script = ExtResource("3_608jo")
+description = "Pay up and be on your way."
+explicit = false
+cost = SubResource("Resource_al1g2")
+sequence = SubResource("Resource_6l4b0")
+final = true
+secret = false
+
+[sub_resource type="Resource" id="Resource_nmpb3"]
+script = ExtResource("5_bc8ei")
+enemy_data = ExtResource("4_rsd7b")
+description = "End your new friendship."
+rarity = 1
+tags = Array[int]([0])
+secret = false
+unique = false
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
+[sub_resource type="Resource" id="Resource_t7cmb"]
+script = ExtResource("1_3gkms")
+magnitude = -30.0
+action = 0
+
+[sub_resource type="Resource" id="Resource_4yqny"]
+script = ExtResource("6_svos6")
+pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_t7cmb")])
+post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_nmpb3")])
+secret = false
+pre_narrative = ""
+post_narrative = ""
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
+[sub_resource type="Resource" id="Resource_ng84t"]
+script = ExtResource("9_hut8e")
+coin_amount = 3
+target_heads = 3
+operator = 2
+
+[sub_resource type="Resource" id="Resource_e07bk"]
+script = ExtResource("6_svos6")
+pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+events = Array[Resource("res://Events/EventData.gd")]([])
+secret = false
+pre_narrative = ""
+post_narrative = ""
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
+[sub_resource type="Resource" id="Resource_vw52t"]
+script = ExtResource("10_lhaah")
+alt_sequence = SubResource("Resource_4yqny")
+coinbox_data = SubResource("Resource_ng84t")
+deterministic = true
+description = "Use your silver tongue to convince them to let you go."
+explicit = false
+sequence = SubResource("Resource_e07bk")
+final = true
+secret = false
+
+[resource]
+script = ExtResource("1_o2c3f")
+narrative = "Uh oh, you've been ambushed. Your new friend seems to have the capability (though seemingly not much of a willingness) to speak, given their crystal clear demand for a coin in exchange for your life. 
+
+You won't get off scot-free if you try to make a move. How are you getting out of this one?"
+choices = Array[ExtResource("3_608jo")]([SubResource("Resource_uusos"), SubResource("Resource_06gj2"), SubResource("Resource_vw52t")])
+description = ""
+rarity = 3
+tags = Array[int]([0, 1])
+secret = false
+unique = true
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])

@@ -6,7 +6,7 @@ extends EventScene
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# No puede enviar la señal con la implementación actual, ¿cambiar await por connect?
-	pass
+	super._ready()
 
 
 

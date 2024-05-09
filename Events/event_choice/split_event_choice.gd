@@ -4,8 +4,9 @@ class_name SplitEventChoice
 # Decisión de evento con una tirada de moneda asociada, que puede dar lugar a dos secuencias
 # según su resultado. Posiblemente extender a múltiples categorías de resultados con múltiples secuencias.
 
-@export var alt_sequence: ChoiceSequence
-@export var coinbox_data: ChoiceCoinBoxData
+var alt_sequence: ChoiceSequence
+var coinbox_data: ChoiceCoinBoxData
+var deterministic: bool
 @onready var top_container = %TopContainer
 
 var coinbox: ChoiceCoinBox
@@ -20,7 +21,8 @@ func _ready():
 	label = %Label
 	hover_label = %HoverLabel
 	coinbox = coinbox_data.create_instance()
-	coinbox.setup(player)
+	var rng: RandomNumberGenerator = RunData.rng if deterministic else RandomNumberGenerator.new()
+	coinbox.setup(player, rng)
 #	top_container.add_child(coinbox)
 #	top_container.move_child(coinbox, 0)
 	button.add_child(coinbox)
@@ -40,6 +42,7 @@ func initialize(p_player: Player, data):
 	var split_data = data as SplitEventChoiceData
 	alt_sequence = split_data.alt_sequence
 	coinbox_data = split_data.coinbox_data
+	deterministic = split_data.deterministic
 	super.initialize(p_player, split_data)
 
 func _on_Button_pressed():
@@ -105,4 +108,8 @@ func _update_description(p_label: Label):
 		p_label.text = cost_desc + description
 
 func _update_hover_description(p_label: Label):
-	p_label.text = "Success:\n" + sequence.get_description() + "\nFailure:\n" + alt_sequence.get_description()
+	if sequence.get_description() != "":
+		p_label.text += "Success:\n" + sequence.get_description() + "\n"
+	if alt_sequence.get_description() != "":
+		p_label.text += "Failure:\n" + alt_sequence.get_description()
+	p_label.text.strip_edges()

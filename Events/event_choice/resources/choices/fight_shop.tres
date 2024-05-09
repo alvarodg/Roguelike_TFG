@@ -14,8 +14,10 @@ description = "Fight the trader."
 rarity = 1
 tags = Array[int]([0])
 secret = false
+unique = false
 goes_to_next_level = false
 is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 
 [sub_resource type="Resource" id="Resource_cfr11"]
 script = ExtResource("6_vxhy7")
@@ -23,6 +25,9 @@ pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_compon
 post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_3v0x7"), ExtResource("4_ihpm3"), ExtResource("5_wulev")])
 secret = false
+pre_narrative = ""
+post_narrative = ""
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 
 [resource]
 script = ExtResource("1_t2lsi")

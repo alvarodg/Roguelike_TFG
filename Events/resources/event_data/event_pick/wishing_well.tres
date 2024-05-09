@@ -20,8 +20,10 @@ description = "Get a coin."
 rarity = 1
 tags = Array[int]([0])
 secret = false
+unique = false
 goes_to_next_level = false
 is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 
 [sub_resource type="Resource" id="Resource_4kt86"]
 script = ExtResource("3_bl7qb")
@@ -29,6 +31,9 @@ pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_compon
 post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_mo3sa")])
 secret = false
+pre_narrative = ""
+post_narrative = ""
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 
 [sub_resource type="Resource" id="Resource_nugma"]
 script = ExtResource("1_2l0ka")
@@ -44,6 +49,9 @@ pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_compon
 post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 events = Array[Resource("res://Events/EventData.gd")]([])
 secret = false
+pre_narrative = ""
+post_narrative = ""
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 
 [sub_resource type="Resource" id="Resource_f7sbd"]
 script = ExtResource("4_dmhnw")
@@ -70,8 +78,10 @@ description = ""
 rarity = 1
 tags = Array[int]([0])
 secret = false
+unique = false
 goes_to_next_level = false
 is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 
 [sub_resource type="Resource" id="Resource_at3u7"]
 script = ExtResource("5_wkt41")
@@ -83,11 +93,15 @@ pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_compon
 post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_yhbh2")])
 secret = false
+pre_narrative = ""
+post_narrative = ""
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 
 [sub_resource type="Resource" id="Resource_0fv5m"]
 script = ExtResource("5_f7o18")
 alt_sequence = SubResource("Resource_ytfy5")
 coinbox_data = SubResource("Resource_f7sbd")
+deterministic = true
 description = "You never know what could happen. Throw a coin in and hope it's something good."
 explicit = false
 cost = SubResource("Resource_qgsbd")
@@ -101,7 +115,9 @@ narrative = "You find a fountain filled with a thick, black liquid. The words \"
 choices = Array[ExtResource("1_2l0ka")]([SubResource("Resource_nugma"), SubResource("Resource_0fv5m")])
 description = ""
 rarity = 1
-tags = Array[int]([0])
+tags = Array[int]([0, 4])
 secret = false
+unique = true
 goes_to_next_level = false
 is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])

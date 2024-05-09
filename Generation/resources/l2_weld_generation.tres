@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="GenerationData" load_steps=4 format=3 uid="uid://blbgpkie0ea8o"]
 
 [ext_resource type="Resource" uid="uid://uqql5frl5gpj" path="res://Generation/resources/event_assigner/l2_events.tres" id="1_ngoul"]
-[ext_resource type="Resource" uid="uid://dbbm8xqw7b1qc" path="res://Generation/resources/node_generation/map/l2_default_map.tres" id="2_hys67"]
+[ext_resource type="Resource" uid="uid://dclcug8uacbgb" path="res://Generation/resources/node_generation/map/short_map.tres" id="2_7w4nd"]
 [ext_resource type="Script" path="res://Generation/generation_data.gd" id="3_i7jgy"]
 
 [resource]
 script = ExtResource("3_i7jgy")
-map_generator = ExtResource("2_hys67")
+map_generator = ExtResource("2_7w4nd")
 event_assigner = ExtResource("1_ngoul")
