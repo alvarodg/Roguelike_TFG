@@ -1,0 +1,47 @@
+[gd_resource type="Resource" script_class="Equipment" load_steps=13 format=3 uid="uid://dvvvs3173ihiq"]
+
+[ext_resource type="Script" path="res://Items/equipment/equipment.gd" id="1_crdmx"]
+[ext_resource type="Script" path="res://Items/modifiers/conditions/events/flip_condition.gd" id="1_l7mcy"]
+[ext_resource type="Script" path="res://Items/modifiers/components/stats/health_modifier_component.gd" id="2_7a3ee"]
+[ext_resource type="Script" path="res://Items/modifiers/conditions/condition_trigger.gd" id="3_eotov"]
+[ext_resource type="Script" path="res://Items/modifiers/conditions/states/in_battle_condition.gd" id="4_nx27t"]
+[ext_resource type="Texture2D" uid="uid://67vxmnlk8br1" path="res://Items/equipment/sprites/test_item.png" id="6_phyro"]
+[ext_resource type="Script" path="res://Items/equipment/equipment_ui_data.gd" id="7_5gp8h"]
+
+[sub_resource type="Resource" id="Resource_2tycr"]
+script = ExtResource("1_l7mcy")
+facing = 2
+amount = 3
+restart_per_turn = true
+
+[sub_resource type="Resource" id="Resource_j7682"]
+script = ExtResource("2_7a3ee")
+magnitude = 1.0
+action = 0
+
+[sub_resource type="Resource" id="Resource_5qiuy"]
+script = ExtResource("4_nx27t")
+
+[sub_resource type="Resource" id="Resource_ivj43"]
+script = ExtResource("3_eotov")
+state_conditions = Array[Resource("res://Items/modifiers/conditions/state_condition.gd")]([SubResource("Resource_5qiuy")])
+event_condition = SubResource("Resource_2tycr")
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_j7682")])
+amount = -1
+reset = 1
+
+[sub_resource type="Resource" id="Resource_jvfqc"]
+script = ExtResource("7_5gp8h")
+icon = ExtResource("6_phyro")
+ui_name = "Skeptic Spirit"
+
+[resource]
+script = ExtResource("1_crdmx")
+ui_data = SubResource("Resource_jvfqc")
+description = ""
+rarity = 3
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+condition_triggers = Array[ExtResource("3_eotov")]([SubResource("Resource_ivj43")])
+causality_triggers = Array[Resource("res://Battle/status/causality_trigger.gd")]([])
+fragile = false
+tags = Array[int]([0])

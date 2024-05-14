@@ -1,0 +1,111 @@
+[gd_resource type="Resource" script_class="EventPickData" load_steps=23 format=3 uid="uid://rvxldc3auvnb"]
+
+[ext_resource type="Script" path="res://Items/modifiers/components/coin_count_modifier_component.gd" id="1_5etjp"]
+[ext_resource type="Script" path="res://Events/event_choice/event_pick_data.gd" id="1_ghxbg"]
+[ext_resource type="Script" path="res://Items/modifiers/cost/coin_cost.gd" id="2_tbxow"]
+[ext_resource type="Script" path="res://Events/event_choice/event_choice_data.gd" id="3_iac2v"]
+[ext_resource type="Script" path="res://Items/modifiers/components/stats/max_health_modifier.gd" id="4_nwrmb"]
+[ext_resource type="Script" path="res://Events/event_choice/choice_sequence.gd" id="5_45dwi"]
+[ext_resource type="Script" path="res://Events/event_choice/choice_coin_box_data.gd" id="6_ewco1"]
+[ext_resource type="Script" path="res://Events/event_choice/split_event_choice_data.gd" id="7_fdnto"]
+[ext_resource type="Resource" uid="uid://dvvvs3173ihiq" path="res://Items/equipment/resources/conditional/skeptic_spirit.tres" id="8_eu78t"]
+[ext_resource type="Script" path="res://Run/equipment_collection.gd" id="9_e6t8y"]
+[ext_resource type="Script" path="res://Events/equipment_choice_data.gd" id="10_xy2r7"]
+
+[sub_resource type="Resource" id="Resource_vq62r"]
+script = ExtResource("1_5etjp")
+coin_count = -2
+
+[sub_resource type="Resource" id="Resource_j0ro8"]
+script = ExtResource("2_tbxow")
+coin_count_mod = SubResource("Resource_vq62r")
+
+[sub_resource type="Resource" id="Resource_di6mw"]
+script = ExtResource("3_iac2v")
+description = "Comply."
+explicit = false
+cost = SubResource("Resource_j0ro8")
+final = true
+secret = false
+
+[sub_resource type="Resource" id="Resource_io1ls"]
+script = ExtResource("1_5etjp")
+coin_count = -3
+
+[sub_resource type="Resource" id="Resource_lmk8v"]
+script = ExtResource("4_nwrmb")
+fill = true
+magnitude = -10.0
+action = 0
+
+[sub_resource type="Resource" id="Resource_prxmq"]
+script = ExtResource("5_45dwi")
+pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_io1ls"), SubResource("Resource_lmk8v")])
+events = Array[Resource("res://Events/EventData.gd")]([])
+secret = false
+pre_narrative = ""
+post_narrative = ""
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
+[sub_resource type="Resource" id="Resource_64t4f"]
+script = ExtResource("6_ewco1")
+coin_amount = 4
+target_heads = 0
+operator = 2
+
+[sub_resource type="Resource" id="Resource_hs3ix"]
+script = ExtResource("9_e6t8y")
+list = Array[Resource("res://Items/equipment/equipment.gd")]([ExtResource("8_eu78t")])
+
+[sub_resource type="Resource" id="Resource_35bty"]
+script = ExtResource("10_xy2r7")
+choices = 1
+equip_collection = SubResource("Resource_hs3ix")
+equip_tags = Array[int]([])
+tag_op = 1
+rarities = Array[int]([])
+rarity_factor = 1.0
+name = ""
+description = ""
+rarity = 1
+tags = Array[int]([0])
+secret = false
+unique = false
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
+[sub_resource type="Resource" id="Resource_c3xny"]
+script = ExtResource("5_45dwi")
+pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_35bty")])
+secret = false
+pre_narrative = ""
+post_narrative = ""
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
+[sub_resource type="Resource" id="Resource_fr1fn"]
+script = ExtResource("7_fdnto")
+alt_sequence = SubResource("Resource_prxmq")
+coinbox_data = SubResource("Resource_64t4f")
+deterministic = true
+description = "Do not (this may hurt)."
+explicit = false
+sequence = SubResource("Resource_c3xny")
+final = true
+secret = false
+
+[resource]
+script = ExtResource("1_ghxbg")
+narrative = "You shouldn't have taken that coin from the fountain. You hear a voice in your head, asking you to pay it back. With interest. You somehow feel like you it would be in your best interest to do so."
+choices = Array[ExtResource("3_iac2v")]([SubResource("Resource_di6mw"), SubResource("Resource_fr1fn")])
+description = ""
+rarity = 1
+tags = Array[int]([0])
+secret = false
+unique = false
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])

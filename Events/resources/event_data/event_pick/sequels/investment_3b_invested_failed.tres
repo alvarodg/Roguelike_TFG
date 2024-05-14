@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="EventPickData" load_steps=4 format=3 uid="uid://dil6pjri0fi5j"]
+
+[ext_resource type="Script" path="res://Events/event_choice/event_choice_data.gd" id="1_7vq6n"]
+[ext_resource type="Script" path="res://Events/event_choice/event_pick_data.gd" id="1_uk1f1"]
+
+[sub_resource type="Resource" id="Resource_e7vfd"]
+script = ExtResource("1_7vq6n")
+description = "Better luck next time."
+explicit = false
+final = true
+secret = false
+
+[resource]
+script = ExtResource("1_uk1f1")
+narrative = "You find your business partner again. Bad news. Your investment went up in flames. Something or other about the market. You consider asking him to pay you back, but the guy seems to be genuinely empty-handed."
+choices = Array[ExtResource("1_7vq6n")]([SubResource("Resource_e7vfd")])
+name = ""
+description = ""
+rarity = 1
+tags = Array[int]([0])
+secret = false
+unique = true
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])

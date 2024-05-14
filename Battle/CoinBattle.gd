@@ -48,14 +48,9 @@ func _ready():
 	turn_manager.turn = turn_manager.Turn.PLAYER_TURN
 #	coin_box.flip_coins()
 	
-#func setup(p_player: Player, p_enemy_data: EnemyData, p_next_event: EventData = null):
-#	player = p_player
-#	enemy_data = p_enemy_data
-#	next_event = p_next_event
 	
 func initialize(p_player: Player, data: BattleEventData):
 	super.initialize(p_player, data)
-	print("Next:" + str(goes_to_next_level))
 	enemy_data = data.enemy_data
 	
 #func set_new_enemy(p_enemy_stats: EnemyStats):
@@ -76,6 +71,7 @@ func connect_player_signals(p_player: Player):
 	p_player.died.connect(_on_Player_died)
 #	p_player.started_waiting.connect(_on_Player_started_waiting)
 #	p_player.finished_waiting.connect(_on_Player_finished_waiting)
+	p_player.bankrupt.connect(_on_Player_bankrupt)
 	p_player.started_flipping_coins.connect(_block_input)
 	p_player.finished_flipping_coins.connect(_allow_input)
 	
@@ -86,6 +82,11 @@ func _on_Enemy_about_to_die():
 func _on_Enemy_died():
 	print("Died")
 	end_battle()
+
+# Si el jugador se declara en bancarrota (no tiene monedas al principio de un turno), pierde.
+func _on_Player_bankrupt():
+	print("Bankrupt!")
+	_on_Player_died()
 
 # Esta implementación considera que solo se puede perder en combate, ¿mover a Player?
 func _on_Player_died():

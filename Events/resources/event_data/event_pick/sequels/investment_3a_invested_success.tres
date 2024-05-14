@@ -1,0 +1,55 @@
+[gd_resource type="Resource" script_class="EventPickData" load_steps=8 format=3 uid="uid://cjjutx5c70dv8"]
+
+[ext_resource type="Script" path="res://Events/event_choice/event_pick_data.gd" id="1_chuov"]
+[ext_resource type="Script" path="res://Events/event_choice/event_choice_data.gd" id="1_srcb2"]
+[ext_resource type="Script" path="res://Events/equipment_choice_data.gd" id="2_rc0g2"]
+[ext_resource type="Script" path="res://Events/event_choice/choice_sequence.gd" id="3_4kk2h"]
+
+[sub_resource type="Resource" id="Resource_y23qi"]
+script = ExtResource("2_rc0g2")
+choices = 3
+equip_tags = Array[int]([4])
+tag_op = 1
+rarities = Array[int]([])
+rarity_factor = 1.0
+name = ""
+description = "Get a huge reward."
+rarity = 1
+tags = Array[int]([0])
+secret = false
+unique = false
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
+[sub_resource type="Resource" id="Resource_pyj8b"]
+script = ExtResource("3_4kk2h")
+pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_y23qi")])
+secret = false
+pre_narrative = ""
+post_narrative = "This feels like it may be too little? He's long gone before you can actually ask him about it."
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
+[sub_resource type="Resource" id="Resource_qxmqi"]
+script = ExtResource("1_srcb2")
+description = "Ask him for your cut."
+explicit = false
+sequence = SubResource("Resource_pyj8b")
+final = true
+secret = false
+
+[resource]
+script = ExtResource("1_chuov")
+narrative = "You find your business partner, carrying so many coins he can barely hold them. It seems like your investment has paid off!"
+choices = Array[ExtResource("1_srcb2")]([SubResource("Resource_qxmqi")])
+name = ""
+description = ""
+rarity = 1
+tags = Array[int]([0])
+secret = false
+unique = true
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])

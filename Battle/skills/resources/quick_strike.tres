@@ -7,6 +7,9 @@
 script = ExtResource("1_wphsp")
 damage = 2
 hits = 3
+ignore_shield = false
+ignore_armor = false
+ignore_dodges = false
 
 [resource]
 script = ExtResource("2_eyi1c")
@@ -15,7 +18,7 @@ cost = Array[int]([0, 0, 1])
 uses_per_turn = 1
 one_shot = false
 cost_is_mandatory = true
-rarity = 0
+rarity = 1
 behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_tohu1")])
 modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 modifiers_first = true

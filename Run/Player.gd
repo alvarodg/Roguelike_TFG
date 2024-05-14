@@ -5,6 +5,7 @@ class_name Player
 signal coins_changed
 signal coin_flipped(coin)
 signal coin_dropped(coin)
+signal bankrupt
 
 signal started_taking_damage
 signal finished_taking_damage
@@ -97,7 +98,9 @@ func start_turn():
 	stats.start_turn()
 	flip_all_coins()
 	started_turn.emit()
-
+	if coins.size() == 0:
+		bankrupt.emit()
+	
 func end_turn():
 	stats.end_turn()
 	clear_ephemeral_coins()
@@ -191,7 +194,7 @@ func get_available_coins():
 func recover_inserted_coins():
 	for coin in coins:
 		if coin.status == Coin.Status.INSERTED:
-			pass
+			coin.set_available()
 			
 func recover_dropped_coins():
 	for coin in coins:

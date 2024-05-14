@@ -43,3 +43,4 @@ modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.
 condition_triggers = Array[ExtResource("5_7lrrt")]([ExtResource("1_i0q3s"), SubResource("Resource_hi8wk")])
 causality_triggers = Array[Resource("res://Battle/status/causality_trigger.gd")]([])
 fragile = false
+tags = Array[int]([0, 2])

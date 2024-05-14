@@ -42,8 +42,6 @@ script = ExtResource("3_c1xat")
 stats = SubResource("Resource_bnqu0")
 ui_data = SubResource("Resource_ku3kp")
 skill_list = Array[Resource("res://Battle/skills/SkillData.gd")]([ExtResource("7_gm1vr")])
-default_equipment = null
-max_skills = null
 
 [node name="CollectionContainer" parent="." instance=ExtResource("8_p4se0")]
 equipments = ExtResource("9_k2nqh")

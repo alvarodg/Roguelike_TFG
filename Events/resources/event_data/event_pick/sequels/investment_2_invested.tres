@@ -1,0 +1,109 @@
+[gd_resource type="Resource" script_class="EventPickData" load_steps=20 format=3 uid="uid://dqywxadfpas21"]
+
+[ext_resource type="Script" path="res://Events/event_choice/choice_sequence.gd" id="1_5j3sf"]
+[ext_resource type="Resource" uid="uid://dil6pjri0fi5j" path="res://Events/resources/event_data/event_pick/sequels/investment_3b_invested_failed.tres" id="1_ds025"]
+[ext_resource type="Script" path="res://Events/event_choice/choice_coin_box_data.gd" id="2_pw16k"]
+[ext_resource type="Script" path="res://Items/modifiers/components/coin_count_modifier_component.gd" id="3_coodx"]
+[ext_resource type="Script" path="res://Items/modifiers/cost/coin_cost.gd" id="4_b36yi"]
+[ext_resource type="Script" path="res://Events/event_choice/split_event_choice_data.gd" id="5_y6l5u"]
+[ext_resource type="Script" path="res://Events/event_choice/event_choice_data.gd" id="6_lac53"]
+[ext_resource type="Resource" uid="uid://cjjutx5c70dv8" path="res://Events/resources/event_data/event_pick/sequels/investment_3a_invested_success.tres" id="7_pnu61"]
+[ext_resource type="Script" path="res://Events/event_choice/event_pick_data.gd" id="7_u0wf5"]
+[ext_resource type="Script" path="res://Events/equipment_choice_data.gd" id="9_8x00k"]
+
+[sub_resource type="Resource" id="Resource_f50dw"]
+script = ExtResource("1_5j3sf")
+pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+events = Array[Resource("res://Events/EventData.gd")]([])
+secret = false
+pre_narrative = ""
+post_narrative = ""
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([ExtResource("1_ds025")])
+
+[sub_resource type="Resource" id="Resource_f6dtb"]
+script = ExtResource("2_pw16k")
+coin_amount = 3
+target_heads = 2
+operator = 1
+
+[sub_resource type="Resource" id="Resource_8ax4d"]
+script = ExtResource("3_coodx")
+coin_count = -1
+
+[sub_resource type="Resource" id="Resource_viwd5"]
+script = ExtResource("4_b36yi")
+coin_count_mod = SubResource("Resource_8ax4d")
+
+[sub_resource type="Resource" id="Resource_tpk8g"]
+script = ExtResource("1_5j3sf")
+pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+events = Array[Resource("res://Events/EventData.gd")]([])
+secret = false
+pre_narrative = ""
+post_narrative = ""
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([ExtResource("7_pnu61")])
+
+[sub_resource type="Resource" id="Resource_lp2y6"]
+script = ExtResource("5_y6l5u")
+alt_sequence = SubResource("Resource_f50dw")
+coinbox_data = SubResource("Resource_f6dtb")
+deterministic = true
+description = "The wave is coming."
+explicit = false
+cost = SubResource("Resource_viwd5")
+sequence = SubResource("Resource_tpk8g")
+final = true
+secret = false
+
+[sub_resource type="Resource" id="Resource_5s23e"]
+script = ExtResource("9_8x00k")
+choices = 3
+equip_tags = Array[int]([4])
+tag_op = 1
+rarities = Array[int]([])
+rarity_factor = 1.0
+name = ""
+description = "Get a coin."
+rarity = 1
+tags = Array[int]([0])
+secret = false
+unique = false
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
+[sub_resource type="Resource" id="Resource_6gsb7"]
+script = ExtResource("1_5j3sf")
+pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_5s23e")])
+secret = false
+pre_narrative = ""
+post_narrative = "That's not your coin, is it? Well, whatever."
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
+[sub_resource type="Resource" id="Resource_4x8e6"]
+script = ExtResource("6_lac53")
+description = "Coward out."
+explicit = false
+sequence = SubResource("Resource_6gsb7")
+final = true
+secret = false
+
+[resource]
+script = ExtResource("7_u0wf5")
+narrative = "You find your business partner again. He does not seem to recognize you  when you approach him, until you ask for the result of your investment. He claims it's yet to pay out, though he can feel a wave of profits on the way very soon. 
+
+He kindly offers to give you your coin back if you have any doubts, though he personally recommends you invest even more while you still can."
+choices = Array[ExtResource("6_lac53")]([SubResource("Resource_lp2y6"), SubResource("Resource_4x8e6")])
+name = ""
+description = ""
+rarity = 1
+tags = Array[int]([0, 3])
+secret = false
+unique = true
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])

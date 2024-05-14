@@ -8,7 +8,7 @@ func apply_to(user):
 	diff = int(diff)
 
 func get_description(_stats: CombatantStats = null) -> String:
-	return action_description("Base Armor")
+	return action_description("Base Dodges")
 
 func undo_from(user):
 	assert(user.stats is CombatantStats)

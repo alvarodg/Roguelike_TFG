@@ -9,7 +9,7 @@ enum Tag {DEFAULT, LIGHT, DARK, FALLEN}
 @export var uses_per_turn: int = 1
 @export var one_shot: bool = false
 @export var cost_is_mandatory: bool = true
-@export var rarity: int = 0
+@export var rarity: int = 1
 @export var behaviors: Array[SkillBehavior]
 @export var modifiers: Array[Modifier]
 @export var modifiers_first: bool = true

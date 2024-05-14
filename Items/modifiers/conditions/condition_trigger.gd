@@ -3,6 +3,7 @@ class_name ConditionTrigger
 
 signal state_ok(value)
 signal triggers_changed(amount, remaining)
+signal triggered
 
 enum Reset {PER_TURN, PER_BATTLE, PERMANENT}
 
@@ -58,6 +59,7 @@ func _on_triggered(_param = null):
 		for mod in modifiers:
 			mod.apply_to(user)
 		triggers_remaining -= 1
+		triggered.emit()
 
 func _can_trigger():
 	return triggers_remaining != 0 and current_state.all(func(x): return x==true)

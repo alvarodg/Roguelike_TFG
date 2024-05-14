@@ -8,6 +8,7 @@ class_name ChoiceSequence
 @export_multiline var pre_narrative: String
 @export_multiline var post_narrative: String
 @export var event_unlocks: Array[EventData]
+@export var make_unique: bool = false
 
 func get_description() -> String:
 	var desc: String = ""

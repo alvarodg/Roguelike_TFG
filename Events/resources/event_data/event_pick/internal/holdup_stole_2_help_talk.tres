@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://Events/event_choice/choice_sequence.gd" id="5_v2ux2"]
 [ext_resource type="Script" path="res://Events/event_choice/choice_coin_box_data.gd" id="6_m41wk"]
 [ext_resource type="Script" path="res://Events/event_choice/split_event_choice_data.gd" id="7_g1c03"]
-[ext_resource type="Resource" uid="uid://rvincngc54hc" path="res://Events/resources/event_data/event_pick/sequels/holdup_stole_3.tres" id="8_p0sle"]
+[ext_resource type="Resource" uid="uid://rvincngc54hc" path="res://Events/resources/event_data/event_pick/sequels/holdup_3a_stole.tres" id="8_p0sle"]
 [ext_resource type="Script" path="res://Events/event_choice/event_choice_data.gd" id="8_yc1cd"]
 [ext_resource type="Script" path="res://Events/event_choice/event_pick_data.gd" id="9_5kh3k"]
 

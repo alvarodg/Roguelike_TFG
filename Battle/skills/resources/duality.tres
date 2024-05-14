@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="SkillData" load_steps=8 format=3 uid="uid://de6colm0f0eth"]
+
+[ext_resource type="Script" path="res://Battle/skills/behaviors/heal_skill_behavior.gd" id="1_7iukr"]
+[ext_resource type="Script" path="res://Battle/skills/behaviors/split_skill_behavior.gd" id="1_db5ai"]
+[ext_resource type="Script" path="res://Battle/skills/SkillData.gd" id="1_fsmki"]
+[ext_resource type="Script" path="res://Battle/skills/behaviors/extra_coin_skill_behavior.gd" id="3_ej6f2"]
+
+[sub_resource type="Resource" id="Resource_qiabt"]
+script = ExtResource("1_7iukr")
+magnitude = 2
+to_self = true
+
+[sub_resource type="Resource" id="Resource_va8sn"]
+script = ExtResource("3_ej6f2")
+ephemeral_coins = 2
+facing = 0
+
+[sub_resource type="Resource" id="Resource_rhjlh"]
+script = ExtResource("1_db5ai")
+heads_behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_qiabt")])
+tails_behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_va8sn")])
+
+[resource]
+script = ExtResource("1_fsmki")
+name = "Duality"
+cost = Array[int]([1, 0, 0])
+uses_per_turn = 3
+one_shot = true
+cost_is_mandatory = true
+rarity = 3
+behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_rhjlh")])
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+modifiers_first = true
+tags = Array[int]([0])

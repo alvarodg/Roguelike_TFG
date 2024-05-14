@@ -1,0 +1,56 @@
+[gd_resource type="Resource" script_class="EventPickData" load_steps=12 format=3 uid="uid://bit1qw17b0vhy"]
+
+[ext_resource type="Script" path="res://Events/event_choice/event_pick_data.gd" id="1_0nb5o"]
+[ext_resource type="Script" path="res://Items/modifiers/components/coin_count_modifier_component.gd" id="1_7yhku"]
+[ext_resource type="Script" path="res://Items/modifiers/cost/coin_cost.gd" id="2_eihhl"]
+[ext_resource type="Script" path="res://Events/event_choice/event_choice_data.gd" id="3_awqvb"]
+[ext_resource type="Resource" uid="uid://dqywxadfpas21" path="res://Events/resources/event_data/event_pick/sequels/investment_2_invested.tres" id="4_5meiu"]
+[ext_resource type="Script" path="res://Events/event_choice/choice_sequence.gd" id="5_htked"]
+
+[sub_resource type="Resource" id="Resource_g77ma"]
+script = ExtResource("1_7yhku")
+coin_count = -1
+
+[sub_resource type="Resource" id="Resource_rfcfx"]
+script = ExtResource("2_eihhl")
+coin_count_mod = SubResource("Resource_g77ma")
+
+[sub_resource type="Resource" id="Resource_ogexn"]
+script = ExtResource("5_htked")
+pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+events = Array[Resource("res://Events/EventData.gd")]([])
+secret = false
+pre_narrative = ""
+post_narrative = ""
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([ExtResource("4_5meiu")])
+
+[sub_resource type="Resource" id="Resource_e08el"]
+script = ExtResource("3_awqvb")
+description = "Give it to him so that he leaves you alone."
+explicit = false
+cost = SubResource("Resource_rfcfx")
+sequence = SubResource("Resource_ogexn")
+final = true
+secret = false
+
+[sub_resource type="Resource" id="Resource_y26ni"]
+script = ExtResource("3_awqvb")
+description = "Leave."
+explicit = false
+final = true
+secret = false
+
+[resource]
+script = ExtResource("1_0nb5o")
+narrative = "Your path is blocked by a potential businessman. He's more than happy to regail you with a tale of ROI, quarterly growth, a bunch of graphs that you're not sure are quite accurate and the prospect of exponential profit. He's asking you for a coin, essentially, claiming you will more than make your money back."
+choices = Array[ExtResource("3_awqvb")]([SubResource("Resource_e08el"), SubResource("Resource_y26ni")])
+name = ""
+description = ""
+rarity = 2
+tags = Array[int]([0, 3, 2])
+secret = false
+unique = true
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])

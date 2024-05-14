@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="SkillData" load_steps=8 format=3 uid="uid://co4dxk6664vpn"]
+
+[ext_resource type="Script" path="res://Battle/skills/behaviors/multihit_skill_behavior.gd" id="1_2glei"]
+[ext_resource type="Script" path="res://Battle/skills/SkillData.gd" id="1_gwnh0"]
+[ext_resource type="Script" path="res://Items/modifiers/components/stats/max_health_modifier.gd" id="2_cwxqg"]
+[ext_resource type="Script" path="res://Items/modifiers/components/stats/health_modifier_component.gd" id="3_8qymp"]
+
+[sub_resource type="Resource" id="Resource_w0x4k"]
+script = ExtResource("1_2glei")
+damage = 4
+hits = 2
+
+[sub_resource type="Resource" id="Resource_35kqu"]
+script = ExtResource("2_cwxqg")
+fill = false
+magnitude = -2.0
+action = 0
+
+[sub_resource type="Resource" id="Resource_o6ukl"]
+script = ExtResource("3_8qymp")
+magnitude = 6.0
+action = 0
+
+[resource]
+script = ExtResource("1_gwnh0")
+name = "Life Burn"
+cost = Array[int]([0, 0, 2])
+uses_per_turn = 1
+one_shot = false
+cost_is_mandatory = true
+rarity = 0
+behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_w0x4k")])
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_35kqu"), SubResource("Resource_o6ukl")])
+modifiers_first = true
+tags = Array[int]([0, 2])

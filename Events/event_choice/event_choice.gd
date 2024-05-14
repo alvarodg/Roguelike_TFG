@@ -67,6 +67,8 @@ func _apply_sequence(seq: ChoiceSequence):
 	if seq.event_unlocks != null:
 		for event in seq.event_unlocks:
 			RunData.current_event_scene.event_unlocks.append(event)
+	if seq.make_unique:
+		RunData.current_event_scene.unique = true
 	for mod in seq.pre_modifiers:
 		mod.apply_to(player)
 	if seq.events.size() > 0: 

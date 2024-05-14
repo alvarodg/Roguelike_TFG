@@ -19,6 +19,7 @@ func _ready():
 
 func setup(p_equipment: Equipment):
 	equipment = p_equipment
+	equipment.triggered.connect(_on_Equipment_triggered)
 	sprite.texture = equipment.ui_data.icon
 	info_label.text = equipment.ui_data.ui_name + ":\n" +equipment.get_description()
 	for trigger in equipment.condition_triggers:
@@ -44,6 +45,11 @@ func _on_triggers_changed(amount: int, remaining: int):
 		event_counter_container.show()
 #		trigger_counter_container.show()
 
+func _on_Equipment_triggered():
+	var tween = get_tree().create_tween()
+	var default_mod = self_modulate
+	tween.tween_property(self, "modulate", Color.GRAY, 0.1)
+	tween.tween_property(self, "modulate", default_mod, 0.1)
 
 # Versión básica de mostrar la información cuando se pase el ratón
 func _on_mouse_entered():

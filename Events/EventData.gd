@@ -3,6 +3,7 @@ class_name EventData
 
 enum Tag {DEFAULT, BATTLE, GAMBLE, TRADE, REWARD}
 
+@export var name: String
 @export_multiline var description: String
 @export var scene: PackedScene
 @export var next_event: EventData

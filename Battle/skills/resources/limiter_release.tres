@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="SkillData" load_steps=6 format=3 uid="uid://cfi55efn5xixf"]
+
+[ext_resource type="Script" path="res://Battle/skills/SkillData.gd" id="1_0id8t"]
+[ext_resource type="Script" path="res://Battle/skills/behaviors/damage_skill_behavior.gd" id="1_d5yfn"]
+[ext_resource type="Script" path="res://Items/modifiers/components/stats/strength_modifier_component.gd" id="2_m8f55"]
+
+[sub_resource type="Resource" id="Resource_bw52n"]
+script = ExtResource("1_d5yfn")
+damage = 5
+to_self = true
+ignore_shield = true
+ignore_armor = true
+ignore_dodges = true
+
+[sub_resource type="Resource" id="Resource_tsr2v"]
+script = ExtResource("2_m8f55")
+magnitude = 1.0
+action = 0
+
+[resource]
+script = ExtResource("1_0id8t")
+name = "Limiter Release"
+cost = Array[int]([0, 0, 3])
+uses_per_turn = 1
+one_shot = false
+cost_is_mandatory = true
+rarity = 0
+behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_bw52n")])
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_tsr2v")])
+modifiers_first = false
+tags = Array[int]([0, 2])

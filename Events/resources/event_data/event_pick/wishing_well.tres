@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="EventPickData" load_steps=20 format=3 uid="uid://0eie3bw4hhe7"]
+[gd_resource type="Resource" script_class="EventPickData" load_steps=21 format=3 uid="uid://0eie3bw4hhe7"]
 
 [ext_resource type="Script" path="res://Events/event_choice/event_choice_data.gd" id="1_2l0ka"]
 [ext_resource type="Script" path="res://Events/event_choice/event_pick_data.gd" id="1_4gicc"]
 [ext_resource type="Script" path="res://Events/equipment_choice_data.gd" id="2_57qbs"]
+[ext_resource type="Resource" uid="uid://rvxldc3auvnb" path="res://Events/resources/event_data/event_pick/sequels/wishing_well_2_took.tres" id="2_x7ce5"]
 [ext_resource type="Script" path="res://Events/event_choice/choice_sequence.gd" id="3_bl7qb"]
 [ext_resource type="Script" path="res://Events/event_choice/choice_coin_box_data.gd" id="4_dmhnw"]
 [ext_resource type="Script" path="res://Events/event_choice/split_event_choice_data.gd" id="5_f7o18"]
@@ -33,7 +34,7 @@ events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_mo3
 secret = false
 pre_narrative = ""
 post_narrative = ""
-event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([ExtResource("2_x7ce5")])
 
 [sub_resource type="Resource" id="Resource_nugma"]
 script = ExtResource("1_2l0ka")

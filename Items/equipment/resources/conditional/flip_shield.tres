@@ -11,7 +11,7 @@
 [sub_resource type="Resource" id="Resource_m704w"]
 script = ExtResource("1_pcene")
 facing = 0
-amount = 1
+amount = 2
 restart_per_turn = true
 
 [sub_resource type="Resource" id="Resource_6ps1d"]
@@ -39,7 +39,7 @@ ui_name = "Flip Shield"
 script = ExtResource("1_w7ntb")
 ui_data = SubResource("Resource_ifbrn")
 description = ""
-rarity = 0
+rarity = 2
 modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 condition_triggers = Array[ExtResource("3_r6368")]([SubResource("Resource_ro1vk")])
 causality_triggers = Array[Resource("res://Battle/status/causality_trigger.gd")]([])

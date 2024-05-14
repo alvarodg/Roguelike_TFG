@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_lq0rr")
+name = ""
 description = "Choose a skill to learn."
 scene = ExtResource("1_87hge")
 rarity = 1

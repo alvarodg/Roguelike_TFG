@@ -1,6 +1,7 @@
 extends Resource
 class_name Equipment
 
+signal triggered
 signal broke(equipment)
 
 enum Tag {DEFAULT, LIGHT, DARK, FALLEN, COIN, CURSED, LUCKY}
@@ -34,9 +35,13 @@ func connect_to(user):
 
 func setup():
 	for trigger in condition_triggers:
+		trigger.triggered.connect(_on_triggered)
 		trigger.setup()
 	for trigger in causality_triggers:
 		trigger.setup()
+	
+func _on_triggered():
+	triggered.emit()
 	
 func get_description() -> String:
 	if description == "":

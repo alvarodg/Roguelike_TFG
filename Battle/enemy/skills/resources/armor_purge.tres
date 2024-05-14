@@ -9,6 +9,9 @@
 script = ExtResource("1_uw0qu")
 damage = 20
 hits = 6
+ignore_shield = false
+ignore_armor = false
+ignore_dodges = false
 
 [sub_resource type="Resource" id="Resource_b17ve"]
 script = ExtResource("4_fd0ih")
