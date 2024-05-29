@@ -11,6 +11,7 @@
 [sub_resource type="Resource" id="Resource_kwmtw"]
 script = ExtResource("2_vx3nu")
 enemy_data = ExtResource("1_1whs1")
+name = ""
 description = "Enter a battle to finish the job."
 rarity = 1
 tags = Array[int]([0])
@@ -27,6 +28,7 @@ equip_tags = Array[int]([])
 tag_op = 1
 rarities = Array[int]([])
 rarity_factor = 1.0
+name = ""
 description = "Get a piece of equipment."
 rarity = 1
 tags = Array[int]([0])
@@ -49,6 +51,7 @@ secret = false
 pre_narrative = ""
 post_narrative = ""
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+make_unique = false
 
 [sub_resource type="Resource" id="Resource_a4so0"]
 script = ExtResource("6_m1stf")
@@ -63,6 +66,7 @@ equip_tags = Array[int]([])
 tag_op = 1
 rarities = Array[int]([])
 rarity_factor = 1.0
+name = ""
 description = "Get a piece of equipment."
 rarity = 1
 tags = Array[int]([0])
@@ -85,6 +89,7 @@ secret = false
 pre_narrative = ""
 post_narrative = ""
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+make_unique = false
 
 [resource]
 script = ExtResource("7_ym3jx")

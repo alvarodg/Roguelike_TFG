@@ -14,4 +14,7 @@ func connect_to(p_user):
 		p_user.started_turn.connect(_check_met)
 
 func get_description():
-	return "turn starts"
+	return _generate_description()
+
+func _generate_description():
+	return "turn starts" + super._generate_description()

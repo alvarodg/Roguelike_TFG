@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="Event" load_steps=7 format=3 uid="uid://d22moyk40utoq"]
+
+[ext_resource type="Script" path="res://Events/random_battle_event_data.gd" id="1_h0bix"]
+[ext_resource type="Script" path="res://Events/Event.gd" id="1_iwu8j"]
+[ext_resource type="Texture2D" uid="uid://ca6dgcvlb5jmq" path="res://Events/icons/two_exclamation_hover.png" id="2_2sdk2"]
+[ext_resource type="Texture2D" uid="uid://db56wduf4ygxi" path="res://Events/icons/two_exclamation.png" id="3_ai16u"]
+[ext_resource type="Texture2D" uid="uid://c0nut2oyv86hc" path="res://Events/icons/two_exclamation_traveled.png" id="4_ncp7h"]
+
+[sub_resource type="Resource" id="Resource_dxhu3"]
+script = ExtResource("1_h0bix")
+possible_battles = Array[Resource("res://Events/BattleEventData.gd")]([null])
+name = ""
+description = ""
+rarity = 1
+tags = Array[int]([0])
+secret = false
+unique = false
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
+[resource]
+script = ExtResource("1_iwu8j")
+icon_normal = ExtResource("3_ai16u")
+icon_hover = ExtResource("2_2sdk2")
+icon_traveled = ExtResource("4_ncp7h")
+text = "Random Elite"
+id = 0
+event_data = SubResource("Resource_dxhu3")

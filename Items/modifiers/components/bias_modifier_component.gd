@@ -11,6 +11,7 @@ func apply_to(user):
 	assert(user is Player)
 	base = user.bias
 	user.bias = facing
+	_finish()
 
 func get_description(stats: CombatantStats = null) -> String:
 	var desc = ""

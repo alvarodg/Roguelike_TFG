@@ -13,6 +13,7 @@ skill_tags = Array[int]([])
 tag_op = 1
 rarities = Array[int]([])
 rarity_factor = 1.0
+name = ""
 description = "Get a skill."
 rarity = 1
 tags = Array[int]([0])
@@ -29,6 +30,7 @@ equip_tags = Array[int]([4])
 tag_op = 1
 rarities = Array[int]([])
 rarity_factor = 1.0
+name = ""
 description = "Get a coin."
 rarity = 1
 tags = Array[int]([0])
@@ -45,6 +47,7 @@ equip_tags = Array[int]([])
 tag_op = 1
 rarities = Array[int]([])
 rarity_factor = 1.0
+name = ""
 description = "Get a piece of equipment."
 rarity = 1
 tags = Array[int]([0])
@@ -63,6 +66,7 @@ secret = false
 pre_narrative = ""
 post_narrative = ""
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+make_unique = false
 
 [sub_resource type="Resource" id="Resource_nmld3"]
 script = ExtResource("1_a4nfd")
@@ -78,6 +82,7 @@ narrative = "(Narrativa)
 
 Este evento solo debería aparecer si has pasado los dos anteriores sin pelear con el ladrón."
 choices = Array[ExtResource("1_a4nfd")]([SubResource("Resource_nmld3")])
+name = ""
 description = ""
 rarity = 1
 tags = Array[int]([0])

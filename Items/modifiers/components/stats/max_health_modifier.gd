@@ -12,6 +12,7 @@ func apply_to(user):
 	if fill:
 		var health_mod: HealthModifier = HealthModifier.new(magnitude, action)
 		health_mod.apply_to(user)
+	_finish()
 
 func get_description(_stats: CombatantStats = null) -> String:
 	var desc: String = action_description("Max Health")

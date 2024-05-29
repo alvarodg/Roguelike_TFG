@@ -5,6 +5,7 @@ func apply_to(user):
 	assert(user.stats is CombatantStats)
 	var result = apply_action(user.stats.base_luck)
 	user.stats.base_luck = result
+	_finish()
 
 func get_description(_stats: CombatantStats = null) -> String:
 	return action_description("Base Luck")

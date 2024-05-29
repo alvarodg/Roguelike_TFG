@@ -6,5 +6,7 @@ func connect_to(p_user):
 	p_user.turn_finished.connect(_check_met)
 
 func get_description():
-	var user_text = "User" if user == null else user.ui_data.ui_name
-	return "%s's turn ends" % user_text
+	return _generate_description()
+
+func _generate_description():
+	return "turn ends" + super._generate_description()

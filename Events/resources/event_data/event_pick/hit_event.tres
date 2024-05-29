@@ -29,6 +29,7 @@ secret = false
 [sub_resource type="Resource" id="Resource_5xyfl"]
 script = ExtResource("5_iep3d")
 enemy_data = ExtResource("4_vgwmy")
+name = ""
 description = "Fight him."
 rarity = 1
 tags = Array[int]([0])
@@ -47,6 +48,7 @@ secret = false
 pre_narrative = ""
 post_narrative = ""
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+make_unique = false
 
 [sub_resource type="Resource" id="Resource_x7ik3"]
 script = ExtResource("3_dsxa4")
@@ -61,6 +63,7 @@ script = ExtResource("1_gr5jj")
 narrative = "This guy really wants to hit you."
 image = ExtResource("7_7ht80")
 choices = Array[ExtResource("3_dsxa4")]([SubResource("Resource_wvjfv"), SubResource("Resource_x7ik3")])
+name = ""
 description = ""
 rarity = 1
 tags = Array[int]([0])

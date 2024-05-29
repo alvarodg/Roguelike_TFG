@@ -94,9 +94,16 @@ func get_description():
 	var mod_text: String = ""
 #	var start: String = "If:" if event_condition is EventCondition else "When:"
 	for state in state_conditions:
-		if cond_text == "": cond_text += "If:" if event_condition is EventCondition else "When:"
-#		if cond_text != "": cond_text += "\n\t"
-		cond_text += "\n* " + state.get_description()
+		if state_conditions.size() == 1:
+			cond_text += "If " if event_condition is EventCondition else "When "
+			cond_text += state.get_description() + ":"
+		else:
+			if cond_text == "": cond_text += "If:" if event_condition is EventCondition else "When:"
+	#		if cond_text != "": cond_text += "\n\t"
+			var state_desc: String = state.get_description()
+			if state_desc.length() > 0:
+				state_desc = state_desc[0].to_upper() + state_desc.substr(1,-1)
+			cond_text += "\n* " + state.get_description()
 	if event_condition is EventCondition:
 		cond_text += "\nWhen " + event_condition.get_description() + ":"
 	else:

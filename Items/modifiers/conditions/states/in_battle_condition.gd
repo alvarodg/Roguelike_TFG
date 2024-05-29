@@ -13,4 +13,4 @@ func _on_battle_end():
 	state_changed.emit(self, false)
 
 func get_description():
-	return "Is in battle."
+	return "in Battle"

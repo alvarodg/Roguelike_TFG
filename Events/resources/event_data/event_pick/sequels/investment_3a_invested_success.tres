@@ -31,6 +31,7 @@ secret = false
 pre_narrative = ""
 post_narrative = "This feels like it may be too little? He's long gone before you can actually ask him about it."
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+make_unique = false
 
 [sub_resource type="Resource" id="Resource_qxmqi"]
 script = ExtResource("1_srcb2")

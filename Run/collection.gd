@@ -3,17 +3,17 @@ class_name Collection
 
 enum Operator {AND, OR}
 
-func add(element):
+func add(_element):
 	pass
 
-func remove(element):
+func remove(_element):
 	pass
 
 func size() -> int:
 	return 0
 
-func get_random(rng: RandomNumberGenerator = RandomNumberGenerator.new(), tags: Array = [], 
-				op: Operator = Operator.OR, rarity_pick: Array[int] = [], rarity_factor: float = 1.0):
+func get_random(_rng: RandomNumberGenerator = RandomNumberGenerator.new(), _tags: Array = [], 
+				_op: Operator = Operator.OR, _rarity_pick: Array[int] = [], _rarity_factor: float = 1.0):
 	return null
 	
 func get_random_list(amount: int = 1, tags: Array = [],

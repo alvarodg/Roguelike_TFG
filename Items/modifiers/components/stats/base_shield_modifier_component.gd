@@ -6,7 +6,8 @@ func apply_to(user):
 	var result = apply_action(user.stats.base_shield)
 	user.stats.base_shield = int(result)
 	diff = int(diff)
-
+	_finish()
+	
 func get_description(_stats: CombatantStats = null) -> String:
 	return action_description("Base Shield")
 

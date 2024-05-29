@@ -12,6 +12,7 @@ event_tags = Array[int]([4])
 tag_op = 1
 rarities = Array[int]([])
 deterministic = true
+name = ""
 description = ""
 rarity = 1
 tags = Array[int]([0])

@@ -24,6 +24,7 @@ secret = false
 pre_narrative = ""
 post_narrative = ""
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([ExtResource("4_5meiu")])
+make_unique = false
 
 [sub_resource type="Resource" id="Resource_e08el"]
 script = ExtResource("3_awqvb")

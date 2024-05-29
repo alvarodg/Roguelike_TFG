@@ -17,6 +17,7 @@ secret = false
 pre_narrative = ""
 post_narrative = ""
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+make_unique = false
 
 [sub_resource type="Resource" id="Resource_rte0u"]
 script = ExtResource("2_atm3f")
@@ -37,6 +38,7 @@ secret = false
 pre_narrative = ""
 post_narrative = ""
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+make_unique = false
 
 [sub_resource type="Resource" id="Resource_4kqus"]
 script = ExtResource("3_0sbc8")
@@ -56,6 +58,7 @@ equip_tags = Array[int]([4])
 tag_op = 1
 rarities = Array[int]([])
 rarity_factor = 1.0
+name = ""
 description = "Get a special coin."
 rarity = 1
 tags = Array[int]([0])
@@ -74,6 +77,7 @@ secret = false
 pre_narrative = ""
 post_narrative = ""
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+make_unique = false
 
 [sub_resource type="Resource" id="Resource_h6ssf"]
 script = ExtResource("5_qp6l0")
@@ -87,6 +91,7 @@ secret = false
 script = ExtResource("1_5vtbl")
 narrative = "You find a slot machine, loudly calling out to you. There's a coin placed on top of it. Only one thing to do, right?"
 choices = Array[ExtResource("5_qp6l0")]([SubResource("Resource_4kqus"), SubResource("Resource_h6ssf")])
+name = ""
 description = ""
 rarity = 2
 tags = Array[int]([0, 2, 4])

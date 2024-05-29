@@ -20,6 +20,7 @@ secret = false
 pre_narrative = ""
 post_narrative = ""
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([ExtResource("1_ds025")])
+make_unique = false
 
 [sub_resource type="Resource" id="Resource_f6dtb"]
 script = ExtResource("2_pw16k")
@@ -44,6 +45,7 @@ secret = false
 pre_narrative = ""
 post_narrative = ""
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([ExtResource("7_pnu61")])
+make_unique = false
 
 [sub_resource type="Resource" id="Resource_lp2y6"]
 script = ExtResource("5_y6l5u")
@@ -83,6 +85,7 @@ secret = false
 pre_narrative = ""
 post_narrative = "That's not your coin, is it? Well, whatever."
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+make_unique = false
 
 [sub_resource type="Resource" id="Resource_4x8e6"]
 script = ExtResource("6_lac53")

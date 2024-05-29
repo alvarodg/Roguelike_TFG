@@ -1,7 +1,7 @@
 [gd_scene load_steps=24 format=3 uid="uid://dip7b67w54m78"]
 
 [ext_resource type="Script" path="res://Tests/battle_test.gd" id="1_h0e27"]
-[ext_resource type="Resource" uid="uid://0tb5ir6mx8dp" path="res://Battle/enemy/resources/data/boss_enemy_data_3.tres" id="2_sbrh1"]
+[ext_resource type="Resource" uid="uid://bv73m52q675pj" path="res://Battle/enemy/resources/data/l1_elite.tres" id="2_cj5me"]
 [ext_resource type="PackedScene" uid="uid://dyrxg61yw7bhk" path="res://Run/player.tscn" id="6_ujn4n"]
 [ext_resource type="Script" path="res://Battle/combatant/PlayerStats.gd" id="7_hi817"]
 [ext_resource type="Texture2D" uid="uid://djmrox3cqnntc" path="res://icon.svg" id="8_ngw0y"]
@@ -65,7 +65,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_h0e27")
-enemy_data = ExtResource("2_sbrh1")
+enemy_data = ExtResource("2_cj5me")
 
 [node name="Player" parent="." instance=ExtResource("6_ujn4n")]
 stats = SubResource("Resource_ln2xl")

@@ -25,6 +25,7 @@ health_mod = SubResource("Resource_p68lh")
 [sub_resource type="Resource" id="Resource_tg56x"]
 script = ExtResource("5_bc8ei")
 enemy_data = ExtResource("4_rsd7b")
+name = ""
 description = "End your new friendship."
 rarity = 1
 tags = Array[int]([0])
@@ -43,6 +44,7 @@ secret = false
 pre_narrative = ""
 post_narrative = ""
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+make_unique = false
 
 [sub_resource type="Resource" id="Resource_uusos"]
 script = ExtResource("3_608jo")
@@ -70,6 +72,7 @@ secret = false
 pre_narrative = ""
 post_narrative = ""
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([ExtResource("9_b3aog")])
+make_unique = false
 
 [sub_resource type="Resource" id="Resource_06gj2"]
 script = ExtResource("3_608jo")
@@ -83,6 +86,7 @@ secret = false
 [sub_resource type="Resource" id="Resource_nmpb3"]
 script = ExtResource("5_bc8ei")
 enemy_data = ExtResource("4_rsd7b")
+name = ""
 description = "End your new friendship."
 rarity = 1
 tags = Array[int]([0])
@@ -106,6 +110,7 @@ secret = false
 pre_narrative = ""
 post_narrative = ""
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+make_unique = false
 
 [sub_resource type="Resource" id="Resource_ng84t"]
 script = ExtResource("9_hut8e")
@@ -122,6 +127,7 @@ secret = false
 pre_narrative = ""
 post_narrative = ""
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+make_unique = false
 
 [sub_resource type="Resource" id="Resource_vw52t"]
 script = ExtResource("10_lhaah")
@@ -140,6 +146,7 @@ narrative = "Uh oh, you've been ambushed. Your new friend seems to have the capa
 
 You won't get off scot-free if you try to make a move. How are you getting out of this one?"
 choices = Array[ExtResource("3_608jo")]([SubResource("Resource_uusos"), SubResource("Resource_06gj2"), SubResource("Resource_vw52t")])
+name = ""
 description = ""
 rarity = 3
 tags = Array[int]([0, 1])

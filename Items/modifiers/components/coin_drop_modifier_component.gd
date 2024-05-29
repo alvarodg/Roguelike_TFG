@@ -23,7 +23,8 @@ func apply_to(user: Player):
 		droppable.erase(coin)
 		counter -= 1
 #	coin.set_spent()
-
+	_finish()
+	
 func get_description(_stats: CombatantStats = null) -> String:
 	var plural = "s" if drop_count > 1 else ""
 	var preference = ""

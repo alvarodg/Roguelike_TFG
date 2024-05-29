@@ -9,6 +9,7 @@ func _init(p_coin_count: int = 0):
 func apply_to(user):
 	assert(user.stats is PlayerStats)
 	user.stats.coin_count += coin_count
+	_finish()
 
 func get_description(_stats: CombatantStats = null) -> String:
 	var plural = "s" if coin_count > 1 else ""

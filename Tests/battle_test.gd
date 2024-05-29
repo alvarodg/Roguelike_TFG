@@ -6,6 +6,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var battle = battle_scene.instantiate()
-	battle.setup(player,enemy_data)
+	var battle_data = BattleEventData.new()
+	battle_data.enemy_data = enemy_data
+	var battle = battle_data.instantiate_scene(player)
 	add_child(battle)

@@ -1,0 +1,56 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=15 format=3 uid="uid://bv73m52q675pj"]
+
+[ext_resource type="Resource" uid="uid://cdorytbx2cp23" path="res://Battle/enemy/skills/resources/slow_start.tres" id="1_2defx"]
+[ext_resource type="Script" path="res://Battle/enemy/enemy_data.gd" id="1_arfjg"]
+[ext_resource type="Script" path="res://Battle/skills/SkillData.gd" id="5_qxnb1"]
+[ext_resource type="Script" path="res://Battle/skills/skill_ui_data.gd" id="7_3l7my"]
+[ext_resource type="Texture2D" uid="uid://bn0mo6isgbwi" path="res://Battle/enemy/sprites/elite_icon.svg" id="9_vwfdv"]
+[ext_resource type="Script" path="res://Items/modifiers/components/stats/armor_modifier_component.gd" id="13_hsngq"]
+[ext_resource type="Texture2D" uid="uid://dtcgxg8bujhwf" path="res://Battle/skills/icons/shield_skill.png" id="14_juu73"]
+[ext_resource type="Script" path="res://Battle/enemy/EnemyStats.gd" id="15_wbftf"]
+[ext_resource type="Script" path="res://Battle/enemy/enemy_ui_data.gd" id="16_hk68m"]
+
+[sub_resource type="Resource" id="Resource_gm42k"]
+script = ExtResource("13_hsngq")
+magnitude = 10.0
+action = 0
+
+[sub_resource type="Resource" id="Resource_woxwm"]
+script = ExtResource("7_3l7my")
+icon = ExtResource("14_juu73")
+ui_name = "Wait"
+
+[sub_resource type="Resource" id="Resource_jse46"]
+script = ExtResource("5_qxnb1")
+ui_data = SubResource("Resource_woxwm")
+name = ""
+cost = Array[int]([0, 0, 0])
+uses_per_turn = 1
+one_shot = false
+cost_is_mandatory = true
+rarity = 1
+behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([])
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_gm42k")])
+modifiers_first = true
+tags = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_jrjrt"]
+script = ExtResource("15_wbftf")
+max_health = 80
+base_strength = 0
+base_shield = 0
+base_armor = 0
+base_dodges = 0
+
+[sub_resource type="Resource" id="Resource_0fieq"]
+script = ExtResource("16_hk68m")
+sprite = ExtResource("9_vwfdv")
+ui_name = "Elite"
+
+[resource]
+script = ExtResource("1_arfjg")
+ui_data = SubResource("Resource_0fieq")
+stats = SubResource("Resource_jrjrt")
+skills = Array[ExtResource("5_qxnb1")]([SubResource("Resource_jse46")])
+equipment_list = Array[Resource("res://Items/equipment/equipment.gd")]([ExtResource("1_2defx")])
+strategy = 0

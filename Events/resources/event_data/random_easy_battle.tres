@@ -11,6 +11,7 @@
 [sub_resource type="Resource" id="Resource_u7rsu"]
 script = ExtResource("4_vq42t")
 enemy_data = ExtResource("2_nagvk")
+name = ""
 description = "Fight a weak enemy."
 scene = ExtResource("5_tui35")
 next_event = ExtResource("1_uqvpx")
@@ -25,6 +26,7 @@ event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 [resource]
 script = ExtResource("1_nmm0j")
 possible_battles = Array[ExtResource("4_vq42t")]([SubResource("Resource_u7rsu"), ExtResource("3_6qntt"), ExtResource("4_k53qj")])
+name = ""
 description = ""
 scene = ExtResource("5_tui35")
 next_event = ExtResource("1_uqvpx")

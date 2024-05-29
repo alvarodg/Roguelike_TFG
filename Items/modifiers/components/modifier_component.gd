@@ -1,6 +1,8 @@
 extends Resource
 class_name Modifier
 
+signal finished(modifier)
+
 #enum Action {ADD, MULT, SET}
 
 func _init():
@@ -8,6 +10,9 @@ func _init():
 
 func apply_to(_user):
 	pass
+
+func _finish():
+	finished.emit(self)
 
 func get_description(_stats: CombatantStats = null) -> String:
 	return ""

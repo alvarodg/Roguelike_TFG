@@ -14,6 +14,7 @@
 [sub_resource type="Resource" id="Resource_q1366"]
 script = ExtResource("2_0u8hn")
 enemy_data = ExtResource("1_cie4q")
+name = ""
 description = "Get into a fight anyways."
 rarity = 1
 tags = Array[int]([0])
@@ -30,6 +31,7 @@ equip_tags = Array[int]([])
 tag_op = 1
 rarities = Array[int]([])
 rarity_factor = 1.0
+name = ""
 description = "Get a piece of equipment."
 rarity = 1
 tags = Array[int]([0])
@@ -52,6 +54,7 @@ secret = false
 pre_narrative = ""
 post_narrative = ""
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+make_unique = false
 
 [sub_resource type="Resource" id="Resource_d512k"]
 script = ExtResource("6_m41wk")
@@ -72,6 +75,7 @@ secret = false
 pre_narrative = ""
 post_narrative = ""
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([ExtResource("8_p0sle")])
+make_unique = false
 
 [sub_resource type="Resource" id="Resource_2jvu7"]
 script = ExtResource("7_g1c03")
@@ -87,6 +91,7 @@ secret = false
 [sub_resource type="Resource" id="Resource_cc63x"]
 script = ExtResource("2_0u8hn")
 enemy_data = ExtResource("1_cie4q")
+name = ""
 description = "Enter a battle."
 rarity = 1
 tags = Array[int]([0])
@@ -103,6 +108,7 @@ equip_tags = Array[int]([])
 tag_op = 1
 rarities = Array[int]([])
 rarity_factor = 1.0
+name = ""
 description = "Get a piece of equipment."
 rarity = 1
 tags = Array[int]([0])
@@ -125,6 +131,7 @@ secret = false
 pre_narrative = ""
 post_narrative = ""
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+make_unique = false
 
 [sub_resource type="Resource" id="Resource_hofh4"]
 script = ExtResource("8_yc1cd")
@@ -138,6 +145,7 @@ secret = false
 script = ExtResource("9_5kh3k")
 narrative = "(Escribir narrativa)"
 choices = Array[ExtResource("8_yc1cd")]([SubResource("Resource_2jvu7"), SubResource("Resource_hofh4")])
+name = ""
 description = "Have a conversation."
 rarity = 1
 tags = Array[int]([0])

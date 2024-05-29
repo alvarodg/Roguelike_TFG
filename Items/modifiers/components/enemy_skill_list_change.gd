@@ -7,7 +7,7 @@ class_name SkillListModifier
 func apply_to(enemy: Enemy):
 	enemy.replace_available_skills(skill_list)
 	enemy.strategy = strategy
-	
+	_finish()	
 
 func get_description(stats: CombatantStats = null):
 	return "Replaces the current skill list."

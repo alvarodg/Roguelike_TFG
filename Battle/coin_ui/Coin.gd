@@ -152,7 +152,7 @@ func show_tails():
 	texture_disabled = data.heads_texture
 
 func fade_out():
-	var tween = get_tree().create_tween()
+	var tween = create_tween()
 	tween.tween_property(self, "self_modulate:a", 0, 0.2)
 	await tween.finished
 

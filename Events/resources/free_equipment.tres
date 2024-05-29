@@ -13,6 +13,7 @@ equip_tags = Array[int]([])
 tag_op = 1
 rarities = Array[int]([])
 rarity_factor = 1.0
+name = ""
 description = "Choose a random piece of equipment."
 rarity = 1
 tags = Array[int]([0])

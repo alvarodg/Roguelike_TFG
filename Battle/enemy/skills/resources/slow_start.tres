@@ -1,0 +1,83 @@
+[gd_resource type="Resource" script_class="Equipment" load_steps=21 format=3 uid="uid://cdorytbx2cp23"]
+
+[ext_resource type="Script" path="res://Items/modifiers/conditions/events/turn_finished_condition.gd" id="1_dxn0g"]
+[ext_resource type="Script" path="res://Items/modifiers/components/stats/strength_modifier_component.gd" id="2_ioy67"]
+[ext_resource type="Script" path="res://Items/modifiers/components/enemy_skill_list_change.gd" id="3_rsgp5"]
+[ext_resource type="Script" path="res://Battle/skills/behaviors/damage_skill_behavior.gd" id="4_i2yf4"]
+[ext_resource type="Script" path="res://Battle/skills/SkillData.gd" id="5_qwrk6"]
+[ext_resource type="Texture2D" uid="uid://c4mdodsry7ncw" path="res://Battle/skills/icons/strong_attack_skill.png" id="6_5ptf1"]
+[ext_resource type="Script" path="res://Battle/skills/skill_ui_data.gd" id="7_0enve"]
+[ext_resource type="Script" path="res://Items/modifiers/conditions/condition_trigger.gd" id="8_wc74l"]
+[ext_resource type="Script" path="res://Items/equipment/equipment.gd" id="9_m5l2b"]
+[ext_resource type="Texture2D" uid="uid://67vxmnlk8br1" path="res://Items/equipment/sprites/test_item.png" id="10_3oopj"]
+[ext_resource type="Script" path="res://Items/equipment/equipment_ui_data.gd" id="11_168pi"]
+
+[sub_resource type="Resource" id="Resource_pbj6j"]
+script = ExtResource("1_dxn0g")
+amount = 4
+restart_per_turn = false
+
+[sub_resource type="Resource" id="Resource_vpwed"]
+script = ExtResource("2_ioy67")
+magnitude = 2.0
+action = 0
+
+[sub_resource type="Resource" id="Resource_sh1hq"]
+script = ExtResource("4_i2yf4")
+damage = 10
+to_self = false
+ignore_shield = false
+ignore_armor = false
+ignore_dodges = false
+
+[sub_resource type="Resource" id="Resource_2kpcl"]
+script = ExtResource("2_ioy67")
+magnitude = 2.0
+action = 1
+
+[sub_resource type="Resource" id="Resource_c4mud"]
+script = ExtResource("7_0enve")
+icon = ExtResource("6_5ptf1")
+ui_name = "Unleash"
+
+[sub_resource type="Resource" id="Resource_tpngf"]
+script = ExtResource("5_qwrk6")
+ui_data = SubResource("Resource_c4mud")
+name = ""
+cost = Array[int]([0, 0, 0])
+uses_per_turn = 1
+one_shot = false
+cost_is_mandatory = true
+rarity = 1
+behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_sh1hq")])
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_2kpcl")])
+modifiers_first = false
+tags = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_l6bpb"]
+script = ExtResource("3_rsgp5")
+skill_list = Array[ExtResource("5_qwrk6")]([SubResource("Resource_tpngf")])
+strategy = 0
+
+[sub_resource type="Resource" id="Resource_7wy5c"]
+script = ExtResource("8_wc74l")
+state_conditions = Array[Resource("res://Items/modifiers/conditions/state_condition.gd")]([])
+event_condition = SubResource("Resource_pbj6j")
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_vpwed"), SubResource("Resource_l6bpb")])
+amount = 1
+reset = 1
+
+[sub_resource type="Resource" id="Resource_nw83j"]
+script = ExtResource("11_168pi")
+icon = ExtResource("10_3oopj")
+ui_name = "Slow start"
+
+[resource]
+script = ExtResource("9_m5l2b")
+ui_data = SubResource("Resource_nw83j")
+description = ""
+rarity = 1
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+condition_triggers = Array[ExtResource("8_wc74l")]([SubResource("Resource_7wy5c")])
+fragile = false
+tags = Array[int]([8])

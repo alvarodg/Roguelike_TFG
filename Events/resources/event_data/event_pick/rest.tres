@@ -31,6 +31,7 @@ secret = false
 pre_narrative = ""
 post_narrative = ""
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+make_unique = false
 
 [sub_resource type="Resource" id="Resource_1d87t"]
 script = ExtResource("3_c87rl")
@@ -55,6 +56,7 @@ secret = false
 pre_narrative = ""
 post_narrative = ""
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+make_unique = false
 
 [sub_resource type="Resource" id="Resource_sh620"]
 script = ExtResource("3_c87rl")
@@ -68,6 +70,7 @@ secret = false
 script = ExtResource("1_w6xr5")
 narrative = "This is a good place for a break. What will you do with your time?"
 choices = Array[ExtResource("3_c87rl")]([SubResource("Resource_1d87t"), SubResource("Resource_sh620")])
+name = ""
 description = ""
 rarity = 1
 tags = Array[int]([0, 4])

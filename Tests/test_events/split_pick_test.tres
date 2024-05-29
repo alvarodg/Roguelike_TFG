@@ -21,6 +21,7 @@ secret = false
 pre_narrative = ""
 post_narrative = ""
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+make_unique = false
 
 [sub_resource type="Resource" id="Resource_306jc"]
 script = ExtResource("3_fs77g")
@@ -35,6 +36,7 @@ equip_tags = Array[int]([])
 tag_op = 1
 rarities = Array[int]([])
 rarity_factor = 1.0
+name = ""
 description = "Choose a random piece of equipment."
 rarity = 1
 tags = Array[int]([0])
@@ -53,6 +55,7 @@ secret = false
 pre_narrative = ""
 post_narrative = ""
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+make_unique = false
 
 [sub_resource type="Resource" id="Resource_afbk6"]
 script = ExtResource("4_7ll1k")
@@ -74,6 +77,7 @@ secret = false
 pre_narrative = ""
 post_narrative = ""
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+make_unique = false
 
 [sub_resource type="Resource" id="Resource_p3tvf"]
 script = ExtResource("6_fsytl")
@@ -97,6 +101,7 @@ secret = false
 pre_narrative = ""
 post_narrative = ""
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+make_unique = false
 
 [sub_resource type="Resource" id="Resource_oo4b5"]
 script = ExtResource("3_fs77g")
@@ -122,6 +127,7 @@ secret = false
 pre_narrative = ""
 post_narrative = ""
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+make_unique = false
 
 [sub_resource type="Resource" id="Resource_6j58m"]
 script = ExtResource("4_7ll1k")
@@ -139,6 +145,7 @@ secret = false
 script = ExtResource("11_r622m")
 narrative = "Esta es una prueba de SplitEventChoice."
 choices = Array[ExtResource("6_fsytl")]([SubResource("Resource_afbk6"), SubResource("Resource_p3tvf"), SubResource("Resource_6j58m")])
+name = ""
 description = ""
 rarity = 1
 tags = Array[int]([0])

@@ -16,11 +16,12 @@ func _check_met(coin = null):
 		super._check_met()
 	
 func get_description():
+	return _generate_description()
+
+func _generate_description():
 	var desc: String = ""
 	match facing:
 		Coin.Facing.ANY: desc = "a coin is dropped" if amount <= 1 else "coins are dropped"
 		Coin.Facing.HEADS: desc = "a Heads coin is dropped" if amount <=1 else "Heads coins are dropped"
 		Coin.Facing.TAILS: desc = "a Tails coin is dropped" if amount <=1 else "Tails coins are dropped"
-	if amount > 1:
-		desc += " %d times" % [amount]
-	return desc
+	return desc + super._generate_description()

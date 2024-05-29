@@ -37,6 +37,5 @@ description = ""
 rarity = 0
 modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 condition_triggers = Array[ExtResource("1_km3rv")]([SubResource("Resource_mssfq")])
-causality_triggers = Array[Resource("res://Battle/status/causality_trigger.gd")]([])
 fragile = false
-tags = Array[int]([0])
+tags = Array[int]([8])

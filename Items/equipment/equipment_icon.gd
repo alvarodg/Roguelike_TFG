@@ -47,9 +47,9 @@ func _on_triggers_changed(amount: int, remaining: int):
 
 func _on_Equipment_triggered():
 	var tween = get_tree().create_tween()
-	var default_mod = self_modulate
-	tween.tween_property(self, "modulate", Color.GRAY, 0.1)
-	tween.tween_property(self, "modulate", default_mod, 0.1)
+	var default_mod = sprite.self_modulate
+	tween.tween_property(self, "sprite:self_modulate", Color.GRAY, 0.1)
+	tween.tween_property(self, "sprite:self_modulate", default_mod, 0.1)
 
 # Versión básica de mostrar la información cuando se pase el ratón
 func _on_mouse_entered():
