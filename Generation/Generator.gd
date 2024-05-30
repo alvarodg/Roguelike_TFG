@@ -14,7 +14,7 @@ func _ready():
 	pass
 	
 func generate(generation_data: GenerationData, p_rng: RandomNumberGenerator = RandomNumberGenerator.new()):
-	print(p_rng.seed)
+#	print(p_rng.seed)
 	node_matrix = []
 	if not on: return
 #	for child in get_children():

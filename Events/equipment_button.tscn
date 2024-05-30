@@ -1,17 +1,63 @@
-[gd_scene load_steps=2 format=3 uid="uid://dnkl2f5rxvdty"]
+[gd_scene load_steps=4 format=3 uid="uid://dnkl2f5rxvdty"]
 
 [ext_resource type="Script" path="res://Events/equipment_button.gd" id="1_oeyqg"]
+[ext_resource type="Texture2D" uid="uid://67vxmnlk8br1" path="res://Items/equipment/sprites/test_item.png" id="2_m5bra"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bhp6a"]
 
 [node name="EquipmentButton" type="Button"]
 texture_filter = 1
-custom_minimum_size = Vector2(150, 120)
+custom_minimum_size = Vector2(260, 220)
 offset_right = 8.0
 offset_bottom = 8.0
 theme_override_constants/icon_max_width = 18
-text = "Description"
 icon_alignment = 1
 vertical_icon_alignment = 0
 expand_icon = true
 script = ExtResource("1_oeyqg")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 50.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/separation = 10
+
+[node name="EquipmentIcon" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(18, 18)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("2_m5bra")
+stretch_mode = 5
+
+[node name="NameLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+horizontal_alignment = 1
+
+[node name="NamePanel" type="Panel" parent="VBoxContainer/HBoxContainer/NameLabel"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bhp6a")
+
+[node name="DescriptionLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+vertical_alignment = 1
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

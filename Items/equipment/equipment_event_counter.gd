@@ -16,8 +16,6 @@ func setup(trigger: ConditionTrigger):
 	display_event_count(trigger.event_condition.amount, trigger.event_condition.remaining)
 
 func display_triggers(amount: int, remaining: int):
-	print(amount)
-	print(remaining)
 	if amount < 0:
 		count_label.text = ""
 		hide()

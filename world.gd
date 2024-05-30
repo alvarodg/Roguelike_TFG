@@ -28,7 +28,8 @@ func _on_load_finished():
 	ScreenTransitions.fade_from_black()
 
 func _on_SaveButton_pressed():
-	RunData.save_game()
+	pass
+#	RunData.save_game()
 #	refresh_map()
 
 func _on_LoadButton_pressed():

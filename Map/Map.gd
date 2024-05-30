@@ -18,6 +18,8 @@ var traveled_nodes: Array[EventNode] = []
 var traveled_coords: Array[Vector2] = []
 var current_event: Event
 
+#var counter = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Acceso al singleton
@@ -28,7 +30,12 @@ func _ready():
 	EventBus.level_finished.connect(_on_level_finished)
 	add_to_group("map_screen")
 	add_to_group("run_persistent")
-	
+
+#func _process(delta):
+#	counter += 1
+#	if counter >= 60:
+#		counter = 0
+#		print(RunData.rng.state)
 
 func start_game(player: Player, rng: RandomNumberGenerator):
 	for i in range(generation_data_list.size()):
@@ -40,9 +47,11 @@ func start_game(player: Player, rng: RandomNumberGenerator):
 	change_level_button.show()
 	set_level(current_level)
 	print("started")
-#	await ScreenTransitions.fade_from_black()
+	await ScreenTransitions.fade_from_black()
 	EventBus.level_generation_completed.emit()
-
+#	await RunData.finished_loading
+#	RunData.reload_rng()
+	
 func _on_level_finished():
 	get_parent().show()
 	if current_level+1 < level_list.size():
@@ -64,7 +73,9 @@ func set_level(level_id: int):
 			generator.add_child(node_matrix[i][j])
 	refresh_map()
 	connect_to_node_signals(node_matrix)
+	print("set")
 	RunData.save_game()
+
 	
 
 ## Para cambiar de nivel, primero vacía las listas de nodos por los que se ha viajado.
@@ -86,6 +97,9 @@ func finish_run():
 ## añade el nodo que la mandó a la lista de atravesados y marca a los miembros de esta lista 
 ## como tales y, finalmente, marca a sus descendientes como disponibles.
 func _on_EventNode_chosen(node: EventNode):
+	print(RunData.rng.state)
+#	RunData.save_rng_state()
+#	RunData.save_game()
 	await ScreenTransitions.fade_to_black()
 	traveled_nodes.append(node)
 	traveled_coords.append(node.coordinates)

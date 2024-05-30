@@ -75,7 +75,6 @@ func _apply_sequence(seq: ChoiceSequence):
 		events_about_to_begin.emit()
 #		await ScreenTransitions.fade_to_black()
 #		ScreenTransitions.fade_from_black()
-		print(seq.events)
 		for event in seq.events:
 			var scene: EventScene = event.instantiate_scene(player)
 			get_tree().root.add_child(scene)

@@ -27,30 +27,42 @@ func set_run_seed(value):
 func _on_generation_completed():
 	# Método anti save scum, se asegura de que el RNG genere los mismos resultados al cargar partida.
 	# (Acceder al parámetro rng de esta clase cada vez que se quiera hacer algo aleatorio determinista)
-	if not loading: rng_state = rng.state
-	rng.state = rng_state
-	save_game()
-
+	print("RNG state at complete: " + str(rng.state))
+	if loading:
+		rng.state = rng_state
+		loading = false
+		save_game()
+#	if not loading: rng_state = rng.state
+#	rng.state = rng_state
+#	save_game()
+	
+	
 # Note: This can be called from anywhere inside the tree. This function is
 # path independent.
 # Go through everything in the run_persistent category and ask them to return a
 # dict of relevant variables.
 func save_game():
+	print("called save")
+	print("rng state: " + str(rng.state))
+	print("variable rng_state: " + str(rng_state))
 	var save_file = FileAccess.open("user://savegame.save", FileAccess.WRITE)
 	var save_nodes = get_tree().get_nodes_in_group("run_persistent")
 	
+	
 	# Guarda los datos de la partida
+	# El estado del rng tiene que pasarse a String porque los enteros grandes
+	# pierden precisión
 	var run_data_dict = {
 		"version" : version,
 		"run_seed" : run_seed,
-		"rng_state" : rng.state,
+		"rng_state" : str(rng.state),
 	}
+	print("saved rng_state: " + str(rng.state))
 #	run_data_dict.merge(player.to_save_dict())
-	save_file.store_line(JSON.stringify(run_data_dict))
+	save_file.store_line(JSON.stringify(run_data_dict,"",true,true))
 #	save_file.store_line(JSON.stringify(player.to_save_dict()))
 	# Guarda los datos del grupo "run_persistent"
 	for node in save_nodes:
-		print(node)
 		# Check the node is an instanced scene so it can be instanced again during load.
 		if node.scene_file_path.is_empty():
 			print("persistent node '%s' is not an instanced scene, skipped" % node.name)
@@ -73,6 +85,7 @@ func save_game():
 # Note: This can be called from anywhere inside the tree. This function
 # is path independent.
 func load_game():
+	print("loading")
 	if not FileAccess.file_exists("user://savegame.save"):
 		return # Error! We don't have a save to load.
 
@@ -94,9 +107,9 @@ func load_game():
 		var run_data_dict = json.get_data()
 		version = run_data_dict["version"]
 		run_seed = run_data_dict["run_seed"]
-		rng_state = run_data_dict["rng_state"]
+		rng_state = int(run_data_dict["rng_state"])
+		print(run_data_dict["rng_state"])
 		loading = true
-		print(rng_state)
 	# Carga el resto de los datos del grupo "run_persistent"
 	while save_file.get_position() < save_file.get_length():
 		var json_string = save_file.get_line()

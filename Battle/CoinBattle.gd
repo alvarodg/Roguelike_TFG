@@ -107,7 +107,6 @@ func end_battle():
 	player_skill_ui.hide()
 	end_turn_button.hide()
 	player.end_battle()
-	print(player.coins)
 	print("You won!")
 	coin_box.empty()
 	finish()
