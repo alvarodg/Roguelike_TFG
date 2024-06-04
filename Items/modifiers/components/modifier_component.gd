@@ -1,19 +1,28 @@
 extends Resource
 class_name Modifier
 
+## Señal que se envía al finalizar la aplicación del modificador, 
+## con su referencia como parámetro.
 signal finished(modifier)
 
-#enum Action {ADD, MULT, SET}
-
+## Constructor
 func _init():
 	pass
 
+## Aplica el modificador al usuario (implementar en las subclases)
 func apply_to(_user):
 	pass
 
+## Deshace el modificador del usuario (implementar en las subclases)
+func undo_from(_user):
+	pass
+
+## Función que envía la señal 'finished',
+## llamar al final de la aplicación del modificador.
 func _finish():
 	finished.emit(self)
 
+## Genera descripción del modificador y la devuelve (implementar en las subclases)
 func get_description(_stats: CombatantStats = null) -> String:
 	return ""
 #

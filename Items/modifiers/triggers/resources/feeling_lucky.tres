@@ -6,11 +6,13 @@
 
 [sub_resource type="Resource" id="Resource_iu2oq"]
 script = ExtResource("1_07oux")
-shield = 2
+magnitude = 0.0
+action = 0
 
 [sub_resource type="Resource" id="Resource_cyo0e"]
 script = ExtResource("1_ii2kk")
-health = -1
+magnitude = 0.0
+action = 0
 
 [resource]
 script = ExtResource("1_aggcy")

@@ -1,11 +1,15 @@
 extends SkillBehavior
 class_name DamageSkillBehavior
 
-
+## Daño base del comportamiento
 @export var damage = 0
+## Objetivo que va a recibir el daño
 @export var to_self: bool = false
+## Opción para ignorar el escudo del objetivo
 @export var ignore_shield: bool = false
+## Opción para ignorar la armadura del objetivo
 @export var ignore_armor: bool = false
+## Opción para ignorar las esquivas del objetivo
 @export var ignore_dodges: bool = false
 
 #var wait_time: float = 0.5
@@ -13,6 +17,7 @@ var slash = load("res://Battle/skills/animations/slash_animation.tscn")
 
 func use(user: Combatant, target: Combatant, _coins):
 	var animation = slash.instantiate()
+	# Pasa el daño al objetivo y espera a que finalice la animación
 	if to_self:
 		user.take_damage(damage, ignore_shield, ignore_armor, ignore_dodges)
 		user.add_child(animation)

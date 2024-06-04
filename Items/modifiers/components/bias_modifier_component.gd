@@ -7,8 +7,7 @@ var base: Coin.Facing
 func _init(p_facing: Coin.Facing = Coin.Facing.ANY):
 	facing = p_facing
 	
-func apply_to(user):
-	assert(user is Player)
+func apply_to(user: Player):
 	base = user.bias
 	user.bias = facing
 	_finish()
@@ -22,6 +21,5 @@ func get_description(stats: CombatantStats = null) -> String:
 		desc += "Heads." if facing == Coin.Facing.HEADS else "Tails."
 	return desc
 
-func undo_from(user):
-	assert(user is Player)
+func undo_from(user: Player):
 	user.bias = base

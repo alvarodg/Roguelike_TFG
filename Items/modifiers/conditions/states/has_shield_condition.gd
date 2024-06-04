@@ -1,19 +1,19 @@
 extends StateCondition
 class_name HasShieldCondition
 
+## Valor con el que comparar.
 @export var target: int = 0
+## Comparador a utilizar
+@export var operator: Operator
 
-func connect_to(p_user):
+## Conecta la comprobación de estado a la señal de cambio de escudo 
+func connect_to(p_user: Combatant):
 	super.connect_to(p_user)
-	assert(p_user.stats is CombatantStats)
 	p_user.stats.shield_changed.connect(_check_status)
-	
+
+## Envía la señal state_changed con el resultado de la comparación
 func _check_status(_old, shield):
-	state_changed.emit(self, shield > target)
+	state_changed.emit(self, _use_comparison_operator(operator, shield, target))
 
 func get_description():
-	var user_text = "User" if user == null else user.ui_data.ui_name
-	if target == 0:
-		return "%s has a Shield." % user_text
-	else:
-		return "%s has over %d Shield." % [user_text, target]
+	return _get_comparison_description(operator, "Shield", target)

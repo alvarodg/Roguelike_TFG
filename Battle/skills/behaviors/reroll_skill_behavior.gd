@@ -1,17 +1,22 @@
 extends SkillBehavior
 class_name RerollSkillBehavior
 
+## Cantidad de monedas a volver a tirar
 @export var rerolls: int = 0
-# ¿Usar lista para poder dar un facing a cada moneda?
+## Selecciona si va a ser una tirada normal o va a forzar cara o cruz.
 @export var facing: Coin.Facing = Coin.Facing.ANY
 
 func use(user, _target, coins):
-	assert(user is Player)
+	if not user is Player:
+		return
 	var iter = 0
+	# Realiza un número de iteraciones igual al máximo entre rerolls 
+	# y el número de monedas que se la han pasado a la habilidad
 	while iter < rerolls and iter < coins.size():
+		# Selecciona la primera moneda y la marca disponible
 		var coin = coins[iter]
 		coin.set_available()
-		# Tira la moneda si no se indica cara o cruz, si no se lo asigna.
+		# Tira la moneda si no se indica cara o cruz, si no se lo asigna
 		if facing == Coin.Facing.ANY:
 			user.flip(coin)
 		else:

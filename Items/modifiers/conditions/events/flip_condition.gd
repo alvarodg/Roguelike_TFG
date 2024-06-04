@@ -1,12 +1,15 @@
 extends EventCondition
 class_name FlipCondition
 
+## Permite especificar el resultado deseado en la tirada
 @export var facing: Coin.Facing
 
+## Conecta a la señal de tirada de monedas del jugador
 func connect_to(p_user: Player):
 	super.connect_to(p_user)
 	p_user.coin_flipped.connect(_check_met)
 
+## Cuenta la ocurrencia si el resultado de la tirada es compatible con facing
 func _check_met(coin = null):
 	if facing == Coin.Facing.ANY:
 		super._check_met()

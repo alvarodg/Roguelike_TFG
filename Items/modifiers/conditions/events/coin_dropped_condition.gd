@@ -1,12 +1,15 @@
 extends EventCondition
 class_name CoinDroppedCondition
 
+## Permite especificar la cara deseada en las monedas caídas
 @export var facing: Coin.Facing
 
+## Conecta a la señal de caída de monedas del jugador
 func connect_to(p_user: Player):
 	super.connect_to(p_user)
 	p_user.coin_dropped.connect(_check_met)
 
+## Cuenta la ocurrencia si la cara de la moneda caída es compatible con facing
 func _check_met(coin = null):
 	if facing == Coin.Facing.ANY:
 		super._check_met()

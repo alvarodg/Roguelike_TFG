@@ -210,6 +210,7 @@ func equip(equipment: Equipment):
 	EventBus.equipment_equipped.emit(equipment)
 
 func unequip(equipment: Equipment):
+	equipment.detach_from(self)
 	equipment_list.erase(equipment)
 	equipment_changed.emit(equipment_list)
 

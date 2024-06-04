@@ -1,9 +1,9 @@
 extends StatModifier
 class_name HealthModifier
 
-func apply_to(user):
-	assert(user.stats is CombatantStats)
+func apply_to(user: Combatant):
 	var result = apply_action(user.stats.health)
+	# Conversión a int
 	user.stats.health = int(result)
 	diff = int(diff)
 	_finish()

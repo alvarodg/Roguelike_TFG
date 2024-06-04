@@ -5,7 +5,8 @@
 
 [sub_resource type="Resource" id="Resource_x5jci"]
 script = ExtResource("1_jvjg2")
-shield = 20
+magnitude = 20.0
+action = 0
 
 [resource]
 script = ExtResource("1_35626")
