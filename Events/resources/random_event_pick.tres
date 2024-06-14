@@ -27,6 +27,6 @@ script = ExtResource("1_4es01")
 icon_normal = ExtResource("8_liuvs")
 icon_hover = ExtResource("7_r6dey")
 icon_traveled = ExtResource("9_s1kfp")
-text = ""
+text = "Random Event"
 id = 0
 event_data = SubResource("Resource_6nejk")

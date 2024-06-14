@@ -1,8 +1,10 @@
-[gd_resource type="Resource" script_class="SkillData" load_steps=6 format=3 uid="uid://dohuwbuerwh8r"]
+[gd_resource type="Resource" script_class="SkillData" load_steps=9 format=3 uid="uid://dohuwbuerwh8r"]
 
 [ext_resource type="Script" path="res://Battle/skills/behaviors/damage_skill_behavior.gd" id="1_7xpo3"]
 [ext_resource type="Script" path="res://Battle/skills/behaviors/extra_coin_skill_behavior.gd" id="2_orjgk"]
 [ext_resource type="Script" path="res://Battle/skills/SkillData.gd" id="3_484v6"]
+[ext_resource type="Texture2D" uid="uid://cpaes4c4pnmxw" path="res://Battle/skills/icons/attack_skill.png" id="4_usmrj"]
+[ext_resource type="Script" path="res://Battle/skills/skill_ui_data.gd" id="5_81c1l"]
 
 [sub_resource type="Resource" id="Resource_l622n"]
 script = ExtResource("1_7xpo3")
@@ -17,8 +19,14 @@ script = ExtResource("2_orjgk")
 ephemeral_coins = 1
 facing = 1
 
+[sub_resource type="Resource" id="Resource_wkdpv"]
+script = ExtResource("5_81c1l")
+icon = ExtResource("4_usmrj")
+ui_name = "Balanced Strike"
+
 [resource]
 script = ExtResource("3_484v6")
+ui_data = SubResource("Resource_wkdpv")
 name = "Balanced Strike"
 cost = Array[int]([0, 1, 1])
 uses_per_turn = 1

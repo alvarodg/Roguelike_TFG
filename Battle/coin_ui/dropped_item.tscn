@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkjdlkmsg3cty"]
+
+[ext_resource type="Script" path="res://Battle/coin_ui/dropped_item.gd" id="1_afxhh"]
+[ext_resource type="Texture2D" uid="uid://gyqv3c4g4llp" path="res://Battle/coin_ui/sprites/coin_heads.png" id="1_w1fcn"]
+
+[node name="DroppedItem" type="Sprite2D"]
+top_level = true
+texture = ExtResource("1_w1fcn")
+centered = false
+script = ExtResource("1_afxhh")

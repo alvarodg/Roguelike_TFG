@@ -16,6 +16,8 @@ var drag_preview_scene: PackedScene = preload("res://Battle/coin_ui/drag_preview
 var is_dragging: bool = false
 var is_selected: bool = false : set = set_is_selected
 
+var dropped_item_scene: PackedScene = preload("res://Battle/coin_ui/dropped_item.tscn")
+
 enum Facing {ANY, HEADS, TAILS}
 enum Status {AVAILABLE, INSERTED, SPENT, DROPPED}
 var status: = Status.AVAILABLE
@@ -30,6 +32,9 @@ func _ready():
 func setup(p_data: CoinData):
 	data = p_data
 	heads = data.default_heads
+	heads_texture = data.heads_texture
+	tails_texture = data.tails_texture
+	heads_chance = data.heads_chance
 
 func _input(event):
 	if event.is_action_released("click") and is_dragging:
@@ -95,6 +100,9 @@ func set_dropped():
 	if status != Status.DROPPED:
 		status = Status.DROPPED
 		focus_mode = Control.FOCUS_NONE
+		var dropped_item: DroppedItem = dropped_item_scene.instantiate()
+		dropped_item.setup(texture_normal, global_position)
+		get_tree().root.add_child(dropped_item)
 		make_invisible()
 		dropped.emit(self)
 		hide()

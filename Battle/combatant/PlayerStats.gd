@@ -1,7 +1,7 @@
 extends CombatantStats
 class_name PlayerStats
 
-signal coin_count_changed(value)
+signal coin_count_changed(old, value)
 
 @export var coin_count: int = 5 : set = set_coin_count
 @export var base_luck: float = 1.0
@@ -13,8 +13,9 @@ func _init(p_max_health = 100, p_base_shield = 0, p_base_armor = 0, p_base_dodge
 	base_luck = p_base_luck
 
 func set_coin_count(value):
+	var old: int = coin_count
 	coin_count = value
-	coin_count_changed.emit(coin_count)
+	coin_count_changed.emit(old, coin_count)
 	
 func setup():
 	health = max_health

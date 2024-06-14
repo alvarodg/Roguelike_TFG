@@ -9,7 +9,7 @@
 [ext_resource type="Resource" uid="uid://dvgi2ssh6mwbh" path="res://Events/resources/event_data/RegularBattleData.tres" id="7_hergg"]
 [ext_resource type="Script" path="res://Items/modifiers/components/stats/health_modifier_component.gd" id="8_jsqha"]
 [ext_resource type="Script" path="res://Items/modifiers/cost/health_cost.gd" id="9_olnsn"]
-[ext_resource type="Resource" uid="uid://kmogyjaldbnb" path="res://Events/resources/event_data/SkillChoiceData.tres" id="10_pghfn"]
+[ext_resource type="Resource" uid="uid://du3kb0pjh3lom" path="res://Events/resources/event_data/random_skill_choice.tres" id="10_ov1lw"]
 [ext_resource type="Script" path="res://Events/event_choice/event_pick_data.gd" id="11_r622m"]
 
 [sub_resource type="Resource" id="Resource_1o50y"]
@@ -36,6 +36,7 @@ equip_tags = Array[int]([])
 tag_op = 1
 rarities = Array[int]([])
 rarity_factor = 1.0
+deterministic = true
 name = ""
 description = "Choose a random piece of equipment."
 rarity = 1
@@ -122,7 +123,7 @@ health_mod = SubResource("Resource_iaofd")
 script = ExtResource("2_bgpsa")
 pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
-events = Array[Resource("res://Events/EventData.gd")]([ExtResource("10_pghfn")])
+events = Array[Resource("res://Events/EventData.gd")]([ExtResource("10_ov1lw")])
 secret = false
 pre_narrative = ""
 post_narrative = ""

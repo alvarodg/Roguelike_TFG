@@ -11,6 +11,7 @@ var random_scene = load("res://Events/random_event.tscn")
 @export var default_event: EventData = load("res://Events/resources/event_data/empty/empty_event.tres")
 
 func instantiate_scene(player: Player):
+	# Sobreescribe scene con la escena específica de la subclase
 	scene = random_scene
 	var instance: RandomEvent = super.instantiate_scene(player)
 	instance.setup(self)

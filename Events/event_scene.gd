@@ -34,6 +34,7 @@ func initialize(p_player: Player, data):
 
 func finish():
 	if RunData.current_event_scene == self:
+		# Acceso al singleton RunData para modificar la escena actual
 		RunData.current_event_scene = null
 	if unique:
 		# Acceso al singleton RunData para que el evento no vuelva a aparecer aleatoriamente.
@@ -48,9 +49,11 @@ func finish():
 		hide()
 		await next_scene.finished
 	if is_final_event:
+		# Si es el último evento, carga la escena de victoria
 		get_parent().hide()
 		get_tree().root.add_child(win_scene.instantiate())
-	if goes_to_next_level:
+	elif goes_to_next_level:
+		# Si pasa al siguiente nivel, carga la escena de cambio de nivel
 		get_parent().hide()
 		get_tree().root.add_child(next_level_scene.instantiate())
 	finished.emit()

@@ -22,7 +22,7 @@ var ui_data: EnemyUIData
 var stats: EnemyStats
 var skills: Array[SkillData]
 var available_skills: Array[SkillData]
-var equipment_list: Array[Equipment]
+#var equipment_list: Array[Equipment]
 var strategy
 
 var target

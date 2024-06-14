@@ -18,7 +18,7 @@ signal hit(damage)
 @export var skill_list: Array[SkillData]
 @export var default_equipment: Array[Equipment]
 @export var max_skills: int = 6
-var equipment_list: Array[Equipment]
+#var equipment_list: Array[Equipment]
 var coins: Array[Coin] : set = set_coins
 var coin_data: Array[CoinData]
 # Implementación para un único tipo de moneda.
@@ -107,8 +107,8 @@ func end_turn():
 #	recover_dropped_coins()
 	
 func start_battle():
-	stats.start_battle()
 	reset_coins()
+	stats.start_battle()
 	started_battle.emit()
 
 func end_battle():
@@ -214,10 +214,14 @@ func unequip(equipment: Equipment):
 	equipment_list.erase(equipment)
 	equipment_changed.emit(equipment_list)
 
-# Guarda coin_count datos de monedas. No se considera poder perder monedas en esta implementación.
-func _on_Stats_coin_count_changed(value):
+# Guarda coin_count datos de monedas.
+func _on_Stats_coin_count_changed(_old, value):
 	if coin_data.size() < value:
 		for i in range(value - coin_data.size()):
+			coin_data.append(default_coin)
+	else:
+		coin_data = []
+		for i in range(value):
 			coin_data.append(default_coin)
 
 # Emite la señal died cuando la recibe de stats.

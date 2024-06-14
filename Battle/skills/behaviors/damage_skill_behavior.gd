@@ -1,4 +1,6 @@
 extends SkillBehavior
+## Comportamiento que inflinje cierto daño a un combatiente,
+## pudiendo tener propiedades adicionales para ignorar defensas
 class_name DamageSkillBehavior
 
 ## Daño base del comportamiento
@@ -12,7 +14,7 @@ class_name DamageSkillBehavior
 ## Opción para ignorar las esquivas del objetivo
 @export var ignore_dodges: bool = false
 
-#var wait_time: float = 0.5
+## Carga la animación por defecto de ataque
 var slash = load("res://Battle/skills/animations/slash_animation.tscn")
 
 func use(user: Combatant, target: Combatant, _coins):

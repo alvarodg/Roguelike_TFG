@@ -44,7 +44,9 @@ secret = false
 
 [resource]
 script = ExtResource("1_0nb5o")
-narrative = "Your path is blocked by a potential businessman. He's more than happy to regail you with a tale of ROI, quarterly growth, a bunch of graphs that you're not sure are quite accurate and the prospect of exponential profit. He's asking you for a coin, essentially, claiming you will more than make your money back."
+narrative = "Your path is blocked by a man of business. He's more than happy to regale you with a tale of ROI, quarterly growth, a bunch of graphs that you're not sure are quite accurate and the ever so sweet prospect of exponential profit. 
+
+Essentially, he's asking you for a coin, claiming that you will more than make your money back if you invest in his project."
 choices = Array[ExtResource("3_awqvb")]([SubResource("Resource_e08el"), SubResource("Resource_y26ni")])
 name = ""
 description = ""

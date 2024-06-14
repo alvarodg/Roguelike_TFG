@@ -64,6 +64,13 @@ offset_right = 128.0
 grow_vertical = 0
 texture = ExtResource("1_v03cj")
 
+[node name="CoinCountLabel" type="Label" parent="PlayerIcon"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "A"
+
 [node name="PlayerStatsPanel" type="Panel" parent="."]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 1
@@ -91,13 +98,13 @@ layout_mode = 2
 [node name="ShieldLabel" type="Label" parent="PlayerStatsPanel/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "3 Energy"
+text = "3 Shield"
 horizontal_alignment = 1
 
 [node name="ArmorLabel" type="Label" parent="PlayerStatsPanel/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "3 Energy"
+text = "3 Armor"
 horizontal_alignment = 1
 
 [node name="DodgesLabel" type="Label" parent="PlayerStatsPanel/VBoxContainer"]

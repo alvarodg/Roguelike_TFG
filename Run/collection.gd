@@ -16,19 +16,24 @@ func get_random(_rng: RandomNumberGenerator = RandomNumberGenerator.new(), _tags
 				_op: Operator = Operator.OR, _rarity_pick: Array[int] = [], _rarity_factor: float = 1.0):
 	return null
 	
-func get_random_list(amount: int = 1, tags: Array = [],
- op: Collection.Operator = Collection.Operator.OR, rarity_pick: Array[int] = [], 
- rarity_factor: float = 1) -> Array:
+func get_random_list(amount: int = 1, rng: RandomNumberGenerator = RandomNumberGenerator.new(),
+		tags: Array = [], op: Collection.Operator = Collection.Operator.OR, 
+		rarity_pick: Array[int] = [],  rarity_factor: float = 1) -> Array:
 	# Duplica la colección para poder sacar elementos temporalmente.
 	var collection: Collection = self.duplicate()
 	var picks: int = min(amount, collection.size())
 	var chosen_list: Array = []
 	for i in range(picks):
-		var chosen_skill = collection.pick_random(tags, op, rarity_pick, rarity_factor)
+		var chosen_skill = collection.get_random(rng, tags, op, rarity_pick, rarity_factor)
 		if chosen_skill != null:
 			chosen_list.append(chosen_skill)
 			collection.remove(chosen_skill)
 	return chosen_list
+
+func get_random_list_deterministic(amount: int = 1,
+		tags: Array = [], op: Collection.Operator = Collection.Operator.OR, 
+		rarity_pick: Array[int] = [],  rarity_factor: float = 1) -> Array:
+	return get_random_list(amount, RunData.rng, tags, op, rarity_pick, rarity_factor)
 
 func _choose_random_index_from(rarity_list: Array, rng: RandomNumberGenerator = RandomNumberGenerator.new(), 
 								rarity_factor: float = 1):

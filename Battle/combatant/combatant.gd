@@ -19,6 +19,7 @@ signal stats_changed(value)
 var battle_position: Vector2
 var last_contact: Combatant
 var status_list: Array[Status]
+var equipment_list: Array[Equipment]
 
 # Subclases deberán tener los siguientes parámetros:
 # A MODIFICAR

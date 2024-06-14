@@ -7,6 +7,7 @@ class_name SkillChoiceData
 @export var tag_op: Collection.Operator = Collection.Operator.OR
 @export var rarities: Array[int]
 @export var rarity_factor: float = 1.0
+@export var deterministic: bool = true
 
 func instantiate_scene(player: Player):
 	scene = load("res://Events/skill_choice.tscn")

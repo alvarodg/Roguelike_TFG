@@ -12,8 +12,11 @@ var default_event: EventData
 func _ready():
 	super._ready()
 	print(RunData.collections.events)
+	## Si no se le pasa una colección de eventos, accede al Singleton RunData
+	## para recibir la lista de eventos general
 	if events == null:
 		events = RunData.collections.events
+	## Usa el rng de RunData si se pide un resultado determinista
 	var rng = RunData.rng if deterministic else RandomNumberGenerator.new()
 	var event = events.get_random(rng, tags, tag_op, rarities)
 	if event == null: 

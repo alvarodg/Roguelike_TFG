@@ -10,14 +10,16 @@ var skill_tags: Array[SkillData.Tag]
 var tag_op: Collection.Operator
 var rarities: Array[int]
 var rarity_factor: float
+var deterministic: bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var skill_list: Array[SkillData] = []
+	var rng = RunData.rng if deterministic else RandomNumberGenerator.new()
 	if skill_collection == null or skill_collection.size() == 0:
 		skill_list.assign(RunData.collections.get_random_skill_list(choices, skill_tags, tag_op, rarities, rarity_factor))
 	else:
-		skill_list.assign(skill_collection.get_random_list(choices, skill_tags, tag_op, rarities, rarity_factor))
+		skill_list.assign(skill_collection.get_random_list(choices, rng, skill_tags, tag_op, rarities, rarity_factor))
 	for skill in skill_list:
 		var pick_skill_ui = pick_skill_ui_scene.instantiate()
 		pick_skill_ui.setup(player, skill)
@@ -33,6 +35,7 @@ func initialize(p_player: Player, data: SkillChoiceData):
 	tag_op = data.tag_op
 	rarities = data.rarities
 	rarity_factor = data.rarity_factor
+	deterministic = data.deterministic
 
 
 func _on_Skill_chosen(skill):

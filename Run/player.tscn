@@ -9,6 +9,7 @@ script = ExtResource("2_5iwan")
 coin_count = 5
 base_luck = 1.0
 max_health = 0
+base_strength = 0
 base_shield = 0
 base_armor = 0
 base_dodges = 0

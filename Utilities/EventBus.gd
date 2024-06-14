@@ -15,6 +15,8 @@ signal looking_for_coin(facing)
 signal found_coin(coin)
 signal about_to_drop_coins
 signal behavior_finished(behavior)
+signal player_ui_finished_operation
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

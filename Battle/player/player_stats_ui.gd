@@ -8,6 +8,7 @@ var DAMAGE_NUMBER = load("res://Battle/animations/damage_number.tscn")
 @onready var shield_label = %ShieldLabel
 @onready var armor_label = %ArmorLabel
 @onready var dodges_label = %DodgesLabel
+@onready var coin_count_label = %CoinCountLabel
 
 @onready var animation_player = $AnimationPlayer
 
@@ -23,11 +24,16 @@ func setup(player: Player):
 	_update_shield(player.stats.shield)
 	_update_armor(player.stats.armor)
 	_update_dodges(player.stats.dodges)
+	coin_count_label.text = str(player.stats.coin_count)
 	player.stats.shield_changed.connect(_on_Player_shield_changed)
 	player.stats.armor_changed.connect(_on_Player_armor_changed)
 	player.stats.dodges_changed.connect(_on_Player_dodges_changed)
+	player.stats.coin_count_changed.connect(_on_Player_coin_count_changed)
 	player.hit.connect(_on_Player_hit)
-	
+
+func _on_Player_coin_count_changed(_old, new):
+	coin_count_label.text = str(new)
+
 func _on_Player_shield_changed(old, shield):
 	var tween = create_tween()
 	tween.tween_method(_update_shield, old, shield, 0.1)
