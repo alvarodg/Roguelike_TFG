@@ -32,7 +32,9 @@ make_unique = false
 
 [resource]
 script = ExtResource("1_686uo")
-description = "Help him, for some reason."
+description = "Help him, for some reason.
+
+(Ejemplo de secuela, puede desbloquear la siguiente parte)"
 explicit = false
 sequence = SubResource("Resource_ksd7s")
 final = true

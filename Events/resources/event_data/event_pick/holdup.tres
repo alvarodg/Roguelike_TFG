@@ -26,7 +26,7 @@ health_mod = SubResource("Resource_p68lh")
 script = ExtResource("5_bc8ei")
 enemy_data = ExtResource("4_rsd7b")
 name = ""
-description = "End your new friendship."
+description = "Enter a battle."
 rarity = 1
 tags = Array[int]([0])
 secret = false
@@ -76,7 +76,9 @@ make_unique = false
 
 [sub_resource type="Resource" id="Resource_06gj2"]
 script = ExtResource("3_608jo")
-description = "Pay up and be on your way."
+description = "Pay up and be on your way.
+
+(Ejemplo de secuela, podrá aparecer siguiendo esta opción)"
 explicit = false
 cost = SubResource("Resource_al1g2")
 sequence = SubResource("Resource_6l4b0")
@@ -87,7 +89,7 @@ secret = false
 script = ExtResource("5_bc8ei")
 enemy_data = ExtResource("4_rsd7b")
 name = ""
-description = "End your new friendship."
+description = "Enter a battle."
 rarity = 1
 tags = Array[int]([0])
 secret = false
@@ -146,7 +148,7 @@ narrative = "Uh oh, you've been ambushed. Your new friend seems to have the capa
 
 You won't get off scot-free if you try to make a move. How are you getting out of this one?"
 choices = Array[ExtResource("3_608jo")]([SubResource("Resource_uusos"), SubResource("Resource_06gj2"), SubResource("Resource_vw52t")])
-name = ""
+name = "Holdup (Part 1)"
 description = ""
 rarity = 3
 tags = Array[int]([0, 1])

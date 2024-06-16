@@ -25,8 +25,8 @@
 [ext_resource type="Script" path="res://Items/equipment/equipment.gd" id="19_s11p5"]
 [ext_resource type="Texture2D" uid="uid://67vxmnlk8br1" path="res://Items/equipment/sprites/test_item.png" id="20_tcg0d"]
 [ext_resource type="Script" path="res://Items/equipment/equipment_ui_data.gd" id="21_rgf5w"]
-[ext_resource type="Resource" uid="uid://clyjfvymwgamd" path="res://Generation/resources/node_generation/l1_weld_generation.tres" id="23_dwaqo"]
-[ext_resource type="Resource" uid="uid://blbgpkie0ea8o" path="res://Generation/resources/node_generation/l2_weld_generation.tres" id="24_58ehd"]
+[ext_resource type="Resource" uid="uid://clyjfvymwgamd" path="res://Generation/resources/level1_weld_generation.tres" id="23_dwaqo"]
+[ext_resource type="Resource" uid="uid://blbgpkie0ea8o" path="res://Generation/resources/level2_weld_generation.tres" id="24_58ehd"]
 
 [sub_resource type="Resource" id="Resource_plymv"]
 script = ExtResource("15_fsok2")

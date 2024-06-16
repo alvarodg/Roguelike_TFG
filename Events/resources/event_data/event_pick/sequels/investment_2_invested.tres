@@ -52,7 +52,9 @@ script = ExtResource("5_y6l5u")
 alt_sequence = SubResource("Resource_f50dw")
 coinbox_data = SubResource("Resource_f6dtb")
 deterministic = true
-description = "The wave is coming."
+description = "The wave is coming.
+
+(Ejemplo de secuela, debería añadir una secuela distinta a la lista de eventos dependiendo del resultado)"
 explicit = false
 cost = SubResource("Resource_viwd5")
 sequence = SubResource("Resource_tpk8g")
@@ -66,6 +68,7 @@ equip_tags = Array[int]([4])
 tag_op = 1
 rarities = Array[int]([])
 rarity_factor = 1.0
+deterministic = true
 name = ""
 description = "Get a coin."
 rarity = 1
@@ -101,7 +104,7 @@ narrative = "You find your business partner again. He does not seem to recognize
 
 He kindly offers to give you your coin back if you have any doubts, though he personally recommends you invest even more while you still can."
 choices = Array[ExtResource("6_lac53")]([SubResource("Resource_lp2y6"), SubResource("Resource_4x8e6")])
-name = ""
+name = "Investment (Part 2)"
 description = ""
 rarity = 1
 tags = Array[int]([0, 3])

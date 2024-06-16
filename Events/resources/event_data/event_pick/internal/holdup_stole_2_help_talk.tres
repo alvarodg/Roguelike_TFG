@@ -31,6 +31,7 @@ equip_tags = Array[int]([])
 tag_op = 1
 rarities = Array[int]([])
 rarity_factor = 1.0
+deterministic = true
 name = ""
 description = "Get a piece of equipment."
 rarity = 1
@@ -82,7 +83,9 @@ script = ExtResource("7_g1c03")
 alt_sequence = SubResource("Resource_g8ujo")
 coinbox_data = SubResource("Resource_d512k")
 deterministic = true
-description = "Kindly ask for your coin back."
+description = "Kindly ask for your coin back.
+
+(Ejemplo de secuela, desbloquea el siguiente evento)"
 explicit = false
 sequence = SubResource("Resource_gogac")
 final = true
@@ -108,6 +111,7 @@ equip_tags = Array[int]([])
 tag_op = 1
 rarities = Array[int]([])
 rarity_factor = 1.0
+deterministic = true
 name = ""
 description = "Get a piece of equipment."
 rarity = 1

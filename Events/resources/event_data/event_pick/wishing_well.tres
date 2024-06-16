@@ -17,6 +17,7 @@ equip_tags = Array[int]([4, 5])
 tag_op = 0
 rarities = Array[int]([])
 rarity_factor = 1.0
+deterministic = true
 name = ""
 description = "Get a coin."
 rarity = 1
@@ -40,7 +41,8 @@ make_unique = false
 
 [sub_resource type="Resource" id="Resource_nugma"]
 script = ExtResource("1_2l0ka")
-description = "You're a cool intellectual that doesn't believe in superstitions. Reach in and try to fish a coin out."
+description = "You're a cool intellectual that doesn't believe in superstitions. Reach in and try to fish a coin out.
+(Ejemplo de secuela, desbloquea el siguiente evento)"
 explicit = false
 sequence = SubResource("Resource_4kt86")
 final = true
@@ -78,6 +80,7 @@ equip_tags = Array[int]([1])
 tag_op = 1
 rarities = Array[int]([])
 rarity_factor = 1.0
+deterministic = true
 name = ""
 description = ""
 rarity = 1
@@ -119,7 +122,7 @@ secret = false
 script = ExtResource("1_4gicc")
 narrative = "You find a fountain filled with a thick, black liquid. The words \"1 coin = make a wish\" have been hastily scribbled on it. What do you do?"
 choices = Array[ExtResource("1_2l0ka")]([SubResource("Resource_nugma"), SubResource("Resource_0fv5m")])
-name = ""
+name = "Wishing Well"
 description = ""
 rarity = 1
 tags = Array[int]([0, 4])

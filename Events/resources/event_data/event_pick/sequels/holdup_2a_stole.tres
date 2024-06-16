@@ -14,9 +14,11 @@ secret = false
 
 [resource]
 script = ExtResource("9_iq8e0")
-narrative = "You find your new friend, the one who stole your coin, currently occupied fighting off a monster. It's not looking good for him. What will you do?"
+narrative = "You find your new friend, the one who stole your coin, currently occupied fighting off a monster. It's not looking good for him. What will you do?
+
+(Este evento solo aparece si has seleccionado la opción concreta que lo desbloquea en su antecesor)"
 choices = Array[ExtResource("1_hgswy")]([ExtResource("1_ab7w6"), ExtResource("2_kv0hp"), SubResource("Resource_q73du")])
-name = ""
+name = "Holdup (Part 2)"
 description = ""
 rarity = 1
 tags = Array[int]([0, 1])

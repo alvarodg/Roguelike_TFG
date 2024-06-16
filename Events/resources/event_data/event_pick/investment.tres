@@ -28,7 +28,9 @@ make_unique = false
 
 [sub_resource type="Resource" id="Resource_e08el"]
 script = ExtResource("3_awqvb")
-description = "Give it to him so that he leaves you alone."
+description = "Give it to him so that he leaves you alone.
+
+(Ejemplo de secuela, desbloquea la siguiente parte)"
 explicit = false
 cost = SubResource("Resource_rfcfx")
 sequence = SubResource("Resource_ogexn")
@@ -48,7 +50,7 @@ narrative = "Your path is blocked by a man of business. He's more than happy to 
 
 Essentially, he's asking you for a coin, claiming that you will more than make your money back if you invest in his project."
 choices = Array[ExtResource("3_awqvb")]([SubResource("Resource_e08el"), SubResource("Resource_y26ni")])
-name = ""
+name = "Investment"
 description = ""
 rarity = 2
 tags = Array[int]([0, 3, 2])

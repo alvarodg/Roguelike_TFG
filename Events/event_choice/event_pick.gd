@@ -5,7 +5,9 @@ class_name EventPick
 @onready var player_stats_ui = $PlayerStatsUI
 @onready var narrative_label = %NarrativeLabel
 @onready var event_picture = %EventPicture
+@onready var event_name_label = %EventNameLabel
 
+var event_name: String
 var narrative: String
 var image: Texture2D
 var choices: Array[EventChoiceData]
@@ -24,12 +26,14 @@ func _ready():
 		scene.pre_selected.connect(_on_choice_pre_selected)
 	narrative_label.text = narrative
 	event_picture.texture = image
+	event_name_label.text = event_name.to_upper()
 
 func initialize(p_player: Player, data: EventPickData):
 	super.initialize(p_player, data)
 	narrative = data.narrative
 	choices = data.choices
 	image = data.image
+	event_name = data.name
 
 func _on_choice_begins():
 	hide()
