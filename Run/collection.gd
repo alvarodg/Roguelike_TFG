@@ -21,10 +21,14 @@ func get_random_list(amount: int = 1, rng: RandomNumberGenerator = RandomNumberG
 		rarity_pick: Array[int] = [],  rarity_factor: float = 1) -> Array:
 	# Duplica la colección para poder sacar elementos temporalmente.
 	var collection: Collection = self.duplicate()
+	# Se asegura de que la cantidad de elementos a seleccionar no supera el tamaño
 	var picks: int = min(amount, collection.size())
 	var chosen_list: Array = []
 	for i in range(picks):
+		# Llama a la función get_random(), sobreescrita por cada subclase
 		var chosen_skill = collection.get_random(rng, tags, op, rarity_pick, rarity_factor)
+		# Si se ha seleccionado una habilidad, la añade a la lista y la borra de
+		# la colección temporal
 		if chosen_skill != null:
 			chosen_list.append(chosen_skill)
 			collection.remove(chosen_skill)
@@ -61,10 +65,14 @@ func _get_random_from_list(list: Array[Variant], rng: RandomNumberGenerator = Ra
 	if not "tags" in list.front() or not "rarity" in list.front():
 		return null
 	if tags.size() > 0:
+		# Si el operador es OR, filtra la lista seleccionando cada elemento
+		# con alguna de sus tags en "tags".
 		if op == Operator.OR:
 			pickable = pickable.filter(
 				func(x): return x.tags.any(
 					func(y): return tags.has(y)))
+		# Si el operador es AND, filtra la lista seleccionando cada elemento
+		# con todas sus tags en "tags". 
 		if op == Operator.AND:
 			pickable = pickable.filter(
 				func(x): return tags.all(
@@ -73,6 +81,7 @@ func _get_random_from_list(list: Array[Variant], rng: RandomNumberGenerator = Ra
 #				func(x): return x.tags.all(
 #					func(x): return tags.has(x)))
 	if rarity_pick.size() > 0:
+		# Filtra la lista seleccionando cada elemento con rareza en "rarity_pick"
 		pickable = pickable.filter(func(x): return rarity_pick.has(x.rarity))
 		print(pickable)
 	var rarity_list: Array[int] = []

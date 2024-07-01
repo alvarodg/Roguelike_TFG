@@ -49,7 +49,7 @@ func _get_comparison_description(operator: Operator, param_text: String, target)
 		return "%s has no %s" % [user_text, param_text]
 	# Si el objetivo es que el valor sea mayor que 0
 	elif target == 0 and operator == Operator.GREATER_THAN:
-		return "%s has %s" % [user_text. param_text]
+		return "%s has %s" % [user_text, param_text]
 	# Si no, genera la descripción
 	else:
 		return "%s's %s %s %s" % [user_text, param_text, _operator_description(operator), target]

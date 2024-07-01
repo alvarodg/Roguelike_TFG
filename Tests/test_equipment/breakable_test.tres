@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="Equipment" load_steps=14 format=3 uid="uid://c3dffu4n38q28"]
+
+[ext_resource type="Resource" uid="uid://sa8eo8jkp1na" path="res://Items/modifiers/conditions/resources/heads_shield.tres" id="1_1a7ra"]
+[ext_resource type="Script" path="res://Items/modifiers/components/stats/base_armor_modifier_component.gd" id="2_k3avp"]
+[ext_resource type="Script" path="res://Items/modifiers/components/stats/base_shield_modifier_component.gd" id="3_gobtv"]
+[ext_resource type="Script" path="res://Items/modifiers/components/coin_count_modifier_component.gd" id="4_7lnug"]
+[ext_resource type="Script" path="res://Items/modifiers/components/stats/max_health_modifier.gd" id="5_c81e3"]
+[ext_resource type="Script" path="res://Items/equipment/equipment.gd" id="6_ng2ub"]
+[ext_resource type="Texture2D" uid="uid://67vxmnlk8br1" path="res://Items/equipment/sprites/test_item.png" id="7_gh267"]
+[ext_resource type="Script" path="res://Items/equipment/equipment_ui_data.gd" id="8_arr31"]
+
+[sub_resource type="Resource" id="Resource_plymv"]
+script = ExtResource("2_k3avp")
+magnitude = 10.0
+action = 0
+
+[sub_resource type="Resource" id="Resource_quikl"]
+script = ExtResource("3_gobtv")
+magnitude = 10.0
+action = 0
+
+[sub_resource type="Resource" id="Resource_d8qsh"]
+script = ExtResource("4_7lnug")
+coin_count = 1
+
+[sub_resource type="Resource" id="Resource_d5d43"]
+script = ExtResource("5_c81e3")
+fill = false
+magnitude = 10.0
+action = 0
+
+[sub_resource type="Resource" id="Resource_8n5by"]
+script = ExtResource("8_arr31")
+icon = ExtResource("7_gh267")
+ui_name = "TEST"
+
+[resource]
+script = ExtResource("6_ng2ub")
+ui_data = SubResource("Resource_8n5by")
+description = ""
+rarity = 1
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_plymv"), SubResource("Resource_quikl"), SubResource("Resource_d8qsh"), SubResource("Resource_d5d43")])
+condition_triggers = Array[Resource("res://Items/modifiers/conditions/condition_trigger.gd")]([ExtResource("1_1a7ra")])
+fragile = true
+tags = Array[int]([0])

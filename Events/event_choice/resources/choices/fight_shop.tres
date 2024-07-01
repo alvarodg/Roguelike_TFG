@@ -34,7 +34,6 @@ make_unique = true
 [resource]
 script = ExtResource("1_t2lsi")
 description = "Take everything.
-
 (Ejemplo de evento único condicional, no volverá a aparacer si se elige esta opción)"
 explicit = true
 sequence = SubResource("Resource_cfr11")

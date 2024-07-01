@@ -121,7 +121,7 @@ secret = false
 
 [resource]
 script = ExtResource("1_vumw5")
-narrative = "You find two individuals arguing over something. They are bblocking your path and not intent on moving. You're going to have to intervene."
+narrative = "You find two individuals arguing over something. They are blocking your path and don't seem to plan on moving anytime soon. You're going to have to intervene."
 image = ExtResource("8_wqewr")
 choices = Array[ExtResource("1_e0opt")]([SubResource("Resource_u16ih"), SubResource("Resource_cudkw"), SubResource("Resource_qfwqb")])
 name = "Dispute"

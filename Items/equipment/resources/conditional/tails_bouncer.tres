@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://3rw1h1eslq66" path="res://Battle/coin_ui/resources/default_coin.tres" id="2_dclvc"]
 [ext_resource type="Script" path="res://Items/modifiers/components/extra_coin_modifier_component.gd" id="3_vxhab"]
 [ext_resource type="Script" path="res://Items/modifiers/conditions/condition_trigger.gd" id="4_1vmlr"]
-[ext_resource type="Texture2D" uid="uid://67vxmnlk8br1" path="res://Items/equipment/sprites/test_item.png" id="6_p3l2u"]
+[ext_resource type="Texture2D" uid="uid://c6hk3uexaagig" path="res://Items/equipment/sprites/tails_bouncer.png" id="6_quwk1"]
 [ext_resource type="Script" path="res://Items/equipment/equipment_ui_data.gd" id="7_xfeej"]
 
 [sub_resource type="Resource" id="Resource_2c001"]
@@ -30,7 +30,7 @@ reset = 0
 
 [sub_resource type="Resource" id="Resource_l0kdt"]
 script = ExtResource("7_xfeej")
-icon = ExtResource("6_p3l2u")
+icon = ExtResource("6_quwk1")
 ui_name = "Tails Bouncer"
 
 [resource]

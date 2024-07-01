@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DefaultEventAssigner" load_steps=7 format=3 uid="uid://bj83iiiv0prhg"]
+[gd_resource type="Resource" script_class="DefaultEventAssigner" load_steps=13 format=3 uid="uid://bj83iiiv0prhg"]
 
 [ext_resource type="Resource" uid="uid://c8seuyofduohl" path="res://Events/resources/l1_easy_rdm_battle.tres" id="1_dfh51"]
 [ext_resource type="Resource" uid="uid://dfs3fwui7stjp" path="res://Events/resources/random_event_pick.tres" id="2_8yvu0"]
@@ -6,9 +6,31 @@
 [ext_resource type="Resource" uid="uid://bjlj5y2nif4am" path="res://Events/resources/elite_battle.tres" id="4_xno1e"]
 [ext_resource type="Resource" uid="uid://ohufl6oyxhre" path="res://Events/resources/l3_boss_battle.tres" id="5_uel0n"]
 [ext_resource type="Script" path="res://Generation/DefaultEventAssigner.gd" id="6_ftpfe"]
+[ext_resource type="Script" path="res://Generation/restriction/column_restriction.gd" id="6_xgh23"]
+[ext_resource type="Resource" uid="uid://bs650858gj4ge" path="res://Events/resources/l2_boss_battle.tres" id="7_c6843"]
+
+[sub_resource type="Resource" id="Resource_4edpg"]
+script = ExtResource("6_xgh23")
+column = 0
+event = ExtResource("1_dfh51")
+
+[sub_resource type="Resource" id="Resource_o7phj"]
+script = ExtResource("6_xgh23")
+column = -1
+event = ExtResource("7_c6843")
+
+[sub_resource type="Resource" id="Resource_bk123"]
+script = ExtResource("6_xgh23")
+column = -2
+event = ExtResource("3_mgsgs")
+
+[sub_resource type="Resource" id="Resource_4xygr"]
+script = ExtResource("6_xgh23")
+column = 4
+event = ExtResource("4_xno1e")
 
 [resource]
 script = ExtResource("6_ftpfe")
 event_list = Array[Resource("res://Events/Event.gd")]([ExtResource("1_dfh51"), ExtResource("2_8yvu0"), ExtResource("3_mgsgs"), ExtResource("4_xno1e"), ExtResource("5_uel0n")])
 event_chances = Array[float]([7.0, 7.0, 1.0, 4.0, 0.0])
-restrictions = Array[Vector2]([Vector2(-1, 4), Vector2(8, 2), Vector2(0, 0), Vector2(4, 3)])
+restrictions = Array[Resource("res://Generation/restriction/restriction.gd")]([SubResource("Resource_4edpg"), SubResource("Resource_o7phj"), SubResource("Resource_bk123"), SubResource("Resource_4xygr")])

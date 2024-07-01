@@ -29,7 +29,6 @@ make_unique = false
 [resource]
 script = ExtResource("3_dakq6")
 description = "Pay a huge sum.
-
 (Ejemplo de coste que no se puede pagar)"
 explicit = true
 cost = SubResource("Resource_psgrm")

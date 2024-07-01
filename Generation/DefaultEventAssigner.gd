@@ -1,29 +1,28 @@
 extends EventAssigner
+## Implementación simple de la asignación de eventos, permitiendo restringir
+## el contenido de ciertas columnas y repartiendo el resto de eventos aleatoriamente
 class_name DefaultEventAssigner
 
+## Lista de eventos a asignar
 @export var event_list: Array[Event]
+## Lista de pesos de probabilidades, asociados a los eventos (mayor = más común)
 @export var event_chances: Array[float]
-@export var restrictions: Array[Vector2]
+## Lista de restricciones que se comprobarán antes de dar un evento aleatorio
+@export var restrictions: Array[Restriction]
 var rng: RandomNumberGenerator
 
-#func _init(p_event_list: Array[Event] = [], p_event_chances: Array[float] = [], p_restrictions: Array[Vector2] = []):
-#	event_list = p_event_list
-#	event_chances = p_event_chances
-#	restrictions = p_restrictions
-#	SAVE_KEYS = ["event_list", "event_chances", "restrictions"]
-#	while event_list.size() > event_chances.size():
-#		event_chances.append(0.0)
-
+## Comprobando un nodo y la matriz en la que se encuentra, devuelve un evento
+## a partir de las reglas definidas.
 func get_event(p_rng: RandomNumberGenerator, node_matrix :Array = [], node: EventNode = null) -> Event:
 	rng = p_rng
-	if not node is Node: return Event.new()
-	# Asignación básica, deja indicar columnas en las que todos los eventos
-	# tienen que ser iguales y después reparte aleatoriamente
+	# Si no se le pasa un nodo, devuelve un evento vacío
+	if not node is EventNode: return Event.new()
+	# Comprueba primero si al nodo se aplica alguna de las restricciones
+	# (se aplicará la primera que se encuentre)
 	for restriction in restrictions:
-		if restriction.x < 0 and abs(restriction.x) < node_matrix.size(): 
-			restriction.x = node_matrix.size() + restriction.x
-		if restriction.x == node.coordinates.x:
-			return event_list[restriction.y]
+		# Si se aplica una restricción, devuelve su evento asociado
+		if restriction.check(node_matrix, node):
+			return restriction.event
 	# Selecciona un evento de acuerdo con sus probabilidades
 	var total_chance = 0.0
 	for event_chance in event_chances:

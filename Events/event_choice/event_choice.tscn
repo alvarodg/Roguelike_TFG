@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://Events/event_choice/event_choice.gd" id="1_h5pcf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0r30h"]
-font_size = 14
+font_size = 13
 
 [node name="EventChoice" type="Control"]
-custom_minimum_size = Vector2(200, 160)
+custom_minimum_size = Vector2(200, 140)
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5

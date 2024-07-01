@@ -1,14 +1,35 @@
-[gd_resource type="Resource" script_class="DefaultEventAssigner" load_steps=7 format=3 uid="uid://uqql5frl5gpj"]
+[gd_resource type="Resource" script_class="DefaultEventAssigner" load_steps=12 format=3 uid="uid://uqql5frl5gpj"]
 
 [ext_resource type="Resource" uid="uid://c8seuyofduohl" path="res://Events/resources/l1_easy_rdm_battle.tres" id="1_5pilu"]
 [ext_resource type="Resource" uid="uid://dfs3fwui7stjp" path="res://Events/resources/random_event_pick.tres" id="2_j5dbg"]
 [ext_resource type="Resource" uid="uid://s2n5pf05rkrp" path="res://Events/resources/random_reward_event.tres" id="3_m5q7q"]
 [ext_resource type="Resource" uid="uid://bjlj5y2nif4am" path="res://Events/resources/elite_battle.tres" id="4_la0sr"]
 [ext_resource type="Resource" uid="uid://bs650858gj4ge" path="res://Events/resources/l2_boss_battle.tres" id="5_cqoko"]
+[ext_resource type="Script" path="res://Generation/restriction/column_restriction.gd" id="6_1dfbq"]
 [ext_resource type="Script" path="res://Generation/DefaultEventAssigner.gd" id="6_kppx7"]
+
+[sub_resource type="Resource" id="Resource_tifmt"]
+script = ExtResource("6_1dfbq")
+column = 0
+event = ExtResource("1_5pilu")
+
+[sub_resource type="Resource" id="Resource_2x1ls"]
+script = ExtResource("6_1dfbq")
+column = -1
+event = ExtResource("5_cqoko")
+
+[sub_resource type="Resource" id="Resource_3j1x3"]
+script = ExtResource("6_1dfbq")
+column = -2
+event = ExtResource("3_m5q7q")
+
+[sub_resource type="Resource" id="Resource_842ki"]
+script = ExtResource("6_1dfbq")
+column = 4
+event = ExtResource("4_la0sr")
 
 [resource]
 script = ExtResource("6_kppx7")
 event_list = Array[Resource("res://Events/Event.gd")]([ExtResource("1_5pilu"), ExtResource("2_j5dbg"), ExtResource("3_m5q7q"), ExtResource("4_la0sr"), ExtResource("5_cqoko")])
 event_chances = Array[float]([8.0, 7.0, 1.0, 3.0, 0.0])
-restrictions = Array[Vector2]([Vector2(-1, 4), Vector2(8, 2), Vector2(0, 0), Vector2(4, 3)])
+restrictions = Array[Resource("res://Generation/restriction/restriction.gd")]([SubResource("Resource_tifmt"), SubResource("Resource_2x1ls"), SubResource("Resource_3j1x3"), SubResource("Resource_842ki")])

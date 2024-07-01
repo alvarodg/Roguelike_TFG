@@ -10,6 +10,7 @@ signal event_chosen
 @onready var player_map_ui = %PlayerMapUI
 @onready var reset_button = %ResetButton
 @onready var change_level_button = %ChangeLevelButton
+@onready var navigation_button = %NavigationButton
 
 var current_level: int = 0
 var level_list = []
@@ -26,6 +27,7 @@ func _ready():
 	RunData.map = self
 	player_map_ui.hide()
 	reset_button.hide()
+	navigation_button.hide()
 	change_level_button.hide()
 	EventBus.level_finished.connect(_on_level_finished)
 	add_to_group("map_screen")
@@ -43,8 +45,14 @@ func start_game(player: Player, rng: RandomNumberGenerator):
 		level_list.append(level)
 	player_map_ui.setup(player)
 	player_map_ui.show()
-	reset_button.show()
-	change_level_button.show()
+	if debug:
+		reset_button.show()
+		change_level_button.show()
+		navigation_button.show()
+	else:
+		reset_button.hide()
+		change_level_button.hide()
+		navigation_button.hide()
 	set_level(current_level)
 	print("started")
 	await ScreenTransitions.fade_from_black()
@@ -220,3 +228,9 @@ func _on_ResetButton_pressed():
 func _on_ChangeLevelButton_pressed():
 	current_level = current_level+1 if current_level+1 < generation_data_list.size() else 0
 	await change_level(current_level)
+
+
+func _on_NavigationButton_pressed():
+	for i in node_matrix.size():
+		for j in node_matrix[i].size():
+			node_matrix[i][j].state = EventNode.State.AVAILABLE

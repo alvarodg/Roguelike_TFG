@@ -77,7 +77,6 @@ make_unique = false
 [sub_resource type="Resource" id="Resource_06gj2"]
 script = ExtResource("3_608jo")
 description = "Pay up and be on your way.
-
 (Ejemplo de secuela, podrá aparecer siguiendo esta opción)"
 explicit = false
 cost = SubResource("Resource_al1g2")

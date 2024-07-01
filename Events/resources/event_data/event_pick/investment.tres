@@ -29,7 +29,6 @@ make_unique = false
 [sub_resource type="Resource" id="Resource_e08el"]
 script = ExtResource("3_awqvb")
 description = "Give it to him so that he leaves you alone.
-
 (Ejemplo de secuela, desbloquea la siguiente parte)"
 explicit = false
 cost = SubResource("Resource_rfcfx")

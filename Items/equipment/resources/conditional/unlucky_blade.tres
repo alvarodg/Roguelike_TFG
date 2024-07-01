@@ -1,9 +1,8 @@
-[gd_resource type="Resource" script_class="Equipment" load_steps=17 format=3 uid="uid://dda8rbtlshf8v"]
+[gd_resource type="Resource" script_class="Equipment" load_steps=13 format=3 uid="uid://dda8rbtlshf8v"]
 
 [ext_resource type="Script" path="res://Items/modifiers/conditions/events/start_of_turn_condition.gd" id="1_y3hjd"]
 [ext_resource type="Script" path="res://Items/modifiers/components/bias_modifier_component.gd" id="2_0qcsx"]
 [ext_resource type="Script" path="res://Items/modifiers/conditions/condition_trigger.gd" id="3_g1f38"]
-[ext_resource type="Script" path="res://Items/modifiers/conditions/events/flip_condition.gd" id="4_j6cwg"]
 [ext_resource type="Script" path="res://Items/modifiers/components/stats/strength_modifier_component.gd" id="5_c7pj1"]
 [ext_resource type="Script" path="res://Items/equipment/equipment.gd" id="6_ei3e2"]
 [ext_resource type="Texture2D" uid="uid://67vxmnlk8br1" path="res://Items/equipment/sprites/test_item.png" id="7_p4ebh"]
@@ -18,6 +17,7 @@ restart_per_turn = true
 [sub_resource type="Resource" id="Resource_pdq8n"]
 script = ExtResource("2_0qcsx")
 facing = 2
+count = 3
 
 [sub_resource type="Resource" id="Resource_5mofx"]
 script = ExtResource("3_g1f38")
@@ -25,24 +25,6 @@ state_conditions = Array[Resource("res://Items/modifiers/conditions/state_condit
 event_condition = SubResource("Resource_r248n")
 modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_pdq8n")])
 amount = -1
-reset = 0
-
-[sub_resource type="Resource" id="Resource_86l27"]
-script = ExtResource("4_j6cwg")
-facing = 0
-amount = 3
-restart_per_turn = true
-
-[sub_resource type="Resource" id="Resource_7vcnw"]
-script = ExtResource("2_0qcsx")
-facing = 0
-
-[sub_resource type="Resource" id="Resource_j747e"]
-script = ExtResource("3_g1f38")
-state_conditions = Array[Resource("res://Items/modifiers/conditions/state_condition.gd")]([])
-event_condition = SubResource("Resource_86l27")
-modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_7vcnw")])
-amount = 1
 reset = 0
 
 [sub_resource type="Resource" id="Resource_ws7a5"]
@@ -61,7 +43,6 @@ ui_data = SubResource("Resource_o8ej8")
 description = ""
 rarity = 0
 modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_ws7a5")])
-condition_triggers = Array[ExtResource("3_g1f38")]([SubResource("Resource_5mofx"), SubResource("Resource_j747e")])
-causality_triggers = Array[Resource("res://Battle/status/causality_trigger.gd")]([])
+condition_triggers = Array[ExtResource("3_g1f38")]([SubResource("Resource_5mofx")])
 fragile = false
 tags = Array[int]([0, 2])

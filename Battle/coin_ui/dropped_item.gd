@@ -35,7 +35,7 @@ func _ready():
 		tween.tween_property(self, 'scale', Vector2.ZERO, duration)
 	await tween.finished
 	print("Finished")
-#	queue_free()
+	queue_free()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

@@ -1,23 +1,36 @@
 extends MapGenerator
 class_name GenerationParameters
 
-# Generación basada en el método presentado por Basudev Patel en su entrada de blog
-# "Random Paths in Gamedev Beatdown", con implementación y modificaciones propias.
-# https://medium.com/@1basudevpatel/random-paths-in-gamedev-beatdown-a913a1d8c5e6
+## Generación basada en el método presentado por Basudev Patel en su entrada de blog
+## "Random Paths in Gamedev Beatdown", con implementación y modificaciones propias.
+## https://medium.com/@1basudevpatel/random-paths-in-gamedev-beatdown-a913a1d8c5e6
 
+## Número de filas en la matriz de nodos
 @export var rows: int = 4
+## Número de columnas en la matriz de nodos
 @export var columns: int = 10
+## Posición base del mapa a generar
 @export var base_position = Vector2(50,50)
+## Distancia entre filas (distance.y) y columnas (distance.x)
 @export var distance = Vector2(100,100)
+## Máximo ruido de posición, que se aplicará aleatoriamente 
+## a cada nodo una vez generado el mapa
 @export var position_noise = Vector2.ZERO
+## Iteraciones del algoritmo
 @export var iterations = 10
+## Índices de columnas a solapar completamente
 @export var clamp_at: Array[int] = [0, -1]
+## Índices de columnas a solapar (x) y hasta qué número de nodos (y)
 @export var clamp_at_to: Array[Vector2] = [Vector2(-2,3), Vector2(4,3)]
 
+## Grafo de nodos
 var graph: EventNodeGraph
+## Matriz de nodos
 var node_matrix: = []
+## Generador de números aleatorios a utilizar en la generación
 var rng: RandomNumberGenerator
 
+## Devuelve una matriz contienendo los nodos generados por el algoritmo
 func generate(p_rng: RandomNumberGenerator) -> Array:
 	rng = p_rng
 	graph = EventNodeGraph.new()
@@ -29,7 +42,8 @@ func generate(p_rng: RandomNumberGenerator) -> Array:
 	_store_data()
 	return node_matrix
 
-## Genera la matriz de nodos y conecta los nodos de la misma altura de izquierda a derecha, fila por fila
+## Genera la matriz de nodos y conecta los nodos de la misma altura 
+## de izquierda a derecha, fila por fila
 func _generate_paths():
 	for i in range(columns):
 		for j in range(rows):
@@ -40,7 +54,7 @@ func _generate_paths():
 			# Crea el nuevo nodo y le asigna la posición
 			var node = graph.add_vertex()
 			node.position = node_position
-			# Guarda el nodo en una matriz representando su posición.
+			# Guarda el nodo en la matriz representando su posición.
 			node_matrix[i][j] = node
 	# Enlaza todos los nodos de cada fila
 	for i in range(rows):
@@ -100,8 +114,8 @@ func _weld_neightbors(column, row):
 	graph.remove_vertex(node_to_remove.index)
 	node_matrix[column].pop_at(row+1)
 
-## Guarda datos en los propios nodos antes de pasarlos. Específicamente sus descendientes y 
-## sus coordenadas en el array 2D.
+## Guarda datos en los propios nodos antes de pasarlos. Específicamente sus 
+## descendientes y  sus coordenadas en el array 2D.
 func _store_data():
 	for i in range(node_matrix.size()):
 		for j in range(node_matrix[i].size()):

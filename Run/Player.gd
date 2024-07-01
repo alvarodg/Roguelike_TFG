@@ -27,7 +27,7 @@ var default_coin = preload("res://Battle/coin_ui/resources/default_coin.tres")
 var stats_load_dict: Dictionary = {}
 var ui_load_dict: Dictionary = {}
 
-var bias: Coin.Facing = Coin.Facing.ANY
+var bias_list: Array[Coin.Facing] = []
 
 var taking_damage: bool = false : set = set_taking_damage
 var in_damage_queue: int = 0
@@ -104,6 +104,7 @@ func start_turn():
 func end_turn():
 	stats.end_turn()
 	clear_ephemeral_coins()
+	bias_list = []
 #	recover_dropped_coins()
 	
 func start_battle():
@@ -115,6 +116,7 @@ func end_battle():
 	print("battle ended")
 	stats.end_battle()
 	clear_coins()
+	bias_list = []
 	ended_battle.emit()
 	print("ended signal")
 
@@ -123,7 +125,7 @@ func flip(coin: Coin, rng: RandomNumberGenerator = RandomNumberGenerator.new()):
 	coin.start_spinning()
 	await get_tree().create_timer(0.64).timeout
 	coin.stop_spinning()
-	var result = coin.flip(stats.base_luck, bias, rng)
+	var result = coin.flip(stats.base_luck, _get_bias(), rng)
 	if coin in coins:
 		coins_changed.emit(coins)
 	finished_flipping_coins.emit()
@@ -132,7 +134,7 @@ func flip(coin: Coin, rng: RandomNumberGenerator = RandomNumberGenerator.new()):
 # TEMPORAL, reorganizar animación
 func logic_flip(coin: Coin, rng: RandomNumberGenerator = RandomNumberGenerator.new()):
 	started_flipping_coins.emit()
-	var result = coin.flip(stats.base_luck, bias, rng)
+	var result = coin.flip(stats.base_luck, _get_bias(), rng)
 	if coin in coins:
 		coins_changed.emit(coins)
 	finished_flipping_coins.emit()
@@ -145,6 +147,7 @@ func flip_all_coins(rng: RandomNumberGenerator = RandomNumberGenerator.new()):
 	for coin in coins:
 		coin.hide()
 		coin.start_spinning()
+	print(coins)
 	for coin in coins:
 		coin.show()
 		await get_tree().create_timer(coin.get_spin_length()*0.5).timeout
@@ -152,7 +155,7 @@ func flip_all_coins(rng: RandomNumberGenerator = RandomNumberGenerator.new()):
 	for coin in coins:
 		await get_tree().create_timer(coin.get_spin_length()*0.5).timeout
 		coin.stop_spinning()
-		coin.flip(stats.base_luck, bias, rng)
+		coin.flip(stats.base_luck, _get_bias(), rng)
 	coins_changed.emit(coins)
 	finished_flipping_coins.emit()
 
@@ -213,6 +216,16 @@ func unequip(equipment: Equipment):
 	equipment.detach_from(self)
 	equipment_list.erase(equipment)
 	equipment_changed.emit(equipment_list)
+
+func add_bias(facing: Coin.Facing, count: int = 1):
+	for i in count:
+		bias_list.append(facing)
+
+func _get_bias() -> Coin.Facing:
+	var flip_bias: Coin.Facing = Coin.Facing.ANY
+	if bias_list.size() > 0:
+		flip_bias = bias_list.pop_front()
+	return flip_bias
 
 # Guarda coin_count datos de monedas.
 func _on_Stats_coin_count_changed(_old, value):
