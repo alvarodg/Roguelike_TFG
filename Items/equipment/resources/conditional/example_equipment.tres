@@ -1,0 +1,52 @@
+[gd_resource type="Resource" script_class="Equipment" load_steps=15 format=3 uid="uid://d1ykgymlpc3r0"]
+
+[ext_resource type="Script" path="res://Items/modifiers/conditions/events/flip_condition.gd" id="1_b1th6"]
+[ext_resource type="Script" path="res://Items/equipment/equipment.gd" id="1_cpqof"]
+[ext_resource type="Script" path="res://Items/modifiers/components/stats/health_modifier_component.gd" id="2_wrtps"]
+[ext_resource type="Script" path="res://Items/modifiers/conditions/condition_trigger.gd" id="3_xd1n5"]
+[ext_resource type="Script" path="res://Items/modifiers/conditions/states/in_battle_condition.gd" id="4_aqegw"]
+[ext_resource type="Script" path="res://Items/modifiers/components/stats/base_strength_modifier_component.gd" id="5_u1tg8"]
+[ext_resource type="Texture2D" uid="uid://67vxmnlk8br1" path="res://Items/equipment/sprites/test_item.png" id="7_27j6d"]
+[ext_resource type="Script" path="res://Items/equipment/equipment_ui_data.gd" id="8_7c80h"]
+
+[sub_resource type="Resource" id="Resource_fga04"]
+script = ExtResource("1_b1th6")
+facing = 1
+amount = 1
+restart_per_turn = true
+
+[sub_resource type="Resource" id="Resource_jjv7g"]
+script = ExtResource("2_wrtps")
+magnitude = -1.0
+action = 0
+
+[sub_resource type="Resource" id="Resource_r7t54"]
+script = ExtResource("4_aqegw")
+
+[sub_resource type="Resource" id="Resource_ug5rf"]
+script = ExtResource("3_xd1n5")
+state_conditions = Array[Resource("res://Items/modifiers/conditions/state_condition.gd")]([SubResource("Resource_r7t54")])
+event_condition = SubResource("Resource_fga04")
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_jjv7g")])
+amount = 3
+reset = 0
+
+[sub_resource type="Resource" id="Resource_3l7gm"]
+script = ExtResource("5_u1tg8")
+magnitude = 2.0
+action = 0
+
+[sub_resource type="Resource" id="Resource_vc33t"]
+script = ExtResource("8_7c80h")
+icon = ExtResource("7_27j6d")
+ui_name = "EJEMPLO"
+
+[resource]
+script = ExtResource("1_cpqof")
+ui_data = SubResource("Resource_vc33t")
+description = ""
+rarity = 1
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_3l7gm")])
+condition_triggers = Array[ExtResource("3_xd1n5")]([SubResource("Resource_ug5rf")])
+fragile = false
+tags = Array[int]([0, 2, 5, 7])

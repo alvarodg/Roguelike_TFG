@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dip7b67w54m78"]
+[gd_scene load_steps=27 format=3 uid="uid://dip7b67w54m78"]
 
 [ext_resource type="Script" path="res://Tests/battle_test.gd" id="1_h0e27"]
 [ext_resource type="Resource" uid="uid://cq5ebehsqd2ae" path="res://Battle/enemy/resources/data/knight_boss_data.tres" id="2_j3tbg"]
@@ -13,10 +13,10 @@
 [ext_resource type="Script" path="res://Items/modifiers/components/coin_drop_modifier_component.gd" id="12_2nk1o"]
 [ext_resource type="Script" path="res://Battle/skills/SkillData.gd" id="12_8uvpf"]
 [ext_resource type="Script" path="res://Battle/skills/skill_ui_data.gd" id="13_16lwt"]
-[ext_resource type="Resource" uid="uid://bw2mdamfuot5m" path="res://Battle/skills/resources/reckless_strike.tres" id="14_pjp88"]
+[ext_resource type="Script" path="res://Battle/skills/behaviors/damage_skill_behavior.gd" id="15_ujjhi"]
 [ext_resource type="Resource" uid="uid://bxwuaeekjaus4" path="res://Items/equipment/resources/lucky_coin.tres" id="17_b7bag"]
 [ext_resource type="Resource" uid="uid://000ce1xcp83o" path="res://Items/equipment/resources/conditional/flip_shield.tres" id="17_yb6ym"]
-[ext_resource type="Resource" uid="uid://dda8rbtlshf8v" path="res://Items/equipment/resources/conditional/unlucky_blade.tres" id="18_4hms2"]
+[ext_resource type="Resource" uid="uid://d1ykgymlpc3r0" path="res://Items/equipment/resources/conditional/example_equipment.tres" id="19_d0yy3"]
 [ext_resource type="Resource" uid="uid://o7m0rikjobyx" path="res://Items/equipment/resources/strong_armor.tres" id="24_c1mu8"]
 
 [sub_resource type="Resource" id="Resource_ln2xl"]
@@ -57,6 +57,33 @@ modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.
 modifiers_first = false
 tags = Array[int]([0])
 
+[sub_resource type="Resource" id="Resource_8qh6c"]
+script = ExtResource("15_ujjhi")
+damage = 5
+to_self = false
+ignore_shield = false
+ignore_armor = false
+ignore_dodges = false
+shield_factor = 100.0
+
+[sub_resource type="Resource" id="Resource_nw4rr"]
+script = ExtResource("13_16lwt")
+ui_name = ""
+
+[sub_resource type="Resource" id="Resource_pbiky"]
+script = ExtResource("12_8uvpf")
+ui_data = SubResource("Resource_nw4rr")
+name = "Shield Crush"
+cost = Array[int]([1, 0, 0])
+uses_per_turn = -1
+one_shot = false
+cost_is_mandatory = true
+rarity = 1
+behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_8qh6c")])
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+modifiers_first = true
+tags = Array[int]([0])
+
 [node name="BattleTest" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -70,5 +97,5 @@ enemy_data = ExtResource("2_j3tbg")
 [node name="Player" parent="." instance=ExtResource("6_ujn4n")]
 stats = SubResource("Resource_ln2xl")
 ui_data = SubResource("Resource_bvfks")
-skill_list = Array[ExtResource("12_8uvpf")]([ExtResource("10_yny00"), ExtResource("11_qij5i"), ExtResource("10_bhkht"), ExtResource("11_atv6b"), SubResource("Resource_oaca2"), ExtResource("14_pjp88")])
-default_equipment = Array[Resource("res://Items/equipment/equipment.gd")]([ExtResource("24_c1mu8"), ExtResource("17_b7bag"), ExtResource("17_yb6ym"), ExtResource("18_4hms2")])
+skill_list = Array[ExtResource("12_8uvpf")]([ExtResource("10_yny00"), ExtResource("11_qij5i"), ExtResource("10_bhkht"), ExtResource("11_atv6b"), SubResource("Resource_oaca2"), SubResource("Resource_pbiky")])
+default_equipment = Array[Resource("res://Items/equipment/equipment.gd")]([ExtResource("24_c1mu8"), ExtResource("17_b7bag"), ExtResource("17_yb6ym"), ExtResource("19_d0yy3")])

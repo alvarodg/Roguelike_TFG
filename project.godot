@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 EventBus="*res://Utilities/EventBus.gd"
 RunData="*res://Run/RunData.gd"
 ScreenTransitions="*res://Menus/screen_transitions.tscn"
+SystemData="*res://Utilities/SystemData.gd"
 
 [editor]
 

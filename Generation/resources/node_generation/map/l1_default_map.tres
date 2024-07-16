@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="GenerationParameters" load_steps=2 format=3 uid="uid://dd1tt4yw7oah2"]
+[gd_resource type="Resource" script_class="WeldMapGenerator" load_steps=2 format=3 uid="uid://dd1tt4yw7oah2"]
 
 [ext_resource type="Script" path="res://Generation/WeldMapGenerator.gd" id="1_woqwm"]
 

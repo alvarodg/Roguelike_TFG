@@ -101,5 +101,12 @@ size_flags_horizontal = 8
 theme_override_font_sizes/font_size = 12
 text = "Undo"
 
+[node name="CoinAudioPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+
+[node name="NotificationAudioPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+volume_db = -4.0
+
 [connection signal="pressed" from="Panel/SkillBoxContainer/ButtonContainer/ExecuteButton" to="." method="_on_ExecuteButton_pressed"]
 [connection signal="pressed" from="Panel/SkillBoxContainer/ButtonContainer/UndoButton" to="." method="_on_UndoButton_pressed"]

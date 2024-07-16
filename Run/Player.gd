@@ -154,8 +154,8 @@ func flip_all_coins(rng: RandomNumberGenerator = RandomNumberGenerator.new()):
 #	await get_tree().create_timer(0.16).timeout
 	for coin in coins:
 		await get_tree().create_timer(coin.get_spin_length()*0.5).timeout
-		coin.stop_spinning()
 		coin.flip(stats.base_luck, _get_bias(), rng)
+		coin.stop_spinning()
 	coins_changed.emit(coins)
 	finished_flipping_coins.emit()
 
@@ -263,8 +263,9 @@ func set_taking_damage(value):
 	taking_damage = value
 	
 
-func take_damage(amount: int, ignore_shield = false, ignore_armor = false, ignore_dodges = false):
-	stats.take_damage(amount, ignore_shield, ignore_armor, ignore_dodges)
+func take_damage(amount: int, ignore_shield = false, ignore_armor = false, 
+				 ignore_dodges = false, shield_factor = 1.0):
+	stats.take_damage(amount, ignore_shield, ignore_armor, ignore_dodges, shield_factor)
 
 func _on_Stats_hit(damage):
 	hit.emit(damage)

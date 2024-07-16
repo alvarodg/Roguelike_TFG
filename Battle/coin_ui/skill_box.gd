@@ -5,8 +5,18 @@ signal slot_was_pressed
 
 @onready var combatants: Combatants = preload("res://Battle/resources/Combatants.tres")
 @onready var turn_manager: TurnManager = preload("res://Battle/resources/TurnManager.tres")
-@export var skill_data: SkillData
 @onready var slot_scene = preload("res://Battle/coin_ui/slot.tscn")
+
+@onready var coin_audio_player = %CoinAudioPlayer
+@onready var notification_audio_player = %NotificationAudioPlayer
+
+var sounds: SoundCollection = SystemData.sound_collection
+
+var insert_empty_sound = sounds.get_insert_coin_empty()
+var insert_full_sound = sounds.get_insert_coin_full()
+var loaded_sound = sounds.get_full_notif()
+var undo_sound = sounds.get_undo()
+
 @onready var skill_box_container = %SkillBoxContainer
 @onready var name_label = %NameLabel
 @onready var description_label = %DescriptionLabel
@@ -15,6 +25,8 @@ signal slot_was_pressed
 @onready var button_container = %ButtonContainer
 @onready var execute_button = %ExecuteButton
 @onready var undo_button = %UndoButton
+
+@export var skill_data: SkillData
 var coin_list: Array[Coin]
 var total_coins: int = 0
 var skill_uses: int : set = set_skill_uses
@@ -85,11 +97,19 @@ func connect_to_slot_signals(slot: Slot):
 	slot.coin_inserted.connect(_on_Slot_coin_inserted)
 	slot.was_pressed.connect(_on_Slot_was_pressed)
 
-func _on_Slot_coin_inserted(coin):
+func _on_Slot_coin_inserted(slot, coin):
 	undo_button.disabled = false
+	var sound = insert_empty_sound if coin_list.size() == 0 else insert_full_sound
+	coin_audio_player.stream = sound
+	coin_audio_player.play()
 	coin_list.append(coin)
 	if coin_list.size() == total_coins or not skill_data.cost_is_mandatory:
+		await get_tree().create_timer(0.1).timeout
+		notification_audio_player.volume_db = -4
+		notification_audio_player.stream = loaded_sound
+		notification_audio_player.play()
 		execute_button.disabled = false
+	
 
 func _on_Slot_was_pressed(slot):
 	slot_was_pressed.emit(slot)
@@ -97,6 +117,8 @@ func _on_Slot_was_pressed(slot):
 func _on_UndoButton_pressed():
 	print("Undone")
 	release_inserted_coins()
+	notification_audio_player.stream = undo_sound
+	notification_audio_player.play()
 	undo_button.disabled = true
 	execute_button.disabled = true
 

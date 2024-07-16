@@ -1,4 +1,5 @@
 extends Resource
+## Clase de estadísticas base para combatientes
 class_name CombatantStats
 
 ## Señales de cambio de cada estadística
@@ -58,7 +59,7 @@ func _init(p_max_health: int = 100, p_base_strength: int = 0, p_base_shield: int
 	armor = base_armor
 	dodges = base_dodges
 	
-## Initiliza a valores base
+## Inicializa a valores base
 func setup():
 	health = max_health
 	strength = base_strength
@@ -66,7 +67,7 @@ func setup():
 	armor = base_armor
 	dodges = base_dodges
 	
-## Initializa los valores a su estado de principio de combate
+## Inicializa los valores a su estado de principio de combate
 func start_battle():
 	strength = base_strength
 	shield = base_shield
@@ -130,9 +131,13 @@ func set_dodges(value):
 
 ## Función que recibe cierta cantidad de daño, aplicando o no escudo, armadura
 ## y esquivas dependiendo de sus parámetros
-func take_damage(amount: int, ignore_shield = false, ignore_armor = false, ignore_dodges = false):
+func take_damage(amount: int, ignore_shield = false, ignore_armor = false, 
+				 ignore_dodges = false, shield_factor: float = 1.0):
 	# Valores efectivos a 0 si se ignoran, si no a su verdadero valor
 	var eff_shield = 0 if ignore_shield else shield
+	# Aplica el factor de eficacia al escudo
+	if eff_shield > 0:
+		eff_shield = ceil(eff_shield/shield_factor)
 	var eff_armor = 0 if ignore_armor else armor
 	var eff_dodges = 0 if ignore_dodges else dodges
 	# Si hay esquivas efectivas, se gasta una e indica que ha esquivado
@@ -146,7 +151,8 @@ func take_damage(amount: int, ignore_shield = false, ignore_armor = false, ignor
 		made_contact.emit()
 		var damage_remainder = amount - eff_armor - eff_shield
 		var armor_remainder = max(0, eff_armor - eff_shield)
-		shield -= max(0, amount - eff_armor)
+		print(amount*shield_factor)
+		shield -= max(0, floor((amount - eff_armor)*shield_factor))
 		if shield == 0:
 			shield_broke.emit()
 		if damage_remainder > 0:

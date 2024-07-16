@@ -1,7 +1,7 @@
 extends TextureButton
 class_name Slot
 
-signal coin_inserted(coin)
+signal coin_inserted(slot, coin)
 signal coins_changed(coins_needed, current_coins)
 signal was_pressed(slot)
 
@@ -108,7 +108,7 @@ func insert_coin(coin: Coin) -> bool:
 		coins_changed.emit(coins_needed, inserted_coins.size())
 		if inserted_coins.size() == coins_needed:
 			set_unavailable()
-		coin_inserted.emit(coin)
+		coin_inserted.emit(self, coin)
 		return true
 	else:
 		return false

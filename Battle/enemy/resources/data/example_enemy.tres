@@ -1,0 +1,132 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=32 format=3 uid="uid://61ux61gx3x3q"]
+
+[ext_resource type="Script" path="res://Battle/enemy/enemy_data.gd" id="1_6kllx"]
+[ext_resource type="Script" path="res://Items/modifiers/components/stats/strength_modifier_component.gd" id="1_m6g4d"]
+[ext_resource type="Script" path="res://Items/modifiers/conditions/condition_trigger.gd" id="2_6onga"]
+[ext_resource type="Script" path="res://Items/modifiers/conditions/states/percent_health_condition.gd" id="3_iy2ef"]
+[ext_resource type="Script" path="res://Items/equipment/equipment.gd" id="4_b0yyx"]
+[ext_resource type="Texture2D" uid="uid://dk4njxdma1t7m" path="res://Items/equipment/sprites/enrage_item.png" id="5_1g05d"]
+[ext_resource type="Script" path="res://Items/equipment/equipment_ui_data.gd" id="6_81j37"]
+[ext_resource type="Script" path="res://Battle/skills/behaviors/damage_skill_behavior.gd" id="8_iiqtj"]
+[ext_resource type="Script" path="res://Items/modifiers/components/stats/shield_modifier_component.gd" id="9_l876x"]
+[ext_resource type="Script" path="res://Battle/skills/SkillData.gd" id="10_gnp78"]
+[ext_resource type="Texture2D" uid="uid://l8diabvbslw6" path="res://Battle/skills/icons/attack_shield_skill.png" id="11_rwwyw"]
+[ext_resource type="Script" path="res://Battle/skills/skill_ui_data.gd" id="12_ggdyu"]
+[ext_resource type="Script" path="res://Battle/skills/behaviors/multihit_skill_behavior.gd" id="13_th2g6"]
+[ext_resource type="Texture2D" uid="uid://c4mdodsry7ncw" path="res://Battle/skills/icons/strong_attack_skill.png" id="14_hd25g"]
+[ext_resource type="Script" path="res://Battle/enemy/EnemyStats.gd" id="15_miu76"]
+[ext_resource type="Script" path="res://Battle/enemy/enemy_ui_data.gd" id="16_dlwf0"]
+[ext_resource type="Texture2D" uid="uid://djmrox3cqnntc" path="res://icon.svg" id="17_ux0dd"]
+
+[sub_resource type="Resource" id="Resource_u6w6b"]
+script = ExtResource("1_m6g4d")
+magnitude = 5.0
+action = 0
+
+[sub_resource type="Resource" id="Resource_da6lf"]
+script = ExtResource("3_iy2ef")
+percent = 0.5
+operator = 0
+
+[sub_resource type="Resource" id="Resource_lmdbp"]
+script = ExtResource("2_6onga")
+state_conditions = Array[Resource("res://Items/modifiers/conditions/state_condition.gd")]([SubResource("Resource_da6lf")])
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_u6w6b")])
+amount = 1
+reset = 1
+
+[sub_resource type="Resource" id="Resource_ap2q7"]
+script = ExtResource("6_81j37")
+icon = ExtResource("5_1g05d")
+ui_name = "Ejemplo Pasiva"
+
+[sub_resource type="Resource" id="Resource_phv8h"]
+script = ExtResource("4_b0yyx")
+ui_data = SubResource("Resource_ap2q7")
+description = ""
+rarity = 1
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+condition_triggers = Array[ExtResource("2_6onga")]([SubResource("Resource_lmdbp")])
+fragile = false
+tags = Array[int]([8])
+
+[sub_resource type="Resource" id="Resource_3pmfk"]
+script = ExtResource("8_iiqtj")
+damage = 10
+to_self = false
+ignore_shield = false
+ignore_armor = false
+ignore_dodges = false
+shield_factor = 1.0
+
+[sub_resource type="Resource" id="Resource_6e4tl"]
+script = ExtResource("9_l876x")
+magnitude = 10.0
+action = 0
+
+[sub_resource type="Resource" id="Resource_wj2sj"]
+script = ExtResource("12_ggdyu")
+icon = ExtResource("11_rwwyw")
+ui_name = "Ataca y defiende"
+
+[sub_resource type="Resource" id="Resource_bc1o1"]
+script = ExtResource("10_gnp78")
+ui_data = SubResource("Resource_wj2sj")
+name = "Ataca y defiende"
+cost = Array[int]([0, 0, 0])
+uses_per_turn = 1
+one_shot = false
+cost_is_mandatory = true
+rarity = 1
+behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_3pmfk")])
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_6e4tl")])
+modifiers_first = true
+tags = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_xhq0v"]
+script = ExtResource("13_th2g6")
+damage = 10
+hits = 3
+ignore_shield = false
+ignore_armor = false
+ignore_dodges = false
+
+[sub_resource type="Resource" id="Resource_1f6vb"]
+script = ExtResource("12_ggdyu")
+icon = ExtResource("14_hd25g")
+ui_name = "Ataque multigolpe"
+
+[sub_resource type="Resource" id="Resource_jlpnd"]
+script = ExtResource("10_gnp78")
+ui_data = SubResource("Resource_1f6vb")
+name = "Ataque multigolpe"
+cost = Array[int]([0, 0, 0])
+uses_per_turn = 1
+one_shot = false
+cost_is_mandatory = true
+rarity = 1
+behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_xhq0v")])
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+modifiers_first = true
+tags = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_0fsbf"]
+script = ExtResource("15_miu76")
+max_health = 120
+base_strength = 0
+base_shield = 0
+base_armor = 1
+base_dodges = 0
+
+[sub_resource type="Resource" id="Resource_67puq"]
+script = ExtResource("16_dlwf0")
+sprite = ExtResource("17_ux0dd")
+ui_name = "EJEMPLO"
+
+[resource]
+script = ExtResource("1_6kllx")
+ui_data = SubResource("Resource_67puq")
+stats = SubResource("Resource_0fsbf")
+skills = Array[ExtResource("10_gnp78")]([SubResource("Resource_bc1o1"), SubResource("Resource_jlpnd")])
+equipment_list = Array[ExtResource("4_b0yyx")]([SubResource("Resource_phv8h")])
+strategy = 0

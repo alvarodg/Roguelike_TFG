@@ -26,14 +26,20 @@ var equipment_list: Array[Equipment]
 # stats: CombatantStats o subclase
 # ui_data: CombatantUIData o subclase
 
-# Usar métodos pseudo-virtuales?
-#func get_stats():
-#	pass
-#
-#func get_ui_data():
-#	pass
+# Método pseudo-virtual para acceder a las estadísticas
+# Devuelve CombatantStats, no indicado explícitamente porque la 
+# covarianza en tipos de retorno no está implementada en Godot 4.1
+func get_stats(): 
+	return CombatantStats.new()
 
-func take_damage(_amount: int, _ignore_shield = false, _ignore_armor = false, _ignore_dodges = false):
+# Método pseudo-virtual para acceder a los datos para la interfaz
+# Devuelve CombatantUIData, no indicado explícitamente porque la 
+# covarianza en tipos de retorno no está implementada en Godot 4.1
+func get_ui_data():
+	return CombatantUIData.new()
+
+
+func take_damage(_amount: int, _ignore_shield = false, _ignore_armor = false, _ignore_dodges = false, _shield_factor: float = 1.0):
 	pass
 
 func wait(time: float):

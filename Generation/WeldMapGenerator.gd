@@ -1,5 +1,5 @@
 extends MapGenerator
-class_name GenerationParameters
+class_name WeldMapGenerator
 
 ## Generación basada en el método presentado por Basudev Patel en su entrada de blog
 ## "Random Paths in Gamedev Beatdown", con implementación y modificaciones propias.

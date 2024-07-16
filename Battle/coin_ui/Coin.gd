@@ -2,9 +2,12 @@ extends TextureButton
 class_name Coin
 
 @onready var animation_player = $AnimationPlayer
+@onready var audio_stream_player = $AudioStreamPlayer
 
 signal flipped(coin)
 signal dropped(coin)
+
+var sounds = SystemData.sound_collection
 
 @export var data: CoinData
 @export var heads: bool = true : set = set_heads
@@ -141,12 +144,13 @@ func start_spinning(amount: int = -1):
 	animation_player.play("spin")
 	if amount > 0:
 		await get_tree().create_timer(time*amount).timeout
-		animation_player.play("RESET")
-		set_facing_texture()
+		stop_spinning()
 	
 func stop_spinning():
 	animation_player.play("RESET")
 	set_facing_texture()
+	audio_stream_player.stream = sounds.heads if heads else sounds.tails
+	audio_stream_player.play()
 
 func get_spin_length() -> float:
 	return animation_player.get_animation("spin").length

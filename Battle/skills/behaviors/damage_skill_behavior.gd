@@ -13,6 +13,8 @@ class_name DamageSkillBehavior
 @export var ignore_armor: bool = false
 ## Opción para ignorar las esquivas del objetivo
 @export var ignore_dodges: bool = false
+## Factor de daño contra escudo
+@export var shield_factor: float = 1.0
 
 ## Carga la animación por defecto de ataque
 var slash = load("res://Battle/skills/animations/slash_animation.tscn")
@@ -21,12 +23,12 @@ func use(user: Combatant, target: Combatant, _coins):
 	var animation = slash.instantiate()
 	# Pasa el daño al objetivo y espera a que finalice la animación
 	if to_self:
-		user.take_damage(damage, ignore_shield, ignore_armor, ignore_dodges)
+		user.take_damage(damage, ignore_shield, ignore_armor, ignore_dodges, shield_factor)
 		user.add_child(animation)
 		animation.global_position = user.battle_position
 		await animation.finished
 	else:
-		target.take_damage(user.stats.strength + damage, ignore_shield, ignore_armor, ignore_dodges)
+		target.take_damage(user.stats.strength + damage, ignore_shield, ignore_armor, ignore_dodges, shield_factor)
 		target.add_child(animation)
 		animation.global_position = target.battle_position
 		await animation.finished
@@ -56,4 +58,6 @@ func get_description(stats: CombatantStats = null) -> String:
 		description = "%s%s Damage%s to self." % [string_damage, damage_type, damage_description]
 	else:
 		description = "%s%s Damage%s to target." % [string_damage, damage_type, damage_description]
+	if shield_factor != 1.0:
+		description += "\n(%sx against Shield)" % [shield_factor]
 	return description

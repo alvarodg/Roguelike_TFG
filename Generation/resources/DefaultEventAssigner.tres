@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DefaultEventAssigner" load_steps=7 format=3 uid="uid://bvjehwcnc4vny"]
+[gd_resource type="Resource" script_class="RestrictionEventAssigner" load_steps=7 format=3 uid="uid://bvjehwcnc4vny"]
 
 [ext_resource type="Resource" uid="uid://c8seuyofduohl" path="res://Events/resources/l1_easy_rdm_battle.tres" id="1_0iqcm"]
 [ext_resource type="Resource" uid="uid://cnadbxeukau4w" path="res://Events/resources/free_equipment.tres" id="2_tpt78"]

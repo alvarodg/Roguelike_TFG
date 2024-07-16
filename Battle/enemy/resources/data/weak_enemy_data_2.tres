@@ -15,6 +15,7 @@ to_self = false
 ignore_shield = false
 ignore_armor = false
 ignore_dodges = false
+shield_factor = 1.0
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_plapn"]
 load_path = "res://.godot/imported/attack_skill.png-4b5aa7c9f86daabc9d1b24f73f67a1e4.ctex"
@@ -45,6 +46,7 @@ to_self = false
 ignore_shield = false
 ignore_armor = false
 ignore_dodges = false
+shield_factor = 1.0
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2i7gb"]
 load_path = "res://.godot/imported/attack_skill.png-4b5aa7c9f86daabc9d1b24f73f67a1e4.ctex"
@@ -75,6 +77,7 @@ to_self = false
 ignore_shield = false
 ignore_armor = false
 ignore_dodges = false
+shield_factor = 1.0
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hlv84"]
 load_path = "res://.godot/imported/attack_skill.png-4b5aa7c9f86daabc9d1b24f73f67a1e4.ctex"

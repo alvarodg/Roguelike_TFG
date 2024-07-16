@@ -150,8 +150,8 @@ func equip(equipment: Equipment):
 	equipment.setup()
 	equipment_changed.emit(equipment_list)
 
-func take_damage(amount: int, ignore_shield = false, ignore_armor = false, ignore_dodges = false):
-	stats.take_damage(amount, ignore_shield, ignore_armor, ignore_dodges)
+func take_damage(amount: int, ignore_shield = false, ignore_armor = false, ignore_dodges = false, shield_factor = 1.0):
+	stats.take_damage(amount, ignore_shield, ignore_armor, ignore_dodges, shield_factor)
 
 func _on_hit(damage):
 	var tween: Tween = get_tree().create_tween()

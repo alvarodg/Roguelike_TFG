@@ -1,7 +1,8 @@
 extends EventAssigner
-## Implementación simple de la asignación de eventos, permitiendo restringir
-## el contenido de ciertas columnas y repartiendo el resto de eventos aleatoriamente
-class_name DefaultEventAssigner
+## Implementación de la asignación de eventos que permite restringir
+## el contenido de ciertos nodos según criterios
+## y repartir el resto de eventos aleatoriamente
+class_name RestrictionEventAssigner
 
 ## Lista de eventos a asignar
 @export var event_list: Array[Event]
@@ -9,6 +10,7 @@ class_name DefaultEventAssigner
 @export var event_chances: Array[float]
 ## Lista de restricciones que se comprobarán antes de dar un evento aleatorio
 @export var restrictions: Array[Restriction]
+## Generador de números aleatorios
 var rng: RandomNumberGenerator
 
 ## Comprobando un nodo y la matriz en la que se encuentra, devuelve un evento
@@ -25,27 +27,33 @@ func get_event(p_rng: RandomNumberGenerator, node_matrix :Array = [], node: Even
 			return restriction.event
 	# Selecciona un evento de acuerdo con sus probabilidades
 	var total_chance = 0.0
+	# Suma los pesos de probabilidad de los eventos
 	for event_chance in event_chances:
 		total_chance += event_chance
 	var current_chance = 0.0
+	# Obtiene un valor aleatorio entre 0 y el peso total
 	var roll = rng.randf_range(0,total_chance)
+	# Devuelve el evento en cuyo rango de probabilidad 
+	# se encuentre el valor aleatorio
 	for i in range(event_list.size()):
 		current_chance += event_chances[i]
 		if current_chance >= roll:
 			return event_list[i]
+	# Si por cualquier motivo no se ha devuelto un evento, 
+	# devuelve el del frente de la lista
 	return event_list.front()
 
 func to_save_dict() -> Dictionary:
 	var event_path_list = []
 	for event in event_list:
 		event_path_list.append(event.resource_path)
-	var str_restrictions = []
-	for res in restrictions:
-		str_restrictions.append(var_to_str(res))
+#	var str_restrictions = []
+#	for res in restrictions:
+#		str_restrictions.append(var_to_str(res))
 	var dict = {
 		"event_list" : event_path_list,
 		"event_chances" : event_chances,
-		"restrictions" : str_restrictions
+		"restrictions" : restrictions
 	}
 	return dict
 
@@ -53,8 +61,9 @@ func load_dict(dict: Dictionary):
 	for path in dict["event_list"]:
 		event_list.append(load(path))
 	event_chances = dict["event_chances"]
-	for res in dict["restrictions"]:
-		restrictions.append(str_to_var(res))
+#	for res in dict["restrictions"]:
+#		restrictions.append(res)
+	restrictions = dict["restrictions"]
 
 func save_keys():
 	return ["event_list", "event_chances", "restrictions"]

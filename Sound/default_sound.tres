@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="SoundCollection" load_steps=11 format=3 uid="uid://bli5jil253owu"]
+
+[ext_resource type="AudioStream" uid="uid://cg1y2m8fop87q" path="res://Sound/files/loaded_zapsplat.mp3" id="1_d5m37"]
+[ext_resource type="Script" path="res://Sound/sound_collection.gd" id="1_lu5lr"]
+[ext_resource type="AudioStream" uid="uid://dhtysb8gb0tm8" path="res://Sound/files/insert_empty_zapsplat.mp3" id="2_qxpl5"]
+[ext_resource type="AudioStream" uid="uid://cpnr7xqm84c61" path="res://Sound/files/heads2.wav" id="2_ue37b"]
+[ext_resource type="AudioStream" uid="uid://cjfaagqgiyp0f" path="res://Sound/files/insert_full_zapsplat.mp3" id="3_d5bjl"]
+[ext_resource type="AudioStream" uid="uid://dp47wvc0sar40" path="res://Sound/files/hit1_zapsplat.mp3" id="4_04n0c"]
+[ext_resource type="AudioStream" uid="uid://dbipk86xdegxf" path="res://Sound/files/hit2_zapsplat.mp3" id="5_21swn"]
+[ext_resource type="AudioStream" uid="uid://b41qk1dwkoj37" path="res://Sound/files/hit_shake_zapsplat.mp3" id="6_yld20"]
+[ext_resource type="AudioStream" uid="uid://78lrfmfhhasn" path="res://Sound/files/tails.wav" id="9_f7x3r"]
+[ext_resource type="AudioStream" uid="uid://b0b805vwnmyrn" path="res://Sound/files/undo_zapsplat.mp3" id="10_mwta0"]
+
+[resource]
+script = ExtResource("1_lu5lr")
+insert_coin_empty = Array[AudioStream]([ExtResource("2_qxpl5")])
+insert_coin_full = Array[AudioStream]([ExtResource("3_d5bjl")])
+full_notif = Array[AudioStream]([ExtResource("1_d5m37")])
+regular_hit = Array[AudioStream]([ExtResource("4_04n0c"), ExtResource("5_21swn"), ExtResource("6_yld20")])
+heads = ExtResource("2_ue37b")
+tails = ExtResource("9_f7x3r")
+undo = Array[AudioStream]([ExtResource("10_mwta0")])
