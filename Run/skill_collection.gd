@@ -17,5 +17,5 @@ func size() -> int:
 
 func get_random(rng: RandomNumberGenerator = RandomNumberGenerator.new(),
 				tags: Array[SkillData.Tag] = [], op: Operator = Operator.OR, 
-				rarity_pick: Array[int] = [], rarity_factor: float = 1) -> SkillData:
+				rarity_pick: Array[int] = [], rarity_factor: float = 1):
 	return _get_random_from_list(list, rng, tags, op, rarity_pick, rarity_factor)

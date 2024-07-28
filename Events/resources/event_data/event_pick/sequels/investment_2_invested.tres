@@ -17,8 +17,6 @@ pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_compon
 post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 events = Array[Resource("res://Events/EventData.gd")]([])
 secret = false
-pre_narrative = ""
-post_narrative = ""
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([ExtResource("1_ds025")])
 make_unique = false
 
@@ -42,8 +40,6 @@ pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_compon
 post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 events = Array[Resource("res://Events/EventData.gd")]([])
 secret = false
-pre_narrative = ""
-post_narrative = ""
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([ExtResource("7_pnu61")])
 make_unique = false
 
@@ -85,7 +81,6 @@ pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_compon
 post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_5s23e")])
 secret = false
-pre_narrative = ""
 post_narrative = "That's not your coin, is it? Well, whatever."
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 make_unique = false

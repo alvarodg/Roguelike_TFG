@@ -41,8 +41,6 @@ pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_compon
 post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_tg56x")])
 secret = false
-pre_narrative = ""
-post_narrative = ""
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 make_unique = false
 
@@ -69,8 +67,6 @@ pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_compon
 post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 events = Array[Resource("res://Events/EventData.gd")]([])
 secret = false
-pre_narrative = ""
-post_narrative = ""
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([ExtResource("9_b3aog")])
 make_unique = false
 
@@ -108,8 +104,6 @@ pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_compon
 post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_nmpb3")])
 secret = false
-pre_narrative = ""
-post_narrative = ""
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 make_unique = false
 
@@ -125,8 +119,6 @@ pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_compon
 post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 events = Array[Resource("res://Events/EventData.gd")]([])
 secret = false
-pre_narrative = ""
-post_narrative = ""
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 make_unique = false
 

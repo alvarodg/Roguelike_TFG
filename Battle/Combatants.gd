@@ -1,8 +1,8 @@
 extends Resource
 class_name Combatants
 
-@export var player: Player = null
-@export var enemy: Enemy = null
+var player: Player = null
+var enemy: Enemy = null
 
 func get_opponent(user: Combatant) -> Combatant:
 	if user == player:

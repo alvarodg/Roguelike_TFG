@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="SkillData" load_steps=6 format=3 uid="uid://cwv4x55dqamcs"]
+
+[ext_resource type="Script" path="res://Battle/skills/behaviors/damage_skill_behavior.gd" id="1_wnddf"]
+[ext_resource type="Script" path="res://Battle/skills/SkillData.gd" id="2_fcxdh"]
+[ext_resource type="Script" path="res://Battle/skills/skill_ui_data.gd" id="3_0j46c"]
+
+[sub_resource type="Resource" id="Resource_8qh6c"]
+script = ExtResource("1_wnddf")
+damage = 5
+to_self = false
+ignore_shield = false
+ignore_armor = false
+ignore_dodges = false
+shield_factor = 100.0
+
+[sub_resource type="Resource" id="Resource_nw4rr"]
+script = ExtResource("3_0j46c")
+ui_name = ""
+
+[resource]
+script = ExtResource("2_fcxdh")
+ui_data = SubResource("Resource_nw4rr")
+name = "Shield Crush"
+cost = Array[int]([1, 0, 0])
+uses_per_turn = -1
+one_shot = false
+cost_is_mandatory = true
+rarity = 1
+behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_8qh6c")])
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+modifiers_first = true
+tags = Array[int]([0])

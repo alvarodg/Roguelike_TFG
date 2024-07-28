@@ -1,4 +1,5 @@
 extends Control
+class_name CoinBox
 
 signal about_to_flip_coins
 signal finished_flipping_coins
@@ -11,7 +12,7 @@ signal finished_flipping_coins
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	EventBus.coin_inserted.connect(_on_coin_inserted)
-	EventBus.looking_for_coin.connect(_on_coin_requested)
+	EventBus.looking_for_coin.connect(request_coin)
 #	turn_manager.player_turn_started.connect(_on_Player_turn_started)
 
 func setup(player: Player):
@@ -49,13 +50,14 @@ func _set_focus_coin(facing: Coin.Facing):
 		chosen_coin.is_selected = true
 		chosen_coin.grab_focus()
 
-func _on_coin_requested(facing: Coin.Facing = Coin.Facing.ANY):
+func request_coin(facing: Coin.Facing = Coin.Facing.ANY):
 	var chosen_coin: Coin = null
 	for coin in coin_box_container.get_children():
 		if coin is Coin and coin.status == Coin.Status.AVAILABLE and coin.check_facing(facing):
 			chosen_coin = coin
 			break
-	EventBus.found_coin.emit(chosen_coin)
+	return chosen_coin
+	#EventBus.found_coin.emit(chosen_coin)
 
 func flip_coins():
 	about_to_flip_coins.emit()
@@ -73,7 +75,7 @@ func flip_coins():
 
 func empty():
 	EventBus.coin_inserted.disconnect(_on_coin_inserted)
-	EventBus.looking_for_coin.disconnect(_on_coin_requested)
+	EventBus.looking_for_coin.disconnect(request_coin)
 	for c in coin_box_container.get_children():
 		coin_box_container.remove_child(c)
 

@@ -29,7 +29,6 @@ pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_compon
 post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_y23qi")])
 secret = false
-pre_narrative = ""
 post_narrative = "This feels like it may be too little? He's long gone before you can actually ask him about it."
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 make_unique = false

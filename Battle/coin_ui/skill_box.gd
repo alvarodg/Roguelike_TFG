@@ -1,7 +1,7 @@
 extends Control
 class_name SkillBox
 
-signal slot_was_pressed
+signal slot_was_pressed(slot)
 
 @onready var combatants: Combatants = preload("res://Battle/resources/Combatants.tres")
 @onready var turn_manager: TurnManager = preload("res://Battle/resources/TurnManager.tres")
@@ -112,6 +112,7 @@ func _on_Slot_coin_inserted(slot, coin):
 	
 
 func _on_Slot_was_pressed(slot):
+	print(slot)
 	slot_was_pressed.emit(slot)
 
 func _on_UndoButton_pressed():

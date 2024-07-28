@@ -29,7 +29,7 @@ func _ready():
 	combatants.enemy = enemy
 	combatants.player = player
 	# Inicializa las interfaces del jugador
-	player_skill_ui.setup(player)
+	player_skill_ui.setup(player, coin_box)
 	player_stats_ui.setup(player)
 	# Ejecuta las funciones de inicio de batalla de los combatientes
 	player.start_battle()

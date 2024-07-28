@@ -16,7 +16,9 @@ func remove(element: EventData):
 func size() -> int:
 	return list.size()
 
-func get_random(rng: RandomNumberGenerator = RandomNumberGenerator.new(), tags: Array[EventData.Tag] = [], op: Operator = Operator.OR, rarity_pick: Array[int] = [], rarity_factor: float = 1) -> EventData:
+func get_random(rng: RandomNumberGenerator = RandomNumberGenerator.new(), 
+				tags: Array[EventData.Tag] = [], op: Operator = Operator.OR, 
+				rarity_pick: Array[int] = [], rarity_factor: float = 1):
 	return _get_random_from_list(list, rng, tags, op, rarity_pick, rarity_factor)
 	
 #func _choose_random_index_from(rarity_list: Array, rng: RandomNumberGenerator = RandomNumberGenerator.new(), rarity_factor: float = 1):
