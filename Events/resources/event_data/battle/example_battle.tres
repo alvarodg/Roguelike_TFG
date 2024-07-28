@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="BattleEventData" load_steps=5 format=3 uid="uid://cdgg8up4w4uq0"]
+
+[ext_resource type="Resource" uid="uid://61ux61gx3x3q" path="res://Battle/enemy/resources/data/example_enemy.tres" id="1_ke8rb"]
+[ext_resource type="Script" path="res://Events/BattleEventData.gd" id="1_yfp3q"]
+[ext_resource type="Script" path="res://Events/equipment_choice_data.gd" id="2_sac30"]
+
+[sub_resource type="Resource" id="Resource_52nly"]
+script = ExtResource("2_sac30")
+choices = 3
+equip_tags = Array[int]([4, 6])
+tag_op = 1
+rarities = Array[int]([])
+rarity_factor = 1.0
+deterministic = true
+name = ""
+description = ""
+rarity = 1
+tags = Array[int]([0, 4])
+secret = false
+unique = false
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
+[resource]
+script = ExtResource("1_yfp3q")
+enemy_data = ExtResource("1_ke8rb")
+name = "Batalla Ejemplo"
+description = "Se enfrenta al enemigo creado en el ejemplo anterior."
+next_event = SubResource("Resource_52nly")
+rarity = 1
+tags = Array[int]([0, 1])
+secret = false
+unique = false
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])

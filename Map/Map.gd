@@ -12,12 +12,22 @@ signal event_chosen
 @onready var change_level_button = %ChangeLevelButton
 @onready var navigation_button = %NavigationButton
 
+@onready var exp_stream_player = %ExpStreamPlayer
+@onready var battle_stream_player = %BattleStreamPlayer
+
 var current_level: int = 0
 var level_list = []
 var node_matrix = []
 var traveled_nodes: Array[EventNode] = []
 var traveled_coords: Array[Vector2] = []
 var current_event: Event
+
+var bgm_sync = SystemData.sound_collection.sync_bgm
+var exploration_bgm = SystemData.sound_collection.exploration_bgm
+var battle_bgm = SystemData.sound_collection.battle_bgm
+var bgm_sync_factor: float
+var exploration_volume
+var battle_volume
 
 #var counter = 0
 
@@ -32,7 +42,7 @@ func _ready():
 	EventBus.level_finished.connect(_on_level_finished)
 	add_to_group("map_screen")
 	add_to_group("run_persistent")
-
+		
 #func _process(delta):
 #	counter += 1
 #	if counter >= 60:
@@ -57,6 +67,18 @@ func start_game(player: Player, rng: RandomNumberGenerator):
 	print("started")
 	await ScreenTransitions.fade_from_black()
 	EventBus.level_generation_completed.emit()
+	# Audio
+	exp_stream_player.stream = exploration_bgm
+	battle_stream_player.stream = battle_bgm
+	if bgm_sync:
+		bgm_sync_factor = exploration_bgm.get_length() / battle_bgm.get_length()
+		exploration_volume = exp_stream_player.volume_db
+		battle_volume = battle_stream_player.volume_db
+		set_exploration_bgm()
+		exp_stream_player.play()
+		battle_stream_player.play()
+	EventBus.battle_started.connect(set_battle_bgm)
+	EventBus.battle_finished.connect(set_exploration_bgm)
 #	await RunData.finished_loading
 #	RunData.reload_rng()
 	
@@ -171,6 +193,34 @@ func refresh_map():
 		for node in node_matrix[0]:
 			node.state = EventNode.State.AVAILABLE
 	
+func set_battle_bgm():
+	if bgm_sync:
+		exploration_volume = exp_stream_player.volume_db
+#		var tween: Tween = get_tree().create_tween()
+#		tween.set_parallel()
+#		tween.tween_property(exp_stream_player, "pitch_scale", 1 / bgm_sync_factor, 1)
+#		tween.tween_property(battle_stream_player, "pitch_scale", 1, 1)
+#		tween.tween_property(exp_stream_player, "volume_db", -20, 1).set_trans(Tween.TRANS_SINE)
+#		tween.tween_property(battle_stream_player, "volume_db", battle_volume, 1).set_trans(Tween.TRANS_SINE)
+#		await tween.finished
+		exp_stream_player.pitch_scale = 1 / bgm_sync_factor
+		battle_stream_player.pitch_scale = 1
+		exp_stream_player.volume_db = -INF
+		battle_stream_player.volume_db = battle_volume
+	else:
+		battle_stream_player.play()
+		exp_stream_player.stop()
+	
+func set_exploration_bgm():
+	if bgm_sync:
+		battle_volume = battle_stream_player.volume_db
+		exp_stream_player.pitch_scale = 1
+		battle_stream_player.pitch_scale = bgm_sync_factor
+		battle_stream_player.volume_db = -INF
+		exp_stream_player.volume_db = exploration_volume
+	else:
+		battle_stream_player.stop()
+		exp_stream_player.play()
 
 func _on_RegenerateButton_pressed():
 	generator.generate(RunData.run_seed)

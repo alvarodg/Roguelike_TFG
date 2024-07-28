@@ -84,6 +84,8 @@ text = "DELETE SAVE"
 [node name="MainMenu" parent="." instance=ExtResource("3_6bs06")]
 layout_mode = 1
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
 [connection signal="pressed" from="DebugPanel/HBoxContainer/SaveButton" to="." method="_on_SaveButton_pressed"]
 [connection signal="pressed" from="DebugPanel/HBoxContainer/LoadButton" to="." method="_on_LoadButton_pressed"]
 [connection signal="pressed" from="DebugPanel/HBoxContainer/DeleteSave" to="." method="_on_DeleteSave_pressed"]

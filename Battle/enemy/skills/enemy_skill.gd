@@ -4,7 +4,7 @@ extends Resource
 
 #class_name EnemySkill
 
-var data: EnemySkillData
+var data#: EnemySkillData
 var user
 var target
 var coins

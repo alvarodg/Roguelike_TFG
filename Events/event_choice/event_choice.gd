@@ -1,6 +1,10 @@
 extends Control
+## Clase que representa una opción que el jugador podrá seleccionar en un 
+## evento de decisión
 class_name EventChoice
 
+@onready var narrative_scene = preload("res://Events/event_choice/narrative_scene.tscn")
+## Señal q
 signal events_about_to_begin
 signal returned
 signal finished
@@ -64,6 +68,7 @@ func _on_Button_pressed():
 	
 func _apply_sequence(seq: ChoiceSequence):
 	# TODO: Mostrar pre_narrative aquí de alguna forma
+	await show_narrative(sequence.pre_narrative)
 	if seq.event_unlocks != null:
 		for event in seq.event_unlocks:
 			RunData.current_event_scene.event_unlocks.append(event)
@@ -90,6 +95,7 @@ func _apply_sequence(seq: ChoiceSequence):
 	for mod in seq.post_modifiers:
 		mod.apply_to(player)
 	# TODO: Mostrar post_narrative aquí de alguna forma
+	await show_narrative(sequence.post_narrative)
 	
 func _update_description(p_label: Label):
 	var desc: String = ""
@@ -119,6 +125,18 @@ func _check_cost():
 			button.disabled = false
 		else:
 			button.disabled = true
+
+func show_narrative(narrative: NarrativeSceneData):
+	if narrative != null:
+		var narrative_instance = narrative.instantiate_scene(player)
+		await ScreenTransitions.fade_to_black()
+		RunData.current_event_scene.hide()
+		get_tree().root.add_child(narrative_instance)
+		ScreenTransitions.fade_from_black()
+		await narrative_instance.finished
+		await ScreenTransitions.fade_to_black()
+		RunData.current_event_scene.show()
+		ScreenTransitions.fade_from_black()
 
 func _on_Button_mouse_entered():
 	if hover_label.text != "":

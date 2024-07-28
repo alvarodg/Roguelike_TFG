@@ -46,6 +46,7 @@ func _ready():
 #	coin_box.finished_flipping_coins.connect(_on_coins_finished_flipping)
 	# Asigna el turno al jugador
 	turn_manager.turn = turn_manager.Turn.PLAYER_TURN
+	EventBus.battle_started.emit()
 #	coin_box.flip_coins()
 	
 	
@@ -109,6 +110,7 @@ func end_battle():
 	player.end_battle()
 	print("You won!")
 	coin_box.empty()
+	EventBus.battle_finished.emit()
 	finish()
 
 func _on_player_turn_started():

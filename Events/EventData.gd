@@ -1,7 +1,7 @@
 extends Resource
 class_name EventData
 
-## Tags descriptivas para filtrar eventos
+## Etiquetas descriptivas para filtrar eventos
 enum Tag {DEFAULT, BATTLE, GAMBLE, TRADE, REWARD}
 
 ## Nombre del evento
@@ -32,7 +32,7 @@ func _init(p_scene: PackedScene = null, p_next_event: EventData = null, p_rarity
 	next_event = p_next_event
 	rarity = p_rarity
 
-## Devuelve una escena
+## Devuelve una instancia de la escena del evento para el jugador
 func instantiate_scene(player: Player):
 	var scene_instance: EventScene = scene.instantiate()
 	scene_instance.initialize(player, self)

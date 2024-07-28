@@ -8,6 +8,9 @@ class_name SoundCollection
 @export var heads: AudioStream
 @export var tails: AudioStream
 @export var undo: Array[AudioStream]
+@export var exploration_bgm: AudioStream
+@export var battle_bgm: AudioStream
+@export var sync_bgm: bool
 
 func get_insert_coin_empty() -> AudioStream:
 	return insert_coin_empty.pick_random()

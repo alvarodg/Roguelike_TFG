@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="EventPickData" load_steps=15 format=3 uid="uid://du5unm6rln13y"]
+[gd_resource type="Resource" script_class="EventPickData" load_steps=18 format=3 uid="uid://du5unm6rln13y"]
 
 [ext_resource type="Script" path="res://Events/event_choice/event_pick_data.gd" id="1_gr5jj"]
 [ext_resource type="Script" path="res://Items/modifiers/components/stats/health_modifier_component.gd" id="1_wre55"]
 [ext_resource type="Script" path="res://Items/modifiers/cost/health_cost.gd" id="2_uqe1s"]
 [ext_resource type="Script" path="res://Events/event_choice/event_choice_data.gd" id="3_dsxa4"]
+[ext_resource type="Script" path="res://Events/event_choice/narrative_scene_data.gd" id="4_8fp6h"]
 [ext_resource type="Resource" uid="uid://4msvwnp5eq7u" path="res://Battle/enemy/resources/data/elite_enemy_data.tres" id="4_vgwmy"]
 [ext_resource type="Script" path="res://Events/BattleEventData.gd" id="5_iep3d"]
 [ext_resource type="Script" path="res://Events/event_choice/choice_sequence.gd" id="6_nqp13"]
@@ -18,11 +19,26 @@ action = 0
 script = ExtResource("2_uqe1s")
 health_mod = SubResource("Resource_8kpf4")
 
+[sub_resource type="Resource" id="Resource_cqpqp"]
+script = ExtResource("4_8fp6h")
+narrative = Array[String](["Ouch."])
+
+[sub_resource type="Resource" id="Resource_wx20i"]
+script = ExtResource("6_nqp13")
+pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+events = Array[Resource("res://Events/EventData.gd")]([])
+secret = false
+post_narrative = SubResource("Resource_cqpqp")
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+make_unique = false
+
 [sub_resource type="Resource" id="Resource_wvjfv"]
 script = ExtResource("3_dsxa4")
 description = "Let him."
 explicit = true
 cost = SubResource("Resource_ovy4y")
+sequence = SubResource("Resource_wx20i")
 final = true
 secret = false
 
@@ -45,8 +61,6 @@ pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_compon
 post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_5xyfl")])
 secret = false
-pre_narrative = ""
-post_narrative = ""
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 make_unique = false
 

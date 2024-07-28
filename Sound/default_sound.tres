@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="SoundCollection" load_steps=11 format=3 uid="uid://bli5jil253owu"]
+[gd_resource type="Resource" script_class="SoundCollection" load_steps=13 format=3 uid="uid://bli5jil253owu"]
 
 [ext_resource type="AudioStream" uid="uid://cg1y2m8fop87q" path="res://Sound/files/loaded_zapsplat.mp3" id="1_d5m37"]
 [ext_resource type="Script" path="res://Sound/sound_collection.gd" id="1_lu5lr"]
+[ext_resource type="AudioStream" uid="uid://d361yuedircoj" path="res://Sound/bgm/Rising Tide (faster).mp3" id="1_y2fvw"]
 [ext_resource type="AudioStream" uid="uid://dhtysb8gb0tm8" path="res://Sound/files/insert_empty_zapsplat.mp3" id="2_qxpl5"]
 [ext_resource type="AudioStream" uid="uid://cpnr7xqm84c61" path="res://Sound/files/heads2.wav" id="2_ue37b"]
+[ext_resource type="AudioStream" uid="uid://blv5wvlr6uc23" path="res://Sound/bgm/Rising Tide.mp3" id="2_vycd7"]
 [ext_resource type="AudioStream" uid="uid://cjfaagqgiyp0f" path="res://Sound/files/insert_full_zapsplat.mp3" id="3_d5bjl"]
 [ext_resource type="AudioStream" uid="uid://dp47wvc0sar40" path="res://Sound/files/hit1_zapsplat.mp3" id="4_04n0c"]
 [ext_resource type="AudioStream" uid="uid://dbipk86xdegxf" path="res://Sound/files/hit2_zapsplat.mp3" id="5_21swn"]
@@ -20,3 +22,6 @@ regular_hit = Array[AudioStream]([ExtResource("4_04n0c"), ExtResource("5_21swn")
 heads = ExtResource("2_ue37b")
 tails = ExtResource("9_f7x3r")
 undo = Array[AudioStream]([ExtResource("10_mwta0")])
+exploration_bgm = ExtResource("2_vycd7")
+battle_bgm = ExtResource("1_y2fvw")
+sync_bgm = true

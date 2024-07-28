@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="SkillData" load_steps=9 format=3 uid="uid://ckmaxgn0hedc6"]
+
+[ext_resource type="Script" path="res://Battle/skills/behaviors/damage_skill_behavior.gd" id="1_kyfle"]
+[ext_resource type="Script" path="res://Battle/skills/SkillData.gd" id="1_x46v2"]
+[ext_resource type="Script" path="res://Battle/skills/behaviors/reroll_skill_behavior.gd" id="2_gmee3"]
+[ext_resource type="Texture2D" uid="uid://cvwsif7utojiu" path="res://Battle/skills/icons/unknown_skill.png" id="4_dvekl"]
+[ext_resource type="Script" path="res://Battle/skills/skill_ui_data.gd" id="5_jpfu8"]
+
+[sub_resource type="Resource" id="Resource_41mjn"]
+script = ExtResource("1_kyfle")
+damage = 12
+to_self = false
+ignore_shield = false
+ignore_armor = false
+ignore_dodges = false
+shield_factor = 1.0
+
+[sub_resource type="Resource" id="Resource_60wx8"]
+script = ExtResource("2_gmee3")
+rerolls = 1
+facing = 0
+
+[sub_resource type="Resource" id="Resource_1ke5y"]
+script = ExtResource("5_jpfu8")
+icon = ExtResource("4_dvekl")
+ui_name = "EJEMPLO"
+
+[resource]
+script = ExtResource("1_x46v2")
+ui_data = SubResource("Resource_1ke5y")
+name = "EJEMPLO"
+cost = Array[int]([0, 2, 0])
+uses_per_turn = 2
+one_shot = false
+cost_is_mandatory = true
+rarity = 2
+behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_41mjn"), SubResource("Resource_60wx8")])
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+modifiers_first = true
+tags = Array[int]([0, 1])
