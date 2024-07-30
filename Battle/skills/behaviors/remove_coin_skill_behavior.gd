@@ -14,7 +14,7 @@ func use(user, target, coins):
 				c.queue_free()
 		for i in range(magnitude):
 			var c = user.coins.pick_random()
-			user.coins.remove(c)
+			user.coins.erase(c)
 			c.queue_free()
 	else:
 		# Posiblemente cambiar la implementación para que prioritice monedas disponibles si
@@ -22,7 +22,7 @@ func use(user, target, coins):
 		assert(target is Player)
 		for i in range(magnitude):
 			var c = target.coins.pick_random()
-			target.coins.remove(c)
+			target.coins.erase(c)
 			c.queue_free()
 	_finish()
 	

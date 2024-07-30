@@ -13,8 +13,8 @@ signal started_flipping_coins
 signal finished_flipping_coins
 signal hit(damage)
 
-@export var stats: PlayerStats : set = set_stats
-@export var ui_data: PlayerUIData
+@export var stats: PlayerStats = PlayerStats.new() : set = set_stats
+@export var ui_data: PlayerUIData = PlayerUIData.new()
 @export var skill_list: Array[SkillData]
 @export var default_equipment: Array[Equipment]
 @export var max_skills: int = 6
@@ -71,13 +71,16 @@ func set_stats(new_stats):
 	stats = new_stats	
 	stats.setup()
 
+func get_stats() -> PlayerStats:
+	return stats
+
 func add_coin(coin: Coin):
 	coins.append(coin)
 	coins.filter(func(element): return element != null)
 	coin.flipped.connect(_on_Coin_flipped)
 	coin.dropped.connect(_on_Coin_dropped)
 	coins_changed.emit(coins)
-	if coin.is_ephemeral:
+	if coin.is_ephemeral and is_inside_tree():
 		coin.fade_in()
 
 func set_coins(new_coins):
@@ -122,9 +125,10 @@ func end_battle():
 
 func flip(coin: Coin, rng: RandomNumberGenerator = RandomNumberGenerator.new()):
 	started_flipping_coins.emit()
-	coin.start_spinning()
-	await get_tree().create_timer(0.64).timeout
-	coin.stop_spinning()
+	if is_inside_tree():
+		coin.start_spinning()
+		await get_tree().create_timer(0.64).timeout
+		coin.stop_spinning()
 	var result = coin.flip(stats.base_luck, _get_bias(), rng)
 	if coin in coins:
 		coins_changed.emit(coins)

@@ -26,6 +26,10 @@ SystemData="*res://Utilities/SystemData.gd"
 
 naming/default_signal_callback_name="_on_{NodeName}_{signal_name}"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/gut/plugin.cfg")
+
 [input]
 
 click={

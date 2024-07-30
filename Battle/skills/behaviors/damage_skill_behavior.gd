@@ -15,23 +15,26 @@ class_name DamageSkillBehavior
 @export var ignore_dodges: bool = false
 ## Factor de daño contra escudo
 @export var shield_factor: float = 1.0
+@export var animation_scene: PackedScene = load("res://Battle/skills/animations/slash_animation.tscn")
 
 ## Carga la animación por defecto de ataque
 var slash = load("res://Battle/skills/animations/slash_animation.tscn")
 
 func use(user: Combatant, target: Combatant, _coins):
-	var animation = slash.instantiate()
+	var animation = null if animation_scene == null else animation_scene.instantiate()
 	# Pasa el daño al objetivo y espera a que finalice la animación
 	if to_self:
 		user.take_damage(damage, ignore_shield, ignore_armor, ignore_dodges, shield_factor)
-		user.add_child(animation)
-		animation.global_position = user.battle_position
-		await animation.finished
+		if animation != null:
+			user.add_child(animation)
+			animation.global_position = user.battle_position
+			await animation.finished
 	else:
 		target.take_damage(user.stats.strength + damage, ignore_shield, ignore_armor, ignore_dodges, shield_factor)
-		target.add_child(animation)
-		animation.global_position = target.battle_position
-		await animation.finished
+		if animation != null:
+			target.add_child(animation)
+			animation.global_position = target.battle_position
+			await animation.finished
 	_finish()
 
 

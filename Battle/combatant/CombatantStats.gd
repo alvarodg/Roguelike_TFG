@@ -66,6 +66,7 @@ func setup():
 	shield = base_shield
 	armor = base_armor
 	dodges = base_dodges
+	is_dead = false
 	
 ## Inicializa los valores a su estado de principio de combate
 func start_battle():
@@ -73,6 +74,7 @@ func start_battle():
 	shield = base_shield
 	armor = base_armor
 	dodges = base_dodges
+	is_dead = false
 	
 ## Modifica los valores a su estado de principio de turno
 func start_turn():
@@ -92,8 +94,8 @@ func end_battle():
 func set_max_health(value):
 	var old = max_health
 	max_health = max(1, value)
-	# Bug misterioso al descomentar esta línea, no emite died. Investigar.
-#	health = min(health, max_health)
+	if health > 0:
+		health = min(health, max_health)
 	max_health_changed.emit(old, max_health)
 
 ## Setter de health

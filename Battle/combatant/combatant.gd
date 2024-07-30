@@ -29,13 +29,13 @@ var equipment_list: Array[Equipment]
 # Método pseudo-virtual para acceder a las estadísticas
 # Devuelve CombatantStats, no indicado explícitamente porque la 
 # covarianza en tipos de retorno no está implementada en Godot 4.1
-func get_stats(): 
+func get_stats() -> CombatantStats: 
 	return CombatantStats.new()
 
 # Método pseudo-virtual para acceder a los datos para la interfaz
 # Devuelve CombatantUIData, no indicado explícitamente porque la 
 # covarianza en tipos de retorno no está implementada en Godot 4.1
-func get_ui_data():
+func get_ui_data() -> CombatantUIData:
 	return CombatantUIData.new()
 
 

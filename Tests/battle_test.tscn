@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dip7b67w54m78"]
+[gd_scene load_steps=18 format=3 uid="uid://dip7b67w54m78"]
 
 [ext_resource type="Script" path="res://Tests/battle_test.gd" id="1_h0e27"]
 [ext_resource type="Resource" uid="uid://cq5ebehsqd2ae" path="res://Battle/enemy/resources/data/knight_boss_data.tres" id="2_j3tbg"]
@@ -6,11 +6,10 @@
 [ext_resource type="Script" path="res://Battle/combatant/PlayerStats.gd" id="7_hi817"]
 [ext_resource type="Texture2D" uid="uid://djmrox3cqnntc" path="res://icon.svg" id="8_ngw0y"]
 [ext_resource type="Script" path="res://Run/PlayerUIData.gd" id="9_bwyuj"]
-[ext_resource type="Resource" uid="uid://ckfdvex3cn3hf" path="res://Battle/skills/resources/sacrifice.tres" id="10_bhkht"]
 [ext_resource type="Resource" uid="uid://bsioc5j8lwg1x" path="res://Battle/skills/resources/hit_attack.tres" id="10_yny00"]
 [ext_resource type="Resource" uid="uid://disqwyhl7b6xd" path="res://Battle/skills/resources/reroll.tres" id="11_atv6b"]
 [ext_resource type="Resource" uid="uid://dohuwbuerwh8r" path="res://Battle/skills/resources/balanced_strike.tres" id="11_qij5i"]
-[ext_resource type="Resource" uid="uid://bxpfepcjv524q" path="res://Battle/skills/resources/consolation.tres" id="11_rodx6"]
+[ext_resource type="Resource" uid="uid://q8cjuohabuf1" path="res://Battle/skills/resources/slippery_strike.tres" id="11_u1ykl"]
 [ext_resource type="Resource" uid="uid://coos4xdskyy7o" path="res://Battle/skills/resources/counterfeit.tres" id="12_aqatl"]
 [ext_resource type="Resource" uid="uid://bxwuaeekjaus4" path="res://Items/equipment/resources/lucky_coin.tres" id="17_b7bag"]
 [ext_resource type="Resource" uid="uid://000ce1xcp83o" path="res://Items/equipment/resources/conditional/flip_shield.tres" id="17_yb6ym"]
@@ -45,5 +44,5 @@ enemy_data = ExtResource("2_j3tbg")
 [node name="Player" parent="." instance=ExtResource("6_ujn4n")]
 stats = SubResource("Resource_ln2xl")
 ui_data = SubResource("Resource_bvfks")
-skill_list = Array[Resource("res://Battle/skills/SkillData.gd")]([ExtResource("10_yny00"), ExtResource("11_qij5i"), ExtResource("10_bhkht"), ExtResource("11_atv6b"), ExtResource("11_rodx6"), ExtResource("12_aqatl")])
+skill_list = Array[Resource("res://Battle/skills/SkillData.gd")]([ExtResource("10_yny00"), ExtResource("11_qij5i"), ExtResource("11_atv6b"), ExtResource("12_aqatl"), ExtResource("11_u1ykl")])
 default_equipment = Array[Resource("res://Items/equipment/equipment.gd")]([ExtResource("24_c1mu8"), ExtResource("17_b7bag"), ExtResource("17_yb6ym"), ExtResource("19_d0yy3")])

@@ -11,7 +11,7 @@ func _init():
 
 ## Aplica el modificador al usuario (implementar en las subclases)
 func apply_to(_user):
-	pass
+	_finish()
 
 ## Deshace el modificador del usuario (implementar en las subclases)
 func undo_from(_user):

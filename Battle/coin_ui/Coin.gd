@@ -103,9 +103,10 @@ func set_dropped():
 	if status != Status.DROPPED:
 		status = Status.DROPPED
 		focus_mode = Control.FOCUS_NONE
-		var dropped_item: DroppedItem = dropped_item_scene.instantiate()
-		dropped_item.setup(texture_normal, global_position)
-		get_tree().root.add_child(dropped_item)
+		if is_inside_tree():
+			var dropped_item: DroppedItem = dropped_item_scene.instantiate()
+			dropped_item.setup(data.heads_texture if heads else data.tails_texture, global_position)
+			get_tree().root.add_child(dropped_item)
 		make_invisible()
 		dropped.emit(self)
 		hide()

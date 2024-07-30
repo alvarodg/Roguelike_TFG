@@ -19,7 +19,7 @@ signal upcoming_skills_changed(value)
 const UPCOMING_AMOUNT: int = 4
 
 var ui_data: EnemyUIData
-var stats: EnemyStats
+var stats: EnemyStats = EnemyStats.new()
 var skills: Array[SkillData]
 var available_skills: Array[SkillData]
 #var equipment_list: Array[Equipment]
