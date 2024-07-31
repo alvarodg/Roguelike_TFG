@@ -15,6 +15,7 @@ signal equipment_changed(value)
 signal started_waiting
 signal finished_waiting
 signal stats_changed(value)
+signal used_skill
 
 var battle_position: Vector2
 var last_contact: Combatant

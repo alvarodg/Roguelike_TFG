@@ -7,7 +7,7 @@ signal met
 ## para que se por cumplido el evento
 signal remaining_changed(amount, remaining)
 
-## Cantidad de ocurrencias necesarios para que se de por cumplida la condición
+## Cantidad de ocurrencias necesarias para que se de por cumplida la condición
 @export var amount: int = 1
 ## true para reiniciar el contador al principio del turno
 @export var restart_per_turn: bool = true

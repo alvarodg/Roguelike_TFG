@@ -23,6 +23,8 @@ action = 2
 [sub_resource type="Resource" id="Resource_nyire"]
 script = ExtResource("3_144wh")
 skill = ExtResource("4_c6r8f")
+replace = false
+secret = false
 
 [sub_resource type="Resource" id="Resource_nm3lx"]
 script = ExtResource("5_ee7m0")

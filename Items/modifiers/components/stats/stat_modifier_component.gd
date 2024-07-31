@@ -22,7 +22,7 @@ func _init(p_magnitude: float = 0, p_action: Action = Action.ADD):
 
 ## Aplica el modificador a un usuario (a implementar en subclases)
 func apply_to(_user):
-	pass
+	_finish()
 
 ## Deshace el modificador de un usuario (a implementar en subclases)
 func undo_from(_user):

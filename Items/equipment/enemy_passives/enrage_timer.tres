@@ -17,6 +17,8 @@ restart_per_turn = true
 [sub_resource type="Resource" id="Resource_3iw7m"]
 script = ExtResource("2_4vmna")
 skill = ExtResource("3_ds7v5")
+replace = false
+secret = false
 
 [sub_resource type="Resource" id="Resource_avcpi"]
 script = ExtResource("4_knit5")

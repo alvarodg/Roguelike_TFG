@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EnemyData" load_steps=30 format=3 uid="uid://jlcky6cxyuuq"]
+[gd_resource type="Resource" script_class="EnemyData" load_steps=31 format=3 uid="uid://jlcky6cxyuuq"]
 
 [ext_resource type="Resource" uid="uid://df6ubpp7evjvw" path="res://Items/equipment/enemy_passives/enrage_timer.tres" id="1_1bdqj"]
 [ext_resource type="Script" path="res://Battle/enemy/enemy_data.gd" id="2_liixq"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dv2xgxtljmwfs" path="res://Items/equipment/sprites/sacrifice_attack.png" id="5_rb5mk"]
 [ext_resource type="Script" path="res://Battle/skills/skill_ui_data.gd" id="6_rr6ba"]
 [ext_resource type="Texture2D" uid="uid://cpaes4c4pnmxw" path="res://Battle/skills/icons/attack_skill.png" id="7_vpn1n"]
+[ext_resource type="PackedScene" uid="uid://b1c12o4iwexco" path="res://Battle/skills/animations/slash_animation.tscn" id="8_egbq5"]
 [ext_resource type="Script" path="res://Battle/skills/behaviors/multihit_skill_behavior.gd" id="8_kcljw"]
 [ext_resource type="Script" path="res://Items/modifiers/components/stats/strength_modifier_component.gd" id="9_n05t6"]
 [ext_resource type="Texture2D" uid="uid://bnro8dr0dfl0t" path="res://Battle/skills/icons/strength_boost.png" id="10_121s2"]
@@ -95,6 +96,7 @@ hits = 3
 ignore_shield = false
 ignore_armor = false
 ignore_dodges = false
+animation_scene = ExtResource("8_egbq5")
 
 [sub_resource type="Resource" id="Resource_jg28e"]
 script = ExtResource("6_rr6ba")

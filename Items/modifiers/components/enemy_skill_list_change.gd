@@ -6,6 +6,7 @@ class_name SkillListModifier
 
 func apply_to(enemy: Enemy):
 	enemy.replace_available_skills(skill_list)
+	enemy.skills = skill_list.duplicate()
 	enemy.strategy = strategy
 	_finish()	
 

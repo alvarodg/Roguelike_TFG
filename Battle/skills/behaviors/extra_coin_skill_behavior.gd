@@ -2,7 +2,6 @@ extends SkillBehavior
 class_name ExtraCoinSkillBehavior
 
 @export var ephemeral_coins: int = 0
-# TEMPORAL, usar lista para poder dar un facing a cada moneda
 @export var facing: Coin.Facing = Coin.Facing.ANY
 
 
@@ -11,7 +10,7 @@ func use(user, _target, coins):
 		var eph_coin = coins.front().get_ephemeral_copy()
 		user.add_coin(eph_coin)
 		if facing == Coin.Facing.ANY:
-			user.flip(eph_coin)
+			await user.flip(eph_coin)
 		else:
 			eph_coin.heads = true if facing == Coin.Facing.HEADS else false
 	_finish()

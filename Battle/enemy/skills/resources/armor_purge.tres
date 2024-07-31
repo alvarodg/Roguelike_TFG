@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="SkillData" load_steps=7 format=3 uid="uid://cs7r4crhuafvr"]
+[gd_resource type="Resource" script_class="SkillData" load_steps=8 format=3 uid="uid://cs7r4crhuafvr"]
 
 [ext_resource type="Script" path="res://Battle/skills/SkillData.gd" id="1_0vaut"]
+[ext_resource type="PackedScene" uid="uid://b1c12o4iwexco" path="res://Battle/skills/animations/slash_animation.tscn" id="1_hw8k2"]
 [ext_resource type="Script" path="res://Battle/skills/behaviors/multihit_skill_behavior.gd" id="1_uw0qu"]
 [ext_resource type="Texture2D" uid="uid://ley5scgpsay5" path="res://Battle/skills/icons/blue_strong_attack_skill.png" id="3_lu6mp"]
 [ext_resource type="Script" path="res://Battle/skills/skill_ui_data.gd" id="4_fd0ih"]
@@ -12,6 +13,7 @@ hits = 6
 ignore_shield = false
 ignore_armor = false
 ignore_dodges = false
+animation_scene = ExtResource("1_hw8k2")
 
 [sub_resource type="Resource" id="Resource_b17ve"]
 script = ExtResource("4_fd0ih")

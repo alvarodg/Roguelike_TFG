@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="SkillData" load_steps=6 format=3 uid="uid://ckfdvex3cn3hf"]
+[gd_resource type="Resource" script_class="SkillData" load_steps=7 format=3 uid="uid://ckfdvex3cn3hf"]
 
 [ext_resource type="Script" path="res://Battle/skills/behaviors/damage_skill_behavior.gd" id="1_uiksr"]
 [ext_resource type="Script" path="res://Battle/skills/SkillData.gd" id="2_85qoq"]
 [ext_resource type="Script" path="res://Battle/skills/behaviors/multihit_skill_behavior.gd" id="2_hkoty"]
+[ext_resource type="PackedScene" uid="uid://b1c12o4iwexco" path="res://Battle/skills/animations/slash_animation.tscn" id="2_ojuda"]
 
 [sub_resource type="Resource" id="Resource_l622n"]
 script = ExtResource("1_uiksr")
@@ -20,6 +21,7 @@ hits = 3
 ignore_shield = false
 ignore_armor = false
 ignore_dodges = false
+animation_scene = ExtResource("2_ojuda")
 
 [resource]
 script = ExtResource("2_85qoq")

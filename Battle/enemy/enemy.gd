@@ -18,18 +18,20 @@ signal upcoming_skills_changed(value)
 
 const UPCOMING_AMOUNT: int = 4
 
+# Usando enum para estrategias simples, cambiar por clase si se quisieran implementar más complejas.
+enum Strategy {PURE_RANDOM, POP_RANDOM, SEQUENCE}
+
 var ui_data: EnemyUIData
 var stats: EnemyStats = EnemyStats.new()
 var skills: Array[SkillData]
 var available_skills: Array[SkillData]
 #var equipment_list: Array[Equipment]
-var strategy
+var strategy = Strategy.PURE_RANDOM
 
 var target
 var upcoming_skills: Array[SkillData]
 
-# Usando enum para estrategias simples, cambiar por clase si se quisieran implementar más complejas.
-enum Strategy {PURE_RANDOM, POP_RANDOM, SEQUENCE}
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -118,9 +120,11 @@ func act():
 	var action: Skill = upcoming_skills.front().create_skill(self, target)
 	action.finished.connect(_on_action_finished)
 	add_child(action)
+	var used = upcoming_skills.front()
 	remove_upcoming_skill(upcoming_skills.front())
 	add_upcoming_skill(pick_skill(strategy))
 	action.use()
+	used_skill.emit(used)
 
 func _on_action_finished():
 	turn_finished.emit()

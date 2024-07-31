@@ -9,7 +9,7 @@ func _init(p_facing: Coin.Facing = Coin.Facing.ANY):
 	facing = p_facing
 	
 func apply_to(user: Player):
-	base = user.bias_list
+	base = user.bias_list.duplicate()
 	user.add_bias(facing, count)
 	_finish()
 
@@ -20,4 +20,4 @@ func get_description(stats: CombatantStats = null) -> String:
 	return desc
 
 func undo_from(user: Player):
-	user.bias_list = base
+	user.bias_list = base.duplicate()

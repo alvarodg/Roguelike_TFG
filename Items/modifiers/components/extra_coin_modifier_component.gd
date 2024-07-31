@@ -12,11 +12,11 @@ func _init(p_coin_data_list: Array[CoinData] = []):
 func apply_to(user: Player):
 	for coin_data in coin_data_list:
 		var coin: Coin = coin_data.create_coin_instance(ephemeral)
+		user.add_coin(coin)
 		match facing:
-			Coin.Facing.ANY: user.logic_flip(coin)
+			Coin.Facing.ANY: user.flip(coin)
 			Coin.Facing.HEADS: coin.heads = true
 			Coin.Facing.TAILS: coin.heads = false
-		user.add_coin(coin.duplicate())
 	_finish()
 	
 func get_description(_stats: CombatantStats = null) -> String:
