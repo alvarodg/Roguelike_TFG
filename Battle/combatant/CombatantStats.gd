@@ -4,7 +4,7 @@ class_name CombatantStats
 
 ## Señales de cambio de cada estadística
 signal max_health_changed(old_value, new_value)
-signal health_changed(old_value, new_value)
+signal health_changed(old_value, new_value, max_value)
 signal strength_changed(old_value, new_value)
 signal shield_changed(old_value, new_value)
 signal armor_changed(old_value, new_value)
@@ -102,7 +102,7 @@ func set_max_health(value):
 func set_health(value):
 	var old = health
 	health = clamp(value, 0, max_health)
-	health_changed.emit(old, health)
+	health_changed.emit(old, health, max_health)
 	if health == 0 and not is_dead:
 		is_dead = true
 		died.emit()

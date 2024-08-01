@@ -21,7 +21,8 @@ func after_each():
 	enemy.queue_free()
 	for coin in coins:
 		coin.queue_free()
-	
+
+## SkillBehavior base
 func test_finished():
 	behavior = SkillBehavior.new()
 	watch_signals(behavior)

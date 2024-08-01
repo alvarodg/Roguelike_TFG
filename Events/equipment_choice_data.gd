@@ -9,8 +9,7 @@ class_name EquipmentChoiceData
 @export var rarity_factor: float = 1.0
 @export var deterministic: bool = true
 
+var equipment_choice_scene = load("res://Events/equipment_choice.tscn")
+
 func instantiate_scene(player: Player):
-	scene = load("res://Events/equipment_choice.tscn")
-	var instance: EquipmentChoice = scene.instantiate()
-	instance.initialize(player, self)
-	return instance
+	return _inner_instantiate(player, equipment_choice_scene)

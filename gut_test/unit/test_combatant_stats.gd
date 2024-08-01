@@ -4,7 +4,7 @@ var stats: CombatantStats
 
 func before_each():
 	stats = CombatantStats.new(100)
-	
+
 func test_regular_damage():
 	stats.take_damage(10)
 	assert_eq(stats.health, 90)
@@ -18,6 +18,11 @@ func test_shield_damage():
 	stats.shield = 10
 	stats.take_damage(5)
 	assert_eq(stats.shield, 5)
+
+func test_shield_health():
+	stats.shield = 10
+	stats.take_damage(5)
+	assert_eq(stats.health, 100)
 
 func test_armor_damage():
 	stats.armor = 2
@@ -240,7 +245,7 @@ func test_max_health_changed():
 func test_health_changed():
 	watch_signals(stats)
 	stats.health = 90
-	assert_signal_emitted_with_parameters(stats, 'health_changed', [100, 90])
+	assert_signal_emitted_with_parameters(stats, 'health_changed', [100, 90, 100])
 
 func test_strength_changed():
 	watch_signals(stats)

@@ -12,9 +12,9 @@ class_name ChoiceSequence
 # de la secuencia antes de seleccionarla, si es "true" no se debe mostrar.
 @export var secret: bool = false
 # Narrativa a mostrar antes de ejecutar los eventos y modificadores (opcional)
-@export var pre_narrative: NarrativeSceneData
+@export var pre_narrative: NarrativeEventData
 # Narrativa a mostrar después de ejecutar los eventos y modificadores (opcional)
-@export var post_narrative: NarrativeSceneData
+@export var post_narrative: NarrativeEventData
 # Lista de eventos que se añadirán a la colección de eventos de la partida
 # al completar la secuencia, lo que permitirá que aparezcan aleatoriamente
 @export var event_unlocks: Array[EventData]

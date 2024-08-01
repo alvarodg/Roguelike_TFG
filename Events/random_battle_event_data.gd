@@ -3,8 +3,8 @@ class_name RandomBattleEventData
 
 @export var possible_battles: Array[BattleEventData]
 
-func _init(p_scene = null, p_next_event = null, p_possible_battles: Array[BattleEventData] = []):
-	super(p_scene, p_next_event)
+func _init(p_next_event = null, p_possible_battles: Array[BattleEventData] = []):
+	super(p_next_event)
 	possible_battles = p_possible_battles
 
 func instantiate_scene(player: Player):

@@ -95,11 +95,10 @@ func _on_StopButton_pressed():
 	var heads_count: int = 0
 	for coin in coin_container.get_children():
 		if coin is Coin:
-			if player.logic_flip(coin, rng):
+			if await player.flip(coin, 2, rng):
 				heads_count += 1
 			coin.stop_spinning()
-			# TEMPORAL. Probablemente cambiar el temporizador por algo más elegante.
-			await get_tree().create_timer(0.32).timeout
+		await get_tree().create_timer(0.2).timeout
 	var result = _use_comparison_operator(operator, heads_count, target_heads)
 	stop_button.disabled = true
 	finished.emit(result)

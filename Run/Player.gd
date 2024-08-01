@@ -123,12 +123,12 @@ func end_battle():
 	ended_battle.emit()
 	print("ended signal")
 
-func flip(coin: Coin, rng: RandomNumberGenerator = RandomNumberGenerator.new()):
+func flip(coin: Coin, speed: float = 1.0, rng: RandomNumberGenerator = RandomNumberGenerator.new()):
 	started_flipping_coins.emit()
 	var result = coin.flip(stats.base_luck, _get_bias(), rng)
 	if is_inside_tree():
 		coin.start_spinning()
-		await get_tree().create_timer(0.64).timeout
+		await get_tree().create_timer(coin.get_spin_length()/speed).timeout
 		coin.stop_spinning()
 	if coin in coins:
 		coins_changed.emit(coins)
@@ -136,14 +136,14 @@ func flip(coin: Coin, rng: RandomNumberGenerator = RandomNumberGenerator.new()):
 	return result
 
 # TEMPORAL, reorganizar animación
-func logic_flip(coin: Coin, rng: RandomNumberGenerator = RandomNumberGenerator.new()):
-	started_flipping_coins.emit()
-	#coin.flipped.connect(_on_Coin_flipped)
-	var result = coin.flip(stats.base_luck, _get_bias(), rng)
-	if coin in coins:
-		coins_changed.emit(coins)
-	finished_flipping_coins.emit()
-	return result
+#func logic_flip(coin: Coin, rng: RandomNumberGenerator = RandomNumberGenerator.new()):
+	#started_flipping_coins.emit()
+	##coin.flipped.connect(_on_Coin_flipped)
+	#var result = coin.flip(stats.base_luck, _get_bias(), rng)
+	#if coin in coins:
+		#coins_changed.emit(coins)
+	#finished_flipping_coins.emit()
+	#return result
 
 func flip_all_coins(rng: RandomNumberGenerator = RandomNumberGenerator.new()):
 	# TODO: Reorganizar animación.
@@ -246,7 +246,7 @@ func _on_Stats_coin_count_changed(_old, value):
 func _on_Stats_died():
 	died.emit()
 
-func _on_Stats_changed(_old, _value):
+func _on_Stats_changed(_old = null, _value = null, _other = null):
 	stats_changed.emit(stats)
 	
 func _on_Coin_flipped(coin):

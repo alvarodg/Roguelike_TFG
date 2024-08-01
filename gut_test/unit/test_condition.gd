@@ -305,8 +305,7 @@ func test_has_armor(params=use_parameters(operator_fitting_value)):
 	condition.operator = params[0]
 	condition.target = params[2]
 	condition.connect_to(player)
-	#player.get_stats().armor_changed.emit(0, params[1])
-	player.get_stats().armor = params[1]
+	player.get_stats().armor_changed.emit(0, params[1])
 	assert_signal_emitted_with_parameters(condition, 'state_changed', [condition, true])
 
 func test_has_armor_unfit(params=use_parameters(operator_unfitting_value)):
@@ -315,8 +314,7 @@ func test_has_armor_unfit(params=use_parameters(operator_unfitting_value)):
 	condition.operator = params[0]
 	condition.target = params[2]
 	condition.connect_to(player)
-	#player.get_stats().armor_changed.emit(0, params[1])
-	player.get_stats().armor = params[1]
+	player.get_stats().armor_changed.emit(0, params[1])
 	assert_signal_emitted_with_parameters(condition, 'state_changed', [condition, false])
 
 ## HasShieldCondition
@@ -326,8 +324,7 @@ func test_has_shield(params=use_parameters(operator_fitting_value)):
 	condition.operator = params[0]
 	condition.target = params[2]
 	condition.connect_to(player)
-	#player.get_stats().shield_changed.emit(0, params[1])
-	player.get_stats().shield = params[1]
+	player.get_stats().shield_changed.emit(0, params[1])
 	assert_signal_emitted_with_parameters(condition, 'state_changed', [condition, true])
 
 func test_has_shield_unfit(params=use_parameters(operator_unfitting_value)):
@@ -336,8 +333,7 @@ func test_has_shield_unfit(params=use_parameters(operator_unfitting_value)):
 	condition.operator = params[0]
 	condition.target = params[2]
 	condition.connect_to(player)
-	#player.get_stats().shield_changed.emit(0, params[1])
-	player.get_stats().shield = params[1]
+	player.get_stats().shield_changed.emit(0, params[1])
 	assert_signal_emitted_with_parameters(condition, 'state_changed', [condition, false])
 
 ## InBattleCondition
@@ -384,8 +380,7 @@ func test_percent_health(params=use_parameters(percent_operator_fitting_value)):
 	condition.operator = params[0]
 	condition.percent = params[2]
 	condition.connect_to(player)
-	#player.get_stats().health_changed.emit(0, params[1])
-	player.get_stats().health = params[1]
+	player.get_stats().health_changed.emit(100, params[1], 100)
 	assert_signal_emitted_with_parameters(condition, 'state_changed', [condition, true])
 
 func test_percent_health_unfit(params=use_parameters(percent_operator_unfitting_value)):
@@ -394,6 +389,5 @@ func test_percent_health_unfit(params=use_parameters(percent_operator_unfitting_
 	condition.operator = params[0]
 	condition.percent = params[2]
 	condition.connect_to(player)
-	#player.get_stats().health_changed.emit(0, params[1])
-	player.get_stats().health = params[1]
+	player.get_stats().health_changed.emit(100, params[1], 100)
 	assert_signal_emitted_with_parameters(condition, 'state_changed', [condition, false])

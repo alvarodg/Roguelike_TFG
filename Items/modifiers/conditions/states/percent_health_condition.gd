@@ -9,8 +9,8 @@ func connect_to(p_user):
 	assert(p_user.stats is CombatantStats)
 	p_user.stats.health_changed.connect(_check_status)
 
-func _check_status(_health = null, _max_health = null):
-	var result = _use_comparison_operator(operator, user.stats.health, int(user.stats.max_health * percent))
+func _check_status(_old_health = null, health = null, max_health = null):
+	var result = _use_comparison_operator(operator, health, int(max_health * percent))
 	state_changed.emit(self, result)
 
 func get_description():

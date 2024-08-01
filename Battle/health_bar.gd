@@ -9,11 +9,6 @@ signal health_animation_finished
 func _ready():
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
-
 func setup(combatant: CombatantStats):
 	max_value = combatant.max_health
 	value = combatant.health
@@ -21,7 +16,7 @@ func setup(combatant: CombatantStats):
 	combatant.max_health_changed.connect(_on_Combatant_max_health_changed)
 
 	
-func _on_Combatant_health_changed(_old, health):
+func _on_Combatant_health_changed(_old, health, _max_health):
 	var tween = get_tree().create_tween()
 	var time = (abs(value - health)/max_value) / anim_speed
 	tween.tween_property(self, "value", health, time)

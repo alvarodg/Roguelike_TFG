@@ -126,7 +126,7 @@ func _check_cost():
 		else:
 			button.disabled = true
 
-func show_narrative(narrative: NarrativeSceneData):
+func show_narrative(narrative: NarrativeEventData):
 	if narrative != null:
 		var narrative_instance = narrative.instantiate_scene(player)
 		await ScreenTransitions.fade_to_black()

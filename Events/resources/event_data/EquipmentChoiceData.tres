@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="EventData" load_steps=3 format=3 uid="uid://6mj55fih0kl8"]
-
-[ext_resource type="Script" path="res://Events/EventData.gd" id="1_766dy"]
-[ext_resource type="PackedScene" uid="uid://cdv7jw56dyp3j" path="res://Events/equipment_choice.tscn" id="1_lf05o"]
-
-[resource]
-script = ExtResource("1_766dy")
-description = "Choose a piece of equipment."
-scene = ExtResource("1_lf05o")

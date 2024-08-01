@@ -19,6 +19,7 @@ func after_each():
 	player.queue_free()
 	enemy.queue_free()
 
+## Modifier base
 func test_modifier_finished():
 	modifier = Modifier.new()
 	watch_signals(modifier)

@@ -167,7 +167,7 @@ func _on_hit(damage):
 	number.display_and_free()
 
 
-func _on_Stats_changed(_old, _value):
+func _on_Stats_changed(_old = null, _value = null, _other = null):
 	stats_changed.emit(stats)
 
 
