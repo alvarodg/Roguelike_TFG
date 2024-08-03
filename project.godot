@@ -22,6 +22,10 @@ RunData="*res://Run/RunData.gd"
 ScreenTransitions="*res://Menus/screen_transitions.tscn"
 SystemData="*res://Utilities/SystemData.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [editor]
 
 naming/default_signal_callback_name="_on_{NodeName}_{signal_name}"
@@ -42,3 +46,4 @@ click={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true

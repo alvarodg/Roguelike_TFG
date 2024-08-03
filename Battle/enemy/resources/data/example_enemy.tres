@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EnemyData" load_steps=32 format=3 uid="uid://61ux61gx3x3q"]
+[gd_resource type="Resource" script_class="EnemyData" load_steps=33 format=3 uid="uid://61ux61gx3x3q"]
 
 [ext_resource type="Script" path="res://Battle/enemy/enemy_data.gd" id="1_6kllx"]
 [ext_resource type="Script" path="res://Items/modifiers/components/stats/strength_modifier_component.gd" id="1_m6g4d"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://Battle/skills/SkillData.gd" id="10_gnp78"]
 [ext_resource type="Texture2D" uid="uid://l8diabvbslw6" path="res://Battle/skills/icons/attack_shield_skill.png" id="11_rwwyw"]
 [ext_resource type="Script" path="res://Battle/skills/skill_ui_data.gd" id="12_ggdyu"]
+[ext_resource type="PackedScene" uid="uid://b1c12o4iwexco" path="res://Battle/skills/animations/slash_animation.tscn" id="13_1bvgc"]
 [ext_resource type="Script" path="res://Battle/skills/behaviors/multihit_skill_behavior.gd" id="13_th2g6"]
 [ext_resource type="Texture2D" uid="uid://c4mdodsry7ncw" path="res://Battle/skills/icons/strong_attack_skill.png" id="14_hd25g"]
 [ext_resource type="Script" path="res://Battle/enemy/EnemyStats.gd" id="15_miu76"]
@@ -90,6 +91,7 @@ hits = 3
 ignore_shield = false
 ignore_armor = false
 ignore_dodges = false
+animation_scene = ExtResource("13_1bvgc")
 
 [sub_resource type="Resource" id="Resource_1f6vb"]
 script = ExtResource("12_ggdyu")

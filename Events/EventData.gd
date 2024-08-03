@@ -42,7 +42,4 @@ func _inner_instantiate(player: Player, p_scene) -> EventScene:
 
 
 func get_description() -> String:
-	if description == "":
-		return "Default Event"
-	else:
-		return description
+	return description

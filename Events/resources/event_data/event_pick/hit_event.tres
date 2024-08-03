@@ -71,7 +71,7 @@ post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_compo
 events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_5xyfl")])
 secret = false
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
-make_unique = false
+make_unique = true
 
 [sub_resource type="Resource" id="Resource_x7ik3"]
 script = ExtResource("3_dsxa4")

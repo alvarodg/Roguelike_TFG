@@ -1,8 +1,7 @@
-[gd_resource type="Resource" script_class="BattleEventData" load_steps=5 format=3 uid="uid://dvgi2ssh6mwbh"]
+[gd_resource type="Resource" script_class="BattleEventData" load_steps=4 format=3 uid="uid://dvgi2ssh6mwbh"]
 
 [ext_resource type="Script" path="res://Events/BattleEventData.gd" id="1_uown2"]
 [ext_resource type="Resource" uid="uid://4msvwnp5eq7u" path="res://Battle/enemy/resources/data/elite_enemy_data.tres" id="1_vic8r"]
-[ext_resource type="PackedScene" uid="uid://ci2osml7lmqcy" path="res://Battle/CoinBattle.tscn" id="2_do2un"]
 [ext_resource type="Resource" uid="uid://du3kb0pjh3lom" path="res://Events/resources/event_data/random_skill_choice.tres" id="2_grfnt"]
 
 [resource]
@@ -10,7 +9,6 @@ script = ExtResource("1_uown2")
 enemy_data = ExtResource("1_vic8r")
 name = ""
 description = "Fight an elite enemy."
-scene = ExtResource("2_do2un")
 next_event = ExtResource("2_grfnt")
 rarity = 1
 tags = Array[int]([0])

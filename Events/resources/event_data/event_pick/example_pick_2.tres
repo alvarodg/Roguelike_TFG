@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EventPickData" load_steps=16 format=3 uid="uid://h7eogms4esk5"]
+[gd_resource type="Resource" script_class="EventPickData" load_steps=26 format=3 uid="uid://h7eogms4esk5"]
 
 [ext_resource type="Script" path="res://Items/modifiers/components/stats/health_modifier_component.gd" id="1_lhax0"]
 [ext_resource type="Script" path="res://Items/modifiers/cost/health_cost.gd" id="2_p4unu"]
@@ -7,26 +7,30 @@
 [ext_resource type="Resource" uid="uid://ckmaxgn0hedc6" path="res://Battle/skills/resources/example_skill.tres" id="5_83qrt"]
 [ext_resource type="Script" path="res://Run/skill_collection.gd" id="6_gx4ah"]
 [ext_resource type="Script" path="res://Events/event_choice/choice_sequence.gd" id="7_ldk1o"]
+[ext_resource type="Resource" uid="uid://cdgg8up4w4uq0" path="res://Events/resources/event_data/battle/example_battle.tres" id="8_6xfhi"]
+[ext_resource type="Script" path="res://Events/event_choice/choice_coin_box_data.gd" id="9_n3g7b"]
+[ext_resource type="Script" path="res://Events/event_choice/split_event_choice_data.gd" id="10_sejav"]
+[ext_resource type="Script" path="res://Events/equipment_choice_data.gd" id="11_af4rn"]
 [ext_resource type="Texture2D" uid="uid://djmrox3cqnntc" path="res://icon.svg" id="13_lxpjb"]
 [ext_resource type="Script" path="res://Events/event_choice/event_pick_data.gd" id="14_xo05d"]
 
-[sub_resource type="Resource" id="Resource_5rp62"]
+[sub_resource type="Resource" id="Resource_mvyje"]
 script = ExtResource("1_lhax0")
 magnitude = -10.0
 action = 0
 
-[sub_resource type="Resource" id="Resource_j4eul"]
+[sub_resource type="Resource" id="Resource_6t3o4"]
 script = ExtResource("2_p4unu")
-health_mod = SubResource("Resource_5rp62")
+health_mod = SubResource("Resource_mvyje")
 
-[sub_resource type="Resource" id="Resource_ruhlj"]
+[sub_resource type="Resource" id="Resource_okohq"]
 script = ExtResource("6_gx4ah")
 list = Array[Resource("res://Battle/skills/SkillData.gd")]([ExtResource("5_83qrt")])
 
-[sub_resource type="Resource" id="Resource_w8ooy"]
+[sub_resource type="Resource" id="Resource_fhjmw"]
 script = ExtResource("4_rimk7")
 choices = 1
-skill_collection = SubResource("Resource_ruhlj")
+skill_collection = SubResource("Resource_okohq")
 skill_tags = Array[int]([])
 tag_op = 1
 rarities = Array[int]([])
@@ -42,14 +46,12 @@ goes_to_next_level = false
 is_final_event = false
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 
-[sub_resource type="Resource" id="Resource_u3loe"]
+[sub_resource type="Resource" id="Resource_nuwcp"]
 script = ExtResource("7_ldk1o")
 pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
-events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_w8ooy")])
+events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_fhjmw")])
 secret = false
-pre_narrative = ""
-post_narrative = ""
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 make_unique = false
 
@@ -57,8 +59,66 @@ make_unique = false
 script = ExtResource("3_7p6np")
 description = "Decisión 1: Paga vida para obtener una habilidad."
 explicit = false
-cost = SubResource("Resource_j4eul")
-sequence = SubResource("Resource_u3loe")
+cost = SubResource("Resource_6t3o4")
+sequence = SubResource("Resource_nuwcp")
+final = true
+secret = false
+
+[sub_resource type="Resource" id="Resource_hqwwf"]
+script = ExtResource("1_lhax0")
+magnitude = -20.0
+action = 0
+
+[sub_resource type="Resource" id="Resource_a36dj"]
+script = ExtResource("7_ldk1o")
+pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_hqwwf")])
+post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+events = Array[Resource("res://Events/EventData.gd")]([ExtResource("8_6xfhi")])
+secret = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+make_unique = false
+
+[sub_resource type="Resource" id="Resource_t4uye"]
+script = ExtResource("9_n3g7b")
+coin_amount = 3
+target_heads = 2
+operator = 1
+
+[sub_resource type="Resource" id="Resource_k2sng"]
+script = ExtResource("11_af4rn")
+choices = 3
+equip_tags = Array[int]([])
+tag_op = 1
+rarities = Array[int]([])
+rarity_factor = 1.0
+deterministic = true
+name = ""
+description = "Elige un equipamiente de entre tres sin restricciones."
+rarity = 1
+tags = Array[int]([0])
+secret = false
+unique = false
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
+[sub_resource type="Resource" id="Resource_ba0ef"]
+script = ExtResource("7_ldk1o")
+pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_k2sng")])
+secret = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+make_unique = true
+
+[sub_resource type="Resource" id="Resource_hrxig"]
+script = ExtResource("10_sejav")
+alt_sequence = SubResource("Resource_a36dj")
+coinbox_data = SubResource("Resource_t4uye")
+deterministic = true
+description = "Decisión 2: Tirada de monedas con distinto comportamiento para cada resultado."
+explicit = false
+sequence = SubResource("Resource_ba0ef")
 final = true
 secret = false
 
@@ -66,7 +126,7 @@ secret = false
 script = ExtResource("14_xo05d")
 narrative = "Descripción del evento."
 image = ExtResource("13_lxpjb")
-choices = Array[ExtResource("3_7p6np")]([SubResource("Resource_eipbi"), null])
+choices = Array[ExtResource("3_7p6np")]([SubResource("Resource_eipbi"), SubResource("Resource_hrxig")])
 name = "EJEMPLO"
 description = "Ejemplo de evento de decisión"
 rarity = 1

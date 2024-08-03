@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EventPickData" load_steps=15 format=3 uid="uid://ultgyeymw3f2"]
+[gd_resource type="Resource" script_class="EventPickData" load_steps=18 format=3 uid="uid://ultgyeymw3f2"]
 
 [ext_resource type="Script" path="res://Items/modifiers/components/stats/health_modifier_component.gd" id="1_fokjb"]
 [ext_resource type="Script" path="res://Events/event_choice/event_pick_data.gd" id="1_w6xr5"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Events/event_choice/event_choice_data.gd" id="3_c87rl"]
 [ext_resource type="Script" path="res://Items/modifiers/components/stats/max_health_modifier.gd" id="4_nexht"]
 [ext_resource type="Script" path="res://Events/event_choice/choice_sequence.gd" id="5_dc0e0"]
+[ext_resource type="Script" path="res://Events/narrative_event_data.gd" id="5_qmie6"]
 
 [sub_resource type="Resource" id="Resource_7818c"]
 script = ExtResource("1_fokjb")
@@ -22,12 +23,26 @@ fill = false
 magnitude = 5.0
 action = 0
 
+[sub_resource type="Resource" id="Resource_s5ia0"]
+script = ExtResource("5_qmie6")
+narrative = Array[String](["You feel bigger."])
+name = ""
+description = ""
+rarity = 1
+tags = Array[int]([0])
+secret = false
+unique = false
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
 [sub_resource type="Resource" id="Resource_d5egg"]
 script = ExtResource("5_dc0e0")
 pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_u3a88")])
 events = Array[Resource("res://Events/EventData.gd")]([])
 secret = false
+post_narrative = SubResource("Resource_s5ia0")
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 make_unique = false
 
@@ -45,12 +60,26 @@ script = ExtResource("1_fokjb")
 magnitude = 30.0
 action = 0
 
+[sub_resource type="Resource" id="Resource_jv1tl"]
+script = ExtResource("5_qmie6")
+narrative = Array[String](["You feel as rested as you can feel in this place, which is not a lot."])
+name = ""
+description = ""
+rarity = 1
+tags = Array[int]([0])
+secret = false
+unique = false
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
 [sub_resource type="Resource" id="Resource_l4pvf"]
 script = ExtResource("5_dc0e0")
 pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_jqq3w")])
 events = Array[Resource("res://Events/EventData.gd")]([])
 secret = false
+post_narrative = SubResource("Resource_jv1tl")
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 make_unique = false
 

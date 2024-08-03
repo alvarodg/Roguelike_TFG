@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="EventPickData" load_steps=21 format=3 uid="uid://0eie3bw4hhe7"]
+[gd_resource type="Resource" script_class="EventPickData" load_steps=25 format=3 uid="uid://0eie3bw4hhe7"]
 
 [ext_resource type="Script" path="res://Events/event_choice/event_choice_data.gd" id="1_2l0ka"]
 [ext_resource type="Script" path="res://Events/event_choice/event_pick_data.gd" id="1_4gicc"]
 [ext_resource type="Script" path="res://Events/equipment_choice_data.gd" id="2_57qbs"]
 [ext_resource type="Resource" uid="uid://rvxldc3auvnb" path="res://Events/resources/event_data/event_pick/sequels/wishing_well_2_took.tres" id="2_x7ce5"]
 [ext_resource type="Script" path="res://Events/event_choice/choice_sequence.gd" id="3_bl7qb"]
+[ext_resource type="Script" path="res://Events/narrative_event_data.gd" id="4_4vwab"]
 [ext_resource type="Script" path="res://Events/event_choice/choice_coin_box_data.gd" id="4_dmhnw"]
 [ext_resource type="Script" path="res://Events/event_choice/split_event_choice_data.gd" id="5_f7o18"]
 [ext_resource type="Script" path="res://Items/modifiers/components/coin_count_modifier_component.gd" id="5_wkt41"]
@@ -28,23 +29,51 @@ goes_to_next_level = false
 is_final_event = false
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 
+[sub_resource type="Resource" id="Resource_vu5og"]
+script = ExtResource("4_4vwab")
+narrative = Array[String](["It was not pretty, but you finally found something.
+
+...Why do you feel like  there's somebody watching you?"])
+name = ""
+description = ""
+rarity = 1
+tags = Array[int]([0])
+secret = false
+unique = false
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
 [sub_resource type="Resource" id="Resource_4kt86"]
 script = ExtResource("3_bl7qb")
 pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_mo3sa")])
 secret = false
+post_narrative = SubResource("Resource_vu5og")
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([ExtResource("2_x7ce5")])
 make_unique = false
 
 [sub_resource type="Resource" id="Resource_nugma"]
 script = ExtResource("1_2l0ka")
-description = "You're a cool intellectual that doesn't believe in superstitions. Reach in and try to fish a coin out.
-(Ejemplo de secuela, desbloquea el siguiente evento)"
+description = "You're a cool intellectual that doesn't believe in superstitions. Reach in and try to fish a coin out."
 explicit = false
 sequence = SubResource("Resource_4kt86")
 final = true
 secret = false
+
+[sub_resource type="Resource" id="Resource_13jck"]
+script = ExtResource("4_4vwab")
+narrative = Array[String](["Welp, there it goes. You watch you coin slowly sink into the depths, and that experience is all you earn."])
+name = ""
+description = ""
+rarity = 1
+tags = Array[int]([0])
+secret = false
+unique = false
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 
 [sub_resource type="Resource" id="Resource_ytfy5"]
 script = ExtResource("3_bl7qb")
@@ -52,6 +81,7 @@ pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_compon
 post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 events = Array[Resource("res://Events/EventData.gd")]([])
 secret = false
+post_narrative = SubResource("Resource_13jck")
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 make_unique = false
 
@@ -91,12 +121,26 @@ event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 script = ExtResource("5_wkt41")
 coin_count = 1
 
+[sub_resource type="Resource" id="Resource_mmi8x"]
+script = ExtResource("4_4vwab")
+narrative = Array[String]([])
+name = ""
+description = "You almost trip on something as you throw your coin in. That was fast."
+rarity = 1
+tags = Array[int]([0])
+secret = false
+unique = false
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
 [sub_resource type="Resource" id="Resource_hwgt5"]
 script = ExtResource("3_bl7qb")
 pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_at3u7")])
 post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_yhbh2")])
 secret = false
+pre_narrative = SubResource("Resource_mmi8x")
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 make_unique = false
 

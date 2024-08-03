@@ -15,7 +15,7 @@ var rng: RandomNumberGenerator
 
 ## Comprobando un nodo y la matriz en la que se encuentra, devuelve un evento
 ## a partir de las reglas definidas.
-func get_event(p_rng: RandomNumberGenerator, node_matrix :Array = [], node: EventNode = null) -> Event:
+func get_event(p_rng: RandomNumberGenerator, nested_node_list :Array = [], node: EventNode = null) -> Event:
 	rng = p_rng
 	# Si no se le pasa un nodo, devuelve un evento vacío
 	if not node is EventNode: return Event.new()
@@ -23,7 +23,7 @@ func get_event(p_rng: RandomNumberGenerator, node_matrix :Array = [], node: Even
 	# (se aplicará la primera que se encuentre)
 	for restriction in restrictions:
 		# Si se aplica una restricción, devuelve su evento asociado
-		if restriction.check(node_matrix, node):
+		if restriction.check(nested_node_list, node):
 			return restriction.event
 	# Selecciona un evento de acuerdo con sus probabilidades
 	var total_chance = 0.0

@@ -13,6 +13,7 @@ script = ExtResource("1_0bscs")
 min_damage_threshold = 0
 amount = 5
 restart_per_turn = true
+restart_per_battle = true
 
 [sub_resource type="Resource" id="Resource_3iw7m"]
 script = ExtResource("2_4vmna")

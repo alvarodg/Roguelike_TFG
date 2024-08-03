@@ -96,10 +96,12 @@ func _on_StopButton_pressed():
 	for coin in coin_container.get_children():
 		if coin is Coin:
 			if await player.flip(coin, 2, rng):
+				print("Landed on heads")
 				heads_count += 1
 			coin.stop_spinning()
 		await get_tree().create_timer(0.2).timeout
 	var result = _use_comparison_operator(operator, heads_count, target_heads)
+	print(result)
 	stop_button.disabled = true
 	finished.emit(result)
 

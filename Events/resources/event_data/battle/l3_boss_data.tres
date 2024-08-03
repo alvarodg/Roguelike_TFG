@@ -1,7 +1,6 @@
-[gd_resource type="Resource" script_class="BattleEventData" load_steps=4 format=3 uid="uid://8x6iblts1gf4"]
+[gd_resource type="Resource" script_class="BattleEventData" load_steps=3 format=3 uid="uid://8x6iblts1gf4"]
 
 [ext_resource type="Resource" uid="uid://jlcky6cxyuuq" path="res://Battle/enemy/resources/data/berserker_boss_data.tres" id="1_qnrdm"]
-[ext_resource type="PackedScene" uid="uid://ci2osml7lmqcy" path="res://Battle/CoinBattle.tscn" id="3_8s5xh"]
 [ext_resource type="Script" path="res://Events/BattleEventData.gd" id="4_qqdud"]
 
 [resource]
@@ -9,7 +8,6 @@ script = ExtResource("4_qqdud")
 enemy_data = ExtResource("1_qnrdm")
 name = ""
 description = ""
-scene = ExtResource("3_8s5xh")
 rarity = 1
 tags = Array[int]([0])
 secret = false

@@ -14,3 +14,8 @@ func _init(p_next_event = null, p_enemy_data = null):
 func instantiate_scene(player: Player):
 	return _inner_instantiate(player, battle_scene)
 
+func get_description() -> String:
+	if description == "":
+		return "Fight against " + enemy_data.ui_data.ui_name
+	else:
+		return description

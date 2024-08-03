@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://p7bi8ul5sa3d"]
 
 [ext_resource type="Script" path="res://Tests/test_event.gd" id="1_5fra8"]
-[ext_resource type="Resource" uid="uid://f7eh7cotucrk" path="res://Events/resources/event_data/event_pick/dispute_event.tres" id="2_bgbaq"]
+[ext_resource type="Resource" uid="uid://cfvkrghviixmx" path="res://Events/resources/event_data/event_pick/slot_machine.tres" id="2_b2hyr"]
 [ext_resource type="Script" path="res://Run/Player.gd" id="3_c1xat"]
 [ext_resource type="Script" path="res://Battle/combatant/PlayerStats.gd" id="4_rki66"]
 [ext_resource type="Script" path="res://Run/PlayerUIData.gd" id="5_h1yvh"]
@@ -35,7 +35,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5fra8")
-event_data = ExtResource("2_bgbaq")
+event_data = ExtResource("2_b2hyr")
 
 [node name="Player" type="Node" parent="."]
 script = ExtResource("3_c1xat")

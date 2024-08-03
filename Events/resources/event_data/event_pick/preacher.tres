@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="EventPickData" load_steps=21 format=3 uid="uid://cm5x8bjhmsv5y"]
+[gd_resource type="Resource" script_class="EventPickData" load_steps=25 format=3 uid="uid://cm5x8bjhmsv5y"]
 
 [ext_resource type="Script" path="res://Items/modifiers/components/stats/health_modifier_component.gd" id="1_cb3no"]
 [ext_resource type="Script" path="res://Events/event_choice/event_pick_data.gd" id="1_ffhs2"]
 [ext_resource type="Script" path="res://Items/modifiers/cost/health_cost.gd" id="2_h14p6"]
 [ext_resource type="Script" path="res://Events/event_choice/event_choice_data.gd" id="3_umjek"]
 [ext_resource type="Script" path="res://Events/skill_choice_data.gd" id="4_8m8ou"]
+[ext_resource type="Script" path="res://Events/narrative_event_data.gd" id="5_sulfy"]
 [ext_resource type="Script" path="res://Events/event_choice/choice_sequence.gd" id="5_wfnsd"]
 [ext_resource type="Resource" uid="uid://4msvwnp5eq7u" path="res://Battle/enemy/resources/data/elite_enemy_data.tres" id="6_up403"]
 [ext_resource type="Script" path="res://Events/BattleEventData.gd" id="7_qjo8l"]
@@ -36,12 +37,28 @@ goes_to_next_level = false
 is_final_event = false
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 
+[sub_resource type="Resource" id="Resource_qj8ie"]
+script = ExtResource("5_sulfy")
+narrative = Array[String](["It all makes perfect sense to you. The mere act of losing something earns you the experience of having lost it. Isn't that a reward in and of itself? 
+
+That hopefully also applies to the blood still pouring out of your ear."])
+name = ""
+description = ""
+rarity = 1
+tags = Array[int]([0])
+secret = false
+unique = false
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
 [sub_resource type="Resource" id="Resource_aq51u"]
 script = ExtResource("5_wfnsd")
 pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_tu4mf")])
 secret = false
+pre_narrative = SubResource("Resource_qj8ie")
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 make_unique = false
 
@@ -59,6 +76,21 @@ script = ExtResource("7_qjo8l")
 enemy_data = ExtResource("6_up403")
 name = ""
 description = "Fight the heathen."
+rarity = 1
+tags = Array[int]([0])
+secret = false
+unique = false
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
+[sub_resource type="Resource" id="Resource_7875j"]
+script = ExtResource("5_sulfy")
+narrative = Array[String](["Everything you own is yours to keep. 
+
+You were not sent here to lose a thing."])
+name = ""
+description = ""
 rarity = 1
 tags = Array[int]([0])
 secret = false
@@ -89,14 +121,14 @@ event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 script = ExtResource("5_wfnsd")
 pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
-events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_3cbd6"), SubResource("Resource_hbf2m")])
+events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_3cbd6"), SubResource("Resource_7875j"), SubResource("Resource_hbf2m")])
 secret = false
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 make_unique = false
 
 [sub_resource type="Resource" id="Resource_vwuce"]
 script = ExtResource("3_umjek")
-description = "Smite this heathen where he stands."
+description = "Smite this heathen where they stand."
 explicit = false
 sequence = SubResource("Resource_w22t7")
 final = true
@@ -120,18 +152,32 @@ goes_to_next_level = false
 is_final_event = false
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 
+[sub_resource type="Resource" id="Resource_hea86"]
+script = ExtResource("5_sulfy")
+narrative = Array[String](["Ideals are meant for those fortunate enough to have the chance to uphold them. You have more pressing matters to attend to."])
+name = ""
+description = ""
+rarity = 1
+tags = Array[int]([0])
+secret = false
+unique = false
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
 [sub_resource type="Resource" id="Resource_2hcv5"]
 script = ExtResource("5_wfnsd")
 pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_ihne4")])
 secret = false
+pre_narrative = SubResource("Resource_hea86")
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 make_unique = false
 
 [sub_resource type="Resource" id="Resource_gj21m"]
 script = ExtResource("3_umjek")
-description = "Ignore him and leave."
+description = "Ignore them and leave."
 explicit = false
 sequence = SubResource("Resource_2hcv5")
 final = true
@@ -139,7 +185,7 @@ secret = false
 
 [resource]
 script = ExtResource("1_ffhs2")
-narrative = "You find a friendly disciple of the Fallen trying to spread the good message. Just listening to his voice noticeably enriches your mind and soul. Is that blood coming out of your ear?"
+narrative = "You find a friendly disciple of the Fallen trying to spread the good word. Just listening to their voice noticeably enriches your mind and soul. Is that blood coming out of your ear?"
 choices = Array[ExtResource("3_umjek")]([SubResource("Resource_kecce"), SubResource("Resource_vwuce"), SubResource("Resource_gj21m")])
 name = "Preacher"
 description = ""

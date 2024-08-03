@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="EventPickData" load_steps=16 format=3 uid="uid://cfvkrghviixmx"]
+[gd_resource type="Resource" script_class="EventPickData" load_steps=19 format=3 uid="uid://cfvkrghviixmx"]
 
 [ext_resource type="Script" path="res://Events/event_choice/event_pick_data.gd" id="1_5vtbl"]
+[ext_resource type="Script" path="res://Events/narrative_event_data.gd" id="1_hw4hx"]
 [ext_resource type="Script" path="res://Events/event_choice/choice_sequence.gd" id="1_ok345"]
 [ext_resource type="Script" path="res://Events/event_choice/choice_coin_box_data.gd" id="2_atm3f"]
 [ext_resource type="Script" path="res://Events/event_choice/split_event_choice_data.gd" id="3_0sbc8"]
@@ -8,12 +9,26 @@
 [ext_resource type="Script" path="res://Events/event_choice/event_choice_data.gd" id="5_qp6l0"]
 [ext_resource type="Script" path="res://Events/equipment_choice_data.gd" id="6_dlxhx"]
 
+[sub_resource type="Resource" id="Resource_3q2dj"]
+script = ExtResource("1_hw4hx")
+narrative = Array[String](["Huh. Nothing. Who could have seen this coming?"])
+name = ""
+description = ""
+rarity = 1
+tags = Array[int]([0])
+secret = false
+unique = false
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
 [sub_resource type="Resource" id="Resource_rl2cw"]
 script = ExtResource("1_ok345")
 pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 events = Array[Resource("res://Events/EventData.gd")]([])
 secret = false
+post_narrative = SubResource("Resource_3q2dj")
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 make_unique = false
 
@@ -27,12 +42,26 @@ operator = 2
 script = ExtResource("4_oc2hx")
 coin_count = 3
 
+[sub_resource type="Resource" id="Resource_b7fo2"]
+script = ExtResource("1_hw4hx")
+narrative = Array[String](["You win, as expected. Three coins come sliding out of the machine. A bit underwhelming compared to your expectations, but it'll do."])
+name = ""
+description = ""
+rarity = 1
+tags = Array[int]([0])
+secret = false
+unique = false
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
 [sub_resource type="Resource" id="Resource_k1faj"]
 script = ExtResource("1_ok345")
 pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_6n7f5")])
 events = Array[Resource("res://Events/EventData.gd")]([])
 secret = false
+post_narrative = SubResource("Resource_b7fo2")
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 make_unique = false
 
@@ -49,7 +78,7 @@ secret = false
 
 [sub_resource type="Resource" id="Resource_sgese"]
 script = ExtResource("6_dlxhx")
-choices = 3
+choices = 1
 equip_tags = Array[int]([4])
 tag_op = 1
 rarities = Array[int]([])

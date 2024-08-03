@@ -10,6 +10,7 @@ script = ExtResource("1_sguug")
 facing = 1
 amount = 1
 restart_per_turn = true
+restart_per_battle = true
 
 [sub_resource type="Resource" id="Resource_umsnd"]
 script = ExtResource("2_pcw5m")

@@ -8,7 +8,7 @@
 
 [sub_resource type="Resource" id="Resource_vj64a"]
 script = ExtResource("1_nnm0p")
-magnitude = -150.0
+magnitude = -40.0
 action = 0
 
 [sub_resource type="Resource" id="Resource_psgrm"]
@@ -26,8 +26,7 @@ make_unique = false
 
 [resource]
 script = ExtResource("3_dakq6")
-description = "Pay a huge sum.
-(Ejemplo de coste que no se puede pagar)"
+description = "Pay a big prize."
 explicit = true
 cost = SubResource("Resource_psgrm")
 sequence = SubResource("Resource_6escc")

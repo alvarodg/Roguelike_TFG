@@ -2,7 +2,6 @@ extends Modifier
 class_name ExtraCoinModifier
 
 @export var coin_data_list: Array[CoinData]
-# Posiblemente sustituir por arrays
 @export var ephemeral: bool = true
 @export var facing: Coin.Facing
 

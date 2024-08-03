@@ -5,9 +5,11 @@ extends Control
 @onready var seed_panel = %SeedPanel
 @onready var seed_edit = %SeedEdit
 @onready var start_seeded_button = %StartSeededButton
+@onready var credits_panel = %CreditsPanel
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	credits_panel.hide()
 	continue_button.disabled = true
 	start_seeded_button.disabled = true
 	if RunData.save_exists():
@@ -53,3 +55,11 @@ func _on_StartSeededButton_pressed():
 
 func _on_QuitButton_pressed():
 	get_tree().quit()
+
+
+func _on_CreditsButton_pressed():
+	credits_panel.show()
+
+func _on_CreditsPanel_gui_input(event):
+	if event is InputEventMouseButton:
+		credits_panel.hide()

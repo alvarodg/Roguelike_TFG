@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EventPickData" load_steps=28 format=3 uid="uid://ccaqy5slnalwh"]
+[gd_resource type="Resource" script_class="EventPickData" load_steps=31 format=3 uid="uid://ccaqy5slnalwh"]
 
 [ext_resource type="Script" path="res://Items/modifiers/components/stats/health_modifier_component.gd" id="1_3gkms"]
 [ext_resource type="Script" path="res://Events/event_choice/event_pick_data.gd" id="1_o2c3f"]
@@ -12,6 +12,7 @@
 [ext_resource type="Resource" uid="uid://cytalqnpi50kb" path="res://Events/resources/event_data/event_pick/sequels/holdup_2a_stole.tres" id="9_b3aog"]
 [ext_resource type="Script" path="res://Events/event_choice/choice_coin_box_data.gd" id="9_hut8e"]
 [ext_resource type="Script" path="res://Events/event_choice/split_event_choice_data.gd" id="10_lhaah"]
+[ext_resource type="Script" path="res://Events/narrative_event_data.gd" id="10_qryk8"]
 
 [sub_resource type="Resource" id="Resource_p68lh"]
 script = ExtResource("1_3gkms")
@@ -72,13 +73,25 @@ make_unique = false
 
 [sub_resource type="Resource" id="Resource_06gj2"]
 script = ExtResource("3_608jo")
-description = "Pay up and be on your way.
-(Ejemplo de secuela, podrá aparecer siguiendo esta opción)"
+description = "Pay up and be on your way."
 explicit = false
 cost = SubResource("Resource_al1g2")
 sequence = SubResource("Resource_6l4b0")
 final = true
 secret = false
+
+[sub_resource type="Resource" id="Resource_3tk6h"]
+script = ExtResource("10_qryk8")
+narrative = Array[String](["Doesn't seem much for converstation. You let your guard down."])
+name = ""
+description = ""
+rarity = 1
+tags = Array[int]([0])
+secret = true
+unique = false
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 
 [sub_resource type="Resource" id="Resource_nmpb3"]
 script = ExtResource("5_bc8ei")
@@ -102,7 +115,7 @@ action = 0
 script = ExtResource("6_svos6")
 pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_t7cmb")])
 post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
-events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_nmpb3")])
+events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_3tk6h"), SubResource("Resource_nmpb3")])
 secret = false
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 make_unique = false
@@ -113,12 +126,26 @@ coin_amount = 3
 target_heads = 3
 operator = 2
 
+[sub_resource type="Resource" id="Resource_4y6x2"]
+script = ExtResource("10_qryk8")
+narrative = Array[String](["It worked, somehow."])
+name = ""
+description = ""
+rarity = 1
+tags = Array[int]([0])
+secret = false
+unique = false
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
 [sub_resource type="Resource" id="Resource_e07bk"]
 script = ExtResource("6_svos6")
 pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 events = Array[Resource("res://Events/EventData.gd")]([])
 secret = false
+post_narrative = SubResource("Resource_4y6x2")
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 make_unique = false
 

@@ -81,6 +81,7 @@ func _on_coinbox_selected():
 	
 func _on_coinbox_finished(result: bool):
 	var chosen_sequence = sequence if result else alt_sequence
+	print(chosen_sequence == sequence)
 	if sequence != null:
 		await _apply_sequence(chosen_sequence)
 	if final:

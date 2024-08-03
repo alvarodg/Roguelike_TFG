@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="EventPickData" load_steps=12 format=3 uid="uid://bit1qw17b0vhy"]
+[gd_resource type="Resource" script_class="EventPickData" load_steps=14 format=3 uid="uid://bit1qw17b0vhy"]
 
 [ext_resource type="Script" path="res://Events/event_choice/event_pick_data.gd" id="1_0nb5o"]
 [ext_resource type="Script" path="res://Items/modifiers/components/coin_count_modifier_component.gd" id="1_7yhku"]
 [ext_resource type="Script" path="res://Items/modifiers/cost/coin_cost.gd" id="2_eihhl"]
 [ext_resource type="Script" path="res://Events/event_choice/event_choice_data.gd" id="3_awqvb"]
 [ext_resource type="Resource" uid="uid://dqywxadfpas21" path="res://Events/resources/event_data/event_pick/sequels/investment_2_invested.tres" id="4_5meiu"]
+[ext_resource type="Script" path="res://Events/narrative_event_data.gd" id="5_efoe2"]
 [ext_resource type="Script" path="res://Events/event_choice/choice_sequence.gd" id="5_htked"]
 
 [sub_resource type="Resource" id="Resource_g77ma"]
@@ -15,19 +16,32 @@ coin_count = -1
 script = ExtResource("2_eihhl")
 coin_count_mod = SubResource("Resource_g77ma")
 
+[sub_resource type="Resource" id="Resource_syehf"]
+script = ExtResource("5_efoe2")
+narrative = Array[String](["You gave him your  coin, he gave you his promises. Let's hope that trade's on your favor."])
+name = ""
+description = ""
+rarity = 1
+tags = Array[int]([0])
+secret = false
+unique = false
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
 [sub_resource type="Resource" id="Resource_ogexn"]
 script = ExtResource("5_htked")
 pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 events = Array[Resource("res://Events/EventData.gd")]([])
 secret = false
+post_narrative = SubResource("Resource_syehf")
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([ExtResource("4_5meiu")])
 make_unique = false
 
 [sub_resource type="Resource" id="Resource_e08el"]
 script = ExtResource("3_awqvb")
-description = "Give it to him so that he leaves you alone.
-(Ejemplo de secuela, desbloquea la siguiente parte)"
+description = "Give it to him so that he leaves you alone."
 explicit = false
 cost = SubResource("Resource_rfcfx")
 sequence = SubResource("Resource_ogexn")

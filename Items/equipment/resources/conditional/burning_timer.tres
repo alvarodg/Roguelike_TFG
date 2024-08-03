@@ -14,6 +14,7 @@ script = ExtResource("2_1x6ov")
 at_beginning = true
 amount = 1
 restart_per_turn = true
+restart_per_battle = true
 
 [sub_resource type="Resource" id="Resource_n1odi"]
 script = ExtResource("4_ppj5y")

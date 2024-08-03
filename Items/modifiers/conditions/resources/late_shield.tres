@@ -10,6 +10,7 @@ script = ExtResource("1_ludhg")
 min_damage_threshold = 0
 amount = 1
 restart_per_turn = true
+restart_per_battle = true
 
 [sub_resource type="Resource" id="Resource_idrmq"]
 script = ExtResource("2_iynpe")

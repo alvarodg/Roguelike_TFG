@@ -28,6 +28,7 @@ script = ExtResource("1_74hcs")
 at_beginning = false
 amount = 1
 restart_per_turn = true
+restart_per_battle = true
 
 [sub_resource type="Resource" id="Resource_oda8s"]
 script = ExtResource("2_ci1wy")
@@ -62,6 +63,7 @@ script = ExtResource("7_8c1ye")
 min_damage_threshold = 0
 amount = 1
 restart_per_turn = true
+restart_per_battle = true
 
 [sub_resource type="Resource" id="Resource_ntt4y"]
 script = ExtResource("8_qd1sk")

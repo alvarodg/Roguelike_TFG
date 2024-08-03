@@ -11,6 +11,8 @@ signal remaining_changed(amount, remaining)
 @export var amount: int = 1
 ## true para reiniciar el contador al principio del turno
 @export var restart_per_turn: bool = true
+## true para reiniciar el contador al final de cada combate
+@export var restart_per_battle: bool = true
 ## Contador de ocurrencias pendientes
 var remaining: int : set = set_remaining
 
@@ -26,6 +28,8 @@ func connect_to(p_user):
 	remaining = amount
 	if restart_per_turn:
 		p_user.started_turn.connect(_reset)
+	if restart_per_battle:
+		p_user.ended_battle.connect(_reset)
 
 ## Envía la señal met
 func _on_met():

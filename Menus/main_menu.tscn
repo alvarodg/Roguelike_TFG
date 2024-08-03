@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://b8nvuhpu5i8fs"]
+[gd_scene load_steps=5 format=3 uid="uid://b8nvuhpu5i8fs"]
 
 [ext_resource type="Script" path="res://Menus/main_menu.gd" id="1_pkiib"]
 
@@ -9,6 +9,12 @@ border_width_right = 4
 border_width_bottom = 4
 border_color = Color(0.0588235, 0.0588235, 0.0588235, 1)
 border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_upfs5"]
+bg_color = Color(0.176419, 0.176419, 0.176419, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_6v35p"]
+line_spacing = 0.0
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -64,6 +70,10 @@ text = "New Run"
 [node name="NewSeededRunButton" type="Button" parent="Control/MainMenuPanel/VBoxContainer"]
 layout_mode = 2
 text = "New Run (seeded)"
+
+[node name="CreditsButton" type="Button" parent="Control/MainMenuPanel/VBoxContainer"]
+layout_mode = 2
+text = "Credits"
 
 [node name="QuitButton" type="Button" parent="Control/MainMenuPanel/VBoxContainer"]
 layout_mode = 2
@@ -122,10 +132,78 @@ custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 text = "Start"
 
+[node name="CreditsPanel" type="Panel" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_upfs5")
+
+[node name="CreditsText" type="Label" parent="CreditsPanel"]
+custom_minimum_size = Vector2(800, 600)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/line_spacing = 0
+text = "Este proyecto ha sido desarrollado como trabajo de fin de grado para el Grado de Ingeniería Infórmatica de la Universidad de Cádiz.
+
+Alumno: Álvaro Durán Garrucho
+Tutor: Manuel Palomo Duarte
+
+Créditos de los recursos adicionales utilizados:
+
+Efectos de sonido: ZapSplat (https://www.zapsplat.com/)
+
+Animación de combate: Cethiel (https://opengameart.org/content/magic-effects)
+
+Música:
+
+\"Rising Tide\" Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 4.0 License
+http://creativecommons.org/licenses/by/4.0/
+
+\"Rising Tide (faster)\" Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 4.0 License
+http://creativecommons.org/licenses/by/4.0/"
+label_settings = SubResource("LabelSettings_6v35p")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label" type="Label" parent="CreditsPanel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -440.0
+offset_top = -40.0
+offset_right = -26.0
+offset_bottom = -17.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "(Hacer click en cualquier lugar para volver al menú)"
+
 [connection signal="pressed" from="Control/MainMenuPanel/VBoxContainer/ContinueButton" to="." method="_on_ContinueButton_pressed"]
 [connection signal="pressed" from="Control/MainMenuPanel/VBoxContainer/NewRunButton" to="." method="_on_NewRunButton_pressed"]
 [connection signal="pressed" from="Control/MainMenuPanel/VBoxContainer/NewSeededRunButton" to="." method="_on_NewSeededRunButton_pressed"]
+[connection signal="pressed" from="Control/MainMenuPanel/VBoxContainer/CreditsButton" to="." method="_on_CreditsButton_pressed"]
 [connection signal="pressed" from="Control/MainMenuPanel/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
 [connection signal="text_changed" from="Control/SeedPanel/VBoxContainer/HBoxContainer2/SeedEdit" to="." method="_on_SeedEdit_text_changed"]
 [connection signal="pressed" from="Control/SeedPanel/VBoxContainer/HBoxContainer/CancelSeededButton" to="." method="_on_CancelSeededButton_pressed"]
 [connection signal="pressed" from="Control/SeedPanel/VBoxContainer/HBoxContainer/StartSeededButton" to="." method="_on_StartSeededButton_pressed"]
+[connection signal="gui_input" from="CreditsPanel" to="." method="_on_CreditsPanel_gui_input"]

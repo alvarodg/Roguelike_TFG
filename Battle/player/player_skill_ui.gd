@@ -31,7 +31,7 @@ func _on_SkillBox_slot_was_pressed(slot: Slot):
 	elif current_coin == null:
 		if coinbox != null:
 			current_coin = coinbox.request_coin(slot.facing)
-		if current_coin != null: 
+		if current_coin != null and current_coin.status == Coin.Status.AVAILABLE: 
 			EventBus.released_selected.emit(current_coin)
 			print(slot)
 			slot.insert_coin(current_coin)
@@ -42,7 +42,7 @@ func _on_SkillBox_slot_was_pressed(slot: Slot):
 
 # Si focus cambia a una moneda, guarda una referencia.
 func _on_focus_changed(current_focus):
-	if current_focus is Coin:
+	if current_focus is Coin and current_focus.status == Coin.Status.AVAILABLE:
 		if (current_coin != null and not current_coin.is_queued_for_deletion() 
 				and current_coin.status == Coin.Status.AVAILABLE): 
 			EventBus.released_selected.emit(current_coin)

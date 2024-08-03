@@ -41,7 +41,7 @@ func _ready():
 ## Inicializa la escena de evento a partir una instancia
 ## de su clase de datos y el jugador
 func initialize(p_player: Player, data):
-	data_backup = data
+	data_backup = data.duplicate()
 	player = p_player
 	next_event = data.next_event
 	unique = data.unique

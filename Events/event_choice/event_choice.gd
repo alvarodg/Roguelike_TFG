@@ -67,8 +67,7 @@ func _on_Button_pressed():
 		
 	
 func _apply_sequence(seq: ChoiceSequence):
-	# TODO: Mostrar pre_narrative aquí de alguna forma
-	await show_narrative(sequence.pre_narrative)
+	await show_narrative(seq.pre_narrative)
 	if seq.event_unlocks != null:
 		for event in seq.event_unlocks:
 			RunData.current_event_scene.event_unlocks.append(event)
@@ -89,13 +88,13 @@ func _apply_sequence(seq: ChoiceSequence):
 			# Si no espera a la transición y se intentan encadenar eventos 
 			# que comparten recursos pueden darse errores.
 			# Investigar si es posible arreglar esto.
+			await get_tree().process_frame
 			if not event.secret and seq.events.back() != event:
 				await ScreenTransitions.fade_to_black()
 				ScreenTransitions.fade_from_black()
 	for mod in seq.post_modifiers:
 		mod.apply_to(player)
-	# TODO: Mostrar post_narrative aquí de alguna forma
-	await show_narrative(sequence.post_narrative)
+	await show_narrative(seq.post_narrative)
 	
 func _update_description(p_label: Label):
 	var desc: String = ""
@@ -130,12 +129,12 @@ func show_narrative(narrative: NarrativeEventData):
 	if narrative != null:
 		var narrative_instance = narrative.instantiate_scene(player)
 		await ScreenTransitions.fade_to_black()
-		RunData.current_event_scene.hide()
+		#RunData.current_event_scene.hide()
 		get_tree().root.add_child(narrative_instance)
 		ScreenTransitions.fade_from_black()
 		await narrative_instance.finished
 		await ScreenTransitions.fade_to_black()
-		RunData.current_event_scene.show()
+		#RunData.current_event_scene.show()
 		ScreenTransitions.fade_from_black()
 
 func _on_Button_mouse_entered():
