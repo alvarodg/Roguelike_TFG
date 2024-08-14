@@ -5,6 +5,8 @@ extends Control
 @onready var equip_icon_scene = preload("res://Items/equipment/equipment_icon.tscn")
 @onready var equipment_grid = %EquipmentGrid
 
+@export var corner: HoverContainer.Corner: set = set_corner
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	equipment_grid.columns = columns
@@ -22,5 +24,13 @@ func reset_equipment_icons(equipment_list: Array):
 		if icon is EquipmentIcon: icon.queue_free()
 	for equipment in equipment_list:
 		var equip_icon = equip_icon_scene.instantiate()
+		equip_icon.corner = corner
 		equipment_grid.add_child(equip_icon)
 		equip_icon.setup(equipment)
+
+func set_corner(to_corner):
+	corner = to_corner
+	if equipment_grid != null:
+		for equipment in equipment_grid.get_children():
+			if equipment is EquipmentIcon:
+				equipment.corner = corner

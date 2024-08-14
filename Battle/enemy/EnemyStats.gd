@@ -10,12 +10,12 @@ class_name EnemyStats
 #	super(p_max_health, p_base_shield, p_base_armor, p_base_dodges)
 #	health = max_health
 
-func setup():
-	health = max_health
-	strength = base_strength
-	shield = base_shield
-	armor = base_armor
-	dodges = base_dodges
+#func setup():
+	#health = max_health
+	#strength = base_strength
+	#shield = base_shield
+	#armor = base_armor
+	#dodges = base_dodges
 
 #func set_damage(value):
 #	damage = value

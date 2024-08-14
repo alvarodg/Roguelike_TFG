@@ -1,6 +1,13 @@
-Efectos de sonido: ZapSplat (https://www.zapsplat.com/)
+Gráficos:
 
 Animación de combate: Cethiel (https://opengameart.org/content/magic-effects)
+Sprites: Redshrike (https://opengameart.org/users/redshrike)
+Gráficos varios: Kenney (https://kenney.nl/)
+Fuentes: Daniel Linssen (https://managore.itch.io/)
+
+Sonido:
+
+Efectos de sonido: ZapSplat (https://www.zapsplat.com/)
 
 "Rising Tide" Kevin MacLeod (incompetech.com)
 Licensed under Creative Commons: By Attribution 4.0 License
@@ -9,4 +16,6 @@ http://creativecommons.org/licenses/by/4.0/
 "Rising Tide (faster)" Kevin MacLeod (incompetech.com)
 Licensed under Creative Commons: By Attribution 4.0 License
 http://creativecommons.org/licenses/by/4.0/
+
+
 

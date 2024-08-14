@@ -33,11 +33,13 @@ metadata/_edit_group_ = true
 [node name="EquipmentUI" parent="VBoxContainer" instance=ExtResource("2_j088a")]
 unique_name_in_owner = true
 z_index = 1
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 
 [node name="HealthBar" parent="VBoxContainer" instance=ExtResource("2_qluys")]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 1
 
 [node name="PlayerIcon" type="TextureRect" parent="VBoxContainer"]
 unique_name_in_owner = true

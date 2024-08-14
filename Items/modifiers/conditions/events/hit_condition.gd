@@ -10,7 +10,7 @@ func connect_to(p_user):
 	p_user.stats.hit.connect(_check_hit)
 
 ## Cuenta la ocurrencia si el daño sobrepasa o iguala el límite
-func _check_hit(damage = 0):
+func _check_hit(damage = 0, _health=0, _max_health=0):
 	if damage >= min_damage_threshold:
 		_check_met()
 

@@ -76,9 +76,12 @@ base_strength = 0
 base_shield = 75
 base_armor = 0
 base_dodges = 0
+base_shield_decay_turns = 2
+shield_decay_rate = 1.0
 
 [sub_resource type="Resource" id="Resource_pvdoq"]
 script = ExtResource("12_rohhq")
+flip_facing = false
 sprite = ExtResource("13_i04we")
 ui_name = "The Knight"
 

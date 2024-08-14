@@ -9,8 +9,9 @@ signal strength_changed(old_value, new_value)
 signal shield_changed(old_value, new_value)
 signal armor_changed(old_value, new_value)
 signal dodges_changed(old_value, new_value)
+signal shield_turns_remaining_changed(old_value, new_value)
 ## Señal enviada cuando recibe un golpe que reduce su vida
-signal hit
+signal hit(damage, health, max_health)
 ## Señal enviada cuando esquiva un golpe
 signal dodged
 ## Señal enviada cuando se rompe su escudo
@@ -32,6 +33,9 @@ signal died
 @export var base_armor: int = 0
 ## Esquivas base al principio de cada combate
 @export var base_dodges: int = 0
+
+@export var base_shield_decay_turns: int = 1
+@export var shield_decay_rate: float = 1.0
 ## Fuerza, amplificador de daño
 var strength: int : set = set_strength
 ## Vida, pierde cuando llega a 0
@@ -42,6 +46,8 @@ var shield: int : set = set_shield
 var armor: int : set = set_armor
 ## Esquivas, permiten ignorar golpes 
 var dodges: int : set = set_dodges
+
+var shield_turns_remaining: int : set = set_shield_turns_remaining
 ## Variable is_dead para asegurarse de que las habilidades con multiples golpes
 ## no envien multiples señales
 var is_dead: bool = false
@@ -72,9 +78,17 @@ func setup():
 func start_battle():
 	strength = base_strength
 	shield = base_shield
+	if shield > 0 and shield_turns_remaining >= 1:
+		shield_turns_remaining += 1
 	armor = base_armor
 	dodges = base_dodges
 	is_dead = false
+	
+## Modifica los valores a su estado de principio de turno, antes de empezarlo
+func pre_start_turn():
+	shield_turns_remaining -= 1
+	if shield_turns_remaining == 0:
+		shield -= int(float(shield) * shield_decay_rate)
 	
 ## Modifica los valores a su estado de principio de turno
 func start_turn():
@@ -116,6 +130,8 @@ func set_strength(value):
 ## Setter de shield
 func set_shield(value):
 	var old = shield
+	if old == 0:
+		shield_turns_remaining = base_shield_decay_turns
 	shield = max(0,value)
 	shield_changed.emit(old, shield)
 
@@ -130,6 +146,11 @@ func set_dodges(value):
 	var old = dodges
 	dodges = value
 	dodges_changed.emit(old, dodges)
+
+func set_shield_turns_remaining(value):
+	var old = shield_turns_remaining
+	shield_turns_remaining = value
+	shield_turns_remaining_changed.emit(old, value)
 
 ## Función que recibe cierta cantidad de daño, aplicando o no escudo, armadura
 ## y esquivas dependiendo de sus parámetros
@@ -159,13 +180,13 @@ func take_damage(amount: int, ignore_shield = false, ignore_armor = false,
 			shield_broke.emit()
 		if damage_remainder > 0:
 			health -= max(0, damage_remainder - armor_remainder)
-			hit.emit(max(0, damage_remainder - armor_remainder))
+			hit.emit(max(0, damage_remainder - armor_remainder), health, max_health)
 	# Sin no hay escudo ni esquivas efectivas, recibe el daño directamente
 	# en la vida, atenuado por la armadura efectiva
 	else:
 		made_contact.emit()
 		health -= max(0, amount - eff_armor)
-		hit.emit(max(0, amount - eff_armor))
+		hit.emit(max(0, amount - eff_armor), health, max_health)
 
 ## Recibe un cierto porcentaje de su vida como daño, pudiendo ignorar defensas
 func take_percent_damage(percent: float, ignore_shield = false, ignore_armor = false, ignore_dodges = false):

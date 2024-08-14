@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bkgmwaa6yv8k2"]
+
+[ext_resource type="FontFile" uid="uid://kblk0lsxgkfd" path="res://Themes/fonts/Kenney Mini.ttf" id="1_ol6ae"]
+
+[resource]
+Button/fonts/font = ExtResource("1_ol6ae")
+Label/fonts/font = ExtResource("1_ol6ae")
+LineEdit/fonts/font = ExtResource("1_ol6ae")

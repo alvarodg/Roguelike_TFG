@@ -99,6 +99,7 @@ tags = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_bwbog"]
 script = ExtResource("2_kigmu")
+flip_facing = false
 sprite = ExtResource("3_tk1g6")
 ui_name = "Enemy"
 

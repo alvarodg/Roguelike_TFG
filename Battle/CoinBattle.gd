@@ -93,7 +93,10 @@ func _on_Player_bankrupt():
 func _on_Player_died():
 	print("You lost!")
 	RunData.delete_save(true)
+	await get_tree().create_timer(0.5).timeout
+	await ScreenTransitions.fade_to_black()
 	get_tree().change_scene_to_file(loss_screen)
+	ScreenTransitions.fade_from_black()
 
 func _on_Player_started_waiting():
 	_block_input()

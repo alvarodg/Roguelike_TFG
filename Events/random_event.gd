@@ -11,6 +11,7 @@ var default_event: EventData
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	super._ready()
+	#if default_event == null: default_event = load("res://Events/resources/event_data/empty/empty_event.tres")
 	print(RunData.collections.events)
 	## Si no se le pasa una colección de eventos, accede al Singleton RunData
 	## para recibir la lista de eventos general
@@ -26,10 +27,6 @@ func _ready():
 	add_child(scene)
 
 
-func setup(data: RandomEventData):
-	events = data.events
-	tags = data.event_tags
-	tag_op = data.tag_op
-	rarities = data.rarities
-	deterministic = data.deterministic
+func initialize(p_player: Player, data):
+	super.initialize(p_player, data)
 	default_event = data.default_event

@@ -108,9 +108,12 @@ base_strength = 0
 base_shield = 0
 base_armor = 0
 base_dodges = 0
+base_shield_decay_turns = 1
+shield_decay_rate = 1.0
 
 [sub_resource type="Resource" id="Resource_4cbn4"]
 script = ExtResource("3_6rgrk")
+flip_facing = false
 sprite = ExtResource("4_p4f5y")
 ui_name = "Enemy 2"
 

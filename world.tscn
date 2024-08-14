@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://world.gd" id="1_ewi3c"]
 [ext_resource type="PackedScene" uid="uid://buwxy0toti3j8" path="res://Run/collection_container.tscn" id="2_h6gmy"]
 [ext_resource type="PackedScene" uid="uid://dtatqj2q74q42" path="res://Map/map.tscn" id="2_tumwh"]
-[ext_resource type="PackedScene" uid="uid://dyrxg61yw7bhk" path="res://Run/player.tscn" id="2_yatmi"]
+[ext_resource type="PackedScene" uid="uid://dyrxg61yw7bhk" path="res://Player/player.tscn" id="2_yatmi"]
 [ext_resource type="PackedScene" uid="uid://b8nvuhpu5i8fs" path="res://Menus/main_menu.tscn" id="3_6bs06"]
 [ext_resource type="Resource" uid="uid://5871ejwt2whd" path="res://Run/collections/default_equipment_collection.tres" id="3_f3yvy"]
 [ext_resource type="Resource" uid="uid://dnhbnjwbujp3u" path="res://Battle/player/resources/default_player_stats.tres" id="3_nvh0g"]

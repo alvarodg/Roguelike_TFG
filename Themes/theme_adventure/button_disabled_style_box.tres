@@ -1,0 +1,10 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://mtrkmke2pujg"]
+
+[ext_resource type="Texture2D" uid="uid://b1osw3tvh0nmm" path="res://Themes/theme_adventure/buttons/buttonSquare_brown.png" id="1_bdhee"]
+
+[resource]
+texture = ExtResource("1_bdhee")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0

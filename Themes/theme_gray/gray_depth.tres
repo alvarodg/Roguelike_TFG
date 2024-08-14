@@ -1,0 +1,11 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://cf3oyyonhsie0"]
+
+[ext_resource type="Texture2D" uid="uid://cuho76wii5fm1" path="res://Themes/theme_gray/buttons/button_square_depth_gloss.png" id="1_qcp7i"]
+
+[resource]
+content_margin_bottom = 12.0
+texture = ExtResource("1_qcp7i")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+expand_margin_top = 4.0

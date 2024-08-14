@@ -1,12 +1,14 @@
-extends VBoxContainer
+extends Control
 
 signal health_animation_finished
 
 @onready var health_bar = %HealthBar
 @onready var strength_label = %StrengthLabel
-@onready var shield_label = %ShieldLabel
 @onready var armor_label = %ArmorLabel
 @onready var dodges_label = %DodgesLabel
+@onready var strength_container = %StrengthContainer
+@onready var armor_container = %ArmorContainer
+@onready var dodges_container = %DodgesContainer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,20 +16,20 @@ func _ready():
 
 func setup(enemy: EnemyStats):
 	health_bar.setup(enemy)
-	_update_shield(enemy.shield)
+	#_update_shield(enemy.shield)
 	_update_strength(enemy.strength)
 	_update_armor(enemy.armor)
 	_update_dodges(enemy.dodges)
 	health_bar.health_animation_finished.connect(_on_health_animation_finished)
-	enemy.shield_changed.connect(_on_Enemy_shield_changed)
+	#enemy.shield_changed.connect(_on_Enemy_shield_changed)
 	enemy.strength_changed.connect(_on_Enemy_strength_changed)
 	enemy.armor_changed.connect(_on_Enemy_armor_changed)
 	enemy.dodges_changed.connect(_on_Enemy_dodges_changed)
 
-func _on_Enemy_shield_changed(old, shield):
-	var tween = create_tween()
-	tween.tween_method(_update_shield, old, shield, 0.5)
-	_update_shield(shield)
+#func _on_Enemy_shield_changed(old, shield):
+	#var tween = create_tween()
+	#tween.tween_method(_update_shield, old, shield, 0.5)
+	#_update_shield(shield)
 	
 func _on_Enemy_strength_changed(old, strength):
 	var tween = create_tween()
@@ -44,33 +46,33 @@ func _on_Enemy_dodges_changed(old, dodges):
 	tween.tween_method(_update_dodges, old, dodges, 0.5)
 	_update_dodges(dodges)
 	
-func _update_shield(shield):
-	if shield > 0:
-		shield_label.show()
-		shield_label.text = str(shield) + " Shield"
-	else:
-		shield_label.hide()
+#func _update_shield(shield):
+	#if shield > 0:
+		#shield_label.show()
+		#shield_label.text = str(shield) + " Shield"
+	#else:
+		#shield_label.hide()
 
 func _update_strength(strength):
 	if strength > 0:
-		strength_label.show()
-		strength_label.text = str(strength) + " Strength"
+		strength_container.show()
+		strength_label.text = str(strength)
 	else:
-		strength_label.hide()
+		strength_container.hide()
 
 func _update_armor(armor):
 	if armor > 0:
-		armor_label.show()
-		armor_label.text = str(armor) + " Armor"
+		armor_container.show()
+		armor_label.text = str(armor)
 	else:
-		armor_label.hide()
+		armor_container.hide()
 	
 func _update_dodges(dodges):
 	if dodges > 0:
-		dodges_label.show()
-		dodges_label.text = str(dodges) + " Dodges"
+		dodges_container.show()
+		dodges_label.text = str(dodges)
 	else:
-		dodges_label.hide()
+		dodges_container.hide()
 
 func _on_health_animation_finished():
 	health_animation_finished.emit()

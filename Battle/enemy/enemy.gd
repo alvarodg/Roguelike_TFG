@@ -38,12 +38,13 @@ func _ready():
 	assert(stats is EnemyStats)
 	target = combatants.player
 	sprite.texture = ui_data.sprite
+	sprite.flip_h = ui_data.flip_facing
 	battle_position = sprite.global_position + sprite.size/2
 	stats.setup()
 	for equipment in equipment_list:
 		equip(equipment)
 	equipment_ui.setup(self)
-	stats.start_battle()
+	#stats.start_battle()
 	enemy_stats_ui.setup(stats)
 	enemy_skill_ui.setup(self)
 	
@@ -109,12 +110,14 @@ func start_battle():
 	started_battle.emit()
 
 func start_turn():
+	stats.pre_start_turn()
 	pre_started_turn.emit()
 	target = combatants.player
 	stats.start_turn()
 	started_turn.emit()
 	act()
 #	turn_finished.emit()
+
 
 func act():
 	var action: Skill = upcoming_skills.front().create_skill(self, target)
@@ -127,6 +130,7 @@ func act():
 	used_skill.emit(used)
 
 func _on_action_finished():
+	stats.end_turn()
 	turn_finished.emit()
 
 func _on_death():
@@ -157,13 +161,13 @@ func equip(equipment: Equipment):
 func take_damage(amount: int, ignore_shield = false, ignore_armor = false, ignore_dodges = false, shield_factor = 1.0):
 	stats.take_damage(amount, ignore_shield, ignore_armor, ignore_dodges, shield_factor)
 
-func _on_hit(damage):
+func _on_hit(damage, health, max_health):
 	var tween: Tween = get_tree().create_tween()
 	tween.tween_property(%Sprite, "modulate", Color(Color.WHITE, 0.3), 0.15).set_trans(Tween.TRANS_BOUNCE)
 	tween.tween_property(%Sprite, "modulate", Color.WHITE, 0.15).set_trans(Tween.TRANS_BOUNCE)
 	var number = DAMAGE_NUMBER.instantiate()
 	add_child(number)
-	number.setup(damage, battle_position, sprite.size.x, stats.max_health)
+	number.setup(damage, battle_position, sprite.size.x, max_health)
 	number.display_and_free()
 
 

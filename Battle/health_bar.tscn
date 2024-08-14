@@ -1,13 +1,37 @@
-[gd_scene load_steps=2 format=3 uid="uid://cm2iaddemayb2"]
+[gd_scene load_steps=6 format=3 uid="uid://cm2iaddemayb2"]
 
 [ext_resource type="Script" path="res://Battle/health_bar.gd" id="1_lmk8t"]
+[ext_resource type="Texture2D" uid="uid://dtcgxg8bujhwf" path="res://Battle/skills/icons/shield_skill.png" id="2_baixc"]
 
-[node name="HealthBar" type="ProgressBar"]
-custom_minimum_size = Vector2(0, 26)
-show_percentage = false
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n6eue"]
+bg_color = Color(0.980392, 0.121569, 0.137255, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_skqwe"]
+bg_color = Color(0.117647, 0.117647, 0.784314, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hx6ct"]
+font_size = 8
+
+[node name="HealthBar" type="Control"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 3
+anchors_preset = 0
+offset_bottom = 32.0
+size_flags_horizontal = 4
 script = ExtResource("1_lmk8t")
+default_style = SubResource("StyleBoxFlat_n6eue")
+shield_style = SubResource("StyleBoxFlat_skqwe")
+metadata/_edit_horizontal_guides_ = [16.0]
 
-[node name="HealthLabel" type="Label" parent="."]
+[node name="HealthProgressBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(94, 24)
+layout_mode = 1
+offset_right = 94.0
+offset_bottom = 24.0
+show_percentage = false
+
+[node name="HealthLabel" type="Label" parent="HealthProgressBar"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -19,4 +43,47 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="value_changed" from="." to="." method="_on_value_changed"]
+[node name="ShieldIcon" type="TextureRect" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 0
+offset_left = 94.0
+offset_top = -4.0
+offset_right = 126.0
+offset_bottom = 28.0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+texture = ExtResource("2_baixc")
+expand_mode = 2
+stretch_mode = 5
+metadata/_edit_group_ = true
+
+[node name="ShieldLabel" type="Label" parent="ShieldIcon"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RemainingLabel" type="Label" parent="ShieldIcon"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "1"
+label_settings = SubResource("LabelSettings_hx6ct")
+vertical_alignment = 2
+
+[connection signal="value_changed" from="HealthProgressBar" to="." method="_on_HealthProgressBar_value_changed"]

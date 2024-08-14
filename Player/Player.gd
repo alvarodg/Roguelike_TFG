@@ -11,7 +11,7 @@ signal started_taking_damage
 signal finished_taking_damage
 signal started_flipping_coins
 signal finished_flipping_coins
-signal hit(damage)
+signal hit(damage, health, max_health)
 
 @export var stats: PlayerStats = PlayerStats.new() : set = set_stats
 @export var ui_data: PlayerUIData = PlayerUIData.new()
@@ -97,6 +97,7 @@ func get_coin_count():
 	return stats.coin_count
 
 func start_turn():
+	stats.pre_start_turn()
 	pre_started_turn.emit()
 	stats.start_turn()
 	flip_all_coins()
@@ -272,8 +273,8 @@ func take_damage(amount: int, ignore_shield = false, ignore_armor = false,
 				 ignore_dodges = false, shield_factor = 1.0):
 	stats.take_damage(amount, ignore_shield, ignore_armor, ignore_dodges, shield_factor)
 
-func _on_Stats_hit(damage):
-	hit.emit(damage)
+func _on_Stats_hit(damage, health, max_health):
+	hit.emit(damage, health, max_health)
 #	var number = DAMAGE_NUMBER.instantiate()
 #	add_child(number)
 #	number.setup(damage, battle_position, ui_data.sprite.x, stats.max_health)

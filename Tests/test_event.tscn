@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://Tests/test_event.gd" id="1_5fra8"]
 [ext_resource type="Resource" uid="uid://cfvkrghviixmx" path="res://Events/resources/event_data/event_pick/slot_machine.tres" id="2_b2hyr"]
-[ext_resource type="Script" path="res://Run/Player.gd" id="3_c1xat"]
+[ext_resource type="Script" path="res://Player/Player.gd" id="3_c1xat"]
 [ext_resource type="Script" path="res://Battle/combatant/PlayerStats.gd" id="4_rki66"]
-[ext_resource type="Script" path="res://Run/PlayerUIData.gd" id="5_h1yvh"]
+[ext_resource type="Script" path="res://Player/PlayerUIData.gd" id="5_h1yvh"]
 [ext_resource type="Texture2D" uid="uid://djmrox3cqnntc" path="res://icon.svg" id="6_et2lk"]
 [ext_resource type="Resource" uid="uid://1f1t8s1ew7uy" path="res://Battle/skills/resources/win.tres" id="7_gm1vr"]
 [ext_resource type="PackedScene" uid="uid://buwxy0toti3j8" path="res://Run/collection_container.tscn" id="8_p4se0"]
