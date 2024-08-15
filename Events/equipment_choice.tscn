@@ -20,47 +20,56 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.352941, 0.352941, 0.352941, 1)
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(580, 320)
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -270.0
+offset_top = -160.0
+offset_right = 270.0
+offset_bottom = 160.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="CenterContainer"]
-custom_minimum_size = Vector2(1000, 560)
-layout_mode = 2
-
-[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+custom_minimum_size = Vector2(520, 300)
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -270.0
+offset_top = -150.0
+offset_right = 270.0
+offset_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 40
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel/CenterContainer"]
-layout_mode = 2
-theme_override_constants/separation = 100
-
-[node name="Label" type="Label" parent="CenterContainer/Panel/CenterContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="Panel/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "EQUIPMENT CHOICE"
 horizontal_alignment = 1
 
-[node name="ChoiceContainer" type="HBoxContainer" parent="CenterContainer/Panel/CenterContainer/VBoxContainer"]
+[node name="ChoiceContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_constants/separation = 30
 
-[node name="SkipButton" type="Button" parent="CenterContainer/Panel/CenterContainer/VBoxContainer"]
+[node name="SkipButton" type="Button" parent="Panel/VBoxContainer"]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 size_flags_horizontal = 8
+size_flags_vertical = 8
 theme_override_font_sizes/font_size = 25
 text = "SKIP ->"
 
-[connection signal="pressed" from="CenterContainer/Panel/CenterContainer/VBoxContainer/SkipButton" to="." method="_on_SkipButton_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/SkipButton" to="." method="_on_SkipButton_pressed"]

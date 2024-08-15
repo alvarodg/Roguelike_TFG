@@ -1,12 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://dc6b3gw07gh4c"]
+[gd_scene load_steps=4 format=3 uid="uid://dc6b3gw07gh4c"]
 
 [ext_resource type="Script" path="res://Events/event_choice/event_choice.gd" id="1_h5pcf"]
+[ext_resource type="FontFile" uid="uid://b2n7xh73jrxxw" path="res://Themes/fonts/m3x6.ttf" id="2_sgdne"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_0r30h"]
-font_size = 13
+[sub_resource type="LabelSettings" id="LabelSettings_k1qaf"]
+font = ExtResource("2_sgdne")
 
 [node name="EventChoice" type="Control"]
-custom_minimum_size = Vector2(200, 140)
+custom_minimum_size = Vector2(140, 70)
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -15,6 +16,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+mouse_default_cursor_shape = 2
 script = ExtResource("1_h5pcf")
 
 [node name="Button" type="Button" parent="."]
@@ -26,18 +28,23 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Button"]
+[node name="Label" type="RichTextLabel" parent="Button"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(134, 70)
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -67.0
+offset_top = -35.0
+offset_right = 67.0
+offset_bottom = 35.0
 grow_horizontal = 2
 grow_vertical = 2
-label_settings = SubResource("LabelSettings_0r30h")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
+mouse_filter = 1
+theme_override_fonts/normal_font = ExtResource("2_sgdne")
 
 [node name="HoverLabel" type="Label" parent="."]
 unique_name_in_owner = true
@@ -55,6 +62,7 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+label_settings = SubResource("LabelSettings_k1qaf")
 
 [node name="Panel" type="Panel" parent="HoverLabel"]
 self_modulate = Color(0.596078, 0.596078, 0.596078, 1)

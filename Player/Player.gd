@@ -5,6 +5,7 @@ class_name Player
 signal coins_changed
 signal coin_flipped(coin)
 signal coin_dropped(coin)
+signal coin_count_changed(old, count)
 signal bankrupt
 
 signal started_taking_damage
@@ -151,17 +152,20 @@ func flip_all_coins(rng: RandomNumberGenerator = RandomNumberGenerator.new()):
 	recover_dropped_coins()
 	started_flipping_coins.emit()
 	for coin in coins:
-		coin.hide()
-		coin.start_spinning()
+		if is_instance_valid(coin):
+			coin.hide()
+			coin.start_spinning()
 	print(coins)
 	for coin in coins:
-		coin.show()
-		await get_tree().create_timer(coin.get_spin_length()*0.5).timeout
+		if is_instance_valid(coin):
+			coin.show()
+			await get_tree().create_timer(coin.get_spin_length()*0.5).timeout
 #	await get_tree().create_timer(0.16).timeout
 	for coin in coins:
-		await get_tree().create_timer(coin.get_spin_length()*0.5).timeout
-		coin.flip(stats.base_luck, _get_bias(), rng)
-		coin.stop_spinning()
+		if is_instance_valid(coin):
+			await get_tree().create_timer(coin.get_spin_length()*0.5).timeout
+			coin.flip(stats.base_luck, _get_bias(), rng)
+			coin.stop_spinning()
 	coins_changed.emit(coins)
 	finished_flipping_coins.emit()
 
@@ -210,7 +214,8 @@ func recover_dropped_coins():
 		if coin.status == Coin.Status.DROPPED:
 			coin.set_available()
 
-func equip(equipment: Equipment):
+func equip(p_equipment: Equipment):
+	var equipment = p_equipment.duplicate()
 	equipment.attach_to(self)
 	equipment.broke.connect(_on_equipment_broke)
 	equipment_list.append(equipment)
@@ -234,7 +239,7 @@ func _get_bias() -> Coin.Facing:
 	return flip_bias
 
 # Guarda coin_count datos de monedas.
-func _on_Stats_coin_count_changed(_old, value):
+func _on_Stats_coin_count_changed(old, value):
 	if coin_data.size() < value:
 		for i in range(value - coin_data.size()):
 			coin_data.append(default_coin)
@@ -242,6 +247,7 @@ func _on_Stats_coin_count_changed(_old, value):
 		coin_data = []
 		for i in range(value):
 			coin_data.append(default_coin)
+	coin_count_changed.emit(old, value)
 
 # Emite la señal died cuando la recibe de stats.
 func _on_Stats_died():

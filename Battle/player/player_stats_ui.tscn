@@ -1,23 +1,34 @@
-[gd_scene load_steps=14 format=3 uid="uid://cgeo8n0mg0x68"]
+[gd_scene load_steps=18 format=3 uid="uid://cgeo8n0mg0x68"]
 
 [ext_resource type="Script" path="res://Battle/player/player_stats_ui.gd" id="1_t78et"]
 [ext_resource type="Texture2D" uid="uid://djmrox3cqnntc" path="res://icon.svg" id="1_v03cj"]
-[ext_resource type="Texture2D" uid="uid://b7q5vfrx6d1o" path="res://Battle/player/sprites/coin_16.png" id="2_6a5d7"]
+[ext_resource type="FontFile" uid="uid://dj2uwas52df26" path="res://Themes/fonts/m5x7.ttf" id="2_ijmnp"]
 [ext_resource type="Texture2D" uid="uid://cpaes4c4pnmxw" path="res://Battle/skills/icons/attack_skill.png" id="3_d45i1"]
 [ext_resource type="PackedScene" uid="uid://cm2iaddemayb2" path="res://Battle/health_bar.tscn" id="3_rf0j1"]
 [ext_resource type="PackedScene" uid="uid://20lggu6h8kmx" path="res://Items/equipment/equipment_ui.tscn" id="4_jt7va"]
 [ext_resource type="Texture2D" uid="uid://bbtqu0cpssatg" path="res://Battle/player/sprites/dodge_icon2.png" id="5_r2q5x"]
 [ext_resource type="Texture2D" uid="uid://y25k64mywuj0" path="res://Battle/player/sprites/armor_icon.png" id="5_uymje"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_28xap"]
+font = ExtResource("2_ijmnp")
+
+[sub_resource type="LabelSettings" id="LabelSettings_4oacm"]
+font = ExtResource("2_ijmnp")
+
+[sub_resource type="LabelSettings" id="LabelSettings_sunqk"]
+font = ExtResource("2_ijmnp")
+
+[sub_resource type="LabelSettings" id="LabelSettings_8xkjy"]
+font = ExtResource("2_ijmnp")
+
 [sub_resource type="LabelSettings" id="LabelSettings_mvcnl"]
-font_size = 14
 
 [sub_resource type="Animation" id="Animation_j0gcq"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerIcon:modulate")
+tracks/0/path = NodePath("SpriteHealthPosition/VBoxContainer/PlayerIcon:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -29,7 +40,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerIcon:scale")
+tracks/1/path = NodePath("SpriteHealthPosition/VBoxContainer/PlayerIcon:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -41,7 +52,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("PlayerIcon:modulate")
+tracks/2/path = NodePath("SpriteHealthPosition/VBoxContainer/PlayerIcon:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -56,7 +67,7 @@ resource_name = "die"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerIcon:scale")
+tracks/0/path = NodePath("SpriteHealthPosition/VBoxContainer/PlayerIcon:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -68,7 +79,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerIcon:modulate")
+tracks/1/path = NodePath("SpriteHealthPosition/VBoxContainer/PlayerIcon:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -85,7 +96,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerIcon:modulate")
+tracks/0/path = NodePath("SpriteHealthPosition/VBoxContainer/PlayerIcon:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -112,140 +123,134 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_t78et")
 
-[node name="OtherStatsContainer" type="HBoxContainer" parent="."]
+[node name="SpriteHealthPosition" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -193.0
-offset_right = 132.0
-offset_bottom = -161.0
+offset_top = -110.0
+offset_right = 85.0
 grow_vertical = 0
 
-[node name="CoinContainer" type="HBoxContainer" parent="OtherStatsContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="SpriteHealthPosition"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -38.5
+offset_top = -72.0
+offset_right = 38.5
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="OtherStatsContainer" type="HBoxContainer" parent="SpriteHealthPosition/VBoxContainer"]
+layout_mode = 2
+metadata/_edit_group_ = true
+
+[node name="StrengthContainer" type="HBoxContainer" parent="SpriteHealthPosition/VBoxContainer/OtherStatsContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 1
 
-[node name="CoinCountLabel" type="Label" parent="OtherStatsContainer/CoinContainer"]
-unique_name_in_owner = true
+[node name="StrengthLabel" type="Label" parent="SpriteHealthPosition/VBoxContainer/OtherStatsContainer/StrengthContainer"]
 layout_mode = 2
-text = "3x"
-
-[node name="CoinIcon" type="TextureRect" parent="OtherStatsContainer/CoinContainer"]
-layout_mode = 2
-texture = ExtResource("2_6a5d7")
-stretch_mode = 5
-
-[node name="StrengthContainer" type="HBoxContainer" parent="OtherStatsContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_constants/separation = 1
-
-[node name="StrengthLabel" type="Label" parent="OtherStatsContainer/StrengthContainer"]
-layout_mode = 2
+size_flags_horizontal = 4
 text = "3"
+label_settings = SubResource("LabelSettings_28xap")
 horizontal_alignment = 1
 
-[node name="StrengthIcon" type="TextureRect" parent="OtherStatsContainer/StrengthContainer"]
+[node name="StrengthIcon" type="TextureRect" parent="SpriteHealthPosition/VBoxContainer/OtherStatsContainer/StrengthContainer"]
 layout_mode = 2
 texture = ExtResource("3_d45i1")
 stretch_mode = 5
 
-[node name="ArmorContainer" type="HBoxContainer" parent="OtherStatsContainer"]
+[node name="ArmorContainer" type="HBoxContainer" parent="SpriteHealthPosition/VBoxContainer/OtherStatsContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 1
 
-[node name="ArmorLabel" type="Label" parent="OtherStatsContainer/ArmorContainer"]
+[node name="ArmorLabel" type="Label" parent="SpriteHealthPosition/VBoxContainer/OtherStatsContainer/ArmorContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "3"
+label_settings = SubResource("LabelSettings_4oacm")
 horizontal_alignment = 1
 
-[node name="ArmorIcon" type="TextureRect" parent="OtherStatsContainer/ArmorContainer"]
+[node name="ArmorIcon" type="TextureRect" parent="SpriteHealthPosition/VBoxContainer/OtherStatsContainer/ArmorContainer"]
 layout_mode = 2
 texture = ExtResource("5_uymje")
 stretch_mode = 3
 
-[node name="DodgesContainer" type="HBoxContainer" parent="OtherStatsContainer"]
+[node name="DodgesContainer" type="HBoxContainer" parent="SpriteHealthPosition/VBoxContainer/OtherStatsContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 1
 
-[node name="DodgesLabel" type="Label" parent="OtherStatsContainer/DodgesContainer"]
+[node name="DodgesLabel" type="Label" parent="SpriteHealthPosition/VBoxContainer/OtherStatsContainer/DodgesContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "3"
+label_settings = SubResource("LabelSettings_sunqk")
 horizontal_alignment = 1
 
-[node name="DodgesIcon" type="TextureRect" parent="OtherStatsContainer/DodgesContainer"]
+[node name="DodgesIcon" type="TextureRect" parent="SpriteHealthPosition/VBoxContainer/OtherStatsContainer/DodgesContainer"]
 layout_mode = 2
 texture = ExtResource("5_r2q5x")
 stretch_mode = 5
 
-[node name="HealthBar" parent="." instance=ExtResource("3_rf0j1")]
+[node name="HealthBar" parent="SpriteHealthPosition/VBoxContainer" instance=ExtResource("3_rf0j1")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(132, 32)
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 2.0
-offset_top = -163.0
-offset_right = 134.0
-offset_bottom = -131.0
-grow_vertical = 0
+layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="PlayerStatsPanel" type="Panel" parent="."]
-custom_minimum_size = Vector2(120, 120)
+[node name="PlayerIcon" type="TextureRect" parent="SpriteHealthPosition/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("1_v03cj")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="PlayerEquipmentPanel" type="Panel" parent="."]
+custom_minimum_size = Vector2(80, 110)
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 136.0
-offset_top = -128.0
-offset_right = 256.0
-offset_bottom = -8.0
+offset_left = 85.0
+offset_top = -110.0
+offset_right = 175.0
 grow_vertical = 0
+metadata/_edit_group_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PlayerStatsPanel"]
-custom_minimum_size = Vector2(110, 110)
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerEquipmentPanel"]
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 13
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 1.0
+offset_left = -27.0
+offset_right = 27.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="PlayerStatsPanel/VBoxContainer"]
+[node name="Label" type="Label" parent="PlayerEquipmentPanel/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 text = "Equipment:"
+label_settings = SubResource("LabelSettings_8xkjy")
 
-[node name="EquipmentUI" parent="PlayerStatsPanel/VBoxContainer" instance=ExtResource("4_jt7va")]
+[node name="EquipmentUI" parent="PlayerEquipmentPanel/VBoxContainer" instance=ExtResource("4_jt7va")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(18, 18)
 layout_mode = 2
+size_flags_vertical = 8
+columns = 4
 corner = 1
-
-[node name="PlayerIcon" type="TextureRect" parent="."]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -128.0
-offset_right = 128.0
-grow_vertical = 0
-pivot_offset = Vector2(64, 64)
-texture = ExtResource("1_v03cj")
-expand_mode = 5
-stretch_mode = 3
 
 [node name="InfoLabel" type="Label" parent="."]
 unique_name_in_owner = true
@@ -276,9 +281,9 @@ libraries = {
 "": SubResource("AnimationLibrary_qhhnk")
 }
 
-[connection signal="mouse_entered" from="OtherStatsContainer/StrengthContainer" to="." method="_on_StrengthContainer_mouse_entered"]
-[connection signal="mouse_exited" from="OtherStatsContainer/StrengthContainer" to="." method="_on_StrengthContainer_mouse_exited"]
-[connection signal="mouse_entered" from="OtherStatsContainer/ArmorContainer" to="." method="_on_ArmorContainer_mouse_entered"]
-[connection signal="mouse_exited" from="OtherStatsContainer/ArmorContainer" to="." method="_on_ArmorContainer_mouse_exited"]
-[connection signal="mouse_entered" from="OtherStatsContainer/DodgesContainer" to="." method="_on_DodgesContainer_mouse_entered"]
-[connection signal="mouse_exited" from="OtherStatsContainer/DodgesContainer" to="." method="_on_DodgesContainer_mouse_exited"]
+[connection signal="mouse_entered" from="SpriteHealthPosition/VBoxContainer/OtherStatsContainer/StrengthContainer" to="." method="_on_StrengthContainer_mouse_entered"]
+[connection signal="mouse_exited" from="SpriteHealthPosition/VBoxContainer/OtherStatsContainer/StrengthContainer" to="." method="_on_StrengthContainer_mouse_exited"]
+[connection signal="mouse_entered" from="SpriteHealthPosition/VBoxContainer/OtherStatsContainer/ArmorContainer" to="." method="_on_ArmorContainer_mouse_entered"]
+[connection signal="mouse_exited" from="SpriteHealthPosition/VBoxContainer/OtherStatsContainer/ArmorContainer" to="." method="_on_ArmorContainer_mouse_exited"]
+[connection signal="mouse_entered" from="SpriteHealthPosition/VBoxContainer/OtherStatsContainer/DodgesContainer" to="." method="_on_DodgesContainer_mouse_entered"]
+[connection signal="mouse_exited" from="SpriteHealthPosition/VBoxContainer/OtherStatsContainer/DodgesContainer" to="." method="_on_DodgesContainer_mouse_exited"]

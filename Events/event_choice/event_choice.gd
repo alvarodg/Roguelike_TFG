@@ -12,7 +12,7 @@ signal pre_selected(event_choice)
 signal selected(event_choice)
 
 @onready var button: Button = %Button
-@onready var label: Label = %Label
+@onready var label: RichTextLabel = %Label
 @onready var hover_label: Label = %HoverLabel
 
 var description: String
@@ -96,7 +96,7 @@ func _apply_sequence(seq: ChoiceSequence):
 		mod.apply_to(player)
 	await show_narrative(seq.post_narrative)
 	
-func _update_description(p_label: Label):
+func _update_description(p_label: RichTextLabel):
 	var desc: String = ""
 	var cost_desc: String = ""
 	if cost != null:

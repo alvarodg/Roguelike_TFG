@@ -9,7 +9,7 @@ class_name EventPick
 @onready var event_picture = %EventPicture
 @onready var event_name_label = %EventNameLabel
 # Objeto de interfaz que muestra las estadísticas del jugador
-@onready var player_stats_ui = $PlayerStatsUI
+@onready var player_stats_compact_ui = %PlayerStatsCompactUI
 
 ## Nombre del evento
 var event_name: String
@@ -25,7 +25,7 @@ func _ready():
 	# Llama a la función ready de la superclase
 	super._ready()
 	# Asigna el jugador a su interfaz de estadísticas
-	player_stats_ui.setup(player)
+	player_stats_compact_ui.setup(player)
 	# Para cada opción
 	for choice in choices:
 		# Crea su escena a partir del jugador 

@@ -1,0 +1,97 @@
+[gd_scene load_steps=9 format=3 uid="uid://bxbdvrktndhoi"]
+
+[ext_resource type="PackedScene" uid="uid://cm2iaddemayb2" path="res://Battle/health_bar.tscn" id="1_hh3x4"]
+[ext_resource type="Script" path="res://Player/player_stats_compact_ui.gd" id="1_r747s"]
+[ext_resource type="FontFile" uid="uid://dj2uwas52df26" path="res://Themes/fonts/m5x7.ttf" id="2_rgsi2"]
+[ext_resource type="PackedScene" uid="uid://20lggu6h8kmx" path="res://Items/equipment/equipment_ui.tscn" id="3_5v51r"]
+[ext_resource type="Texture2D" uid="uid://b7q5vfrx6d1o" path="res://Battle/player/sprites/coin_16.png" id="5_hbv5i"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_f12js"]
+font = ExtResource("2_rgsi2")
+
+[sub_resource type="LabelSettings" id="LabelSettings_l20gs"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_41rj1"]
+font = ExtResource("2_rgsi2")
+
+[node name="PlayerStatsCompactUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r747s")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -74.0
+offset_right = 80.0
+grow_vertical = 0
+
+[node name="PlayerEquipmentPanel" type="Panel" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 110)
+layout_mode = 2
+size_flags_horizontal = 0
+metadata/_edit_group_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PlayerEquipmentPanel"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -27.0
+offset_right = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/PlayerEquipmentPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Equipment:"
+label_settings = SubResource("LabelSettings_f12js")
+
+[node name="EquipmentUI" parent="VBoxContainer/PlayerEquipmentPanel/VBoxContainer" instance=ExtResource("3_5v51r")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(18, 18)
+layout_mode = 2
+size_flags_vertical = 8
+columns = 4
+corner = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "PLAYER STATUS:"
+label_settings = SubResource("LabelSettings_l20gs")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="HealthBar" parent="VBoxContainer/HBoxContainer" instance=ExtResource("1_hh3x4")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="CoinIconContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="CoinIcon" type="TextureRect" parent="VBoxContainer/HBoxContainer/CoinIconContainer"]
+layout_mode = 2
+texture = ExtResource("5_hbv5i")
+stretch_mode = 5
+
+[node name="CoinCountLabel" type="Label" parent="VBoxContainer/HBoxContainer/CoinIconContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "x3"
+label_settings = SubResource("LabelSettings_41rj1")

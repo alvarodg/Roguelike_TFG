@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cm2iaddemayb2"]
+[gd_scene load_steps=10 format=3 uid="uid://cm2iaddemayb2"]
 
 [ext_resource type="Script" path="res://Battle/health_bar.gd" id="1_lmk8t"]
+[ext_resource type="FontFile" uid="uid://dj2uwas52df26" path="res://Themes/fonts/m5x7.ttf" id="2_7yv26"]
 [ext_resource type="Texture2D" uid="uid://dtcgxg8bujhwf" path="res://Battle/skills/icons/shield_skill.png" id="2_baixc"]
+[ext_resource type="FontFile" uid="uid://b2n7xh73jrxxw" path="res://Themes/fonts/m3x6.ttf" id="4_5wshg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n6eue"]
 bg_color = Color(0.980392, 0.121569, 0.137255, 1)
@@ -9,14 +11,20 @@ bg_color = Color(0.980392, 0.121569, 0.137255, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_skqwe"]
 bg_color = Color(0.117647, 0.117647, 0.784314, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_jv8mu"]
+font = ExtResource("2_7yv26")
+
+[sub_resource type="LabelSettings" id="LabelSettings_do81x"]
+font = ExtResource("2_7yv26")
+
 [sub_resource type="LabelSettings" id="LabelSettings_hx6ct"]
-font_size = 8
+font = ExtResource("4_5wshg")
 
 [node name="HealthBar" type="Control"]
-custom_minimum_size = Vector2(0, 32)
+custom_minimum_size = Vector2(76, 16)
 layout_mode = 3
 anchors_preset = 0
-offset_bottom = 32.0
+offset_bottom = 16.0
 size_flags_horizontal = 4
 script = ExtResource("1_lmk8t")
 default_style = SubResource("StyleBoxFlat_n6eue")
@@ -25,10 +33,11 @@ metadata/_edit_horizontal_guides_ = [16.0]
 
 [node name="HealthProgressBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(94, 24)
+custom_minimum_size = Vector2(60, 14)
 layout_mode = 1
-offset_right = 94.0
-offset_bottom = 24.0
+offset_top = 1.0
+offset_right = 60.0
+offset_bottom = 15.0
 show_percentage = false
 
 [node name="HealthLabel" type="Label" parent="HealthProgressBar"]
@@ -40,17 +49,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "0"
+label_settings = SubResource("LabelSettings_jv8mu")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ShieldIcon" type="TextureRect" parent="."]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(32, 32)
+custom_minimum_size = Vector2(16, 16)
 layout_mode = 0
-offset_left = 94.0
-offset_top = -4.0
-offset_right = 126.0
-offset_bottom = 28.0
+offset_left = 60.0
+offset_right = 76.0
+offset_bottom = 16.0
 size_flags_horizontal = 8
 size_flags_vertical = 0
 texture = ExtResource("2_baixc")
@@ -61,12 +70,15 @@ metadata/_edit_group_ = true
 [node name="ShieldLabel" type="Label" parent="ShieldIcon"]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -3.0
+offset_right = 3.0
+offset_bottom = 13.0
 grow_horizontal = 2
-grow_vertical = 2
 text = "0"
+label_settings = SubResource("LabelSettings_do81x")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -78,8 +90,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -5.0
-offset_top = -23.0
+offset_left = -4.0
+offset_top = -20.0
+offset_right = 1.0
+offset_bottom = 3.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "1"

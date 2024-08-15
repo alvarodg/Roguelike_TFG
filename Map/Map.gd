@@ -7,7 +7,8 @@ signal event_chosen
 @export var debug: bool = false
 @export var generation_data_list: Array[GenerationData]
 @onready var generator = $Generator
-@onready var player_map_ui = %PlayerMapUI
+#@onready var player_map_ui = %PlayerMapUI
+@onready var player_stats_compact_ui = %PlayerStatsCompactUI
 @onready var reset_button = %ResetButton
 @onready var change_level_button = %ChangeLevelButton
 @onready var navigation_button = %NavigationButton
@@ -35,7 +36,7 @@ var battle_volume
 func _ready():
 	# Acceso al singleton
 	RunData.map = self
-	player_map_ui.hide()
+	player_stats_compact_ui.hide()
 	reset_button.hide()
 	navigation_button.hide()
 	change_level_button.hide()
@@ -53,8 +54,8 @@ func start_game(player: Player, rng: RandomNumberGenerator):
 	for i in range(generation_data_list.size()):
 		var level = generator.generate(generation_data_list[i], rng)
 		level_list.append(level)
-	player_map_ui.setup(player)
-	player_map_ui.show()
+	player_stats_compact_ui.setup(player)
+	player_stats_compact_ui.show()
 	if debug:
 		reset_button.show()
 		change_level_button.show()

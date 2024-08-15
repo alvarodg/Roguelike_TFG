@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://d108eaoiwyxw0"]
+[gd_scene load_steps=5 format=3 uid="uid://d108eaoiwyxw0"]
 
 [ext_resource type="Script" path="res://Battle/coin_ui/coin_box.gd" id="1_yrlql"]
+[ext_resource type="Texture2D" uid="uid://b7q5vfrx6d1o" path="res://Battle/player/sprites/coin_16.png" id="2_73pcx"]
+[ext_resource type="FontFile" uid="uid://dj2uwas52df26" path="res://Themes/fonts/m5x7.ttf" id="3_iysso"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wf1qq"]
+font = ExtResource("3_iysso")
 
 [node name="CoinBox" type="Control"]
 layout_mode = 3
@@ -38,3 +43,28 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="CoinIconContainer" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -29.0
+offset_top = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = 1
+
+[node name="CoinIcon" type="TextureRect" parent="CoinIconContainer"]
+layout_mode = 2
+texture = ExtResource("2_73pcx")
+stretch_mode = 5
+
+[node name="CoinCountLabel" type="Label" parent="CoinIconContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "x3"
+label_settings = SubResource("LabelSettings_wf1qq")

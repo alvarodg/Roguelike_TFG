@@ -38,7 +38,7 @@ _data = {
 }
 
 [node name="Coin" type="TextureButton"]
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(28, 28)
 texture_normal = ExtResource("1_w47n0")
 texture_disabled = ExtResource("1_w47n0")
 texture_focused = ExtResource("2_iollm")

@@ -1,16 +1,21 @@
-[gd_scene load_steps=14 format=3 uid="uid://p7bi8ul5sa3d"]
+[gd_scene load_steps=19 format=3 uid="uid://p7bi8ul5sa3d"]
 
 [ext_resource type="Script" path="res://Tests/test_event.gd" id="1_5fra8"]
-[ext_resource type="Resource" uid="uid://cfvkrghviixmx" path="res://Events/resources/event_data/event_pick/slot_machine.tres" id="2_b2hyr"]
+[ext_resource type="Resource" uid="uid://b35oc0x4cwyvc" path="res://Events/resources/event_data/event_pick/specialization.tres" id="2_oetan"]
 [ext_resource type="Script" path="res://Player/Player.gd" id="3_c1xat"]
 [ext_resource type="Script" path="res://Battle/combatant/PlayerStats.gd" id="4_rki66"]
 [ext_resource type="Script" path="res://Player/PlayerUIData.gd" id="5_h1yvh"]
 [ext_resource type="Texture2D" uid="uid://djmrox3cqnntc" path="res://icon.svg" id="6_et2lk"]
 [ext_resource type="Resource" uid="uid://1f1t8s1ew7uy" path="res://Battle/skills/resources/win.tres" id="7_gm1vr"]
 [ext_resource type="PackedScene" uid="uid://buwxy0toti3j8" path="res://Run/collection_container.tscn" id="8_p4se0"]
+[ext_resource type="Resource" uid="uid://bsioc5j8lwg1x" path="res://Battle/skills/resources/hit_attack.tres" id="8_tx3p4"]
 [ext_resource type="Resource" uid="uid://5871ejwt2whd" path="res://Run/collections/default_equipment_collection.tres" id="9_k2nqh"]
+[ext_resource type="Resource" uid="uid://r517h04l207c" path="res://Battle/skills/resources/combo.tres" id="9_xpq5q"]
+[ext_resource type="Resource" uid="uid://coos4xdskyy7o" path="res://Battle/skills/resources/counterfeit.tres" id="10_dj0i6"]
 [ext_resource type="Resource" uid="uid://b3t3hv7n1dbyh" path="res://Run/collections/default_skill_collection.tres" id="10_g4yfp"]
+[ext_resource type="Resource" uid="uid://d1u5h8ydcu0pl" path="res://Battle/skills/resources/jackpot.tres" id="11_42mxh"]
 [ext_resource type="Resource" uid="uid://cxjloh7bo4onj" path="res://Run/collections/test_event_collection.tres" id="11_kmuwa"]
+[ext_resource type="Resource" uid="uid://q8cjuohabuf1" path="res://Battle/skills/resources/slippery_strike.tres" id="12_an3kp"]
 
 [sub_resource type="Resource" id="Resource_bnqu0"]
 script = ExtResource("4_rki66")
@@ -21,6 +26,8 @@ base_strength = 0
 base_shield = 0
 base_armor = 0
 base_dodges = 0
+base_shield_decay_turns = 1
+shield_decay_rate = 1.0
 
 [sub_resource type="Resource" id="Resource_ku3kp"]
 script = ExtResource("5_h1yvh")
@@ -35,13 +42,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5fra8")
-event_data = ExtResource("2_b2hyr")
+event_data = ExtResource("2_oetan")
 
 [node name="Player" type="Node" parent="."]
 script = ExtResource("3_c1xat")
 stats = SubResource("Resource_bnqu0")
 ui_data = SubResource("Resource_ku3kp")
-skill_list = Array[Resource("res://Battle/skills/SkillData.gd")]([ExtResource("7_gm1vr")])
+skill_list = Array[Resource("res://Battle/skills/SkillData.gd")]([ExtResource("7_gm1vr"), ExtResource("8_tx3p4"), ExtResource("9_xpq5q"), ExtResource("10_dj0i6"), ExtResource("11_42mxh"), ExtResource("12_an3kp")])
 
 [node name="CollectionContainer" parent="." instance=ExtResource("8_p4se0")]
 equipments = ExtResource("9_k2nqh")

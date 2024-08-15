@@ -1,18 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://cunn187c8gmy8"]
+[gd_scene load_steps=8 format=3 uid="uid://cunn187c8gmy8"]
 
 [ext_resource type="Script" path="res://Battle/coin_ui/Slot.gd" id="1_f8xhp"]
-[ext_resource type="Texture2D" uid="uid://dpgpbk4n0loxk" path="res://Battle/coin_ui/sprites/coin_slot_any.png" id="2_0w4v1"]
-[ext_resource type="Texture2D" uid="uid://cpw2y2hxjx2k6" path="res://Battle/coin_ui/sprites/coin_slot_heads.png" id="3_38pys"]
-[ext_resource type="Texture2D" uid="uid://bdet75vcwcu45" path="res://Battle/coin_ui/sprites/coin_slot_tails.png" id="4_e47eb"]
+[ext_resource type="Texture2D" uid="uid://cleymv01q7wyo" path="res://Battle/coin_ui/sprites/coin_slot_32_any.png" id="1_p66l1"]
+[ext_resource type="Texture2D" uid="uid://day75mjlt754g" path="res://Battle/coin_ui/sprites/coin_slot_32_heads.png" id="3_btkgy"]
+[ext_resource type="Texture2D" uid="uid://j8h48rv6rl5q" path="res://Battle/coin_ui/sprites/coin_slot_32_tails.png" id="4_w5ip6"]
+[ext_resource type="FontFile" uid="uid://b2n7xh73jrxxw" path="res://Themes/fonts/m3x6.ttf" id="5_2as3y"]
 [ext_resource type="Script" path="res://Battle/coin_ui/CountLabel.gd" id="5_rfkqu"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_ly4tc"]
+font = ExtResource("5_2as3y")
+
 [node name="Slot" type="TextureButton"]
-texture_normal = ExtResource("2_0w4v1")
+texture_filter = 1
+texture_normal = ExtResource("1_p66l1")
 script = ExtResource("1_f8xhp")
 tails_ok = false
-texture_any = ExtResource("2_0w4v1")
-texture_heads = ExtResource("3_38pys")
-texture_tails = ExtResource("4_e47eb")
+texture_any = ExtResource("1_p66l1")
+texture_heads = ExtResource("3_btkgy")
+texture_tails = ExtResource("4_w5ip6")
 coins_needed = 2
 
 [node name="Shadow" type="ColorRect" parent="."]
@@ -46,14 +51,16 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -26.0
+offset_left = -13.0
+offset_top = -13.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-text = "x N"
+text = "xN"
+label_settings = SubResource("LabelSettings_ly4tc")
 horizontal_alignment = 2
+vertical_alignment = 2
 script = ExtResource("5_rfkqu")
 
 [connection signal="coins_changed" from="." to="CountLabel" method="_on_Slot_coins_changed"]

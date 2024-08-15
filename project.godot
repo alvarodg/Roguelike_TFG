@@ -24,7 +24,11 @@ SystemData="*res://Utilities/SystemData.gd"
 
 [display]
 
-window/stretch/mode="canvas_items"
+window/size/viewport_width=640
+window/size/viewport_height=360
+window/size/window_width_override=1280
+window/size/window_height_override=720
+window/stretch/mode="viewport"
 
 [editor]
 
@@ -33,6 +37,10 @@ naming/default_signal_callback_name="_on_{NodeName}_{signal_name}"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/gut/plugin.cfg")
+
+[gui]
+
+theme/custom_font="res://Themes/fonts/m5x7.ttf"
 
 [input]
 

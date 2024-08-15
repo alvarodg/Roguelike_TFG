@@ -89,7 +89,7 @@ func _on_coinbox_finished(result: bool):
 	else:
 		returned.emit()
 
-func _update_description(p_label: Label):
+func _update_description(p_label: RichTextLabel):
 	var desc: String = ""
 	var cost_desc: String = ""
 	if cost != null:

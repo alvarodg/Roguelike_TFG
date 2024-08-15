@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="GenerationParameters" load_steps=2 format=3 uid="uid://djsp1c47v30gd"]
+[gd_resource type="Resource" script_class="WeldMapGenerator" load_steps=2 format=3 uid="uid://djsp1c47v30gd"]
 
 [ext_resource type="Script" path="res://Generation/WeldMapGenerator.gd" id="1_kh5pf"]
 
@@ -7,7 +7,7 @@ script = ExtResource("1_kh5pf")
 rows = 5
 columns = 10
 base_position = Vector2(50, 50)
-distance = Vector2(100, 100)
+distance = Vector2(60, 60)
 position_noise = Vector2(0, 0)
 iterations = 18
 clamp_at = Array[int]([-1])

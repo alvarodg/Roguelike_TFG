@@ -47,7 +47,7 @@ func _ready():
 	if skill_data.one_shot:
 		uses_label.set("theme_override_colors/font_color", Color.DARK_GOLDENROD)
 	var slot_list = skill_data.cost
-	# Hacky, mira hasta los tres primeros elementos de la lista y asigna a coints_needed
+	# Hacky, mira hasta los tres primeros elementos de la lista y asigna a coins_needed
 	for i in range(min(slot_list.size(),3)):
 		if slot_list[i] > 0:
 			# Asigna las monedas que acepta a la ranura.
@@ -175,6 +175,6 @@ func remove_buttons():
 
 func _update_uses_ui():
 	if skill_data.uses_per_turn < 0:
-		uses_label.text = "x ∞"
+		uses_label.text = "x∞"
 	else:
-		uses_label.text = "x "+str(skill_uses)
+		uses_label.text = "x"+str(skill_uses)

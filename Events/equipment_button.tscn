@@ -7,9 +7,9 @@
 
 [node name="EquipmentButton" type="Button"]
 texture_filter = 1
-custom_minimum_size = Vector2(260, 220)
-offset_right = 8.0
-offset_bottom = 8.0
+custom_minimum_size = Vector2(160, 140)
+offset_right = 140.0
+offset_bottom = 120.0
 theme_override_constants/icon_max_width = 18
 icon_alignment = 1
 vertical_icon_alignment = 0
@@ -42,7 +42,7 @@ stretch_mode = 5
 [node name="NameLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_vertical = 0
+size_flags_horizontal = 4
 horizontal_alignment = 1
 
 [node name="NamePanel" type="Panel" parent="VBoxContainer/HBoxContainer/NameLabel"]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://ci2osml7lmqcy"]
+[gd_scene load_steps=6 format=3 uid="uid://ci2osml7lmqcy"]
 
 [ext_resource type="Script" path="res://Battle/CoinBattle.gd" id="1_ygx54"]
 [ext_resource type="PackedScene" uid="uid://d2ay6knlrtvwb" path="res://Battle/player/player_skill_ui.tscn" id="2_a737o"]
 [ext_resource type="PackedScene" uid="uid://d108eaoiwyxw0" path="res://Battle/coin_ui/coin_box.tscn" id="3_2o0qd"]
+[ext_resource type="FontFile" uid="uid://b0yauh56wqac5" path="res://Themes/fonts/m6x11.ttf" id="5_vw3pn"]
 [ext_resource type="PackedScene" uid="uid://cgeo8n0mg0x68" path="res://Battle/player/player_stats_ui.tscn" id="9_f77mq"]
 
 [node name="CoinBattle" type="Control"]
@@ -37,10 +38,8 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -344.0
-offset_top = 32.0
-offset_right = -48.0
-offset_bottom = 200.0
+offset_left = -193.0
+offset_bottom = 229.0
 grow_horizontal = 0
 
 [node name="PlayerSkillsArea" type="Control" parent="BattleUI"]
@@ -51,10 +50,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -496.0
-offset_top = -268.0
-offset_right = 248.0
-offset_bottom = 61.0
+offset_left = -270.0
+offset_top = -172.0
+offset_right = 126.0
+offset_bottom = 51.0
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_group_ = true
@@ -65,11 +64,13 @@ layout_mode = 1
 
 [node name="PlayerCoinsArea" type="Control" parent="BattleUI"]
 layout_mode = 1
-anchor_left = 0.263889
-anchor_top = 0.691358
-anchor_right = 0.777778
-anchor_bottom = 0.925926
+anchor_left = 0.278125
+anchor_top = 0.688889
+anchor_right = 0.78125
+anchor_bottom = 0.991667
 offset_top = 3.05176e-05
+offset_right = -2.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 metadata/_edit_group_ = true
@@ -78,19 +79,18 @@ metadata/_edit_use_anchors_ = true
 [node name="CoinBox" parent="BattleUI/PlayerCoinsArea" instance=ExtResource("3_2o0qd")]
 unique_name_in_owner = true
 layout_mode = 1
-offset_right = -0.00012207
-offset_bottom = 8.0
 
 [node name="PlayerStatsArea" type="Control" parent="BattleUI"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 40.0
-offset_top = -184.0
-offset_right = 320.0
-offset_bottom = -40.0
+offset_top = -113.0
+offset_right = 175.0
+offset_bottom = -2.0
 grow_vertical = 0
+mouse_filter = 1
+metadata/_edit_group_ = true
 
 [node name="PlayerStatsUI" parent="BattleUI/PlayerStatsArea" instance=ExtResource("9_f77mq")]
 unique_name_in_owner = true
@@ -98,21 +98,22 @@ layout_mode = 1
 
 [node name="EndTurnButton" type="Button" parent="BattleUI"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 100)
+custom_minimum_size = Vector2(100, 50)
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -244.0
-offset_top = -160.0
-offset_right = -44.0
-offset_bottom = -60.0
+offset_left = -128.0
+offset_top = -86.0
+offset_right = -8.0
+offset_bottom = -36.0
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_font_sizes/font_size = 40
-text = "End Turn"
+theme_override_fonts/font = ExtResource("5_vw3pn")
+theme_override_font_sizes/font_size = 32
+text = "END TURN"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 

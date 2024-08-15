@@ -1,23 +1,21 @@
 [gd_scene load_steps=11 format=3 uid="uid://cqjqo5c311nia"]
 
 [ext_resource type="Script" path="res://Battle/enemy/enemy.gd" id="1_7yfpq"]
-[ext_resource type="Texture2D" uid="uid://djmrox3cqnntc" path="res://icon.svg" id="3_qapfy"]
+[ext_resource type="Texture2D" uid="uid://dok6hm7v6i3qi" path="res://Battle/enemy/sprites/biggest_boss_enemy.png" id="3_pagwl"]
 [ext_resource type="PackedScene" uid="uid://dsuny3pwpola5" path="res://Battle/enemy/enemy_stats_ui.tscn" id="4_ekw6l"]
 [ext_resource type="PackedScene" uid="uid://d0h4qokw7131j" path="res://Battle/enemy/skills/enemy_skill_ui.tscn" id="4_ig0fy"]
 [ext_resource type="PackedScene" uid="uid://20lggu6h8kmx" path="res://Items/equipment/equipment_ui.tscn" id="5_daxmh"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xjwa5"]
-font_size = 13
 
 [sub_resource type="LabelSettings" id="LabelSettings_y7uqv"]
-font_size = 13
 
 [sub_resource type="Animation" id="Animation_gfh2g"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:scale")
+tracks/0/path = NodePath("SpriteHealthZone/VBoxContainer/Sprite:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -29,7 +27,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite:self_modulate")
+tracks/1/path = NodePath("SpriteHealthZone/VBoxContainer/Sprite:self_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -44,7 +42,7 @@ resource_name = "death"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:scale")
+tracks/0/path = NodePath("SpriteHealthZone/VBoxContainer/Sprite:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -56,7 +54,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite:self_modulate")
+tracks/1/path = NodePath("SpriteHealthZone/VBoxContainer/Sprite:self_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -84,42 +82,52 @@ grow_horizontal = 0
 script = ExtResource("1_7yfpq")
 metadata/_edit_vertical_guides_ = [890.0]
 
-[node name="Sprite" type="TextureRect" parent="."]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -134.0
-offset_top = 58.0
-offset_right = -6.0
-offset_bottom = 186.0
-grow_horizontal = 0
-pivot_offset = Vector2(64, 64)
-texture = ExtResource("3_qapfy")
+[node name="SpriteHealthZone" type="Control" parent="."]
+anchors_preset = 0
+offset_left = -102.0
+offset_top = 5.0
+offset_right = 40.0
+offset_bottom = 148.0
 
-[node name="EnemyStatsUI" parent="." instance=ExtResource("4_ekw6l")]
+[node name="VBoxContainer" type="VBoxContainer" parent="SpriteHealthZone"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_group_ = true
+
+[node name="EnemyStatsUI" parent="SpriteHealthZone/VBoxContainer" instance=ExtResource("4_ekw6l")]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = -85.0
-offset_top = 2.0
-offset_right = 35.0
-offset_bottom = 2.0
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Sprite" type="TextureRect" parent="SpriteHealthZone/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = ExtResource("3_pagwl")
 
 [node name="Panel2" type="Panel" parent="."]
 custom_minimum_size = Vector2(140, 32)
 layout_direction = 3
 layout_mode = 0
-offset_top = 193.0
+offset_top = 150.0
 offset_right = 140.0
-offset_bottom = 251.0
+offset_bottom = 208.0
 mouse_filter = 1
 metadata/_edit_group_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel2"]
-layout_mode = 0
-offset_right = 125.0
-offset_bottom = 24.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Label" type="Label" parent="Panel2/VBoxContainer"]
 layout_mode = 2
@@ -133,11 +141,12 @@ custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 
 [node name="Panel3" type="Panel" parent="."]
+custom_minimum_size = Vector2(140, 0)
 layout_mode = 0
-offset_left = -215.0
-offset_top = 61.0
-offset_right = -102.0
-offset_bottom = 131.0
+offset_left = -100.0
+offset_top = 210.0
+offset_right = 40.0
+offset_bottom = 270.0
 metadata/_edit_group_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel3"]
@@ -156,10 +165,10 @@ horizontal_alignment = 1
 
 [node name="EquipmentUI" parent="Panel3/VBoxContainer" instance=ExtResource("5_daxmh")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(18, 18)
+custom_minimum_size = Vector2(123, 18)
 layout_mode = 2
-columns = 4
-corner = 2
+size_flags_horizontal = 4
+columns = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

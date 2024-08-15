@@ -12,7 +12,7 @@ class_name WeldMapGenerator
 ## Posición base del mapa a generar
 @export var base_position = Vector2(50,50)
 ## Distancia entre filas (distance.y) y columnas (distance.x)
-@export var distance = Vector2(100,100)
+@export var distance = Vector2(60,60)
 ## Máximo ruido de posición, que se aplicará aleatoriamente 
 ## a cada nodo una vez generado el mapa
 @export var position_noise = Vector2.ZERO

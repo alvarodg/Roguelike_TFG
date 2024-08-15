@@ -7,6 +7,7 @@ signal finished_flipping_coins
 @onready var turn_manager: TurnManager = preload("res://Battle/resources/TurnManager.tres")
 @onready var coin_box_container = %CoinBoxContainer
 @onready var input_blocker = $InputBlocker
+@onready var coin_count_label = %CoinCountLabel
 
 
 # Called when the node enters the scene tree for the first time.
@@ -22,6 +23,8 @@ func setup(player: Player):
 			coin.reparent(coin_box_container)
 		else:
 			coin_box_container.add_child(coin)
+	_update_coin_count(player.get_coin_count())
+	player.coin_count_changed.connect(_on_Player_coin_count_changed)
 #	coin_box_container.get_child(0).grab_focus()
 
 func _on_Player_coins_changed(new_coins):
@@ -84,3 +87,10 @@ func block_input():
 	
 func allow_input():
 	input_blocker.mouse_filter = MOUSE_FILTER_IGNORE
+
+
+func _on_Player_coin_count_changed(_old, count):
+	_update_coin_count(count)
+
+func _update_coin_count(count: int):
+	coin_count_label.text = "x"+str(count)

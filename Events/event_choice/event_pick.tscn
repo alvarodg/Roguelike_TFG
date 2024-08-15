@@ -1,13 +1,21 @@
-[gd_scene load_steps=7 format=3 uid="uid://d4ak0fy4gsv6v"]
+[gd_scene load_steps=11 format=3 uid="uid://d4ak0fy4gsv6v"]
 
 [ext_resource type="Script" path="res://Events/event_choice/event_pick.gd" id="1_nc80d"]
 [ext_resource type="Texture2D" uid="uid://djmrox3cqnntc" path="res://icon.svg" id="2_p76l4"]
-[ext_resource type="PackedScene" uid="uid://cgeo8n0mg0x68" path="res://Battle/player/player_stats_ui.tscn" id="3_1eapr"]
+[ext_resource type="FontFile" uid="uid://ysqghdrpxr1g" path="res://Themes/fonts/m6x11plus.ttf" id="3_05h3b"]
+[ext_resource type="PackedScene" uid="uid://bxbdvrktndhoi" path="res://Player/player_stats_compact_ui.tscn" id="4_ga0g0"]
+[ext_resource type="FontFile" uid="uid://b0yauh56wqac5" path="res://Themes/fonts/m6x11.ttf" id="4_wdi5c"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8kbc4"]
-font_size = 24
+font = ExtResource("3_05h3b")
+font_size = 18
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2c6xu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qcnea"]
+font = ExtResource("4_wdi5c")
+
+[sub_resource type="LabelSettings" id="LabelSettings_jeyal"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i0utn"]
 bg_color = Color(0.2, 0.2, 0.2, 0.858824)
@@ -37,10 +45,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -300.0
-offset_top = -200.0
-offset_right = 300.0
-offset_bottom = 200.0
+offset_left = -140.0
+offset_top = -100.0
+offset_right = 140.0
+offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -58,17 +66,19 @@ stretch_mode = 5
 
 [node name="EventNameLabel" type="Label" parent="."]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 20)
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -166.0
-offset_right = 166.0
-offset_bottom = 37.0
+offset_left = -50.0
+offset_right = 50.0
+offset_bottom = 20.0
 grow_horizontal = 2
 text = "EVENT NAME"
 label_settings = SubResource("LabelSettings_8kbc4")
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Panel" type="Panel" parent="EventNameLabel"]
 show_behind_parent = true
@@ -83,13 +93,16 @@ size_flags_vertical = 0
 
 [node name="ChoiceContainer" type="VBoxContainer" parent="."]
 unique_name_in_owner = true
-layout_mode = 2
-offset_left = 952.0
-offset_right = 1152.0
-offset_bottom = 648.0
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -120.0
+grow_horizontal = 0
 
 [node name="Panel" type="Panel" parent="ChoiceContainer"]
-custom_minimum_size = Vector2(200, 60)
+custom_minimum_size = Vector2(100, 20)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_2c6xu")
 
@@ -101,18 +114,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "MAKE YOUR CHOICE"
+label_settings = SubResource("LabelSettings_qcnea")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="NarrativeLabel" type="Label" parent="."]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(260, 0)
+custom_minimum_size = Vector2(160, 0)
 layout_mode = 1
-offset_left = 12.0
-offset_top = 46.0
-offset_right = 272.0
-offset_bottom = 72.0
+offset_left = 7.0
+offset_top = 31.0
+offset_right = 157.0
+offset_bottom = 60.0
 text = "This should say something else."
+label_settings = SubResource("LabelSettings_jeyal")
 autowrap_mode = 3
 metadata/_edit_group_ = true
 
@@ -126,12 +141,15 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_i0utn")
 
-[node name="PlayerStatsUI" parent="." instance=ExtResource("3_1eapr")]
+[node name="PlayerStatsCompactUI" parent="." instance=ExtResource("4_ga0g0")]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_right = 0.0
-offset_right = 1152.0
+offset_left = 28.0
+offset_top = -16.0
+offset_right = 28.0
+offset_bottom = -16.0
 grow_horizontal = 1
 grow_vertical = 0
-metadata/_edit_group_ = true

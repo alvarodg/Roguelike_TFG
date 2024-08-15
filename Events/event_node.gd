@@ -16,11 +16,12 @@ var state: State = State.AVAILABLE : set = set_state
 func _ready():
 	texture_button.texture_normal = event.icon_hover
 	texture_button.texture_hover = event.icon_hover
+	pivot_offset = texture_button.texture_normal.get_size() * texture_button.scale / 2
 
 func _draw():
-	var from = global_position - position
+	var from = global_position - position - pivot_offset
 	for d in descendants:
-		var to = d.global_position - position
+		var to = d.global_position - position - d.pivot_offset
 		draw_line(from, to, Color.WHITE, 2.0)
 #		var line = Line2D.new()
 #		line.add_point(from)
