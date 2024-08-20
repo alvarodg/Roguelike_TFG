@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="PlayerUIData" load_steps=3 format=3 uid="uid://k6ndslc1hrs1"]
 
 [ext_resource type="Script" path="res://Player/PlayerUIData.gd" id="1_ip81o"]
-[ext_resource type="Texture2D" uid="uid://djmrox3cqnntc" path="res://icon.svg" id="1_mu5fi"]
+[ext_resource type="Texture2D" uid="uid://b3orepwgh8usw" path="res://Player/sprites/guy.png" id="2_nfg3i"]
 
 [resource]
 script = ExtResource("1_ip81o")
-sprite = ExtResource("1_mu5fi")
+sprite = ExtResource("2_nfg3i")
 ui_name = "Player"

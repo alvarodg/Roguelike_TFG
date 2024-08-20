@@ -18,16 +18,22 @@ func _ready():
 	texture_button.texture_hover = event.icon_hover
 	pivot_offset = texture_button.texture_normal.get_size() * texture_button.scale / 2
 
-func _draw():
-	var from = global_position - position - pivot_offset
-	for d in descendants:
-		var to = d.global_position - position - d.pivot_offset
-		draw_line(from, to, Color.WHITE, 2.0)
-#		var line = Line2D.new()
-#		line.add_point(from)
-#		line.add_point(to)
-#		line.width = 2.0
-#		add_child(line)
+#func _draw():
+	#var from = global_position - position - pivot_offset
+	##var from = global_position - pivot_offset
+	##var from = position
+	#for d in descendants:
+		##var line: Line2D = Line2D.new()
+		#var to = d.global_position - position - d.pivot_offset
+		##var to = d.global_position - d.pivot_offset
+		##var to = d.position
+		#draw_line(from, to, Color.WHITE, 2.0)
+		#var line = Line2D.new()
+		#add_child(line)
+		#line.add_point(from)
+		#line.add_point(to)
+		#line.width = 2.0
+
 #		lines.append(line)
 
 func add_descendant(descendant: EventNode):

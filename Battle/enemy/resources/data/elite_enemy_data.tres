@@ -4,13 +4,13 @@
 [ext_resource type="Resource" uid="uid://bcdpt7volc5pm" path="res://Battle/enemy/resources/stats/RegularEnemyStats.tres" id="1_khlk1"]
 [ext_resource type="Script" path="res://Battle/enemy/enemy_ui_data.gd" id="2_aqagc"]
 [ext_resource type="Script" path="res://Battle/skills/behaviors/damage_skill_behavior.gd" id="2_be414"]
-[ext_resource type="Texture2D" uid="uid://bn0mo6isgbwi" path="res://Battle/enemy/sprites/elite_icon.svg" id="3_iuod8"]
 [ext_resource type="Script" path="res://Battle/skills/SkillData.gd" id="3_n42je"]
 [ext_resource type="Texture2D" uid="uid://cpaes4c4pnmxw" path="res://Battle/skills/icons/attack_skill.png" id="4_8m0re"]
 [ext_resource type="Script" path="res://Battle/skills/skill_ui_data.gd" id="5_dpscd"]
 [ext_resource type="Script" path="res://Battle/skills/behaviors/shield_skill_behavior.gd" id="6_dcaix"]
 [ext_resource type="Texture2D" uid="uid://dtcgxg8bujhwf" path="res://Battle/skills/icons/shield_skill.png" id="7_844q7"]
 [ext_resource type="Texture2D" uid="uid://l8diabvbslw6" path="res://Battle/skills/icons/attack_shield_skill.png" id="8_lm836"]
+[ext_resource type="Texture2D" uid="uid://dmdqxsg6jwrfd" path="res://Battle/enemy/sprites/elite/biglizard_enemy.png" id="11_18foi"]
 
 [sub_resource type="Resource" id="Resource_cfjrl"]
 script = ExtResource("2_be414")
@@ -98,7 +98,7 @@ tags = Array[int]([0])
 [sub_resource type="Resource" id="Resource_bav7u"]
 script = ExtResource("2_aqagc")
 flip_facing = false
-sprite = ExtResource("3_iuod8")
+sprite = ExtResource("11_18foi")
 ui_name = "Elite"
 
 [resource]

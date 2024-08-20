@@ -16,4 +16,3 @@ size_flags_vertical = 3
 script = ExtResource("1_uehrg")
 map_generator = ExtResource("2_l4ob4")
 event_assigner = ExtResource("3_mobhn")
-metadata/_edit_use_anchors_ = true

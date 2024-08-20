@@ -9,10 +9,18 @@ signal health_animation_finished
 @onready var strength_container = %StrengthContainer
 @onready var armor_container = %ArmorContainer
 @onready var dodges_container = %DodgesContainer
+@onready var other_stats_container = %OtherStatsContainer
+@onready var v_box_container = %VBoxContainer
+
+@export var health_above: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	if health_above:
+		v_box_container.move_child(health_bar, 0)
+		v_box_container.alignment = BoxContainer.ALIGNMENT_BEGIN
+	else:
+		v_box_container.alignment = BoxContainer.ALIGNMENT_END
 
 func setup(enemy: EnemyStats):
 	health_bar.setup(enemy)

@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="GenerationData" load_steps=4 format=3 uid="uid://cqw2ej3w1b85p"]
+[gd_resource type="Resource" script_class="GenerationData" load_steps=5 format=3 uid="uid://cqw2ej3w1b85p"]
 
 [ext_resource type="Resource" uid="uid://bj83iiiv0prhg" path="res://Generation/resources/event_assigner/l3_events.tres" id="1_0oggi"]
+[ext_resource type="Texture2D" uid="uid://bpg5xaqxgmkhv" path="res://Battle/background/battleback8.png" id="1_876c4"]
 [ext_resource type="Resource" uid="uid://djsp1c47v30gd" path="res://Generation/resources/node_generation/map/l3_default_map.tres" id="2_hrh2v"]
 [ext_resource type="Script" path="res://Generation/generation_data.gd" id="3_ednht"]
 
@@ -8,3 +9,4 @@
 script = ExtResource("3_ednht")
 map_generator = ExtResource("2_hrh2v")
 event_assigner = ExtResource("1_0oggi")
+default_battle_bg = ExtResource("1_876c4")

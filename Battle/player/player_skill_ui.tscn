@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Battle/player/player_skill_ui.gd" id="1_0k7n8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tjy3n"]
-bg_color = Color(0.262745, 0.623529, 0.937255, 1)
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="PlayerSkillUI" type="Control"]
 layout_mode = 3

@@ -15,6 +15,9 @@ signal upcoming_skills_changed(value)
 @onready var enemy_skill_ui = %EnemySkillUI
 @onready var equipment_ui = %EquipmentUI
 @onready var animation_player = $AnimationPlayer
+@onready var passives_panel = %PassivesPanel
+@onready var name_label = %NameLabel
+@onready var health_sprite_container = %HealthSpriteContainer
 
 const UPCOMING_AMOUNT: int = 4
 
@@ -35,18 +38,25 @@ var upcoming_skills: Array[SkillData]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	assert(stats is EnemyStats)
 	target = combatants.player
+	name_label.text = " " + ui_data.ui_name + " "
 	sprite.texture = ui_data.sprite
 	sprite.flip_h = ui_data.flip_facing
-	battle_position = sprite.global_position + sprite.size/2
 	stats.setup()
 	for equipment in equipment_list:
 		equip(equipment)
+	if equipment_list.size() == 0:
+		passives_panel.hide()
 	equipment_ui.setup(self)
+	equipment_ui.equipment_changed.connect(_on_equipment_changed)
 	#stats.start_battle()
 	enemy_stats_ui.setup(stats)
 	enemy_skill_ui.setup(self)
+	# Esperar un frame para que se actualice el layout con el tamaño correcto
+	# del sprite del enemigo
+	await get_tree().process_frame
+	sprite.pivot_offset = sprite.size/2
+	battle_position = sprite.global_position + sprite.pivot_offset
 	
 func setup(data: EnemyData):
 	ui_data = data.ui_data
@@ -174,4 +184,9 @@ func _on_hit(damage, health, max_health):
 func _on_Stats_changed(_old = null, _value = null, _other = null):
 	stats_changed.emit(stats)
 
+func _on_equipment_changed(equip_list: Array[Equipment]):
+	if equip_list.size() > 0:
+		passives_panel.show()
+	else:
+		passives_panel.hide()
 

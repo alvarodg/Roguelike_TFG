@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://l8diabvbslw6" path="res://Battle/skills/icons/attack_shield_skill.png" id="7_ldxnm"]
 [ext_resource type="Script" path="res://Battle/enemy/EnemyStats.gd" id="8_x383l"]
 [ext_resource type="Script" path="res://Battle/enemy/enemy_ui_data.gd" id="9_v1osf"]
-[ext_resource type="Texture2D" uid="uid://bf2irt3gwugkq" path="res://Battle/enemy/sprites/enemy_icon_3.svg" id="10_meusk"]
+[ext_resource type="Texture2D" uid="uid://d1c13ci0b4ev1" path="res://Battle/enemy/sprites/mushroom_enemy.png" id="10_oyjl2"]
 
 [sub_resource type="Resource" id="Resource_531vi"]
 script = ExtResource("2_qtqat")
@@ -141,8 +141,8 @@ shield_decay_rate = 1.0
 
 [sub_resource type="Resource" id="Resource_67g3e"]
 script = ExtResource("9_v1osf")
-flip_facing = false
-sprite = ExtResource("10_meusk")
+flip_facing = true
+sprite = ExtResource("10_oyjl2")
 ui_name = "Enemy 3"
 
 [resource]

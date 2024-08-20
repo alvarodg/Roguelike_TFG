@@ -1,40 +1,44 @@
-[gd_scene load_steps=11 format=3 uid="uid://cqjqo5c311nia"]
+[gd_scene load_steps=14 format=3 uid="uid://cqjqo5c311nia"]
 
 [ext_resource type="Script" path="res://Battle/enemy/enemy.gd" id="1_7yfpq"]
-[ext_resource type="Texture2D" uid="uid://dok6hm7v6i3qi" path="res://Battle/enemy/sprites/biggest_boss_enemy.png" id="3_pagwl"]
+[ext_resource type="StyleBox" uid="uid://b2bm3n50qyv0h" path="res://Themes/theme_pixel/panels/blackish_panel.tres" id="2_ht23g"]
+[ext_resource type="Texture2D" uid="uid://dok6hm7v6i3qi" path="res://Battle/enemy/sprites/boss/biggest_boss_enemy.png" id="3_0a0d0"]
+[ext_resource type="StyleBox" uid="uid://bck346hjqyeeq" path="res://Themes/theme_pixel/panels/blue_machine_panel.tres" id="3_st2sj"]
 [ext_resource type="PackedScene" uid="uid://dsuny3pwpola5" path="res://Battle/enemy/enemy_stats_ui.tscn" id="4_ekw6l"]
 [ext_resource type="PackedScene" uid="uid://d0h4qokw7131j" path="res://Battle/enemy/skills/enemy_skill_ui.tscn" id="4_ig0fy"]
 [ext_resource type="PackedScene" uid="uid://20lggu6h8kmx" path="res://Items/equipment/equipment_ui.tscn" id="5_daxmh"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_xjwa5"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4knjf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_y7uqv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xjwa5"]
 
 [sub_resource type="Animation" id="Animation_gfh2g"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SpriteHealthZone/VBoxContainer/Sprite:scale")
+tracks/0/path = NodePath("HBoxContainer/VBoxContainer/SpriteHealthZone/HealthSpriteContainer/Sprite:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("SpriteHealthZone/VBoxContainer/Sprite:self_modulate")
+tracks/1/path = NodePath("HBoxContainer/VBoxContainer/SpriteHealthZone/HealthSpriteContainer/Sprite:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_5iosf"]
@@ -42,26 +46,26 @@ resource_name = "death"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SpriteHealthZone/VBoxContainer/Sprite:scale")
+tracks/0/path = NodePath("HBoxContainer/VBoxContainer/SpriteHealthZone/HealthSpriteContainer/Sprite:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(0.01, 0.01)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("SpriteHealthZone/VBoxContainer/Sprite:self_modulate")
+tracks/1/path = NodePath("HBoxContainer/VBoxContainer/SpriteHealthZone/HealthSpriteContainer/Sprite:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Vector2(1, 1), Vector2(0.01, 0.01)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gg26h"]
@@ -75,53 +79,114 @@ layout_mode = 3
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -40.0
-offset_top = -2.0
-offset_bottom = 38.0
 grow_horizontal = 0
 script = ExtResource("1_7yfpq")
-metadata/_edit_vertical_guides_ = [890.0]
+metadata/_edit_vertical_guides_ = [890.0, 574.0]
+metadata/_edit_horizontal_guides_ = [51.0]
 
-[node name="SpriteHealthZone" type="Control" parent="."]
-anchors_preset = 0
-offset_left = -102.0
-offset_top = 5.0
-offset_right = 40.0
-offset_bottom = 148.0
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -170.0
+offset_top = 2.0
+offset_bottom = 213.0
+grow_horizontal = 0
+theme_override_constants/separation = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="SpriteHealthZone"]
+[node name="PassivesPanel" type="Panel" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(24, 60)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_4knjf")
+metadata/_edit_group_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PassivesPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/PassivesPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/normal = ExtResource("2_ht23g")
+text = "PASSIVE
+SKILLS:"
+label_settings = SubResource("LabelSettings_y7uqv")
+horizontal_alignment = 1
+
+[node name="EquipmentUI" parent="HBoxContainer/PassivesPanel/VBoxContainer" instance=ExtResource("5_daxmh")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 1
+columns = 1
+panel_style = ExtResource("3_st2sj")
+corner = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="SpriteHealthZone" type="Control" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="HealthSpriteContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/SpriteHealthZone"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
 metadata/_edit_group_ = true
 
-[node name="EnemyStatsUI" parent="SpriteHealthZone/VBoxContainer" instance=ExtResource("4_ekw6l")]
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/VBoxContainer/SpriteHealthZone/HealthSpriteContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="NameLabel" type="Label" parent="HBoxContainer/VBoxContainer/SpriteHealthZone/HealthSpriteContainer/PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/normal = ExtResource("2_ht23g")
+text = " NAME "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EnemyStatsUI" parent="HBoxContainer/VBoxContainer/SpriteHealthZone/HealthSpriteContainer" instance=ExtResource("4_ekw6l")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
+health_above = true
 
-[node name="Sprite" type="TextureRect" parent="SpriteHealthZone/VBoxContainer"]
+[node name="Sprite" type="TextureRect" parent="HBoxContainer/VBoxContainer/SpriteHealthZone/HealthSpriteContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 8
-texture = ExtResource("3_pagwl")
+size_flags_vertical = 4
+texture = ExtResource("3_0a0d0")
+stretch_mode = 3
 
-[node name="Panel2" type="Panel" parent="."]
-custom_minimum_size = Vector2(140, 32)
+[node name="ActionsPanel" type="Panel" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(136, 52)
 layout_direction = 3
-layout_mode = 0
-offset_top = 150.0
-offset_right = 140.0
-offset_bottom = 208.0
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
 mouse_filter = 1
 metadata/_edit_group_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/ActionsPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -129,46 +194,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Panel2/VBoxContainer"]
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/ActionsPanel/VBoxContainer"]
 layout_mode = 2
 text = "UPCOMING ACTIONS:"
 label_settings = SubResource("LabelSettings_xjwa5")
 horizontal_alignment = 1
 
-[node name="EnemySkillUI" parent="Panel2/VBoxContainer" instance=ExtResource("4_ig0fy")]
+[node name="EnemySkillUI" parent="HBoxContainer/VBoxContainer/ActionsPanel/VBoxContainer" instance=ExtResource("4_ig0fy")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-
-[node name="Panel3" type="Panel" parent="."]
-custom_minimum_size = Vector2(140, 0)
-layout_mode = 0
-offset_left = -100.0
-offset_top = 210.0
-offset_right = 40.0
-offset_bottom = 270.0
-metadata/_edit_group_ = true
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel3"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="Panel3/VBoxContainer"]
-layout_mode = 2
-text = "PASSIVE SKILLS:"
-label_settings = SubResource("LabelSettings_y7uqv")
-horizontal_alignment = 1
-
-[node name="EquipmentUI" parent="Panel3/VBoxContainer" instance=ExtResource("5_daxmh")]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(123, 18)
-layout_mode = 2
 size_flags_horizontal = 4
-columns = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

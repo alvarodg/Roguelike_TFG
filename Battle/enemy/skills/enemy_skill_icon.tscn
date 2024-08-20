@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://cx2hpub5avdyh"]
+[gd_scene load_steps=5 format=3 uid="uid://cx2hpub5avdyh"]
 
 [ext_resource type="Script" path="res://Battle/enemy/skills/enemy_skill_icon.gd" id="1_826io"]
 [ext_resource type="Texture2D" uid="uid://cvwsif7utojiu" path="res://Battle/skills/icons/unknown_skill.png" id="1_jlm53"]
 [ext_resource type="Resource" uid="uid://b3ml56xm4cody" path="res://Battle/enemy/skills/resources/rage_strike.tres" id="2_8xlhe"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lsgli"]
 
 [node name="EnemySkillIcon" type="Control"]
 custom_minimum_size = Vector2(32, 32)
@@ -57,6 +59,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxEmpty_lsgli")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

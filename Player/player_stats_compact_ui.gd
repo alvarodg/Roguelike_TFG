@@ -16,6 +16,7 @@ func _ready():
 		coin_icon_container.hide()
 	if not show_equipment:
 		player_equipment_panel.hide()
+		player_equipment_panel.mouse_filter = MOUSE_FILTER_IGNORE
 	equipment_ui.corner = corner
 
 

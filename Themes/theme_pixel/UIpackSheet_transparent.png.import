@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tjixj6sh1eiu"
-path="res://.godot/imported/rock_enemy.png-6510487367b2a16a54c100c917074518.ctex"
+uid="uid://cxiu2khnn3npa"
+path="res://.godot/imported/UIpackSheet_transparent.png-e2e524c2aea798afd4e902da96626aeb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Battle/enemy/sprites/rock_enemy.png"
-dest_files=["res://.godot/imported/rock_enemy.png-6510487367b2a16a54c100c917074518.ctex"]
+source_file="res://Themes/theme_pixel/UIpackSheet_transparent.png"
+dest_files=["res://.godot/imported/UIpackSheet_transparent.png-e2e524c2aea798afd4e902da96626aeb.ctex"]
 
 [params]
 

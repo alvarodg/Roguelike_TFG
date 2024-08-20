@@ -3,6 +3,7 @@ class_name EquipmentIcon
 
 var equipment: Equipment
 @onready var sprite = %Sprite
+@onready var texture_rect = %TextureRect
 #@onready var label_container = %LabelContainer
 @onready var hover_panel = %HoverPanel
 @onready var hover_label = %HoverLabel
@@ -26,12 +27,14 @@ func _ready():
 	shadow.hide()
 	hover_panel.hide()
 	#label_container.hide()
-	HoverPanel.move_to_corner(hover_panel, corner, sprite.position, sprite.texture.get_size()*sprite.scale)
-
+	#HoverPanel.move_to_corner(hover_panel, corner, sprite.position, sprite.texture.get_size()*sprite.scale)
+	HoverPanel.move_to_corner(hover_panel, corner, texture_rect.position, texture_rect.size)
+	
 func setup(p_equipment: Equipment):
 	equipment = p_equipment
 	equipment.triggered.connect(_on_Equipment_triggered)
-	sprite.texture = equipment.ui_data.icon
+	texture_rect.texture = equipment.ui_data.icon
+	#sprite.texture = equipment.ui_data.icon
 	hover_label.text = equipment.ui_data.ui_name + ":\n" +equipment.get_description()
 	for trigger in equipment.condition_triggers:
 		trigger.triggers_changed.connect(_on_triggers_changed)
@@ -102,4 +105,5 @@ func _on_mouse_exited():
 func set_corner(to_corner):
 	corner = to_corner
 	if sprite != null:
-		HoverPanel.move_to_corner(hover_panel, corner, sprite.position, sprite.texture.get_size()*sprite.scale)
+		#HoverPanel.move_to_corner(hover_panel, corner, sprite.position, sprite.texture.get_size()*sprite.scale)
+		HoverPanel.move_to_corner(hover_panel, corner, texture_rect.position, texture_rect.size)

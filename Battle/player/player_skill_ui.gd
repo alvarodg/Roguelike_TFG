@@ -24,7 +24,8 @@ func setup(player: Player, p_coinbox: CoinBox = null):
 
 # Cuando se hace click en una ranura, si se tiene una moneda seleccionada, la inserta.
 func _on_SkillBox_slot_was_pressed(slot: Slot):
-	if current_coin != null and slot.is_coin_compatible(current_coin.heads):
+	if (current_coin != null and slot.is_coin_compatible(current_coin.heads) 
+			and current_coin.status == Coin.Status.AVAILABLE):
 		EventBus.released_selected.emit(current_coin)
 		slot.insert_coin(current_coin)
 		current_coin = null

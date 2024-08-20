@@ -5,6 +5,7 @@ class_name BattleEventData
 var battle_scene = load("res://Battle/CoinBattle.tscn")
 ## Datos del enemigo al que se enfrentará el jugador en este evento
 @export var enemy_data: EnemyData
+@export var background_texture: Texture2D
 
 ## Constructor
 func _init(p_next_event = null, p_enemy_data = null):

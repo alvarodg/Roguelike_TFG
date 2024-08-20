@@ -6,65 +6,31 @@
 [ext_resource type="PackedScene" uid="uid://20lggu6h8kmx" path="res://Items/equipment/equipment_ui.tscn" id="3_5v51r"]
 [ext_resource type="Texture2D" uid="uid://b7q5vfrx6d1o" path="res://Battle/player/sprites/coin_16.png" id="5_hbv5i"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_f12js"]
-font = ExtResource("2_rgsi2")
-
 [sub_resource type="LabelSettings" id="LabelSettings_l20gs"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_41rj1"]
 font = ExtResource("2_rgsi2")
 
+[sub_resource type="LabelSettings" id="LabelSettings_f12js"]
+font = ExtResource("2_rgsi2")
+
 [node name="PlayerStatsCompactUI" type="Control"]
 layout_mode = 3
-anchors_preset = 15
+anchors_preset = 12
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
+mouse_filter = 1
 script = ExtResource("1_r747s")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -74.0
-offset_right = 80.0
+layout_mode = 2
+offset_top = -37.0
+offset_right = 640.0
 grow_vertical = 0
-
-[node name="PlayerEquipmentPanel" type="Panel" parent="VBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(80, 110)
-layout_mode = 2
-size_flags_horizontal = 0
-metadata/_edit_group_ = true
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PlayerEquipmentPanel"]
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 1
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -27.0
-offset_right = 27.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="VBoxContainer/PlayerEquipmentPanel/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-text = "Equipment:"
-label_settings = SubResource("LabelSettings_f12js")
-
-[node name="EquipmentUI" parent="VBoxContainer/PlayerEquipmentPanel/VBoxContainer" instance=ExtResource("3_5v51r")]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(18, 18)
-layout_mode = 2
-size_flags_vertical = 8
-columns = 4
-corner = 1
+size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
@@ -95,3 +61,35 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "x3"
 label_settings = SubResource("LabelSettings_41rj1")
+
+[node name="PlayerEquipmentPanel" type="Panel" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+metadata/_edit_group_ = true
+
+[node name="VBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/PlayerEquipmentPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/PlayerEquipmentPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Equipment:"
+label_settings = SubResource("LabelSettings_f12js")
+
+[node name="EquipmentUI" parent="VBoxContainer/HBoxContainer/PlayerEquipmentPanel/VBoxContainer" instance=ExtResource("3_5v51r")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(18, 18)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 1
+columns = 18
+corner = 1

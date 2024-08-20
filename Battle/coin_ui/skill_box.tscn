@@ -1,25 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://tv88ia00qmed"]
+[gd_scene load_steps=5 format=3 uid="uid://tv88ia00qmed"]
 
 [ext_resource type="Script" path="res://Battle/coin_ui/skill_box.gd" id="1_cau6c"]
-[ext_resource type="FontFile" uid="uid://dj2uwas52df26" path="res://Themes/fonts/m5x7.ttf" id="2_tpi1x"]
 [ext_resource type="FontFile" uid="uid://b2n7xh73jrxxw" path="res://Themes/fonts/m3x6.ttf" id="3_62y8c"]
+[ext_resource type="StyleBox" uid="uid://b2bm3n50qyv0h" path="res://Themes/theme_pixel/panels/blackish_panel.tres" id="4_at2ne"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_uxlv1"]
-font = ExtResource("2_tpi1x")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wp4h5"]
-content_margin_left = 5.0
-content_margin_top = 1.0
-content_margin_right = 5.0
-content_margin_bottom = 1.0
-bg_color = Color(0.305882, 0.305882, 0.305882, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
+font = ExtResource("3_62y8c")
 
 [node name="SkillBox" type="Control"]
-custom_minimum_size = Vector2(130, 110)
+custom_minimum_size = Vector2(130, 114)
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_cau6c")
@@ -29,6 +18,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -38,6 +28,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 1
@@ -49,15 +40,16 @@ theme_override_font_sizes/font_size = 15
 text = "NOMBRE"
 label_settings = SubResource("LabelSettings_uxlv1")
 horizontal_alignment = 1
+vertical_alignment = 2
 uppercase = true
 
 [node name="DescriptionLabel" type="RichTextLabel" parent="Panel/SkillBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 42)
+custom_minimum_size = Vector2(0, 44)
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("3_62y8c")
 theme_override_font_sizes/normal_font_size = 16
-theme_override_styles/normal = SubResource("StyleBoxFlat_wp4h5")
+theme_override_styles/normal = ExtResource("4_at2ne")
 bbcode_enabled = true
 text = "HACE ALGO
 CON DOS LINEAS
@@ -90,8 +82,8 @@ size_flags_horizontal = 4
 unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
+size_flags_vertical = 4
 theme_override_fonts/font = ExtResource("3_62y8c")
-theme_override_font_sizes/font_size = 16
 text = "Execute"
 
 [node name="UndoButton" type="Button" parent="Panel/SkillBoxContainer/ButtonContainer"]
@@ -99,8 +91,8 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 size_flags_horizontal = 8
+size_flags_vertical = 4
 theme_override_fonts/font = ExtResource("3_62y8c")
-theme_override_font_sizes/font_size = 16
 text = "Release"
 
 [node name="CoinAudioPlayer" type="AudioStreamPlayer" parent="."]

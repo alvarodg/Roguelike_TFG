@@ -6,6 +6,7 @@ var loss_screen = "res://Menus/loss_screen.tscn"
 @onready var turn_manager: TurnManager = preload("res://Battle/resources/TurnManager.tres")
 @onready var combatants: Combatants = preload("res://Battle/resources/Combatants.tres")
 
+@onready var background = %Background
 @onready var end_turn_button = %EndTurnButton
 @onready var enemy_position = %EnemyPosition
 @onready var player_skill_ui = %PlayerSkillUI
@@ -15,6 +16,7 @@ var loss_screen = "res://Menus/loss_screen.tscn"
 #var player: Player
 var enemy_data: EnemyData
 var enemy: Enemy
+var background_texture: Texture2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,9 +24,16 @@ func _ready():
 	await get_tree().process_frame
 	assert(enemy_data is EnemyData)
 	print("Starting")
-	# Crea el nuevo enemigo a partir de sus datos
+	# Crea el nuevo enemigo a partir de sus datos y lo añade a la escena
 	enemy = enemy_data.create_enemy_instance()
 	enemy_position.add_child(enemy)
+	# Asigna el fondo asociado al combate si existe, si no el general del nivel
+	# si lo hay, si no se queda con el fondo por defecto
+	if background_texture != null:
+		background.texture = background_texture
+	else:
+		if RunData.current_level_default_bg != null:
+			background.texture = RunData.current_level_default_bg
 	# Asigna los combatientes al recurso
 	combatants.enemy = enemy
 	combatants.player = player
@@ -53,6 +62,7 @@ func _ready():
 func initialize(p_player: Player, data: BattleEventData):
 	super.initialize(p_player, data)
 	enemy_data = data.enemy_data
+	background_texture = data.background_texture
 	
 #func set_new_enemy(p_enemy_stats: EnemyStats):
 #	if combatants.enemy is Enemy:

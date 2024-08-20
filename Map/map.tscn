@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Map/Map.gd" id="1_0vxys"]
 [ext_resource type="PackedScene" uid="uid://ddl28ma3jp8ca" path="res://Generation/generator.tscn" id="2_fbxs6"]
-[ext_resource type="PackedScene" uid="uid://bxbdvrktndhoi" path="res://Player/player_stats_compact_ui.tscn" id="3_56d4g"]
+[ext_resource type="PackedScene" uid="uid://brpwyhqattcih" path="res://Map/player_map_ui.tscn" id="3_2febs"]
 
 [node name="Map" type="Control" groups=["run_persistent"]]
 layout_mode = 3
@@ -14,39 +14,37 @@ grow_vertical = 2
 script = ExtResource("1_0vxys")
 metadata/_edit_horizontal_guides_ = [355.0]
 
-[node name="Generator" parent="." instance=ExtResource("2_fbxs6")]
-unique_name_in_owner = true
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-
-[node name="PlayerStatsCompactUI" parent="." instance=ExtResource("3_56d4g")]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-offset_left = -82.0
-offset_top = -5.0
-offset_right = -82.0
-offset_bottom = -5.0
-grow_horizontal = 0
-grow_vertical = 0
-show_coins = false
-
-[node name="ResetButton" type="Button" parent="."]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 13.0
-offset_top = -33.0
-offset_right = 126.0
-offset_bottom = -5.0
-grow_vertical = 0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerMapUI" parent="VBoxContainer" instance=ExtResource("3_2febs")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+
+[node name="MapZone" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Generator" parent="VBoxContainer/MapZone" instance=ExtResource("2_fbxs6")]
+unique_name_in_owner = true
+layout_mode = 1
+
+[node name="ResetButton" type="Button" parent="VBoxContainer/MapZone"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 12.0
+offset_top = 327.0
+offset_right = 125.0
+offset_bottom = 355.0
 theme_override_font_sizes/font_size = 14
 text = "ABANDON RUN"
 
-[node name="ChangeLevelButton" type="Button" parent="."]
+[node name="ChangeLevelButton" type="Button" parent="VBoxContainer/MapZone"]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 129.0
@@ -56,7 +54,7 @@ offset_bottom = 355.0
 theme_override_font_sizes/font_size = 14
 text = "CHANGE LEVEL"
 
-[node name="NavigationButton" type="Button" parent="."]
+[node name="NavigationButton" type="Button" parent="VBoxContainer/MapZone"]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 242.0
@@ -74,7 +72,7 @@ volume_db = -10.0
 unique_name_in_owner = true
 volume_db = -10.0
 
-[connection signal="generation_complete" from="Generator" to="." method="_on_Generator_generation_complete"]
-[connection signal="pressed" from="ResetButton" to="." method="_on_ResetButton_pressed"]
-[connection signal="pressed" from="ChangeLevelButton" to="." method="_on_ChangeLevelButton_pressed"]
-[connection signal="pressed" from="NavigationButton" to="." method="_on_NavigationButton_pressed"]
+[connection signal="generation_complete" from="VBoxContainer/MapZone/Generator" to="." method="_on_Generator_generation_complete"]
+[connection signal="pressed" from="VBoxContainer/MapZone/ResetButton" to="." method="_on_ResetButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/MapZone/ChangeLevelButton" to="." method="_on_ChangeLevelButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/MapZone/NavigationButton" to="." method="_on_NavigationButton_pressed"]

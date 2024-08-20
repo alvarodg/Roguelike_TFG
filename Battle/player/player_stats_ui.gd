@@ -3,10 +3,12 @@ extends Control
 var DAMAGE_NUMBER = load("res://Battle/animations/damage_number.tscn")
 
 @onready var player_icon = %PlayerIcon
+@onready var name_label = %NameLabel
 @onready var equipment_ui = %EquipmentUI
 @onready var health_bar = %HealthBar
 @onready var armor_label = %ArmorLabel
 @onready var dodges_label = %DodgesLabel
+@onready var strength_label = %StrengthLabel
 #@onready var coin_count_label = %CoinCountLabel
 #@onready var coin_container = %CoinContainer
 @onready var strength_container = %StrengthContainer
@@ -14,25 +16,31 @@ var DAMAGE_NUMBER = load("res://Battle/animations/damage_number.tscn")
 @onready var armor_container = %ArmorContainer
 @onready var dodges_container = %DodgesContainer
 @onready var info_label = %InfoLabel
+@onready var info_container = %InfoContainer
+
 
 @onready var animation_player = $AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	player_icon.pivot_offset = player_icon.texture.get_size() * player_icon.scale/2
 	
 func setup(player: Player):
-	player.battle_position = player_icon.global_position + player_icon.size/2
 	player_icon.texture = player.ui_data.sprite
+	name_label.text = " " + player.ui_data.ui_name + " "
+	player.battle_position = player_icon.global_position + Vector2(player_icon.size.x/2,0)
 	equipment_ui.setup(player)
 	health_bar.setup(player.stats)
 	#_update_shield(player.stats.shield)
 	_update_armor(player.stats.armor)
 	_update_dodges(player.stats.dodges)
+	_update_strength(player.stats.strength)
+	_hide_info()
 	#coin_count_label.text = str(player.stats.coin_count) + "x"
  	#player.stats.shield_changed.connect(_on_Player_shield_changed)
 	player.stats.armor_changed.connect(_on_Player_armor_changed)
 	player.stats.dodges_changed.connect(_on_Player_dodges_changed)
+	player.stats.strength_changed.connect(_on_Player_strength_changed)
 	#player.stats.coin_count_changed.connect(_on_Player_coin_count_changed)
 	player.stats.hit.connect(_on_Player_hit)
 	player.stats.died.connect(_on_Player_died)
@@ -58,6 +66,11 @@ func _on_Player_dodges_changed(old, dodges):
 	await tween.finished
 #	_update_dodges(dodges)
 	
+func _on_Player_strength_changed(old, strength):
+	var tween = create_tween()
+	tween.tween_method(_update_strength, old, strength, 0.1)
+	await tween.finished
+
 #func _update_shield(shield):
 	#if shield > 0:
 		#shield_container.show()
@@ -83,6 +96,13 @@ func _update_dodges(dodges):
 	else:
 		dodges_container.hide()
 
+func _update_strength(strength):
+	if strength > 0:
+		strength_container.show()
+		strength_label.text = str(strength)
+	else:
+		strength_container.hide()
+
 func _on_Player_hit(damage, health, max_health):
 	print("hit")
 	var tween: Tween = get_tree().create_tween()
@@ -102,27 +122,43 @@ func _on_Player_died():
 
 func _on_StrengthContainer_mouse_entered():
 	var strength_description = "Strength: Increases damage dealt"
-	info_label.text = strength_description
-	info_label.global_position = strength_container.global_position - Vector2(0,strength_container.size.y/2)
-	info_label.show()
+	_update_info(strength_container, strength_description)
+	#info_label.text = strength_description
+	#info_panel.size = info_label.size
+	#info_label.global_position = strength_container.global_position - Vector2(0,strength_container.size.y/2)
+	#info_label.show()
 
 func _on_StrengthContainer_mouse_exited():
-	info_label.hide()
+	_hide_info()
 
 func _on_ArmorContainer_mouse_entered():
 	var armor_description = "Armor: Decreases damage received"
-	info_label.text = armor_description
-	info_label.global_position = armor_container.global_position - Vector2(0,armor_container.size.y/2)
-	info_label.show()
+	_update_info(armor_container, armor_description)
+	#info_label.text = armor_description
+	#info_panel.size = info_label.size
+	#info_label.global_position = armor_container.global_position - Vector2(0,armor_container.size.y/2)
+	#info_label.show()
 
 func _on_ArmorContainer_mouse_exited():
-	info_label.hide()
+	_hide_info()
 
 func _on_DodgesContainer_mouse_entered():
 	var dodges_description = "Dodges: Avoids next damage instance taken"
-	info_label.text = dodges_description
-	info_label.global_position = dodges_container.global_position - Vector2(0,dodges_container.size.y/2)
-	info_label.show()
+	_update_info(dodges_container, dodges_description)
+	#info_label.text = dodges_description
+	#info_container.global_position = dodges_container.global_position - Vector2(0,dodges_container.size.y/2)
+	#info_container.show()
+	#info_label.global_position = dodges_container.global_position - Vector2(0,dodges_container.size.y/2)
+	#info_label.show()
+
 
 func _on_DodgesContainer_mouse_exited():
-	info_label.hide()
+	_hide_info()
+
+func _update_info(container: Container, description: String):
+	info_label.text = description
+	info_container.global_position = container.global_position - Vector2(0,container.size.y/2)
+	info_container.show()
+
+func _hide_info():
+	info_container.hide()

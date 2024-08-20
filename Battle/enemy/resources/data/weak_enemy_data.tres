@@ -4,12 +4,12 @@
 [ext_resource type="Resource" uid="uid://vf6g1fh16jyk" path="res://Battle/enemy/resources/stats/WeakEnemyStats.tres" id="1_sf6f5"]
 [ext_resource type="Script" path="res://Battle/enemy/enemy_ui_data.gd" id="2_kigmu"]
 [ext_resource type="Script" path="res://Battle/skills/SkillData.gd" id="3_gex37"]
-[ext_resource type="Texture2D" uid="uid://bhad1ns75ri2n" path="res://Battle/enemy/sprites/enemy_icon.svg" id="3_tk1g6"]
 [ext_resource type="Script" path="res://Battle/skills/behaviors/shield_skill_behavior.gd" id="5_6nsti"]
 [ext_resource type="Script" path="res://Battle/skills/skill_ui_data.gd" id="5_xmhfg"]
 [ext_resource type="Script" path="res://Battle/skills/behaviors/damage_skill_behavior.gd" id="5_y0ope"]
 [ext_resource type="Texture2D" uid="uid://dtcgxg8bujhwf" path="res://Battle/skills/icons/shield_skill.png" id="6_hg78y"]
 [ext_resource type="Texture2D" uid="uid://l8diabvbslw6" path="res://Battle/skills/icons/attack_shield_skill.png" id="7_8pkt1"]
+[ext_resource type="Texture2D" uid="uid://4q2j77yka4t1" path="res://Battle/enemy/sprites/slime_enemy.png" id="10_f3eyg"]
 
 [sub_resource type="Resource" id="Resource_pi2on"]
 script = ExtResource("5_y0ope")
@@ -100,7 +100,7 @@ tags = Array[int]([0])
 [sub_resource type="Resource" id="Resource_bwbog"]
 script = ExtResource("2_kigmu")
 flip_facing = false
-sprite = ExtResource("3_tk1g6")
+sprite = ExtResource("10_f3eyg")
 ui_name = "Enemy"
 
 [resource]

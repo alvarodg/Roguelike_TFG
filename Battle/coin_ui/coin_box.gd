@@ -4,6 +4,8 @@ class_name CoinBox
 signal about_to_flip_coins
 signal finished_flipping_coins
 
+@export var columns: int = 7
+
 @onready var turn_manager: TurnManager = preload("res://Battle/resources/TurnManager.tres")
 @onready var coin_box_container = %CoinBoxContainer
 @onready var input_blocker = $InputBlocker
@@ -14,6 +16,7 @@ signal finished_flipping_coins
 func _ready():
 	EventBus.coin_inserted.connect(_on_coin_inserted)
 	EventBus.looking_for_coin.connect(request_coin)
+	coin_box_container.columns = columns
 #	turn_manager.player_turn_started.connect(_on_Player_turn_started)
 
 func setup(player: Player):

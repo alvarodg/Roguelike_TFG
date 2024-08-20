@@ -1,13 +1,10 @@
-[gd_resource type="Resource" script_class="EnemyData" load_steps=26 format=3 uid="uid://cq5ebehsqd2ae"]
+[gd_resource type="Resource" script_class="EnemyData" load_steps=23 format=3 uid="uid://cq5ebehsqd2ae"]
 
 [ext_resource type="Resource" uid="uid://dut8n1qoteefk" path="res://Items/equipment/enemy_passives/well_coordinated_armor.tres" id="1_ehbat"]
 [ext_resource type="Resource" uid="uid://230qla35hl5c" path="res://Items/equipment/enemy_passives/weak_point.tres" id="2_h7mej"]
 [ext_resource type="Resource" uid="uid://n233lbhms3i7" path="res://Items/equipment/enemy_passives/armor_purge.tres" id="3_m6j57"]
-[ext_resource type="Resource" uid="uid://df6ubpp7evjvw" path="res://Items/equipment/enemy_passives/enrage_timer.tres" id="4_o6plv"]
 [ext_resource type="Script" path="res://Battle/enemy/enemy_data.gd" id="4_w3pjm"]
-[ext_resource type="Resource" uid="uid://xmue4sfum232" path="res://Items/equipment/resources/weak_armor.tres" id="5_gc51h"]
 [ext_resource type="Script" path="res://Battle/skills/behaviors/damage_skill_behavior.gd" id="5_ukl8a"]
-[ext_resource type="Resource" uid="uid://o7m0rikjobyx" path="res://Items/equipment/resources/strong_armor.tres" id="6_iyo1d"]
 [ext_resource type="Script" path="res://Battle/skills/behaviors/shield_skill_behavior.gd" id="6_umftr"]
 [ext_resource type="Script" path="res://Battle/skills/SkillData.gd" id="7_i0m4q"]
 [ext_resource type="Texture2D" uid="uid://l8diabvbslw6" path="res://Battle/skills/icons/attack_shield_skill.png" id="8_g24tl"]
@@ -15,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dtcgxg8bujhwf" path="res://Battle/skills/icons/shield_skill.png" id="10_u62rc"]
 [ext_resource type="Script" path="res://Battle/enemy/EnemyStats.gd" id="11_ljoso"]
 [ext_resource type="Script" path="res://Battle/enemy/enemy_ui_data.gd" id="12_rohhq"]
-[ext_resource type="Texture2D" uid="uid://tjixj6sh1eiu" path="res://Battle/enemy/sprites/rock_enemy.png" id="13_pj3mp"]
+[ext_resource type="Texture2D" uid="uid://tjixj6sh1eiu" path="res://Battle/enemy/sprites/boss/rock_enemy.png" id="13_871fe"]
 
 [sub_resource type="Resource" id="Resource_ruqdp"]
 script = ExtResource("5_ukl8a")
@@ -85,7 +82,7 @@ shield_decay_rate = 1.0
 [sub_resource type="Resource" id="Resource_pvdoq"]
 script = ExtResource("12_rohhq")
 flip_facing = true
-sprite = ExtResource("13_pj3mp")
+sprite = ExtResource("13_871fe")
 ui_name = "The Knight"
 
 [resource]
@@ -93,5 +90,5 @@ script = ExtResource("4_w3pjm")
 ui_data = SubResource("Resource_pvdoq")
 stats = SubResource("Resource_6a4x2")
 skills = Array[ExtResource("7_i0m4q")]([SubResource("Resource_ihkjm"), SubResource("Resource_km0ad")])
-equipment_list = Array[Resource("res://Items/equipment/equipment.gd")]([ExtResource("1_ehbat"), ExtResource("2_h7mej"), ExtResource("3_m6j57"), ExtResource("4_o6plv"), ExtResource("2_h7mej"), ExtResource("5_gc51h"), ExtResource("6_iyo1d")])
+equipment_list = Array[Resource("res://Items/equipment/equipment.gd")]([ExtResource("1_ehbat"), ExtResource("2_h7mej"), ExtResource("3_m6j57")])
 strategy = 1

@@ -214,8 +214,7 @@ func recover_dropped_coins():
 		if coin.status == Coin.Status.DROPPED:
 			coin.set_available()
 
-func equip(p_equipment: Equipment):
-	var equipment = p_equipment.duplicate()
+func equip(equipment: Equipment):
 	equipment.attach_to(self)
 	equipment.broke.connect(_on_equipment_broke)
 	equipment_list.append(equipment)

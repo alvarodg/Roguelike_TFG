@@ -1,15 +1,21 @@
 extends Control
 
+signal equipment_changed(equipment_list)
+
 @export var columns: int = 5
+@export var panel_style: StyleBox
 #var equipment_list: Array[Equipment]
 @onready var equip_icon_scene = preload("res://Items/equipment/equipment_icon.tscn")
 @onready var equipment_grid = %EquipmentGrid
+@onready var panel_container = %PanelContainer
 
 @export var corner: HoverContainer.Corner: set = set_corner
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	equipment_grid.columns = columns
+	if panel_style != null:
+		panel_container.add_theme_stylebox_override("panel", panel_style)
 
 func setup(user):
 	assert(user is Player or user is Enemy)
@@ -27,6 +33,7 @@ func reset_equipment_icons(equipment_list: Array):
 		equip_icon.corner = corner
 		equipment_grid.add_child(equip_icon)
 		equip_icon.setup(equipment)
+	equipment_changed.emit(equipment_list)
 
 func set_corner(to_corner):
 	corner = to_corner

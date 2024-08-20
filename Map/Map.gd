@@ -6,9 +6,9 @@ signal event_chosen
 
 @export var debug: bool = false
 @export var generation_data_list: Array[GenerationData]
-@onready var generator = $Generator
-#@onready var player_map_ui = %PlayerMapUI
-@onready var player_stats_compact_ui = %PlayerStatsCompactUI
+@onready var generator = %Generator
+@onready var player_map_ui = %PlayerMapUI
+#@onready var player_stats_compact_ui = %PlayerStatsCompactUI
 @onready var reset_button = %ResetButton
 @onready var change_level_button = %ChangeLevelButton
 @onready var navigation_button = %NavigationButton
@@ -36,7 +36,8 @@ var battle_volume
 func _ready():
 	# Acceso al singleton
 	RunData.map = self
-	player_stats_compact_ui.hide()
+	#player_stats_compact_ui.hide()
+	player_map_ui.hide()
 	reset_button.hide()
 	navigation_button.hide()
 	change_level_button.hide()
@@ -54,8 +55,10 @@ func start_game(player: Player, rng: RandomNumberGenerator):
 	for i in range(generation_data_list.size()):
 		var level = generator.generate(generation_data_list[i], rng)
 		level_list.append(level)
-	player_stats_compact_ui.setup(player)
-	player_stats_compact_ui.show()
+	player_map_ui.setup(player)
+	player_map_ui.show()
+	#player_stats_compact_ui.setup(player)
+	#player_stats_compact_ui.show()
 	if debug:
 		reset_button.show()
 		change_level_button.show()
@@ -96,6 +99,8 @@ func set_level(level_id: int):
 	print("Setting level " + str(level_id))
 	node_matrix = level_list[level_id]
 	current_level = level_id
+	RunData.current_level = current_level
+	RunData.current_level_default_bg = generation_data_list[current_level].default_battle_bg
 	# De momento no guarda los nodos visitados en previos niveles, modificar si se quiere hacer algo con ellos.
 	for child in generator.get_children():
 		generator.remove_child(child)

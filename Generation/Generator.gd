@@ -13,6 +13,15 @@ var rng: RandomNumberGenerator
 func _ready():
 	pass
 	
+func _draw():
+	for node in get_children():
+		if node is EventNode:
+			var from = node.global_position - global_position - node.pivot_offset
+			for d in node.descendants:
+				#var line: Line2D = Line2D.new()
+				var to = d.global_position - global_position - d.pivot_offset
+				draw_line(from, to, Color.WHITE, 2.0)
+	
 func generate(generation_data: GenerationData, p_rng: RandomNumberGenerator = RandomNumberGenerator.new()):
 #	print(p_rng.seed)
 	node_matrix = []

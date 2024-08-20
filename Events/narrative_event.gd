@@ -8,7 +8,8 @@ class_name NarrativeEvent
 @onready var image_panel = %ImagePanel
 @onready var narrative_image = %NarrativeImage
 ## Referencia al objeto de interfaz de estadísticas de jugador
-@onready var player_stats_ui = %PlayerStatsUI
+#@onready var player_stats_ui = %PlayerStatsUI
+@onready var player_stats_compact_ui = %PlayerStatsCompactUI
 
 ## Lista de cadenas de narrativa, cada una se presentará por separado
 var narrative: Array[String]
@@ -17,12 +18,13 @@ var image: Texture2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	player_stats_ui.setup(player)
+	super._ready()
+	player_stats_compact_ui.setup(player)
 	# Asigna la textura a la imagen si tiene una, si no modifica la interfaz
 	if image != null:
 		narrative_image.texture = image
 	else:
-		narrative_panel.custom_minimum_size.x = 560
+		narrative_panel.custom_minimum_size.x = 400
 		image_panel.hide()
 	# Usa el primer elemento de la lista como texto de NarrativeLabel si existe
 	if narrative.size() > 0:
