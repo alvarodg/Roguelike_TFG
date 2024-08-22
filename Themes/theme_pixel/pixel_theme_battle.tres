@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://dj2sxbc4p4860"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://dj2sxbc4p4860"]
 
 [ext_resource type="StyleBox" uid="uid://c1fhdkrtq651p" path="res://Themes/theme_pixel/bars/background_bar.tres" id="1_38yj0"]
 [ext_resource type="StyleBox" uid="uid://bck346hjqyeeq" path="res://Themes/theme_pixel/panels/blue_machine_panel.tres" id="1_ppl1s"]
@@ -29,6 +29,10 @@ texture_margin_right = 2.97287
 texture_margin_bottom = 3.0
 region_rect = Rect2(147.917, 98, 43.0834, 13)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j5fe3"]
+texture = ExtResource("1_rkvm2")
+region_rect = Rect2(2, 191, 190, 113)
+
 [resource]
 Button/styles/hover = SubResource("StyleBoxTexture_1le8h")
 Button/styles/normal = SubResource("StyleBoxTexture_uw858")
@@ -36,3 +40,4 @@ Button/styles/pressed = SubResource("StyleBoxTexture_qkxu6")
 Panel/styles/panel = ExtResource("1_ppl1s")
 ProgressBar/styles/background = ExtResource("1_38yj0")
 ProgressBar/styles/fill = ExtResource("2_tqx2b")
+VScrollBar/styles/scroll = SubResource("StyleBoxTexture_j5fe3")

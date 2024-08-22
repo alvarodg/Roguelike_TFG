@@ -11,6 +11,8 @@ signal health_animation_finished
 @onready var dodges_container = %DodgesContainer
 @onready var other_stats_container = %OtherStatsContainer
 @onready var v_box_container = %VBoxContainer
+@onready var info_container = %InfoContainer
+@onready var info_label = %InfoLabel
 
 @export var health_above: bool = false
 
@@ -21,6 +23,7 @@ func _ready():
 		v_box_container.alignment = BoxContainer.ALIGNMENT_BEGIN
 	else:
 		v_box_container.alignment = BoxContainer.ALIGNMENT_END
+	_hide_info()
 
 func setup(enemy: EnemyStats):
 	health_bar.setup(enemy)
@@ -84,3 +87,33 @@ func _update_dodges(dodges):
 
 func _on_health_animation_finished():
 	health_animation_finished.emit()
+
+func _on_StrengthContainer_mouse_entered():
+	var strength_description = "Strength: Increases damage dealt"
+	_update_info(strength_container, strength_description)
+
+func _on_StrengthContainer_mouse_exited():
+	_hide_info()
+
+func _on_ArmorContainer_mouse_entered():
+	var armor_description = "Armor: Decreases damage received"
+	_update_info(armor_container, armor_description)
+
+func _on_ArmorContainer_mouse_exited():
+	_hide_info()
+
+func _on_DodgesContainer_mouse_entered():
+	var dodges_description = "Dodges: Avoids next damage instance taken"
+	_update_info(dodges_container, dodges_description)
+
+func _on_DodgesContainer_mouse_exited():
+	_hide_info()
+
+func _update_info(container: Container, description: String):
+	info_label.text = description
+	HoverPanel.move_to_corner(info_container, HoverContainer.Corner.TOP_LEFT, container.position, container.size)
+	info_container.show()
+
+func _hide_info():
+	info_container.position = Vector2.ZERO
+	info_container.hide()

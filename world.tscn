@@ -1,5 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://bfdmc5trnp4uk"]
 
+[ext_resource type="Theme" uid="uid://dvg7jbsgrbfoe" path="res://Themes/theme_pixel/pixel_theme_menus.tres" id="1_6rk2b"]
 [ext_resource type="Script" path="res://world.gd" id="1_ewi3c"]
 [ext_resource type="PackedScene" uid="uid://buwxy0toti3j8" path="res://Run/collection_container.tscn" id="2_h6gmy"]
 [ext_resource type="PackedScene" uid="uid://dtatqj2q74q42" path="res://Map/map.tscn" id="2_tumwh"]
@@ -14,7 +15,6 @@
 [ext_resource type="Resource" uid="uid://bsioc5j8lwg1x" path="res://Battle/skills/resources/hit_attack.tres" id="9_imgkd"]
 [ext_resource type="Resource" uid="uid://disqwyhl7b6xd" path="res://Battle/skills/resources/reroll.tres" id="10_pvof1"]
 [ext_resource type="Resource" uid="uid://1f1t8s1ew7uy" path="res://Battle/skills/resources/win.tres" id="11_nulia"]
-[ext_resource type="Resource" uid="uid://coos4xdskyy7o" path="res://Battle/skills/resources/counterfeit.tres" id="13_peqqx"]
 [ext_resource type="Resource" uid="uid://clyjfvymwgamd" path="res://Generation/resources/l1_weld_generation.tres" id="16_1lfjr"]
 [ext_resource type="Resource" uid="uid://blbgpkie0ea8o" path="res://Generation/resources/l2_weld_generation.tres" id="17_82nen"]
 [ext_resource type="Resource" uid="uid://000ce1xcp83o" path="res://Items/equipment/resources/conditional/flip_shield.tres" id="17_vxd7l"]
@@ -27,6 +27,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_6rk2b")
 script = ExtResource("1_ewi3c")
 
 [node name="CollectionContainer" parent="." instance=ExtResource("2_h6gmy")]
@@ -37,7 +38,7 @@ events = ExtResource("5_oyf2y")
 [node name="Player" parent="." instance=ExtResource("2_yatmi")]
 stats = ExtResource("3_nvh0g")
 ui_data = ExtResource("4_ryo5a")
-skill_list = Array[Resource("res://Battle/skills/SkillData.gd")]([ExtResource("8_3hjda"), ExtResource("9_imgkd"), ExtResource("10_pvof1"), ExtResource("11_nulia"), ExtResource("13_peqqx")])
+skill_list = Array[Resource("res://Battle/skills/SkillData.gd")]([ExtResource("8_3hjda"), ExtResource("9_imgkd"), ExtResource("10_pvof1"), ExtResource("11_nulia")])
 default_equipment = Array[Resource("res://Items/equipment/equipment.gd")]([ExtResource("17_vxd7l")])
 
 [node name="Map" parent="." instance=ExtResource("2_tumwh")]

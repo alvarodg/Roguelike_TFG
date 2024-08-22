@@ -47,7 +47,7 @@ func _on_Skill_chosen(skill):
 		var chosen_skill = await remove_skill_choice.skill_chosen
 		if chosen_skill != null:
 			player.remove_skill(chosen_skill)
-			RunData.collections.add(chosen_skill)
+			#RunData.collections.add(chosen_skill)
 			player.add_skill(skill)
 			RunData.collections.remove(skill)
 		finish()

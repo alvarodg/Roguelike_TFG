@@ -72,10 +72,10 @@ tags = Array[int]([0])
 [sub_resource type="Resource" id="Resource_6a4x2"]
 script = ExtResource("11_ljoso")
 max_health = 75
-base_strength = 0
+base_strength = 1
 base_shield = 75
-base_armor = 0
-base_dodges = 0
+base_armor = 1
+base_dodges = 1
 base_shield_decay_turns = 2
 shield_decay_rate = 1.0
 

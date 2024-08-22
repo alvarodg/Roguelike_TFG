@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bnro8dr0dfl0t" path="res://Battle/skills/icons/strength_boost.png" id="10_121s2"]
 [ext_resource type="Script" path="res://Battle/enemy/EnemyStats.gd" id="11_ospkg"]
 [ext_resource type="Script" path="res://Battle/enemy/enemy_ui_data.gd" id="12_xkmdk"]
-[ext_resource type="Texture2D" uid="uid://pd1wiq6octud" path="res://Battle/enemy/sprites/boss_icon.svg" id="13_7v3m1"]
+[ext_resource type="Texture2D" uid="uid://dok6hm7v6i3qi" path="res://Battle/enemy/sprites/boss/biggest_boss_enemy.png" id="14_mu5j5"]
 
 [sub_resource type="Resource" id="Resource_dbdxq"]
 script = ExtResource("3_yuec2")
@@ -153,8 +153,8 @@ shield_decay_rate = 1.0
 
 [sub_resource type="Resource" id="Resource_im6d5"]
 script = ExtResource("12_xkmdk")
-flip_facing = false
-sprite = ExtResource("13_7v3m1")
+flip_facing = true
+sprite = ExtResource("14_mu5j5")
 ui_name = "The Berserker"
 
 [resource]

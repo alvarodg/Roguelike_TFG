@@ -1,10 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://dsuny3pwpola5"]
+[gd_scene load_steps=11 format=3 uid="uid://dsuny3pwpola5"]
 
 [ext_resource type="Script" path="res://Battle/enemy/enemy_stats_ui.gd" id="1_2w1na"]
 [ext_resource type="PackedScene" uid="uid://cm2iaddemayb2" path="res://Battle/health_bar.tscn" id="1_j8l7g"]
 [ext_resource type="Texture2D" uid="uid://cpaes4c4pnmxw" path="res://Battle/skills/icons/attack_skill.png" id="3_8tdom"]
 [ext_resource type="Texture2D" uid="uid://bbtqu0cpssatg" path="res://Battle/player/sprites/dodge_icon2.png" id="4_8y0q2"]
 [ext_resource type="Texture2D" uid="uid://y25k64mywuj0" path="res://Battle/player/sprites/armor_icon.png" id="4_f8ogk"]
+[ext_resource type="StyleBox" uid="uid://b3lmq58csavug" path="res://Themes/theme_pixel/label/black_skill_box_label.tres" id="6_p1gm4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vb7ux"]
 
 [sub_resource type="Animation" id="Animation_3f5bn"]
 length = 0.001
@@ -92,8 +95,42 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 
+[node name="InfoContainer" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+z_index = 1
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -77.0
+offset_top = -32.0
+offset_right = 83.0
+offset_bottom = -19.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("6_p1gm4")
+
+[node name="InfoLabel" type="Label" parent="InfoContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+label_settings = SubResource("LabelSettings_vb7ux")
+autowrap_mode = 3
+metadata/_edit_group_ = true
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../VBoxContainer")
 libraries = {
 "": SubResource("AnimationLibrary_o6c08")
 }
+
+[connection signal="mouse_entered" from="VBoxContainer/OtherStatsContainer/StrengthContainer" to="." method="_on_StrengthContainer_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/OtherStatsContainer/StrengthContainer" to="." method="_on_StrengthContainer_mouse_exited"]
+[connection signal="mouse_entered" from="VBoxContainer/OtherStatsContainer/ArmorContainer" to="." method="_on_ArmorContainer_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/OtherStatsContainer/ArmorContainer" to="." method="_on_ArmorContainer_mouse_exited"]
+[connection signal="mouse_entered" from="VBoxContainer/OtherStatsContainer/DodgesContainer" to="." method="_on_DodgesContainer_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/OtherStatsContainer/DodgesContainer" to="." method="_on_DodgesContainer_mouse_exited"]

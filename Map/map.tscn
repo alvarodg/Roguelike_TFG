@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dtatqj2q74q42"]
+[gd_scene load_steps=5 format=3 uid="uid://dtatqj2q74q42"]
 
 [ext_resource type="Script" path="res://Map/Map.gd" id="1_0vxys"]
 [ext_resource type="PackedScene" uid="uid://ddl28ma3jp8ca" path="res://Generation/generator.tscn" id="2_fbxs6"]
+[ext_resource type="Texture2D" uid="uid://cce51yrol47m0" path="res://Generation/backgrounds/l3_background.png" id="2_tgvq4"]
 [ext_resource type="PackedScene" uid="uid://brpwyhqattcih" path="res://Map/player_map_ui.tscn" id="3_2febs"]
 
 [node name="Map" type="Control" groups=["run_persistent"]]
@@ -13,6 +14,17 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0vxys")
 metadata/_edit_horizontal_guides_ = [355.0]
+
+[node name="Background" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_tgvq4")
+stretch_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -28,39 +40,32 @@ custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 
 [node name="MapZone" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
 
 [node name="Generator" parent="VBoxContainer/MapZone" instance=ExtResource("2_fbxs6")]
 unique_name_in_owner = true
 layout_mode = 1
 
-[node name="ResetButton" type="Button" parent="VBoxContainer/MapZone"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="ResetButton" type="Button" parent="VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 12.0
-offset_top = 327.0
-offset_right = 125.0
-offset_bottom = 355.0
+layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "ABANDON RUN"
 
-[node name="ChangeLevelButton" type="Button" parent="VBoxContainer/MapZone"]
+[node name="ChangeLevelButton" type="Button" parent="VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 129.0
-offset_top = 327.0
-offset_right = 238.0
-offset_bottom = 355.0
+layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "CHANGE LEVEL"
 
-[node name="NavigationButton" type="Button" parent="VBoxContainer/MapZone"]
+[node name="NavigationButton" type="Button" parent="VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 242.0
-offset_top = 327.0
-offset_right = 366.0
-offset_bottom = 355.0
+layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "MAKE AVAILABLE"
 
@@ -73,6 +78,6 @@ unique_name_in_owner = true
 volume_db = -10.0
 
 [connection signal="generation_complete" from="VBoxContainer/MapZone/Generator" to="." method="_on_Generator_generation_complete"]
-[connection signal="pressed" from="VBoxContainer/MapZone/ResetButton" to="." method="_on_ResetButton_pressed"]
-[connection signal="pressed" from="VBoxContainer/MapZone/ChangeLevelButton" to="." method="_on_ChangeLevelButton_pressed"]
-[connection signal="pressed" from="VBoxContainer/MapZone/NavigationButton" to="." method="_on_NavigationButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ResetButton" to="." method="_on_ResetButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ChangeLevelButton" to="." method="_on_ChangeLevelButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/NavigationButton" to="." method="_on_NavigationButton_pressed"]

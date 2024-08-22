@@ -13,6 +13,7 @@ func _ready():
 	EventBus.equipment_equipped.connect(_on_equipment_equipped)
 	add_to_group("equipment_list")
 	add_to_group("run_persistent")
+	EventBus.collections_ready.emit()
 	
 # Saca un equipamiento de equip_list, modifica la lista. ¿Mover a su propia clase?
 func _get_random_equipment(equip_list: Array[Equipment], rarity: int = -1, rarity_factor: float = 0.0) -> Equipment:
@@ -122,6 +123,17 @@ func remove(element):
 	elif element is EventData:
 		events.remove(element)
 		
+
+func remove_all(element):
+	if element is Equipment:
+		while element in equipments.list:
+			equipments.remove(element)
+	elif element is SkillData:
+		while element in skills.list:
+			skills.remove(element)
+	elif element is EventData:
+		while element in events.list:
+			events.remove(element)
 
 func _on_equipment_equipped(equipment: Equipment):
 	remove(equipment)

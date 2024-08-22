@@ -143,7 +143,7 @@ shield_decay_rate = 1.0
 script = ExtResource("9_v1osf")
 flip_facing = true
 sprite = ExtResource("10_oyjl2")
-ui_name = "Enemy 3"
+ui_name = "Mushroom"
 
 [resource]
 script = ExtResource("1_kglle")

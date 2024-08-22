@@ -115,7 +115,7 @@ shield_decay_rate = 1.0
 script = ExtResource("3_6rgrk")
 flip_facing = true
 sprite = ExtResource("7_rnofj")
-ui_name = "Enemy 2"
+ui_name = "One-eye"
 
 [resource]
 script = ExtResource("1_arri5")

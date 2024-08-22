@@ -18,6 +18,7 @@ signal behavior_finished(behavior)
 signal player_ui_finished_operation
 signal battle_started
 signal battle_finished
+signal collections_ready
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

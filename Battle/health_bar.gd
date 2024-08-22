@@ -48,8 +48,6 @@ func _on_Combatant_shield_changed(old, shield):
 		await _tween_queue_free
 	tween_queue += 1
 	var tween = get_tree().create_tween()
-	print("old: " + str(old))
-	print("new: " + str(shield))
 	#if old==0 and shield > 0:
 		#tween.tween_property(shield_icon, "modulate", Color.WHITE, 0.2)
 		#await tween.finished
@@ -67,7 +65,6 @@ func _on_Combatant_remaining_changed(old, remaining):
 
 func _update_shield(shield):
 	shield_label.text = str(shield)
-	print(shield)
 	if shield > 0:
 		shield_icon.show()
 		health_bar.add_theme_stylebox_override("fill", shield_style)

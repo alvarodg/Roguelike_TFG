@@ -1,24 +1,21 @@
 [gd_scene load_steps=11 format=3 uid="uid://d4ak0fy4gsv6v"]
 
+[ext_resource type="Theme" uid="uid://dvg7jbsgrbfoe" path="res://Themes/theme_pixel/pixel_theme_menus.tres" id="1_c2yd6"]
 [ext_resource type="Script" path="res://Events/event_choice/event_pick.gd" id="1_nc80d"]
 [ext_resource type="Texture2D" uid="uid://djmrox3cqnntc" path="res://icon.svg" id="2_p76l4"]
 [ext_resource type="FontFile" uid="uid://ysqghdrpxr1g" path="res://Themes/fonts/m6x11plus.ttf" id="3_05h3b"]
 [ext_resource type="PackedScene" uid="uid://bxbdvrktndhoi" path="res://Player/player_stats_compact_ui.tscn" id="4_ga0g0"]
 [ext_resource type="FontFile" uid="uid://b0yauh56wqac5" path="res://Themes/fonts/m6x11.ttf" id="4_wdi5c"]
+[ext_resource type="StyleBox" uid="uid://b2bm3n50qyv0h" path="res://Themes/theme_pixel/panels/blackish_panel.tres" id="5_tls87"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_8kbc4"]
-font = ExtResource("3_05h3b")
-font_size = 18
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2c6xu"]
+[sub_resource type="LabelSettings" id="LabelSettings_jeyal"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_qcnea"]
 font = ExtResource("4_wdi5c")
 
-[sub_resource type="LabelSettings" id="LabelSettings_jeyal"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i0utn"]
-bg_color = Color(0.2, 0.2, 0.2, 0.858824)
+[sub_resource type="LabelSettings" id="LabelSettings_8kbc4"]
+font = ExtResource("3_05h3b")
+font_size = 18
 
 [node name="EventPick" type="Control"]
 layout_mode = 3
@@ -27,6 +24,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_c2yd6")
 script = ExtResource("1_nc80d")
 
 [node name="Background" type="ColorRect" parent="."]
@@ -39,6 +37,7 @@ grow_vertical = 2
 color = Color(0.258824, 0.258824, 0.258824, 1)
 
 [node name="EventPanel" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -64,32 +63,40 @@ size_flags_horizontal = 3
 texture = ExtResource("2_p76l4")
 stretch_mode = 5
 
-[node name="EventNameLabel" type="Label" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="."]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 20)
+custom_minimum_size = Vector2(288, 200)
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = -50.0
-offset_right = 50.0
-offset_bottom = 20.0
-grow_horizontal = 2
-text = "EVENT NAME"
-label_settings = SubResource("LabelSettings_8kbc4")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Panel" type="Panel" parent="EventNameLabel"]
-show_behind_parent = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.5
+offset_left = -169.0
+offset_top = -120.0
+offset_right = 131.0
+offset_bottom = 80.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 4
+theme_override_styles/panel = ExtResource("5_tls87")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="NarrativeLabel" type="Label" parent="PanelContainer/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+size_flags_horizontal = 0
 size_flags_vertical = 0
+text = "This should say something else."
+label_settings = SubResource("LabelSettings_jeyal")
+autowrap_mode = 3
+metadata/_edit_group_ = true
 
 [node name="ChoiceContainer" type="VBoxContainer" parent="."]
 unique_name_in_owner = true
@@ -104,7 +111,7 @@ grow_horizontal = 0
 [node name="Panel" type="Panel" parent="ChoiceContainer"]
 custom_minimum_size = Vector2(100, 20)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_2c6xu")
+theme_override_styles/panel = ExtResource("5_tls87")
 
 [node name="Label" type="Label" parent="ChoiceContainer/Panel"]
 layout_mode = 1
@@ -118,36 +125,29 @@ label_settings = SubResource("LabelSettings_qcnea")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="NarrativeLabel" type="Label" parent="."]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(160, 0)
-layout_mode = 1
-offset_left = 7.0
-offset_top = 31.0
-offset_right = 157.0
-offset_bottom = 60.0
-text = "This should say something else."
-label_settings = SubResource("LabelSettings_jeyal")
-autowrap_mode = 3
-metadata/_edit_group_ = true
-
-[node name="Panel" type="Panel" parent="NarrativeLabel"]
-show_behind_parent = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_i0utn")
-
 [node name="PlayerStatsCompactUI" parent="." instance=ExtResource("4_ga0g0")]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 2
-anchor_right = 0.0
-offset_left = 28.0
-offset_top = -16.0
-offset_right = 28.0
-offset_bottom = -16.0
-grow_horizontal = 1
+offset_left = 22.0
+offset_top = -11.0
+offset_right = 22.0
+offset_bottom = -11.0
+
+[node name="PanelContainer2" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -105.0
+offset_right = 105.0
+offset_bottom = 22.0
+grow_horizontal = 2
+
+[node name="EventNameLabel" type="Label" parent="PanelContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 20)
+layout_mode = 2
+text = "EVENT NAME"
+label_settings = SubResource("LabelSettings_8kbc4")
+horizontal_alignment = 1
+vertical_alignment = 1

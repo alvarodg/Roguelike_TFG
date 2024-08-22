@@ -24,7 +24,7 @@ script = ExtResource("3_asn15")
 state_conditions = Array[Resource("res://Items/modifiers/conditions/state_condition.gd")]([])
 event_condition = SubResource("Resource_56ehh")
 modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_ohdv8")])
-amount = -1
+amount = 3
 reset = 1
 
 [sub_resource type="Resource" id="Resource_d71ae"]

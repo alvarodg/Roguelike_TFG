@@ -8,6 +8,7 @@ signal event_chosen
 @export var generation_data_list: Array[GenerationData]
 @onready var generator = %Generator
 @onready var player_map_ui = %PlayerMapUI
+@onready var background = %Background
 #@onready var player_stats_compact_ui = %PlayerStatsCompactUI
 @onready var reset_button = %ResetButton
 @onready var change_level_button = %ChangeLevelButton
@@ -52,6 +53,7 @@ func _ready():
 #		print(RunData.rng.state)
 
 func start_game(player: Player, rng: RandomNumberGenerator):
+	show()
 	for i in range(generation_data_list.size()):
 		var level = generator.generate(generation_data_list[i], rng)
 		level_list.append(level)
@@ -99,6 +101,10 @@ func set_level(level_id: int):
 	print("Setting level " + str(level_id))
 	node_matrix = level_list[level_id]
 	current_level = level_id
+	var current_level_bg = generation_data_list[current_level].map_bg
+	if current_level_bg != null:
+		background.texture = current_level_bg
+		print("should change")
 	RunData.current_level = current_level
 	RunData.current_level_default_bg = generation_data_list[current_level].default_battle_bg
 	# De momento no guarda los nodos visitados en previos niveles, modificar si se quiere hacer algo con ellos.
@@ -251,7 +257,8 @@ func save():
 		"traveled_coords_x" : traveled_coords_x,
 		"traveled_coords_y" : traveled_coords_y,
 		"current_level" : current_level,
-		"generation_data_list" : gen_data_path
+		"generation_data_list" : gen_data_path,
+		"debug" : debug
 	}
 	return save_dict
 

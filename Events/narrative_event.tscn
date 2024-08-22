@@ -1,13 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://dvqlaq6opiv00"]
 
 [ext_resource type="Script" path="res://Events/narrative_event.gd" id="1_pi477"]
+[ext_resource type="Theme" uid="uid://dvg7jbsgrbfoe" path="res://Themes/theme_pixel/pixel_theme_menus.tres" id="1_q1cbl"]
 [ext_resource type="Texture2D" uid="uid://djmrox3cqnntc" path="res://icon.svg" id="2_ch3bu"]
 [ext_resource type="PackedScene" uid="uid://bxbdvrktndhoi" path="res://Player/player_stats_compact_ui.tscn" id="3_vu1wn"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1i23u"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_883vj"]
-bg_color = Color(0.101961, 0.101961, 0.101961, 1)
+[ext_resource type="StyleBox" uid="uid://b4hqkadee6fsv" path="res://Themes/theme_pixel/panels/blue_outline_flat.tres" id="4_rme7r"]
 
 [node name="NarrativeEvent" type="Control"]
 layout_mode = 3
@@ -16,6 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_q1cbl")
 script = ExtResource("1_pi477")
 
 [node name="Background" type="ColorRect" parent="."]
@@ -45,13 +43,10 @@ grow_vertical = 2
 [node name="PlayerStatsCompactUI" parent="Background/Panel" instance=ExtResource("3_vu1wn")]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 2
-anchor_right = 0.0
 offset_left = 7.0
 offset_top = -1.0
 offset_right = 7.0
 offset_bottom = -1.0
-grow_horizontal = 1
 show_coins = false
 show_equipment = false
 
@@ -70,28 +65,22 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 12
 
-[node name="ResultsLabel" type="Label" parent="Background/Panel/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="Background/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = ExtResource("4_rme7r")
+
+[node name="ResultsLabel" type="Label" parent="Background/Panel/VBoxContainer/PanelContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 30
-text = "  RESULTS  "
-
-[node name="Panel" type="Panel" parent="Background/Panel/VBoxContainer/ResultsLabel"]
-show_behind_parent = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-theme_override_styles/panel = SubResource("StyleBoxFlat_1i23u")
+text = "RESULTS"
 
 [node name="Panel" type="Panel" parent="Background/Panel/VBoxContainer"]
 custom_minimum_size = Vector2(450, 200)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_styles/panel = SubResource("StyleBoxFlat_883vj")
+theme_override_styles/panel = ExtResource("4_rme7r")
 
 [node name="NarrativeHBoxContainer" type="HBoxContainer" parent="Background/Panel/VBoxContainer/Panel"]
 layout_mode = 1
@@ -100,12 +89,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -202.0
-offset_top = -100.0
-offset_right = 202.0
-offset_bottom = 100.0
+offset_left = -206.0
+offset_top = -95.0
+offset_right = 206.0
+offset_bottom = 95.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 12
 alignment = 1
 
 [node name="ImagePanel" type="Panel" parent="Background/Panel/VBoxContainer/Panel/NarrativeHBoxContainer"]
@@ -130,7 +120,7 @@ stretch_mode = 3
 
 [node name="NarrativePanel" type="Panel" parent="Background/Panel/VBoxContainer/Panel/NarrativeHBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(280, 200)
+custom_minimum_size = Vector2(280, 190)
 layout_mode = 2
 size_flags_horizontal = 4
 

@@ -3,10 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://ccfstqogm2sl1" path="res://Themes/theme_pixel/GUI_mounir_tohami.png" id="1_jm4vu"]
 
 [resource]
-content_margin_left = 6.0
-content_margin_top = 1.0
-content_margin_right = 6.0
-content_margin_bottom = 1.0
+content_margin_left = 5.0
+content_margin_top = 0.0
+content_margin_right = 5.0
+content_margin_bottom = 2.0
 texture = ExtResource("1_jm4vu")
 texture_margin_left = 4.0
 texture_margin_top = 4.0

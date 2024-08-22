@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cgy3vsj8t3jn3"]
+[gd_scene load_steps=5 format=3 uid="uid://1opkyq0i57rv"]
 
 [ext_resource type="Texture2D" uid="uid://djmrox3cqnntc" path="res://icon.svg" id="2_h5wa5"]
 [ext_resource type="PackedScene" uid="uid://bxbdvrktndhoi" path="res://Player/player_stats_compact_ui.tscn" id="4_ehf27"]
@@ -152,13 +152,10 @@ text = "CONTINUE  ->"
 
 [node name="PlayerStatsCompactUI" parent="." instance=ExtResource("4_ehf27")]
 layout_mode = 1
-anchors_preset = 2
-anchor_right = 0.0
 offset_left = 64.0
 offset_top = -45.0
 offset_right = 64.0
 offset_bottom = -45.0
-grow_horizontal = 1
 show_coins = false
 show_equipment = false
 

@@ -14,6 +14,7 @@ signal selected(event_choice)
 @onready var button: Button = %Button
 @onready var label: RichTextLabel = %Label
 @onready var hover_label: Label = %HoverLabel
+@onready var hover_container = %HoverContainer
 
 var description: String
 var explicit: bool = false
@@ -25,6 +26,7 @@ var final: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	hover_container.hide()
 	_update_description(label)
 	_update_hover_description(hover_label)
 	_check_cost()
@@ -139,17 +141,34 @@ func show_narrative(narrative: NarrativeEventData):
 
 func _on_Button_mouse_entered():
 	if hover_label.text != "":
-		hover_label.hide()
-		hover_label.global_position = get_viewport().get_mouse_position() - Vector2(hover_label.size.x,0)
-		await get_tree().create_timer(0.1).timeout
-		hover_label.show()
-		hover_label.self_modulate = Color.TRANSPARENT
-		var tween = get_tree().create_tween()
-		tween.tween_property(hover_label, "self_modulate", Color.WHITE, 0.3)
+		await _show_hover(hover_container)
+		#hover_label.hide()
+		#hover_label.global_position = get_viewport().get_mouse_position() - Vector2(hover_label.size.x,0)
+		#await get_tree().create_timer(0.1).timeout
+		#hover_label.show()
+		#hover_label.self_modulate = Color.TRANSPARENT
+		#var tween = get_tree().create_tween()
+		#tween.tween_property(hover_label, "self_modulate", Color.WHITE, 0.3)
 
 func _on_Button_mouse_exited():
 	if hover_label.text != "":
-		var tween = get_tree().create_tween()
-		tween.tween_property(hover_label, "self_modulate", Color.TRANSPARENT, 0.1)
-		await tween.finished
-		hover_label.hide()
+		await _hide_hover(hover_container)
+		#var tween = get_tree().create_tween()
+		#tween.tween_property(hover_label, "self_modulate", Color.TRANSPARENT, 0.1)
+		#await tween.finished
+		#hover_label.hide()
+
+func _show_hover(hover_element):
+	hover_element.hide()
+	hover_element.global_position = get_viewport().get_mouse_position() - Vector2(hover_element.size.x,0)
+	await get_tree().create_timer(0.1).timeout
+	hover_element.show()
+	hover_element.self_modulate = Color.TRANSPARENT
+	var tween = get_tree().create_tween()
+	tween.tween_property(hover_element, "self_modulate", Color.WHITE, 0.3)
+
+func _hide_hover(hover_element):
+	var tween = get_tree().create_tween()
+	tween.tween_property(hover_element, "self_modulate", Color.TRANSPARENT, 0.1)
+	await tween.finished
+	hover_element.hide()

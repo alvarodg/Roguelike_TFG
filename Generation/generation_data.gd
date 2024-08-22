@@ -3,6 +3,7 @@ class_name GenerationData
 
 @export var map_generator: MapGenerator
 @export var event_assigner: EventAssigner
+@export var map_bg: Texture2D
 @export var default_battle_bg: Texture2D
 
 func to_save_dict() -> Dictionary:

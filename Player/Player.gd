@@ -32,6 +32,7 @@ var bias_list: Array[Coin.Facing] = []
 
 var taking_damage: bool = false : set = set_taking_damage
 var in_damage_queue: int = 0
+var defaults_set: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -44,10 +45,14 @@ func _ready():
 	connect_stat_signals()
 	create_coin_data(stats.coin_count)
 	# Para no volver a incluir el equipo por defecto si está cargando partida
-	if equipment_list.size() == 0:
+	if not defaults_set:
+	#if equipment_list.size() == 0:
 		for equipment in default_equipment:
 			if equipment != null:
 				equip(equipment)
+		await get_tree().process_frame
+		_remove_from_pool(default_equipment, skill_list)
+		defaults_set = true
 				# Necesita que CollectionContainer se inicialice antes que Player, TEMPORAL
 				# Sustituir por señal
 #				if equipment in RunData.collections.equipments.list:
@@ -55,6 +60,15 @@ func _ready():
 	default_equipment = []
 	reset_coins()
 	
+
+func _remove_from_pool(equipments, skills):
+	if RunData.collections != null:
+		for equipment in equipments:
+			if equipment in RunData.collections.equipments.list:
+				RunData.collections.remove_all(equipment)
+		for skill in skills:
+			if skill in RunData.collections.skills.list:
+				RunData.collections.remove_all(skill)
 
 func connect_stat_signals():
 	stats.coin_count_changed.connect(_on_Stats_coin_count_changed)
@@ -74,6 +88,9 @@ func set_stats(new_stats):
 
 func get_stats() -> PlayerStats:
 	return stats
+
+func get_ui_data() -> PlayerUIData:
+	return ui_data
 
 func add_coin(coin: Coin):
 	coins.append(coin)
@@ -289,6 +306,7 @@ func save() -> Dictionary:
 	var save_dict = {
 		"filename" : get_scene_file_path(),
 		"parent" : get_parent().get_path(),
+		"defaults_set" : defaults_set,
 	}
 	var ui_dict = ui_data.to_save_dict()
 	save_dict.merge(ui_dict)

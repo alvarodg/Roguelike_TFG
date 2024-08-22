@@ -6,8 +6,11 @@ var node_matrix = []
 var traveled_nodes: Array[EventNode] = []
 var traveled_coords: Array[Vector2] = []
 
+@onready var map = %Map
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	map.hide()
 	EventBus.new_run_selected.connect(_on_new_run)
 	EventBus.continue_run_selected.connect(_on_continue_run)
 	RunData.finished_loading.connect(_on_load_finished)

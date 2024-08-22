@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://Battle/player/player_stats_ui.gd" id="1_t78et"]
 [ext_resource type="FontFile" uid="uid://dj2uwas52df26" path="res://Themes/fonts/m5x7.ttf" id="2_ijmnp"]
-[ext_resource type="Script" path="res://Battle/combatant/ui/other_stats_container.gd" id="2_rduuu"]
 [ext_resource type="Texture2D" uid="uid://cpaes4c4pnmxw" path="res://Battle/skills/icons/attack_skill.png" id="3_d45i1"]
 [ext_resource type="PackedScene" uid="uid://cm2iaddemayb2" path="res://Battle/health_bar.tscn" id="3_rf0j1"]
 [ext_resource type="PackedScene" uid="uid://20lggu6h8kmx" path="res://Items/equipment/equipment_ui.tscn" id="4_jt7va"]
@@ -10,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://y25k64mywuj0" path="res://Battle/player/sprites/armor_icon.png" id="5_uymje"]
 [ext_resource type="Texture2D" uid="uid://b3orepwgh8usw" path="res://Player/sprites/guy.png" id="7_sqcbx"]
 [ext_resource type="StyleBox" uid="uid://b2bm3n50qyv0h" path="res://Themes/theme_pixel/panels/blackish_panel.tres" id="9_l0j1o"]
+[ext_resource type="StyleBox" uid="uid://b3lmq58csavug" path="res://Themes/theme_pixel/label/black_skill_box_label.tres" id="10_jwoan"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_28xap"]
 font = ExtResource("2_ijmnp")
@@ -146,7 +146,6 @@ grow_vertical = 2
 
 [node name="OtherStatsContainer" type="HBoxContainer" parent="SpriteHealthPosition/VBoxContainer"]
 layout_mode = 2
-script = ExtResource("2_rduuu")
 metadata/_edit_group_ = true
 
 [node name="StrengthContainer" type="HBoxContainer" parent="SpriteHealthPosition/VBoxContainer/OtherStatsContainer"]
@@ -290,6 +289,7 @@ layout_mode = 0
 offset_right = 1.0
 offset_bottom = 13.0
 mouse_filter = 2
+theme_override_styles/panel = ExtResource("10_jwoan")
 
 [node name="InfoLabel" type="Label" parent="InfoContainer"]
 unique_name_in_owner = true

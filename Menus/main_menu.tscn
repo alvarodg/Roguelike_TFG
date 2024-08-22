@@ -1,24 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://b8nvuhpu5i8fs"]
+[gd_scene load_steps=8 format=3 uid="uid://b8nvuhpu5i8fs"]
 
 [ext_resource type="Script" path="res://Menus/main_menu.gd" id="1_pkiib"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y8y8m"]
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.0588235, 0.0588235, 0.0588235, 1)
-border_blend = true
+[ext_resource type="StyleBox" uid="uid://b4hqkadee6fsv" path="res://Themes/theme_pixel/panels/blue_outline_flat.tres" id="2_uj5v1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_upfs5"]
 bg_color = Color(0.176419, 0.176419, 0.176419, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_6v35p"]
-line_spacing = 0.0
-font_size = 9
+line_spacing = -1.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_ntwij"]
-font_size = 9
+
+[sub_resource type="LabelSettings" id="LabelSettings_d7xac"]
+line_spacing = -1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_mlk3w"]
+line_spacing = -1.0
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -92,7 +89,7 @@ offset_left = 54.0
 offset_top = 30.0
 offset_right = 254.0
 offset_bottom = 118.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_y8y8m")
+theme_override_styles/panel = ExtResource("2_uj5v1")
 metadata/_edit_group_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/SeedPanel"]
@@ -138,7 +135,6 @@ text = "Start"
 
 [node name="CreditsPanel" type="Panel" parent="."]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -149,24 +145,46 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_upfs5")
 
 [node name="CreditsText" type="Label" parent="CreditsPanel"]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 1.0
+offset_bottom = 91.0
 grow_horizontal = 2
-grow_vertical = 2
 theme_override_constants/line_spacing = 0
-text = "Este proyecto ha sido desarrollado como trabajo de fin de grado para el Grado de Ingeniería Infórmatica de la Universidad de Cádiz.
+text = "Este proyecto fue desarrollado como trabajo de fin de grado para el Grado de Ingeniería Infórmatica de la Universidad de Cádiz.
 
 Alumno: Álvaro Durán Garrucho
 Tutor: Manuel Palomo Duarte
 
-Créditos de los recursos adicionales utilizados:
+Créditos de los recursos adicionales utilizados
+"
+label_settings = SubResource("LabelSettings_6v35p")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
-Efectos de sonido: ZapSplat (https://www.zapsplat.com/)
+[node name="CloseLabel" type="Label" parent="CreditsPanel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -273.0
+offset_top = -19.0
+offset_right = -4.0
+offset_bottom = -6.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "(Hacer click en cualquier lugar para volver al menú)"
+label_settings = SubResource("LabelSettings_ntwij")
 
-Animación de combate: Cethiel (https://opengameart.org/content/magic-effects)
-
-Música:
+[node name="Label2" type="Label" parent="CreditsPanel"]
+layout_mode = 1
+offset_left = 1.0
+offset_top = 105.0
+offset_right = 296.0
+offset_bottom = 342.0
+text = "Música:
 
 \"Rising Tide\" Kevin MacLeod (incompetech.com)
 Licensed under Creative Commons: By Attribution 4.0 License
@@ -174,27 +192,35 @@ http://creativecommons.org/licenses/by/4.0/
 
 \"Rising Tide (faster)\" Kevin MacLeod (incompetech.com)
 Licensed under Creative Commons: By Attribution 4.0 License
-http://creativecommons.org/licenses/by/4.0/"
-label_settings = SubResource("LabelSettings_6v35p")
-horizontal_alignment = 1
-vertical_alignment = 1
+http://creativecommons.org/licenses/by/4.0/
+
+
+Efectos de sonido: ZapSplat (https://www.zapsplat.com/)"
+label_settings = SubResource("LabelSettings_d7xac")
 autowrap_mode = 3
 
-[node name="Label" type="Label" parent="CreditsPanel"]
+[node name="Label3" type="Label" parent="CreditsPanel"]
 layout_mode = 1
-anchors_preset = 3
+anchors_preset = 1
 anchor_left = 1.0
-anchor_top = 1.0
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -236.0
-offset_top = -21.0
-offset_right = -13.0
-offset_bottom = -8.0
+offset_left = -336.0
+offset_top = 106.0
+offset_bottom = 327.0
 grow_horizontal = 0
-grow_vertical = 0
-text = "(Hacer click en cualquier lugar para volver al menú)"
-label_settings = SubResource("LabelSettings_ntwij")
+text = "Gráficos:
+
+Combatientes: Stephen \"Redshrike\" Channeller (https://opengameart.org/content/sideview-pixel-art-rpg-enemy-sprites)
+
+Fondos de combate: Nidhoggn (https://opengameart.org/content/backgrounds-3)
+
+Animación de combate: Cethiel (https://opengameart.org/content/magic-effects)
+
+Fuentes: Daniel Linssen (https://managore.itch.io/)
+
+Interfaz y misceláneos: Mounit Tohami (https://mounirtohami.itch.io/), Buch (https://opengameart.org/users/buch), Pixel-Boy y AAA (https://pixel-boy.itch.io/ninja-adventure-asset-pack)"
+label_settings = SubResource("LabelSettings_mlk3w")
+autowrap_mode = 3
 
 [connection signal="pressed" from="Control/MainMenuPanel/VBoxContainer/ContinueButton" to="." method="_on_ContinueButton_pressed"]
 [connection signal="pressed" from="Control/MainMenuPanel/VBoxContainer/NewRunButton" to="." method="_on_NewRunButton_pressed"]

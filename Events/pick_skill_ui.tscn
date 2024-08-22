@@ -1,15 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b1qenfnrgvgbd"]
+[gd_scene load_steps=3 format=3 uid="uid://b1qenfnrgvgbd"]
 
 [ext_resource type="Script" path="res://Events/pick_skill_ui.gd" id="1_ff6px"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2r2ji"]
-bg_color = Color(0.533333, 0.533333, 0.533333, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0a3ka"]
-bg_color = Color(0.352941, 0.352941, 0.352941, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_856qm"]
-bg_color = Color(0.721569, 0.721569, 0.721569, 1)
+[ext_resource type="Theme" uid="uid://dvg7jbsgrbfoe" path="res://Themes/theme_pixel/pixel_theme_menus.tres" id="2_vgpa6"]
 
 [node name="PickSkillUI" type="Control"]
 custom_minimum_size = Vector2(160, 120)
@@ -19,15 +11,7 @@ offset_right = 8.0
 offset_bottom = 8.0
 script = ExtResource("1_ff6px")
 
-[node name="Panel" type="Panel" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SkillVBoxContainer" type="VBoxContainer" parent="Panel"]
+[node name="SkillVBoxContainer" type="VBoxContainer" parent="."]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -37,14 +21,12 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="PickButton" type="Button" parent="Panel/SkillVBoxContainer"]
+[node name="PickButton" type="Button" parent="SkillVBoxContainer"]
 custom_minimum_size = Vector2(140, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_styles/normal = SubResource("StyleBoxFlat_2r2ji")
-theme_override_styles/hover = SubResource("StyleBoxFlat_0a3ka")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_856qm")
+theme = ExtResource("2_vgpa6")
 text = "Pick"
 
-[connection signal="pressed" from="Panel/SkillVBoxContainer/PickButton" to="." method="_on_PickButton_pressed"]
+[connection signal="pressed" from="SkillVBoxContainer/PickButton" to="." method="_on_PickButton_pressed"]

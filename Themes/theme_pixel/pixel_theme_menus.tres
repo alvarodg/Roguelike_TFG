@@ -1,0 +1,45 @@
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://dvg7jbsgrbfoe"]
+
+[ext_resource type="Texture2D" uid="uid://ccfstqogm2sl1" path="res://Themes/theme_pixel/GUI_mounir_tohami.png" id="1_vbumj"]
+[ext_resource type="StyleBox" uid="uid://b2bm3n50qyv0h" path="res://Themes/theme_pixel/panels/blackish_panel.tres" id="2_b62jn"]
+[ext_resource type="StyleBox" uid="uid://c1fhdkrtq651p" path="res://Themes/theme_pixel/bars/background_bar.tres" id="3_v48o3"]
+[ext_resource type="StyleBox" uid="uid://bwgb2e3nb4eid" path="res://Themes/theme_pixel/bars/fill_red_bar.tres" id="4_4frx1"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1le8h"]
+content_margin_left = 5.0
+content_margin_right = 5.0
+texture = ExtResource("1_vbumj")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(145, 113, 46, 14)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uw858"]
+content_margin_left = 5.0
+content_margin_right = 5.0
+texture = ExtResource("1_vbumj")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(145, 81, 46, 14)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qkxu6"]
+content_margin_left = 5.0
+content_margin_right = 5.0
+texture = ExtResource("1_vbumj")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 2.97287
+texture_margin_bottom = 3.0
+region_rect = Rect2(147.917, 98, 43.0834, 13)
+
+[resource]
+Button/styles/hover = SubResource("StyleBoxTexture_1le8h")
+Button/styles/normal = SubResource("StyleBoxTexture_uw858")
+Button/styles/pressed = SubResource("StyleBoxTexture_qkxu6")
+Panel/styles/panel = ExtResource("2_b62jn")
+PanelContainer/styles/panel = ExtResource("2_b62jn")
+ProgressBar/styles/background = ExtResource("3_v48o3")
+ProgressBar/styles/fill = ExtResource("4_4frx1")

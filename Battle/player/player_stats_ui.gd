@@ -157,8 +157,10 @@ func _on_DodgesContainer_mouse_exited():
 
 func _update_info(container: Container, description: String):
 	info_label.text = description
-	info_container.global_position = container.global_position - Vector2(0,container.size.y/2)
+	#info_container.global_position = container.global_position - Vector2(0,container.size.y/2)
+	HoverPanel.move_to_corner(info_container, HoverContainer.Corner.TOP_RIGHT, container.position, container.size)
 	info_container.show()
 
 func _hide_info():
+	info_container.position = Vector2.ZERO
 	info_container.hide()

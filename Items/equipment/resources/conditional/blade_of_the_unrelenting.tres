@@ -1,0 +1,48 @@
+[gd_resource type="Resource" script_class="Equipment" load_steps=13 format=3 uid="uid://dnajk48rvu2mv"]
+
+[ext_resource type="Script" path="res://Items/equipment/equipment.gd" id="1_0osk7"]
+[ext_resource type="Script" path="res://Items/modifiers/conditions/events/health_changed_condition.gd" id="1_hkklb"]
+[ext_resource type="Script" path="res://Items/modifiers/conditions/condition_trigger.gd" id="1_wljne"]
+[ext_resource type="Script" path="res://Items/modifiers/components/stats/strength_modifier_component.gd" id="2_mk2eg"]
+[ext_resource type="Script" path="res://Items/modifiers/conditions/states/in_battle_condition.gd" id="4_2dot7"]
+[ext_resource type="Script" path="res://Items/equipment/equipment_ui_data.gd" id="4_btv3m"]
+[ext_resource type="Texture2D" uid="uid://35wq8wcspygk" path="res://Items/equipment/sprites/blade_dark.png" id="6_f8ecf"]
+
+[sub_resource type="Resource" id="Resource_c8rul"]
+script = ExtResource("1_hkklb")
+min_threshold = 0
+direction = 1
+amount = 4
+restart_per_turn = false
+restart_per_battle = true
+
+[sub_resource type="Resource" id="Resource_tl47i"]
+script = ExtResource("2_mk2eg")
+magnitude = 1.0
+action = 0
+
+[sub_resource type="Resource" id="Resource_62at2"]
+script = ExtResource("4_2dot7")
+
+[sub_resource type="Resource" id="Resource_4n80h"]
+script = ExtResource("1_wljne")
+state_conditions = Array[Resource("res://Items/modifiers/conditions/state_condition.gd")]([SubResource("Resource_62at2")])
+event_condition = SubResource("Resource_c8rul")
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_tl47i")])
+amount = 3
+reset = 1
+
+[sub_resource type="Resource" id="Resource_vsvqk"]
+script = ExtResource("4_btv3m")
+icon = ExtResource("6_f8ecf")
+ui_name = "Blade of The Unrelenting"
+
+[resource]
+script = ExtResource("1_0osk7")
+ui_data = SubResource("Resource_vsvqk")
+description = ""
+rarity = 3
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+condition_triggers = Array[ExtResource("1_wljne")]([SubResource("Resource_4n80h")])
+fragile = false
+tags = Array[int]([0, 2])

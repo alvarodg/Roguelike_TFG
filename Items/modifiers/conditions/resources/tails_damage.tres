@@ -14,7 +14,7 @@ restart_per_battle = true
 
 [sub_resource type="Resource" id="Resource_jdggp"]
 script = ExtResource("2_t07eb")
-magnitude = -1.0
+magnitude = -2.0
 action = 0
 
 [sub_resource type="Resource" id="Resource_rfo76"]

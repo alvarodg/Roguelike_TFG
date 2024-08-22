@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dip7b67w54m78"]
+[gd_scene load_steps=20 format=3 uid="uid://dip7b67w54m78"]
 
 [ext_resource type="Script" path="res://Tests/battle_test.gd" id="1_h0e27"]
 [ext_resource type="Resource" uid="uid://cq5ebehsqd2ae" path="res://Battle/enemy/resources/data/knight_boss_data.tres" id="2_j3tbg"]
@@ -12,14 +12,15 @@
 [ext_resource type="Resource" uid="uid://q8cjuohabuf1" path="res://Battle/skills/resources/slippery_strike.tres" id="11_u1ykl"]
 [ext_resource type="Resource" uid="uid://coos4xdskyy7o" path="res://Battle/skills/resources/counterfeit.tres" id="12_aqatl"]
 [ext_resource type="Resource" uid="uid://63rmkkvw4qjs" path="res://Battle/skills/resources/rainbow.tres" id="12_y527t"]
+[ext_resource type="Resource" uid="uid://byirjwj6swpfd" path="res://Items/equipment/resources/conditional/blade_of_the_righteous.tres" id="16_ofgr7"]
 [ext_resource type="Resource" uid="uid://bxwuaeekjaus4" path="res://Items/equipment/resources/lucky_coin.tres" id="17_b7bag"]
+[ext_resource type="Resource" uid="uid://dnajk48rvu2mv" path="res://Items/equipment/resources/conditional/blade_of_the_unrelenting.tres" id="17_xohn3"]
 [ext_resource type="Resource" uid="uid://000ce1xcp83o" path="res://Items/equipment/resources/conditional/flip_shield.tres" id="17_yb6ym"]
-[ext_resource type="Resource" uid="uid://d1ykgymlpc3r0" path="res://Items/equipment/resources/conditional/example_equipment.tres" id="19_d0yy3"]
 [ext_resource type="Resource" uid="uid://o7m0rikjobyx" path="res://Items/equipment/resources/strong_armor.tres" id="24_c1mu8"]
 
 [sub_resource type="Resource" id="Resource_ln2xl"]
 script = ExtResource("7_hi817")
-coin_count = 15
+coin_count = 5
 base_luck = 1.0
 max_health = 90
 base_strength = 1
@@ -48,4 +49,4 @@ enemy_data = ExtResource("2_j3tbg")
 stats = SubResource("Resource_ln2xl")
 ui_data = SubResource("Resource_u4y1y")
 skill_list = Array[Resource("res://Battle/skills/SkillData.gd")]([ExtResource("10_yny00"), ExtResource("11_qij5i"), ExtResource("11_atv6b"), ExtResource("12_aqatl"), ExtResource("11_u1ykl"), ExtResource("12_y527t")])
-default_equipment = Array[Resource("res://Items/equipment/equipment.gd")]([ExtResource("24_c1mu8"), ExtResource("17_b7bag"), ExtResource("17_yb6ym"), ExtResource("19_d0yy3")])
+default_equipment = Array[Resource("res://Items/equipment/equipment.gd")]([ExtResource("24_c1mu8"), ExtResource("17_b7bag"), ExtResource("17_yb6ym"), ExtResource("16_ofgr7"), ExtResource("17_xohn3")])

@@ -78,8 +78,8 @@ func setup():
 func start_battle():
 	strength = base_strength
 	shield = base_shield
-	if shield > 0 and shield_turns_remaining >= 1:
-		shield_turns_remaining += 1
+	#if shield > 0 and shield_turns_remaining >= 1:
+		#shield_turns_remaining += 1
 	armor = base_armor
 	dodges = base_dodges
 	is_dead = false

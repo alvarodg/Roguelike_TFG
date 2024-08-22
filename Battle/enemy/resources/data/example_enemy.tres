@@ -119,9 +119,12 @@ base_strength = 0
 base_shield = 0
 base_armor = 1
 base_dodges = 0
+base_shield_decay_turns = 1
+shield_decay_rate = 1.0
 
 [sub_resource type="Resource" id="Resource_67puq"]
 script = ExtResource("16_dlwf0")
+flip_facing = false
 sprite = ExtResource("17_ux0dd")
 ui_name = "EJEMPLO"
 

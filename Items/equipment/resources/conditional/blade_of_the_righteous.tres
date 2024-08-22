@@ -1,0 +1,47 @@
+[gd_resource type="Resource" script_class="Equipment" load_steps=13 format=3 uid="uid://byirjwj6swpfd"]
+
+[ext_resource type="Script" path="res://Items/modifiers/conditions/events/flip_condition.gd" id="1_a5qr0"]
+[ext_resource type="Script" path="res://Items/equipment/equipment.gd" id="1_gmqmm"]
+[ext_resource type="Script" path="res://Items/modifiers/components/stats/strength_modifier_component.gd" id="2_0icl5"]
+[ext_resource type="Script" path="res://Items/modifiers/conditions/condition_trigger.gd" id="3_r1805"]
+[ext_resource type="Script" path="res://Items/modifiers/conditions/states/in_battle_condition.gd" id="4_iki5d"]
+[ext_resource type="Texture2D" uid="uid://s16n3lh00b1k" path="res://Items/equipment/sprites/blade_light.png" id="6_k00gy"]
+[ext_resource type="Script" path="res://Items/equipment/equipment_ui_data.gd" id="7_fsvru"]
+
+[sub_resource type="Resource" id="Resource_l3hjf"]
+script = ExtResource("1_a5qr0")
+facing = 1
+amount = 12
+restart_per_turn = false
+restart_per_battle = true
+
+[sub_resource type="Resource" id="Resource_xuxq6"]
+script = ExtResource("2_0icl5")
+magnitude = 1.0
+action = 0
+
+[sub_resource type="Resource" id="Resource_vrj1y"]
+script = ExtResource("4_iki5d")
+
+[sub_resource type="Resource" id="Resource_jl5jk"]
+script = ExtResource("3_r1805")
+state_conditions = Array[Resource("res://Items/modifiers/conditions/state_condition.gd")]([SubResource("Resource_vrj1y")])
+event_condition = SubResource("Resource_l3hjf")
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_xuxq6")])
+amount = 3
+reset = 1
+
+[sub_resource type="Resource" id="Resource_svp4b"]
+script = ExtResource("7_fsvru")
+icon = ExtResource("6_k00gy")
+ui_name = "Blade of the Righteous"
+
+[resource]
+script = ExtResource("1_gmqmm")
+ui_data = SubResource("Resource_svp4b")
+description = ""
+rarity = 3
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+condition_triggers = Array[ExtResource("3_r1805")]([SubResource("Resource_jl5jk")])
+fragile = false
+tags = Array[int]([0, 1])

@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://tv88ia00qmed"]
+[gd_scene load_steps=6 format=3 uid="uid://tv88ia00qmed"]
 
+[ext_resource type="Theme" uid="uid://dj2sxbc4p4860" path="res://Themes/theme_pixel/pixel_theme_battle.tres" id="1_2flqj"]
 [ext_resource type="Script" path="res://Battle/coin_ui/skill_box.gd" id="1_cau6c"]
 [ext_resource type="FontFile" uid="uid://b2n7xh73jrxxw" path="res://Themes/fonts/m3x6.ttf" id="3_62y8c"]
 [ext_resource type="StyleBox" uid="uid://b2bm3n50qyv0h" path="res://Themes/theme_pixel/panels/blackish_panel.tres" id="4_at2ne"]
@@ -11,6 +12,7 @@ font = ExtResource("3_62y8c")
 custom_minimum_size = Vector2(130, 114)
 layout_mode = 3
 anchors_preset = 0
+theme = ExtResource("1_2flqj")
 script = ExtResource("1_cau6c")
 
 [node name="Panel" type="Panel" parent="."]

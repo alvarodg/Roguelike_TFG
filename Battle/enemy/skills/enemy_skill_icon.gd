@@ -8,7 +8,7 @@ class_name EnemySkillIcon
 @onready var sprite = %Sprite
 @onready var shadow = %Shadow
 @onready var info_label = %InfoLabel
-@onready var info_panel = %InfoPanel
+@onready var info_container = %InfoContainer
 #@onready var hover_panel = %HoverPanel
 #@onready var hover_label = %HoverLabel
 
@@ -18,7 +18,8 @@ var state: State : set = set_state
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	info_label.hide()
+	info_container.hide()
+	#info_label.hide()
 	#hover_panel.hide()
 	info_label.text = skill.ui_data.ui_name + ":\n" + skill.get_description()
 	#hover_label.text = skill.ui_data.ui_name + ":\n" + skill.get_description()
@@ -51,7 +52,8 @@ func _process(delta):
 
 func _on_mouse_entered():
 	if state != State.HIDDEN:
-		info_label.show()
+		info_container.show()
+		#info_label.show()
 		#HoverPanel.move_to_corner(
 			#hover_panel, HoverContainer.Corner.BOTTOM_LEFT, 
 			#sprite.position, sprite.texture.get_size() * sprite.scale)
@@ -59,5 +61,6 @@ func _on_mouse_entered():
 
 
 func _on_mouse_exited():
-	info_label.hide()
+	info_container.hide()
+	#info_label.hide()
 	#hover_panel.hide()

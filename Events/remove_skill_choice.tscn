@@ -1,12 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bgdwwd5oc4b4b"]
+[gd_scene load_steps=4 format=3 uid="uid://bgdwwd5oc4b4b"]
 
 [ext_resource type="Script" path="res://Events/remove_skill_choice.gd" id="1_qn7ud"]
-[ext_resource type="FontFile" uid="uid://b0yauh56wqac5" path="res://Themes/fonts/m6x11.ttf" id="2_0no2i"]
 [ext_resource type="FontFile" uid="uid://ysqghdrpxr1g" path="res://Themes/fonts/m6x11plus.ttf" id="2_nwhc4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_emooy"]
-font = ExtResource("2_0no2i")
-font_size = 32
+font = ExtResource("2_nwhc4")
+font_size = 36
 
 [node name="RemoveSkillChoice" type="Control"]
 layout_mode = 3

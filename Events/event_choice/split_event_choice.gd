@@ -15,11 +15,14 @@ var coinbox_visible_position: Vector2
 
 
 func _ready():
-# Button, Label y HoverLabel estan declarados únicos y tienen el mismo nombre que en la clase base,
-# por lo que no es técnicamente necesario asignarlos de nuevo en esta clase.
+# Button, Label, HoverContainer y HoverLabel estan declarados únicos y tienen 
+# el mismo nombre que en la clase base, por lo que técnicamente 
+# no es necesario asignarlos de nuevo en esta clase.
 	button = %Button
 	label = %Label
+	hover_container = %HoverContainer
 	hover_label = %HoverLabel
+	hover_container.hide()
 	coinbox = coinbox_data.create_instance()
 	var rng: RandomNumberGenerator = RunData.rng if deterministic else RandomNumberGenerator.new()
 	coinbox.setup(player, rng)

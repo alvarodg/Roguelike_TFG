@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://blb8htxy0ytec"]
+[gd_scene load_steps=10 format=3 uid="uid://blb8htxy0ytec"]
 
 [ext_resource type="FontFile" uid="uid://dj2uwas52df26" path="res://Themes/fonts/m5x7.ttf" id="1_r30wm"]
 [ext_resource type="Script" path="res://Battle/combatant/ui/other_stats_container.gd" id="1_vgwp5"]
@@ -15,16 +15,32 @@ font = ExtResource("1_r30wm")
 [sub_resource type="LabelSettings" id="LabelSettings_sunqk"]
 font = ExtResource("1_r30wm")
 
-[node name="OtherStatsContainer" type="HBoxContainer"]
+[sub_resource type="LabelSettings" id="LabelSettings_hacn6"]
+
+[node name="OtherStatsContainer" type="Control"]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
 script = ExtResource("1_vgwp5")
+
+[node name="StatsHboxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -16.0
+offset_right = 77.0
+grow_vertical = 0
 metadata/_edit_group_ = true
 
-[node name="StrengthContainer" type="HBoxContainer" parent="."]
+[node name="StrengthContainer" type="HBoxContainer" parent="StatsHboxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 1
 
-[node name="StrengthLabel" type="Label" parent="StrengthContainer"]
+[node name="StrengthLabel" type="Label" parent="StatsHboxContainer/StrengthContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
@@ -32,41 +48,69 @@ text = "3"
 label_settings = SubResource("LabelSettings_28xap")
 horizontal_alignment = 1
 
-[node name="StrengthIcon" type="TextureRect" parent="StrengthContainer"]
+[node name="StrengthIcon" type="TextureRect" parent="StatsHboxContainer/StrengthContainer"]
 layout_mode = 2
 texture = ExtResource("2_2ndx4")
 stretch_mode = 3
 
-[node name="ArmorContainer" type="HBoxContainer" parent="."]
+[node name="ArmorContainer" type="HBoxContainer" parent="StatsHboxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 1
 
-[node name="ArmorLabel" type="Label" parent="ArmorContainer"]
+[node name="ArmorLabel" type="Label" parent="StatsHboxContainer/ArmorContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "3"
 label_settings = SubResource("LabelSettings_4oacm")
 horizontal_alignment = 1
 
-[node name="ArmorIcon" type="TextureRect" parent="ArmorContainer"]
+[node name="ArmorIcon" type="TextureRect" parent="StatsHboxContainer/ArmorContainer"]
 layout_mode = 2
 texture = ExtResource("3_ld5qf")
 stretch_mode = 3
 
-[node name="DodgesContainer" type="HBoxContainer" parent="."]
+[node name="DodgesContainer" type="HBoxContainer" parent="StatsHboxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 1
 
-[node name="DodgesLabel" type="Label" parent="DodgesContainer"]
+[node name="DodgesLabel" type="Label" parent="StatsHboxContainer/DodgesContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "3"
 label_settings = SubResource("LabelSettings_sunqk")
 horizontal_alignment = 1
 
-[node name="DodgesIcon" type="TextureRect" parent="DodgesContainer"]
+[node name="DodgesIcon" type="TextureRect" parent="StatsHboxContainer/DodgesContainer"]
 layout_mode = 2
 texture = ExtResource("4_n57wu")
 stretch_mode = 5
+
+[node name="InfoContainer" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+z_index = 1
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -16.0
+offset_right = 160.0
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="InfoLabel" type="Label" parent="InfoContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+label_settings = SubResource("LabelSettings_hacn6")
+autowrap_mode = 3
+metadata/_edit_group_ = true
+
+[connection signal="mouse_entered" from="StatsHboxContainer/StrengthContainer" to="StatsHboxContainer" method="_on_StrengthContainer_mouse_entered"]
+[connection signal="mouse_exited" from="StatsHboxContainer/StrengthContainer" to="StatsHboxContainer" method="_on_StrengthContainer_mouse_exited"]
+[connection signal="mouse_entered" from="StatsHboxContainer/ArmorContainer" to="StatsHboxContainer" method="_on_ArmorContainer_mouse_entered"]
+[connection signal="mouse_exited" from="StatsHboxContainer/ArmorContainer" to="StatsHboxContainer" method="_on_ArmorContainer_mouse_exited"]
+[connection signal="mouse_entered" from="StatsHboxContainer/DodgesContainer" to="StatsHboxContainer" method="_on_DodgesContainer_mouse_entered"]
+[connection signal="mouse_exited" from="StatsHboxContainer/DodgesContainer" to="StatsHboxContainer" method="_on_DodgesContainer_mouse_exited"]

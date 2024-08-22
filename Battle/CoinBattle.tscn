@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://ci2osml7lmqcy"]
 
-[ext_resource type="Theme" uid="uid://dj2sxbc4p4860" path="res://Themes/theme_pixel/pixel_theme.tres" id="1_xukrj"]
+[ext_resource type="Theme" uid="uid://dj2sxbc4p4860" path="res://Themes/theme_pixel/pixel_theme_battle.tres" id="1_3sq6j"]
 [ext_resource type="Script" path="res://Battle/CoinBattle.gd" id="1_ygx54"]
 [ext_resource type="PackedScene" uid="uid://d2ay6knlrtvwb" path="res://Battle/player/player_skill_ui.tscn" id="2_a737o"]
 [ext_resource type="Texture2D" uid="uid://bl1lyqs0cwd0h" path="res://Battle/background/battleback5.png" id="2_kyxoq"]
@@ -15,7 +15,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_xukrj")
+theme = ExtResource("1_3sq6j")
 script = ExtResource("1_ygx54")
 
 [node name="Background" type="TextureRect" parent="."]

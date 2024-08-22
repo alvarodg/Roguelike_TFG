@@ -97,7 +97,7 @@ tags = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_bav7u"]
 script = ExtResource("2_aqagc")
-flip_facing = false
+flip_facing = true
 sprite = ExtResource("11_18foi")
 ui_name = "Elite"
 

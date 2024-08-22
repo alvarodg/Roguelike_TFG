@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://cdv7jw56dyp3j"]
+[gd_scene load_steps=5 format=3 uid="uid://cdv7jw56dyp3j"]
 
 [ext_resource type="Script" path="res://Events/equipment_choice.gd" id="1_72sd0"]
+[ext_resource type="Theme" uid="uid://dvg7jbsgrbfoe" path="res://Themes/theme_pixel/pixel_theme_menus.tres" id="1_hqwin"]
+[ext_resource type="FontFile" uid="uid://ysqghdrpxr1g" path="res://Themes/fonts/m6x11plus.ttf" id="3_l3gl0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_54lae"]
+font = ExtResource("3_l3gl0")
+font_size = 36
 
 [node name="EquipmentChoice" type="Control"]
 layout_mode = 3
@@ -9,6 +15,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_hqwin")
 script = ExtResource("1_72sd0")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -53,8 +60,8 @@ theme_override_constants/separation = 40
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
 text = "EQUIPMENT CHOICE"
+label_settings = SubResource("LabelSettings_54lae")
 horizontal_alignment = 1
 
 [node name="ChoiceContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]

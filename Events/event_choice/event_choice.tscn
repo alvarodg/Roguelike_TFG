@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dc6b3gw07gh4c"]
+[gd_scene load_steps=5 format=3 uid="uid://dc6b3gw07gh4c"]
 
 [ext_resource type="Script" path="res://Events/event_choice/event_choice.gd" id="1_h5pcf"]
 [ext_resource type="FontFile" uid="uid://b2n7xh73jrxxw" path="res://Themes/fonts/m3x6.ttf" id="2_sgdne"]
+[ext_resource type="StyleBox" uid="uid://b3lmq58csavug" path="res://Themes/theme_pixel/label/black_skill_box_label.tres" id="3_5hobp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_k1qaf"]
 font = ExtResource("2_sgdne")
@@ -46,34 +47,33 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_fonts/normal_font = ExtResource("2_sgdne")
 
-[node name="HoverLabel" type="Label" parent="."]
-unique_name_in_owner = true
+[node name="Panel" type="Panel" parent="."]
 visible = false
-z_index = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-label_settings = SubResource("LabelSettings_k1qaf")
-
-[node name="Panel" type="Panel" parent="HoverLabel"]
 self_modulate = Color(0.596078, 0.596078, 0.596078, 1)
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = 23.5
+offset_right = 50.0
+offset_bottom = 23.5
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="HoverContainer" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+z_index = 1
+layout_mode = 0
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("3_5hobp")
+
+[node name="HoverLabel" type="Label" parent="HoverContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+label_settings = SubResource("LabelSettings_k1qaf")
 
 [connection signal="mouse_entered" from="Button" to="." method="_on_Button_mouse_entered"]
 [connection signal="mouse_exited" from="Button" to="." method="_on_Button_mouse_exited"]

@@ -31,13 +31,13 @@ var equipment_list: Array[Equipment]
 # Devuelve CombatantStats, no indicado explícitamente porque la 
 # covarianza en tipos de retorno no está implementada en Godot 4.1
 func get_stats() -> CombatantStats: 
-	return CombatantStats.new()
+	return null
 
 # Método pseudo-virtual para acceder a los datos para la interfaz
 # Devuelve CombatantUIData, no indicado explícitamente porque la 
 # covarianza en tipos de retorno no está implementada en Godot 4.1
 func get_ui_data() -> CombatantUIData:
-	return CombatantUIData.new()
+	return null
 
 
 func take_damage(_amount: int, _ignore_shield = false, _ignore_armor = false, _ignore_dodges = false, _shield_factor: float = 1.0):

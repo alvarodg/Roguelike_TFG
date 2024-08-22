@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://brpwyhqattcih"]
+[gd_scene load_steps=5 format=3 uid="uid://brpwyhqattcih"]
 
 [ext_resource type="Script" path="res://Map/player_map_ui.gd" id="1_w0wwa"]
 [ext_resource type="PackedScene" uid="uid://20lggu6h8kmx" path="res://Items/equipment/equipment_ui.tscn" id="2_j088a"]
+[ext_resource type="StyleBox" uid="uid://b2bm3n50qyv0h" path="res://Themes/theme_pixel/panels/blackish_panel.tres" id="2_pa57q"]
 [ext_resource type="PackedScene" uid="uid://cm2iaddemayb2" path="res://Battle/health_bar.tscn" id="2_qluys"]
 
 [node name="PlayerMapUI" type="Control"]
@@ -19,43 +20,46 @@ offset_bottom = 24.0
 grow_horizontal = 2
 metadata/_edit_group_ = true
 
-[node name="Label" type="Label" parent="HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="HBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 0
-text = " Health:"
+theme_override_styles/normal = ExtResource("2_pa57q")
+text = "Health:"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="HealthBar" parent="HBoxContainer" instance=ExtResource("2_qluys")]
+[node name="HealthBar" parent="HBoxContainer/HBoxContainer" instance=ExtResource("2_qluys")]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 1
-size_flags_vertical = 0
+size_flags_vertical = 4
 
-[node name="Panel" type="Panel" parent="HBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
+theme_override_constants/separation = 8
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 16
-
-[node name="Label2" type="Label" parent="HBoxContainer/Panel/HBoxContainer"]
+[node name="Label2" type="Label" parent="HBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 0
+theme_override_styles/normal = ExtResource("2_pa57q")
 text = " Equipment:"
+horizontal_alignment = 1
 
-[node name="EquipmentUI" parent="HBoxContainer/Panel/HBoxContainer" instance=ExtResource("2_j088a")]
+[node name="EquipmentUI" parent="HBoxContainer/HBoxContainer2" instance=ExtResource("2_j088a")]
 unique_name_in_owner = true
 z_index = 1
-custom_minimum_size = Vector2(0, 24)
+custom_minimum_size = Vector2(0, 22)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+columns = 16
+panel_style = ExtResource("2_pa57q")
+corner = 2
+
+[node name="Panel" type="Panel" parent="HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 8
-columns = 16
-corner = 2

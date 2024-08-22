@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bxbdvrktndhoi"]
+[gd_scene load_steps=10 format=3 uid="uid://bxbdvrktndhoi"]
 
 [ext_resource type="PackedScene" uid="uid://cm2iaddemayb2" path="res://Battle/health_bar.tscn" id="1_hh3x4"]
 [ext_resource type="Script" path="res://Player/player_stats_compact_ui.gd" id="1_r747s"]
 [ext_resource type="FontFile" uid="uid://dj2uwas52df26" path="res://Themes/fonts/m5x7.ttf" id="2_rgsi2"]
 [ext_resource type="PackedScene" uid="uid://20lggu6h8kmx" path="res://Items/equipment/equipment_ui.tscn" id="3_5v51r"]
 [ext_resource type="Texture2D" uid="uid://b7q5vfrx6d1o" path="res://Battle/player/sprites/coin_16.png" id="5_hbv5i"]
+[ext_resource type="StyleBox" uid="uid://b2bm3n50qyv0h" path="res://Themes/theme_pixel/panels/blackish_panel.tres" id="6_lvad7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_l20gs"]
 
@@ -16,80 +17,84 @@ font = ExtResource("2_rgsi2")
 
 [node name="PlayerStatsCompactUI" type="Control"]
 layout_mode = 3
-anchors_preset = 12
+anchors_preset = 2
 anchor_top = 1.0
-anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
 grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 mouse_filter = 1
 script = ExtResource("1_r747s")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 2
-offset_top = -37.0
-offset_right = 640.0
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -43.0
+offset_right = 210.0
 grow_vertical = 0
+theme_override_constants/margin_left = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
+theme_override_styles/normal = ExtResource("6_lvad7")
 text = "PLAYER STATUS:"
 label_settings = SubResource("LabelSettings_l20gs")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 0
 
-[node name="HealthBar" parent="VBoxContainer/HBoxContainer" instance=ExtResource("1_hh3x4")]
+[node name="HealthBar" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("1_hh3x4")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
+size_flags_vertical = 4
 
-[node name="CoinIconContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="CoinIconContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 1
 
-[node name="CoinIcon" type="TextureRect" parent="VBoxContainer/HBoxContainer/CoinIconContainer"]
+[node name="CoinIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/CoinIconContainer"]
 layout_mode = 2
 texture = ExtResource("5_hbv5i")
 stretch_mode = 5
 
-[node name="CoinCountLabel" type="Label" parent="VBoxContainer/HBoxContainer/CoinIconContainer"]
+[node name="CoinCountLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/CoinIconContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "x3"
 label_settings = SubResource("LabelSettings_41rj1")
 
-[node name="PlayerEquipmentPanel" type="Panel" parent="VBoxContainer/HBoxContainer"]
+[node name="EquipmentContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(80, 20)
 layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 1
-metadata/_edit_group_ = true
 
-[node name="VBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/PlayerEquipmentPanel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/PlayerEquipmentPanel/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/EquipmentContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_styles/normal = ExtResource("6_lvad7")
 text = "Equipment:"
 label_settings = SubResource("LabelSettings_f12js")
 
-[node name="EquipmentUI" parent="VBoxContainer/HBoxContainer/PlayerEquipmentPanel/VBoxContainer" instance=ExtResource("3_5v51r")]
+[node name="EquipmentUI" parent="MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/EquipmentContainer" instance=ExtResource("3_5v51r")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(18, 18)
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 0
 size_flags_vertical = 4
 mouse_filter = 1
 columns = 18
+panel_style = ExtResource("6_lvad7")
 corner = 1
