@@ -94,6 +94,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
+left_side = false
 
 [node name="InfoContainer" type="PanelContainer" parent="."]
 unique_name_in_owner = true

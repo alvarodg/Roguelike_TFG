@@ -6,7 +6,7 @@
 
 [node name="EquipmentButton" type="Button"]
 texture_filter = 1
-custom_minimum_size = Vector2(160, 140)
+custom_minimum_size = Vector2(168, 168)
 offset_right = 140.0
 offset_bottom = 120.0
 theme_override_constants/icon_max_width = 18

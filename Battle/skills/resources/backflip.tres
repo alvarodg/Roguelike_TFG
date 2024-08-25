@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="SkillData" load_steps=9 format=3 uid="uid://d1x56j4elwdrx"]
+
+[ext_resource type="Script" path="res://Battle/skills/SkillData.gd" id="1_c2cgk"]
+[ext_resource type="PackedScene" uid="uid://b1c12o4iwexco" path="res://Battle/skills/animations/slash_animation.tscn" id="1_lcr1w"]
+[ext_resource type="Script" path="res://Battle/skills/behaviors/damage_skill_behavior.gd" id="2_gou7y"]
+[ext_resource type="Script" path="res://Items/modifiers/components/stats/health_modifier_component.gd" id="3_hp0qh"]
+[ext_resource type="Script" path="res://Items/modifiers/components/stats/shield_modifier_component.gd" id="4_dv0gl"]
+
+[sub_resource type="Resource" id="Resource_wsb5h"]
+script = ExtResource("2_gou7y")
+damage = 6
+to_self = false
+ignore_shield = false
+ignore_armor = false
+ignore_dodges = false
+shield_factor = 1.0
+animation_scene = ExtResource("1_lcr1w")
+
+[sub_resource type="Resource" id="Resource_lruw6"]
+script = ExtResource("3_hp0qh")
+magnitude = -3.0
+action = 0
+
+[sub_resource type="Resource" id="Resource_ajclw"]
+script = ExtResource("4_dv0gl")
+magnitude = 15.0
+action = 0
+
+[resource]
+script = ExtResource("1_c2cgk")
+name = "Backflip"
+cost = Array[int]([0, 0, 2])
+uses_per_turn = 1
+one_shot = false
+cost_is_mandatory = true
+rarity = 1
+behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_wsb5h")])
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_lruw6"), SubResource("Resource_ajclw")])
+modifiers_first = true
+tags = Array[int]([0, 2])

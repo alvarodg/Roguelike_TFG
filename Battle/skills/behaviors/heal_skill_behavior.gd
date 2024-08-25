@@ -13,4 +13,4 @@ func use(user, target, _coins):
 	
 func get_description(stats: CombatantStats = null):
 	var target_text: String = "" if to_self else " to enemy"
-	return "Heals %s" % [magnitude, target_text]
+	return "Heals %s HP%s" % [magnitude, target_text]

@@ -47,7 +47,7 @@ make_unique = false
 
 [sub_resource type="Resource" id="Resource_uusos"]
 script = ExtResource("3_608jo")
-description = "Tank the hit and fight."
+description = "Take  the hit and fight."
 explicit = false
 cost = SubResource("Resource_m05vx")
 sequence = SubResource("Resource_637cp")
@@ -128,7 +128,7 @@ operator = 2
 
 [sub_resource type="Resource" id="Resource_4y6x2"]
 script = ExtResource("10_qryk8")
-narrative = Array[String](["It worked, somehow."])
+narrative = Array[String](["It seems like they understood you, somehow."])
 name = ""
 description = ""
 rarity = 1
@@ -162,7 +162,7 @@ secret = false
 
 [resource]
 script = ExtResource("1_o2c3f")
-narrative = "Uh oh, you've been ambushed. Your new friend seems to have the capability (though seemingly not much of a willingness) to speak, given their crystal clear demand for a coin in exchange for your life. 
+narrative = "Uh oh, you've been ambushed. Your new friend seems to have some capacity to communicate, given how they're able to convey their demand for a coin in exchange for your life using only gestures.
 
 You won't get off scot-free if you try to make a move. How are you getting out of this one?"
 choices = Array[ExtResource("3_608jo")]([SubResource("Resource_uusos"), SubResource("Resource_06gj2"), SubResource("Resource_vw52t")])

@@ -9,6 +9,8 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_ly4tc"]
 font = ExtResource("5_2as3y")
+shadow_color = Color(0, 0, 0, 0.411765)
+shadow_offset = Vector2(0, 1)
 
 [node name="Slot" type="TextureButton"]
 texture_filter = 1

@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="SkillData" load_steps=8 format=3 uid="uid://bsfowqdkj5uf3"]
+
+[ext_resource type="Script" path="res://Battle/skills/behaviors/damage_skill_behavior.gd" id="1_2p2ft"]
+[ext_resource type="Script" path="res://Battle/skills/SkillData.gd" id="1_v30dx"]
+[ext_resource type="Script" path="res://Battle/skills/behaviors/shield_skill_behavior.gd" id="2_yhkne"]
+[ext_resource type="Script" path="res://Battle/skills/behaviors/reroll_skill_behavior.gd" id="3_47mcu"]
+
+[sub_resource type="Resource" id="Resource_e111n"]
+script = ExtResource("1_2p2ft")
+damage = 12
+to_self = false
+ignore_shield = false
+ignore_armor = false
+ignore_dodges = false
+shield_factor = 1.0
+
+[sub_resource type="Resource" id="Resource_qiak7"]
+script = ExtResource("2_yhkne")
+shield = 12
+
+[sub_resource type="Resource" id="Resource_f3ns3"]
+script = ExtResource("3_47mcu")
+rerolls = 1
+facing = 0
+
+[resource]
+script = ExtResource("1_v30dx")
+name = "Stand Tall"
+cost = Array[int]([0, 3, 0])
+uses_per_turn = 2
+one_shot = false
+cost_is_mandatory = true
+rarity = 2
+behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_e111n"), SubResource("Resource_qiak7"), SubResource("Resource_f3ns3")])
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+modifiers_first = true
+tags = Array[int]([0, 1])

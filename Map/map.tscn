@@ -47,27 +47,32 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="DebugContainer" type="HBoxContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 8
 
-[node name="ResetButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="ResetButton" type="Button" parent="VBoxContainer/DebugContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "ABANDON RUN"
 
-[node name="ChangeLevelButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="ChangeLevelButton" type="Button" parent="VBoxContainer/DebugContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "CHANGE LEVEL"
 
-[node name="NavigationButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="NavigationButton" type="Button" parent="VBoxContainer/DebugContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "MAKE AVAILABLE"
+
+[node name="HideButton" type="Button" parent="VBoxContainer/DebugContainer"]
+layout_mode = 2
+text = "HIDE"
 
 [node name="ExpStreamPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
@@ -78,6 +83,7 @@ unique_name_in_owner = true
 volume_db = -10.0
 
 [connection signal="generation_complete" from="VBoxContainer/MapZone/Generator" to="." method="_on_Generator_generation_complete"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/ResetButton" to="." method="_on_ResetButton_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/ChangeLevelButton" to="." method="_on_ChangeLevelButton_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/NavigationButton" to="." method="_on_NavigationButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/DebugContainer/ResetButton" to="." method="_on_ResetButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/DebugContainer/ChangeLevelButton" to="." method="_on_ChangeLevelButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/DebugContainer/NavigationButton" to="." method="_on_NavigationButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/DebugContainer/HideButton" to="." method="_on_HideButton_pressed"]

@@ -7,17 +7,22 @@ signal _tween_queue_free
 @export var anim_speed: float = 1.0
 @export var default_style: StyleBox
 @export var shield_style: StyleBox
+@export var left_side: bool = true
 @onready var health_label = %HealthLabel
 @onready var health_bar = %HealthProgressBar
 @onready var shield_icon = %ShieldIcon
 @onready var shield_label = %ShieldLabel
 @onready var remaining_label = %RemainingLabel
+@onready var max_health_label = %MaxHealthLabel
+@onready var hover_panel = %HoverPanel
+@onready var hover_label = %HoverLabel
 
 var tween_queue: int = 0 : set = set_tween_queue
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	health_label.show()
+	max_health_label.hide()
 
 func setup(combatant: CombatantStats):
 	health_bar.max_value = combatant.max_health
@@ -79,12 +84,41 @@ func _update_shield(shield):
 
 func _on_HealthProgressBar_value_changed(new_value):
 	health_label.text = str(int(new_value)) + " HP"
+	max_health_label.text = str(int(new_value)) + "/" + str(health_bar.max_value) + " HP"
 
 func _update_remaining(remaining):
-	if remaining > 0:
-		remaining_label.text = str(remaining)
+	if remaining < 0:
+		remaining_label.show()
+		hover_label.text = "Shield: Takes damage before health. Will NOT decay."
+		remaining_label.text = "∞"
+	else:
+		hover_label.text = "Shield: Takes damage before health. Will decay at the start of the next turn."
+		remaining_label.hide()
 
 func set_tween_queue(value):
 	tween_queue = value
 	if tween_queue == 0:
 		_tween_queue_free.emit()
+
+
+func _on_HealthProgressBar_mouse_entered():
+	health_label.hide()
+	max_health_label.show()
+
+
+func _on_HealthProgressBar_mouse_exited():
+	health_label.show()
+	max_health_label.hide()
+
+
+func _on_ShieldIcon_mouse_entered():
+	hover_panel.global_position = get_global_mouse_position()
+	if left_side:
+		hover_panel.global_position.y -= hover_panel.size.y
+	else:
+		hover_panel.global_position.x -= hover_panel.size.x
+	hover_panel.show()
+
+
+func _on_ShieldIcon_mouse_exited():
+	hover_panel.hide()

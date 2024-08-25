@@ -2,7 +2,7 @@ extends EventScene
 class_name RandomEvent
 
 var events: EventCollection
-var tags: Array[EventData.Tag]
+var event_tags: Array[EventData.Tag]
 var tag_op: EventCollection.Operator
 var rarities: Array[int]
 var deterministic: bool
@@ -19,10 +19,7 @@ func _ready():
 		events = RunData.collections.events
 	## Usa el rng de RunData si se pide un resultado determinista
 	var rng = RunData.rng if deterministic else RandomNumberGenerator.new()
-	print("RNG IS RUN RNG: " + str(rng == RunData.rng))
-	print("RNG STATE BEFORE RANDOM:" + str(rng.state))
-	var event = events.get_random(rng, tags, tag_op, rarities)
-	print("RNG STATE AFTER RANDOM:" + str(rng.state))
+	var event = events.get_random(rng, event_tags, tag_op, rarities)
 	if event == null: 
 		event = default_event
 	var scene = event.instantiate_scene(player)
@@ -30,11 +27,12 @@ func _ready():
 	add_child(scene)
 
 
-func initialize(p_player: Player, data):
+func initialize(p_player: Player, data: RandomEventData):
 	super.initialize(p_player, data)
 	default_event = data.default_event
 	events = data.events
-	tags = data.tags
+	# CAMBIO
+	event_tags = data.event_tags
 	tag_op = data.tag_op
 	rarities = data.rarities
 	deterministic = data.deterministic

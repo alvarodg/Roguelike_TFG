@@ -165,7 +165,6 @@ func flip(coin: Coin, speed: float = 1.0, rng: RandomNumberGenerator = RandomNum
 	#return result
 
 func flip_all_coins(rng: RandomNumberGenerator = RandomNumberGenerator.new()):
-	# TODO: Reorganizar animación.
 	recover_dropped_coins()
 	started_flipping_coins.emit()
 	for coin in coins:
@@ -256,6 +255,7 @@ func _get_bias() -> Coin.Facing:
 
 # Guarda coin_count datos de monedas.
 func _on_Stats_coin_count_changed(old, value):
+	print("changed")
 	if coin_data.size() < value:
 		for i in range(value - coin_data.size()):
 			coin_data.append(default_coin)

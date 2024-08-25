@@ -48,9 +48,7 @@ script = ExtResource("5_y6l5u")
 alt_sequence = SubResource("Resource_f50dw")
 coinbox_data = SubResource("Resource_f6dtb")
 deterministic = true
-description = "The wave is coming.
-
-(Ejemplo de secuela, debería añadir una secuela distinta a la lista de eventos dependiendo del resultado)"
+description = "The wave is coming."
 explicit = false
 cost = SubResource("Resource_viwd5")
 sequence = SubResource("Resource_tpk8g")
@@ -102,7 +100,7 @@ choices = Array[ExtResource("6_lac53")]([SubResource("Resource_lp2y6"), SubResou
 name = "Investment (Part 2)"
 description = ""
 rarity = 1
-tags = Array[int]([0, 3])
+tags = Array[int]([0, 3, 2])
 secret = false
 unique = true
 goes_to_next_level = false

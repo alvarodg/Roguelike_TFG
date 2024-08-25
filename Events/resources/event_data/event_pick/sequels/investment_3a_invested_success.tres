@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="EventPickData" load_steps=8 format=3 uid="uid://cjjutx5c70dv8"]
+[gd_resource type="Resource" script_class="EventPickData" load_steps=10 format=3 uid="uid://cjjutx5c70dv8"]
 
 [ext_resource type="Script" path="res://Events/event_choice/event_pick_data.gd" id="1_chuov"]
 [ext_resource type="Script" path="res://Events/event_choice/event_choice_data.gd" id="1_srcb2"]
 [ext_resource type="Script" path="res://Events/equipment_choice_data.gd" id="2_rc0g2"]
 [ext_resource type="Script" path="res://Events/event_choice/choice_sequence.gd" id="3_4kk2h"]
+[ext_resource type="Script" path="res://Events/narrative_event_data.gd" id="3_6ujyn"]
 
 [sub_resource type="Resource" id="Resource_y23qi"]
 script = ExtResource("2_rc0g2")
@@ -23,13 +24,26 @@ goes_to_next_level = false
 is_final_event = false
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 
+[sub_resource type="Resource" id="Resource_vrbag"]
+script = ExtResource("3_6ujyn")
+narrative = Array[String](["Is that all? He's gone the second you look up."])
+name = ""
+description = ""
+rarity = 1
+tags = Array[int]([0])
+secret = false
+unique = false
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
 [sub_resource type="Resource" id="Resource_pyj8b"]
 script = ExtResource("3_4kk2h")
 pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_y23qi")])
 secret = false
-post_narrative = "This feels like it may be too little? He's long gone before you can actually ask him about it."
+post_narrative = SubResource("Resource_vrbag")
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 make_unique = false
 
@@ -48,7 +62,7 @@ choices = Array[ExtResource("1_srcb2")]([SubResource("Resource_qxmqi")])
 name = "Investment (Part 3) - Success"
 description = ""
 rarity = 1
-tags = Array[int]([0])
+tags = Array[int]([0, 4])
 secret = false
 unique = true
 goes_to_next_level = false

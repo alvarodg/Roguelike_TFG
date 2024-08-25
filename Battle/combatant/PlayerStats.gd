@@ -1,8 +1,10 @@
 extends CombatantStats
 class_name PlayerStats
 
+signal battle_coin_count_changed(old, value)
 signal coin_count_changed(old, value)
 
+var battle_coin_count: int : set = set_battle_coin_count
 @export var coin_count: int = 5 : set = set_coin_count
 @export var base_luck: float = 1.0
 
@@ -12,13 +14,26 @@ func _init(p_max_health = 100, p_base_shield = 0, p_base_armor = 0, p_base_dodge
 	coin_count = p_coin_count
 	base_luck = p_base_luck
 
+
+func set_battle_coin_count(value):
+	var old: int = coin_count
+	battle_coin_count = value
+	battle_coin_count_changed.emit(old, battle_coin_count)
+
 func set_coin_count(value):
 	var old: int = coin_count
 	coin_count = value
 	coin_count_changed.emit(old, coin_count)
 	
+func start_battle():
+	super.start_battle()
+	if shield > 0 and shield_turns_remaining == 1:
+		shield_turns_remaining += 1
+
 func setup():
+	super.setup()
 	health = max_health
+	battle_coin_count = coin_count
 	
 
 func to_save_dict() -> Dictionary:

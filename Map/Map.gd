@@ -10,6 +10,7 @@ signal event_chosen
 @onready var player_map_ui = %PlayerMapUI
 @onready var background = %Background
 #@onready var player_stats_compact_ui = %PlayerStatsCompactUI
+@onready var debug_container = %DebugContainer
 @onready var reset_button = %ResetButton
 @onready var change_level_button = %ChangeLevelButton
 @onready var navigation_button = %NavigationButton
@@ -39,9 +40,6 @@ func _ready():
 	RunData.map = self
 	#player_stats_compact_ui.hide()
 	player_map_ui.hide()
-	reset_button.hide()
-	navigation_button.hide()
-	change_level_button.hide()
 	EventBus.level_finished.connect(_on_level_finished)
 	add_to_group("map_screen")
 	add_to_group("run_persistent")
@@ -62,13 +60,9 @@ func start_game(player: Player, rng: RandomNumberGenerator):
 	#player_stats_compact_ui.setup(player)
 	#player_stats_compact_ui.show()
 	if debug:
-		reset_button.show()
-		change_level_button.show()
-		navigation_button.show()
+		debug_container.show()
 	else:
-		reset_button.hide()
-		change_level_button.hide()
-		navigation_button.hide()
+		debug_container.hide()
 	set_level(current_level)
 	print("started")
 	await ScreenTransitions.fade_from_black()
@@ -160,6 +154,8 @@ func _on_EventNode_chosen(node: EventNode):
 		map_screen_node.show()
 	ScreenTransitions.fade_from_black()
 	RunData.save_game()
+	if current_level == level_list.size()-1 and node.descendants.size() == 0:
+		pass
 
 
 #func _on_Event_finished():
@@ -297,3 +293,7 @@ func _on_NavigationButton_pressed():
 	for i in node_matrix.size():
 		for j in node_matrix[i].size():
 			node_matrix[i][j].state = EventNode.State.AVAILABLE
+
+
+func _on_HideButton_pressed():
+	debug_container.hide()

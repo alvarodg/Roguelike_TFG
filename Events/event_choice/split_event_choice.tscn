@@ -55,7 +55,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 theme_override_fonts/normal_font = ExtResource("2_4c5ac")
-fit_content = true
 
 [node name="TextureRect" type="TextureRect" parent="TopContainer/Button"]
 layout_mode = 1

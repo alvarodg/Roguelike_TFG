@@ -1,14 +1,16 @@
-[gd_resource type="Resource" script_class="EventPickData" load_steps=18 format=3 uid="uid://du5unm6rln13y"]
+[gd_resource type="Resource" script_class="EventPickData" load_steps=22 format=3 uid="uid://du5unm6rln13y"]
 
 [ext_resource type="Script" path="res://Events/event_choice/event_pick_data.gd" id="1_gr5jj"]
 [ext_resource type="Script" path="res://Items/modifiers/components/stats/health_modifier_component.gd" id="1_wre55"]
 [ext_resource type="Script" path="res://Items/modifiers/cost/health_cost.gd" id="2_uqe1s"]
 [ext_resource type="Script" path="res://Events/event_choice/event_choice_data.gd" id="3_dsxa4"]
+[ext_resource type="Script" path="res://Events/equipment_choice_data.gd" id="4_hbgay"]
 [ext_resource type="Resource" uid="uid://4msvwnp5eq7u" path="res://Battle/enemy/resources/data/elite_enemy_data.tres" id="4_vgwmy"]
 [ext_resource type="Script" path="res://Events/narrative_event_data.gd" id="4_yafky"]
 [ext_resource type="Script" path="res://Events/BattleEventData.gd" id="5_iep3d"]
 [ext_resource type="Script" path="res://Events/event_choice/choice_sequence.gd" id="6_nqp13"]
 [ext_resource type="Texture2D" uid="uid://djmrox3cqnntc" path="res://icon.svg" id="7_7ht80"]
+[ext_resource type="Script" path="res://Events/skill_choice_data.gd" id="9_x8kis"]
 
 [sub_resource type="Resource" id="Resource_8kpf4"]
 script = ExtResource("1_wre55")
@@ -19,9 +21,29 @@ action = 0
 script = ExtResource("2_uqe1s")
 health_mod = SubResource("Resource_8kpf4")
 
-[sub_resource type="Resource" id="Resource_e6my8"]
+[sub_resource type="Resource" id="Resource_c86g2"]
+script = ExtResource("4_hbgay")
+choices = 3
+equip_tags = Array[int]([])
+tag_op = 1
+rarities = Array[int]([])
+rarity_factor = 1.0
+deterministic = true
+name = ""
+description = "Get a piece of equipment."
+rarity = 1
+tags = Array[int]([0])
+secret = false
+unique = false
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
+[sub_resource type="Resource" id="Resource_or0fb"]
 script = ExtResource("4_yafky")
-narrative = Array[String](["Ouch."])
+narrative = Array[String](["Ouch.
+
+He then gives you an item, seemingly as thanks."])
 name = ""
 description = ""
 rarity = 1
@@ -36,9 +58,9 @@ event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 script = ExtResource("6_nqp13")
 pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
-events = Array[Resource("res://Events/EventData.gd")]([])
+events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_c86g2")])
 secret = false
-post_narrative = SubResource("Resource_e6my8")
+pre_narrative = SubResource("Resource_or0fb")
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 make_unique = false
 
@@ -64,11 +86,29 @@ goes_to_next_level = false
 is_final_event = false
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 
+[sub_resource type="Resource" id="Resource_8tnkg"]
+script = ExtResource("9_x8kis")
+choices = 3
+skill_tags = Array[int]([])
+tag_op = 1
+rarities = Array[int]([])
+rarity_factor = 1.0
+deterministic = true
+name = ""
+description = "Get a skill."
+rarity = 1
+tags = Array[int]([0])
+secret = false
+unique = false
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
 [sub_resource type="Resource" id="Resource_7ynxm"]
 script = ExtResource("6_nqp13")
 pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
-events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_5xyfl")])
+events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_5xyfl"), SubResource("Resource_8tnkg")])
 secret = false
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 make_unique = true
@@ -89,7 +129,7 @@ choices = Array[ExtResource("3_dsxa4")]([SubResource("Resource_wvjfv"), SubResou
 name = "Getting hit"
 description = ""
 rarity = 1
-tags = Array[int]([0])
+tags = Array[int]([0, 3])
 secret = false
 unique = false
 goes_to_next_level = false

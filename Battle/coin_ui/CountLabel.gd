@@ -9,4 +9,4 @@ func _on_Slot_coins_changed(coins_needed, current_coins):
 	if coins_needed == 1 or (coins_needed - current_coins) == 0:
 		text = ""
 	else:
-		text = "x "+ str(coins_needed - current_coins)
+		text = "x"+ str(coins_needed - current_coins)

@@ -1,0 +1,170 @@
+[gd_resource type="Resource" script_class="EventPickData" load_steps=18 format=3 uid="uid://dwhocefnrp7r4"]
+
+[ext_resource type="Script" path="res://Events/event_choice/event_choice_data.gd" id="1_6txf8"]
+[ext_resource type="Script" path="res://Events/event_choice/event_pick_data.gd" id="1_b2srs"]
+[ext_resource type="Script" path="res://Events/equipment_choice_data.gd" id="2_nqthl"]
+[ext_resource type="Script" path="res://Events/event_choice/choice_sequence.gd" id="3_8wjpd"]
+[ext_resource type="Script" path="res://Events/narrative_event_data.gd" id="4_7lwgl"]
+
+[sub_resource type="Resource" id="Resource_pf17f"]
+script = ExtResource("2_nqthl")
+choices = 3
+equip_tags = Array[int]([1])
+tag_op = 1
+rarities = Array[int]([])
+rarity_factor = 1.0
+deterministic = true
+name = ""
+description = "Get a piece of Light equipment."
+rarity = 1
+tags = Array[int]([0])
+secret = false
+unique = false
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
+[sub_resource type="Resource" id="Resource_pfmyh"]
+script = ExtResource("4_7lwgl")
+narrative = Array[String](["The ghostly figure happily hands it to you. Wait, was this how this situation was supposed to play out?"])
+name = ""
+description = ""
+rarity = 1
+tags = Array[int]([0])
+secret = false
+unique = false
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
+[sub_resource type="Resource" id="Resource_63aj8"]
+script = ExtResource("3_8wjpd")
+pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_pf17f")])
+secret = false
+pre_narrative = SubResource("Resource_pfmyh")
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+make_unique = false
+
+[sub_resource type="Resource" id="Resource_u0lyd"]
+script = ExtResource("1_6txf8")
+description = "The one that looks shiny's  yours."
+explicit = false
+sequence = SubResource("Resource_63aj8")
+final = true
+secret = false
+
+[sub_resource type="Resource" id="Resource_544br"]
+script = ExtResource("2_nqthl")
+choices = 3
+equip_tags = Array[int]([2])
+tag_op = 1
+rarities = Array[int]([])
+rarity_factor = 1.0
+deterministic = true
+name = ""
+description = "Get a piece of Dark equipment."
+rarity = 1
+tags = Array[int]([0])
+secret = false
+unique = false
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
+[sub_resource type="Resource" id="Resource_ly5lu"]
+script = ExtResource("4_7lwgl")
+narrative = Array[String](["The ghostly figure happily hands it to you. Wait, was this how this situation was supposed to play out?"])
+name = ""
+description = ""
+rarity = 1
+tags = Array[int]([0])
+secret = false
+unique = false
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
+[sub_resource type="Resource" id="Resource_tlthq"]
+script = ExtResource("3_8wjpd")
+pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_544br")])
+secret = false
+pre_narrative = SubResource("Resource_ly5lu")
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+make_unique = false
+
+[sub_resource type="Resource" id="Resource_5cwy6"]
+script = ExtResource("1_6txf8")
+description = "The one that looks reliable's yours."
+explicit = false
+sequence = SubResource("Resource_tlthq")
+final = true
+secret = false
+
+[sub_resource type="Resource" id="Resource_bnf05"]
+script = ExtResource("2_nqthl")
+choices = 3
+equip_tags = Array[int]([3])
+tag_op = 1
+rarities = Array[int]([])
+rarity_factor = 1.0
+deterministic = true
+name = ""
+description = "Get a piece of Fallen equipment."
+rarity = 1
+tags = Array[int]([0])
+secret = false
+unique = false
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
+[sub_resource type="Resource" id="Resource_3b4s6"]
+script = ExtResource("4_7lwgl")
+narrative = Array[String](["The ghostly figure apologizes and goes back down, coming back up with the item you originally dropped. Wait, was this how this situation was supposed to play out?"])
+name = ""
+description = ""
+rarity = 1
+tags = Array[int]([0])
+secret = false
+unique = false
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
+[sub_resource type="Resource" id="Resource_aw28g"]
+script = ExtResource("3_8wjpd")
+pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_bnf05")])
+secret = false
+pre_narrative = SubResource("Resource_3b4s6")
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+make_unique = false
+
+[sub_resource type="Resource" id="Resource_md1uh"]
+script = ExtResource("1_6txf8")
+description = "Neither of those are yours."
+explicit = false
+sequence = SubResource("Resource_aw28g")
+final = true
+secret = false
+
+[resource]
+script = ExtResource("1_b2srs")
+narrative = "Searching through a room, you accidentally drop an item into a puddle. Somehow, it begins sinking. You could have sworn the water there wasn't more than a couple centimeters deep.
+
+To make things even weirder, a ghostly figure rises up from the puddle, holding up two items that are definitely not what you dropped and asking you which one of them belongs to you. What do you say?"
+choices = Array[ExtResource("1_6txf8")]([SubResource("Resource_u0lyd"), SubResource("Resource_5cwy6"), SubResource("Resource_md1uh")])
+name = "Lady of the Puddle"
+description = ""
+rarity = 2
+tags = Array[int]([0, 4])
+secret = false
+unique = true
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])

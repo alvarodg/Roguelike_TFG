@@ -1,42 +1,42 @@
 [gd_resource type="Resource" script_class="EnemyData" load_steps=48 format=3 uid="uid://0tb5ir6mx8dp"]
 
-[ext_resource type="Script" path="res://Items/modifiers/conditions/events/start_of_turn_condition.gd" id="1_74hcs"]
-[ext_resource type="Script" path="res://Battle/enemy/enemy_data.gd" id="1_pet8y"]
-[ext_resource type="Script" path="res://Battle/enemy/EnemyStats.gd" id="2_1m02h"]
-[ext_resource type="Script" path="res://Items/modifiers/components/stats/dodges_modifier_component.gd" id="2_ci1wy"]
-[ext_resource type="Script" path="res://Battle/enemy/enemy_ui_data.gd" id="3_7ppsm"]
-[ext_resource type="Script" path="res://Items/modifiers/conditions/condition_trigger.gd" id="3_mam66"]
-[ext_resource type="Script" path="res://Items/equipment/equipment.gd" id="4_k16ap"]
-[ext_resource type="Texture2D" uid="uid://67vxmnlk8br1" path="res://Items/equipment/sprites/test_item.png" id="5_671qi"]
-[ext_resource type="Script" path="res://Items/equipment/equipment_ui_data.gd" id="6_qxua7"]
-[ext_resource type="Script" path="res://Items/modifiers/conditions/events/hit_condition.gd" id="7_8c1ye"]
-[ext_resource type="Script" path="res://Items/modifiers/components/stats/health_modifier_component.gd" id="8_qd1sk"]
-[ext_resource type="Texture2D" uid="uid://bw5stnyam85pa" path="res://Items/equipment/sprites/target_item.png" id="9_umf6a"]
-[ext_resource type="Script" path="res://Battle/skills/behaviors/damage_skill_behavior.gd" id="11_87d15"]
-[ext_resource type="Script" path="res://Battle/skills/SkillData.gd" id="12_pahtd"]
-[ext_resource type="Texture2D" uid="uid://cpaes4c4pnmxw" path="res://Battle/skills/icons/attack_skill.png" id="13_xubqi"]
-[ext_resource type="Script" path="res://Battle/skills/skill_ui_data.gd" id="14_af8kw"]
-[ext_resource type="Texture2D" uid="uid://l8diabvbslw6" path="res://Battle/skills/icons/attack_shield_skill.png" id="15_yh0ie"]
-[ext_resource type="PackedScene" uid="uid://b1c12o4iwexco" path="res://Battle/skills/animations/slash_animation.tscn" id="16_lxvoc"]
-[ext_resource type="Script" path="res://Battle/skills/behaviors/multihit_skill_behavior.gd" id="16_rrcr2"]
-[ext_resource type="Texture2D" uid="uid://c4mdodsry7ncw" path="res://Battle/skills/icons/strong_attack_skill.png" id="17_044uk"]
-[ext_resource type="Texture2D" uid="uid://b17adlv5iff4d" path="res://Battle/skills/icons/stat_boost.png" id="18_rxonm"]
-[ext_resource type="Texture2D" uid="uid://0xk458xufopq" path="res://Battle/enemy/sprites/elite/bigbird_enemy.png" id="22_jhcik"]
+[ext_resource type="Script" path="res://Items/modifiers/conditions/events/start_of_turn_condition.gd" id="1_0i6dd"]
+[ext_resource type="Script" path="res://Items/modifiers/components/stats/dodges_modifier_component.gd" id="2_cttw1"]
+[ext_resource type="Script" path="res://Items/modifiers/conditions/condition_trigger.gd" id="3_np2gr"]
+[ext_resource type="Script" path="res://Items/equipment/equipment.gd" id="4_gsdgu"]
+[ext_resource type="Texture2D" uid="uid://67vxmnlk8br1" path="res://Items/equipment/sprites/test_item.png" id="5_y4pcv"]
+[ext_resource type="Script" path="res://Items/equipment/equipment_ui_data.gd" id="6_xbi0d"]
+[ext_resource type="Script" path="res://Items/modifiers/conditions/events/hit_condition.gd" id="7_xswjw"]
+[ext_resource type="Script" path="res://Items/modifiers/components/stats/health_modifier_component.gd" id="8_p0u6h"]
+[ext_resource type="Texture2D" uid="uid://bw5stnyam85pa" path="res://Items/equipment/sprites/target_item.png" id="9_na1ux"]
+[ext_resource type="Script" path="res://Battle/enemy/enemy_data.gd" id="10_cy470"]
+[ext_resource type="Script" path="res://Battle/skills/behaviors/damage_skill_behavior.gd" id="11_sn34u"]
+[ext_resource type="Script" path="res://Battle/skills/SkillData.gd" id="12_5f6kl"]
+[ext_resource type="Texture2D" uid="uid://cpaes4c4pnmxw" path="res://Battle/skills/icons/attack_skill.png" id="13_p7bsr"]
+[ext_resource type="Script" path="res://Battle/skills/skill_ui_data.gd" id="14_u50lg"]
+[ext_resource type="Texture2D" uid="uid://l8diabvbslw6" path="res://Battle/skills/icons/attack_shield_skill.png" id="15_5dtu0"]
+[ext_resource type="PackedScene" uid="uid://b1c12o4iwexco" path="res://Battle/skills/animations/slash_animation.tscn" id="16_1ffm0"]
+[ext_resource type="Script" path="res://Battle/skills/behaviors/multihit_skill_behavior.gd" id="17_42nqo"]
+[ext_resource type="Texture2D" uid="uid://c4mdodsry7ncw" path="res://Battle/skills/icons/strong_attack_skill.png" id="18_ksgm5"]
+[ext_resource type="Texture2D" uid="uid://b17adlv5iff4d" path="res://Battle/skills/icons/stat_boost.png" id="19_8mj11"]
+[ext_resource type="Script" path="res://Battle/enemy/EnemyStats.gd" id="20_dr6tf"]
+[ext_resource type="Script" path="res://Battle/enemy/enemy_ui_data.gd" id="21_cvmu2"]
+[ext_resource type="Texture2D" uid="uid://0xk458xufopq" path="res://Battle/enemy/sprites/elite/bigbird_enemy.png" id="22_0j62m"]
 
 [sub_resource type="Resource" id="Resource_ukdqx"]
-script = ExtResource("1_74hcs")
+script = ExtResource("1_0i6dd")
 at_beginning = false
 amount = 1
 restart_per_turn = true
 restart_per_battle = true
 
 [sub_resource type="Resource" id="Resource_oda8s"]
-script = ExtResource("2_ci1wy")
-magnitude = 3.0
+script = ExtResource("2_cttw1")
+magnitude = 2.0
 action = 0
 
 [sub_resource type="Resource" id="Resource_h5u22"]
-script = ExtResource("3_mam66")
+script = ExtResource("3_np2gr")
 state_conditions = Array[Resource("res://Items/modifiers/conditions/state_condition.gd")]([])
 event_condition = SubResource("Resource_ukdqx")
 modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_oda8s")])
@@ -44,34 +44,34 @@ amount = -1
 reset = 1
 
 [sub_resource type="Resource" id="Resource_c5m8w"]
-script = ExtResource("6_qxua7")
-icon = ExtResource("5_671qi")
+script = ExtResource("6_xbi0d")
+icon = ExtResource("5_y4pcv")
 ui_name = "Reflexes"
 
 [sub_resource type="Resource" id="Resource_58jr8"]
-script = ExtResource("4_k16ap")
+script = ExtResource("4_gsdgu")
 ui_data = SubResource("Resource_c5m8w")
 description = ""
 rarity = 0
 modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
-condition_triggers = Array[ExtResource("3_mam66")]([SubResource("Resource_h5u22")])
+condition_triggers = Array[ExtResource("3_np2gr")]([SubResource("Resource_h5u22")])
 fragile = false
 tags = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_uieln"]
-script = ExtResource("7_8c1ye")
+script = ExtResource("7_xswjw")
 min_damage_threshold = 0
 amount = 1
 restart_per_turn = true
 restart_per_battle = true
 
 [sub_resource type="Resource" id="Resource_ntt4y"]
-script = ExtResource("8_qd1sk")
+script = ExtResource("8_p0u6h")
 magnitude = -10.0
 action = 0
 
 [sub_resource type="Resource" id="Resource_av0k0"]
-script = ExtResource("3_mam66")
+script = ExtResource("3_np2gr")
 state_conditions = Array[Resource("res://Items/modifiers/conditions/state_condition.gd")]([])
 event_condition = SubResource("Resource_uieln")
 modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_ntt4y")])
@@ -79,22 +79,22 @@ amount = -1
 reset = 1
 
 [sub_resource type="Resource" id="Resource_6lvdr"]
-script = ExtResource("6_qxua7")
-icon = ExtResource("9_umf6a")
+script = ExtResource("6_xbi0d")
+icon = ExtResource("9_na1ux")
 ui_name = "Weak Point"
 
 [sub_resource type="Resource" id="Resource_5i784"]
-script = ExtResource("4_k16ap")
+script = ExtResource("4_gsdgu")
 ui_data = SubResource("Resource_6lvdr")
 description = ""
 rarity = 0
 modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
-condition_triggers = Array[ExtResource("3_mam66")]([SubResource("Resource_av0k0")])
+condition_triggers = Array[ExtResource("3_np2gr")]([SubResource("Resource_av0k0")])
 fragile = false
 tags = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_a2odx"]
-script = ExtResource("11_87d15")
+script = ExtResource("11_sn34u")
 damage = 20
 to_self = false
 ignore_shield = false
@@ -103,12 +103,12 @@ ignore_dodges = false
 shield_factor = 1.0
 
 [sub_resource type="Resource" id="Resource_ycdnj"]
-script = ExtResource("14_af8kw")
-icon = ExtResource("13_xubqi")
+script = ExtResource("14_u50lg")
+icon = ExtResource("13_p7bsr")
 ui_name = "Attack"
 
 [sub_resource type="Resource" id="Resource_ok53g"]
-script = ExtResource("12_pahtd")
+script = ExtResource("12_5f6kl")
 ui_data = SubResource("Resource_ycdnj")
 name = ""
 cost = Array[int]([0, 0, 0])
@@ -122,7 +122,7 @@ modifiers_first = true
 tags = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_y0726"]
-script = ExtResource("11_87d15")
+script = ExtResource("11_sn34u")
 damage = 15
 to_self = false
 ignore_shield = false
@@ -131,17 +131,17 @@ ignore_dodges = false
 shield_factor = 1.0
 
 [sub_resource type="Resource" id="Resource_n1ipe"]
-script = ExtResource("2_ci1wy")
+script = ExtResource("2_cttw1")
 magnitude = 1.0
 action = 0
 
 [sub_resource type="Resource" id="Resource_q3s7c"]
-script = ExtResource("14_af8kw")
-icon = ExtResource("15_yh0ie")
+script = ExtResource("14_u50lg")
+icon = ExtResource("15_5dtu0")
 ui_name = "Parry"
 
 [sub_resource type="Resource" id="Resource_ka3ph"]
-script = ExtResource("12_pahtd")
+script = ExtResource("12_5f6kl")
 ui_data = SubResource("Resource_q3s7c")
 name = ""
 cost = Array[int]([0, 0, 0])
@@ -155,21 +155,21 @@ modifiers_first = true
 tags = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_olk7o"]
-script = ExtResource("16_rrcr2")
+script = ExtResource("17_42nqo")
 damage = 4
 hits = 8
 ignore_shield = false
 ignore_armor = false
 ignore_dodges = false
-animation_scene = ExtResource("16_lxvoc")
+animation_scene = ExtResource("16_1ffm0")
 
 [sub_resource type="Resource" id="Resource_ddtwr"]
-script = ExtResource("14_af8kw")
-icon = ExtResource("17_044uk")
+script = ExtResource("14_u50lg")
+icon = ExtResource("18_ksgm5")
 ui_name = "Thousand Cuts"
 
 [sub_resource type="Resource" id="Resource_qmfaq"]
-script = ExtResource("12_pahtd")
+script = ExtResource("12_5f6kl")
 ui_data = SubResource("Resource_ddtwr")
 name = ""
 cost = Array[int]([0, 0, 0])
@@ -183,17 +183,17 @@ modifiers_first = true
 tags = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_rvnhm"]
-script = ExtResource("2_ci1wy")
+script = ExtResource("2_cttw1")
 magnitude = 7.0
 action = 0
 
 [sub_resource type="Resource" id="Resource_ngghu"]
-script = ExtResource("14_af8kw")
-icon = ExtResource("18_rxonm")
+script = ExtResource("14_u50lg")
+icon = ExtResource("19_8mj11")
 ui_name = "Accelerate"
 
 [sub_resource type="Resource" id="Resource_2856b"]
-script = ExtResource("12_pahtd")
+script = ExtResource("12_5f6kl")
 ui_data = SubResource("Resource_ngghu")
 name = ""
 cost = Array[int]([0, 0, 0])
@@ -207,25 +207,25 @@ modifiers_first = true
 tags = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_tbi5m"]
-script = ExtResource("2_1m02h")
+script = ExtResource("20_dr6tf")
 max_health = 130
 base_strength = 0
 base_shield = 0
 base_armor = 0
-base_dodges = 5
+base_dodges = 6
 base_shield_decay_turns = 1
 shield_decay_rate = 1.0
 
 [sub_resource type="Resource" id="Resource_lsmsc"]
-script = ExtResource("3_7ppsm")
+script = ExtResource("21_cvmu2")
 flip_facing = true
-sprite = ExtResource("22_jhcik")
+sprite = ExtResource("22_0j62m")
 ui_name = "The Swift"
 
 [resource]
-script = ExtResource("1_pet8y")
+script = ExtResource("10_cy470")
 ui_data = SubResource("Resource_lsmsc")
 stats = SubResource("Resource_tbi5m")
-skills = Array[ExtResource("12_pahtd")]([SubResource("Resource_ok53g"), SubResource("Resource_ka3ph"), SubResource("Resource_qmfaq"), SubResource("Resource_2856b")])
-equipment_list = Array[ExtResource("4_k16ap")]([SubResource("Resource_58jr8"), SubResource("Resource_5i784")])
+skills = Array[ExtResource("12_5f6kl")]([SubResource("Resource_ok53g"), SubResource("Resource_ka3ph"), SubResource("Resource_qmfaq"), SubResource("Resource_2856b")])
+equipment_list = Array[ExtResource("4_gsdgu")]([SubResource("Resource_58jr8"), SubResource("Resource_5i784")])
 strategy = 2

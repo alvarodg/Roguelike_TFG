@@ -1,0 +1,136 @@
+[gd_resource type="Resource" script_class="EventPickData" load_steps=20 format=3 uid="uid://ctncg6hvrjqma"]
+
+[ext_resource type="Script" path="res://Events/narrative_event_data.gd" id="1_2l1yf"]
+[ext_resource type="Script" path="res://Items/modifiers/components/stats/health_modifier_component.gd" id="2_yuinu"]
+[ext_resource type="Script" path="res://Events/event_choice/choice_sequence.gd" id="3_rj64b"]
+[ext_resource type="Script" path="res://Events/event_choice/choice_coin_box_data.gd" id="4_jkr4u"]
+[ext_resource type="Script" path="res://Events/event_choice/split_event_choice_data.gd" id="5_eryik"]
+[ext_resource type="Script" path="res://Events/equipment_choice_data.gd" id="6_ssfl3"]
+[ext_resource type="Script" path="res://Events/skill_choice_data.gd" id="7_2itfo"]
+[ext_resource type="Script" path="res://Events/event_choice/event_pick_data.gd" id="8_6ebes"]
+[ext_resource type="Script" path="res://Events/event_choice/event_choice_data.gd" id="8_ip14x"]
+
+[sub_resource type="Resource" id="Resource_8vcf3"]
+script = ExtResource("1_2l1yf")
+narrative = Array[String](["You manage to make it out, despite your failure to open the chest, only partly crushed, both emotionally and physically."])
+name = ""
+description = ""
+rarity = 1
+tags = Array[int]([0])
+secret = false
+unique = false
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
+[sub_resource type="Resource" id="Resource_25euc"]
+script = ExtResource("2_yuinu")
+magnitude = 0.5
+action = 1
+
+[sub_resource type="Resource" id="Resource_db4mc"]
+script = ExtResource("3_rj64b")
+pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_25euc")])
+post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+events = Array[Resource("res://Events/EventData.gd")]([])
+secret = false
+post_narrative = SubResource("Resource_8vcf3")
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+make_unique = false
+
+[sub_resource type="Resource" id="Resource_5q3bg"]
+script = ExtResource("4_jkr4u")
+coin_amount = 3
+target_heads = 2
+operator = 1
+
+[sub_resource type="Resource" id="Resource_phsie"]
+script = ExtResource("6_ssfl3")
+choices = 3
+equip_tags = Array[int]([])
+tag_op = 1
+rarities = Array[int]([])
+rarity_factor = 1.0
+deterministic = true
+name = ""
+description = "Get a piece of equipment."
+rarity = 1
+tags = Array[int]([0])
+secret = false
+unique = false
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
+[sub_resource type="Resource" id="Resource_r5j4i"]
+script = ExtResource("7_2itfo")
+choices = 3
+skill_tags = Array[int]([])
+tag_op = 1
+rarities = Array[int]([])
+rarity_factor = 1.0
+deterministic = true
+name = ""
+description = "Get a skill."
+rarity = 1
+tags = Array[int]([0])
+secret = false
+unique = false
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
+[sub_resource type="Resource" id="Resource_eitju"]
+script = ExtResource("1_2l1yf")
+narrative = Array[String](["You manage to break the lock open. You quickly reach in and prepare to dash out of there."])
+name = ""
+description = ""
+rarity = 1
+tags = Array[int]([0])
+secret = false
+unique = false
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
+[sub_resource type="Resource" id="Resource_q7w6l"]
+script = ExtResource("3_rj64b")
+pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_phsie"), SubResource("Resource_r5j4i")])
+secret = false
+pre_narrative = SubResource("Resource_eitju")
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+make_unique = false
+
+[sub_resource type="Resource" id="Resource_rg628"]
+script = ExtResource("5_eryik")
+alt_sequence = SubResource("Resource_db4mc")
+coinbox_data = SubResource("Resource_5q3bg")
+deterministic = true
+description = "Try to open it."
+explicit = false
+sequence = SubResource("Resource_q7w6l")
+final = true
+secret = false
+
+[sub_resource type="Resource" id="Resource_da4qe"]
+script = ExtResource("8_ip14x")
+description = "Leave."
+explicit = false
+final = true
+secret = false
+
+[resource]
+script = ExtResource("8_6ebes")
+narrative = "The walls of the room you've just entered suddenly start closing in. There's a locked chest here, way too heavy to be carried out. Will you risk opening it?"
+choices = Array[ExtResource("8_ip14x")]([SubResource("Resource_rg628"), SubResource("Resource_da4qe")])
+name = "Closing In"
+description = ""
+rarity = 1
+tags = Array[int]([0, 2])
+secret = false
+unique = false
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
