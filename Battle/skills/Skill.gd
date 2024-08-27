@@ -26,6 +26,12 @@ func _init(p_data: SkillData = null, p_user = null, p_target = null, p_coins = [
 # Definir use en SkillData?
 func use():
 	action_dict = {}
+	for modifier in data.modifiers:
+		set_action_dict(modifier, false)
+		modifier.finished.connect(_finished)
+	for behavior in data.behaviors:
+		set_action_dict(behavior, false)
+		behavior.finished.connect(_finished)
 	if data.modifiers_first:
 		_use_modifiers()
 		_use_behaviors()
@@ -35,9 +41,9 @@ func use():
 
 func _use_behaviors():
 #	behavior_dict = {}
-	for behavior in data.behaviors:
-		set_action_dict(behavior, false)
-		behavior.finished.connect(_finished)
+	#for behavior in data.behaviors:
+		#set_action_dict(behavior, false)
+		#behavior.finished.connect(_finished)
 	for behavior in data.behaviors:
 		behavior.use(user, target, coins)
 	
@@ -59,6 +65,7 @@ func _finished(action):
 #		modifiers_finished.emit()
 
 func set_action_dict(key, value):
+	print(action_dict)
 	action_dict[key] = value
 	# Si todos los comportamientos en el diccionario se han ejecutado, envía la señal
 	if action_dict != {} and action_dict.values().all(func(x): return x):
@@ -67,9 +74,9 @@ func set_action_dict(key, value):
 
 
 func _use_modifiers():
-	for modifier in data.modifiers:
-		set_action_dict(modifier, false)
-		modifier.finished.connect(_finished)
+	#for modifier in data.modifiers:
+		#set_action_dict(modifier, false)
+		#modifier.finished.connect(_finished)
 	for modifier in data.modifiers:
 		modifier.apply_to(user)
 	await modifiers_finished

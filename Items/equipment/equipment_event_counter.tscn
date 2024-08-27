@@ -5,6 +5,7 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_xef7l"]
 font = ExtResource("2_y6dis")
+shadow_color = Color(0, 0, 0, 0.4)
 
 [node name="EquipmentEventCounter" type="Control"]
 custom_minimum_size = Vector2(6, 0)

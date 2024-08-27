@@ -14,6 +14,7 @@ ignore_shield = false
 ignore_armor = false
 ignore_dodges = false
 shield_factor = 1.0
+animate_hit = true
 
 [sub_resource type="Resource" id="Resource_idl53"]
 script = ExtResource("2_orjgk")

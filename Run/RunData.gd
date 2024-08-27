@@ -14,6 +14,7 @@ var rng_state
 var loading: bool = false
 var current_event_scene: EventScene
 var current_level_default_bg: Texture2D
+var in_battle: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

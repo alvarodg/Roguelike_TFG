@@ -12,6 +12,7 @@ ignore_shield = false
 ignore_armor = false
 ignore_dodges = false
 animation_scene = ExtResource("1_mxn2k")
+animate_hit = true
 
 [resource]
 script = ExtResource("3_5vp5v")

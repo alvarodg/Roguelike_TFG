@@ -23,7 +23,7 @@ var level_list = []
 var node_matrix = []
 var traveled_nodes: Array[EventNode] = []
 var traveled_coords: Array[Vector2] = []
-var current_event: Event
+var currently_chosen: EventNode
 
 var bgm_sync = SystemData.sound_collection.sync_bgm
 var exploration_bgm = SystemData.sound_collection.exploration_bgm
@@ -133,6 +133,10 @@ func finish_run():
 ## añade el nodo que la mandó a la lista de atravesados y marca a los miembros de esta lista 
 ## como tales y, finalmente, marca a sus descendientes como disponibles.
 func _on_EventNode_chosen(node: EventNode):
+	if currently_chosen != null:
+		print("Double event attempt")
+		return
+	currently_chosen = node
 	print(RunData.rng.state)
 #	RunData.save_rng_state()
 #	RunData.save_game()
@@ -154,6 +158,7 @@ func _on_EventNode_chosen(node: EventNode):
 		map_screen_node.show()
 	ScreenTransitions.fade_from_black()
 	RunData.save_game()
+	currently_chosen = null
 	if current_level == level_list.size()-1 and node.descendants.size() == 0:
 		pass
 

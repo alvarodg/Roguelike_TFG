@@ -5,18 +5,19 @@
 
 [sub_resource type="Resource" id="Resource_l622n"]
 script = ExtResource("1_pbcw1")
-damage = 20
+damage = 21
 to_self = false
 ignore_shield = false
 ignore_armor = false
 ignore_dodges = false
 shield_factor = 1.0
+animate_hit = true
 
 [resource]
 script = ExtResource("2_4od5v")
 name = "Rainbow"
 cost = Array[int]([1, 1, 1])
-uses_per_turn = 1
+uses_per_turn = 3
 one_shot = false
 cost_is_mandatory = true
 rarity = 1

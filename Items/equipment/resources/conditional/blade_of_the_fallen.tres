@@ -10,7 +10,7 @@
 [sub_resource type="Resource" id="Resource_56ehh"]
 script = ExtResource("1_n4yr5")
 facing = 0
-amount = 5
+amount = 4
 restart_per_turn = false
 restart_per_battle = true
 

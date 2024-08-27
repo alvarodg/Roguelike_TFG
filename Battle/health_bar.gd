@@ -41,7 +41,6 @@ func _on_Combatant_health_changed(_old, health, _max_health):
 	await tween.finished
 #	print("Tween finished")
 	health_animation_finished.emit()
-	print(health_bar.value)
 #	value = health
 #	_update_label()
 	

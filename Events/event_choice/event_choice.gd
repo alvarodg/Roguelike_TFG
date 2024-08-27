@@ -69,7 +69,7 @@ func _on_Button_pressed():
 		
 	
 func _apply_sequence(seq: ChoiceSequence):
-	await show_narrative(seq.pre_narrative)
+	await show_narrative(seq.pre_narrative, true)
 	if seq.event_unlocks != null:
 		for event in seq.event_unlocks:
 			RunData.current_event_scene.event_unlocks.append(event)
@@ -79,24 +79,25 @@ func _apply_sequence(seq: ChoiceSequence):
 		mod.apply_to(player)
 	if seq.events.size() > 0: 
 		events_about_to_begin.emit()
-#		await ScreenTransitions.fade_to_black()
-#		ScreenTransitions.fade_from_black()
+		await ScreenTransitions.fade_to_black()
+		await ScreenTransitions.fade_from_black()
 		for event in seq.events:
 			var scene: EventScene = event.instantiate_scene(player)
 			get_tree().root.add_child(scene)
 			await scene.finished
+			scene.hide()
 			# La transición arregla un problema por casualidad al esperar para que"scene"
 			# queue_free() se pueda hacer en la escena después de que esta envíe la señal.
 			# Si no espera a la transición y se intentan encadenar eventos 
 			# que comparten recursos pueden darse errores.
 			# Investigar si es posible arreglar esto.
 			await get_tree().process_frame
-			if not event.secret and seq.events.back() != event:
+			if not event.secret and seq.events.back() != event and event != seq.events.back():
 				await ScreenTransitions.fade_to_black()
-				ScreenTransitions.fade_from_black()
+				await ScreenTransitions.fade_from_black()
 	for mod in seq.post_modifiers:
 		mod.apply_to(player)
-	await show_narrative(seq.post_narrative)
+	await show_narrative(seq.post_narrative, false)
 	
 func _update_description(p_label: RichTextLabel):
 	var desc: String = ""
@@ -127,17 +128,16 @@ func _check_cost():
 		else:
 			button.disabled = true
 
-func show_narrative(narrative: NarrativeEventData):
+func show_narrative(narrative: NarrativeEventData, pre: bool = true):
 	if narrative != null:
 		var narrative_instance = narrative.instantiate_scene(player)
 		await ScreenTransitions.fade_to_black()
-		#RunData.current_event_scene.hide()
 		get_tree().root.add_child(narrative_instance)
 		ScreenTransitions.fade_from_black()
 		await narrative_instance.finished
-		await ScreenTransitions.fade_to_black()
-		#RunData.current_event_scene.show()
-		ScreenTransitions.fade_from_black()
+		if pre:
+			await ScreenTransitions.fade_to_black()
+			ScreenTransitions.fade_from_black()
 
 func _on_Button_mouse_entered():
 	if hover_label.text != "":

@@ -60,6 +60,9 @@ func _on_choice_begins():
 
 ## Cuando una opción indica que el evento ha finalizado, envía la señal
 func _on_choice_finished():
+	for child in get_children():
+		if child.is_in_group("menu"):
+			child.hide()
 	finish()
 
 ## Cuando una opción indica que vuelve a la interfaz de decisión,

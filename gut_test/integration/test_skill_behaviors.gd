@@ -91,9 +91,10 @@ func test_shield_factor_damage():
 func test_damage_finished():
 	behavior = DamageSkillBehavior.new()
 	watch_signals(behavior)
-	# Los tests no ejecutan la animación, por lo que se le tiene que dar
-	# una nula para que finalice.
-	behavior.animation_scene = null
+	# Los tests no ejecutan la animación, por lo que se les tiene que indicar
+	# que no la hagan para que finalicen.
+	#behavior.animation_scene = null
+	behavior.animate_hit = false
 	behavior.damage = 10
 	behavior.use(player, enemy, coins)
 	assert_signal_emitted(behavior, 'finished')
@@ -195,7 +196,8 @@ func test_heal_finished():
 ## MultihitSkillBehavior
 func test_multihit():
 	behavior = MultihitSkillBehavior.new()
-	behavior.animation_scene = null
+	#behavior.animation_scene = null
+	behavior.animate_hit = false
 	behavior.hits = 3
 	behavior.damage = 10
 	behavior.use(player, enemy, coins)
@@ -203,7 +205,8 @@ func test_multihit():
 
 func test_multihit_strength():
 	behavior = MultihitSkillBehavior.new()
-	behavior.animation_scene = null
+	#behavior.animation_scene = null
+	behavior.animate_hit = false
 	behavior.hits = 3
 	behavior.damage = 10
 	enemy.get_stats().strength = 1
@@ -213,7 +216,8 @@ func test_multihit_strength():
 func test_multihit_finished():
 	behavior = MultihitSkillBehavior.new()
 	watch_signals(behavior)
-	behavior.animation_scene = null
+	#behavior.animation_scene = null
+	behavior.animate_hit = false
 	behavior.hits = 3
 	behavior.damage = 10
 	behavior.use(player, enemy, coins)

@@ -9,13 +9,14 @@ damage = 12
 to_self = false
 ignore_shield = false
 ignore_armor = false
-ignore_dodges = false
+ignore_dodges = true
 shield_factor = 1.0
+animate_hit = true
 
 [resource]
 script = ExtResource("2_xxnji")
 name = "Strike"
-cost = Array[int]([3, 0, 0])
+cost = Array[int]([2, 0, 0])
 uses_per_turn = 2
 one_shot = false
 cost_is_mandatory = true

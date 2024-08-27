@@ -19,6 +19,7 @@ ignore_shield = false
 ignore_armor = false
 ignore_dodges = false
 shield_factor = 1.0
+animate_hit = true
 
 [sub_resource type="Resource" id="Resource_keeb5"]
 script = ExtResource("3_3xxrl")
@@ -54,6 +55,7 @@ ignore_shield = false
 ignore_armor = false
 ignore_dodges = false
 shield_factor = 1.0
+animate_hit = true
 
 [sub_resource type="Resource" id="Resource_yqh78"]
 script = ExtResource("5_papd5")
@@ -82,6 +84,7 @@ ignore_shield = false
 ignore_armor = false
 ignore_dodges = false
 shield_factor = 1.0
+animate_hit = true
 
 [sub_resource type="Resource" id="Resource_jbcd0"]
 script = ExtResource("4_qscq4")
@@ -105,6 +108,7 @@ ignore_shield = false
 ignore_armor = false
 ignore_dodges = false
 shield_factor = 1.0
+animate_hit = true
 
 [sub_resource type="Resource" id="Resource_5s5tl"]
 script = ExtResource("3_3xxrl")

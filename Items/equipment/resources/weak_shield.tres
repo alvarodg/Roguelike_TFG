@@ -7,7 +7,7 @@
 
 [sub_resource type="Resource" id="Resource_1ggsq"]
 script = ExtResource("1_gxr70")
-magnitude = 5.0
+magnitude = 3.0
 action = 0
 
 [sub_resource type="Resource" id="Resource_q6b0b"]
@@ -19,7 +19,8 @@ ui_name = "Weak Shield"
 script = ExtResource("3_5siv4")
 ui_data = SubResource("Resource_q6b0b")
 description = ""
-rarity = 0
+rarity = 1
 modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_1ggsq")])
 condition_triggers = Array[Resource("res://Items/modifiers/conditions/condition_trigger.gd")]([])
 fragile = false
+tags = Array[int]([0])

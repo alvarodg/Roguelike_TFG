@@ -13,6 +13,7 @@ ignore_shield = true
 ignore_armor = true
 ignore_dodges = false
 shield_factor = 1.0
+animate_hit = true
 
 [sub_resource type="Resource" id="Resource_vurcr"]
 script = ExtResource("4_52r7r")

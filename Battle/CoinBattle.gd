@@ -79,7 +79,7 @@ func connect_enemy_signals(p_enemy: Enemy):
 	p_enemy.turn_finished.connect(_on_Enemy_turn_finished)
 	
 func connect_player_signals(p_player: Player):
-	p_player.died.connect(_on_Player_died)
+	#p_player.died.connect(_on_Player_died)
 #	p_player.started_waiting.connect(_on_Player_started_waiting)
 #	p_player.finished_waiting.connect(_on_Player_finished_waiting)
 	p_player.bankrupt.connect(_on_Player_bankrupt)

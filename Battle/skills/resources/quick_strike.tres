@@ -12,12 +12,13 @@ ignore_shield = false
 ignore_armor = false
 ignore_dodges = false
 animation_scene = ExtResource("1_13mpq")
+animate_hit = true
 
 [resource]
 script = ExtResource("2_eyi1c")
 name = "Quick Strike"
 cost = Array[int]([0, 0, 1])
-uses_per_turn = 1
+uses_per_turn = 3
 one_shot = false
 cost_is_mandatory = true
 rarity = 1

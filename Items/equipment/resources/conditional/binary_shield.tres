@@ -1,10 +1,64 @@
-[gd_resource type="Resource" script_class="Equipment" load_steps=7 format=3 uid="uid://ca8go4wc80cdi"]
+[gd_resource type="Resource" script_class="Equipment" load_steps=19 format=3 uid="uid://ca8go4wc80cdi"]
 
+[ext_resource type="Script" path="res://Items/modifiers/conditions/events/flip_condition.gd" id="1_gad1y"]
 [ext_resource type="Script" path="res://Items/equipment/equipment.gd" id="1_tepem"]
-[ext_resource type="Resource" uid="uid://sa8eo8jkp1na" path="res://Items/modifiers/conditions/resources/heads_shield.tres" id="1_urwo2"]
-[ext_resource type="Resource" uid="uid://bctk1pmawr63u" path="res://Items/modifiers/conditions/resources/tails_damage.tres" id="2_ayqpj"]
+[ext_resource type="Script" path="res://Items/modifiers/components/stats/shield_modifier_component.gd" id="2_r71n3"]
+[ext_resource type="Script" path="res://Items/modifiers/components/stats/health_modifier_component.gd" id="3_6kufu"]
 [ext_resource type="Texture2D" uid="uid://hetu8iphm21b" path="res://Items/equipment/sprites/binary_shield_item.png" id="3_cf2mw"]
 [ext_resource type="Script" path="res://Items/equipment/equipment_ui_data.gd" id="4_4ehev"]
+[ext_resource type="Script" path="res://Items/modifiers/conditions/condition_trigger.gd" id="4_m2u34"]
+[ext_resource type="Script" path="res://Items/modifiers/conditions/states/in_battle_condition.gd" id="5_x48fc"]
+
+[sub_resource type="Resource" id="Resource_p3fdl"]
+script = ExtResource("1_gad1y")
+facing = 1
+amount = 1
+restart_per_turn = true
+restart_per_battle = true
+
+[sub_resource type="Resource" id="Resource_umsnd"]
+script = ExtResource("2_r71n3")
+magnitude = 1.0
+action = 0
+
+[sub_resource type="Resource" id="Resource_6f8g0"]
+script = ExtResource("3_6kufu")
+magnitude = 1.0
+action = 0
+
+[sub_resource type="Resource" id="Resource_bxfc4"]
+script = ExtResource("5_x48fc")
+
+[sub_resource type="Resource" id="Resource_x71ba"]
+script = ExtResource("4_m2u34")
+state_conditions = Array[Resource("res://Items/modifiers/conditions/state_condition.gd")]([SubResource("Resource_bxfc4")])
+event_condition = SubResource("Resource_p3fdl")
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_umsnd"), SubResource("Resource_6f8g0")])
+amount = -1
+reset = 1
+
+[sub_resource type="Resource" id="Resource_2wi2a"]
+script = ExtResource("1_gad1y")
+facing = 2
+amount = 1
+restart_per_turn = true
+restart_per_battle = true
+
+[sub_resource type="Resource" id="Resource_jdggp"]
+script = ExtResource("3_6kufu")
+magnitude = -1.0
+action = 0
+
+[sub_resource type="Resource" id="Resource_rfo76"]
+script = ExtResource("5_x48fc")
+
+[sub_resource type="Resource" id="Resource_ddyr7"]
+script = ExtResource("4_m2u34")
+state_conditions = Array[Resource("res://Items/modifiers/conditions/state_condition.gd")]([SubResource("Resource_rfo76")])
+event_condition = SubResource("Resource_2wi2a")
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_jdggp")])
+amount = -1
+reset = 1
 
 [sub_resource type="Resource" id="Resource_pex4l"]
 script = ExtResource("4_4ehev")
@@ -15,8 +69,8 @@ ui_name = "Binary Shield"
 script = ExtResource("1_tepem")
 ui_data = SubResource("Resource_pex4l")
 description = ""
-rarity = 0
+rarity = 2
 modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
-condition_triggers = Array[Resource("res://Items/modifiers/conditions/condition_trigger.gd")]([ExtResource("1_urwo2"), ExtResource("2_ayqpj")])
+condition_triggers = Array[ExtResource("4_m2u34")]([SubResource("Resource_x71ba"), SubResource("Resource_ddyr7")])
 fragile = false
 tags = Array[int]([0, 1])

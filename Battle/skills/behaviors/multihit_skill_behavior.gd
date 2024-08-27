@@ -8,15 +8,16 @@ class_name MultihitSkillBehavior
 @export var ignore_shield: bool = false
 @export var ignore_armor: bool = false
 @export var ignore_dodges: bool = false
-@export var animation_scene: PackedScene = preload("res://Battle/skills/animations/slash_animation.tscn")
+@export var animation_scene: PackedScene = load("res://Battle/skills/animations/slash_animation.tscn")
+@export var animate_hit: bool = true
 
 var wait_time: float = 0.5
 const slash = preload("res://Battle/skills/animations/slash_animation.tscn")
 
 func use(user, target, _coins):
-	assert(user.stats is CombatantStats and target.stats is CombatantStats)
 	for i in range(hits):
-		var animation = null if animation_scene == null else animation_scene.instantiate()
+		#var animation = null if animation_scene == null else animation_scene.instantiate()
+		var animation = null if not animate_hit else slash.instantiate()
 		if i != 0 and animation != null and target != null:
 			target.add_child(animation)
 			animation.global_position = target.battle_position

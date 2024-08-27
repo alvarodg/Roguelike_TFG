@@ -1,6 +1,8 @@
 extends Control
 
 signal equipment_changed(equipment_list)
+signal empty
+signal not_empty
 
 @export var columns: int = 5
 @export var panel_style: StyleBox
@@ -26,14 +28,18 @@ func _on_User_equipment_changed(p_equipment_list):
 	reset_equipment_icons(p_equipment_list)
 
 func reset_equipment_icons(equipment_list: Array):
-	for icon in equipment_grid.get_children():
-		if icon is EquipmentIcon: icon.queue_free()
-	for equipment in equipment_list:
-		var equip_icon = equip_icon_scene.instantiate()
-		equip_icon.corner = corner
-		equipment_grid.add_child(equip_icon)
-		equip_icon.setup(equipment)
-	equipment_changed.emit(equipment_list)
+	if equipment_list.size() == 0:
+		empty.emit()
+	else:
+		not_empty.emit()
+		for icon in equipment_grid.get_children():
+			if icon is EquipmentIcon: icon.queue_free()
+		for equipment in equipment_list:
+			var equip_icon = equip_icon_scene.instantiate()
+			equip_icon.corner = corner
+			equipment_grid.add_child(equip_icon)
+			equip_icon.setup(equipment)
+		equipment_changed.emit(equipment_list)
 
 func set_corner(to_corner):
 	corner = to_corner

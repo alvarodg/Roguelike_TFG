@@ -1,6 +1,7 @@
 extends Combatant
 class_name Player
 
+var loss_screen = "res://Menus/loss_screen.tscn"
 
 signal coins_changed
 signal coin_flipped(coin)
@@ -268,6 +269,11 @@ func _on_Stats_coin_count_changed(old, value):
 # Emite la señal died cuando la recibe de stats.
 func _on_Stats_died():
 	died.emit()
+	RunData.delete_save(true)
+	await get_tree().create_timer(0.5).timeout
+	await ScreenTransitions.fade_to_black()
+	get_tree().change_scene_to_file(loss_screen)
+	ScreenTransitions.fade_from_black()
 
 func _on_Stats_changed(_old = null, _value = null, _other = null):
 	stats_changed.emit(stats)

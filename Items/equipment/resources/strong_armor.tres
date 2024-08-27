@@ -7,7 +7,7 @@
 
 [sub_resource type="Resource" id="Resource_83twd"]
 script = ExtResource("1_6eiwf")
-magnitude = 3.0
+magnitude = 2.0
 action = 0
 
 [sub_resource type="Resource" id="Resource_hkceh"]
@@ -19,7 +19,7 @@ ui_name = "Strong Armor"
 script = ExtResource("2_n1kr1")
 ui_data = SubResource("Resource_hkceh")
 description = ""
-rarity = 0
+rarity = 3
 modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_83twd")])
 condition_triggers = Array[Resource("res://Items/modifiers/conditions/condition_trigger.gd")]([])
 fragile = false

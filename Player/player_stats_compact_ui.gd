@@ -23,6 +23,8 @@ func _ready():
 
 
 func setup(player: Player):
+	equipment_ui.empty.connect(func (): equipment_container.hide())
+	equipment_ui.not_empty.connect(func (): equipment_container.show())
 	equipment_ui.setup(player)
 	health_bar.setup(player.stats)
 	_update_coin_count(player.get_coin_count())

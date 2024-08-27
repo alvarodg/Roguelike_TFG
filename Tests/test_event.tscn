@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://p7bi8ul5sa3d"]
 
 [ext_resource type="Script" path="res://Tests/test_event.gd" id="1_5fra8"]
-[ext_resource type="Resource" uid="uid://ctncg6hvrjqma" path="res://Events/resources/event_data/event_pick/closing_in.tres" id="2_yyndj"]
+[ext_resource type="Resource" uid="uid://ccaqy5slnalwh" path="res://Events/resources/event_data/event_pick/holdup.tres" id="2_gafev"]
 [ext_resource type="Script" path="res://Player/Player.gd" id="3_c1xat"]
 [ext_resource type="Script" path="res://Battle/combatant/PlayerStats.gd" id="4_rki66"]
 [ext_resource type="Script" path="res://Player/PlayerUIData.gd" id="5_h1yvh"]
@@ -16,13 +16,13 @@
 [ext_resource type="Resource" uid="uid://d1u5h8ydcu0pl" path="res://Battle/skills/resources/jackpot.tres" id="11_42mxh"]
 [ext_resource type="Resource" uid="uid://cxjloh7bo4onj" path="res://Run/collections/test_event_collection.tres" id="11_kmuwa"]
 [ext_resource type="Resource" uid="uid://q8cjuohabuf1" path="res://Battle/skills/resources/slippery_strike.tres" id="12_an3kp"]
-[ext_resource type="Resource" uid="uid://bxwuaeekjaus4" path="res://Items/equipment/resources/lucky_coin.tres" id="13_1quig"]
+[ext_resource type="Resource" uid="uid://dux2lw2o3v0dr" path="res://Items/equipment/resources/cursed_coin.tres" id="13_w30e7"]
 
 [sub_resource type="Resource" id="Resource_bnqu0"]
 script = ExtResource("4_rki66")
 coin_count = 5
 base_luck = 1.0
-max_health = 30
+max_health = 1
 base_strength = 0
 base_shield = 0
 base_armor = 0
@@ -43,14 +43,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5fra8")
-event_data = ExtResource("2_yyndj")
+event_data = ExtResource("2_gafev")
 
 [node name="Player" type="Node" parent="."]
 script = ExtResource("3_c1xat")
 stats = SubResource("Resource_bnqu0")
 ui_data = SubResource("Resource_ku3kp")
 skill_list = Array[Resource("res://Battle/skills/SkillData.gd")]([ExtResource("7_gm1vr"), ExtResource("8_tx3p4"), ExtResource("9_xpq5q"), ExtResource("10_dj0i6"), ExtResource("11_42mxh"), ExtResource("12_an3kp")])
-default_equipment = Array[Resource("res://Items/equipment/equipment.gd")]([ExtResource("13_1quig")])
+default_equipment = Array[Resource("res://Items/equipment/equipment.gd")]([ExtResource("13_w30e7")])
 
 [node name="CollectionContainer" parent="." instance=ExtResource("8_p4se0")]
 equipments = ExtResource("9_k2nqh")

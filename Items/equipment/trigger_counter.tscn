@@ -5,6 +5,7 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_t3wcj"]
 font = ExtResource("2_7c8uy")
+shadow_color = Color(0, 0, 0, 0.4)
 
 [node name="TriggerCounter" type="Control"]
 layout_mode = 3
@@ -17,7 +18,7 @@ script = ExtResource("1_q3auf")
 
 [node name="CountLabel" type="Label" parent="."]
 unique_name_in_owner = true
-layout_mode = 0
+layout_mode = 1
 offset_right = 40.0
 offset_bottom = 23.0
 text = "0"

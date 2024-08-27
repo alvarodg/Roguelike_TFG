@@ -27,8 +27,8 @@ func set_coin_count(value):
 	
 func start_battle():
 	super.start_battle()
-	if shield > 0 and shield_turns_remaining == 1:
-		shield_turns_remaining += 1
+	#if shield > 0 and shield_turns_remaining == 1:
+		#shield_turns_remaining += 1
 
 func setup():
 	super.setup()

@@ -69,7 +69,7 @@ func _init(p_max_health: int = 100, p_base_strength: int = 0, p_base_shield: int
 func setup():
 	health = max_health
 	strength = base_strength
-	shield = base_shield
+	#shield = base_shield
 	armor = base_armor
 	dodges = base_dodges
 	is_dead = false
@@ -92,7 +92,7 @@ func pre_start_turn():
 	
 ## Modifica los valores a su estado de principio de turno
 func start_turn():
-	pass
+	shield = base_shield
 
 ## Modifica los valores a su estado de final de turno
 func end_turn():

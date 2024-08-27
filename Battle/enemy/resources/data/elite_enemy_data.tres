@@ -20,6 +20,7 @@ ignore_shield = false
 ignore_armor = false
 ignore_dodges = false
 shield_factor = 1.0
+animate_hit = true
 
 [sub_resource type="Resource" id="Resource_mn2ar"]
 script = ExtResource("5_dpscd")
@@ -71,6 +72,7 @@ ignore_shield = false
 ignore_armor = false
 ignore_dodges = false
 shield_factor = 1.0
+animate_hit = true
 
 [sub_resource type="Resource" id="Resource_byvd3"]
 script = ExtResource("6_dcaix")

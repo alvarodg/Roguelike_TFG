@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EquipmentCollection" load_steps=24 format=3 uid="uid://5871ejwt2whd"]
+[gd_resource type="Resource" script_class="EquipmentCollection" load_steps=25 format=3 uid="uid://5871ejwt2whd"]
 
 [ext_resource type="Resource" uid="uid://dux2lw2o3v0dr" path="res://Items/equipment/resources/cursed_coin.tres" id="1_2o3xi"]
 [ext_resource type="Script" path="res://Run/equipment_collection.gd" id="1_8ig7o"]
@@ -23,7 +23,8 @@
 [ext_resource type="Resource" uid="uid://dnajk48rvu2mv" path="res://Items/equipment/resources/conditional/blade_of_the_unrelenting.tres" id="20_regli"]
 [ext_resource type="Resource" uid="uid://dda8rbtlshf8v" path="res://Items/equipment/resources/conditional/unlucky_blade.tres" id="21_ifklr"]
 [ext_resource type="Resource" uid="uid://g2hjfqdpgvse" path="res://Items/equipment/resources/conditional/healing_coin.tres" id="22_4cqku"]
+[ext_resource type="Resource" uid="uid://dosyj8s807tej" path="res://Items/equipment/resources/weak_shield.tres" id="23_53thu"]
 
 [resource]
 script = ExtResource("1_8ig7o")
-list = Array[Resource("res://Items/equipment/equipment.gd")]([ExtResource("1_2o3xi"), ExtResource("2_8t63a"), ExtResource("3_c86u6"), ExtResource("4_t0sya"), ExtResource("6_6bbla"), ExtResource("7_o1jjb"), ExtResource("8_0dmrt"), ExtResource("9_vuart"), ExtResource("11_tsy8l"), ExtResource("12_kfxim"), ExtResource("13_ct4rd"), ExtResource("13_efiff"), ExtResource("13_pg74k"), ExtResource("19_u22tk"), ExtResource("20_regli"), ExtResource("14_k8ls0"), ExtResource("15_slxmw"), ExtResource("16_qglkg"), ExtResource("17_c8p3l"), ExtResource("18_jeapd"), ExtResource("21_ifklr"), ExtResource("22_4cqku")])
+list = Array[Resource("res://Items/equipment/equipment.gd")]([ExtResource("1_2o3xi"), ExtResource("2_8t63a"), ExtResource("3_c86u6"), ExtResource("4_t0sya"), ExtResource("6_6bbla"), ExtResource("7_o1jjb"), ExtResource("8_0dmrt"), ExtResource("9_vuart"), ExtResource("11_tsy8l"), ExtResource("12_kfxim"), ExtResource("13_ct4rd"), ExtResource("13_efiff"), ExtResource("13_pg74k"), ExtResource("19_u22tk"), ExtResource("20_regli"), ExtResource("14_k8ls0"), ExtResource("15_slxmw"), ExtResource("16_qglkg"), ExtResource("17_c8p3l"), ExtResource("18_jeapd"), ExtResource("21_ifklr"), ExtResource("22_4cqku"), ExtResource("23_53thu")])

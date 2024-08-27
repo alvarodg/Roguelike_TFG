@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EnemyData" load_steps=48 format=3 uid="uid://0tb5ir6mx8dp"]
+[gd_resource type="Resource" script_class="EnemyData" load_steps=47 format=3 uid="uid://0tb5ir6mx8dp"]
 
 [ext_resource type="Script" path="res://Items/modifiers/conditions/events/start_of_turn_condition.gd" id="1_0i6dd"]
 [ext_resource type="Script" path="res://Items/modifiers/components/stats/dodges_modifier_component.gd" id="2_cttw1"]
@@ -15,7 +15,6 @@
 [ext_resource type="Texture2D" uid="uid://cpaes4c4pnmxw" path="res://Battle/skills/icons/attack_skill.png" id="13_p7bsr"]
 [ext_resource type="Script" path="res://Battle/skills/skill_ui_data.gd" id="14_u50lg"]
 [ext_resource type="Texture2D" uid="uid://l8diabvbslw6" path="res://Battle/skills/icons/attack_shield_skill.png" id="15_5dtu0"]
-[ext_resource type="PackedScene" uid="uid://b1c12o4iwexco" path="res://Battle/skills/animations/slash_animation.tscn" id="16_1ffm0"]
 [ext_resource type="Script" path="res://Battle/skills/behaviors/multihit_skill_behavior.gd" id="17_42nqo"]
 [ext_resource type="Texture2D" uid="uid://c4mdodsry7ncw" path="res://Battle/skills/icons/strong_attack_skill.png" id="18_ksgm5"]
 [ext_resource type="Texture2D" uid="uid://b17adlv5iff4d" path="res://Battle/skills/icons/stat_boost.png" id="19_8mj11"]
@@ -101,6 +100,7 @@ ignore_shield = false
 ignore_armor = false
 ignore_dodges = false
 shield_factor = 1.0
+animate_hit = true
 
 [sub_resource type="Resource" id="Resource_ycdnj"]
 script = ExtResource("14_u50lg")
@@ -129,6 +129,7 @@ ignore_shield = false
 ignore_armor = false
 ignore_dodges = false
 shield_factor = 1.0
+animate_hit = true
 
 [sub_resource type="Resource" id="Resource_n1ipe"]
 script = ExtResource("2_cttw1")
@@ -161,7 +162,7 @@ hits = 8
 ignore_shield = false
 ignore_armor = false
 ignore_dodges = false
-animation_scene = ExtResource("16_1ffm0")
+animate_hit = true
 
 [sub_resource type="Resource" id="Resource_ddtwr"]
 script = ExtResource("14_u50lg")
@@ -184,7 +185,7 @@ tags = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_rvnhm"]
 script = ExtResource("2_cttw1")
-magnitude = 7.0
+magnitude = 4.0
 action = 0
 
 [sub_resource type="Resource" id="Resource_ngghu"]

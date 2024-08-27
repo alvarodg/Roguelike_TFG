@@ -28,7 +28,7 @@ func get_description() -> String:
 	for mod in pre_modifiers:
 		desc += mod.get_description() + "\n"
 	for event in events:
-		if not event.secret:
+		if not event.secret and event.get_description() != "":
 			desc += event.get_description() + "\n"
 	for mod in post_modifiers:
 		desc += mod.get_description() + "\n"

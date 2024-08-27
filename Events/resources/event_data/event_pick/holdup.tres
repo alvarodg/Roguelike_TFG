@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EventPickData" load_steps=31 format=3 uid="uid://ccaqy5slnalwh"]
+[gd_resource type="Resource" script_class="EventPickData" load_steps=32 format=3 uid="uid://ccaqy5slnalwh"]
 
 [ext_resource type="Script" path="res://Items/modifiers/components/stats/health_modifier_component.gd" id="1_3gkms"]
 [ext_resource type="Script" path="res://Events/event_choice/event_pick_data.gd" id="1_o2c3f"]
@@ -80,14 +80,14 @@ sequence = SubResource("Resource_6l4b0")
 final = true
 secret = false
 
-[sub_resource type="Resource" id="Resource_3tk6h"]
+[sub_resource type="Resource" id="Resource_arrqe"]
 script = ExtResource("10_qryk8")
-narrative = Array[String](["Doesn't seem much for converstation. You let your guard down."])
+narrative = Array[String](["Ouch."])
 name = ""
 description = ""
 rarity = 1
 tags = Array[int]([0])
-secret = true
+secret = false
 unique = false
 goes_to_next_level = false
 is_final_event = false
@@ -111,12 +111,26 @@ script = ExtResource("1_3gkms")
 magnitude = -30.0
 action = 0
 
+[sub_resource type="Resource" id="Resource_ceq16"]
+script = ExtResource("10_qryk8")
+narrative = Array[String](["Doesn't seem much for converstation. This one's gonna hurt."])
+name = ""
+description = ""
+rarity = 1
+tags = Array[int]([0])
+secret = false
+unique = false
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
 [sub_resource type="Resource" id="Resource_4yqny"]
 script = ExtResource("6_svos6")
 pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_t7cmb")])
 post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
-events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_3tk6h"), SubResource("Resource_nmpb3")])
+events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_arrqe"), SubResource("Resource_nmpb3")])
 secret = false
+pre_narrative = SubResource("Resource_ceq16")
 event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
 make_unique = false
 
