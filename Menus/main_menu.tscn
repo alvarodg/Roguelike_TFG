@@ -80,9 +80,27 @@ text = "Credits"
 layout_mode = 2
 text = "Exit"
 
-[node name="SeedPanel" type="Panel" parent="Control"]
+[node name="SeedMenu" type="Control" parent="Control"]
 unique_name_in_owner = true
 visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control/SeedMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.27451)
+
+[node name="SeedPanel" type="Panel" parent="Control/SeedMenu/ColorRect"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 80)
 layout_mode = 2
 offset_left = 54.0
@@ -92,7 +110,7 @@ offset_bottom = 118.0
 theme_override_styles/panel = ExtResource("2_uj5v1")
 metadata/_edit_group_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/SeedPanel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/SeedMenu/ColorRect/SeedPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -105,33 +123,162 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Control/SeedPanel/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/SeedMenu/ColorRect/SeedPanel/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Control/SeedPanel/VBoxContainer/HBoxContainer2"]
+[node name="Label" type="Label" parent="Control/SeedMenu/ColorRect/SeedPanel/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 text = "Seed:"
 
-[node name="SeedEdit" type="LineEdit" parent="Control/SeedPanel/VBoxContainer/HBoxContainer2"]
+[node name="SeedEdit" type="LineEdit" parent="Control/SeedMenu/ColorRect/SeedPanel/VBoxContainer/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Digits 0-9"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/SeedPanel/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/SeedMenu/ColorRect/SeedPanel/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="CancelSeededButton" type="Button" parent="Control/SeedPanel/VBoxContainer/HBoxContainer"]
+[node name="CancelSeededButton" type="Button" parent="Control/SeedMenu/ColorRect/SeedPanel/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 text = "Cancel"
 
-[node name="StartSeededButton" type="Button" parent="Control/SeedPanel/VBoxContainer/HBoxContainer"]
+[node name="StartSeededButton" type="Button" parent="Control/SeedMenu/ColorRect/SeedPanel/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 text = "Start"
+
+[node name="DeleteSaveMenu" type="Control" parent="Control"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control/DeleteSaveMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.27451)
+
+[node name="Panel" type="PanelContainer" parent="Control/DeleteSaveMenu/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -119.0
+offset_top = -107.0
+offset_right = 119.0
+offset_bottom = -41.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/DeleteSaveMenu/ColorRect/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/DeleteSaveMenu/ColorRect/Panel/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="Control/DeleteSaveMenu/ColorRect/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+text = "WARNING: Starting a new run will delete your current save. Is this acceptable?"
+autowrap_mode = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/DeleteSaveMenu/ColorRect/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 8
+
+[node name="DeleteYesButton" type="Button" parent="Control/DeleteSaveMenu/ColorRect/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "I accept this."
+
+[node name="DeleteNoButton" type="Button" parent="Control/DeleteSaveMenu/ColorRect/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "I cannot accept this."
+
+[node name="OutdatedSaveInfo" type="Control" parent="Control"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control/OutdatedSaveInfo"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.27451)
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/OutdatedSaveInfo/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -118.0
+offset_top = -126.0
+offset_right = 118.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/OutdatedSaveInfo/ColorRect/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/OutdatedSaveInfo/ColorRect/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="Control/OutdatedSaveInfo/ColorRect/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+text = "A save file that isn't compatible with the current software version has been found. You must either stash it on your save location and start from beginning or close the program ."
+autowrap_mode = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/OutdatedSaveInfo/ColorRect/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 8
+
+[node name="StashYesButton" type="Button" parent="Control/OutdatedSaveInfo/ColorRect/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "Stash it."
+
+[node name="StashNoButton" type="Button" parent="Control/OutdatedSaveInfo/ColorRect/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "Exit"
 
 [node name="CreditsPanel" type="Panel" parent="."]
 unique_name_in_owner = true
@@ -228,7 +375,11 @@ autowrap_mode = 3
 [connection signal="pressed" from="Control/MainMenuPanel/VBoxContainer/NewSeededRunButton" to="." method="_on_NewSeededRunButton_pressed"]
 [connection signal="pressed" from="Control/MainMenuPanel/VBoxContainer/CreditsButton" to="." method="_on_CreditsButton_pressed"]
 [connection signal="pressed" from="Control/MainMenuPanel/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
-[connection signal="text_changed" from="Control/SeedPanel/VBoxContainer/HBoxContainer2/SeedEdit" to="." method="_on_SeedEdit_text_changed"]
-[connection signal="pressed" from="Control/SeedPanel/VBoxContainer/HBoxContainer/CancelSeededButton" to="." method="_on_CancelSeededButton_pressed"]
-[connection signal="pressed" from="Control/SeedPanel/VBoxContainer/HBoxContainer/StartSeededButton" to="." method="_on_StartSeededButton_pressed"]
+[connection signal="text_changed" from="Control/SeedMenu/ColorRect/SeedPanel/VBoxContainer/HBoxContainer2/SeedEdit" to="." method="_on_SeedEdit_text_changed"]
+[connection signal="pressed" from="Control/SeedMenu/ColorRect/SeedPanel/VBoxContainer/HBoxContainer/CancelSeededButton" to="." method="_on_CancelSeededButton_pressed"]
+[connection signal="pressed" from="Control/SeedMenu/ColorRect/SeedPanel/VBoxContainer/HBoxContainer/StartSeededButton" to="." method="_on_StartSeededButton_pressed"]
+[connection signal="pressed" from="Control/DeleteSaveMenu/ColorRect/Panel/MarginContainer/VBoxContainer/HBoxContainer/DeleteYesButton" to="." method="_on_DeleteYesButton_pressed"]
+[connection signal="pressed" from="Control/DeleteSaveMenu/ColorRect/Panel/MarginContainer/VBoxContainer/HBoxContainer/DeleteNoButton" to="." method="_on_DeleteNoButton_pressed"]
+[connection signal="pressed" from="Control/OutdatedSaveInfo/ColorRect/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/StashYesButton" to="." method="_on_StashYesButton_pressed"]
+[connection signal="pressed" from="Control/OutdatedSaveInfo/ColorRect/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/StashNoButton" to="." method="_on_StashNoButton_pressed"]
 [connection signal="gui_input" from="CreditsPanel" to="." method="_on_CreditsPanel_gui_input"]

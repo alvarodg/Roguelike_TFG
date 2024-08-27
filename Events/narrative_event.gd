@@ -35,7 +35,7 @@ func _ready():
 	else:
 		continue_button.text = "CONTINUE ->"
 
-func initialize(p_player: Player, data):
+func initialize(p_player: Player, data: NarrativeEventData):
 	super.initialize(p_player, data)
 	narrative = data.narrative.duplicate()
 	image = data.image

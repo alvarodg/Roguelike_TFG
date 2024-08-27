@@ -41,7 +41,6 @@ skill_list = Array[Resource("res://Battle/skills/SkillData.gd")]([ExtResource("8
 [node name="Map" parent="." instance=ExtResource("2_tumwh")]
 unique_name_in_owner = true
 layout_mode = 1
-debug = true
 generation_data_list = Array[Resource("res://Generation/generation_data.gd")]([ExtResource("16_1lfjr"), ExtResource("17_82nen"), ExtResource("18_3q4dl")])
 
 [node name="DebugPanel" type="Panel" parent="."]
