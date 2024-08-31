@@ -72,6 +72,7 @@ func setup():
 	#shield = base_shield
 	armor = base_armor
 	dodges = base_dodges
+	shield_turns_remaining = base_shield_decay_turns
 	is_dead = false
 	
 ## Inicializa los valores a su estado de principio de combate
@@ -82,6 +83,7 @@ func start_battle():
 		#shield_turns_remaining += 1
 	armor = base_armor
 	dodges = base_dodges
+	shield_turns_remaining = base_shield_decay_turns
 	is_dead = false
 	
 ## Modifica los valores a su estado de principio de turno, antes de empezarlo
@@ -92,7 +94,7 @@ func pre_start_turn():
 	
 ## Modifica los valores a su estado de principio de turno
 func start_turn():
-	shield = base_shield
+	shield += base_shield
 
 ## Modifica los valores a su estado de final de turno
 func end_turn():
@@ -132,6 +134,7 @@ func set_shield(value):
 	var old = shield
 	if old == 0:
 		shield_turns_remaining = base_shield_decay_turns
+		print("Remaining:" + str(shield_turns_remaining))
 	shield = max(0,value)
 	shield_changed.emit(old, shield)
 
