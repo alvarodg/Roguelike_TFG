@@ -10,7 +10,7 @@
 [ext_resource type="Script" path="res://Battle/skills/behaviors/shield_skill_behavior.gd" id="6_dcaix"]
 [ext_resource type="Texture2D" uid="uid://dtcgxg8bujhwf" path="res://Battle/skills/icons/shield_skill.png" id="7_844q7"]
 [ext_resource type="Texture2D" uid="uid://l8diabvbslw6" path="res://Battle/skills/icons/attack_shield_skill.png" id="8_lm836"]
-[ext_resource type="Texture2D" uid="uid://dmdqxsg6jwrfd" path="res://Battle/enemy/sprites/elite/biglizard_enemy.png" id="11_18foi"]
+[ext_resource type="Texture2D" uid="uid://dmdqxsg6jwrfd" path="res://assets/redshrike/combatants/enemy/biglizard_enemy.png" id="11_18foi"]
 
 [sub_resource type="Resource" id="Resource_cfjrl"]
 script = ExtResource("2_be414")

@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://Battle/skills/behaviors/damage_skill_behavior.gd" id="5_y0ope"]
 [ext_resource type="Texture2D" uid="uid://dtcgxg8bujhwf" path="res://Battle/skills/icons/shield_skill.png" id="6_hg78y"]
 [ext_resource type="Texture2D" uid="uid://l8diabvbslw6" path="res://Battle/skills/icons/attack_shield_skill.png" id="7_8pkt1"]
-[ext_resource type="Texture2D" uid="uid://4q2j77yka4t1" path="res://Battle/enemy/sprites/slime_enemy.png" id="10_f3eyg"]
+[ext_resource type="Texture2D" uid="uid://4q2j77yka4t1" path="res://assets/redshrike/combatants/enemy/slime_enemy.png" id="10_f3eyg"]
 
 [sub_resource type="Resource" id="Resource_pi2on"]
 script = ExtResource("5_y0ope")

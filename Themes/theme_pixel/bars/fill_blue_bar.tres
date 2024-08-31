@@ -1,6 +1,0 @@
-[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://p6fteutdv33l"]
-
-[ext_resource type="Texture2D" uid="uid://dfbanw2qkpyh1" path="res://Themes/theme_pixel/bars/fill_blue.png" id="1_6cc16"]
-
-[resource]
-texture = ExtResource("1_6cc16")

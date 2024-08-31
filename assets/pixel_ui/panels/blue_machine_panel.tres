@@ -1,0 +1,11 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://bck346hjqyeeq"]
+
+[ext_resource type="Texture2D" uid="uid://ccfstqogm2sl1" path="res://assets/pixel_ui/GUI_mounir_tohami.png" id="1_4v0pe"]
+
+[resource]
+texture = ExtResource("1_4v0pe")
+texture_margin_left = 14.0
+texture_margin_top = 14.0
+texture_margin_right = 14.0
+texture_margin_bottom = 14.0
+region_rect = Rect2(2, 34, 44, 44)

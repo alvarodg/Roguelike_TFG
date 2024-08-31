@@ -1,12 +1,12 @@
 [gd_scene load_steps=11 format=3 uid="uid://d4ak0fy4gsv6v"]
 
-[ext_resource type="Theme" uid="uid://dvg7jbsgrbfoe" path="res://Themes/theme_pixel/pixel_theme_menus.tres" id="1_c2yd6"]
+[ext_resource type="Theme" uid="uid://dvg7jbsgrbfoe" path="res://assets/pixel_ui/pixel_theme_menus.tres" id="1_c2yd6"]
 [ext_resource type="Script" path="res://Events/event_choice/event_pick.gd" id="1_nc80d"]
 [ext_resource type="Texture2D" uid="uid://djmrox3cqnntc" path="res://icon.svg" id="2_p76l4"]
-[ext_resource type="FontFile" uid="uid://ysqghdrpxr1g" path="res://Themes/fonts/m6x11plus.ttf" id="3_05h3b"]
+[ext_resource type="FontFile" uid="uid://ysqghdrpxr1g" path="res://assets/fonts/m6x11plus.ttf" id="3_05h3b"]
 [ext_resource type="PackedScene" uid="uid://bxbdvrktndhoi" path="res://Player/player_stats_compact_ui.tscn" id="4_ga0g0"]
-[ext_resource type="FontFile" uid="uid://b0yauh56wqac5" path="res://Themes/fonts/m6x11.ttf" id="4_wdi5c"]
-[ext_resource type="StyleBox" uid="uid://b2bm3n50qyv0h" path="res://Themes/theme_pixel/panels/blackish_panel.tres" id="5_tls87"]
+[ext_resource type="FontFile" uid="uid://b0yauh56wqac5" path="res://assets/fonts/m6x11.ttf" id="4_wdi5c"]
+[ext_resource type="StyleBox" uid="uid://b2bm3n50qyv0h" path="res://assets/pixel_ui/panels/blackish_panel.tres" id="5_tls87"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jeyal"]
 

@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dtcgxg8bujhwf" path="res://Battle/skills/icons/shield_skill.png" id="10_u62rc"]
 [ext_resource type="Script" path="res://Battle/enemy/EnemyStats.gd" id="11_ljoso"]
 [ext_resource type="Script" path="res://Battle/enemy/enemy_ui_data.gd" id="12_rohhq"]
-[ext_resource type="Texture2D" uid="uid://tjixj6sh1eiu" path="res://Battle/enemy/sprites/boss/rock_enemy.png" id="13_871fe"]
+[ext_resource type="Texture2D" uid="uid://tjixj6sh1eiu" path="res://assets/redshrike/combatants/enemy/rock_enemy.png" id="13_871fe"]
 
 [sub_resource type="Resource" id="Resource_ruqdp"]
 script = ExtResource("5_ukl8a")

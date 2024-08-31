@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://blb8htxy0ytec"]
 
-[ext_resource type="FontFile" uid="uid://dj2uwas52df26" path="res://Themes/fonts/m5x7.ttf" id="1_r30wm"]
+[ext_resource type="FontFile" uid="uid://dj2uwas52df26" path="res://assets/fonts/m5x7.ttf" id="1_r30wm"]
 [ext_resource type="Script" path="res://Battle/combatant/ui/other_stats_container.gd" id="1_vgwp5"]
 [ext_resource type="Texture2D" uid="uid://cpaes4c4pnmxw" path="res://Battle/skills/icons/attack_skill.png" id="2_2ndx4"]
 [ext_resource type="Texture2D" uid="uid://y25k64mywuj0" path="res://Battle/player/sprites/armor_icon.png" id="3_ld5qf"]

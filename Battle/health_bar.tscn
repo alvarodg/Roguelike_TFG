@@ -1,12 +1,12 @@
 [gd_scene load_steps=12 format=3 uid="uid://cm2iaddemayb2"]
 
 [ext_resource type="Script" path="res://Battle/health_bar.gd" id="1_lmk8t"]
-[ext_resource type="FontFile" uid="uid://dj2uwas52df26" path="res://Themes/fonts/m5x7.ttf" id="2_7yv26"]
-[ext_resource type="StyleBox" uid="uid://bwgb2e3nb4eid" path="res://Themes/theme_pixel/bars/fill_red_bar.tres" id="2_wuos1"]
-[ext_resource type="StyleBox" uid="uid://p6fteutdv33l" path="res://Themes/theme_pixel/bars/fill_blue_bar.tres" id="3_q0htj"]
-[ext_resource type="Theme" uid="uid://dj2sxbc4p4860" path="res://Themes/theme_pixel/pixel_theme_battle.tres" id="4_ln6c8"]
+[ext_resource type="FontFile" uid="uid://dj2uwas52df26" path="res://assets/fonts/m5x7.ttf" id="2_7yv26"]
+[ext_resource type="StyleBox" uid="uid://bwgb2e3nb4eid" path="res://assets/pixel_ui/bars/fill_red_bar.tres" id="2_wuos1"]
+[ext_resource type="StyleBox" uid="uid://p6fteutdv33l" path="res://assets/pixel_ui/bars/fill_blue_bar.tres" id="3_q0htj"]
+[ext_resource type="Theme" uid="uid://dj2sxbc4p4860" path="res://assets/pixel_ui/pixel_theme_battle.tres" id="4_ln6c8"]
 [ext_resource type="Texture2D" uid="uid://2r530auc7tay" path="res://Battle/combatant/ui/shield_icon.png" id="6_0gemq"]
-[ext_resource type="StyleBox" uid="uid://b3lmq58csavug" path="res://Themes/theme_pixel/label/black_skill_box_label.tres" id="7_in77u"]
+[ext_resource type="StyleBox" uid="uid://b3lmq58csavug" path="res://assets/pixel_ui/label/black_skill_box_label.tres" id="7_in77u"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jv8mu"]
 font = ExtResource("2_7yv26")

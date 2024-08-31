@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Items/equipment/equipment_icon.gd" id="1_xo1p7"]
 [ext_resource type="Texture2D" uid="uid://cvicbvj581vju" path="res://Items/equipment/sprites/regularcoin_item.png" id="2_0wxf8"]
-[ext_resource type="StyleBox" uid="uid://b3lmq58csavug" path="res://Themes/theme_pixel/label/black_skill_box_label.tres" id="3_lmdcp"]
+[ext_resource type="StyleBox" uid="uid://b3lmq58csavug" path="res://assets/pixel_ui/label/black_skill_box_label.tres" id="3_lmdcp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_oe7f0"]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://mk36unxkq104"]
 
 [ext_resource type="Script" path="res://Items/equipment/equipment_event_counter.gd" id="1_xahqh"]
-[ext_resource type="FontFile" uid="uid://b2n7xh73jrxxw" path="res://Themes/fonts/m3x6.ttf" id="2_y6dis"]
+[ext_resource type="FontFile" uid="uid://b2n7xh73jrxxw" path="res://assets/fonts/m3x6.ttf" id="2_y6dis"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xef7l"]
 font = ExtResource("2_y6dis")

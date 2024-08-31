@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://ci2osml7lmqcy"]
 
-[ext_resource type="Theme" uid="uid://dj2sxbc4p4860" path="res://Themes/theme_pixel/pixel_theme_battle.tres" id="1_3sq6j"]
+[ext_resource type="Theme" uid="uid://dj2sxbc4p4860" path="res://assets/pixel_ui/pixel_theme_battle.tres" id="1_3sq6j"]
 [ext_resource type="Script" path="res://Battle/CoinBattle.gd" id="1_ygx54"]
 [ext_resource type="PackedScene" uid="uid://d2ay6knlrtvwb" path="res://Battle/player/player_skill_ui.tscn" id="2_a737o"]
 [ext_resource type="Texture2D" uid="uid://bl1lyqs0cwd0h" path="res://Battle/background/battleback5.png" id="2_kyxoq"]
 [ext_resource type="PackedScene" uid="uid://d108eaoiwyxw0" path="res://Battle/coin_ui/coin_box.tscn" id="3_2o0qd"]
-[ext_resource type="FontFile" uid="uid://b0yauh56wqac5" path="res://Themes/fonts/m6x11.ttf" id="5_vw3pn"]
+[ext_resource type="FontFile" uid="uid://b0yauh56wqac5" path="res://assets/fonts/m6x11.ttf" id="5_vw3pn"]
 [ext_resource type="PackedScene" uid="uid://cgeo8n0mg0x68" path="res://Battle/player/player_stats_ui.tscn" id="9_f77mq"]
 
 [node name="CoinBattle" type="Control"]

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Battle/enemy/skills/enemy_skill_icon.gd" id="1_826io"]
 [ext_resource type="Texture2D" uid="uid://cvwsif7utojiu" path="res://Battle/skills/icons/unknown_skill.png" id="1_jlm53"]
 [ext_resource type="Resource" uid="uid://b3ml56xm4cody" path="res://Battle/enemy/skills/resources/rage_strike.tres" id="2_8xlhe"]
-[ext_resource type="StyleBox" uid="uid://b3lmq58csavug" path="res://Themes/theme_pixel/label/black_skill_box_label.tres" id="4_v6j6q"]
+[ext_resource type="StyleBox" uid="uid://b3lmq58csavug" path="res://assets/pixel_ui/label/black_skill_box_label.tres" id="4_v6j6q"]
 
 [node name="EnemySkillIcon" type="Control"]
 custom_minimum_size = Vector2(32, 32)

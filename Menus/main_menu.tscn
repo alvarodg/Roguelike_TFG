@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://b8nvuhpu5i8fs"]
 
 [ext_resource type="Script" path="res://Menus/main_menu.gd" id="1_pkiib"]
-[ext_resource type="StyleBox" uid="uid://b4hqkadee6fsv" path="res://Themes/theme_pixel/panels/blue_outline_flat.tres" id="2_uj5v1"]
+[ext_resource type="StyleBox" uid="uid://b4hqkadee6fsv" path="res://assets/pixel_ui/panels/blue_outline_flat.tres" id="2_uj5v1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_upfs5"]
 bg_color = Color(0.176419, 0.176419, 0.176419, 1)
@@ -366,7 +366,7 @@ Animación de combate: Cethiel (https://opengameart.org/content/magic-effects)
 
 Fuentes: Daniel Linssen (https://managore.itch.io/)
 
-Interfaz y misceláneos: Mounit Tohami (https://mounirtohami.itch.io/), Buch (https://opengameart.org/users/buch), Pixel-Boy y AAA (https://pixel-boy.itch.io/ninja-adventure-asset-pack)"
+Interfaz y misceláneos: Mounit Tohami (https://mounirtohami.itch.io/), Buch (https://opengameart.org/users/buch), Pixel-Boy y AAA (https://pixel-boy.itch.io/ninja-adventure-asset-pack), Kenney (kenney.nl)"
 label_settings = SubResource("LabelSettings_mlk3w")
 autowrap_mode = 3
 

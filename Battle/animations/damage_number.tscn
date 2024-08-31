@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bfo6b6btwiukk"]
 
 [ext_resource type="Script" path="res://Battle/animations/DamageNumber.gd" id="1_tevsp"]
-[ext_resource type="FontFile" uid="uid://ysqghdrpxr1g" path="res://Themes/fonts/m6x11plus.ttf" id="2_dhbfv"]
+[ext_resource type="FontFile" uid="uid://ysqghdrpxr1g" path="res://assets/fonts/m6x11plus.ttf" id="2_dhbfv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_18m6l"]
 font = ExtResource("2_dhbfv")

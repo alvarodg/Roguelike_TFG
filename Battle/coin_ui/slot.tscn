@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cleymv01q7wyo" path="res://Battle/coin_ui/sprites/coin_slot_32_any.png" id="1_p66l1"]
 [ext_resource type="Texture2D" uid="uid://day75mjlt754g" path="res://Battle/coin_ui/sprites/coin_slot_32_heads.png" id="3_btkgy"]
 [ext_resource type="Texture2D" uid="uid://j8h48rv6rl5q" path="res://Battle/coin_ui/sprites/coin_slot_32_tails.png" id="4_w5ip6"]
-[ext_resource type="FontFile" uid="uid://b2n7xh73jrxxw" path="res://Themes/fonts/m3x6.ttf" id="5_2as3y"]
+[ext_resource type="FontFile" uid="uid://b2n7xh73jrxxw" path="res://assets/fonts/m3x6.ttf" id="5_2as3y"]
 [ext_resource type="Script" path="res://Battle/coin_ui/CountLabel.gd" id="5_rfkqu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ly4tc"]

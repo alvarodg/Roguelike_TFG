@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://yn4s15yxfg8o"]
 
 [ext_resource type="Script" path="res://Events/event_choice/split_event_choice.gd" id="1_hgjkq"]
-[ext_resource type="FontFile" uid="uid://b2n7xh73jrxxw" path="res://Themes/fonts/m3x6.ttf" id="2_4c5ac"]
+[ext_resource type="FontFile" uid="uid://b2n7xh73jrxxw" path="res://assets/fonts/m3x6.ttf" id="2_4c5ac"]
 [ext_resource type="Texture2D" uid="uid://bv625w3wso5y7" path="res://Events/event_choice/icons/split_coin_10.png" id="3_34fc8"]
-[ext_resource type="StyleBox" uid="uid://b3lmq58csavug" path="res://Themes/theme_pixel/label/black_skill_box_label.tres" id="3_gtm71"]
+[ext_resource type="StyleBox" uid="uid://b3lmq58csavug" path="res://assets/pixel_ui/label/black_skill_box_label.tres" id="3_gtm71"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8ognf"]
 font = ExtResource("2_4c5ac")

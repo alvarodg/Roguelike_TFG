@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dnkl2f5rxvdty"]
 
 [ext_resource type="Script" path="res://Events/equipment_button.gd" id="1_oeyqg"]
-[ext_resource type="StyleBox" uid="uid://dccxm7v6t7xc8" path="res://Themes/theme_pixel/label/grey_skill_box_label.tres" id="2_2rjps"]
+[ext_resource type="StyleBox" uid="uid://dccxm7v6t7xc8" path="res://assets/pixel_ui/label/grey_skill_box_label.tres" id="2_2rjps"]
 [ext_resource type="Texture2D" uid="uid://67vxmnlk8br1" path="res://Items/equipment/sprites/test_item.png" id="2_m5bra"]
 
 [node name="EquipmentButton" type="Button"]

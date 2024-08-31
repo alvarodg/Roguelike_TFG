@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://dvqlaq6opiv00"]
 
 [ext_resource type="Script" path="res://Events/narrative_event.gd" id="1_pi477"]
-[ext_resource type="Theme" uid="uid://dvg7jbsgrbfoe" path="res://Themes/theme_pixel/pixel_theme_menus.tres" id="1_q1cbl"]
+[ext_resource type="Theme" uid="uid://dvg7jbsgrbfoe" path="res://assets/pixel_ui/pixel_theme_menus.tres" id="1_q1cbl"]
 [ext_resource type="Texture2D" uid="uid://djmrox3cqnntc" path="res://icon.svg" id="2_ch3bu"]
 [ext_resource type="PackedScene" uid="uid://bxbdvrktndhoi" path="res://Player/player_stats_compact_ui.tscn" id="3_vu1wn"]
-[ext_resource type="StyleBox" uid="uid://b4hqkadee6fsv" path="res://Themes/theme_pixel/panels/blue_outline_flat.tres" id="4_rme7r"]
+[ext_resource type="StyleBox" uid="uid://b4hqkadee6fsv" path="res://assets/pixel_ui/panels/blue_outline_flat.tres" id="4_rme7r"]
 
 [node name="NarrativeEvent" type="Control"]
 layout_mode = 3

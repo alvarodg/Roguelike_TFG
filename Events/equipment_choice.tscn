@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://cdv7jw56dyp3j"]
 
 [ext_resource type="Script" path="res://Events/equipment_choice.gd" id="1_72sd0"]
-[ext_resource type="Theme" uid="uid://dvg7jbsgrbfoe" path="res://Themes/theme_pixel/pixel_theme_menus.tres" id="1_hqwin"]
-[ext_resource type="FontFile" uid="uid://ysqghdrpxr1g" path="res://Themes/fonts/m6x11plus.ttf" id="3_l3gl0"]
+[ext_resource type="Theme" uid="uid://dvg7jbsgrbfoe" path="res://assets/pixel_ui/pixel_theme_menus.tres" id="1_hqwin"]
+[ext_resource type="FontFile" uid="uid://ysqghdrpxr1g" path="res://assets/fonts/m6x11plus.ttf" id="3_l3gl0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_54lae"]
 font = ExtResource("3_l3gl0")

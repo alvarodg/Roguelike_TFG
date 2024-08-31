@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b1qenfnrgvgbd"]
 
 [ext_resource type="Script" path="res://Events/pick_skill_ui.gd" id="1_ff6px"]
-[ext_resource type="Theme" uid="uid://dvg7jbsgrbfoe" path="res://Themes/theme_pixel/pixel_theme_menus.tres" id="2_vgpa6"]
+[ext_resource type="Theme" uid="uid://dvg7jbsgrbfoe" path="res://assets/pixel_ui/pixel_theme_menus.tres" id="2_vgpa6"]
 
 [node name="PickSkillUI" type="Control"]
 custom_minimum_size = Vector2(160, 120)

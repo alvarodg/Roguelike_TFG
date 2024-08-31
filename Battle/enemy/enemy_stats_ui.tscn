@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cpaes4c4pnmxw" path="res://Battle/skills/icons/attack_skill.png" id="3_8tdom"]
 [ext_resource type="Texture2D" uid="uid://bbtqu0cpssatg" path="res://Battle/player/sprites/dodge_icon2.png" id="4_8y0q2"]
 [ext_resource type="Texture2D" uid="uid://y25k64mywuj0" path="res://Battle/player/sprites/armor_icon.png" id="4_f8ogk"]
-[ext_resource type="StyleBox" uid="uid://b3lmq58csavug" path="res://Themes/theme_pixel/label/black_skill_box_label.tres" id="6_p1gm4"]
+[ext_resource type="StyleBox" uid="uid://b3lmq58csavug" path="res://assets/pixel_ui/label/black_skill_box_label.tres" id="6_p1gm4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vb7ux"]
 

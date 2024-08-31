@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://Battle/enemy/enemy_ui_data.gd" id="3_6rgrk"]
 [ext_resource type="Script" path="res://Battle/skills/SkillData.gd" id="3_yitei"]
 [ext_resource type="Script" path="res://Battle/skills/skill_ui_data.gd" id="4_enm6c"]
-[ext_resource type="Texture2D" uid="uid://yxt5ukdbqh3f" path="res://Battle/enemy/sprites/eye_enemy.png" id="7_rnofj"]
+[ext_resource type="Texture2D" uid="uid://yxt5ukdbqh3f" path="res://assets/redshrike/combatants/enemy/eye_enemy.png" id="7_rnofj"]
 
 [sub_resource type="Resource" id="Resource_gi1uw"]
 script = ExtResource("2_yoxqb")

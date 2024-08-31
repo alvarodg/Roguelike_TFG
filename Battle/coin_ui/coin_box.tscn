@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Battle/coin_ui/coin_box.gd" id="1_yrlql"]
 [ext_resource type="Texture2D" uid="uid://b7q5vfrx6d1o" path="res://Battle/player/sprites/coin_16.png" id="2_73pcx"]
-[ext_resource type="FontFile" uid="uid://dj2uwas52df26" path="res://Themes/fonts/m5x7.ttf" id="3_iysso"]
+[ext_resource type="FontFile" uid="uid://dj2uwas52df26" path="res://assets/fonts/m5x7.ttf" id="3_iysso"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wf1qq"]
 font = ExtResource("3_iysso")

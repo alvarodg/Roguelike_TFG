@@ -20,7 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://b17adlv5iff4d" path="res://Battle/skills/icons/stat_boost.png" id="19_8mj11"]
 [ext_resource type="Script" path="res://Battle/enemy/EnemyStats.gd" id="20_dr6tf"]
 [ext_resource type="Script" path="res://Battle/enemy/enemy_ui_data.gd" id="21_cvmu2"]
-[ext_resource type="Texture2D" uid="uid://0xk458xufopq" path="res://Battle/enemy/sprites/elite/bigbird_enemy.png" id="22_0j62m"]
+[ext_resource type="Texture2D" uid="uid://0xk458xufopq" path="res://assets/redshrike/combatants/enemy/bigbird_enemy.png" id="22_0j62m"]
 
 [sub_resource type="Resource" id="Resource_ukdqx"]
 script = ExtResource("1_0i6dd")
