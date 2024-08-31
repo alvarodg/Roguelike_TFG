@@ -90,11 +90,13 @@ func set_available():
 	
 func set_inserted():
 	status = Status.INSERTED
+	release_focus()	
 	focus_mode = Control.FOCUS_NONE
 	make_invisible()
 	
 func set_spent():
 	status = Status.SPENT
+	release_focus()
 	focus_mode = Control.FOCUS_NONE
 	make_invisible()
 	hide()
@@ -102,6 +104,7 @@ func set_spent():
 func set_dropped():
 	if status != Status.DROPPED:
 		status = Status.DROPPED
+		release_focus()
 		focus_mode = Control.FOCUS_NONE
 		if is_inside_tree():
 			var dropped_item: DroppedItem = dropped_item_scene.instantiate()
