@@ -54,7 +54,7 @@ func setup():
 	for trigger in condition_triggers:
 		if not trigger.triggered.is_connected(_on_triggered):
 			trigger.triggered.connect(_on_triggered)
-		trigger.setup()
+		#trigger.setup()
 
 ## Envía la señal
 func _on_triggered():

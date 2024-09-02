@@ -1,0 +1,107 @@
+[gd_resource type="Resource" script_class="EventPickData" load_steps=23 format=3 uid="uid://drf60fbh8fxfe"]
+
+[ext_resource type="Script" path="res://Events/event_choice/event_pick_data.gd" id="1_oxwe5"]
+[ext_resource type="Script" path="res://Items/modifiers/components/stats/health_modifier_component.gd" id="1_ukrrq"]
+[ext_resource type="Script" path="res://Items/modifiers/cost/health_cost.gd" id="2_up6fe"]
+[ext_resource type="Script" path="res://Events/event_choice/event_choice_data.gd" id="3_mm3un"]
+[ext_resource type="Resource" uid="uid://dsail3wrvb5c1" path="res://Items/modifiers/conditions/resources/compensation.tres" id="4_csp27"]
+[ext_resource type="Script" path="res://Items/equipment/equipment.gd" id="5_nn27w"]
+[ext_resource type="Script" path="res://Run/equipment_collection.gd" id="5_xr3wo"]
+[ext_resource type="Script" path="res://Events/equipment_choice_data.gd" id="6_av5lf"]
+[ext_resource type="Texture2D" uid="uid://dwwcylocjqg7g" path="res://Items/equipment/sprites/bloody_coin_item.png" id="6_sawdw"]
+[ext_resource type="Script" path="res://Items/equipment/equipment_ui_data.gd" id="7_mndpu"]
+[ext_resource type="Resource" uid="uid://jlcky6cxyuuq" path="res://Battle/enemy/resources/data/berserker_boss_data.tres" id="7_qahng"]
+[ext_resource type="Script" path="res://Events/BattleEventData.gd" id="8_kuada"]
+[ext_resource type="Script" path="res://Events/event_choice/choice_sequence.gd" id="9_v777a"]
+
+[sub_resource type="Resource" id="Resource_gf1tu"]
+script = ExtResource("1_ukrrq")
+magnitude = -350.0
+action = 0
+
+[sub_resource type="Resource" id="Resource_gslh4"]
+script = ExtResource("2_up6fe")
+health_mod = SubResource("Resource_gf1tu")
+
+[sub_resource type="Resource" id="Resource_n3frq"]
+script = ExtResource("7_mndpu")
+icon = ExtResource("6_sawdw")
+ui_name = "Bloody Coin"
+
+[sub_resource type="Resource" id="Resource_l2mib"]
+script = ExtResource("5_nn27w")
+ui_data = SubResource("Resource_n3frq")
+description = ""
+rarity = 2
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+condition_triggers = Array[Resource("res://Items/modifiers/conditions/condition_trigger.gd")]([ExtResource("4_csp27")])
+fragile = false
+tags = Array[int]([0, 4, 2])
+
+[sub_resource type="Resource" id="Resource_8524i"]
+script = ExtResource("5_xr3wo")
+list = Array[ExtResource("5_nn27w")]([SubResource("Resource_l2mib")])
+
+[sub_resource type="Resource" id="Resource_jutm0"]
+script = ExtResource("6_av5lf")
+choices = 1
+equip_collection = SubResource("Resource_8524i")
+equip_tags = Array[int]([])
+tag_op = 1
+rarities = Array[int]([])
+rarity_factor = 1.0
+deterministic = true
+name = ""
+description = ""
+rarity = 1
+tags = Array[int]([0])
+secret = false
+unique = false
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
+[sub_resource type="Resource" id="Resource_24dkm"]
+script = ExtResource("8_kuada")
+enemy_data = ExtResource("7_qahng")
+name = ""
+description = ""
+rarity = 1
+tags = Array[int]([0])
+secret = false
+unique = false
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
+[sub_resource type="Resource" id="Resource_ss73p"]
+script = ExtResource("9_v777a")
+pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_jutm0"), SubResource("Resource_24dkm")])
+secret = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+make_unique = false
+
+[sub_resource type="Resource" id="Resource_2lnjq"]
+script = ExtResource("3_mm3un")
+description = "Test"
+explicit = false
+cost = SubResource("Resource_gslh4")
+sequence = SubResource("Resource_ss73p")
+final = true
+secret = false
+
+[resource]
+script = ExtResource("1_oxwe5")
+narrative = ""
+choices = Array[ExtResource("3_mm3un")]([SubResource("Resource_2lnjq")])
+name = ""
+description = ""
+rarity = 1
+tags = Array[int]([0])
+secret = false
+unique = false
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])

@@ -10,6 +10,8 @@ class_name HasArmorCondition
 func connect_to(p_user: Combatant):
 	super.connect_to(p_user)
 	p_user.stats.armor_changed.connect(_check_status)
+	var stats = p_user.get_stats()
+	state_changed.emit(self, _use_comparison_operator(operator, stats.armor, target))
 	
 ## Envía la señal state_changed con el resultado de la comparación
 func _check_status(_old, armor):

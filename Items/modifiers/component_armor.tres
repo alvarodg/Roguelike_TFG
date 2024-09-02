@@ -8,11 +8,13 @@
 
 [sub_resource type="Resource" id="Resource_4o8ju"]
 script = ExtResource("1_oyy4g")
-health = 10
+magnitude = 0.0
+action = 0
 
 [sub_resource type="Resource" id="Resource_bk3gm"]
 script = ExtResource("2_q5xso")
-shield = 0
+magnitude = 0.0
+action = 0
 
 [sub_resource type="Resource" id="Resource_ccn7c"]
 script = ExtResource("2_j840r")
@@ -23,6 +25,8 @@ ui_name = "TEST"
 script = ExtResource("1_g0sky")
 ui_data = SubResource("Resource_ccn7c")
 description = ""
+rarity = 1
 modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_4o8ju"), SubResource("Resource_bk3gm")])
-triggers = Array[Resource("res://Items/modifiers/triggers/trigger.gd")]([])
 condition_triggers = Array[Resource("res://Items/modifiers/conditions/condition_trigger.gd")]([])
+fragile = false
+tags = Array[int]([0])

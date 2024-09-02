@@ -6,8 +6,10 @@ class_name PercentHealthCondition
 
 func connect_to(p_user):
 	super.connect_to(p_user)
-	assert(p_user.stats is CombatantStats)
 	p_user.stats.health_changed.connect(_check_status)
+	var stats: CombatantStats = p_user.get_stats()
+	var result = _use_comparison_operator(operator, stats.health, int(stats.max_health * percent))
+	state_changed.emit(self, result)
 
 func _check_status(_old_health = null, health = null, max_health = null):
 	var result = _use_comparison_operator(operator, health, int(max_health * percent))

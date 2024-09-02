@@ -60,18 +60,19 @@ func set_triggers_remaining(value):
 ## Conecta el disparador a su usuario, un Combatant p_user.
 func apply_to(p_user: Combatant):
 	user = p_user
+	setup()
 	# Conecta las condiciones de estado al jugador y _on_state_changed
 	# (si no están ya conectadas).
 	for state in state_conditions:
-		state.connect_to(user)
 		if not state.state_changed.is_connected(_on_state_changed):
 			state.state_changed.connect(_on_state_changed)
+		state.connect_to(user)
 	# Conecta la condición de evento al jugador y _on_triggered 
 	# (si no está ya conectada).
 	if event_condition is EventCondition:
-		event_condition.connect_to(user)
 		if not event_condition.met.is_connected(_on_triggered):
 			event_condition.met.connect(_on_triggered)
+		event_condition.connect_to(user)
 	# Si no tiene condición de evento, conecta state_ok a _on_triggered directamente,
 	# se ejecutará la función en cuanto se cumplan todas las condiciones de estado.
 	else:
@@ -111,6 +112,7 @@ func _on_state_changed(state_ref, value):
 	# Si cumple todas las condiciones de estado, envía state_ok(true)
 	if current_state.all(func(x): return x==true):
 		state_ok.emit(true)
+	print(current_state)
 
 ## Reinicia la cantidad de disparos disponibles.
 func _reset_triggers_remaing():
