@@ -23,6 +23,7 @@ var sequence: ChoiceSequence
 var player: Player
 var final: bool = false
 
+var is_disabled: bool = false : set = set_is_disabled
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -50,8 +51,15 @@ func setup(p_player: Player):
 	_check_cost()
 	player.stats_changed.connect(_on_Player_Stats_changed)
 
+func set_is_disabled(value):
+	is_disabled = value
+	button.disabled = is_disabled
+
 func disable():
-	button.disabled = true
+	is_disabled = true
+
+func enable():
+	is_disabled = false
 
 func _on_Player_Stats_changed(_stats):
 	_check_cost()
@@ -124,9 +132,9 @@ func _update_hover_description(p_label: Label):
 func _check_cost():
 	if cost != null:
 		if cost.can_pay(player):
-			button.disabled = false
+			enable()
 		else:
-			button.disabled = true
+			disable()
 
 func show_narrative(narrative: NarrativeEventData, pre: bool = true):
 	if narrative != null:

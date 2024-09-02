@@ -11,13 +11,15 @@ class_name EventPick
 # Objeto de interfaz que muestra las estadísticas del jugador
 @onready var player_stats_compact_ui = %PlayerStatsCompactUI
 
+const DEFAULT_LEAVE = preload("res://Events/event_choice/resources/choices/default_leave.tres")
+
 ## Nombre del evento
 var event_name: String
 ## Narrativa asociada al evento
 var narrative: String
 ## Imagen representativa del evento
 var image: Texture2D
-## Lista de opciones entra las que podrá elegir el jugador
+## Lista de opciones entre las que podrá elegir el jugador
 var choices: Array[EventChoiceData]
 
 # Called when the node enters the scene tree for the first time.
@@ -28,20 +30,23 @@ func _ready():
 	player_stats_compact_ui.setup(player)
 	# Para cada opción
 	for choice in choices:
-		# Crea su escena a partir del jugador 
-		var scene: EventChoice = choice.create_instance(player)
-		# Añade esta al contenedor de opciones de la interfaz
-		choice_container.add_child(scene)
-		# Conecta sus señales
-		scene.events_about_to_begin.connect(_on_choice_begins)
-		scene.finished.connect(_on_choice_finished)
-		scene.returned.connect(_on_choice_returned)
-		scene.selected.connect(_on_choice_selected)
-		scene.pre_selected.connect(_on_choice_pre_selected)
+		create_choice(choice)
+		## Crea su escena a partir del jugador 
+		#var scene: EventChoice = choice.create_instance(player)
+		## Añade esta al contenedor de opciones de la interfaz
+		#choice_container.add_child(scene)
+		## Conecta sus señales
+		#scene.events_about_to_begin.connect(_on_choice_begins)
+		#scene.finished.connect(_on_choice_finished)
+		#scene.returned.connect(_on_choice_returned)
+		#scene.selected.connect(_on_choice_selected)
+		#scene.pre_selected.connect(_on_choice_pre_selected)
 	# Asigna las variables cosméticas del evento a la interfaz
 	narrative_label.text = narrative
 	event_picture.texture = image
 	event_name_label.text = event_name.to_upper()
+	#
+	_check_for_softlock()
 
 ## Inicializa la escena a partir de su clase de datos y el jugador
 func initialize(p_player: Player, data: EventPickData):
@@ -50,6 +55,27 @@ func initialize(p_player: Player, data: EventPickData):
 	choices = data.choices
 	image = data.image
 	event_name = data.name
+
+func create_choice(choice_data: EventChoiceData):
+	# Crea su escena a partir del jugador 
+	var scene: EventChoice = choice_data.create_instance(player)
+	# Añade esta al contenedor de opciones de la interfaz
+	choice_container.add_child(scene)
+	# Conecta sus señales
+	scene.events_about_to_begin.connect(_on_choice_begins)
+	scene.finished.connect(_on_choice_finished)
+	scene.returned.connect(_on_choice_returned)
+	scene.selected.connect(_on_choice_selected)
+	scene.pre_selected.connect(_on_choice_pre_selected)
+
+func _check_for_softlock():
+	var choice_instances = []
+	for choice in choice_container.get_children():
+		if choice is EventChoice:
+			choice_instances.append(choice)
+	if choice_instances.all(func (x: EventChoice): return x.is_disabled):
+		create_choice(DEFAULT_LEAVE)
+		
 
 ## Las siguientes funciones fueron diseñadas para reaccionar a las señales de
 ## EventChoice:
@@ -69,6 +95,7 @@ func _on_choice_finished():
 ## vuelve a mostrarla
 func _on_choice_returned():
 	show()
+	_check_for_softlock()
 
 ## Cuando una opción se ha seleccionado, desactiva todas las demás opciones
 func _on_choice_selected(choice: EventChoice):

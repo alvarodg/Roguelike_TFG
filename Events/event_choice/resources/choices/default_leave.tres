@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="EventChoiceData" load_steps=4 format=3 uid="uid://by0dlkk2oluh1"]
+
+[ext_resource type="Script" path="res://Events/event_choice/event_choice_data.gd" id="1_dkjnq"]
+[ext_resource type="Script" path="res://Events/event_choice/choice_sequence.gd" id="2_meamp"]
+
+[sub_resource type="Resource" id="Resource_ydlrd"]
+script = ExtResource("2_meamp")
+pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+events = Array[Resource("res://Events/EventData.gd")]([])
+secret = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+make_unique = false
+
+[resource]
+script = ExtResource("1_dkjnq")
+description = "Leave"
+explicit = false
+sequence = SubResource("Resource_ydlrd")
+final = true
+secret = false

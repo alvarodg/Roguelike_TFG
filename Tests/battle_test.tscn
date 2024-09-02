@@ -43,7 +43,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_h0e27")
 enemy_data = ExtResource("2_fxm7g")
-pre_player_damage = 70
 
 [node name="Player" parent="." instance=ExtResource("6_ujn4n")]
 stats = SubResource("Resource_ln2xl")
