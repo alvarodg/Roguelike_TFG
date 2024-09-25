@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="Event" load_steps=10 format=3 uid="uid://bvttcj02etolj"]
+
+[ext_resource type="Resource" uid="uid://c0sbxboht28e2" path="res://Events/resources/event_data/random_equipment_choice.tres" id="1_pq1t8"]
+[ext_resource type="Resource" uid="uid://dy07u6tkhoiby" path="res://Events/resources/event_data/battle/easy_battle_data_2.tres" id="2_6ditb"]
+[ext_resource type="Resource" uid="uid://b50teewhddeer" path="res://Events/resources/event_data/battle/easy_battle_data_3.tres" id="3_qlbrv"]
+[ext_resource type="Script" path="res://Events/random_battle_event_data.gd" id="4_jk115"]
+[ext_resource type="Texture2D" uid="uid://bl5ps382ndwf3" path="res://Events/icons/exclamation_hover.png" id="5_63r46"]
+[ext_resource type="Texture2D" uid="uid://cood8nuhjx2kb" path="res://Events/icons/exclamation.png" id="6_nb0fb"]
+[ext_resource type="Texture2D" uid="uid://ck3k05m1q2gkt" path="res://Events/icons/exclamation_traveled.png" id="7_b3001"]
+[ext_resource type="Script" path="res://Events/Event.gd" id="8_oiynr"]
+
+[sub_resource type="Resource" id="Resource_ycx7a"]
+script = ExtResource("4_jk115")
+possible_battles = Array[Resource("res://Events/BattleEventData.gd")]([ExtResource("2_6ditb"), ExtResource("3_qlbrv")])
+name = ""
+description = ""
+next_event = ExtResource("1_pq1t8")
+rarity = 1
+tags = Array[int]([0])
+secret = false
+unique = false
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
+[resource]
+script = ExtResource("8_oiynr")
+icon_normal = ExtResource("6_nb0fb")
+icon_hover = ExtResource("5_63r46")
+icon_traveled = ExtResource("7_b3001")
+text = "! Event"
+id = 0
+event_data = SubResource("Resource_ycx7a")

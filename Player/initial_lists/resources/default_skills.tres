@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SkillList" load_steps=5 format=3 uid="uid://boiuynqgsqxky"]
+
+[ext_resource type="Resource" uid="uid://dohuwbuerwh8r" path="res://Battle/skills/resources/balanced_strike.tres" id="1_jdb6s"]
+[ext_resource type="Resource" uid="uid://bsioc5j8lwg1x" path="res://Battle/skills/resources/hit_attack.tres" id="2_kmoa0"]
+[ext_resource type="Resource" uid="uid://disqwyhl7b6xd" path="res://Battle/skills/resources/reroll.tres" id="3_msy8r"]
+[ext_resource type="Script" path="res://Player/initial_lists/skill_list.gd" id="4_1w0bv"]
+
+[resource]
+script = ExtResource("4_1w0bv")
+list = Array[Resource("res://Battle/skills/SkillData.gd")]([ExtResource("1_jdb6s"), ExtResource("2_kmoa0"), ExtResource("3_msy8r")])

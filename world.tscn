@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bfdmc5trnp4uk"]
+[gd_scene load_steps=17 format=3 uid="uid://bfdmc5trnp4uk"]
 
 [ext_resource type="Theme" uid="uid://dvg7jbsgrbfoe" path="res://assets/pixel_ui/pixel_theme_menus.tres" id="1_6rk2b"]
 [ext_resource type="Script" path="res://world.gd" id="1_ewi3c"]
@@ -11,9 +11,8 @@
 [ext_resource type="Resource" uid="uid://b3t3hv7n1dbyh" path="res://Run/collections/default_skill_collection.tres" id="4_lc4a6"]
 [ext_resource type="Resource" uid="uid://k6ndslc1hrs1" path="res://Battle/player/resources/default_player_ui_data.tres" id="4_ryo5a"]
 [ext_resource type="Resource" uid="uid://d4eu11bq6vx5e" path="res://Run/collections/default_event_collection.tres" id="5_oyf2y"]
-[ext_resource type="Resource" uid="uid://dohuwbuerwh8r" path="res://Battle/skills/resources/balanced_strike.tres" id="8_3hjda"]
-[ext_resource type="Resource" uid="uid://bsioc5j8lwg1x" path="res://Battle/skills/resources/hit_attack.tres" id="9_imgkd"]
-[ext_resource type="Resource" uid="uid://disqwyhl7b6xd" path="res://Battle/skills/resources/reroll.tres" id="10_pvof1"]
+[ext_resource type="Resource" uid="uid://boiuynqgsqxky" path="res://Player/initial_lists/resources/default_skills.tres" id="10_4t4ir"]
+[ext_resource type="Resource" uid="uid://14qb5yny7rta" path="res://Player/initial_lists/resources/default_equipment.tres" id="11_7nmhb"]
 [ext_resource type="Resource" uid="uid://clyjfvymwgamd" path="res://Generation/resources/l1_weld_generation.tres" id="16_1lfjr"]
 [ext_resource type="Resource" uid="uid://blbgpkie0ea8o" path="res://Generation/resources/l2_weld_generation.tres" id="17_82nen"]
 [ext_resource type="Resource" uid="uid://cqw2ej3w1b85p" path="res://Generation/resources/l3_weld_generation.tres" id="18_3q4dl"]
@@ -36,7 +35,8 @@ events = ExtResource("5_oyf2y")
 [node name="Player" parent="." instance=ExtResource("2_yatmi")]
 stats = ExtResource("3_nvh0g")
 ui_data = ExtResource("4_ryo5a")
-skill_list = Array[Resource("res://Battle/skills/SkillData.gd")]([ExtResource("8_3hjda"), ExtResource("9_imgkd"), ExtResource("10_pvof1")])
+default_skill_list = ExtResource("10_4t4ir")
+default_equipment = ExtResource("11_7nmhb")
 
 [node name="Map" parent="." instance=ExtResource("2_tumwh")]
 unique_name_in_owner = true

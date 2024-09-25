@@ -1,61 +1,30 @@
-[gd_scene load_steps=27 format=3 uid="uid://p7bi8ul5sa3d"]
+[gd_scene load_steps=25 format=3 uid="uid://p7bi8ul5sa3d"]
 
 [ext_resource type="Script" path="res://Tests/test_event.gd" id="1_5fra8"]
-[ext_resource type="Script" path="res://Items/modifiers/components/stats/health_modifier_component.gd" id="2_jhpg6"]
-[ext_resource type="Script" path="res://Items/modifiers/cost/health_cost.gd" id="3_5uq4a"]
+[ext_resource type="Resource" uid="uid://bgejrj05jn8x0" path="res://Tests/test_events/presentacion_event_test.tres" id="2_0dhbe"]
 [ext_resource type="Script" path="res://Player/Player.gd" id="3_c1xat"]
-[ext_resource type="Script" path="res://Events/event_choice/event_choice_data.gd" id="4_7b8vc"]
 [ext_resource type="Script" path="res://Battle/combatant/PlayerStats.gd" id="4_rki66"]
 [ext_resource type="Script" path="res://Player/PlayerUIData.gd" id="5_h1yvh"]
-[ext_resource type="Script" path="res://Events/event_choice/event_pick_data.gd" id="5_nnrwd"]
 [ext_resource type="Texture2D" uid="uid://b3orepwgh8usw" path="res://assets/redshrike/combatants/player/guy.png" id="6_rsfq8"]
-[ext_resource type="Resource" uid="uid://1f1t8s1ew7uy" path="res://Battle/skills/resources/win.tres" id="7_gm1vr"]
+[ext_resource type="Resource" uid="uid://dohuwbuerwh8r" path="res://Battle/skills/resources/balanced_strike.tres" id="8_10nha"]
+[ext_resource type="Resource" uid="uid://1f1t8s1ew7uy" path="res://Battle/skills/resources/win.tres" id="8_cg1d1"]
 [ext_resource type="PackedScene" uid="uid://buwxy0toti3j8" path="res://Run/collection_container.tscn" id="8_p4se0"]
-[ext_resource type="Resource" uid="uid://bsioc5j8lwg1x" path="res://Battle/skills/resources/hit_attack.tres" id="8_tx3p4"]
 [ext_resource type="Resource" uid="uid://5871ejwt2whd" path="res://Run/collections/default_equipment_collection.tres" id="9_k2nqh"]
-[ext_resource type="Resource" uid="uid://r517h04l207c" path="res://Battle/skills/resources/combo.tres" id="9_xpq5q"]
-[ext_resource type="Resource" uid="uid://coos4xdskyy7o" path="res://Battle/skills/resources/counterfeit.tres" id="10_dj0i6"]
+[ext_resource type="Script" path="res://Player/initial_lists/skill_list.gd" id="9_pfmyq"]
+[ext_resource type="Resource" uid="uid://bsioc5j8lwg1x" path="res://Battle/skills/resources/hit_attack.tres" id="9_wa1fm"]
+[ext_resource type="Script" path="res://Player/initial_lists/equipment_list.gd" id="10_acayd"]
+[ext_resource type="Resource" uid="uid://disqwyhl7b6xd" path="res://Battle/skills/resources/reroll.tres" id="10_c20j7"]
 [ext_resource type="Resource" uid="uid://b3t3hv7n1dbyh" path="res://Run/collections/default_skill_collection.tres" id="10_g4yfp"]
-[ext_resource type="Resource" uid="uid://d1u5h8ydcu0pl" path="res://Battle/skills/resources/jackpot.tres" id="11_42mxh"]
+[ext_resource type="Resource" uid="uid://d1x56j4elwdrx" path="res://Battle/skills/resources/backflip.tres" id="11_83ign"]
 [ext_resource type="Resource" uid="uid://cxjloh7bo4onj" path="res://Run/collections/test_event_collection.tres" id="11_kmuwa"]
-[ext_resource type="Resource" uid="uid://q8cjuohabuf1" path="res://Battle/skills/resources/slippery_strike.tres" id="12_an3kp"]
-[ext_resource type="Resource" uid="uid://dux2lw2o3v0dr" path="res://Items/equipment/resources/cursed_coin.tres" id="13_w30e7"]
-
-[sub_resource type="Resource" id="Resource_qhfvy"]
-script = ExtResource("2_jhpg6")
-magnitude = -120.0
-action = 0
-
-[sub_resource type="Resource" id="Resource_xwbmd"]
-script = ExtResource("3_5uq4a")
-health_mod = SubResource("Resource_qhfvy")
-
-[sub_resource type="Resource" id="Resource_dfxgu"]
-script = ExtResource("4_7b8vc")
-description = ""
-explicit = false
-cost = SubResource("Resource_xwbmd")
-final = true
-secret = false
-
-[sub_resource type="Resource" id="Resource_o4mx6"]
-script = ExtResource("5_nnrwd")
-narrative = ""
-choices = Array[ExtResource("4_7b8vc")]([SubResource("Resource_dfxgu")])
-name = ""
-description = ""
-rarity = 1
-tags = Array[int]([0])
-secret = false
-unique = false
-goes_to_next_level = false
-is_final_event = false
-event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+[ext_resource type="Resource" uid="uid://co4dxk6664vpn" path="res://Battle/skills/resources/life_burn.tres" id="12_k6qei"]
+[ext_resource type="Resource" uid="uid://d78buw8sx4i6" path="res://Items/equipment/resources/regular_coin.tres" id="14_7nbu0"]
+[ext_resource type="Resource" uid="uid://000ce1xcp83o" path="res://Items/equipment/resources/conditional/flip_shield.tres" id="15_l2v6x"]
 
 [sub_resource type="Resource" id="Resource_bnqu0"]
 script = ExtResource("4_rki66")
 coin_count = 5
-base_luck = 1.0
+base_luck = 0.0
 max_health = 90
 base_strength = 0
 base_shield = 0
@@ -69,6 +38,14 @@ script = ExtResource("5_h1yvh")
 sprite = ExtResource("6_rsfq8")
 ui_name = "Player"
 
+[sub_resource type="Resource" id="Resource_roe0h"]
+script = ExtResource("9_pfmyq")
+list = Array[Resource("res://Battle/skills/SkillData.gd")]([ExtResource("8_10nha"), ExtResource("9_wa1fm"), ExtResource("10_c20j7"), ExtResource("11_83ign"), ExtResource("12_k6qei"), ExtResource("8_cg1d1")])
+
+[sub_resource type="Resource" id="Resource_npmht"]
+script = ExtResource("10_acayd")
+list = Array[Resource("res://Items/equipment/equipment.gd")]([ExtResource("14_7nbu0"), ExtResource("15_l2v6x")])
+
 [node name="TestEvent" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -77,14 +54,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5fra8")
-event_data = SubResource("Resource_o4mx6")
+event_data = ExtResource("2_0dhbe")
 
 [node name="Player" type="Node" parent="."]
 script = ExtResource("3_c1xat")
 stats = SubResource("Resource_bnqu0")
 ui_data = SubResource("Resource_ku3kp")
-skill_list = Array[Resource("res://Battle/skills/SkillData.gd")]([ExtResource("7_gm1vr"), ExtResource("8_tx3p4"), ExtResource("9_xpq5q"), ExtResource("10_dj0i6"), ExtResource("11_42mxh"), ExtResource("12_an3kp")])
-default_equipment = Array[Resource("res://Items/equipment/equipment.gd")]([ExtResource("13_w30e7")])
+default_skill_list = SubResource("Resource_roe0h")
+default_equipment = SubResource("Resource_npmht")
 
 [node name="CollectionContainer" parent="." instance=ExtResource("8_p4se0")]
 equipments = ExtResource("9_k2nqh")

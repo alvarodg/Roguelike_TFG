@@ -1,0 +1,164 @@
+[gd_resource type="Resource" script_class="EventPickData" load_steps=26 format=3 uid="uid://bgejrj05jn8x0"]
+
+[ext_resource type="Script" path="res://Events/event_choice/event_pick_data.gd" id="1_chrlo"]
+[ext_resource type="Script" path="res://Items/modifiers/components/stats/health_modifier_component.gd" id="1_losmt"]
+[ext_resource type="Script" path="res://Items/modifiers/cost/health_cost.gd" id="2_ydus2"]
+[ext_resource type="Script" path="res://Events/event_choice/event_choice_data.gd" id="3_yu8ld"]
+[ext_resource type="Script" path="res://Events/narrative_event_data.gd" id="4_a77it"]
+[ext_resource type="Script" path="res://Events/event_choice/choice_coin_box_data.gd" id="4_f6hsp"]
+[ext_resource type="Script" path="res://Events/event_choice/choice_sequence.gd" id="5_3fj0f"]
+[ext_resource type="Script" path="res://Events/event_choice/split_event_choice_data.gd" id="5_b2nec"]
+[ext_resource type="Script" path="res://Events/equipment_choice_data.gd" id="8_n4efl"]
+[ext_resource type="Script" path="res://Events/skill_choice_data.gd" id="9_308gh"]
+
+[sub_resource type="Resource" id="Resource_rdbyu"]
+script = ExtResource("1_losmt")
+magnitude = -999.0
+action = 0
+
+[sub_resource type="Resource" id="Resource_rirdh"]
+script = ExtResource("2_ydus2")
+health_mod = SubResource("Resource_rdbyu")
+
+[sub_resource type="Resource" id="Resource_slyct"]
+script = ExtResource("3_yu8ld")
+description = "Una decision con coste que no se puede pagar."
+explicit = false
+cost = SubResource("Resource_rirdh")
+final = true
+secret = false
+
+[sub_resource type="Resource" id="Resource_s3jxx"]
+script = ExtResource("4_a77it")
+narrative = Array[String](["La tirada no tuvo éxito. Daño recibido."])
+name = ""
+description = ""
+rarity = 1
+tags = Array[int]([0])
+secret = false
+unique = false
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
+[sub_resource type="Resource" id="Resource_imeqw"]
+script = ExtResource("1_losmt")
+magnitude = -10.0
+action = 0
+
+[sub_resource type="Resource" id="Resource_3fb72"]
+script = ExtResource("5_3fj0f")
+pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_imeqw")])
+post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+events = Array[Resource("res://Events/EventData.gd")]([])
+secret = false
+post_narrative = SubResource("Resource_s3jxx")
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+make_unique = false
+
+[sub_resource type="Resource" id="Resource_3gbgv"]
+script = ExtResource("4_f6hsp")
+coin_amount = 3
+target_heads = 2
+operator = 1
+
+[sub_resource type="Resource" id="Resource_ujxu3"]
+script = ExtResource("1_losmt")
+magnitude = -20.0
+action = 0
+
+[sub_resource type="Resource" id="Resource_f0ill"]
+script = ExtResource("2_ydus2")
+health_mod = SubResource("Resource_ujxu3")
+
+[sub_resource type="Resource" id="Resource_t0wgo"]
+script = ExtResource("8_n4efl")
+choices = 3
+equip_tags = Array[int]([4])
+tag_op = 1
+rarities = Array[int]([])
+rarity_factor = 1.0
+deterministic = true
+name = ""
+description = "Recibe una moneda."
+rarity = 1
+tags = Array[int]([0])
+secret = false
+unique = false
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
+[sub_resource type="Resource" id="Resource_exil2"]
+script = ExtResource("9_308gh")
+choices = 3
+skill_tags = Array[int]([])
+tag_op = 1
+rarities = Array[int]([])
+rarity_factor = 1.0
+deterministic = true
+name = ""
+description = "Selecciona una habiliad."
+rarity = 1
+tags = Array[int]([0])
+secret = false
+unique = false
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
+[sub_resource type="Resource" id="Resource_i3unl"]
+script = ExtResource("4_a77it")
+narrative = Array[String](["La tirada cumplió el objetivo."])
+name = ""
+description = ""
+rarity = 1
+tags = Array[int]([0])
+secret = false
+unique = false
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+
+[sub_resource type="Resource" id="Resource_j0fjk"]
+script = ExtResource("5_3fj0f")
+pre_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+post_modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
+events = Array[Resource("res://Events/EventData.gd")]([SubResource("Resource_t0wgo"), SubResource("Resource_exil2")])
+secret = false
+pre_narrative = SubResource("Resource_i3unl")
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])
+make_unique = false
+
+[sub_resource type="Resource" id="Resource_utyxi"]
+script = ExtResource("5_b2nec")
+alt_sequence = SubResource("Resource_3fb72")
+coinbox_data = SubResource("Resource_3gbgv")
+deterministic = true
+description = "Una decision con tirada y un coste que se puede pagar."
+explicit = false
+cost = SubResource("Resource_f0ill")
+sequence = SubResource("Resource_j0fjk")
+final = true
+secret = false
+
+[sub_resource type="Resource" id="Resource_1u2ky"]
+script = ExtResource("3_yu8ld")
+description = "Decision que no hace nada."
+explicit = false
+final = true
+secret = false
+
+[resource]
+script = ExtResource("1_chrlo")
+narrative = "Evento de ejemplo para la presentación del proyecto."
+choices = Array[ExtResource("3_yu8ld")]([SubResource("Resource_slyct"), SubResource("Resource_utyxi"), SubResource("Resource_1u2ky")])
+name = "EJEMPLO"
+description = ""
+rarity = 1
+tags = Array[int]([0])
+secret = false
+unique = false
+goes_to_next_level = false
+is_final_event = false
+event_unlocks = Array[Resource("res://Events/EventData.gd")]([])

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EquipmentList" load_steps=7 format=3 uid="uid://dh8dln7rpv84r"]
+
+[ext_resource type="Resource" uid="uid://dbfg2y1v4w6ig" path="res://Items/equipment/resources/conditional/heads_bouncer.tres" id="1_c610b"]
+[ext_resource type="Script" path="res://Player/initial_lists/equipment_list.gd" id="1_ktjrw"]
+[ext_resource type="Resource" uid="uid://dxb0hirym3yg5" path="res://Items/equipment/resources/conditional/gravity_shield.tres" id="2_ktph0"]
+[ext_resource type="Resource" uid="uid://btit52mr068qu" path="res://Items/equipment/resources/conditional/tails_bouncer.tres" id="3_jt06v"]
+[ext_resource type="Resource" uid="uid://bnosk2phjxnox" path="res://Items/equipment/resources/conditional/blade_of_the_fallen.tres" id="4_tx4cm"]
+[ext_resource type="Resource" uid="uid://d78buw8sx4i6" path="res://Items/equipment/resources/regular_coin.tres" id="5_hsqvo"]
+
+[resource]
+script = ExtResource("1_ktjrw")
+list = Array[Resource("res://Items/equipment/equipment.gd")]([ExtResource("1_c610b"), ExtResource("3_jt06v"), ExtResource("2_ktph0"), ExtResource("4_tx4cm"), ExtResource("5_hsqvo")])

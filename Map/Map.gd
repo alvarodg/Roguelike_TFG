@@ -82,6 +82,16 @@ func start_game(player: Player, rng: RandomNumberGenerator):
 #	await RunData.finished_loading
 #	RunData.reload_rng()
 	
+func regenerate_levels(rng: RandomNumberGenerator):
+	await ScreenTransitions.fade_to_black()
+	level_list = []
+	for i in range(generation_data_list.size()):
+		var level = generator.generate(generation_data_list[i], rng)
+		level_list.append(level)
+	set_level(current_level)
+	await ScreenTransitions.fade_from_black()
+	EventBus.level_generation_completed.emit()
+	
 func _on_level_finished():
 	get_parent().show()
 	if current_level+1 < level_list.size():

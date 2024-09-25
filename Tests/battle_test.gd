@@ -4,11 +4,12 @@ extends Control
 @onready var player = $Player
 @export var enemy_data: EnemyData
 @export var pre_player_damage: int = 0
-
+@export var background_texture: Texture2D = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var battle_data = BattleEventData.new()
 	battle_data.enemy_data = enemy_data
+	battle_data.background_texture = background_texture
 	player.get_stats().health -= pre_player_damage
 	var battle = battle_data.instantiate_scene(player)
 	add_child(battle)

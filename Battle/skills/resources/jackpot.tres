@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="SkillData" load_steps=4 format=3 uid="uid://d1u5h8ydcu0pl"]
+[gd_resource type="Resource" script_class="SkillData" load_steps=6 format=3 uid="uid://d1u5h8ydcu0pl"]
 
 [ext_resource type="Script" path="res://Battle/skills/behaviors/damage_skill_behavior.gd" id="1_ul18g"]
 [ext_resource type="Script" path="res://Battle/skills/SkillData.gd" id="2_004my"]
+[ext_resource type="Script" path="res://Battle/skills/behaviors/reroll_skill_behavior.gd" id="2_wfuqx"]
 
 [sub_resource type="Resource" id="Resource_l622n"]
 script = ExtResource("1_ul18g")
@@ -13,15 +14,20 @@ ignore_dodges = true
 shield_factor = 1.0
 animate_hit = true
 
+[sub_resource type="Resource" id="Resource_1olmd"]
+script = ExtResource("2_wfuqx")
+rerolls = 3
+facing = 0
+
 [resource]
 script = ExtResource("2_004my")
 name = "Jackpot"
 cost = Array[int]([0, 5, 0])
-uses_per_turn = 2
+uses_per_turn = 1
 one_shot = false
 cost_is_mandatory = true
-rarity = 2
-behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_l622n")])
+rarity = 3
+behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([SubResource("Resource_l622n"), SubResource("Resource_1olmd")])
 modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([])
 modifiers_first = true
 tags = Array[int]([0, 1])

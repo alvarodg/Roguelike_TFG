@@ -5,19 +5,18 @@
 [ext_resource type="PackedScene" uid="uid://dyrxg61yw7bhk" path="res://Player/player.tscn" id="2_k4g5a"]
 [ext_resource type="Resource" uid="uid://clyjfvymwgamd" path="res://Generation/resources/l1_weld_generation.tres" id="3_0e3o7"]
 [ext_resource type="Script" path="res://Battle/combatant/PlayerStats.gd" id="3_dmijw"]
-[ext_resource type="Texture2D" uid="uid://djmrox3cqnntc" path="res://icon.svg" id="4_58lrw"]
 [ext_resource type="Resource" uid="uid://blbgpkie0ea8o" path="res://Generation/resources/l2_weld_generation.tres" id="4_j7deq"]
 [ext_resource type="Script" path="res://Player/PlayerUIData.gd" id="5_5cldc"]
 [ext_resource type="Resource" uid="uid://cqw2ej3w1b85p" path="res://Generation/resources/l3_weld_generation.tres" id="5_yutjg"]
-[ext_resource type="Resource" uid="uid://dohuwbuerwh8r" path="res://Battle/skills/resources/balanced_strike.tres" id="6_k51wj"]
-[ext_resource type="Resource" uid="uid://bsioc5j8lwg1x" path="res://Battle/skills/resources/hit_attack.tres" id="7_5qawh"]
-[ext_resource type="Resource" uid="uid://disqwyhl7b6xd" path="res://Battle/skills/resources/reroll.tres" id="8_ebmb0"]
+[ext_resource type="Texture2D" uid="uid://b3orepwgh8usw" path="res://assets/redshrike/combatants/player/guy.png" id="9_mvr38"]
+[ext_resource type="Resource" uid="uid://14qb5yny7rta" path="res://Player/initial_lists/resources/default_equipment.tres" id="11_5rdwn"]
 [ext_resource type="Resource" uid="uid://1f1t8s1ew7uy" path="res://Battle/skills/resources/win.tres" id="11_p3xff"]
+[ext_resource type="Script" path="res://Player/initial_lists/skill_list.gd" id="11_qwf0v"]
 [ext_resource type="PackedScene" uid="uid://buwxy0toti3j8" path="res://Run/collection_container.tscn" id="12_ehc8b"]
 [ext_resource type="Resource" uid="uid://5871ejwt2whd" path="res://Run/collections/default_equipment_collection.tres" id="13_fg0k2"]
 [ext_resource type="Resource" uid="uid://b3t3hv7n1dbyh" path="res://Run/collections/default_skill_collection.tres" id="14_8qm0e"]
+[ext_resource type="Resource" uid="uid://ultgyeymw3f2" path="res://Events/resources/event_data/event_pick/rest.tres" id="16_g6nop"]
 [ext_resource type="Resource" uid="uid://du5unm6rln13y" path="res://Events/resources/event_data/event_pick/hit_event.tres" id="17_5rwf7"]
-[ext_resource type="Resource" uid="uid://cm5x8bjhmsv5y" path="res://Events/resources/event_data/event_pick/preacher.tres" id="18_8bcop"]
 [ext_resource type="Script" path="res://Run/event_collection.gd" id="19_cign8"]
 
 [sub_resource type="Resource" id="Resource_hv6mw"]
@@ -29,15 +28,21 @@ base_strength = 0
 base_shield = 0
 base_armor = 0
 base_dodges = 0
+base_shield_decay_turns = 1
+shield_decay_rate = 1.0
 
 [sub_resource type="Resource" id="Resource_drvon"]
 script = ExtResource("5_5cldc")
-sprite = ExtResource("4_58lrw")
+sprite = ExtResource("9_mvr38")
 ui_name = "TEST PLAYER"
+
+[sub_resource type="Resource" id="Resource_3hsus"]
+script = ExtResource("11_qwf0v")
+list = Array[Resource("res://Battle/skills/SkillData.gd")]([ExtResource("11_p3xff")])
 
 [sub_resource type="Resource" id="Resource_mtrvk"]
 script = ExtResource("19_cign8")
-list = Array[Resource("res://Events/EventData.gd")]([ExtResource("17_5rwf7"), ExtResource("18_8bcop")])
+list = Array[Resource("res://Events/EventData.gd")]([ExtResource("17_5rwf7"), ExtResource("16_g6nop")])
 
 [node name="MapTest" type="Control"]
 layout_mode = 3
@@ -50,15 +55,43 @@ script = ExtResource("1_fhbqu")
 
 [node name="Map" parent="." instance=ExtResource("1_qq8ne")]
 layout_mode = 1
-debug = true
 generation_data_list = Array[Resource("res://Generation/generation_data.gd")]([ExtResource("3_0e3o7"), ExtResource("4_j7deq"), ExtResource("5_yutjg")])
 
 [node name="Player" parent="." instance=ExtResource("2_k4g5a")]
 stats = SubResource("Resource_hv6mw")
 ui_data = SubResource("Resource_drvon")
-skill_list = Array[Resource("res://Battle/skills/SkillData.gd")]([ExtResource("6_k51wj"), ExtResource("7_5qawh"), ExtResource("8_ebmb0"), ExtResource("11_p3xff")])
+default_skill_list = SubResource("Resource_3hsus")
+default_equipment = ExtResource("11_5rdwn")
 
 [node name="CollectionContainer" parent="." instance=ExtResource("12_ehc8b")]
 equipments = ExtResource("13_fg0k2")
 skills = ExtResource("14_8qm0e")
 events = SubResource("Resource_mtrvk")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -155.0
+offset_top = -28.0
+offset_right = -3.0
+offset_bottom = -7.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="TextEdit" type="TextEdit" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+placeholder_text = "SEED"
+
+[node name="RegenerateButton" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "REGENERATE"
+
+[connection signal="text_changed" from="HBoxContainer/TextEdit" to="." method="_on_TextEdit_text_changed"]
+[connection signal="pressed" from="HBoxContainer/RegenerateButton" to="." method="_on_RegenerateButton_pressed"]

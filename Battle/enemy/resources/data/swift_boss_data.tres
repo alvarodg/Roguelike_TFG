@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="EnemyData" load_steps=47 format=3 uid="uid://0tb5ir6mx8dp"]
+[gd_resource type="Resource" script_class="EnemyData" load_steps=49 format=3 uid="uid://0tb5ir6mx8dp"]
 
 [ext_resource type="Script" path="res://Items/modifiers/conditions/events/start_of_turn_condition.gd" id="1_0i6dd"]
 [ext_resource type="Script" path="res://Items/modifiers/components/stats/dodges_modifier_component.gd" id="2_cttw1"]
 [ext_resource type="Script" path="res://Items/modifiers/conditions/condition_trigger.gd" id="3_np2gr"]
 [ext_resource type="Script" path="res://Items/equipment/equipment.gd" id="4_gsdgu"]
-[ext_resource type="Texture2D" uid="uid://67vxmnlk8br1" path="res://Items/equipment/sprites/test_item.png" id="5_y4pcv"]
+[ext_resource type="Texture2D" uid="uid://4c1i2lrvoklx" path="res://Items/equipment/sprites/reflexes.png" id="5_txffb"]
 [ext_resource type="Script" path="res://Items/equipment/equipment_ui_data.gd" id="6_xbi0d"]
 [ext_resource type="Script" path="res://Items/modifiers/conditions/events/hit_condition.gd" id="7_xswjw"]
 [ext_resource type="Script" path="res://Items/modifiers/components/stats/health_modifier_component.gd" id="8_p0u6h"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" path="res://Battle/skills/skill_ui_data.gd" id="14_u50lg"]
 [ext_resource type="Texture2D" uid="uid://l8diabvbslw6" path="res://Battle/skills/icons/attack_shield_skill.png" id="15_5dtu0"]
 [ext_resource type="Script" path="res://Battle/skills/behaviors/multihit_skill_behavior.gd" id="17_42nqo"]
+[ext_resource type="Script" path="res://Items/modifiers/components/stats/strength_modifier_component.gd" id="18_gkwto"]
 [ext_resource type="Texture2D" uid="uid://c4mdodsry7ncw" path="res://Battle/skills/icons/strong_attack_skill.png" id="18_ksgm5"]
 [ext_resource type="Texture2D" uid="uid://b17adlv5iff4d" path="res://Battle/skills/icons/stat_boost.png" id="19_8mj11"]
 [ext_resource type="Script" path="res://Battle/enemy/EnemyStats.gd" id="20_dr6tf"]
@@ -44,7 +45,7 @@ reset = 1
 
 [sub_resource type="Resource" id="Resource_c5m8w"]
 script = ExtResource("6_xbi0d")
-icon = ExtResource("5_y4pcv")
+icon = ExtResource("5_txffb")
 ui_name = "Reflexes"
 
 [sub_resource type="Resource" id="Resource_58jr8"]
@@ -188,6 +189,11 @@ script = ExtResource("2_cttw1")
 magnitude = 4.0
 action = 0
 
+[sub_resource type="Resource" id="Resource_oe7mp"]
+script = ExtResource("18_gkwto")
+magnitude = 1.0
+action = 0
+
 [sub_resource type="Resource" id="Resource_ngghu"]
 script = ExtResource("14_u50lg")
 icon = ExtResource("19_8mj11")
@@ -203,7 +209,7 @@ one_shot = false
 cost_is_mandatory = true
 rarity = 1
 behaviors = Array[Resource("res://Battle/skills/behaviors/skill_behavior.gd")]([])
-modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_rvnhm")])
+modifiers = Array[Resource("res://Items/modifiers/components/modifier_component.gd")]([SubResource("Resource_rvnhm"), SubResource("Resource_oe7mp")])
 modifiers_first = true
 tags = Array[int]([0])
 

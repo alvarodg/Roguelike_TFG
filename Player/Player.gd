@@ -17,9 +17,11 @@ signal hit(damage, health, max_health)
 
 @export var stats: PlayerStats = PlayerStats.new() : set = set_stats
 @export var ui_data: PlayerUIData = PlayerUIData.new()
-@export var skill_list: Array[SkillData]
-@export var default_equipment: Array[Equipment]
+@export var default_skill_list: SkillList
+@export var default_equipment: EquipmentList
+#@export var default_equipment: Array[Equipment]
 @export var max_skills: int = 6
+var skill_list: Array[SkillData]
 #var equipment_list: Array[Equipment]
 var coins: Array[Coin] : set = set_coins
 var coin_data: Array[CoinData]
@@ -47,18 +49,20 @@ func _ready():
 	create_coin_data(stats.coin_count)
 	# Para no volver a incluir el equipo por defecto si está cargando partida
 	if not defaults_set:
-	#if equipment_list.size() == 0:
-		for equipment in default_equipment:
-			if equipment != null:
-				equip(equipment)
-		await get_tree().process_frame
-		_remove_from_pool(default_equipment, skill_list)
-		defaults_set = true
+		if default_skill_list != null:
+			skill_list = default_skill_list.list
+		if default_equipment != null:
+			for equipment in default_equipment.list:
+				if equipment != null:
+					equip(equipment)
+			await get_tree().process_frame
+			_remove_from_pool(default_equipment.list, skill_list)
+			defaults_set = true
 				# Necesita que CollectionContainer se inicialice antes que Player, TEMPORAL
 				# Sustituir por señal
 #				if equipment in RunData.collections.equipments.list:
 #					RunData.collections.remove_equipment(equipment)
-	default_equipment = []
+	default_equipment.list = []
 	reset_coins()
 	
 

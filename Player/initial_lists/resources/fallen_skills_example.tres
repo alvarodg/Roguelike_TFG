@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SkillList" load_steps=8 format=3 uid="uid://cm4owmnmybhgt"]
+
+[ext_resource type="Resource" uid="uid://dohuwbuerwh8r" path="res://Battle/skills/resources/balanced_strike.tres" id="1_76k58"]
+[ext_resource type="Resource" uid="uid://cnyuen0pyldwr" path="res://Battle/skills/resources/modulate.tres" id="2_8jpow"]
+[ext_resource type="Resource" uid="uid://coos4xdskyy7o" path="res://Battle/skills/resources/counterfeit.tres" id="3_34lyl"]
+[ext_resource type="Resource" uid="uid://q8cjuohabuf1" path="res://Battle/skills/resources/slippery_strike.tres" id="4_71q2h"]
+[ext_resource type="Resource" uid="uid://dfif1fpb7t7j0" path="res://Battle/skills/resources/reckless_barrage.tres" id="5_5u2i8"]
+[ext_resource type="Script" path="res://Player/initial_lists/skill_list.gd" id="6_7bq55"]
+[ext_resource type="Resource" uid="uid://bw2mdamfuot5m" path="res://Battle/skills/resources/reckless_strike.tres" id="6_usn2q"]
+
+[resource]
+script = ExtResource("6_7bq55")
+list = Array[Resource("res://Battle/skills/SkillData.gd")]([ExtResource("1_76k58"), ExtResource("2_8jpow"), ExtResource("3_34lyl"), ExtResource("4_71q2h"), ExtResource("5_5u2i8"), ExtResource("6_usn2q")])

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EquipmentList" load_steps=6 format=3 uid="uid://b7brb8ibjh01d"]
+
+[ext_resource type="Resource" uid="uid://bxwuaeekjaus4" path="res://Items/equipment/resources/lucky_coin.tres" id="1_1rw53"]
+[ext_resource type="Resource" uid="uid://000ce1xcp83o" path="res://Items/equipment/resources/conditional/flip_shield.tres" id="2_hhlt1"]
+[ext_resource type="Resource" uid="uid://byirjwj6swpfd" path="res://Items/equipment/resources/conditional/blade_of_the_righteous.tres" id="3_gqihc"]
+[ext_resource type="Resource" uid="uid://xmue4sfum232" path="res://Items/equipment/resources/weak_armor.tres" id="4_gd1jf"]
+[ext_resource type="Script" path="res://Player/initial_lists/equipment_list.gd" id="5_hpeq7"]
+
+[resource]
+script = ExtResource("5_hpeq7")
+list = Array[Resource("res://Items/equipment/equipment.gd")]([ExtResource("1_1rw53"), ExtResource("2_hhlt1"), ExtResource("3_gqihc"), ExtResource("4_gd1jf")])

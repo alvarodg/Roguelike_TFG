@@ -49,4 +49,6 @@ func _reset():
 
 ## Genera la descripción de la condición
 func _generate_description():
-	return " " + str(amount) + " times" if amount > 1 else ""
+	var desc: String = " " + str(amount) + " times" if amount > 1 else ""
+	desc += " in one turn" if restart_per_turn and amount > 1 else ""
+	return desc

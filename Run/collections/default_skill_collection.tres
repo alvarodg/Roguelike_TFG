@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SkillCollection" load_steps=28 format=3 uid="uid://b3t3hv7n1dbyh"]
+[gd_resource type="Resource" script_class="SkillCollection" load_steps=29 format=3 uid="uid://b3t3hv7n1dbyh"]
 
 [ext_resource type="Script" path="res://Run/skill_collection.gd" id="1_prump"]
 [ext_resource type="Resource" uid="uid://bxpfepcjv524q" path="res://Battle/skills/resources/consolation.tres" id="1_wccgw"]
@@ -27,7 +27,8 @@
 [ext_resource type="Resource" uid="uid://cnyuen0pyldwr" path="res://Battle/skills/resources/modulate.tres" id="24_fy80a"]
 [ext_resource type="Resource" uid="uid://d0a8ttog0owwa" path="res://Battle/skills/resources/radiance.tres" id="25_c1xr5"]
 [ext_resource type="Resource" uid="uid://pqqbkclixpln" path="res://Battle/skills/resources/equilibrium.tres" id="26_17u5d"]
+[ext_resource type="Resource" uid="uid://mf4eru7wujud" path="res://Battle/skills/resources/purification.tres" id="27_dtedn"]
 
 [resource]
 script = ExtResource("1_prump")
-list = Array[Resource("res://Battle/skills/SkillData.gd")]([ExtResource("1_wccgw"), ExtResource("2_xty4j"), ExtResource("3_3yret"), ExtResource("4_m7w36"), ExtResource("5_ivt1u"), ExtResource("6_dqf2v"), ExtResource("7_40gsl"), ExtResource("8_fu12k"), ExtResource("9_pop5u"), ExtResource("10_ui6qv"), ExtResource("11_dcj1w"), ExtResource("12_tj67l"), ExtResource("13_4su0w"), ExtResource("14_gnusn"), ExtResource("15_ig1pj"), ExtResource("16_2f0jq"), ExtResource("17_v6ibf"), ExtResource("18_ogu4i"), ExtResource("19_u6ye5"), ExtResource("20_jld5f"), ExtResource("21_uvqo3"), ExtResource("22_roj1u"), ExtResource("23_okb2o"), ExtResource("24_fy80a"), ExtResource("8_fu12k"), ExtResource("25_c1xr5"), ExtResource("26_17u5d")])
+list = Array[Resource("res://Battle/skills/SkillData.gd")]([ExtResource("1_wccgw"), ExtResource("2_xty4j"), ExtResource("3_3yret"), ExtResource("4_m7w36"), ExtResource("5_ivt1u"), ExtResource("6_dqf2v"), ExtResource("7_40gsl"), ExtResource("8_fu12k"), ExtResource("9_pop5u"), ExtResource("10_ui6qv"), ExtResource("11_dcj1w"), ExtResource("12_tj67l"), ExtResource("13_4su0w"), ExtResource("14_gnusn"), ExtResource("15_ig1pj"), ExtResource("16_2f0jq"), ExtResource("17_v6ibf"), ExtResource("18_ogu4i"), ExtResource("19_u6ye5"), ExtResource("20_jld5f"), ExtResource("21_uvqo3"), ExtResource("22_roj1u"), ExtResource("23_okb2o"), ExtResource("24_fy80a"), ExtResource("8_fu12k"), ExtResource("25_c1xr5"), ExtResource("26_17u5d"), ExtResource("27_dtedn")])

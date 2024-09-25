@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EquipmentList" load_steps=6 format=3 uid="uid://bmsn0bquk3veo"]
+
+[ext_resource type="Resource" uid="uid://dnajk48rvu2mv" path="res://Items/equipment/resources/conditional/blade_of_the_unrelenting.tres" id="1_cvq06"]
+[ext_resource type="Resource" uid="uid://ca8go4wc80cdi" path="res://Items/equipment/resources/conditional/binary_shield.tres" id="2_b6xqj"]
+[ext_resource type="Resource" uid="uid://dux2lw2o3v0dr" path="res://Items/equipment/resources/cursed_coin.tres" id="3_asrfq"]
+[ext_resource type="Resource" uid="uid://dda8rbtlshf8v" path="res://Items/equipment/resources/conditional/unlucky_blade.tres" id="4_cwmmq"]
+[ext_resource type="Script" path="res://Player/initial_lists/equipment_list.gd" id="5_dwtnd"]
+
+[resource]
+script = ExtResource("5_dwtnd")
+list = Array[Resource("res://Items/equipment/equipment.gd")]([ExtResource("1_cvq06"), ExtResource("2_b6xqj"), ExtResource("3_asrfq"), ExtResource("4_cwmmq")])

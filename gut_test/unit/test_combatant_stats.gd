@@ -200,11 +200,6 @@ func test_base_strength_setup():
 	stats.base_strength = 1
 	stats.setup()
 	assert_eq(stats.strength, 1)
-
-func test_base_shield_setup():
-	stats.base_shield = 1
-	stats.setup()
-	assert_eq(stats.shield, 1)
 	
 func test_base_armor_setup():
 	stats.base_armor = 1
@@ -221,11 +216,6 @@ func test_base_strength_start_battle():
 	stats.start_battle()
 	assert_eq(stats.strength, 1)
 
-func test_base_shield_start_battle():
-	stats.base_shield = 1
-	stats.start_battle()
-	assert_eq(stats.shield, 1)
-
 func test_base_armor_start_battle():
 	stats.base_armor = 1
 	stats.start_battle()
@@ -235,6 +225,24 @@ func test_base_dodges_start_battle():
 	stats.base_dodges = 1
 	stats.start_battle()
 	assert_eq(stats.dodges, 1)
+
+func test_base_shield_start_turn():
+	stats.base_shield = 1
+	stats.start_turn()
+	assert_eq(stats.shield, 1)
+
+func test_base_shield_decay():
+	stats.base_shield = 1
+	stats.start_turn()
+	stats.pre_start_turn()
+	assert_eq(stats.shield, 0)
+
+func test_base_shield_no_decay():
+	stats.base_shield = 1
+	stats.shield_decay_rate = 0
+	stats.start_turn()
+	stats.pre_start_turn()
+	assert_eq(stats.shield, 1)
 
 ## Pruebas de señales de cambio
 func test_max_health_changed():
