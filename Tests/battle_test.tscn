@@ -13,7 +13,7 @@
 [ext_resource type="Resource" uid="uid://bsfowqdkj5uf3" path="res://Battle/skills/resources/stand_tall.tres" id="11_7234k"]
 [ext_resource type="Resource" uid="uid://mf4eru7wujud" path="res://Battle/skills/resources/purification.tres" id="12_rfqrd"]
 [ext_resource type="Script" path="res://Player/initial_lists/skill_list.gd" id="13_xqb70"]
-[ext_resource type="Resource" uid="uid://b7brb8ibjh01d" path="res://Player/initial_lists/resources/light_equipment_example.tres" id="14_beynt"]
+[ext_resource type="Resource" uid="uid://bmsn0bquk3veo" path="res://Player/initial_lists/resources/dark_equipment_example.tres" id="14_e4uxd"]
 
 [sub_resource type="Resource" id="Resource_ln2xl"]
 script = ExtResource("7_hi817")
@@ -50,4 +50,4 @@ enemy_data = ExtResource("2_764hq")
 stats = SubResource("Resource_ln2xl")
 ui_data = SubResource("Resource_u4y1y")
 default_skill_list = SubResource("Resource_eiari")
-default_equipment = ExtResource("14_beynt")
+default_equipment = ExtResource("14_e4uxd")

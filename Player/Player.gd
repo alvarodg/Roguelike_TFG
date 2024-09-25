@@ -62,7 +62,8 @@ func _ready():
 				# Sustituir por señal
 #				if equipment in RunData.collections.equipments.list:
 #					RunData.collections.remove_equipment(equipment)
-	default_equipment.list = []
+	if default_equipment != null:
+		default_equipment.list = []
 	reset_coins()
 	
 
@@ -365,6 +366,6 @@ func data_load(parameter, data):
 	elif equip_regex.search(parameter):
 		var equipment = load(data)
 		equipment_list.append(equipment)
-		equipment.connect_to(self)
+		equipment.attach_to(self)
 	else:
 		set(parameter, data)
